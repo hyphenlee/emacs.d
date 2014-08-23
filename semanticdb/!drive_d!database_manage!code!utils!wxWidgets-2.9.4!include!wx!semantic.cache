@@ -1,0 +1,18 @@
+;; Object wx/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "wx/"
+  :tables (list 
+   (semanticdb-table "string.h"
+    :major-mode 'c++-mode
+    :tags nil
+    :file "string.h"
+    :pointmax 163512
+    :fsize 167882
+    :lastmodtime '(21061 8629 0 0)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!drive_d!database_manage!code!utils!wxWidgets-2.9.4!include!wx!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

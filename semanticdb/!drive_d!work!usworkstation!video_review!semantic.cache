@@ -1,0 +1,16 @@
+;; Object video_review/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "video_review/"
+  :tables (list 
+   (semanticdb-table "video_review.h"
+    :major-mode 'c++-mode
+    :tags nil
+    :file "video_review.h"
+    :pointmax 1
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!drive_d!work!usworkstation!video_review!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

@@ -1,0 +1,18 @@
+;; Object slime-20100404.1/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "slime-20100404.1/"
+  :tables (list 
+   (semanticdb-table "slime-autoloads.el"
+    :major-mode 'emacs-lisp-mode
+    :tags nil
+    :file "slime-autoloads.el"
+    :pointmax 257
+    :fsize 2736
+    :lastmodtime '(21078 29595 0 0)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!drive_c!Users!hyphen!AppData!Roaming!.emacs.d!elpa!slime-20100404.1!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

@@ -1,0 +1,47 @@
+;; Object tests/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "tests/"
+  :tables (list 
+   (semanticdb-table "Project.ede"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("ede-proj-project" code nil nil [36 1045]))          
+    :file "Project.ede"
+    :pointmax 1046
+    :fsize 1045
+    :lastmodtime '(21005 33498 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "cit-cpp.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("cit-header-cpp-tags" variable (:default-value (list (semantic-tag-new-type "foo" "class" (list (semantic-tag "public" (quote label)) (semantic-tag-new-function "foo" (quote ("foo" type (:type "class"))) (list (semantic-tag-new-variable "f" "int")) :constructor-flag t :code " Field1 = f; ") (semantic-tag-new-function "foo" "void" nil :destructor-flag t) (semantic-tag-new-function "doSomethingPublic" "void" (list (semantic-tag-new-variable "ctxt" "int") (semantic-tag-new-variable "thing" "char" nil :pointer 1)) :prototype-flag t) (semantic-tag-new-function "setField1" "void" (list (semantic-tag-new-variable "f" "int")) :prototype-flag t) (semantic-tag-new-function "getField1" "int" nil :prototype-flag t) (semantic-tag "protected" (quote label)) (semantic-tag-new-function "doSomethingProtected" "void" (list (semantic-tag-new-variable "ctxt" "int") (semantic-tag-new-variable "thing" "char" nil :pointer 1)) :prototype-flag t) (semantic-tag "private" (quote label)) (semantic-tag-new-variable "Field1" "int")) nil))) nil [1038 2294])
+            ("cit-src-cpp-tags" variable (:default-value (list (semantic-tag-new-include "stdio.h" nil) (semantic-tag-new-include "foo.hpp" nil) (semantic-tag-new-function "doSomethingPublic" "void" (list (semantic-tag-new-variable "ctxt" "int") (semantic-tag-new-variable "thing" "char" nil :pointer 1)) :parent "foo" :code "   setField1(1);
+   if(getField1() == 1) {
+      // Call doSomethingProtected <== multi-hit for grep, not for global.
+      doSomethingProtected(ctxt,thing);
+   }
+") (semantic-tag-new-function "setField1" "void" (list (semantic-tag-new-variable "f" "int")) :parent "foo" :code "   Field1 = f;
+") (semantic-tag-new-function "getField1" "int" nil :parent "foo" :code "   return Field1;
+") (semantic-tag-new-function "doSomethingProtected" "void" (list (semantic-tag-new-variable "ctxt" "int") (semantic-tag-new-variable "thing" "char" nil :pointer 1)) :parent "foo" :code "   printf(\"%s\\n\",thing);
+"))) nil [2296 3368])
+            ("cit-main-cpp-tags" variable (:default-value (list (semantic-tag-new-include "foo.hpp" nil) (semantic-tag-new-include "string.h" nil) (semantic-tag-new-function "main" "int" (list (semantic-tag-new-variable "argc" "int") (semantic-tag-new-variable "argv" "char" nil :pointer 2)) :code "   foo myFoo(2);
+   char *myStr = strdup(\"MOOSE\");
+   myFoo.doSomethingPublic(1,myStr);
+"))) nil [3370 3815])
+            ("cit-symref-operations" variable (:default-value (quote ("doSomethingProtected" "renameSomething"))) nil [3817 4064])
+            ("cit-srecode-fill-cpp" function (:arguments ("make-type")) nil [4066 5204])
+            ("cit-remove-add-to-project-cpp" function nil nil [5206 5864])
+            ("cit-remove-and-do-shared-lib" function (:arguments ("make-type")) nil [5866 7836])
+            ("cit-cpp" package nil nil [7838 7856]))          
+    :file "cit-cpp.el"
+    :pointmax 7882
+    :fsize 7881
+    :lastmodtime '(21005 33498 0 0)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!drive_c!Users!hyphen!.emacs.d!plugins!cedet!tests!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

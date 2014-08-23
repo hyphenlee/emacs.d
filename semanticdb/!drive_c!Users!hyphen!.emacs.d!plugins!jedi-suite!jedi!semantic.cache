@@ -1,0 +1,168 @@
+;; Object jedi/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "jedi/"
+  :tables (list 
+   (semanticdb-table "jedi-pkg.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("define-package" code nil nil [1 122]))          
+    :file "jedi-pkg.el"
+    :pointmax 123
+    :fsize 122
+    :lastmodtime '(21005 34652 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "test_jediepcserver.py"
+    :major-mode 'python-mode
+    :tags nil
+    :file "test_jediepcserver.py"
+    :pointmax 1981
+    :fsize 1980
+    :lastmodtime '(21005 34652 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "jedi.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("ring" include nil nil [930 945])
+            ("epc" include nil nil [947 961])
+            ("auto-complete" include nil nil [962 986])
+            ("declare-function" code nil nil [987 1028])
+            ("jedi" customgroup (:user-visible-flag t) nil [1031 1121])
+            ("jedi:version" variable
+               (:constant-flag t
+                :default-value "0.1.3alpha2")
+                nil [1123 1160])
+            ("jedi:source-dir" variable (:default-value (if load-file-name (file-name-directory load-file-name) default-directory)) nil [1162 1315])
+            ("jedi:epc" variable nil nil [1317 1338])
+            ("make-variable-buffer-local" code nil nil [1339 1377])
+            ("jedi:server-script" variable (:default-value (convert-standard-filename (expand-file-name "jediepcserver.py" jedi:source-dir))) nil [1379 1556])
+            ("jedi:server-command" variable (:default-value (list (let ((py (expand-file-name "env/bin/python" jedi:source-dir))) (if (file-exists-p py) py "python")) jedi:server-script)) nil [1589 2390])
+            ("jedi:server-args" variable nil nil [2392 4189])
+            ("jedi:complete-on-dot" variable nil nil [4191 4413])
+            ("jedi:tooltip-method" variable (:default-value (quote (pos-tip popup))) nil [4415 4699])
+            ("jedi:get-in-function-call-timeout" variable (:default-value 3000) nil [4701 4861])
+            ("jedi:get-in-function-call-delay" variable (:default-value 1000) nil [4863 5011])
+            ("jedi:goto-definition-config" variable (:default-value (quote ((nil nil nil) (t nil nil) (nil definition nil) (t definition nil) (nil nil t) (t nil t) (nil definition t) (t definition t)))) nil [5013 6424])
+            ("jedi:doc-mode" variable (:default-value (quote rst-mode)) nil [6426 6521])
+            ("jedi:doc-hook" variable (:default-value (quote (view-mode))) nil [6523 6640])
+            ("jedi:doc-display-buffer" variable (:default-value (quote display-buffer)) nil [6642 6768])
+            ("jedi:install-imenu" variable nil nil [6770 6973])
+            ("jedi:imenu-create-index-function" variable (:default-value (quote jedi:create-nested-imenu-index)) nil [6975 7310])
+            ("make-obsolete-variable" code nil nil [7312 7365])
+            ("jedi:setup-keys" variable nil nil [7366 9297])
+            ("jedi:key-complete" variable (:default-value (kbd "<C-tab>")) nil [9299 9400])
+            ("jedi:key-goto-definition" variable (:default-value (kbd "C-.")) nil [9402 9513])
+            ("jedi:key-show-doc" variable (:default-value (kbd "C-c d")) nil [9515 9614])
+            ("jedi:key-related-names" variable (:default-value (kbd "C-c r")) nil [9616 9763])
+            ("jedi:key-goto-definition-pop-marker" variable (:default-value (kbd "C-,")) nil [9765 9898])
+            ("jedi:use-shortcuts" variable nil nil [9900 10080])
+            ("jedi:import-python-el-settings" variable (:default-value t) nil [10082 10200])
+            ("jedi:goto-definition-marker-ring-length" variable (:default-value 16) nil [10202 10344])
+            ("jedi:get-in-function-call--d" variable nil nil [10372 10483])
+            ("jedi:defined-names--singleton-d" variable nil nil [10485 10592])
+            ("jedi-mode-map" variable (:default-value (make-sparse-keymap)) nil [10611 10654])
+            ("jedi:handle-post-command" function nil nil [10656 10731])
+            ("define-minor-mode" code nil nil [10733 11881])
+            ("let" code nil nil [11955 12570])
+            ("when" code nil nil [12572 13152])
+            ("jedi:epc--live-p" function (:arguments ("mngr")) nil [13171 13533])
+            ("jedi:epc--start-epc" function (:arguments ("server-prog" "server-args")) nil [13535 13987])
+            ("jedi:server-pool--table" variable (:default-value (make-hash-table :test (quote equal))) nil [14008 14131])
+            ("jedi:server-pool--start" function (:arguments ("command")) nil [14133 14632])
+            ("jedi:-get-servers-in-use" function nil nil [14634 14963])
+            ("jedi:server-pool--gc-timer" variable nil nil [14965 15004])
+            ("jedi:server-pool--gc" function nil nil [15006 15441])
+            ("jedi:server-pool--gc-when-idle" function nil nil [15443 15663])
+            ("jedi:start-server" function nil nil [15690 15926])
+            ("jedi:stop-server" function (:user-visible-flag t) nil [15928 16459])
+            ("jedi:get-epc" function nil nil [16461 16558])
+            ("jedi:start-dedicated-server" function
+               (:user-visible-flag t
+                :arguments ("command"))
+                nil [16575 17899])
+            ("jedi:-buffer-file-name" function nil nil [17901 18121])
+            ("jedi:call-deferred" function (:arguments ("method-name")) nil [18123 18611])
+            ("jedi:complete-reply" variable nil nil [18631 18706])
+            ("jedi:complete-request-point" variable nil nil [18708 18869])
+            ("jedi:complete-request" function nil nil [18871 19189])
+            ("jedi:complete" function
+               (:user-visible-flag t
+                :arguments ("expand"))
+                nil [19206 19485])
+            ("jedi:dot-complete" function (:user-visible-flag t) nil [19580 19754])
+            ("jedi:ac-direct-matches" function nil nil [19773 20104])
+            ("jedi:ac-direct-prefix" function nil nil [20106 20254])
+            ("ac-define-source" code nil nil [20295 20460])
+            ("jedi:ac-setup" function (:user-visible-flag t) nil [20477 20979])
+            ("jedi:highlight-function-argument" variable
+               (:default-value (quote ((t (:inherit bold))))
+                :type "face")
+                nil [21026 21178])
+            ("jedi:get-in-function-call--construct-call-signature" function (:arguments ("params" "index" "call_name")) nil [21180 21548])
+            ("jedi:get-in-function-call--tooltip-show" function (:arguments ("args")) nil [21550 21740])
+            ("jedi:get-in-function-call" function (:user-visible-flag t) nil [21742 21948])
+            ("jedi:get-in-function-call-when-idle" function nil nil [21950 22718])
+            ("jedi:tooltip-show" function (:arguments ("string")) nil [22720 23143])
+            ("jedi:string-fill-paragraph" function (:arguments ("string" "justify")) nil [23145 23343])
+            ("jedi:goto-definition--index" variable nil nil [23357 23397])
+            ("jedi:goto-definition--cache" variable nil nil [23398 23438])
+            ("jedi:goto-definition--marker-ring" variable (:default-value (make-ring jedi:goto-definition-marker-ring-length)) nil [23439 23601])
+            ("jedi:goto-definition" function
+               (:user-visible-flag t
+                :arguments ("other-window" "deftype" "use-cache" "index"))
+                nil [23603 25354])
+            ("jedi:goto-definition-push-marker" function nil nil [25356 25513])
+            ("jedi:goto-definition-pop-marker" function (:user-visible-flag t) nil [25515 26069])
+            ("jedi:goto-definition-next" function
+               (:user-visible-flag t
+                :arguments ("other-window"))
+                nil [26071 26418])
+            ("jedi:goto-definition--callback" function (:arguments ("reply" "other-window")) nil [26420 26630])
+            ("jedi:goto--line-column" function (:arguments ("line" "column")) nil [26632 26819])
+            ("jedi:goto-definition--nth" function (:arguments ("other-window" "try-next")) nil [26821 27945])
+            ("jedi:goto-definition--notify-alternatives" function (:arguments ("len" "n")) nil [27947 28452])
+            ("jedi:get-full-name-deferred" function nil nil [28471 28818])
+            ("jedi:get-full-name-sync" function (:arguments ("timeout")) nil [28820 28968])
+            ("jedi:related-names--source" function (:arguments ("name" "candidates")) nil [28991 29132])
+            ("jedi:related-names--to-file-line" function (:arguments ("reply")) nil [29134 29414])
+            ("jedi:related-names--helm" function (:arguments ("helm")) nil [29416 30161])
+            ("helm-jedi-related-names" function (:user-visible-flag t) nil [30178 30333])
+            ("anything-jedi-related-names" function (:user-visible-flag t) nil [30350 30517])
+            ("jedi:doc-buffer-name" variable (:default-value "*jedi:doc*") nil [30557 30599])
+            ("jedi:show-doc" function (:user-visible-flag t) nil [30601 31862])
+            ("jedi:defined-names--cache" variable nil nil [31893 31931])
+            ("make-variable-buffer-local" code nil nil [31932 31987])
+            ("jedi:defined-names-deferred" function nil nil [31989 32281])
+            ("jedi:defined-names--singleton-deferred" function nil nil [32283 32643])
+            ("jedi:defined-names--sync" function nil nil [32645 32816])
+            ("jedi:after-change-handler" function (:arguments ("_")) nil [32818 32958])
+            ("jedi:imenu-make-marker" function (:arguments ("def")) nil [32960 33159])
+            ("jedi:create-nested-imenu-index--item" function (:arguments ("def")) nil [33161 33271])
+            ("jedi:create-nested-imenu-index" function nil nil [33273 33517])
+            ("jedi:create-nested-imenu-index-1" function (:arguments ("items")) nil [33519 33940])
+            ("jedi:create-flat-imenu-index" function nil nil [33942 34206])
+            ("jedi:create-flat-imenu-index-1" function (:arguments ("items")) nil [34208 34490])
+            ("jedi:get-jedi-version-request" function nil nil [34509 34676])
+            ("jedi:show-version-info" function (:user-visible-flag t) nil [34678 35216])
+            ("define-obsolete-function-alias" code nil nil [35218 35308])
+            ("jedi:print-jedi-version" function nil nil [35310 35409])
+            ("jedi:import-python-el-settings-setup" function nil nil [35424 36139])
+            ("jedi:setup" function (:user-visible-flag t) nil [36156 37018])
+            ("jedi:pop-to-epc-buffer" function (:user-visible-flag t) nil [37037 37291])
+            ("jedi:toggle-log-traceback" function (:user-visible-flag t) nil [37293 38100])
+            ("jedi:server-command--backup" variable nil nil [38102 38142])
+            ("jedi:server-args--backup" variable nil nil [38143 38180])
+            ("jedi:toggle-debug-server" function (:user-visible-flag t) nil [38182 39833])
+            ("jedi" package nil nil [39836 39851]))          
+    :file "jedi.el"
+    :pointmax 39946
+    :fsize 39945
+    :lastmodtime '(21005 34652 0 0)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!drive_c!Users!hyphen!.emacs.d!plugins!jedi-suite!jedi!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

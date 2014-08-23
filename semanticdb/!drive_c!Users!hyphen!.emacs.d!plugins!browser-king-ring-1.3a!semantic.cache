@@ -1,0 +1,129 @@
+;; Object browser-king-ring-1.3a/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "browser-king-ring-1.3a/"
+  :tables (list 
+   (semanticdb-table "browse-kill-ring.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("cl" include nil nil [8381 8394])
+            ("derived" include nil nil [8397 8415])
+            ("when" code nil nil [8418 8464])
+            ("browse-kill-ring-depropertize-string" function (:arguments ("str")) nil [8466 8664])
+            ("cond" code nil nil [8666 9349])
+            ("browse-kill-ring" customgroup (:user-visible-flag t) nil [9351 9536])
+            ("browse-kill-ring-display-styles" variable (:default-value (quote ((separated . browse-kill-ring-insert-as-separated) (one-line . browse-kill-ring-insert-as-one-line)))) nil [9538 9687])
+            ("browse-kill-ring-display-style" variable (:default-value (quote separated)) nil [9689 10038])
+            ("browse-kill-ring-quit-action" variable (:default-value (quote bury-and-delete-window)) nil [10040 11011])
+            ("browse-kill-ring-resize-window" variable nil nil [11013 11497])
+            ("browse-kill-ring-separator" variable (:default-value "-------") nil [11499 11688])
+            ("browse-kill-ring-recenter" variable nil nil [11690 11852])
+            ("browse-kill-ring-highlight-current-entry" variable nil nil [11854 12022])
+            ("browse-kill-ring-highlight-inserted-item" variable (:default-value browse-kill-ring-highlight-current-entry) nil [12024 12231])
+            ("browse-kill-ring-separator-face" variable (:default-value (quote bold)) nil [12233 12392])
+            ("browse-kill-ring-maximum-display-length" variable nil nil [12394 12734])
+            ("browse-kill-ring-display-duplicates" variable (:default-value t) nil [12736 12890])
+            ("kill-new" function (:arguments ("around" "browse-kill-ring-no-kill-new-duplicates")) nil [12892 13269])
+            ("browse-kill-ring-no-duplicates" variable nil nil [13271 14107])
+            ("browse-kill-ring-depropertize" variable nil nil [14109 14413])
+            ("browse-kill-ring-hook" variable nil nil [14415 14551])
+            ("browse-kill-ring-original-window-config" variable nil nil [14553 14674])
+            ("make-variable-buffer-local" code nil nil [14675 14744])
+            ("browse-kill-ring-original-window" variable nil nil [14746 14955])
+            ("browse-kill-ring-mouse-insert" function
+               (:user-visible-flag t
+                :arguments ("e"))
+                nil [14957 15287])
+            ("if" code nil nil [15289 16017])
+            ("browse-kill-ring-resize-window" function nil nil [16019 16366])
+            ("browse-kill-ring-undo-other-window" function (:user-visible-flag t) nil [16368 16685])
+            ("browse-kill-ring-insert" function
+               (:user-visible-flag t
+                :arguments ("quit"))
+                nil [16687 17008])
+            ("browse-kill-ring-insert-and-delete" function
+               (:user-visible-flag t
+                :arguments ("quit"))
+                nil [17010 17374])
+            ("browse-kill-ring-insert-and-quit" function (:user-visible-flag t) nil [17376 17546])
+            ("browse-kill-ring-insert-and-move" function
+               (:user-visible-flag t
+                :arguments ("quit"))
+                nil [17548 17966])
+            ("browse-kill-ring-insert-move-and-quit" function (:user-visible-flag t) nil [17968 18150])
+            ("browse-kill-ring-prepend-insert" function
+               (:user-visible-flag t
+                :arguments ("quit"))
+                nil [18152 18456])
+            ("browse-kill-ring-prepend-insert-and-quit" function (:user-visible-flag t) nil [18458 18641])
+            ("browse-kill-ring-prepend-insert-and-move" function
+               (:user-visible-flag t
+                :arguments ("quit"))
+                nil [18643 19103])
+            ("browse-kill-ring-prepend-insert-move-and-quit" function (:user-visible-flag t) nil [19105 19311])
+            ("browse-kill-ring-do-prepend-insert" function (:arguments ("buf" "pt")) nil [19313 20145])
+            ("browse-kill-ring-append-insert" function
+               (:user-visible-flag t
+                :arguments ("quit"))
+                nil [20147 20439])
+            ("browse-kill-ring-append-insert-and-quit" function (:user-visible-flag t) nil [20441 20621])
+            ("browse-kill-ring-append-insert-and-move" function
+               (:user-visible-flag t
+                :arguments ("quit"))
+                nil [20623 21080])
+            ("browse-kill-ring-append-insert-move-and-quit" function (:user-visible-flag t) nil [21082 21285])
+            ("browse-kill-ring-do-append-insert" function (:arguments ("buf" "pt")) nil [21287 22145])
+            ("browse-kill-ring-delete" function (:user-visible-flag t) nil [22147 23116])
+            ("browse-kill-ring-current-string" function (:arguments ("buf" "pt")) nil [23118 23350])
+            ("browse-kill-ring-do-insert" function (:arguments ("buf" "pt")) nil [23352 24124])
+            ("browse-kill-ring-forward" function
+               (:user-visible-flag t
+                :arguments ("arg"))
+                nil [24126 25546])
+            ("browse-kill-ring-previous" function
+               (:user-visible-flag t
+                :arguments ("arg"))
+                nil [25548 25700])
+            ("browse-kill-ring-read-regexp" function (:arguments ("msg")) nil [25702 26045])
+            ("browse-kill-ring-search-forward" function
+               (:user-visible-flag t
+                :arguments ("regexp" "backwards"))
+                nil [26047 26931])
+            ("browse-kill-ring-search-backward" function
+               (:user-visible-flag t
+                :arguments ("regexp"))
+                nil [26933 27173])
+            ("browse-kill-ring-quit" function (:user-visible-flag t) nil [27175 27765])
+            ("put" code nil nil [27767 27816])
+            ("define-derived-mode" code nil nil [27817 29895])
+            ("browse-kill-ring-default-keybindings" function (:user-visible-flag t) nil [29912 30822])
+            ("define-derived-mode" code nil nil [30824 31197])
+            ("browse-kill-ring-edit-target" variable nil nil [31199 31240])
+            ("make-variable-buffer-local" code nil nil [31241 31299])
+            ("browse-kill-ring-edit" function (:user-visible-flag t) nil [31301 32094])
+            ("browse-kill-ring-edit-finish" function (:user-visible-flag t) nil [32096 32688])
+            ("browse-kill-ring-add-overlays-for" function (:arguments ("item" "body")) nil [32690 33074])
+            ("browse-kill-ring-elide" function (:arguments ("str")) nil [33144 33457])
+            ("browse-kill-ring-insert-as-one-line" function (:arguments ("items")) nil [33459 33963])
+            ("browse-kill-ring-insert-as-separated" function (:arguments ("items")) nil [33965 34203])
+            ("browse-kill-ring-insert-as-separated-1" function (:arguments ("origitem" "separatep")) nil [34205 35052])
+            ("browse-kill-ring-occur" function
+               (:user-visible-flag t
+                :arguments ("regexp"))
+                nil [35054 35423])
+            ("browse-kill-ring-fontify-on-property" function (:arguments ("prop" "face" "beg" "end")) nil [35425 35985])
+            ("browse-kill-ring-fontify-region" function (:arguments ("beg" "end" "verbose")) nil [35987 36376])
+            ("browse-kill-ring-update" function (:user-visible-flag t) nil [36378 36660])
+            ("browse-kill-ring-setup" function (:arguments ("buf" "window" "regexp" "window-config")) nil [36662 39192])
+            ("browse-kill-ring" function (:user-visible-flag t) nil [39209 39614])
+            ("browse-kill-ring" package nil nil [39616 39643]))          
+    :file "browse-kill-ring.el"
+    :pointmax 39679
+    :fsize 39680
+    :lastmodtime '(21005 33495 0 0)
+    :unmatched-syntax '((close-paren 8415 . 8416) (symbol 8361 . 8378) (open-paren 8360 . 8361))
+    )
+   )
+  :file "!drive_c!Users!hyphen!.emacs.d!plugins!browser-king-ring-1.3a!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

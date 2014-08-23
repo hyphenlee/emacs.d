@@ -1,0 +1,257 @@
+;; Object login/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "login/"
+  :tables (list 
+   (semanticdb-table "login_view.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("wx/dcbuffer.h" include (:system-flag t) nil [20 44])
+            ("login_view.h" include nil nil [46 69])
+            ("fstream" include (:system-flag t) nil [70 88])
+            ("rt_app.h" include nil nil [89 108])
+            ("data_manager.h" include nil nil [109 134])
+            ("rt_view.h" include nil nil [135 155])
+            ("magnifier_view.h" include nil nil [157 184])
+            ("user_data.h" include nil nil [185 207])
+            ("png_bitmap.h" include nil nil [209 232])
+            ("rtplatform" using (:type ("rtplatform" type
+                 (:prototype t
+                  :type "namespace")
+                  nil nil)) nil [233 260])
+            ("std" using (:type ("std" type
+                 (:prototype t
+                  :type "namespace")
+                  nil nil)) nil [261 281])
+            ("LoginView" function
+               (:constructor-flag t
+                :parent "LoginView"
+                :arguments 
+                  ( ("parent" variable
+                       (:pointer 1
+                        :type ("wxWindow" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [304 322]))                  
+                :type ("LoginView" type (:type "class") nil nil))
+                nil [282 476])
+            ("LoginView" function
+               (:destructor-flag t
+                :parent "LoginView"
+                :type "void")
+                nil [478 535])
+            ("bpbutton_exit_OnLeftDown" function
+               (:parent "LoginView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxMouseEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [579 600]))                  
+                :type "void")
+                nil [537 917])
+            ("login_panelOnPaint" function
+               (:parent "LoginView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxPaintEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [956 977]))                  
+                :type "void")
+                nil [920 1213])
+            ("UpdateLayout" function
+               (:parent "LoginView"
+                :type "void")
+                nil [1215 2849])
+            ("button_click_change_user" function
+               (:parent "LoginView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxMouseEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2894 2915]))                  
+                :type "void")
+                nil [2852 3072])
+            ("m_bitmap_loginOnLeftDown" function
+               (:parent "LoginView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxMouseEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3117 3138]))                  
+                :type "void")
+                nil [3075 3718])
+            ("set_appreanece" function
+               (:parent "LoginView"
+                :type "void")
+                nil [3720 4642])
+            ("m_bitmap_chinseseOnLeftDown" function
+               (:parent "LoginView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxMouseEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4689 4710]))                  
+                :type "void")
+                nil [4644 4914])
+            ("m_bitmap_englishOnLeftDown" function
+               (:parent "LoginView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxMouseEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4960 4981]))                  
+                :type "void")
+                nil [4916 5185])
+            ("text_password_active_user_OnTextMaxLen" function
+               (:parent "LoginView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxCommandEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5243 5266]))                  
+                :type "void")
+                nil [5187 5518]))          
+    :file "login_view.cpp"
+    :pointmax 5519
+    :fsize 5715
+    :lastmodtime '(21061 8615 0 0)
+    :unmatched-syntax '((punctuation 207 . 208) (string 10 . 19) (symbol 1 . 9) (string 10 . 19) (symbol 1 . 9) (punctuation 207 . 208))
+    )
+   (semanticdb-table "login_view.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__login_view__" variable (:constant-flag t) nil [32 46])
+            ("wx/sizer.h" include (:system-flag t) nil [122 143])
+            ("wx/stattext.h" include (:system-flag t) nil [144 168])
+            ("wx/bmpbuttn.h" include (:system-flag t) nil [169 193])
+            ("wx/textctrl.h" include (:system-flag t) nil [194 218])
+            ("map" include (:system-flag t) nil [220 234])
+            ("vector" include (:system-flag t) nil [236 253])
+            ("login_frame.h" include nil nil [254 278])
+            ("startup_frame.h" include nil nil [280 306])
+            ("rt_view.h" include nil nil [307 327])
+            ("magnifier_view.h" include nil nil [328 355])
+            ("user_data.h" include nil nil [356 378])
+            ("wxID_GAUGE" variable (:constant-flag t) nil [414 424])
+            ("LoginView" type
+               (:superclasses 
+                  ( ("LoginFrame" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [499 506])
+                    ("LoginView" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :arguments 
+                          ( ("parent" variable
+                               (:pointer 1
+                                :type ("wxWindow" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [539 557]))                          
+                        :type ("LoginView" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [528 558])
+                    ("LoginView" function
+                       (:prototype-flag t
+                        :destructor-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [560 573])
+                    ("protected" label nil (reparse-symbol classsubparts) [609 619])
+                    ("bpbutton_exit_OnLeftDown" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxMouseEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [653 674]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [622 675])
+                    ("login_panelOnPaint" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxPaintEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [702 723]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [677 724])
+                    ("m_bitmap_loginOnLeftDown" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxMouseEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [757 778]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [726 779])
+                    ("m_bitmap_chinseseOnLeftDown" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxMouseEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [815 836]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [781 837])
+                    ("m_bitmap_englishOnLeftDown" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxMouseEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [872 893]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [839 894])
+                    ("UpdateLayout" function
+                       (:prototype-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [898 918])
+                    ("button_click_change_user" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxMouseEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [952 973]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [921 974])
+                    ("set_appreanece" function
+                       (:prototype-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [976 998])
+                    ("text_password_active_user_OnTextMaxLen" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxCommandEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1045 1068]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1000 1069])
+                    ("private" label nil (reparse-symbol classsubparts) [1070 1078])
+                    ("user_panel_index_" variable (:type ("std::map" type
+                         (:template-specifier 
+                            ( ("int" type nil nil nil)
+                              ("UserData::User" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [1080 1128]))                  
+                :type "class")
+                nil [461 1131]))          
+    :file "login_view.h"
+    :pointmax 1158
+    :fsize 1206
+    :lastmodtime '(21061 8615 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("wxID_GAUGE" . ((number "1000" 425 . 429)))
+          ("__login_view__")
+          )
+
+    )
+   (semanticdb-table "login_frame.h"
+    :file "login_frame.h"
+    :fsize 3044
+    :lastmodtime '(21061 8615 0 0)
+    )
+   )
+  :file "!drive_d!work!rtSuite!code!login!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

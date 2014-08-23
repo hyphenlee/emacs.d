@@ -1,0 +1,570 @@
+;; Object dicom/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "dicom/"
+  :tables (list 
+   (semanticdb-table "dicom_import_view.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("map" include (:system-flag t) nil [1 15])
+            ("string" include (:system-flag t) nil [16 33])
+            ("vector" include (:system-flag t) nil [34 51])
+            ("fstream" include (:system-flag t) nil [52 70])
+            ("wx\\wx.h" include nil nil [71 89])
+            ("wx\\sizer.h" include nil nil [90 111])
+            ("wx\\textfile.h" include nil nil [112 136])
+            ("wx\\dirdlg.h" include nil nil [137 159])
+            ("wx\\filefn.h" include nil nil [160 182])
+            ("wx\\dir.h" include nil nil [183 202])
+            ("wx\\image.h" include nil nil [203 224])
+            ("wx\\bitmap.h" include nil nil [225 247])
+            ("wx\\imagbmp.h" include nil nil [248 271])
+            ("wx\\msgdlg.h" include nil nil [272 294])
+            ("dicom_import_view.h" include nil nil [296 326])
+            ("ct_image.h" include nil nil [327 348])
+            ("scene_node.h" include nil nil [349 372])
+            ("scene_image.h" include nil nil [373 397])
+            ("dicom_ct_volume_io.h" include nil nil [399 430])
+            ("window_level_filter.h" include nil nil [431 463])
+            ("ct_volume.h" include nil nil [464 486])
+            ("image_panel.h" include nil nil [488 512])
+            ("dicom_import_IO.h" include nil nil [513 541])
+            ("patient_model.h" include nil nil [542 568])
+            ("dcmtk\\oflog\\helpers\\timehelp.h" include nil nil [569 610])
+            ("thread" include (:system-flag t) nil [611 628])
+            ("dcmtk\\ofstd\\ofcast.h" include nil nil [630 661])
+            ("patient_dicom_move_server.h" include nil nil [662 700])
+            ("rt_structure_set.h" include nil nil [701 730])
+            ("patient_rtss_io.h" include nil nil [764 792])
+            ("rt_app.h" include nil nil [793 812])
+            ("dicom_patient_dir_io.h" include nil nil [814 847])
+            ("rtSuite_patient_dir_io.h" include nil nil [848 883])
+            ("rtSuite_rtss_io.h" include nil nil [884 912])
+            ("rtSuite_ct_volume_io.h" include nil nil [913 945])
+            ("dicom_ct_volume_io.h" include nil nil [946 977])
+            ("dicom_rt_structure_set_io2.h" include nil nil [980 1019])
+            ("dicom_rtplan_io2.h" include nil nil [1020 1049])
+            ("dicom_rtdose_io2.h" include nil nil [1050 1079])
+            ("dicom_ct_volume_io2.h" include nil nil [1080 1112])
+            ("dicom_patient_dir_io2.h" include nil nil [1113 1147])
+            ("std" using (:type ("std" type
+                 (:prototype t
+                  :type "namespace")
+                  nil nil)) nil [1148 1168])
+            ("dtl" using (:type ("dtl" type
+                 (:prototype t
+                  :type "namespace")
+                  nil nil)) nil [1169 1189])
+            ("init_local_pacs_server" function
+               (:prototype-flag t
+                :typemodifiers ("static")
+                :type "void")
+                nil [1194 1231])
+            ("DicomImportView" function
+               (:constructor-flag t
+                :parent "DicomImportView"
+                :arguments 
+                  ( ("parent" variable
+                       (:pointer 1
+                        :type ("wxWindow" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1266 1284]))                  
+                :type ("DicomImportView" type (:type "class") nil nil))
+                nil [1232 4188])
+            ("selectdir" function
+               (:parent "DicomImportView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxFileDirPickerEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4222 4250]))                  
+                :type "void")
+                nil [4190 4874])
+            ("add_series_to_study_node" function
+               (:arguments 
+                  ( ("tree_ctrl" variable
+                       (:pointer 1
+                        :type ("wxTreeCtrl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4914 4936])
+                    ("stnode" variable (:type ("wxTreeItemId" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4936 4956])
+                    ("se" variable
+                       (:pointer 1
+                        :type ("Series" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4956 4967])
+                    ("series_uid_node" variable
+                       (:reference 1
+                        :type ("std::map" type
+                             (:template-specifier 
+                                ( ("std::string" type nil nil nil)
+                                  ("wxTreeItemId" type nil nil nil))                                
+                              :type "class")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [4977 5029]))                  
+                :type ("wxTreeItemId" type (:type "class") nil nil))
+                nil [4876 5787])
+            ("UpdateDicomDirTreeCtrl" function
+               (:parent "DicomImportView"
+                :arguments 
+                  ( ("dir" variable
+                       (:pointer 1
+                        :type ("PatientDir" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5863 5879])
+                    ("tree_ctrl" variable
+                       (:pointer 1
+                        :type ("wxTreeCtrl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5879 5901]))                  
+                :type ("std::map" type
+                     (:template-specifier 
+                        ( ("wxTreeItemId" type nil nil nil)
+                          ("std::string" type nil nil nil))                        
+                      :type "class")
+                      nil nil))
+                nil [5788 6946])
+            ("tree_ctrl_initial_OnTreeSelChanged" function
+               (:parent "DicomImportView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxTreeEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7006 7026]))                  
+                :type "void")
+                nil [6948 7892])
+            ("tree_ctrl_selected_OnTreeSelChanged" function
+               (:parent "DicomImportView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxTreeEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7954 7974]))                  
+                :type "void")
+                nil [7895 9005])
+            ("button_add_OnButtonClick" function
+               (:parent "DicomImportView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxCommandEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [9055 9078]))                  
+                :type "void")
+                nil [9007 10421])
+            ("button_clear_OnButtonClick" function
+               (:parent "DicomImportView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxCommandEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [10474 10497]))                  
+                :type "void")
+                nil [10424 10640])
+            ("view_Image" function
+               (:parent "DicomImportView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxCommandEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [10677 10700]))                  
+                :type "void")
+                nil [10643 11109])
+            ("adjust" function
+               (:parent "DicomImportView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxScrollEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [11140 11162]))                  
+                :type "void")
+                nil [11110 11423])
+            ("button_import_OnButtonClick" function
+               (:parent "DicomImportView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxCommandEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [11475 11498]))                  
+                :type "void")
+                nil [11424 11834])
+            ("EchoTest" function
+               (:parent "DicomImportView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxCommandEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [11870 11893]))                  
+                :type "void")
+                nil [11838 13851])
+            ("text_ctrl_OnSetFocus" function
+               (:parent "DicomImportView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxCommandEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [13898 13921]))                  
+                :type "void")
+                nil [13854 13965])
+            ("dcmtk" using (:type ("dcmtk" type
+                 (:prototype t
+                  :type "namespace")
+                  nil nil)) nil [14381 14403])
+            ("button_queryOnButtonClick" function
+               (:parent "DicomImportView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxCommandEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [14453 14476]))                  
+                :type "void")
+                nil [14404 17946])
+            ("button_retrieveOnButtonClick" function
+               (:parent "DicomImportView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxCommandEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [18912 18935]))                  
+                :type "void")
+                nil [18860 23660])
+            ("grid_patient_listOnGridCellLeftClick" function
+               (:parent "DicomImportView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxGridEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [23722 23742]))                  
+                :type "void")
+                nil [23662 23835])
+            ("grid_patient_listOnGridLabelLeftClick" function
+               (:parent "DicomImportView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxGridEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [23898 23918]))                  
+                :type "void")
+                nil [23837 24010])
+            ("ImportPatient" function
+               (:parent "DicomImportView"
+                :arguments 
+                  ( ("patient_dir" variable
+                       (:pointer 1
+                        :type ("PatientDir" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [24050 24073])
+                    ("user_root_path" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [24073 24096]))                  
+                :type "void")
+                nil [24013 30897])
+            ("AddToNewTreeList" function
+               (:parent "DicomImportView"
+                :arguments 
+                  ( ("dir" variable
+                       (:pointer 1
+                        :type ("PatientDir" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [30939 30955])
+                    ("tree_ctrl" variable
+                       (:pointer 1
+                        :type ("wxTreeCtrl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [30955 30978]))                  
+                :type "void")
+                nil [30899 33595])
+            ("set_appreance" function
+               (:parent "DicomImportView"
+                :type "void")
+                nil [33597 34737])
+            ("init_local_pacs_server" function
+               (:typemodifiers ("static")
+                :type "void")
+                nil [34739 34841]))          
+    :file "dicom_import_view.cpp"
+    :pointmax 34845
+    :fsize 35804
+    :lastmodtime '(21140 24441 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "dicom_import_view.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__dicom_import_view__" variable (:constant-flag t) nil [39 60])
+            ("map" include (:system-flag t) nil [62 76])
+            ("dicom_import_frame.h" include nil nil [158 189])
+            ("vector" include (:system-flag t) nil [190 207])
+            ("dcmtk/dcmnet/scp.h" include (:system-flag t) nil [240 269])
+            ("dcmtk/ofstd/ofdatime.h" include (:system-flag t) nil [270 303])
+            ("ct_volume.h" include nil nil [304 326])
+            ("image_panel.h" include nil nil [327 351])
+            ("patient_view.h" include nil nil [352 377])
+            ("patient_dir.h" include nil nil [378 402])
+            ("patient_model.h" include nil nil [403 428])
+            ("fileType" type
+               (:members 
+                  ( ("rtss" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [473 478])
+                    ("rtplan" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [478 485])
+                    ("rtdose" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [485 492])
+                    ("ct" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [492 496]))                  
+                :type "enum")
+                nil [456 497])
+            ("DicomImportView" type
+               (:superclasses 
+                  ( ("dialog_dicom_import" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("protected" label nil (reparse-symbol classsubparts) [589 599])
+                    ("selectdir" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxFileDirPickerEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [661 690]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [645 691])
+                    ("tree_ctrl_initial_OnTreeSelChanged" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxTreeEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [737 757]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [696 758])
+                    ("tree_ctrl_selected_OnTreeSelChanged" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxTreeEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [804 824]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [762 825])
+                    ("button_add_OnButtonClick" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxCommandEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [932 955]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [901 956])
+                    ("button_clear_OnButtonClick" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxCommandEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [992 1015]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [959 1016])
+                    ("button_import_OnButtonClick" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxCommandEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1054 1077]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1020 1078])
+                    ("adjust" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxScrollEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1094 1116]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1081 1117])
+                    ("view_Image" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxCommandEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1137 1160]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1120 1161])
+                    ("EchoTest" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxCommandEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1179 1202]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1164 1204])
+                    ("text_ctrl_OnSetFocus" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxCommandEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1234 1257]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1207 1258])
+                    ("button_queryOnButtonClick" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxCommandEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1293 1316]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1261 1317])
+                    ("button_retrieveOnButtonClick" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxCommandEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1355 1378]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1320 1379])
+                    ("grid_patient_listOnGridCellLeftClick" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxGridEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1455 1475]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1412 1477])
+                    ("grid_patient_listOnGridLabelLeftClick" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxGridEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1524 1544]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1480 1545])
+                    ("AddToNewTreeList" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("dir" variable
+                               (:pointer 1
+                                :type ("PatientDir" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1570 1586])
+                            ("tree_ctrl" variable
+                               (:pointer 1
+                                :type ("wxTreeCtrl" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1586 1608]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1548 1609])
+                    ("set_appreance" function
+                       (:prototype-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [1647 1668])
+                    ("public" label nil (reparse-symbol classsubparts) [1670 1677])
+                    ("DicomImportView" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :arguments 
+                          ( ("parent" variable
+                               (:pointer 1
+                                :type ("wxWindow" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1718 1736]))                          
+                        :type ("DicomImportView" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1701 1737])
+                    ("UpdateDicomDirTreeCtrl" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("dir" variable
+                               (:pointer 1
+                                :type ("PatientDir" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1891 1907])
+                            ("tree_ctrl" variable
+                               (:pointer 1
+                                :type ("wxTreeCtrl" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1907 1929]))                          
+                        :type ("std::map" type
+                             (:template-specifier 
+                                ( ("wxTreeItemId" type nil nil nil)
+                                  ("std::string" type nil nil nil))                                
+                              :type "class")
+                              nil nil))
+                        (reparse-symbol classsubparts) [1833 1930])
+                    ("ImportPatient" function
+                       (:prototype-flag t
+                        :typemodifiers ("static")
+                        :arguments 
+                          ( ("patient_dir" variable
+                               (:pointer 1
+                                :type ("PatientDir" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1960 1983])
+                            ("user_root_path" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1983 2011]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1933 2012])
+                    ("private" label nil (reparse-symbol classsubparts) [2014 2022])
+                    ("UID_RTSS" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2024 2045])
+                    ("UID_RTPLAN" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2047 2070])
+                    ("UID_RTDOSE" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2072 2095])
+                    ("UID_CT" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2097 2117])
+                    ("importing_dir_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2119 2146])
+                    ("importing_dicomdir_" variable (:type ("PatientDir" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2148 2179])
+                    ("selected_dicomdir_" variable (:type ("PatientDir" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2181 2211])
+                    ("initial_tree_node_uid_" variable (:type ("std::map" type
+                         (:template-specifier 
+                            ( ("wxTreeItemId" type nil nil nil)
+                              ("std::string" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [2213 2271])
+                    ("selected_tree_node_uid_" variable (:type ("std::map" type
+                         (:template-specifier 
+                            ( ("wxTreeItemId" type nil nil nil)
+                              ("std::string" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [2273 2332])
+                    ("selected_ct_filenames_" variable (:type ("std::vector" type
+                         (:template-specifier 
+                            ( ("std::string" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [2352 2400])
+                    ("preview_ct_image_panel_" variable
+                       (:pointer 1
+                        :type ("ImagePanel" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [2402 2438])
+                    ("preview_ct_image_" variable (:type ("ctImage" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2440 2466])
+                    ("root_path_" variable (:type ("wxString" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2468 2488])
+                    ("preview_wc_" variable (:type "double") (reparse-symbol classsubparts) [2490 2509])
+                    ("preview_ww_" variable (:type "double") (reparse-symbol classsubparts) [2511 2530])
+                    ("address_host" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2532 2557])
+                    ("port" variable (:type "int") (reparse-symbol classsubparts) [2559 2568])
+                    ("selected_patient_" variable (:type "int") (reparse-symbol classsubparts) [2570 2592])
+                    ("patients_name_list" variable (:type ("std::vector" type
+                         (:template-specifier 
+                            ( ("PatientInfo" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [2610 2654])
+                    ("patient_view" variable
+                       (:pointer 1
+                        :type ("PatientView" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [2657 2684]))                  
+                :type "class")
+                nil [535 2687]))          
+    :file "dicom_import_view.h"
+    :pointmax 2721
+    :fsize 2806
+    :lastmodtime '(21140 24539 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("__dicom_import_view__")
+          )
+
+    )
+   (semanticdb-table "dicom_import_frame.h"
+    :file "dicom_import_frame.h"
+    :fsize 3726
+    :lastmodtime '(21061 8615 0 0)
+    )
+   )
+  :file "!drive_d!work!rtSuite!code!patient!dicom!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

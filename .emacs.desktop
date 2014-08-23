@@ -1,0 +1,95 @@
+;; -*- mode: emacs-lisp; coding: emacs-mule; -*-
+;; --------------------------------------------------------------------------
+;; Desktop File for Emacs
+;; --------------------------------------------------------------------------
+;; Created Fri Aug 22 12:04:40 2014
+;; Desktop file format version 206
+;; Emacs version 24.3.1
+
+;; Global section:
+(setq desktop-missing-file-warning nil)
+(setq tags-file-name nil)
+(setq tags-table-list nil)
+(setq search-ring '("patient" "cor" "control" "A " "A" "limiting" "\\"))
+(setq regexp-search-ring nil)
+(setq register-alist nil)
+(setq file-name-history '("c:/work/rtsuite-new/rtsuite/common/eoc/src.cmake" "c:/work/rtsuite-new/rtsuite/common/eoc/cursor_controller.cpp" "c:/work/rtsuite-new/rtsuite/common/eoc/cursor_controller.h" "c:/work/rtsuite-new/rtsuite/common/eoc/corsur_controller.h" "c:/work/rtsuite-new/" "c:/Users/haifeng/.emacs.d/wttr-config/wttr-mode-line.el" "c:/work/rtsuite-new/rtsuite/common/grid/src.cmake" "c:/work/rtsuite-new/rtsuite/common/grid/color_cell_render.cpp" "c:/work/rtsuite-new/rtsuite/common/grid/color_cell_render.h" "c:/work/rtsuite-new/rtsuite/common/grid/" "~/.emacs.d/wttr-config/wttr-color-theme.el" "c:/Users/haifeng/.emacs.d/init.el" "c:/work/rtsuite-new/rtsuite/common/grid/src.cmake" "c:/work/rtsuite-new/rtsuite/common/grid/limiting_rois_grid_model.cpp" "c:/work/rtsuite-new/rtsuite/common/grid/limiting_rois_grid_model.h" "c:/work/rtsuite-new/rtsuite/common/grid/src.cmake" "c:/work/rtsuite-new/rtsuite/common/grid/limiting_rois_grid_presenter.h" "c:/work/rtsuite-new/rtsuite/common/grid/" "c:/work/rtsuite-new/rtsuite/common/grid/li" "c:/work/rtsuite-new/rtsuite/common/grid/limiting_rois_grid_presenter.cpp" "c:/work/rtsuite-new/rtsuite/common/grid/limiting_rois_grid.h" "c:/work/rtsuite-new/output/rtSuite-new.sln" "c:/Users/haifeng/MUF/learning/test.cpp" "c:/Users/haifeng/.emacs.d/wttr-config/wttr-key.el" "c:/Users/haifeng/MUF/" "c:/Users/haifeng/MUF/test.cpp" "c:/Users/haifeng/MUF/" "c:/work/rtsuite-new/rtsuite/common/eoc/src.cmake" "c:/work/rtsuite-new/rtsuite/common/eoc/window_level_observer_setting.cpp" "c:/work/rtsuite-new/rtsuite/common/eoc/window_level_observer_setting.h"))
+
+;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 206
+  nil
+  "gui"
+  'dired-mode
+  '(global-auto-revert-mode linum-mode undo-tree-mode yas-minor-mode)
+  1119
+  '(251 nil)
+  t
+  '("c:/work/rtsuite-new/rtsuite/gui/")
+  nil)
+
+(desktop-create-buffer 206
+  nil
+  "rtsuite"
+  'dired-mode
+  '(global-auto-revert-mode linum-mode undo-tree-mode yas-minor-mode)
+  539
+  '(304 nil)
+  t
+  '("c:/work/rtsuite-new/rtsuite/")
+  nil)
+
+(desktop-create-buffer 206
+  nil
+  "common"
+  'dired-mode
+  '(global-auto-revert-mode linum-mode undo-tree-mode yas-minor-mode)
+  301
+  '(nil nil)
+  t
+  '("c:/work/rtsuite-new/rtsuite/common/")
+  nil)
+
+(desktop-create-buffer 206
+  nil
+  "eoc"
+  'dired-mode
+  '(global-auto-revert-mode linum-mode undo-tree-mode yas-minor-mode)
+  2444
+  '(9046 nil)
+  t
+  '("c:/work/rtsuite-new/rtsuite/common/eoc/")
+  nil)
+
+(desktop-create-buffer 206
+  "c:/work/rtsuite-new/rtsuite/rtsuite.cmake"
+  "rtsuite.cmake"
+  'fundamental-mode
+  '(global-auto-revert-mode undo-tree-mode wrap-region-mode yas-minor-mode)
+  3256
+  '(3256 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-dos)))
+
+(desktop-create-buffer 206
+  "c:/work/rtsuite-new/rtsuite/CMakeLists.txt"
+  "CMakeLists.txt"
+  'text-mode
+  '(global-auto-revert-mode linum-mode undo-tree-mode wrap-region-mode yas-minor-mode)
+  771
+  '(771 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-dos)))
+
+(desktop-create-buffer 206
+  nil
+  "rtsuite-new"
+  'dired-mode
+  '(global-auto-revert-mode linum-mode undo-tree-mode yas-minor-mode)
+  1104
+  '(nil nil)
+  t
+  '("c:/work/rtsuite-new/")
+  nil)
+

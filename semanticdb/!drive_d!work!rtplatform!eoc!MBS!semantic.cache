@@ -1,0 +1,127 @@
+;; Object MBS/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "MBS/"
+  :tables (list 
+   (semanticdb-table "MBS_event_mesh.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__MBS_event_mesh_h__" variable (:constant-flag t) nil [38 58])
+            ("rtplatform_export.h" include nil nil [59 89])
+            ("event.h" include nil nil [91 109])
+            ("color.h" include nil nil [110 128])
+            ("rtplatform" type
+               (:members 
+                  ( ("Event" variable (:type "int") (reparse-symbol namespacesubparts) [200 613]))                  
+                :type "namespace")
+                nil [130 616]))          
+    :file "MBS_event_mesh.h"
+    :pointmax 623
+    :fsize 650
+    :lastmodtime '(21280 10177 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("__MBS_event_mesh_h__")
+          )
+
+    )
+   (semanticdb-table "MBS_event_polygon.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("MBS_event_polygon.h" include nil nil [1 31])
+            ("rtplatform" type
+               (:members 
+                  ( ("MBSEventPolygon" function
+                       (:constructor-flag t
+                        :parent "MBSEventPolygon"
+                        :type ("MBSEventPolygon" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [57 148]))                  
+                :type "namespace")
+                nil [33 151]))          
+    :file "MBS_event_polygon.cpp"
+    :pointmax 151
+    :fsize 160
+    :lastmodtime '(21280 10177 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "MBS_event_polygon.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__MBS_event_polygon_h__" variable (:constant-flag t) nil [41 64])
+            ("rtplatform_export.h" include nil nil [65 95])
+            ("event.h" include nil nil [97 115])
+            ("color.h" include nil nil [116 134])
+            ("matrix4x4.h" include nil nil [135 157])
+            ("rtplatform" type
+               (:members 
+                  ( ("Event" variable (:type "int") (reparse-symbol namespacesubparts) [232 747]))                  
+                :type "namespace")
+                nil [159 750]))          
+    :file "MBS_event_polygon.h"
+    :pointmax 757
+    :fsize 788
+    :lastmodtime '(21280 10177 0 0)
+    :unmatched-syntax '((PUBLIC 225 . 231) (punctuation 223 . 224) (symbol 208 . 223) (symbol 190 . 207) (CLASS 184 . 189))
+    :lexical-table 
+        '(("__MBS_event_polygon_h__")
+          )
+
+    )
+   (semanticdb-table "MBS_obs_scene.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("MBS_obs_scene.h" include nil nil [1 27])
+            ("MBS_polygon_handler.h" include nil nil [28 60])
+            ("scene_polygon.h" include nil nil [61 87])
+            ("rtplatform" type
+               (:members 
+                  ( ("MBSObserverScene" function
+                       (:constructor-flag t
+                        :parent "MBSObserverScene"
+                        :arguments 
+                          ( ("e" variable
+                               (:pointer 1
+                                :type ("MBSEventPolygon" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [150 170]))                          
+                        :type ("MBSObserverScene" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [114 191])
+                    ("Update" function
+                       (:parent "MBSObserverScene"
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [194 943]))                  
+                :type "namespace")
+                nil [88 946]))          
+    :file "MBS_obs_scene.cpp"
+    :pointmax 946
+    :fsize 983
+    :lastmodtime '(21280 10177 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "MBS_obs_scene.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__MBS_observer_scene_h__" variable (:constant-flag t) nil [42 66])
+            ("rtplatform_export.h" include nil nil [67 97])
+            ("scene_node.h" include nil nil [98 121])
+            ("MBS_event_polygon.h" include nil nil [122 152])
+            ("observer.h" include nil nil [153 174])
+            ("polygon.h" include nil nil [175 195])
+            ("rtplatform" type
+               (:members 
+                  ( ("Observer" variable (:type "int") (reparse-symbol namespacesubparts) [270 789]))                  
+                :type "namespace")
+                nil [197 791]))          
+    :file "MBS_obs_scene.h"
+    :pointmax 799
+    :fsize 831
+    :lastmodtime '(21280 10177 0 0)
+    :unmatched-syntax '((PUBLIC 263 . 269) (punctuation 261 . 262) (symbol 245 . 261) (symbol 227 . 244) (CLASS 221 . 226))
+    :lexical-table 
+        '(("__MBS_observer_scene_h__")
+          )
+
+    )
+   )
+  :file "!drive_d!work!rtplatform!eoc!MBS!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

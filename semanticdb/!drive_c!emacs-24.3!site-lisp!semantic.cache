@@ -1,0 +1,19 @@
+;; Object site-lisp/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "site-lisp/"
+  :tables (list 
+   (semanticdb-table "subdirs.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("if" code nil nil [31 136]))          
+    :file "subdirs.el"
+    :pointmax 137
+    :fsize 136
+    :lastmodtime '(20806 7946 0 0)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!drive_c!emacs-24.3!site-lisp!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

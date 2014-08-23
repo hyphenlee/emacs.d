@@ -1,0 +1,284 @@
+((("color-theme-snow" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("color-theme-jsc-dark" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("color-theme-montz" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("color-theme-example" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("color-theme-xp" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0])
+  ("color-theme-comidia" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("insert-image" .
+   [0 0 0 0 0 0 0 0 0 0 0 1])
+  ("delete-directory" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("ido-switch-buffer" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("describe-bindings" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("buffer-file-name" .
+   [0 0 0 0 0 0 0 0 0 0 1 2 0 0 0 0])
+  ("save-buffers-kill-emacs" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  ("exit-and-delete-file" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("create-file-buffer" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  ("new-file" .
+   [0 0 0 0 0 0 0 1])
+  ("D:/123.txt" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("delete-file" .
+   [0 0 0 0 0 0 0 0 0 0 3])
+  ("b" .
+   [1])
+  ("number-sequence" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("prin1" .
+   [1 0 0 0 1])
+  ("mylist" .
+   [0 0 0 1 0 0])
+  ("vconcat" .
+   [0 0 0 0 0 1 0])
+  ("mapc" .
+   [1 0 0 0])
+  ("1+" .
+   [2 0])
+  ("mapcar" .
+   [2 0 0 0 0 0])
+  ("aset" .
+   [1 0 0 0])
+  ("vector" .
+   [1 0 0 0 0 1])
+  ("wh" .
+   [1 0])
+  ("what" .
+   [2 0 0 0])
+  ("alpha" .
+   [0 0 0 1 0])
+  ("nil" .
+   [2 0 0])
+  ("set-frame-parameter" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("status" .
+   [1 0 0 0 0 0])
+  ("creator" .
+   [1 0 0 0 0 0 0])
+  ("private" .
+   [3 0 0 0 0 0 0])
+  ("version" .
+   [1 0 0 0 0 0 0])
+  ("name" .
+   [3 0 0 0])
+  ("character" .
+   [1 0 0 0 0 0 0 0 0])
+  ("&optional" .
+   [0 0 0 1 1 0 0 0 0])
+  ("funtest" .
+   [1 0 0 0 0 0 0])
+  ("defun" .
+   [2 0 0 0 3])
+  ("PORT=3306" .
+   [0 0 0 0 1 0 0 0 0])
+  ("d" .
+   [1])
+  ("string" .
+   [1 0 0 0 0 1])
+  ("elt" .
+   [7 0 0])
+  ("the" .
+   [1 0 0])
+  ("length" .
+   [0 0 0 1 0 0])
+  ("or" .
+   [1 0])
+  ("with" .
+   [1 0 0 0])
+  ("data" .
+   [3 0 0 0])
+  ("table" .
+   [1 0 0 0 0])
+  ("ac-source-clang" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0])
+  ("wttr/prepend-to-exec-path" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("email" .
+   [0 0 0 1 0])
+  ("scheme-program-name" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("custom-set-variables" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
+  ("evil-mode" .
+   [0 0 0 0 0 0 0 0 1])
+  ("global-set-key" .
+   [0 0 0 1 0 0 0 0 0 0 0 0 0 2])
+  ("color-theme-dark-blue" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("global-unset-key" .
+   [0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("color-theme-dark-blue2" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("kbd" .
+   [2 0 1])
+  ("scheme-mode" .
+   [0 0 0 0 0 0 0 0 0 0 1])
+  ("lisp-mode" .
+   [0 0 0 0 0 0 0 0 1])
+  ("autopair-mode" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0])
+  ("setq" .
+   [14 0 0 4])
+  ("save" .
+   [0 0 2 0])
+  ("df" .
+   [3 0])
+  ("message" .
+   [0 0 0 0 3 0 5])
+  ("time" .
+   [1 0 0 1])
+  ("date-to-day" .
+   [0 0 0 1 1 0 0 0 0 0 0])
+  ("time-stamp" .
+   [0 0 0 0 1 0 0 0 0 0])
+  ("timer-create" .
+   [0 0 0 0 1 0 0 0 0 0 0 0])
+  ("set" .
+   [4 0 0])
+  ("func_list" .
+   [1 0 1 0 0 1 0 1 1])
+  ("funcall" .
+   [1 0 0 1 1 0 5])
+  ("m" .
+   [1])
+  ("random" .
+   [0 0 0 0 0 1])
+  ("shell" .
+   [1 0 0 0 0])
+  ("command" .
+   [1 0 0 0 0 0 0])
+  ("shell-command" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("eval" .
+   [1 0 0 0])
+  ("eval-region" .
+   [0 0 0 0 0 1 0 0 0 0 0])
+  ("read" .
+   [1 0 0 0])
+  ("apply" .
+   [1 0 0 0 1])
+  ("local-set-key" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("l" .
+   [3])
+  ("lambda" .
+   [0 0 0 4 2 1])
+  ("insert" .
+   [1 0 0 0 0 0])
+  ("commandp" .
+   [0 0 0 0 0 0 0 1])
+  ("fine" .
+   [3 0 0 0])
+  ("interactive" .
+   [0 0 0 0 0 1 0 0 0 0 2])
+  ("list" .
+   [4 0 0 0])
+  ("car" .
+   [3 0 2])
+  ("cdr" .
+   [4 0 0])
+  ("cons" .
+   [13 0 0 0])
+  ("append" .
+   [2 0 0 0 0 2])
+  ("defmacro" .
+   [0 0 0 0 0 1 0 1])
+  ("when" .
+   [1 0 0 0])
+  ("if" .
+   [2 0])
+  ("test" .
+   [0 0 0 1])
+  ("progn" .
+   [1 0 0 0 0])
+  ("forms" .
+   [3 0 0 0 0])
+  ("mywhen" .
+   [1 0 0 1 0 1])
+  ("&rest" .
+   [2 0 0 0 0])
+  ("macroexpand" .
+   [0 0 0 0 0 0 0 0 0 0 1])
+  ("${NSD_CreateDirRequest}" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("Pop" .
+   [2 0 0])
+  ("$Text2" .
+   [0 0 0 3 0 1])
+  ("$Text" .
+   [1 0 0 0 1])
+  ("SetDir" .
+   [0 0 0 0 1 0])
+  ("StrCpy" .
+   [0 0 0 1 0 0])
+  ("OnClick_BrowseButton" .
+   [0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("!include" .
+   [0 0 0 0 1 0 0 0])
+  ("desktop-save-mode" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("function" .
+   [0 0 0 0 0 0 0 2])
+  ("me" .
+   [2 0])
+  ("getset" .
+   [2 0 0 0 0 0])
+  ("listp" .
+   [0 0 0 1 2])
+  ("not" .
+   [1 0 0])
+  ("number" .
+   [0 0 0 0 0 1])
+  ("number-to-string" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2])
+  ("string-to-int" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("concat" .
+   [1 0 0 0 1 1])
+  ("loop" .
+   [6 0 0 0])
+  ("let" .
+   [3 0 0])
+  ("while" .
+   [2 0 0 0 0])
+  ("print" .
+   [4 0 0 0 0])
+  ("list-length" .
+   [0 0 0 0 0 0 0 1 0 0 1])
+  ("count" .
+   [3 0 0 0 0])
+  ("reverse" .
+   [0 0 0 0 0 0 2])
+  ("dolist" .
+   [0 0 0 0 1 0])
+  ("value" .
+   [1 0 0 0 1])
+  ("save-buffer" .
+   [0 0 0 0 0 0 1 0 0 0 0])
+  ("color-theme-jsc-light2" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1])
+  ("color-theme-wheat" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("color-theme-alist" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("color-theme-select" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("color-theme-xemacs" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("color-theme-billw" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("color-theme-lethe" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("color-theme-blue-sea" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])))

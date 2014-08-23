@@ -1,0 +1,710 @@
+;; Object modes/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "modes/"
+  :tables (list 
+   (semanticdb-table "paredit.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("paredit-version" variable
+               (:constant-flag t
+                :default-value 23)
+                nil [6508 6537])
+            ("paredit-beta-p" variable (:constant-flag t) nil [6538 6567])
+            ("paredit-xemacs-p" function nil nil [6591 6835])
+            ("paredit-gnu-emacs-p" function nil nil [6839 6939])
+            ("xcond" function (:arguments ("clauses")) nil [6943 7095])
+            ("defalias" code nil nil [7099 7159])
+            ("paredit-sexp-error-type" variable (:default-value (with-temp-buffer (insert "(") (condition-case condition (backward-sexp) (error (if (eq (car condition) (quote error)) (paredit-warn "%s%s%s%s%s" "Paredit is unable to discriminate" " S-expression parse errors from" " other errors. " " This may cause obscure problems. " " Please upgrade Emacs.")) (car condition))))) nil [7163 7738])
+            ("paredit-handle-sexp-errors" function (:arguments ("body" "handler")) nil [7742 7884])
+            ("put" code nil nil [7888 7945])
+            ("paredit-ignore-sexp-errors" function (:arguments ("body")) nil [7949 8059])
+            ("put" code nil nil [8063 8120])
+            ("paredit-mode-map" variable (:default-value (make-sparse-keymap)) nil [8159 8244])
+            ("paredit-override-check-parens-function" variable (:default-value (lambda (condition) condition nil)) nil [8246 8404])
+            ("define-minor-mode" code nil nil [8421 9219])
+            ("paredit-override-check-parens-interactively" function (:arguments ("condition")) nil [9221 9361])
+            ("enable-paredit-mode" function (:user-visible-flag t) nil [9363 9481])
+            ("disable-paredit-mode" function (:user-visible-flag t) nil [9483 9603])
+            ("paredit-backward-delete-key" variable (:default-value (xcond ((paredit-xemacs-p) "BS") ((paredit-gnu-emacs-p) "DEL"))) nil [9605 9719])
+            ("paredit-forward-delete-keys" variable (:default-value (xcond ((paredit-xemacs-p) (quote ("DEL"))) ((paredit-gnu-emacs-p) (quote ("<delete>" "<deletechar>"))))) nil [9721 9862])
+            ("paredit-commands" variable nil nil [10061 10149])
+            ("progn" code nil nil [10454 18277])
+            ("paredit-do-commands" function (:arguments ("vars" "string-case" "body")) nil [18367 19035])
+            ("put" code nil nil [19039 19089])
+            ("paredit-define-keys" function nil nil [19092 19284])
+            ("paredit-function-documentation" function (:arguments ("fn")) nil [19286 19554])
+            ("paredit-annotate-mode-with-examples" function nil nil [19556 20762])
+            ("paredit-annotate-functions-with-examples" function nil nil [20764 21434])
+            ("paredit-insert-html-examples" function (:user-visible-flag t) nil [21458 23491])
+            ("paredit-html-quote" function (:arguments ("string")) nil [23493 23889])
+            ("paredit-conc-name" function (:arguments ("strings")) nil [23938 24016])
+            ("define-paredit-pair" function (:arguments ("open" "close" "name")) nil [24020 26139])
+            ("paredit-wrap-commands" variable (:default-value (quote (paredit-wrap-sexp))) nil [26142 26306])
+            ("define-paredit-pair" code nil nil [26308 26345])
+            ("define-paredit-pair" code nil nil [26346 26384])
+            ("define-paredit-pair" code nil nil [26385 26422])
+            ("define-paredit-pair" code nil nil [26423 26461])
+            ("defalias" code nil nil [26495 26551])
+            ("defalias" code nil nil [26552 26610])
+            ("defalias" code nil nil [26611 26695])
+            ("defalias" code nil nil [26697 26750])
+            ("defalias" code nil nil [26751 26806])
+            ("defalias" code nil nil [26807 26888])
+            ("paredit-move-past-close" function (:arguments ("close")) nil [26891 27022])
+            ("paredit-move-past-close-and-newline" function (:arguments ("close")) nil [27024 27523])
+            ("paredit-move-past-close-and" function (:arguments ("close" "if-moved")) nil [27525 27781])
+            ("paredit-find-comment-on-line" function nil nil [27783 28801])
+            ("paredit-insert-pair" function (:arguments ("n" "open" "close" "forward")) nil [28804 29954])
+            ("paredit-scan-sexps-hack" function (:arguments ("point" "n")) nil [29989 30458])
+            ("paredit-region-safe-for-insert-p" function nil nil [30461 31217])
+            ("paredit-space-for-delimiter-predicates" variable nil nil [31232 32132])
+            ("paredit-space-for-delimiter-p" function (:arguments ("endp" "delimiter")) nil [32134 33012])
+            ("paredit-move-past-close-and-reindent" function (:arguments ("close")) nil [33015 34616])
+            ("paredit-missing-close" function nil nil [34618 34863])
+            ("paredit-delete-leading-whitespace" function nil nil [34865 35344])
+            ("paredit-blink-paren-match" function (:arguments ("another-line-p")) nil [35346 35764])
+            ("paredit-doublequote" function
+               (:user-visible-flag t
+                :arguments ("n"))
+                nil [35767 36948])
+            ("paredit-meta-doublequote" function
+               (:user-visible-flag t
+                :arguments ("n"))
+                nil [36950 37663])
+            ("paredit-forward-for-quote" function (:arguments ("end")) nil [37665 39124])
+            ("paredit-backslash" function (:user-visible-flag t) nil [39150 39484])
+            ("paredit-backslash-interactive" function nil nil [39486 40184])
+            ("paredit-newline" function (:user-visible-flag t) nil [40186 41244])
+            ("paredit-reindent-defun" function
+               (:user-visible-flag t
+                :arguments ("argument"))
+                nil [41246 42373])
+            ("paredit-semicolon" function
+               (:user-visible-flag t
+                :arguments ("n"))
+                nil [42400 43341])
+            ("paredit-semicolon-find-line-break-point" function nil nil [43343 44429])
+            ("paredit-semicolon-with-line-break" function (:arguments ("line-break-point" "n")) nil [44431 45071])
+            ("comment-forward" function (:prototype-flag t) nil [45202 45242])
+            ("comment-normalize-vars" function (:prototype-flag t) nil [45243 45290])
+            ("comment-region" function (:prototype-flag t) nil [45291 45330])
+            ("comment-search-forward" function (:prototype-flag t) nil [45331 45378])
+            ("uncomment-region" function (:prototype-flag t) nil [45379 45420])
+            ("paredit-initialize-comment-dwim" function nil nil [45422 46038])
+            ("paredit-comment-dwim" function
+               (:user-visible-flag t
+                :arguments ("argument"))
+                nil [46040 47507])
+            ("paredit-comment-on-line-p" function nil nil [47510 48205])
+            ("paredit-insert-comment" function nil nil [48207 49360])
+            ("paredit-forward-delete" function
+               (:user-visible-flag t
+                :arguments ("argument"))
+                nil [49388 51515])
+            ("paredit-forward-delete-in-string" function nil nil [51518 52697])
+            ("paredit-forward-delete-in-comment" function nil nil [52699 53081])
+            ("paredit-forward-delete-comment-start" function nil nil [53083 53332])
+            ("paredit-backward-delete" function
+               (:user-visible-flag t
+                :arguments ("argument"))
+                nil [53335 55476])
+            ("paredit-backward-delete-in-string" function nil nil [55479 56612])
+            ("paredit-backward-delete-in-comment" function nil nil [56614 57096])
+            ("paredit-backward-delete-maybe-comment-end" function nil nil [57098 57590])
+            ("paredit-kill" function
+               (:user-visible-flag t
+                :arguments ("argument"))
+                nil [57607 58662])
+            ("paredit-kill-line-in-string" function nil nil [58664 59088])
+            ("paredit-kill-line-in-comment" function nil nil [59090 59475])
+            ("paredit-kill-sexps-on-line" function nil nil [59477 60755])
+            ("paredit-forward-sexps-to-kill" function (:arguments ("beginning" "eol")) nil [60930 62316])
+            ("paredit-kill-sexps-on-whole-line" function (:arguments ("beginning")) nil [62318 63647])
+            ("paredit-forward-kill-word" function (:user-visible-flag t) nil [63856 65099])
+            ("paredit-backward-kill-word" function (:user-visible-flag t) nil [65101 66256])
+            ("paredit-kill-word-state" function (:arguments ("parse-state" "adjacent-char-fn")) nil [66292 66586])
+            ("paredit-kill-word-hack" function (:arguments ("old-state" "new-state" "parse-state")) nil [66845 67708])
+            ("paredit-copy-as-kill" function (:user-visible-flag t) nil [67710 68360])
+            ("paredit-copy-as-kill-in-string" function nil nil [68362 68634])
+            ("paredit-copy-sexps-as-kill" function nil nil [68636 69607])
+            ("paredit-delete-region" function
+               (:user-visible-flag t
+                :arguments ("start" "end"))
+                nil [69633 70024])
+            ("paredit-kill-region" function
+               (:user-visible-flag t
+                :arguments ("start" "end"))
+                nil [70026 70407])
+            ("paredit-check-region-for-delete" function (:arguments ("start" "end")) nil [70409 71069])
+            ("paredit-check-region-for-delete:depth" function (:arguments ("start" "start-state" "end" "end-state")) nil [71071 71397])
+            ("paredit-check-region-for-delete:string" function (:arguments ("start" "start-state" "end" "end-state")) nil [71399 71782])
+            ("paredit-check-region-for-delete:comment" function (:arguments ("start" "start-state" "end" "end-state")) nil [71785 73703])
+            ("paredit-check-region-for-delete:char-quote" function (:arguments ("start" "start-state" "end" "end-state")) nil [73705 74215])
+            ("defun-saving-mark" function (:arguments ("name" "bvl" "doc" "body")) nil [74257 74503])
+            ("defun-saving-mark" code nil nil [74506 75018])
+            ("defun-saving-mark" code nil nil [75020 75576])
+            ("backward-down-list" function
+               (:user-visible-flag t
+                :arguments ("arg"))
+                nil [75611 75864])
+            ("defalias" code nil nil [75892 75954])
+            ("paredit-recenter-on-sexp" function
+               (:user-visible-flag t
+                :arguments ("n"))
+                nil [75956 76885])
+            ("paredit-recenter-on-defun" function (:user-visible-flag t) nil [76887 77066])
+            ("paredit-focus-on-defun" function (:user-visible-flag t) nil [77068 77212])
+            ("paredit-up/down" function (:arguments ("n" "vertical-direction")) nil [77256 77511])
+            ("paredit-next-up/down-point" function (:arguments ("horizontal-direction" "vertical-direction")) nil [77513 79614])
+            ("paredit-find-next-string-start" function (:arguments ("horizontal-direction" "limit")) nil [79617 80414])
+            ("paredit-forward-down" function
+               (:user-visible-flag t
+                :arguments ("argument"))
+                nil [80416 80685])
+            ("paredit-backward-up" function
+               (:user-visible-flag t
+                :arguments ("argument"))
+                nil [80687 81022])
+            ("paredit-forward-up" function
+               (:user-visible-flag t
+                :arguments ("argument"))
+                nil [81024 81351])
+            ("paredit-backward-down" function
+               (:user-visible-flag t
+                :arguments ("argument"))
+                nil [81353 81630])
+            ("paredit-wrap-sexp" function
+               (:user-visible-flag t
+                :arguments ("argument" "open" "close"))
+                nil [81695 82815])
+            ("paredit-count-sexps-forward" function nil nil [82817 83064])
+            ("paredit-yank-pop" function
+               (:user-visible-flag t
+                :arguments ("argument"))
+                nil [83066 84399])
+            ("paredit-splice-sexp" function
+               (:user-visible-flag t
+                :arguments ("argument"))
+                nil [84402 86121])
+            ("paredit-kill-surrounding-sexps-for-splice" function (:arguments ("argument")) nil [86123 87673])
+            ("paredit-splice-sexp-killing-backward" function
+               (:user-visible-flag t
+                :arguments ("n"))
+                nil [87676 88072])
+            ("paredit-splice-sexp-killing-forward" function
+               (:user-visible-flag t
+                :arguments ("n"))
+                nil [88074 88473])
+            ("paredit-raise-sexp" function
+               (:user-visible-flag t
+                :arguments ("argument"))
+                nil [88475 89817])
+            ("paredit-convolute-sexp" function
+               (:user-visible-flag t
+                :arguments ("n"))
+                nil [89958 91384])
+            ("paredit-splice-string" function (:arguments ("argument")) nil [91387 92577])
+            ("paredit-unescape-string" function (:arguments ("string")) nil [92579 92986])
+            ("paredit-forward-slurp-sexp" function (:user-visible-flag t) nil [93014 93743])
+            ("paredit-forward-slurp-into-list" function nil nil [93745 94627])
+            ("paredit-forward-slurp-into-string" function nil nil [94629 95014])
+            ("paredit-forward-barf-sexp" function (:user-visible-flag t) nil [95016 96072])
+            ("paredit-backward-slurp-sexp" function (:user-visible-flag t) nil [96075 96793])
+            ("paredit-backward-slurp-into-list" function nil nil [96795 97399])
+            ("paredit-backward-slurp-into-string" function nil nil [97401 97783])
+            ("paredit-backward-barf-sexp" function (:user-visible-flag t) nil [97785 98687])
+            ("paredit-split-sexp" function (:user-visible-flag t) nil [98716 99511])
+            ("paredit-join-sexps" function (:user-visible-flag t) nil [99513 101707])
+            ("paredit-add-to-previous-list" function (:user-visible-flag t) nil [101812 102076])
+            ("paredit-add-to-next-list" function (:user-visible-flag t) nil [102078 102394])
+            ("paredit-join-with-previous-list" function (:user-visible-flag t) nil [102396 102760])
+            ("paredit-join-with-next-list" function (:user-visible-flag t) nil [102762 103104])
+            ("paredit-in-string-escape-p" function nil nil [103123 103513])
+            ("paredit-in-char-p" function (:arguments ("position")) nil [103515 103712])
+            ("paredit-indent-sexps" function nil nil [103714 103963])
+            ("paredit-forward-and-indent" function nil nil [103965 104154])
+            ("paredit-skip-whitespace" function (:arguments ("trailing-p" "limit")) nil [104156 104526])
+            ("defalias" code nil nil [104578 104766])
+            ("paredit-hack-kill-region" function
+               (:user-visible-flag t
+                :arguments ("start" "end"))
+                nil [104768 105396])
+            ("paredit-current-parse-state" function nil nil [105749 106108])
+            ("paredit-in-string-p" function (:arguments ("state")) nil [106110 106453])
+            ("paredit-string-start+end-points" function (:arguments ("state")) nil [106455 107075])
+            ("paredit-in-comment-p" function (:arguments ("state")) nil [107077 107455])
+            ("paredit-point-at-sexp-boundary" function (:arguments ("n")) nil [107458 107621])
+            ("paredit-point-at-sexp-start" function nil nil [107623 107731])
+            ("paredit-point-at-sexp-end" function nil nil [107733 107839])
+            ("paredit-lose-if-not-in-sexp" function (:arguments ("command")) nil [107841 108041])
+            ("paredit-check-region" function (:arguments ("start" "end")) nil [108043 108487])
+            ("paredit-region-ok-p" function (:arguments ("start" "end")) nil [108489 108898])
+            ("paredit-current-indentation" function nil nil [108900 109004])
+            ("paredit-define-keys" code nil nil [109028 109049])
+            ("paredit-annotate-mode-with-examples" code nil nil [109050 109087])
+            ("paredit-annotate-functions-with-examples" code nil nil [109088 109130])
+            ("paredit" package nil nil [109132 109150]))          
+    :file "paredit.el"
+    :pointmax 109239
+    :fsize 109238
+    :lastmodtime '(21094 12607 0 0)
+    :unmatched-syntax '((close-paren 74503 . 74504) (symbol 74238 . 74254) (open-paren 74237 . 74238) (close-paren 26139 . 26140) (symbol 23919 . 23935) (open-paren 23918 . 23919) (close-paren 19089 . 19090) (symbol 18348 . 18364) (open-paren 18347 . 18348) (close-paren 8127 . 8128) (symbol 8124 . 8127) (symbol 6571 . 6587) (open-paren 6570 . 6571))
+    )
+   (semanticdb-table "bookmark.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("setq" code nil nil [27 54]))          
+    :file "bookmark.el"
+    :pointmax 55
+    :fsize 54
+    :lastmodtime '(21005 33503 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "org.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("wttr-utils" include nil nil [26 47])
+            ("setq" code nil nil [104 133])
+            ("setq" code nil nil [166 236])
+            ("setq" code nil nil [276 354])
+            ("org-install" include nil nil [357 379])
+            ("add-to-list" code nil nil [380 436])
+            ("global-set-key" code nil nil [437 477])
+            ("global-set-key" code nil nil [478 514])
+            ("setq" code nil nil [515 619])
+            ("setq" code nil nil [620 663])
+            ("setq" code nil nil [664 705])
+            ("wttr/org-mode-setup" function nil nil [708 935])
+            ("add-hook" code nil nil [936 983])
+            ("setq" code nil nil [1013 2065])
+            ("setq" code nil nil [2262 2299])
+            ("setq" code nil nil [2300 2354])
+            ("setq" code nil nil [2355 2388])
+            ("setq" code nil nil [2417 2451])
+            ("setq" code nil nil [2452 2481])
+            ("setq" code nil nil [2522 2561])
+            ("setq" code nil nil [2562 2593])
+            ("setq" code nil nil [2656 2699])
+            ("setq" code nil nil [2700 2800]))          
+    :file "org.el"
+    :pointmax 2802
+    :fsize 2801
+    :lastmodtime '(21233 41766 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "cedet.el"
+    :major-mode 'emacs-lisp-mode
+    :tags nil
+    :file "cedet.el"
+    :pointmax 8654
+    :fsize 8874
+    :lastmodtime '(21345 43880 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "dash.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("add-to-list" code nil nil [1 57]))          
+    :file "dash.el"
+    :pointmax 58
+    :fsize 58
+    :lastmodtime '(21094 17903 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "dired.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("wttr-utils" include nil nil [26 47])
+            ("setq" code nil nil [88 120])
+            ("setq" code nil nil [121 152])
+            ("put" code nil nil [185 231])
+            ("setq" code nil nil [266 300])
+            ("setq" code nil nil [339 371])
+            ("dired-x" include nil nil [398 416])
+            ("wdired" include nil nil [431 448])
+            ("setq" code nil nil [449 500])
+            ("define-key" code nil nil [501 568])
+            ("open-in-external-app" function (:user-visible-flag t) nil [570 1557])
+            ("add-hook" code nil nil [1558 1607]))          
+    :file "dired.el"
+    :pointmax 1609
+    :fsize 1608
+    :lastmodtime '(21104 29698 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "action-script.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("wttr/plugin:prepend-to-load-path" code nil nil [27 81])
+            ("actionscript-mode" function
+               (:prototype-flag t
+                :user-visible-flag t)
+                nil [82 137])
+            ("add-to-list" code nil nil [138 200])
+            ("as-imenu-as-generic-expression" variable (:default-value (\` (("variables" (\, (concat "^" "[ 	]*\\(public\\|protected\\|mx_internal\\|private\\)" "[ 	]*\\(static\\)?" "[ 	]+var" "[ 	]+\\([a-zA-Z_][a-zA-Z0-9_]*\\)" "[ 	]*:[ 	]*\\([a-zA-Z_][a-zA-Z0-9_]*\\)")) 3) ("Getters" (\, (concat "^" "[ 	]*\\(override[ 	
+]+\\)?" "[ 	]*\\(public\\|protected\\|mx_internal\\|private\\)" "[ 	]+function" "[ 	]+" "\\(get[ 	]+\\([a-zA-Z_][a-zA-Z0-9_]*\\)[ 	]*\\)()")) 3) ("setters" (\, (concat "^" "[ 	]*\\(override[ 	
+]+\\)?" "[ 	]*\\(public\\|protected\\|mx_internal\\|private\\)" "[ 	]+function" "[ 	]+" "\\(set[ 	]+\\([a-zA-Z_][a-zA-Z0-9_]*\\)[ 	]*\\)" "(" "\\([a-zA-Z_][a-zA-Z0-9_]*\\):\\([a-zA-Z_][a-zA-Z0-9_]*\\)[ 	
+]*" ")")) 3) ("class" (\, (concat "^" "\\(\\(public\\|protected\\|mx_internal\\|private\\)[ 	]+\\)?" "\\(class\\|interface\\)[ 	]+" "\\([a-zA-Z0-9_\\]+\\.\\)*" "\\(" "[a-zA-Z0-9_]+" "\\)" "[ 	
+]*" "\\(extends [ 	
+]*[a-zA-Z0-9_]+\\)?" "[ 	
+]*" "\\(implements [ 	
+]*\\([a-zA-Z0-9_]+[,][ 	
+]*\\)*[a-zA-Z0-9_]\\)?" "[ 	
+]*")) 5) (nil (\, (concat "^" "[ 	]*\\(override[ 	
+]+\\)?" "[ 	]*\\(public\\|protected\\|mx_internal\\|private\\)" "\\([ 	]+static\\)?" "[ 	]+function" "[ 	]+\\([a-zA-Z_][a-zA-Z0-9_]*\\)" "[ 	]*(" "[^)]*)")) 4)))) nil [202 2786])
+            ("actionscript-init-imenu" function nil nil [2790 2905])
+            ("add-hook" code nil nil [2907 3039])
+            ("eval-after-load" code nil nil [3041 3122]))          
+    :file "action-script.el"
+    :pointmax 3123
+    :fsize 3208
+    :lastmodtime '(21005 33503 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "browse-kill-ring.el"
+    :major-mode 'emacs-lisp-mode
+    :tags nil
+    :file "browse-kill-ring.el"
+    :pointmax 157
+    :fsize 156
+    :lastmodtime '(21005 33503 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "blink-cursor.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("when" code nil nil [56 116]))          
+    :file "blink-cursor.el"
+    :pointmax 118
+    :fsize 117
+    :lastmodtime '(21005 33503 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "evil.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("wttr-utils" include nil nil [26 47])
+            ("setq-default" code nil nil [66 99])
+            ("setq" code nil nil [100 125])
+            ("setq" code nil nil [126 158])
+            ("setq" code nil nil [159 193])
+            ("setq" code nil nil [194 224])
+            ("setq" code nil nil [225 255])
+            ("setq" code nil nil [256 283])
+            ("setq" code nil nil [284 309])
+            ("setq" code nil nil [310 335])
+            ("setq" code nil nil [336 365])
+            ("setq" code nil nil [366 397])
+            ("wttr/plugin:prepend-to-load-path" code nil nil [407 448])
+            ("evil" include nil nil [449 464])
+            ("global-set-key" code nil nil [465 499])
+            ("define-key" code nil nil [1239 1298])
+            ("dired-jump" function
+               (:prototype-flag t
+                :user-visible-flag t)
+                nil [1318 1363])
+            ("dired-jump-other-window" function
+               (:prototype-flag t
+                :user-visible-flag t)
+                nil [1364 1422])
+            ("define-prefix-command" code nil nil [1442 1490])
+            ("define-key" code nil nil [1491 1560])
+            ("mapc" code nil nil [1561 2417])
+            ("define-key" code nil nil [2419 2480])
+            ("define-key" code nil nil [2481 2542])
+            ("define-key" code nil nil [2583 2648])
+            ("define-key" code nil nil [2683 2745])
+            ("define-key" code nil nil [2788 2852])
+            ("define-key" code nil nil [2901 2958])
+            ("define-key" code nil nil [2959 3020])
+            ("define-key" code nil nil [3083 3140])
+            ("define-key" code nil nil [3166 3218])
+            ("dolist" code nil nil [3263 3531]))          
+    :file "evil.el"
+    :pointmax 5445
+    :fsize 5444
+    :lastmodtime '(21307 45566 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "gtags.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("wttr/plugin:prepend-to-load-path" code nil nil [26 68])
+            ("wttr/prepend-to-exec-path" code nil nil [69 125])
+            ("gtags-mode" function
+               (:prototype-flag t
+                :user-visible-flag t)
+                nil [126 161])
+            ("setq" code nil nil [162 198])
+            ("add-hook" code nil nil [200 565])
+            ("add-hook" code nil nil [567 674])
+            ("wttr/cc-mode:gtags-setup" function nil nil [676 728])
+            ("add-hook" code nil nil [730 780])
+            ("add-hook" code nil nil [781 833]))          
+    :file "gtags.el"
+    :pointmax 836
+    :fsize 835
+    :lastmodtime '(21005 33503 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "grep.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("grep" include nil nil [126 141])
+            ("grep-apply-setting" code nil nil [142 190])
+            ("grep-apply-setting" code nil nil [192 244])
+            ("if" code nil nil [246 454])
+            ("wttr/customized:rgrep" function nil nil [457 740])
+            ("wttr/customized:rgrep-using-ack" function nil nil [743 1072])
+            ("compile" include nil nil [1076 1094])
+            ("thingatpt" include nil nil [1095 1115])
+            ("ack-command" variable (:default-value (concat "\"" (executable-find "perl") "\" \"" (expand-file-name "~/.emacs.d/extra-bin/ack/ack-standalone.pl") "\"")) nil [1117 1336])
+            ("ack-mode-font-lock-keywords" variable (:default-value (quote (("^\\(Compilation\\|Ack\\) started.*" (0 (quote (face nil message nil help-echo nil mouse-face nil)) t))))) nil [1338 1482])
+            ("ack-use-search-in-buffer-name" variable (:default-value t) nil [1484 1588])
+            ("define-compilation-mode" code nil nil [1590 1693])
+            ("ack" function
+               (:user-visible-flag t
+                :arguments ("dir" "pattern" "args"))
+                nil [1695 3194]))          
+    :file "grep.el"
+    :pointmax 4748
+    :fsize 4747
+    :lastmodtime '(21005 33503 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "linum.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("wttr-utils" include nil nil [26 47])
+            ("linum" include nil nil [64 80])
+            ("setq" code nil nil [81 108])
+            ("custom-set-faces" code nil nil [110 194])
+            ("setq" code nil nil [197 501])
+            ("linum-on" function (:arguments ("around" "linum-on-inhibit-for-modes")) nil [503 685])
+            ("ad-activate" code nil nil [687 710])
+            ("global-linum-mode" code nil nil [712 733]))          
+    :file "linum.el"
+    :pointmax 735
+    :fsize 734
+    :lastmodtime '(21005 33503 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "anything.el"
+    :major-mode 'emacs-lisp-mode
+    :tags nil
+    :file "anything.el"
+    :pointmax 102
+    :fsize 101
+    :lastmodtime '(21005 33503 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "multiple-cursors.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("wttr/plugin:prepend-to-load-path" code nil nil [26 79])
+            ("multiple-cursors" include nil nil [80 107])
+            ("global-set-key" code nil nil [111 162])
+            ("global-set-key" code nil nil [163 220])
+            ("global-set-key" code nil nil [221 284])
+            ("global-set-key" code nil nil [285 337])
+            ("global-set-key" code nil nil [338 394])
+            ("global-set-key" code nil nil [395 450]))          
+    :file "multiple-cursors.el"
+    :pointmax 451
+    :fsize 462
+    :lastmodtime '(21005 33503 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "powershell.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("wttr/plugin:prepend-to-load-path" code nil nil [46 102])
+            ("powershell-mode" function
+               (:prototype-flag t
+                :user-visible-flag t)
+                nil [103 154])
+            ("add-to-list" code nil nil [155 220])
+            ("powershell" include nil nil [221 242]))          
+    :file "powershell.el"
+    :pointmax 243
+    :fsize 242
+    :lastmodtime '(21095 13998 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "server.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("wttr/server-mode:kill-flag-file" function nil nil [60 251])
+            ("add-hook" code nil nil [253 314]))          
+    :file "server.el"
+    :pointmax 316
+    :fsize 315
+    :lastmodtime '(21050 26465 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "xcscope.el"
+    :major-mode 'emacs-lisp-mode
+    :tags nil
+    :file "xcscope.el"
+    :pointmax 243
+    :fsize 242
+    :lastmodtime '(21005 33503 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "yasnippet.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("wttr-utils" include nil nil [26 47])
+            ("wttr/plugin:prepend-to-load-path" code nil nil [62 108])
+            ("yasnippet" include nil nil [109 129])
+            ("yas-global-mode" code nil nil [130 149])
+            ("yas/load-directory" code nil nil [150 222]))          
+    :file "yasnippet.el"
+    :pointmax 223
+    :fsize 222
+    :lastmodtime '(21345 41946 0 0)
+    :unmatched-syntax '((symbol 232 . 248) (punctuation 231 . 232) (symbol 223 . 231) (symbol 223 . 226))
+    )
+   (semanticdb-table "slime.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("wttr-utils" include nil nil [26 47])
+            ("setq" code nil nil [526 591])
+            ("add-to-list" code nil nil [592 643])
+            ("slime-autoloads" include nil nil [644 670])
+            ("slime-setup" code nil nil [671 685]))          
+    :file "slime.el"
+    :pointmax 686
+    :fsize 685
+    :lastmodtime '(21108 57140 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "auto-complete.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("wttr-utils" include nil nil [26 47])
+            ("wttr/plugin:prepend-to-load-path" code nil nil [49 113])
+            ("wttr/plugin:prepend-to-load-path" code nil nil [114 179])
+            ("wttr/plugin:prepend-to-load-path" code nil nil [180 245])
+            ("wttr/plugin:prepend-to-load-path" code nil nil [246 316])
+            ("auto-complete-config" include nil nil [340 371])
+            ("add-to-list" code nil nil [372 497])
+            ("ac-config-default" code nil nil [498 517])
+            ("pos-tip" include nil nil [839 857])
+            ("setq" code nil nil [858 895])
+            ("setq" code nil nil [1006 1032])
+            ("setq" code nil nil [1033 1063])
+            ("setq" code nil nil [1264 1280])
+            ("ac-set-trigger-key" code nil nil [1373 1406])
+            ("setq" code nil nil [1440 1524])
+            ("setq" code nil nil [1561 1585])
+            ("setq" code nil nil [1587 1845])
+            ("wttr/prepend-to-exec-path" code nil nil [1963 2010])
+            ("wttr/plugin:prepend-to-load-path" code nil nil [2011 2087])
+            ("auto-complete-clang" include nil nil [2088 2118])
+            ("wttr/cc-mode:auto-complete-setup" function nil nil [2382 2627])
+            ("add-hook" code nil nil [2628 2685])
+            ("add-hook" code nil nil [2686 2745]))          
+    :file "auto-complete.el"
+    :pointmax 4366
+    :fsize 4382
+    :lastmodtime '(21345 43693 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "ace-jump.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("wttr/plugin:prepend-to-load-path" code nil nil [26 76])
+            ("ace-jump-mode" function
+               (:prototype-flag t
+                :user-visible-flag t)
+                nil [117 198])
+            ("define-key" code nil nil [239 293])
+            ("ace-jump-mode-pop-mark" function
+               (:prototype-flag t
+                :user-visible-flag t)
+                nil [368 447])
+            ("eval-after-load" code nil nil [448 517])
+            ("define-key" code nil nil [519 582]))          
+    :file "ace-jump.el"
+    :pointmax 583
+    :fsize 582
+    :lastmodtime '(21158 55193 0 0)
+    :unmatched-syntax '((symbol 1 . 2))
+    )
+   (semanticdb-table "python.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("wttr-utils" include nil nil [26 47])
+            ("when" code nil nil [49 116])
+            ("wttr/plugin:prepend-to-load-path" code nil nil [215 266])
+            ("setq-default" code nil nil [267 300])
+            ("python-mode" function
+               (:prototype-flag t
+                :user-visible-flag t)
+                nil [301 355])
+            ("add-to-list" code nil nil [356 415])
+            ("add-to-list" code nil nil [416 479]))          
+    :file "python.el"
+    :pointmax 980
+    :fsize 1012
+    :lastmodtime '(21248 13555 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "cc.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("setq-default" code nil nil [26 57])
+            ("wttr/cc-mode:basic-setup" function nil nil [59 151])
+            ("modify-syntax-entry" code nil nil [152 202])
+            ("add-hook" code nil nil [204 253])
+            ("add-hook" code nil nil [254 305])
+            ("add-to-list" code nil nil [306 360]))          
+    :file "cc.el"
+    :pointmax 361
+    :fsize 360
+    :lastmodtime '(21308 49480 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "auctex.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("wttr-utils" include nil nil [26 47])
+            ("wttr/plugin:prepend-to-load-path" code nil nil [50 119])
+            ("load" code nil nil [120 150])
+            ("tex-mik" include nil nil [151 169])
+            ("add-hook" code nil nil [171 214])
+            ("add-hook" code nil nil [215 259])
+            ("add-hook" code nil nil [260 303])
+            ("add-hook" code nil nil [304 347])
+            ("add-hook" code nil nil [349 828])
+            ("setq" code nil nil [830 860])
+            ("setq" code nil nil [861 894])
+            ("preview" include nil nil [895 913]))          
+    :file "auctex.el"
+    :pointmax 914
+    :fsize 913
+    :lastmodtime '(21005 33503 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "dos.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("wttr/plugin:prepend-to-load-path" code nil nil [27 72])
+            ("dos-mode" function
+               (:prototype-flag t
+                :user-visible-flag t)
+                nil [73 121])
+            ("add-to-list" code nil nil [122 176])
+            ("add-to-list" code nil nil [177 231]))          
+    :file "dos.el"
+    :pointmax 232
+    :fsize 231
+    :lastmodtime '(21005 33503 0 0)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!drive_c!Users!hyphen!.emacs.d!wttr-config!modes!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

@@ -1,0 +1,69 @@
+;; Object auto-complete-clang/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "auto-complete-clang/"
+  :tables (list 
+   (semanticdb-table "auto-complete-clang.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("auto-complete-clang" package nil nil [1024 1054])
+            ("auto-complete" include nil nil [1055 1079])
+            ("ac-clang-executable" variable
+               (:user-visible-flag t
+                :default-value (executable-find "clang"))
+                nil [1082 1213])
+            ("ac-clang-auto-save" variable (:user-visible-flag t) nil [1215 1644])
+            ("ac-clang-lang-option-function" variable (:user-visible-flag t) nil [1646 1786])
+            ("ac-clang-flags" variable nil nil [1834 2073])
+            ("ac-clang-prefix-header" variable nil nil [2133 2168])
+            ("ac-clang-set-prefix-header" function (:arguments ("ph")) nil [2202 2707])
+            ("ac-clang-set-cflags" function (:user-visible-flag t) nil [2740 2901])
+            ("ac-clang-set-cflags-from-shell-command" function (:user-visible-flag t) nil [2948 3316])
+            ("ac-clang-completion-pattern" variable
+               (:constant-flag t
+                :default-value "^COMPLETION: \\(%s[^ 
+:]*\\)\\(?: : \\)*\\(.*$\\)")
+                nil [3318 3412])
+            ("ac-clang-error-buffer-name" variable
+               (:constant-flag t
+                :default-value "*clang error*")
+                nil [3414 3467])
+            ("ac-clang-parse-output" function (:arguments ("prefix")) nil [3469 4576])
+            ("ac-clang-handle-error" function (:arguments ("res" "args")) nil [4579 5518])
+            ("ac-clang-call-process" function (:arguments ("prefix" "args")) nil [5520 6102])
+            ("ac-clang-build-location" function (:arguments ("pos")) nil [6105 6329])
+            ("ac-clang-lang-option" function nil nil [6331 6820])
+            ("ac-clang-build-complete-args" function (:arguments ("pos")) nil [6822 7284])
+            ("ac-clang-clean-document" function (:arguments ("s")) nil [7287 7455])
+            ("ac-clang-document" function (:arguments ("item")) nil [7457 7672])
+            ("ac-clang-candidate-face" variable
+               (:default-value (quote ((t (:background "lightgray" :foreground "navy"))))
+                :type "face")
+                nil [7675 7815])
+            ("ac-clang-selection-face" variable
+               (:default-value (quote ((t (:background "navy" :foreground "white"))))
+                :type "face")
+                nil [7817 7967])
+            ("ac-in-string/comment" function nil nil [7969 8094])
+            ("ac-clang-candidate" function nil nil [8096 8418])
+            ("ac-template-start-point" variable nil nil [8421 8457])
+            ("ac-template-candidates" variable (:default-value (list "ok" "no" "yes:)")) nil [8458 8514])
+            ("ac-clang-action" function nil nil [8516 10850])
+            ("ac-clang-prefix" function nil nil [10852 11217])
+            ("ac-define-source" code nil nil [11219 11523])
+            ("ac-clang-same-count-in-string" function (:arguments ("c1" "c2" "s")) nil [11525 11836])
+            ("ac-clang-split-args" function (:arguments ("s")) nil [11838 12479])
+            ("ac-template-candidate" function nil nil [12482 12539])
+            ("ac-template-action" function nil nil [12541 15318])
+            ("ac-template-prefix" function nil nil [15321 15376])
+            ("ac-define-source" code nil nil [15425 15647]))          
+    :file "auto-complete-clang.el"
+    :pointmax 15686
+    :fsize 15685
+    :lastmodtime '(21005 33552 0 0)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!drive_c!Users!hyphen!.emacs.d!plugins!auto-complete-suite!auto-complete-clang!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

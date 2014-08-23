@@ -1,0 +1,76 @@
+;; Object evil/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "evil/"
+  :tables (list 
+   (semanticdb-table "evil-states.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("evil-core" include nil nil [871 891])
+            ("evil-define-state" code nil nil [922 1237])
+            ("evil-normal-post-command" function (:arguments ("command")) nil [1239 2201])
+            ("put" code nil nil [2202 2257])
+            ("evil-define-state" code nil nil [2277 3068])
+            ("evil-insert-repeat-hook" function nil nil [3070 3277])
+            ("put" code nil nil [3278 3332])
+            ("evil-cleanup-insert-state" function nil nil [3334 4981])
+            ("evil-define-visual-selection" function (:arguments ("selection" "doc" "body")) nil [5743 7620])
+            ("evil-define-visual-selection" code nil nil [7622 7730])
+            ("evil-define-visual-selection" code nil nil [7732 7822])
+            ("evil-define-visual-selection" code nil nil [7824 8119])
+            ("evil-define-state" code nil nil [8121 9708])
+            ("evil-visual-pre-command" function (:arguments ("command")) nil [9710 10379])
+            ("put" code nil nil [10381 10435])
+            ("evil-visual-post-command" function (:arguments ("command")) nil [10437 11434])
+            ("put" code nil nil [11435 11490])
+            ("evil-visual-update-x-selection" function (:arguments ("buffer")) nil [11492 12123])
+            ("evil-visual-activate-hook" function (:arguments ("command")) nil [12125 12723])
+            ("put" code nil nil [12724 12780])
+            ("evil-visual-deactivate-hook" function (:arguments ("command")) nil [12782 13403])
+            ("put" code nil nil [13404 13462])
+            ("evil-define-command" code nil nil [13464 13930])
+            ("evil-visual-message" function (:arguments ("selection")) nil [13932 14510])
+            ("evil-visual-select" function (:arguments ("beg" "end" "type" "dir" "message")) nil [14512 15130])
+            ("evil-visual-make-selection" function (:arguments ("mark" "point" "type" "message")) nil [15132 16075])
+            ("evil-visual-make-region" function
+               (:user-visible-flag t
+                :arguments ("mark" "point" "type" "message"))
+                nil [16077 17095])
+            ("evil-visual-expand-region" function (:arguments ("exclude-newline")) nil [17097 17926])
+            ("evil-visual-contract-region" function nil nil [17928 18200])
+            ("evil-visual-refresh" function (:arguments ("mark" "point" "type" "properties")) nil [18202 20713])
+            ("evil-visual-highlight" function (:arguments ("arg")) nil [20715 21753])
+            ("evil-visual-highlight-block" function (:arguments ("beg" "end" "overlays")) nil [21755 26576])
+            ("evil-visual-range" function nil nil [26578 27027])
+            ("evil-visual-direction" function nil nil [27029 27351])
+            ("evil-visual-type" function (:arguments ("selection")) nil [27353 27746])
+            ("evil-visual-goto-end" function nil nil [27748 28043])
+            ("evil-visual-alist" function nil nil [28045 28253])
+            ("evil-visual-selection-function" function (:arguments ("selection")) nil [28255 28505])
+            ("evil-visual-selection-for-type" function (:arguments ("type")) nil [28507 28743])
+            ("evil-visual-block-corner" function (:arguments ("corner" "point" "mark")) nil [28745 30388])
+            ("evil-define-state" code nil nil [30418 30578])
+            ("evil-define-keymap" code nil nil [30580 30796])
+            ("evil-half-cursor" function nil nil [30952 31439])
+            ("evil-define-state" code nil nil [31460 31880])
+            ("evil-replace-pre-command" function nil nil [31882 32191])
+            ("put" code nil nil [32192 32247])
+            ("evil-replace-backspace" function (:user-visible-flag t) nil [32249 32563])
+            ("evil-define-state" code nil nil [32583 32663])
+            ("evil-define-state" code nil nil [32682 32803])
+            ("evil-states" package nil nil [32805 32827]))          
+    :file "evil-states.el"
+    :pointmax 32858
+    :fsize 32859
+    :lastmodtime '(21005 34634 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "evil-core.el"
+    :file "evil-core.el"
+    :fsize 45440
+    :lastmodtime '(21005 34634 0 0)
+    )
+   )
+  :file "!drive_c!Users!hyphen!AppData!Roaming!.emacs.d!plugins!evil!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

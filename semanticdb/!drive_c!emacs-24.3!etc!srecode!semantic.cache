@@ -1,0 +1,289 @@
+;; Object srecode/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "srecode/"
+  :tables (list 
+   (semanticdb-table "default.srt"
+    :major-mode 'srecode-template-mode
+    :tags 
+        '( ("mode" variable (:default-value ("default")) nil [846 865])
+            ("comment_start" variable (:default-value ("#")) nil [866 889])
+            ("COPYRIGHT" variable (:default-value ("This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see http://www.gnu.org/licenses/.")) nil [890 1516])
+            ("DOLLAR" variable (:default-value ("$")) nil [1517 1532])
+            ("file" context nil nil [1533 1546])
+            ("copyright" function (:code "{{COPYRIGHT:srecode-comment-prefix}}
+") nil [1547 1613])
+            ("filecomment" function
+               (:code "{{comment_start}} {{FILENAME}} --- {{^}}
+{{comment_prefix}}
+{{comment_prefix}} Copyright (C) {{YEAR}} {{?AUTHOR}}
+{{comment_prefix}}
+{{comment_prefix}} Author: {{AUTHOR}} <{{EMAIL}}>{{#RCS}}
+{{comment_prefix}} X-RCS: {{DOLLAR}}Id{{DOLLAR}}{{/RCS}}
+{{comment_prefix}}
+{{>:copyright}}
+{{comment_end}}
+"
+                :arguments (":file" ":user" ":time"))
+                nil [1614 1962]))          
+    :file "default.srt"
+    :pointmax 1970
+    :fsize 1969
+    :lastmodtime '(20806 7938 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "c.srt"
+    :major-mode 'srecode-template-mode
+    :tags 
+        '( ("mode" variable (:default-value ("c-mode")) nil [836 854])
+            ("comment_start" variable (:default-value ("/**")) nil [855 880])
+            ("comment_end" variable (:default-value (" */")) nil [880 905])
+            ("comment_prefix" variable (:default-value (" *")) nil [905 929])
+            ("HEADEREXT" variable (:default-value (".h")) nil [1026 1045])
+            ("file" context nil nil [1046 1059])
+            ("empty" function
+               (:code "{{>:filecomment}}
+
+{{#NOTHEADER}}
+
+{{^}}
+{{/NOTHEADER}}
+{{#HEADER}}
+{{>:header_guard}}
+{{/HEADER}}
+"
+                :arguments (":time" ":user" ":file" ":c"))
+                nil [1060 1205])
+            ("header_guard" function
+               (:code "#ifndef {{FILENAME_SYMBOL}}
+#define {{FILENAME_SYMBOL}} 1
+
+{{^}}
+
+#endif // {{FILENAME_SYMBOL}}
+"
+                :arguments (":file" ":blank"))
+                nil [1206 1347])
+            ("misc" context nil nil [1348 1361])
+            ("arglist" function
+               (:code "({{#ARGS}}{{TYPE}} {{NAME}}{{#NOTLAST}},{{/NOTLAST}}{{/ARGS}})
+"
+                :documentation "Insert an argument list for a function.
+@todo - Support smart CR in a buffer for not too long lines.")
+                nil [1362 1555])
+            ("declaration" context nil nil [1556 1576])
+            ("TYPE" prompt (:text "Return Type: ") nil [1577 1605])
+            ("function" function
+               (:binding "f"
+                :code "{{?TYPE}} {{?NAME}}{{>:misc:arglist}}
+{{#INITIALIZERS}}{{>B:initializers}}{{/INITIALIZERS}}
+{
+{{^}}
+}
+"
+                :documentation "Insert a function declaration."
+                :arguments (":indent" ":blank"))
+                nil [1606 1793])
+            ("function-prototype" function
+               (:code "{{?TYPE}} {{?NAME}}{{>:misc:arglist}};
+"
+                :documentation "Insert a function declaration."
+                :arguments (":indent" ":blank"))
+                nil [1794 1919])
+            ("TYPE" prompt (:text "Data Type: ") nil [1921 1947])
+            ("variable" function
+               (:binding "v"
+                :code "{{?TYPE}} {{?NAME}}{{#HAVEDEFAULT}} = {{DEFAULT}}{{/HAVEDEFAULT}};
+"
+                :documentation "Insert a variable declaration."
+                :arguments (":indent" ":blank"))
+                nil [1948 2100])
+            ("variable-prototype" function
+               (:binding "v"
+                :code "{{?TYPE}} {{?NAME}};
+"
+                :documentation "Insert a variable declaration."
+                :arguments (":indent" ":blank"))
+                nil [2101 2217])
+            ("include" function
+               (:binding "i"
+                :code "#include \"{{?NAME}}\"
+"
+                :documentation "An include statement."
+                :arguments (":blank"))
+                nil [2219 2307])
+            ("system-include" function
+               (:binding "i"
+                :code "#include <{{?NAME}}>
+"
+                :documentation "An include statement."
+                :arguments (":blank"))
+                nil [2308 2403])
+            ("label" function
+               (:code "  {{?NAME}}:
+"
+                :arguments (":blank" ":indent"))
+                nil [2404 2457])
+            ("declaration" context nil nil [2458 2478])
+            ("comment-function" function
+               (:code "{{>A:declaration:doxygen-function}}
+"
+                :documentation "Used to put a nice comment in front of a function.
+Override this with your own preference to avoid using doxygen"
+                :arguments (":indent" ":blank"))
+                nil [2479 2681])
+            ("declaration" context nil nil [2710 2730])
+            ("doxygen-function" function
+               (:code "/**
+ * @name {{NAME}} - {{DOC}}{{^}}{{#ARGS}}
+ * @param {{NAME}} - {{DOC}}{{/ARGS}}
+ * @return {{TYPE}}
+ */
+"
+                :arguments (":indent" ":blank"))
+                nil [2731 2890])
+            ("doxygen-variable-same-line" function (:code "/**< {{DOC}}{{^}} */
+") nil [2891 2958])
+            ("doxygen-section-comment" function
+               (:code "
+/** {{?TITLE}}
+ *
+ * {{^}}
+ */
+
+"
+                :documentation "Insert a comment that separates sections of an Emacs Lisp file."
+                :arguments (":blank" ":indent"))
+                nil [2959 3117]))          
+    :file "c.srt"
+    :pointmax 3126
+    :fsize 3125
+    :lastmodtime '(20806 7938 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "cpp.srt"
+    :major-mode 'srecode-template-mode
+    :tags 
+        '( ("mode" variable (:default-value ("c++-mode")) nil [829 849])
+            ("comment_start" variable (:default-value ("/**")) nil [850 875])
+            ("comment_end" variable (:default-value (" */")) nil [875 900])
+            ("comment_prefix" variable (:default-value (" *")) nil [900 924])
+            ("declaration" context nil nil [925 945])
+            ("class" function
+               (:code "{{<A:class-tag}}
+   public:
+     {{>CONSTRUCTOR:classdecl:constructor-tag}}
+     {{>DESTRUCTOR:classdecl:destructor-tag}}
+   private:
+   {{^}}
+
+{{/A}}
+"
+                :documentation "Insert a C++ class.  For use by user insertion.
+Override this template to change contents of a class.
+Override `class-tag' to override the outer structure of the class."
+                :arguments (":indent" ":blank"))
+                nil [946 1308])
+            ("subclass" function
+               (:dictionaries (("PARENTS" ("NAME" variable (:default-value ("?PARENTNAME")) (reparse-symbol flat-dictionary-entry) [1415 1438])))
+                :code "{{>A:class}}
+"
+                :documentation "Insert a C++ subclass of some other class."
+                :arguments (":indent" ":blank"))
+                nil [1309 1461])
+            ("class-tag" function
+               (:binding "c"
+                :code "class {{?NAME}} {{#PARENTS}}{{#FIRST}}: {{/FIRST}}public {{NAME}}{{/PARENTS}}
+{     
+   {{^}}
+};
+"
+                :documentation "Insert a C++ class with the expectation of it being used by a tag inserter.
+Override this to affect applications, or the outer class structure for
+the user-facing template."
+                :arguments (":indent" ":blank"))
+                nil [1462 1787])
+            ("method" function
+               (:code "{{?TYPE}} {{?PARENT}}::{{?NAME}}{{>:misc:arglist}}
+{{#INITIALIZERS}}{{>B:initializers}}{{/INITIALIZERS}}
+{
+{{^}}
+}
+"
+                :documentation "Method belonging to some class, declared externally."
+                :arguments (":indent" ":blank"))
+                nil [1788 1999])
+            ("classdecl" context nil nil [2000 2018])
+            ("constructor-tag" function
+               (:code "{{?NAME}}{{>:misc:arglist}}
+{ {{^}} }
+"
+                :arguments (":indent" ":blank"))
+                nil [2019 2107])
+            ("initializers" function
+               (:code "{{#FIRST}}:
+{{/FIRST}}{{INITNAME}}(){{#NOTLAST}},{{/NOTLAST}}
+"
+                :arguments (":indent"))
+                nil [2156 2258])
+            ("destructor-tag" function
+               (:code "~{{?NAME}}{{>:misc:arglist}}
+{ {{^}} }
+"
+                :arguments (":indent" ":blank"))
+                nil [2259 2347])
+            ("classdecl" context nil nil [2391 2409])
+            ("comment-function-group-start" function
+               (:code "{{>A:classdecl:doxygen-function-group-start}}
+"
+                :documentation "Used for putting comments in front of a functional group of declarations.
+Override this with your own preference to avoid using doxygen."
+                :arguments (":indent" ":blank"))
+                nil [2410 2658])
+            ("comment-function-group-end" function
+               (:code "{{>A:classdecl:doxygen-function-group-end}}
+"
+                :documentation "Used for putting comments in front of a functional group of declarations.
+Override this with your own preference to avoid using doxygen."
+                :arguments (":indent" ":blank"))
+                nil [2659 2903])
+            ("classdecl" context nil nil [2932 2950])
+            ("GROUPNAME" prompt (:text "Name of declaration group: ") nil [2951 2998])
+            ("doxygen-function-group-start" function
+               (:code "/**
+ * {{?GROUPNAME}}
+ * @{
+ */
+
+"
+                :arguments (":indent" ":blank"))
+                nil [2999 3095])
+            ("doxygen-function-group-end" function
+               (:code "/**
+ * @}
+ */
+
+"
+                :arguments (":indent" ":blank"))
+                nil [3096 3172]))          
+    :file "cpp.srt"
+    :pointmax 3180
+    :fsize 3179
+    :lastmodtime '(20806 7938 0 0)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!drive_c!emacs-24.3!etc!srecode!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

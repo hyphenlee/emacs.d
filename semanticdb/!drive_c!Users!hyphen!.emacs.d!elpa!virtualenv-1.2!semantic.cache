@@ -1,0 +1,18 @@
+;; Object virtualenv-1.2/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "virtualenv-1.2/"
+  :tables (list 
+   (semanticdb-table "virtualenv-autoloads.el"
+    :major-mode 'emacs-lisp-mode
+    :tags nil
+    :file "virtualenv-autoloads.el"
+    :pointmax 272
+    :fsize 1215
+    :lastmodtime '(21248 13249 0 0)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!drive_c!Users!hyphen!.emacs.d!elpa!virtualenv-1.2!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

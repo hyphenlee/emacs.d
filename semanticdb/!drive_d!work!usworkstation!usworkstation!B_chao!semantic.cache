@@ -1,0 +1,506 @@
+;; Object B_chao/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "B_chao/"
+  :tables (list 
+   (semanticdb-table "StdAfx.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("AFX_STDAFX_H__B63C1380_3C62_4DFB_B120_9B72A7A9653A__INCLUDED_" variable (:constant-flag t) nil [252 313])
+            ("VC_EXTRALEAN" variable (:constant-flag t) nil [383 395])
+            ("afxwin.h" include (:system-flag t) nil [448 467])
+            ("afxext.h" include (:system-flag t) nil [512 531])
+            ("afxdisp.h" include (:system-flag t) nil [558 578])
+            ("afxdtctl.h" include (:system-flag t) nil [612 633])
+            ("afxcmn.h" include (:system-flag t) nil [720 739])
+            ("afxtempl.h" include (:system-flag t) nil [819 840])
+            ("afxdb.h" include (:system-flag t) nil [841 859])
+            ("fool.h" include nil nil [860 877])
+            ("SAFE_CLOSEHANDLE" variable (:constant-flag t) nil [887 903])
+            ("SAFE_CHECK" variable (:constant-flag t) nil [949 959])
+            ("SAFE_DELETE" variable (:constant-flag t) nil [1007 1018])
+            ("SAFE_RELEASE" variable (:constant-flag t) nil [1064 1076])
+            ("SAFE_FREE" variable (:constant-flag t) nil [1124 1133]))          
+    :file "StdAfx.h"
+    :pointmax 1374
+    :fsize 1408
+    :lastmodtime '(16333 53744 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("VC_EXTRALEAN")
+          ("SAFE_FREE" (spp-arg-list ("p") 1133 . 1136) . ((semantic-list "{if(p) {free(p); (p)=NULL;}}" 1137 . 1165)))
+          ("SAFE_RELEASE" (spp-arg-list ("p") 1076 . 1079) . ((semantic-list "{if(p) {(p)->Release(); (p)=NULL;}}" 1080 . 1115)))
+          ("AFX_STDAFX_H__B63C1380_3C62_4DFB_B120_9B72A7A9653A__INCLUDED_")
+          ("SAFE_CLOSEHANDLE" (spp-arg-list ("x") 903 . 906) . ((semantic-list "{if(x){CloseHandle(x);x=NULL;}}" 909 . 940)))
+          ("SAFE_CHECK" (spp-arg-list ("p") 959 . 962) . ((semantic-list "{ if (NULL == p) { return FALSE; }}" 963 . 998)))
+          ("SAFE_DELETE" (spp-arg-list ("p") 1018 . 1021) . ((semantic-list "{if(p) {delete (p); (p)=NULL; }}" 1023 . 1055)))
+          )
+
+    )
+   (semanticdb-table "CSConfig.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("AFX_CSCONFIG_H__39A5FBA2_A8F4_4893_A969_3ECB902B11F4__INCLUDED_" variable (:constant-flag t) nil [87 150])
+            ("CCSConfig" type
+               (:superclasses 
+                  ( ("CRecordset" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [383 390])
+                    ("CCSConfig" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :arguments 
+                          ( ("pDatabase" variable
+                               (:pointer 1
+                                :type ("CDatabase" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [402 424])
+                            ("" variable (:type ("NULL" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [425 430]))                          
+                        :type ("CCSConfig" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [392 431])
+                    ("m_Hospital" variable (:type ("CString" type (:type "class") nil nil)) (reparse-symbol classsubparts) [520 539])
+                    ("m_Title" variable (:type ("CString" type (:type "class") nil nil)) (reparse-symbol classsubparts) [541 557])
+                    ("m_PicDir" variable (:type ("CString" type (:type "class") nil nil)) (reparse-symbol classsubparts) [559 576])
+                    ("m_Departments" variable (:type ("CString" type (:type "class") nil nil)) (reparse-symbol classsubparts) [578 600])
+                    ("public" label nil (reparse-symbol classsubparts) [713 720])
+                    ("GetDefaultConnect" function
+                       (:prototype-flag t
+                        :typemodifiers ("virtual")
+                        :type ("CString" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [722 758])
+                    ("GetDefaultSQL" function
+                       (:prototype-flag t
+                        :typemodifiers ("virtual")
+                        :type ("CString" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [792 824])
+                    ("DoFieldExchange" function
+                       (:prototype-flag t
+                        :typemodifiers ("virtual")
+                        :arguments 
+                          ( ("pFX" variable
+                               (:pointer 1
+                                :type ("CFieldExchange" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [887 907]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [858 908]))                  
+                :type "class")
+                nil [345 1063]))          
+    :file "CSConfig.h"
+    :pointmax 1274
+    :fsize 1320
+    :lastmodtime '(16227 42254 0 0)
+    :unmatched-syntax '((semantic-list 448 . 459) (symbol 433 . 448) (punctuation 423 . 424))
+    :lexical-table 
+        '(("AFX_CSCONFIG_H__39A5FBA2_A8F4_4893_A969_3ECB902B11F4__INCLUDED_")
+          )
+
+    )
+   (semanticdb-table "BellyOpt.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("stdafx.h" include nil nil [43 62])
+            ("csexpert.h" include nil nil [63 84])
+            ("BellyOpt.h" include nil nil [85 106])
+            ("CBellyOpt" function
+               (:constructor-flag t
+                :parent "CBellyOpt"
+                :arguments 
+                  ( ("pdb" variable
+                       (:pointer 1
+                        :type ("CDatabase" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [360 375]))                  
+                :type ("CBellyOpt" type (:type "class") nil nil))
+                nil [339 551])
+            ("GetDefaultConnect" function
+               (:parent "CBellyOpt"
+                :type ("CString" type (:type "class") nil nil))
+                nil [554 630])
+            ("GetDefaultSQL" function
+               (:parent "CBellyOpt"
+                :type ("CString" type (:type "class") nil nil))
+                nil [632 702])
+            ("DoFieldExchange" function
+               (:parent "CBellyOpt"
+                :arguments 
+                  ( ("pFX" variable
+                       (:pointer 1
+                        :type ("CFieldExchange" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [736 756]))                  
+                :type "void")
+                nil [704 1015]))          
+    :file "BellyOpt.cpp"
+    :pointmax 1292
+    :fsize 1358
+    :lastmodtime '(16346 10158 0 0)
+    :unmatched-syntax '((semantic-list 314 . 337) (symbol 297 . 314))
+    )
+   (semanticdb-table "CSExpert.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("AFX_CSEXPERT_H__FACE60F9_0E58_4883_865B_72EDB8B642B3__INCLUDED_" variable (:constant-flag t) nil [153 216])
+            ("resource.h" include nil nil [369 390])
+            ("DialogResize.h" include nil nil [408 433])
+            ("USERTYPE_HUSHI" variable (:constant-flag t) nil [444 458])
+            ("USERTYPE_DOCTOR" variable (:constant-flag t) nil [471 486])
+            ("USERTYPE_ADMIN" variable (:constant-flag t) nil [498 512])
+            ("PATSTATUS_QUEUE" variable (:constant-flag t) nil [526 541])
+            ("PATSTATUS_HANDLING" variable (:constant-flag t) nil [555 573])
+            ("PATSTATUS_HANDLED" variable (:constant-flag t) nil [584 601])
+            ("WM_SAVE_PTQUEUE" variable (:constant-flag t) nil [614 629])
+            ("WM_RELOAD_CONFIG" variable (:constant-flag t) nil [653 669])
+            ("WM_SHOW_DETAILREPORT" variable (:constant-flag t) nil [692 712])
+            ("WM_NEWFILECREATED" variable (:constant-flag t) nil [734 751])
+            ("WM_DO_LIST" variable (:constant-flag t) nil [774 784])
+            ("USERINFO" type
+               (:typedef ("" type
+                     (:members 
+                        ( ("userName" variable (:type ("CString" type (:type "class") nil nil)) (reparse-symbol classsubparts) [819 836])
+                          ("loginName" variable (:type ("CString" type (:type "class") nil nil)) (reparse-symbol classsubparts) [838 856])
+                          ("type" variable (:type "int") (reparse-symbol classsubparts) [858 871]))                        
+                      :type "struct")
+                      nil nil)
+                :type "typedef")
+                nil [801 882])
+            ("OpenDataBase" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("db" variable
+                       (:reference 1
+                        :type ("CDatabase" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [901 915])
+                    ("bShowOdbcDlg" variable (:type ("BOOL" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [915 933]))                  
+                :type ("BOOL" type (:type "class") nil nil))
+                nil [883 934])
+            ("CloseDataBase" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("db" variable
+                       (:reference 1
+                        :type ("CDatabase" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [954 968]))                  
+                :type "void")
+                nil [935 969])
+            ("ConfirmNextIndex" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("tablename" variable (:type ("LPCTSTR" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [992 1010]))                  
+                :type "long")
+                nil [970 1011])
+            ("g_DBConnectStr" variable
+               (:typemodifiers ("extern")
+                :type ("CString" type (:type "class") nil nil))
+                nil [1013 1060])
+            ("g_TmpPicPath" variable
+               (:typemodifiers ("extern")
+                :type ("CString" type (:type "class") nil nil))
+                nil [1061 1106])
+            ("g_Hospital" variable
+               (:typemodifiers ("extern")
+                :type ("CString" type (:type "class") nil nil))
+                nil [1118 1161])
+            ("g_TitleArray" variable
+               (:typemodifiers ("extern")
+                :type ("CStringArray" type (:type "class") nil nil))
+                nil [1162 1207])
+            ("g_PicPath" variable
+               (:typemodifiers ("extern")
+                :type ("CString" type (:type "class") nil nil))
+                nil [1208 1250])
+            ("g_hDepartmentArray" variable
+               (:typemodifiers ("extern")
+                :type ("CStringArray" type (:type "class") nil nil))
+                nil [1251 1302])
+            ("g_LoginName" variable
+               (:typemodifiers ("extern")
+                :type ("CString" type (:type "class") nil nil))
+                nil [1303 1334])
+            ("g_UserName" variable
+               (:typemodifiers ("extern")
+                :type ("CString" type (:type "class") nil nil))
+                nil [1335 1365])
+            ("g_Password" variable
+               (:typemodifiers ("extern")
+                :type ("CString" type (:type "class") nil nil))
+                nil [1366 1396])
+            ("g_LoginType" variable
+               (:typemodifiers ("extern")
+                :type "int")
+                nil [1397 1425])
+            ("g_hUserInfoArray" variable
+               (:typemodifiers ("extern")
+                :type ("CArray" type
+                     (:template-specifier 
+                        ( ("USERINFO" type nil nil nil)
+                          ("USERINFO" type nil nil nil))                        
+                      :type "class")
+                      nil nil))
+                nil [1426 1475])
+            ("ChineseStrLen" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("str" variable
+                       (:reference 1
+                        :type ("CString" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1651 1664]))                  
+                :type "int")
+                nil [1632 1665])
+            ("AnalyseArray2StringBySep" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("array" variable
+                       (:reference 1
+                        :type ("CStringArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1696 1716])
+                    ("str" variable
+                       (:reference 1
+                        :type ("CString" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1716 1729])
+                    ("sep" variable (:type ("LPCTSTR" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1729 1741]))                  
+                :type "void")
+                nil [1666 1742])
+            ("AnalyseString2ArrayBySep" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("str" variable
+                       (:reference 1
+                        :type ("CString" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1773 1786])
+                    ("array" variable
+                       (:reference 1
+                        :type ("CStringArray" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1786 1806])
+                    ("sep" variable (:type ("LPCTSTR" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1806 1818]))                  
+                :type "void")
+                nil [1743 1819])
+            ("MakeSurePathExist" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("pathname" variable (:type ("LPCTSTR" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1844 1861]))                  
+                :type "void")
+                nil [1821 1862])
+            ("CCSExpertApp" type
+               (:superclasses 
+                  ( ("CWinApp" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [1901 1908])
+                    ("OnSetDialogColor" function
+                       (:prototype-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [1910 1934])
+                    ("CCSExpertApp" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :type ("CCSExpertApp" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1936 1951])
+                    ("public" label nil (reparse-symbol classsubparts) [2051 2058])
+                    ("InitInstance" function
+                       (:prototype-flag t
+                        :typemodifiers ("virtual")
+                        :type ("BOOL" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [2060 2088]))                  
+                :type "class")
+                nil [1863 2331]))          
+    :file "CSExpert.h"
+    :pointmax 2622
+    :fsize 2722
+    :lastmodtime '(17149 46238 0 0)
+    :unmatched-syntax '((semantic-list 2326 . 2328) (symbol 2307 . 2326) (symbol 357 . 360) (FOR 353 . 356) (symbol 348 . 352) (symbol 343 . 347) (symbol 333 . 342) (symbol 326 . 332) (string 315 . 325) (symbol 307 . 314) (symbol 301 . 306) (punctuation 300 . 301))
+    :lexical-table 
+        '(("WM_RELOAD_CONFIG" . 
+              ((symbol "WM_USER" 670 . 677) (punctuation "+" 678 . 679) (number "102" 680 . 683)))
+          ("WM_NEWFILECREATED" . 
+              ((symbol "WM_USER" 754 . 761) (punctuation "+" 761 . 762) (number "104" 762 . 765)))
+          ("WM_DO_LIST" . 
+              ((symbol "WM_USER" 786 . 793) (punctuation "+" 794 . 795) (number "105" 796 . 799)))
+          ("USERTYPE_ADMIN" . ((number "2" 515 . 516)))
+          ("PATSTATUS_QUEUE" . ((number "0" 545 . 546)))
+          ("PATSTATUS_HANDLING" . ((number "1" 574 . 575)))
+          ("USERTYPE_DOCTOR" . ((number "1" 488 . 489)))
+          ("AFX_CSEXPERT_H__FACE60F9_0E58_4883_865B_72EDB8B642B3__INCLUDED_")
+          ("USERTYPE_HUSHI" . ((number "0" 461 . 462)))
+          ("WM_SHOW_DETAILREPORT" . 
+              ((symbol "WM_USER" 713 . 720) (punctuation "+" 720 . 721) (number "103" 721 . 724)))
+          ("PATSTATUS_HANDLED" . ((number "2" 603 . 604)))
+          ("WM_SAVE_PTQUEUE" . 
+              ((symbol "WM_USER" 631 . 638) (punctuation "+" 639 . 640) (number "101" 641 . 644)))
+          )
+
+    )
+   (semanticdb-table "resource.h"
+    :file "resource.h"
+    :fsize 18859
+    :lastmodtime '(17149 38560 0 0)
+    )
+   (semanticdb-table "DialogResize.h"
+    :file "DialogResize.h"
+    :fsize 3219
+    :lastmodtime '(15491 45206 0 0)
+    )
+   (semanticdb-table "BellyOpt.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("AFX_BELLYOPT_H__DEA93A2B_1A9D_46BF_B089_3CBCC940E6C3__INCLUDED_" variable (:constant-flag t) nil [87 150])
+            ("CBellyOpt" type
+               (:superclasses 
+                  ( ("CRecordset" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [383 390])
+                    ("CBellyOpt" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :arguments 
+                          ( ("pDatabase" variable
+                               (:pointer 1
+                                :type ("CDatabase" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [402 424])
+                            ("" variable (:type ("NULL" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [425 430]))                          
+                        :type ("CBellyOpt" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [392 431])
+                    ("m_id" variable (:type "long") (reparse-symbol classsubparts) [520 530])
+                    ("m_organ_id" variable (:type "long") (reparse-symbol classsubparts) [532 548])
+                    ("m_name" variable (:type ("CString" type (:type "class") nil nil)) (reparse-symbol classsubparts) [550 565])
+                    ("m_type" variable (:type "long") (reparse-symbol classsubparts) [567 579])
+                    ("public" label nil (reparse-symbol classsubparts) [692 699])
+                    ("GetDefaultConnect" function
+                       (:prototype-flag t
+                        :typemodifiers ("virtual")
+                        :type ("CString" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [701 737])
+                    ("GetDefaultSQL" function
+                       (:prototype-flag t
+                        :typemodifiers ("virtual")
+                        :type ("CString" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [771 803])
+                    ("DoFieldExchange" function
+                       (:prototype-flag t
+                        :typemodifiers ("virtual")
+                        :arguments 
+                          ( ("pFX" variable
+                               (:pointer 1
+                                :type ("CFieldExchange" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [866 886]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [837 887]))                  
+                :type "class")
+                nil [345 1042]))          
+    :file "BellyOpt.h"
+    :pointmax 1253
+    :fsize 1299
+    :lastmodtime '(16346 10158 0 0)
+    :unmatched-syntax '((semantic-list 448 . 459) (symbol 433 . 448) (punctuation 423 . 424))
+    :lexical-table 
+        '(("AFX_BELLYOPT_H__DEA93A2B_1A9D_46BF_B089_3CBCC940E6C3__INCLUDED_")
+          )
+
+    )
+   (semanticdb-table "ModelRecordset.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("stdafx.h" include nil nil [49 68])
+            ("CSExpert.h" include nil nil [69 90])
+            ("ModelRecordset.h" include nil nil [91 118])
+            ("CModelRecordset" function
+               (:constructor-flag t
+                :parent "CModelRecordset"
+                :arguments 
+                  ( ("pdb" variable
+                       (:pointer 1
+                        :type ("CDatabase" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [396 411]))                  
+                :type ("CModelRecordset" type (:type "class") nil nil))
+                nil [363 600])
+            ("GetDefaultConnect" function
+               (:parent "CModelRecordset"
+                :type ("CString" type (:type "class") nil nil))
+                nil [603 684])
+            ("GetDefaultSQL" function
+               (:parent "CModelRecordset"
+                :type ("CString" type (:type "class") nil nil))
+                nil [686 761])
+            ("DoFieldExchange" function
+               (:parent "CModelRecordset"
+                :arguments 
+                  ( ("pFX" variable
+                       (:pointer 1
+                        :type ("CFieldExchange" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [801 821]))                  
+                :type "void")
+                nil [763 1095]))          
+    :file "ModelRecordset.cpp"
+    :pointmax 1390
+    :fsize 1456
+    :lastmodtime '(16485 20186 0 0)
+    :unmatched-syntax '((semantic-list 332 . 361) (symbol 315 . 332))
+    )
+   (semanticdb-table "ModelRecordset.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("AFX_MODELRECORDSET_H__E0AD1D16_7E84_44CB_A580_5AD030EF88A6__INCLUDED_" variable (:constant-flag t) nil [93 162])
+            ("CModelRecordset" type
+               (:superclasses 
+                  ( ("CRecordset" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [424 431])
+                    ("CModelRecordset" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :arguments 
+                          ( ("pDatabase" variable
+                               (:pointer 1
+                                :type ("CDatabase" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [449 471])
+                            ("" variable (:type ("NULL" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [472 477]))                          
+                        :type ("CModelRecordset" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [433 478])
+                    ("m_ID" variable (:type "long") (reparse-symbol classsubparts) [579 589])
+                    ("m_NewID" variable (:type "long") (reparse-symbol classsubparts) [595 608])
+                    ("m_Content" variable (:type ("CString" type (:type "class") nil nil)) (reparse-symbol classsubparts) [615 633])
+                    ("m_Result" variable (:type ("CString" type (:type "class") nil nil)) (reparse-symbol classsubparts) [639 656])
+                    ("public" label nil (reparse-symbol classsubparts) [779 786])
+                    ("GetDefaultConnect" function
+                       (:prototype-flag t
+                        :typemodifiers ("virtual")
+                        :type ("CString" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [788 824])
+                    ("GetDefaultSQL" function
+                       (:prototype-flag t
+                        :typemodifiers ("virtual")
+                        :type ("CString" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [858 890])
+                    ("DoFieldExchange" function
+                       (:prototype-flag t
+                        :typemodifiers ("virtual")
+                        :arguments 
+                          ( ("pFX" variable
+                               (:pointer 1
+                                :type ("CFieldExchange" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [953 973]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [924 974]))                  
+                :type "class")
+                nil [380 1129]))          
+    :file "ModelRecordset.h"
+    :pointmax 1346
+    :fsize 1409
+    :lastmodtime '(16287 11540 0 0)
+    :unmatched-syntax '((semantic-list 495 . 512) (symbol 480 . 495) (punctuation 470 . 471))
+    :lexical-table 
+        '(("AFX_MODELRECORDSET_H__E0AD1D16_7E84_44CB_A580_5AD030EF88A6__INCLUDED_")
+          )
+
+    )
+   )
+  :file "!drive_d!work!usworkstation!usworkstation!B_chao!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

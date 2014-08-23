@@ -1,0 +1,84 @@
+;; Object patient/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "patient/"
+  :tables (list 
+   (semanticdb-table "dicom_patient_dir_io2.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("wx/dir.h" include (:system-flag t) nil [1 20])
+            ("dcmtk/ofstd/ofstream.h" include nil nil [21 54])
+            ("dcmtk/dcmdata/dctk.h" include nil nil [55 86])
+            ("dicom_patient_dir_io2.h" include nil nil [88 122])
+            ("file.h" include nil nil [123 140])
+            ("dtl" using (:type ("dtl" type
+                 (:prototype t
+                  :type "namespace")
+                  nil nil)) nil [142 162])
+            ("std" using (:type ("std" type
+                 (:prototype t
+                  :type "namespace")
+                  nil nil)) nil [163 183])
+            ("ScanDicomFile" function
+               (:arguments 
+                  ( ("path" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [203 220])
+                    ("files_list" variable
+                       (:pointer 1
+                        :type ("vector" type
+                             (:template-specifier 
+                                ( ("string" type nil nil nil))                                
+                              :type "class")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [220 247]))                  
+                :type "void")
+                nil [184 658])
+            ("Read" function
+               (:parent "DicomPatientDirIO2"
+                :arguments 
+                  ( ("path" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [689 706])
+                    ("pd" variable
+                       (:pointer 1
+                        :type ("PatientDir" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [707 722]))                  
+                :type "bool")
+                nil [659 6654]))          
+    :file "dicom_patient_dir_io2.cpp"
+    :pointmax 6656
+    :fsize 6867
+    :lastmodtime '(20976 57051 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "dicom_patient_dir_io2.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__dtl_dicom_patient_dir_io2_h__" variable (:constant-flag t) nil [50 81])
+            ("patient_dir.h" include nil nil [83 107])
+            ("DicomPatientDirIO2" type
+               (:members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [140 147])
+                    ("Read" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("path" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [162 179])
+                            ("pd" variable
+                               (:pointer 1
+                                :type ("dtl::PatientDir" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [180 200]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [152 201]))                  
+                :type "class")
+                nil [110 206]))          
+    :file "dicom_patient_dir_io2.h"
+    :pointmax 215
+    :fsize 229
+    :lastmodtime '(20975 18974 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("__dtl_dicom_patient_dir_io2_h__")
+          )
+
+    )
+   )
+  :file "!drive_d!work!library!rtViewer!patient!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

@@ -1,0 +1,91 @@
+;; Object powershell-mode-0.5/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "powershell-mode-0.5/"
+  :tables (list 
+   (semanticdb-table "Powershell.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("shell" include nil nil [2937 2953])
+            ("powershell-location-of-exe" variable (:default-value "c:\\windows\\system32\\WindowsPowerShell\\v1.0\\powershell.exe") nil [3011 3196])
+            ("powershell-log-level" variable (:default-value 3) nil [3198 3360])
+            ("powershell-squish-results-of-silent-commands" variable (:default-value t) nil [3362 3782])
+            ("powershell-prompt-regex" variable (:default-value "PS [^#$%>]+> ") nil [3786 4246])
+            ("powershell-command-reply" variable nil nil [4248 4386])
+            ("powershell--max-window-width" variable nil nil [4389 4582])
+            ("powershell-command-timeout-seconds" variable (:default-value 12) nil [4584 4725])
+            ("powershell--need-rawui-resize" variable (:default-value t) nil [4728 4923])
+            ("powershell--find-max-window-width-command" variable
+               (:constant-flag t
+                :default-value (concat "function _Emacs_GetMaxPhsWindowSize 
+" "{
+" "  $rawui = (Get-Host).UI.RawUI
+" "  $mpws_exists = ($rawui | Get-Member | ? {$_.Name -eq \"MaxPhysicalWindowSize\"})
+" "  if ($mpws_exists -eq $null) {
+" "    \"210\" | Out-Host
+" "  } else {
+" "    $rawui.MaxPhysicalWindowSize.Width | Out-Host
+" "  }
+" "}
+" "_Emacs_GetMaxPhsWindowSize
+"))
+                nil [4926 5410])
+            ("powershell--set-window-width-fn-name" variable
+               (:constant-flag t
+                :default-value "_Emacs_SetWindowWidth")
+                nil [5413 5604])
+            ("powershell--text-of-set-window-width-ps-function" variable
+               (:constant-flag t
+                :default-value (concat "function " powershell--set-window-width-fn-name "([string] $pswidth)
+" "{
+" "  $rawui = (Get-Host).UI.RawUI
+" "  # retrieve the values
+" "  $bufsize = $rawui.BufferSize
+" "  $winsize = $rawui.WindowSize
+" "  $cwidth = $winsize.Width
+" "  $winsize.Width = $pswidth 
+" "  $bufsize.Width = $pswidth
+" "  if ($cwidth -lt $pswidth) {
+" "    # increase the width
+" "    $rawui.BufferSize = $bufsize
+" "    $rawui.WindowSize = $winsize
+" "  }
+" "  elseif ($cwidth -gt $pswidth) {
+" "    # decrease the width
+" "    $rawui.WindowSize = $winsize
+" "    $rawui.BufferSize = $bufsize
+" "  }
+" "  # destroy variables
+" "  Set-Variable -name rawui -value $null
+" "  Set-Variable -name winsize -value $null
+" "  Set-Variable -name bufsize -value $null
+" "  Set-Variable -name cwidth -value $null
+" "}
+
+"))
+                nil [5607 7304])
+            ("powershell-log" function (:arguments ("level" "text" "args")) nil [7308 7736])
+            ("powershell--define-set-window-width-function" function (:arguments ("proc")) nil [8462 8920])
+            ("powershell--get-max-window-width" function (:arguments ("buffer-name")) nil [8925 10107])
+            ("powershell--set-window-width" function (:arguments ("proc")) nil [10161 10756])
+            ("powershell" function
+               (:user-visible-flag t
+                :arguments ("buffer" "prompt-string"))
+                nil [10761 15175])
+            ("ansi-color-apply-on-region" function (:arguments ("around" "powershell-throttle-ansi-colorizing" "begin" "activate" "compile")) nil [16647 16993])
+            ("powershell--silent-cmd-filter" function (:arguments ("process" "result")) nil [16998 18355])
+            ("powershell-invoke-command-silently" function (:arguments ("proc" "command" "timeout-seconds")) nil [18359 21140])
+            ("powershell-delete-process" function (:arguments ("proc")) nil [21145 21316])
+            ("powershell-preoutput-filter-for-prompt" function (:arguments ("string")) nil [21319 21697])
+            ("powershell-simple-send" function (:arguments ("proc" "string")) nil [21700 23520])
+            ("powershell" package nil nil [27419 27440]))          
+    :file "Powershell.el"
+    :pointmax 27470
+    :fsize 27469
+    :lastmodtime '(21018 53117 0 0)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!drive_c!Users!hyphen!AppData!Roaming!.emacs.d!plugins!powershell-mode-0.5!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

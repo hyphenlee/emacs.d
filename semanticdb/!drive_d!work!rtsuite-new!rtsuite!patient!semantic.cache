@@ -1,0 +1,1777 @@
+;; Object patient/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "patient/"
+  :tables (list 
+   (semanticdb-table "patient_view.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("iostream" include (:system-flag t) nil [2 21])
+            ("fstream" include (:system-flag t) nil [22 40])
+            ("string" include (:system-flag t) nil [41 58])
+            ("sstream" include (:system-flag t) nil [59 77])
+            ("dicom_import_view.h" include nil nil [79 111])
+            ("dicom_export_view.h" include nil nil [112 144])
+            ("edit_patient_view.h" include nil nil [145 177])
+            ("image.h" include nil nil [179 197])
+            ("scene_node.h" include nil nil [198 221])
+            ("scene_image.h" include nil nil [222 246])
+            ("volume.h" include nil nil [284 303])
+            ("patient_model.h" include nil nil [304 330])
+            ("rt_app.h" include nil nil [331 350])
+            ("patient_view.h" include nil nil [351 376])
+            ("rtsuite_config.h" include nil nil [495 522])
+            ("rt_model.h" include nil nil [586 607])
+            ("ctvolume.h" include nil nil [677 698])
+            ("wx\\notebook.h" include nil nil [699 723])
+            ("algorithm" include (:system-flag t) nil [790 810])
+            ("std" using (:type ("std" type
+                 (:prototype t
+                  :type "namespace")
+                  nil nil)) nil [811 831])
+            ("New" function
+               (:parent "PatientListObserverGrid"
+                :arguments 
+                  ( ("e" variable (:type ("PatientListEvent::Pointer" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [895 923])
+                    ("grid" variable
+                       (:pointer 1
+                        :type ("wxGrid" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [923 936]))                  
+                :type ("PatientListObserverGrid::Pointer" type (:type "class") nil nil))
+                nil [833 994])
+            ("PatientListObserverGrid" function
+               (:constructor-flag t
+                :parent "PatientListObserverGrid"
+                :arguments 
+                  ( ("e" variable (:type ("PatientListEvent::Pointer" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1044 1072])
+                    ("grid" variable
+                       (:pointer 1
+                        :type ("wxGrid" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1072 1085]))                  
+                :type ("PatientListObserverGrid" type (:type "class") nil nil))
+                nil [995 1116])
+            ("Update" function
+               (:parent "PatientListObserverGrid"
+                :type "void")
+                nil [1117 2455])
+            ("PatientView" function
+               (:constructor-flag t
+                :parent "PatientView"
+                :arguments 
+                  ( ("parent" variable
+                       (:pointer 1
+                        :type ("wxWindow" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2482 2500]))                  
+                :type ("PatientView" type (:type "class") nil nil))
+                nil [2456 3232])
+            ("PatientView" function
+               (:destructor-flag t
+                :parent "PatientView"
+                :type "void")
+                nil [3234 3265])
+            ("Initiate" function
+               (:parent "PatientView"
+                :type "void")
+                nil [3267 4696])
+            ("update_patient_grid" function
+               (:parent "PatientView"
+                :type "void")
+                nil [4699 4744])
+            ("PatientPanelOnSize" function
+               (:parent "PatientView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxSizeEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4785 4805]))                  
+                :type "void")
+                nil [4747 5022])
+            ("m_bitmap_importOnLeftDown" function
+               (:parent "PatientView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxMouseEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5069 5090]))                  
+                :type "void")
+                nil [5024 5235])
+            ("m_bitmap_exportOnLeftDown" function
+               (:parent "PatientView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxMouseEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5281 5302]))                  
+                :type "void")
+                nil [5236 6232])
+            ("m_bitmap_edit_OnLeftDown" function
+               (:parent "PatientView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxMouseEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6277 6298]))                  
+                :type "void")
+                nil [6233 6383])
+            ("m_bitmap_deleteOnLeftDown" function
+               (:parent "PatientView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxMouseEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6429 6450]))                  
+                :type "void")
+                nil [6384 7525])
+            ("text_ctrl_search_OnText" function
+               (:parent "PatientView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxCommandEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7569 7592]))                  
+                :type "void")
+                nil [7526 7860])
+            ("patient_select" function
+               (:parent "PatientView"
+                :arguments 
+                  ( ("patient_idx" variable (:type "int") (reparse-symbol arg-sub-list) [7896 7913]))                  
+                :type "void")
+                nil [7862 9500])
+            ("update_grid_size" function
+               (:parent "PatientView"
+                :type "void")
+                nil [9502 9607])
+            ("grid_patient_info_OnGridCellLeftClick" function
+               (:parent "PatientView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxGridEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [9666 9686]))                  
+                :type "void")
+                nil [9609 9790])
+            ("grid_patient_info_OnGridLabelLeftClick" function
+               (:parent "PatientView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxGridEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [9850 9870]))                  
+                :type "void")
+                nil [9792 10213])
+            ("UpdateSelectedPatientInfo" function
+               (:parent "PatientView"
+                :type "void")
+                nil [10215 13818])
+            ("Scale_text" function
+               (:parent "PatientView"
+                :type "void")
+                nil [13820 16570])
+            ("UpdateFilterResult" function
+               (:parent "PatientView"
+                :type "void")
+                nil [16572 16738])
+            ("SelectDefaultPatient" function
+               (:parent "PatientView"
+                :type "void")
+                nil [16740 17106])
+            ("AddCTimageButton" function
+               (:parent "PatientView"
+                :arguments 
+                  ( ("id" variable (:type "int") (reparse-symbol arg-sub-list) [17143 17150])
+                    ("label" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [17150 17168]))                  
+                :type "void")
+                nil [17108 17713])
+            ("ct_image_buttton_OnButtonClick" function
+               (:parent "PatientView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxCommandEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [17765 17788]))                  
+                :type "void")
+                nil [17715 18665])
+            ("AddPlanButton" function
+               (:parent "PatientView"
+                :arguments 
+                  ( ("id" variable (:type "int") (reparse-symbol arg-sub-list) [18699 18706])
+                    ("label" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [18707 18726]))                  
+                :type "void")
+                nil [18667 19272])
+            ("plan_buttton_OnButtonClick" function
+               (:parent "PatientView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxCommandEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [19320 19343]))                  
+                :type "void")
+                nil [19274 19408])
+            ("display_ct_info" function
+               (:parent "PatientView"
+                :arguments 
+                  ( ("idx" variable (:type "int") (reparse-symbol arg-sub-list) [19445 19454]))                  
+                :type "void")
+                nil [19410 20858])
+            ("display_plan_info" function
+               (:parent "PatientView"
+                :arguments 
+                  ( ("idx" variable (:type "int") (reparse-symbol arg-sub-list) [20897 20906]))                  
+                :type "void")
+                nil [20860 21489]))          
+    :file "patient_view.cpp"
+    :pointmax 21492
+    :fsize 22268
+    :lastmodtime '(21309 16628 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "dicom_import_view.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__dicom_import_view__" variable (:constant-flag t) nil [39 60])
+            ("patient_panel.h" include nil nil [144 170])
+            ("patient.h" include nil nil [171 191])
+            ("rtplan.h" include nil nil [192 211])
+            ("rtstruct.h" include nil nil [212 233])
+            ("ctvolume.h" include nil nil [234 255])
+            ("rtdose.h" include nil nil [256 275])
+            ("grid_presenter.h" include nil nil [276 303])
+            ("grid_controller.h" include nil nil [304 332])
+            ("PatientTreeModel" type
+               (:members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [388 395])
+                    ("PatientTreeModel" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :arguments 
+                          ( ("p" variable (:type ("dtl::Patient::Pointer" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [414 438]))                          
+                        :type ("PatientTreeModel" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [397 439])
+                    ("TreeNode" type
+                       (:members 
+                          ( ("public" label nil (reparse-symbol classsubparts) [460 467])
+                            ("name_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [470 488])
+                            ("selected_" variable (:type "bool") (reparse-symbol classsubparts) [491 506])
+                            ("children_" variable (:type ("std::vector" type
+                                 (:template-specifier 
+                                    ( ("TreeNode" type nil nil nil))                                    
+                                  :type "class")
+                                  nil nil)) (reparse-symbol classsubparts) [509 541]))                          
+                        :type "class")
+                        (reparse-symbol classsubparts) [441 545])
+                    ("BuildFullTree" function (:type "void") (reparse-symbol classsubparts) [548 732])
+                    ("BuildSeriesTree" function
+                       (:prototype-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [734 757])
+                    ("private" label nil (reparse-symbol classsubparts) [759 767])
+                    ("patient_" variable (:type ("dtl::Patient::Pointer" type (:type "class") nil nil)) (reparse-symbol classsubparts) [769 800])
+                    ("root_" variable (:type ("TreeNode" type (:type "class") nil nil)) (reparse-symbol classsubparts) [802 817]))                  
+                :type "class")
+                nil [363 820])
+            ("PatientTreeView" type
+               (:members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [848 855])
+                    ("PatientTreeView" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :arguments 
+                          ( ("ctrl" variable
+                               (:pointer 1
+                                :type ("wxTreeCtrl" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [873 890]))                          
+                        :type ("PatientTreeView" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [857 891])
+                    ("Render" function (:type "void") (reparse-symbol classsubparts) [894 914])
+                    ("select_event" function
+                       (:prototype-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [916 936])
+                    ("private" label nil (reparse-symbol classsubparts) [937 945])
+                    ("ctrl_" variable
+                       (:pointer 1
+                        :type ("wxTreeCtrl" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [948 966])
+                    ("model" variable (:type ("PatientTreeModel" type (:type "class") nil nil)) (reparse-symbol classsubparts) [968 991]))                  
+                :type "class")
+                nil [823 994])
+            ("DicomImportView" type
+               (:superclasses 
+                  ( ("DicomImportDialog" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("protected" label nil (reparse-symbol classsubparts) [1084 1094])
+                    ("bitmap_close_OnLeftDown" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxMouseEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1169 1190]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1139 1191])
+                    ("button_import_OnButtonClick" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxCommandEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1227 1250]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1193 1251])
+                    ("button_cancel_OnLeftDown" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxMouseEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1284 1305]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1253 1306])
+                    ("m_treeCtrl_patient_dataOnTreeSelChanged" function
+                       (:prototype-flag t
+                        :typemodifiers ("virtual")
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxTreeEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1362 1382]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1308 1383])
+                    ("dirPicker_import_pathOnDirChanged" function
+                       (:prototype-flag t
+                        :typemodifiers ("virtual")
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxFileDirPickerEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1433 1462]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1385 1463])
+                    ("ScanDirectory" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("path_" variable (:type ("wxString" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1485 1500])
+                            ("file_list" variable
+                               (:reference 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("std::string" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [1500 1535]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1466 1536])
+                    ("radio_new_patient_OnRadioButton" function
+                       (:prototype-flag t
+                        :typemodifiers ("virtual")
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxCommandEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1585 1608]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1539 1609])
+                    ("radio_current_patient_OnRadioButton" function
+                       (:prototype-flag t
+                        :typemodifiers ("virtual")
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxCommandEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1661 1684]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1611 1685])
+                    ("m_radioBtn_fileOnRadioButton" function
+                       (:prototype-flag t
+                        :typemodifiers ("virtual")
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxCommandEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1730 1753]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1687 1754])
+                    ("m_radioBtn_dicomOnRadioButton" function
+                       (:prototype-flag t
+                        :typemodifiers ("virtual")
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxCommandEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1800 1823]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1756 1824])
+                    ("choice_aetitleOnChoice" function
+                       (:prototype-flag t
+                        :typemodifiers ("virtual")
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxCommandEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1863 1886]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1826 1887])
+                    ("public" label nil (reparse-symbol classsubparts) [1888 1895])
+                    ("DicomImportView" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :arguments 
+                          ( ("parent" variable
+                               (:pointer 1
+                                :type ("wxWindow" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1914 1932]))                          
+                        :type ("DicomImportView" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1897 1933])
+                    ("update_server_patient_list" function
+                       (:prototype-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [1935 1969])
+                    ("patient" variable (:type ("dtl::Patient::Pointer" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1973 2003])
+                    ("file_list" variable (:type ("std::vector" type
+                         (:template-specifier 
+                            ( ("std::string" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [2005 2040])
+                    ("user_name" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2042 2064])
+                    ("patient_list" variable (:type ("std::vector" type
+                         (:template-specifier 
+                            ( ("dtl::Patient::Pointer" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [2066 2114])
+                    ("map_tree_to_uid" variable (:type ("std::map" type
+                         (:template-specifier 
+                            ( ("wxTreeItemId" type nil nil nil)
+                              ("std::string" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [2117 2169])
+                    ("root_item_id" variable (:type ("wxTreeItemId" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2171 2197])
+                    ("study_item_id_list" variable (:type ("std::vector" type
+                         (:template-specifier 
+                            ( ("wxTreeItemId" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [2199 2243])
+                    ("is_select_children" variable (:type "bool") (reparse-symbol classsubparts) [2245 2269])
+                    ("exist_patient" variable (:type "bool") (reparse-symbol classsubparts) [2271 2290])
+                    ("is_import_from_server" variable (:type "bool") (reparse-symbol classsubparts) [2292 2319])
+                    ("is_new_patient" variable (:type "bool") (reparse-symbol classsubparts) [2321 2341])
+                    ("selected_server_patient" variable (:type "int") (reparse-symbol classsubparts) [2343 2371])
+                    ("patient_id" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2373 2396])
+                    ("server_aetitle" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2398 2425])
+                    ("local_aetitle" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2427 2453])
+                    ("ct_list" variable (:type ("std::vector" type
+                         (:template-specifier 
+                            ( ("dtl::CTVolume::Pointer" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [2456 2500])
+                    ("rtss_list" variable (:type ("std::vector" type
+                         (:template-specifier 
+                            ( ("dtl::RTStruct::Pointer" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [2502 2548])
+                    ("rtplan_list" variable (:type ("std::vector" type
+                         (:template-specifier 
+                            ( ("dtl::RTPlan::Pointer" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [2550 2596])
+                    ("rtdose_list" variable (:type ("std::vector" type
+                         (:template-specifier 
+                            ( ("dtl::RTDose::Pointer" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [2598 2644])
+                    ("grid_patient_" variable
+                       (:pointer 1
+                        :type ("GridPresenter" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [2647 2676])
+                    ("GridCtrlPatient" type
+                       (:superclasses 
+                          ( ("GridController" type
+                               (:protection "public"
+                                :type "class")
+                                nil nil))                          
+                        :members 
+                          ( ("public" label nil (reparse-symbol classsubparts) [2728 2735])
+                            ("GridCtrlPatient" function
+                               (:prototype-flag t
+                                :constructor-flag t
+                                :arguments 
+                                  ( ("dicom_import_view" variable
+                                       (:pointer 1
+                                        :type ("DicomImportView" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [2754 2789])
+                                    ("p" variable
+                                       (:pointer 1
+                                        :type ("rtGrid" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [2789 2799]))                                  
+                                :type ("GridCtrlPatient" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [2738 2800])
+                            ("OnSelect" function
+                               (:prototype-flag t
+                                :arguments 
+                                  ( ("row_" variable (:type "int") (reparse-symbol arg-sub-list) [2817 2826])
+                                    ("col_" variable (:type "int") (reparse-symbol arg-sub-list) [2826 2835]))                                  
+                                :type "bool")
+                                (reparse-symbol classsubparts) [2803 2836])
+                            ("ptr_dicom_import_view" variable
+                               (:pointer 1
+                                :type ("DicomImportView" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [2839 2878]))                          
+                        :type "class")
+                        (reparse-symbol classsubparts) [2679 2882])
+                    ("grid_ctrl" variable
+                       (:pointer 1
+                        :type ("GridCtrlPatient" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [2885 2912]))                  
+                :type "class")
+                nil [1033 2915]))          
+    :file "dicom_import_view.h"
+    :pointmax 2949
+    :fsize 2047
+    :lastmodtime '(21309 18939 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("__dicom_import_view__")
+          )
+
+    )
+   (semanticdb-table "dicom_export_view.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__dicom_export_view__" variable (:constant-flag t) nil [39 60])
+            ("patient_panel.h" include nil nil [144 170])
+            ("map" include (:system-flag t) nil [171 185])
+            ("vector" include (:system-flag t) nil [186 203])
+            ("DicomExportView" type
+               (:superclasses 
+                  ( ("DicomExportDialog" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("protected" label nil (reparse-symbol classsubparts) [322 332])
+                    ("bitmap_close_OnLeftDown" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxMouseEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [407 428]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [377 429])
+                    ("button_export_fileOnButtonClick" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxCommandEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [469 492]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [431 493])
+                    ("button_cancel_OnLeftDown" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxMouseEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [526 547]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [495 548])
+                    ("m_treeCtrl_patient_dataOnTreeSelChanged" function
+                       (:prototype-flag t
+                        :typemodifiers ("virtual")
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxTreeEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [604 624]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [550 625])
+                    ("m_treeCtrl_patient_dataOnTreeItemActivated" function
+                       (:prototype-flag t
+                        :typemodifiers ("virtual")
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxTreeEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [758 778]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [701 779])
+                    ("m_radioBtn_fileOnRadioButton" function
+                       (:prototype-flag t
+                        :typemodifiers ("virtual")
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxCommandEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [824 847]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [781 848])
+                    ("m_radioBtn_dicomOnRadioButton" function
+                       (:prototype-flag t
+                        :typemodifiers ("virtual")
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxCommandEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [894 917]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [850 918])
+                    ("dirPicker_import_pathOnDirChanged" function
+                       (:prototype-flag t
+                        :typemodifiers ("virtual")
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxFileDirPickerEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [968 997]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [920 998])
+                    ("public" label nil (reparse-symbol classsubparts) [1000 1007])
+                    ("DicomExportView" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :arguments 
+                          ( ("parent" variable
+                               (:pointer 1
+                                :type ("wxWindow" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1046 1064]))                          
+                        :type ("DicomExportView" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1029 1065])
+                    ("DicomExportView" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :arguments 
+                          ( ("parent" variable
+                               (:pointer 1
+                                :type ("wxWindow" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1084 1102])
+                            ("type_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1102 1120]))                          
+                        :type ("DicomExportView" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1067 1121])
+                    ("private" label nil (reparse-symbol classsubparts) [1157 1165])
+                    ("map_tree_to_uid" variable (:type ("std::map" type
+                         (:template-specifier 
+                            ( ("wxTreeItemId" type nil nil nil)
+                              ("std::string" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [1167 1219])
+                    ("root_item_id" variable (:type ("wxTreeItemId" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1221 1247])
+                    ("study_item_id_list" variable (:type ("std::vector" type
+                         (:template-specifier 
+                            ( ("wxTreeItemId" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [1249 1293])
+                    ("is_select_children" variable (:type "bool") (reparse-symbol classsubparts) [1295 1319])
+                    ("is_export_to_dicom_server" variable (:type "bool") (reparse-symbol classsubparts) [1321 1352])
+                    ("export_type" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1354 1378]))                  
+                :type "class")
+                nil [271 1381]))          
+    :file "dicom_export_view.h"
+    :pointmax 1415
+    :fsize 1459
+    :lastmodtime '(21306 8311 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("__dicom_export_view__")
+          )
+
+    )
+   (semanticdb-table "edit_patient_view.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__edit_patient_view__" variable (:constant-flag t) nil [39 60])
+            ("wx\\treebase.h" include nil nil [144 168])
+            ("patient_panel.h" include nil nil [169 195])
+            ("map" include (:system-flag t) nil [196 210])
+            ("vector" include (:system-flag t) nil [211 228])
+            ("EditPatientView" type
+               (:superclasses 
+                  ( ("EditPatientDialog" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("protected" label nil (reparse-symbol classsubparts) [347 357])
+                    ("bitmap_close_OnLeftDown" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxMouseEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [432 453]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [402 454])
+                    ("button_ok_OnButtonClick" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxCommandEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [486 509]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [456 510])
+                    ("m_button_deleteOnButtonClick" function
+                       (:prototype-flag t
+                        :typemodifiers ("virtual")
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxCommandEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [555 578]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [512 579])
+                    ("button_cancel_OnButtonClick" function
+                       (:prototype-flag t
+                        :typemodifiers ("virtual")
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxCommandEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [623 646]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [581 648])
+                    ("tree_patient_dataOnTreeSelChanged" function
+                       (:prototype-flag t
+                        :typemodifiers ("virtual")
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxTreeEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [698 718]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [650 719])
+                    ("public" label nil (reparse-symbol classsubparts) [720 727])
+                    ("EditPatientView" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :arguments 
+                          ( ("parent" variable
+                               (:pointer 1
+                                :type ("wxWindow" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [766 784]))                          
+                        :type ("EditPatientView" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [749 785])
+                    ("private" label nil (reparse-symbol classsubparts) [821 829])
+                    ("map_tree_to_uid" variable (:type ("std::map" type
+                         (:template-specifier 
+                            ( ("wxTreeItemId" type nil nil nil)
+                              ("std::string" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [831 883])
+                    ("uid_list_to_delete" variable (:type ("std::vector" type
+                         (:template-specifier 
+                            ( ("std::string" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [885 930])
+                    ("root_item_id" variable (:type ("wxTreeItemId" type (:type "class") nil nil)) (reparse-symbol classsubparts) [932 958])
+                    ("item_id" variable (:type ("wxTreeItemId" type (:type "class") nil nil)) (reparse-symbol classsubparts) [960 981])
+                    ("is_select_children" variable (:type "bool") (reparse-symbol classsubparts) [983 1007]))                  
+                :type "class")
+                nil [296 1011]))          
+    :file "edit_patient_view.h"
+    :pointmax 1045
+    :fsize 1084
+    :lastmodtime '(21306 8311 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("__edit_patient_view__")
+          )
+
+    )
+   (semanticdb-table "patient_model.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__rtsuite_patient_model_h__" variable (:constant-flag t) nil [45 72])
+            ("vector" include (:system-flag t) nil [74 91])
+            ("patient.h" include nil nil [92 112])
+            ("event.h" include nil nil [114 132])
+            ("PatientListEvent" type
+               (:superclasses 
+                  ( ("rtplatform::Event" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [186 193])
+                    ("Pointer" type
+                       (:typedef ("std::shared_ptr" type
+                             (:template-specifier 
+                                ( ("PatientListEvent" type nil nil nil))                                
+                              :type "class")
+                              nil nil)
+                        :superclasses "std::shared_ptr"
+                        :type "typedef")
+                        (reparse-symbol classsubparts) [195 245])
+                    ("New" function
+                       (:prototype-flag t
+                        :typemodifiers ("static")
+                        :arguments 
+                          ( ("pl" variable
+                               (:pointer 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("dtl::Patient::Pointer" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [266 305]))                          
+                        :type ("Pointer" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [247 306])
+                    ("get_patient_list" function
+                       (:pointer 1
+                        :type ("std::vector" type
+                             (:template-specifier 
+                                ( ("dtl::Patient::Pointer" type nil nil nil))                                
+                              :type "class")
+                              nil nil))
+                        (reparse-symbol classsubparts) [309 386])
+                    ("private" label nil (reparse-symbol classsubparts) [387 395])
+                    ("PatientListEvent" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :arguments 
+                          ( ("pl" variable
+                               (:pointer 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("dtl::Patient::Pointer" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [414 453]))                          
+                        :type ("PatientListEvent" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [397 454])
+                    ("patient_list_" variable
+                       (:pointer 1
+                        :type ("std::vector" type
+                             (:template-specifier 
+                                ( ("dtl::Patient::Pointer" type nil nil nil))                                
+                              :type "class")
+                              nil nil))
+                        (reparse-symbol classsubparts) [456 506]))                  
+                :type "class")
+                nil [134 509])
+            ("PatientModel" type
+               (:members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [532 539])
+                    ("PatientModel" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :type ("PatientModel" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [541 556])
+                    ("PatientModel" function
+                       (:prototype-flag t
+                        :destructor-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [558 574])
+                    ("get_patient_list_event" function (:type ("PatientListEvent::Pointer" type (:type "class") nil nil)) (reparse-symbol classsubparts) [687 766])
+                    ("UpdatePatientList" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("range_beg" variable (:type "int") (reparse-symbol arg-sub-list) [793 807])
+                            ("range_end" variable (:type "int") (reparse-symbol arg-sub-list) [809 823])
+                            ("search_string" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [827 853])
+                            ("sort_column_index" variable (:type "int") (reparse-symbol arg-sub-list) [858 880])
+                            ("is_increment" variable (:type "bool") (reparse-symbol arg-sub-list) [882 900])
+                            ("" variable (:type ("true" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [900 905]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [770 906])
+                    ("UpdateSelectedPatient" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("index" variable (:type "int") (reparse-symbol arg-sub-list) [935 945]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [908 946])
+                    ("update_patient_grid" function
+                       (:prototype-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [949 976])
+                    ("GetSelectedPatientIndex" function
+                       (:prototype-flag t
+                        :type "int")
+                        (reparse-symbol classsubparts) [978 1008])
+                    ("SelectDefaultPatient" function
+                       (:prototype-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [1013 1041])
+                    ("private" label nil (reparse-symbol classsubparts) [1045 1053])
+                    ("patient_list_" variable (:type ("std::vector" type
+                         (:template-specifier 
+                            ( ("dtl::Patient::Pointer" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [1113 1162])
+                    ("patient_list_event_" variable (:type ("PatientListEvent::Pointer" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1164 1210])
+                    ("selected_patient_id_" variable (:type "int") (reparse-symbol classsubparts) [1241 1266])
+                    ("user_name" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1271 1293]))                  
+                :type "class")
+                nil [511 1297]))          
+    :file "patient_model.h"
+    :pointmax 1307
+    :fsize 1357
+    :lastmodtime '(21308 51833 0 0)
+    :unmatched-syntax '((punctuation 899 . 900) (number 880 . 881) (punctuation 879 . 880) (string 853 . 855) (punctuation 852 . 853) (number 823 . 826) (punctuation 822 . 823) (number 807 . 808) (punctuation 806 . 807))
+    :lexical-table 
+        '(("__rtsuite_patient_model_h__")
+          )
+
+    )
+   (semanticdb-table "patient_view.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__patient_management_view__" variable (:constant-flag t) nil [45 72])
+            ("vector" include (:system-flag t) nil [74 91])
+            ("string" include (:system-flag t) nil [92 109])
+            ("patient_panel.h" include nil nil [192 218])
+            ("patient_model.h" include nil nil [219 245])
+            ("observer.h" include nil nil [246 267])
+            ("CTInfo" type
+               (:members 
+                  ( ("CTInfo" function
+                       (:constructor-flag t
+                        :type ("CTInfo" type (:type "struct") nil nil))
+                        (reparse-symbol classsubparts) [503 530])
+                    ("create_time_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [532 557])
+                    ("modality_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [559 581])
+                    ("patient_position_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [583 613])
+                    ("size_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [615 633])
+                    ("spacing_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [635 656])
+                    ("has_rtss" variable (:type "bool") (reparse-symbol classsubparts) [659 673])
+                    ("rtss_name_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [675 698])
+                    ("poi_size" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [700 721])
+                    ("roi_size" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [723 744])
+                    ("approve_status" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [746 773])
+                    ("approve_by_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [775 799])
+                    ("approve_time_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [801 827])
+                    ("refrence_plan_idx" variable (:type ("std::vector" type
+                         (:template-specifier 
+                            ( ("int" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [829 864]))                  
+                :type "struct")
+                nil [486 867])
+            ("PlanInfo" type
+               (:members 
+                  ( ("treatment_protocols_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [888 921])
+                    ("approval_status_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [923 952])
+                    ("approval_name_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [954 981])
+                    ("approval_time_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [983 1011]))                  
+                :type "struct")
+                nil [869 1014])
+            ("PatientListObserverGrid" type
+               (:superclasses 
+                  ( ("rtplatform::Observer" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [1079 1086])
+                    ("Pointer" type
+                       (:typedef ("std::shared_ptr" type
+                             (:template-specifier 
+                                ( ("PatientListObserverGrid" type nil nil nil))                                
+                              :type "class")
+                              nil nil)
+                        :superclasses "std::shared_ptr"
+                        :type "typedef")
+                        (reparse-symbol classsubparts) [1088 1145])
+                    ("New" function
+                       (:prototype-flag t
+                        :typemodifiers ("static")
+                        :arguments 
+                          ( ("e" variable (:type ("PatientListEvent::Pointer" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1166 1194])
+                            ("grid" variable
+                               (:pointer 1
+                                :type ("wxGrid" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1194 1207]))                          
+                        :type ("Pointer" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1147 1208])
+                    ("Update" function
+                       (:prototype-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [1210 1224])
+                    ("private" label nil (reparse-symbol classsubparts) [1226 1234])
+                    ("PatientListObserverGrid" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :arguments 
+                          ( ("e" variable (:type ("PatientListEvent::Pointer" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1260 1288])
+                            ("grid" variable
+                               (:pointer 1
+                                :type ("wxGrid" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1288 1301]))                          
+                        :type ("PatientListObserverGrid" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1236 1302])
+                    ("grid_" variable
+                       (:pointer 1
+                        :type ("wxGrid" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1304 1319]))                  
+                :type "class")
+                nil [1017 1322])
+            ("PatientView" type
+               (:superclasses 
+                  ( ("PatientPanel" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("protected" label nil (reparse-symbol classsubparts) [1366 1376])
+                    ("grid_patient_info_OnGridCellLeftClick" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxGridEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1465 1485]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1421 1486])
+                    ("grid_patient_info_OnGridLabelLeftClick" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxGridEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1534 1554]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1489 1555])
+                    ("m_bitmap_importOnLeftDown" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxMouseEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1590 1611]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1558 1612])
+                    ("m_bitmap_exportOnLeftDown" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxMouseEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1646 1667]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1614 1668])
+                    ("m_bitmap_edit_OnLeftDown" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxMouseEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1701 1722]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1670 1723])
+                    ("m_bitmap_deleteOnLeftDown" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxMouseEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1757 1778]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1725 1779])
+                    ("PatientPanelOnSize" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxSizeEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1807 1827]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1782 1829])
+                    ("importPath" variable (:type ("wxString" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1832 1852])
+                    ("text_ctrl_search_OnText" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxCommandEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1884 1907]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1854 1909])
+                    ("UpdateSelectedPatientInfo" function
+                       (:prototype-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [1913 1946])
+                    ("public" label nil (reparse-symbol classsubparts) [1947 1954])
+                    ("PatientView" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :arguments 
+                          ( ("parent" variable
+                               (:pointer 1
+                                :type ("wxWindow" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1969 1987]))                          
+                        :type ("PatientView" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1956 1988])
+                    ("PatientView" function
+                       (:prototype-flag t
+                        :destructor-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [1990 2005])
+                    ("InitiateGridLabelAndButtonImage" function
+                       (:prototype-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [2037 2076])
+                    ("update_patient_grid" function
+                       (:prototype-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [2133 2160])
+                    ("update_grid_size" function
+                       (:prototype-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [2162 2186])
+                    ("patient_select" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("patient_idx" variable (:type "int") (reparse-symbol arg-sub-list) [2208 2224]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [2188 2225])
+                    ("Scale_text" function
+                       (:prototype-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [2227 2245])
+                    ("UpdateFilterResult" function
+                       (:prototype-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [2247 2273])
+                    ("SelectDefaultPatient" function
+                       (:prototype-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [2275 2303])
+                    ("AddCTimageButton" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("id" variable (:type "int") (reparse-symbol arg-sub-list) [2328 2335])
+                            ("label" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2335 2353]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [2306 2354])
+                    ("ct_image_buttton_OnButtonClick" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxCommandEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [2393 2416]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [2356 2417])
+                    ("AddPlanButton" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("id" variable (:type "int") (reparse-symbol arg-sub-list) [2438 2445])
+                            ("label" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2445 2463]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [2419 2464])
+                    ("plan_buttton_OnButtonClick" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxCommandEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [2499 2522]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [2466 2523])
+                    ("display_ct_info" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("idx" variable (:type "int") (reparse-symbol arg-sub-list) [2547 2555]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [2526 2556])
+                    ("display_plan_info" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("idx" variable (:type "int") (reparse-symbol arg-sub-list) [2581 2589]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [2558 2590])
+                    ("private" label nil (reparse-symbol classsubparts) [2591 2599])
+                    ("patient_model_" variable (:type ("PatientModel" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2635 2663])
+                    ("patient_list_obs_grid_" variable (:type ("PatientListObserverGrid::Pointer" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2665 2721])
+                    ("sort_column_index" variable (:type "int") (reparse-symbol classsubparts) [2724 2746])
+                    ("is_increment" variable
+                       (:dereference 1
+                        :type "bool")
+                        (reparse-symbol classsubparts) [2748 2770])
+                    ("result_end" variable (:type "int") (reparse-symbol classsubparts) [2772 2800])
+                    ("result_begin" variable (:type "int") (reparse-symbol classsubparts) [2772 2800])
+                    ("gender" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2803 2822])
+                    ("approval_status" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2824 2852])
+                    ("search_string" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2854 2880])
+                    ("selectedRow" variable (:type "int") (reparse-symbol classsubparts) [2882 2898])
+                    ("ct_info_vec" variable (:type ("std::vector" type
+                         (:template-specifier 
+                            ( ("CTInfo" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [2901 2933])
+                    ("plan_info_vec" variable (:type ("std::vector" type
+                         (:template-specifier 
+                            ( ("PlanInfo" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [2935 2971])
+                    ("ct_info_button_vec" variable (:type ("std::vector" type
+                         (:template-specifier 
+                            ( ("wxButton" type (:pointer 1) nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [2974 3016])
+                    ("plan_info_button_vec" variable (:type ("std::vector" type
+                         (:template-specifier 
+                            ( ("wxButton" type (:pointer 1) nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [3018 3062]))                  
+                :type "class")
+                nil [1324 3066]))          
+    :file "patient_view.h"
+    :pointmax 3107
+    :fsize 3235
+    :lastmodtime '(21308 51833 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("__patient_management_view__")
+          )
+
+    )
+   (semanticdb-table "dicom_import_model.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__dicom_import_model_h__" variable (:constant-flag t) nil [42 66])
+            ("patient_panel.h" include nil nil [67 93])
+            ("patient_tree_model.h" include nil nil [94 125])
+            ("patient.h" include nil nil [126 146])
+            ("import_set_handler.h" include nil nil [147 178])
+            ("setting_handler.h" include nil nil [179 207])
+            ("pacs_request_handler.h" include nil nil [208 241])
+            ("scan_files_handler.h" include nil nil [242 273])
+            ("import_dicom_handler.h" include nil nil [274 307])
+            ("functional" include (:system-flag t) nil [308 329])
+            ("algorithm" include (:system-flag t) nil [330 350])
+            ("rt_model.h" include nil nil [351 372])
+            ("DicomImportModel" type
+               (:members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [398 405])
+                    ("DicomImportModel" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :type ("DicomImportModel" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [407 426])
+                    ("DicomImportModel" function
+                       (:prototype-flag t
+                        :destructor-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [428 448])
+                    ("Point" type
+                       (:typedef ("std::shared_ptr" type
+                             (:template-specifier 
+                                ( ("DicomImportModel" type nil nil nil))                                
+                              :type "class")
+                              nil nil)
+                        :superclasses "std::shared_ptr"
+                        :type "typedef")
+                        (reparse-symbol classsubparts) [450 498])
+                    ("GetPatientBasicInfoFromFiles" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("dir" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [534 550]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [500 551])
+                    ("GetPatient" function (:type ("dtl::Patient::Pointer" type (:type "class") nil nil)) (reparse-symbol classsubparts) [553 605])
+                    ("ScanDirectory" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("path_" variable (:type ("wxString" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [626 641])
+                            ("file_list" variable
+                               (:reference 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("std::string" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [641 676]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [607 677])
+                    ("patient_exist" function (:type "bool") (reparse-symbol classsubparts) [679 725])
+                    ("get_tree_model_" function (:type ("PatientTreeModel::Point" type (:type "class") nil nil)) (reparse-symbol classsubparts) [728 785])
+                    ("get_server_list" function
+                       (:pointer 1
+                        :type ("std::vector" type
+                             (:template-specifier 
+                                ( ("rtplatform::DicomServerInfo" type nil nil nil))                                
+                              :type "class")
+                              nil nil))
+                        (reparse-symbol classsubparts) [788 871])
+                    ("get_patient_list" function
+                       (:pointer 1
+                        :type ("std::vector" type
+                             (:template-specifier 
+                                ( ("dtl::Patient::Pointer" type nil nil nil))                                
+                              :type "class")
+                              nil nil))
+                        (reparse-symbol classsubparts) [873 951])
+                    ("private" label nil (reparse-symbol classsubparts) [952 960])
+                    ("model_" variable (:type ("PatientTreeModel::Point" type (:type "class") nil nil)) (reparse-symbol classsubparts) [962 993])
+                    ("patient_" variable (:type ("dtl::Patient::Pointer" type (:type "class") nil nil)) (reparse-symbol classsubparts) [995 1026])
+                    ("user_name" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1028 1050])
+                    ("server_list" variable (:type ("std::vector" type
+                         (:template-specifier 
+                            ( ("rtplatform::DicomServerInfo" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [1052 1106])
+                    ("patient_list" variable (:type ("std::vector" type
+                         (:template-specifier 
+                            ( ("dtl::Patient::Pointer" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [1108 1156])
+                    ("file_list" variable (:type ("std::vector" type
+                         (:template-specifier 
+                            ( ("std::string" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [1158 1193])
+                    ("is_exist_patient" variable (:type "bool") (reparse-symbol classsubparts) [1195 1217]))                  
+                :type "class")
+                nil [373 1221]))          
+    :file "dicom_import_model.h"
+    :pointmax 1231
+    :fsize 1271
+    :lastmodtime '(21309 12254 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("__dicom_import_model_h__")
+          )
+
+    )
+   (semanticdb-table "approve_view.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__appreve_view__" variable (:constant-flag t) nil [34 50])
+            ("patient_panel.h" include nil nil [134 160])
+            ("ApproveView" type
+               (:superclasses 
+                  ( ("ApproveDialog" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("protected" label nil (reparse-symbol classsubparts) [272 282])
+                    ("bitmap_close_OnLeftDown" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxMouseEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [359 380]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [329 381])
+                    ("button_ok_OnButtonClick" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxCommandEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [414 437]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [384 438])
+                    ("button_cancleOnButtonClick" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxCommandEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [474 497]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [441 498])
+                    ("public" label nil (reparse-symbol classsubparts) [500 507])
+                    ("ApproveView" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :arguments 
+                          ( ("parent" variable
+                               (:pointer 1
+                                :type ("wxWindow" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [544 562]))                          
+                        :type ("ApproveView" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [531 563])
+                    ("ApproveView" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :arguments 
+                          ( ("parent" variable
+                               (:pointer 1
+                                :type ("wxWindow" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [579 597])
+                            ("approval_obj" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [597 622]))                          
+                        :type ("ApproveView" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [566 623])
+                    ("approval_object" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [626 654]))                  
+                :type "class")
+                nil [228 693]))          
+    :file "approve_view.h"
+    :pointmax 722
+    :fsize 751
+    :lastmodtime '(21306 8311 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("__appreve_view__")
+          )
+
+    )
+   (semanticdb-table "dicom_import_model.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("dicom_import_model.h" include nil nil [1 32])
+            ("setting_handler.h" include nil nil [33 61])
+            ("wx\\dir.h" include nil nil [62 81])
+            ("DicomImportModel" function
+               (:constructor-flag t
+                :parent "DicomImportModel"
+                :type ("DicomImportModel" type (:type "class") nil nil))
+                nil [83 379])
+            ("DicomImportModel" function
+               (:destructor-flag t
+                :parent "DicomImportModel"
+                :type "void")
+                nil [381 422])
+            ("ScanDirectory" function
+               (:parent "DicomImportModel"
+                :arguments 
+                  ( ("path_" variable (:type ("wxString" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [460 475])
+                    ("file_list" variable
+                       (:reference 1
+                        :type ("std::vector" type
+                             (:template-specifier 
+                                ( ("std::string" type nil nil nil))                                
+                              :type "class")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [475 510]))                  
+                :type "void")
+                nil [423 966])
+            ("GetPatientBasicInfoFromFiles" function
+               (:parent "DicomImportModel"
+                :arguments 
+                  ( ("dir" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1021 1038]))                  
+                :type "bool")
+                nil [968 1363]))          
+    :file "dicom_import_model.cpp"
+    :pointmax 1364
+    :fsize 1412
+    :lastmodtime '(21309 12254 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "patient_tree_model.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__patient_tree_model_h__" variable (:constant-flag t) nil [43 67])
+            ("patient.h" include nil nil [68 88])
+            ("wx\\treebase.h" include nil nil [89 113])
+            ("map" include (:system-flag t) nil [114 128])
+            ("patient.h" include nil nil [129 149])
+            ("study.h" include nil nil [150 168])
+            ("series.h" include nil nil [169 188])
+            ("rtstruct.h" include nil nil [189 210])
+            ("rtplan.h" include nil nil [211 230])
+            ("rtdose.h" include nil nil [231 250])
+            ("ctvolume.h" include nil nil [251 272])
+            ("wxTreeTextCtrl" type
+               (:prototype t
+                :type "class")
+                nil [273 294])
+            ("PatientTreeModel" type
+               (:members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [320 327])
+                    ("Point" type
+                       (:typedef ("std::shared_ptr" type
+                             (:template-specifier 
+                                ( ("PatientTreeModel" type nil nil nil))                                
+                              :type "class")
+                              nil nil)
+                        :superclasses "std::shared_ptr"
+                        :type "typedef")
+                        (reparse-symbol classsubparts) [329 377])
+                    ("PatientTreeModel" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :type ("PatientTreeModel" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [379 398])
+                    ("PatientTreeModel" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :arguments 
+                          ( ("p" variable (:type ("dtl::Patient::Pointer" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [417 441]))                          
+                        :type ("PatientTreeModel" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [400 442])
+                    ("TreeNode" type
+                       (:members 
+                          ( ("public" label nil (reparse-symbol classsubparts) [463 470])
+                            ("name_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [473 491])
+                            ("id" variable (:type ("wxTreeItemId" type (:type "class") nil nil)) (reparse-symbol classsubparts) [494 510])
+                            ("series_uid" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [513 536])
+                            ("selected_" variable (:type "bool") (reparse-symbol classsubparts) [539 554])
+                            ("children_" variable (:type ("std::vector" type
+                                 (:template-specifier 
+                                    ( ("TreeNode" type nil nil nil))                                    
+                                  :type "class")
+                                  nil nil)) (reparse-symbol classsubparts) [557 589]))                          
+                        :type "class")
+                        (reparse-symbol classsubparts) [444 593])
+                    ("BuildFullTree" function
+                       (:prototype-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [595 616])
+                    ("BuildSeriesTree" function
+                       (:prototype-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [618 641])
+                    ("ClearMap" function
+                       (:prototype-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [643 659])
+                    ("AddMap" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("id" variable (:type ("wxTreeItemId" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [673 689])
+                            ("node" variable
+                               (:reference 1
+                                :type ("TreeNode" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [689 704]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [661 705])
+                    ("GetTreeNodeByItemId" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("id" variable (:type ("wxTreeItemId" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [735 751])
+                            ("node" variable
+                               (:reference 1
+                                :type ("TreeNode" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [751 766]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [710 767])
+                    ("get_root" function (:type ("TreeNode" type (:type "class") nil nil)) (reparse-symbol classsubparts) [769 804])
+                    ("private" label nil (reparse-symbol classsubparts) [805 813])
+                    ("ct_list" variable (:type ("std::vector" type
+                         (:template-specifier 
+                            ( ("dtl::CTVolume::Pointer" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [815 859])
+                    ("rtss_list" variable (:type ("std::vector" type
+                         (:template-specifier 
+                            ( ("dtl::RTStruct::Pointer" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [861 907])
+                    ("rtplan_list" variable (:type ("std::vector" type
+                         (:template-specifier 
+                            ( ("dtl::RTPlan::Pointer" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [909 955])
+                    ("rtdose_list" variable (:type ("std::vector" type
+                         (:template-specifier 
+                            ( ("dtl::RTDose::Pointer" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [957 1003])
+                    ("patient_" variable (:type ("dtl::Patient::Pointer" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1005 1036])
+                    ("root_" variable (:type ("TreeNode" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1038 1053])
+                    ("map_tree_id_to_item" variable (:type ("std::map" type
+                         (:template-specifier 
+                            ( ("wxTreeItemId" type nil nil nil)
+                              ("TreeNode" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [1055 1107]))                  
+                :type "class")
+                nil [295 1110]))          
+    :file "patient_tree_model.h"
+    :pointmax 1118
+    :fsize 1160
+    :lastmodtime '(21309 19720 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("__patient_tree_model_h__")
+          )
+
+    )
+   (semanticdb-table "patient_tree_model.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("patient_tree_model.h" include nil nil [2 33])
+            ("wx/treectrl.h" include nil nil [34 58])
+            ("dtl" using (:type ("dtl" type
+                 (:prototype t
+                  :type "namespace")
+                  nil nil)) nil [59 79])
+            ("std" using (:type ("std" type
+                 (:prototype t
+                  :type "namespace")
+                  nil nil)) nil [80 100])
+            ("BuildFullTree" function
+               (:parent "PatientTreeModel"
+                :type "void")
+                nil [101 3217])
+            ("BuildSeriesTree" function
+               (:parent "PatientTreeModel"
+                :type "void")
+                nil [3219 3264])
+            ("PatientTreeModel" function
+               (:constructor-flag t
+                :parent "PatientTreeModel"
+                :type ("PatientTreeModel" type (:type "class") nil nil))
+                nil [3266 3307])
+            ("PatientTreeModel" function
+               (:constructor-flag t
+                :parent "PatientTreeModel"
+                :arguments 
+                  ( ("p" variable (:type ("dtl::Patient::Pointer" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3344 3368]))                  
+                :type ("PatientTreeModel" type (:type "class") nil nil))
+                nil [3309 3385])
+            ("ClearMap" function
+               (:parent "PatientTreeModel"
+                :type "void")
+                nil [3386 3453])
+            ("AddMap" function
+               (:parent "PatientTreeModel"
+                :arguments 
+                  ( ("id" variable (:type ("wxTreeItemId" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3486 3502])
+                    ("node" variable
+                       (:reference 1
+                        :type ("TreeNode" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3502 3518]))                  
+                :type "void")
+                nil [3455 3589])
+            ("GetTreeNodeByItemId" function
+               (:parent "PatientTreeModel"
+                :arguments 
+                  ( ("id" variable (:type ("wxTreeItemId" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3635 3651])
+                    ("node" variable
+                       (:reference 1
+                        :type ("TreeNode" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [3651 3667]))                  
+                :type "bool")
+                nil [3591 3855]))          
+    :file "patient_tree_model.cpp"
+    :pointmax 3856
+    :fsize 3986
+    :lastmodtime '(21309 19720 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "dicom_import_control.h"
+    :major-mode 'c++-mode
+    :tags nil
+    :file "dicom_import_control.h"
+    :pointmax 1
+    :fsize 302
+    :lastmodtime '(21309 1705 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "dicom_import_control.cpp"
+    :major-mode 'c++-mode
+    :tags nil
+    :file "dicom_import_control.cpp"
+    :pointmax 1
+    :fsize 134
+    :lastmodtime '(21309 1705 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "patient_tree_view.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__patient_tree_view_h__" variable (:constant-flag t) nil [41 64])
+            ("map" include (:system-flag t) nil [65 79])
+            ("patient_tree_model.h" include nil nil [80 111])
+            ("wx\\wx.h" include nil nil [112 130])
+            ("wx\\treectrl.h" include nil nil [131 155])
+            ("PatientTreeView" type
+               (:members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [181 188])
+                    ("PatientTreeView" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :arguments 
+                          ( ("ctrl" variable
+                               (:pointer 1
+                                :type ("wxTreeCtrl" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [206 223]))                          
+                        :type ("PatientTreeView" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [190 224])
+                    ("Render" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("model_in" variable (:type ("PatientTreeModel::Point" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [238 271]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [226 272])
+                    ("select_event" function
+                       (:prototype-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [274 294])
+                    ("private" label nil (reparse-symbol classsubparts) [295 303])
+                    ("tree_ctrl" variable
+                       (:pointer 1
+                        :type ("wxTreeCtrl" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [306 328])
+                    ("model_" variable (:type ("PatientTreeModel::Point" type (:type "class") nil nil)) (reparse-symbol classsubparts) [330 361])
+                    ("add_node_to_tree" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("ctrl_" variable
+                               (:pointer 1
+                                :type ("wxTreeCtrl" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [388 406])
+                            ("root_id" variable (:type ("wxTreeItemId" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [406 427])
+                            ("node" variable
+                               (:reference 1
+                                :type ("PatientTreeModel::TreeNode" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [427 460]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [366 461]))                  
+                :type "class")
+                nil [156 464]))          
+    :file "patient_tree_view.h"
+    :pointmax 471
+    :fsize 487
+    :lastmodtime '(21309 9275 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("__patient_tree_view_h__")
+          )
+
+    )
+   (semanticdb-table "patient_tree_view.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("patient_tree_view.h" include nil nil [1 31])
+            ("select_event" function
+               (:parent "PatientTreeView"
+                :type "void")
+                nil [32 73])
+            ("Render" function
+               (:parent "PatientTreeView"
+                :arguments 
+                  ( ("model_in" variable (:type ("PatientTreeModel::Point" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [104 137]))                  
+                :type "void")
+                nil [75 475])
+            ("PatientTreeView" function
+               (:constructor-flag t
+                :parent "PatientTreeView"
+                :arguments 
+                  ( ("ctrl" variable
+                       (:pointer 1
+                        :type ("wxTreeCtrl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [511 528]))                  
+                :type ("PatientTreeView" type (:type "class") nil nil))
+                nil [477 551])
+            ("add_node_to_tree" function
+               (:parent "PatientTreeView"
+                :arguments 
+                  ( ("ctrl_" variable
+                       (:pointer 1
+                        :type ("wxTreeCtrl" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [592 610])
+                    ("root_id" variable (:type ("wxTreeItemId" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [610 631])
+                    ("node" variable
+                       (:reference 1
+                        :type ("PatientTreeModel::TreeNode" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [631 664]))                  
+                :type "void")
+                nil [553 866]))          
+    :file "patient_tree_view.cpp"
+    :pointmax 868
+    :fsize 904
+    :lastmodtime '(21309 11580 0 0)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!drive_d!work!rtsuite-new!rtsuite!patient!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

@@ -1,0 +1,61 @@
+;; Object gsl-mode/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "gsl-mode/"
+  :tables (list 
+   (semanticdb-table "gsl-mode.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("xml" include nil nil [975 989])
+            ("json" include nil nil [990 1005])
+            ("gsl-mode-hook" variable (:user-visible-flag t) nil [1008 1088])
+            ("gsl-mode-map" variable nil nil [1090 1140])
+            ("if" code nil nil [1142 1255])
+            ("gsl-header-configuration-name" variable
+               (:constant-flag t
+                :default-value "http://www.gomez.com/headers")
+                nil [1281 1430])
+            ("gsl-summary-region" variable nil nil [1465 1530])
+            ("gsl-summary-format-config" variable
+               (:constant-flag t
+                :default-value (quote (:flag "C> " :align 50 :delimiter "=> ")))
+                nil [1561 1670])
+            ("gsl-summary-format-header" variable
+               (:constant-flag t
+                :default-value (quote (:flag "H> " :align 20 :delimiter "=> ")))
+                nil [1672 1775])
+            ("gsl-summary-format-property" variable
+               (:constant-flag t
+                :default-value (quote (:flag "P> " :align 20 :delimiter "=> ")))
+                nil [1777 1881])
+            ("gsl-summary-format-action-item" variable
+               (:constant-flag t
+                :default-value (quote (:flag ":" :align 20 :delimiter "=> ")))
+                nil [1883 1988])
+            ("gsl-summary-step-base" variable
+               (:constant-flag t
+                :default-value 1)
+                nil [1990 2057])
+            ("gsl-summary-action-base" variable
+               (:constant-flag t
+                :default-value 1)
+                nil [2059 2130])
+            ("gsl-mode" function (:user-visible-flag t) nil [2132 2485])
+            ("gsl-summary-from-buffer" function (:user-visible-flag t) nil [2488 3287])
+            ("gsl-summary-generate-content" function (:arguments ("txn")) nil [3290 4066])
+            ("gsl-summary-insert-json-script" function (:arguments ("step-node" "step-indent")) nil [4069 4708])
+            ("gsl-summary-insert-action" function (:arguments ("action" "action-indent")) nil [4710 5344])
+            ("gsl-summary-b64-decode" function (:arguments ("b64-script")) nil [5346 5561])
+            ("gsl-summary-gen-fmt" function (:arguments ("fmt-plist" "indent")) nil [5563 5928])
+            ("gsl-summary-insert-properties" function (:arguments ("node" "indent-length" "exclude-items")) nil [5930 6494])
+            ("gsl-summary-insert-configurations" function (:arguments ("node" "indent-length")) nil [6497 7365]))          
+    :file "gsl-mode.el"
+    :pointmax 7390
+    :fsize 7610
+    :lastmodtime '(21005 33503 0 0)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!drive_c!Users!hyphen!.emacs.d!plugins!gsl-mode!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

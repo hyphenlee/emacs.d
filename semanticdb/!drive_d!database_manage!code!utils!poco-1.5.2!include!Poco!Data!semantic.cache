@@ -1,0 +1,545 @@
+;; Object Data/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "Data/"
+  :tables (list 
+   (semanticdb-table "Statement.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("Data_Statement_INCLUDED" variable (:constant-flag t) nil [1671 1694])
+            ("Poco/Data/Data.h" include nil nil [1697 1724])
+            ("Poco/Data/StatementImpl.h" include nil nil [1725 1761])
+            ("Poco/Data/Binding.h" include nil nil [1762 1792])
+            ("Poco/Data/Range.h" include nil nil [1793 1821])
+            ("Poco/Data/Bulk.h" include nil nil [1822 1849])
+            ("Poco/Data/Row.h" include nil nil [1850 1876])
+            ("Poco/Data/SimpleRowFormatter.h" include nil nil [1877 1918])
+            ("Poco/SharedPtr.h" include nil nil [1919 1946])
+            ("Poco/Mutex.h" include nil nil [1947 1970])
+            ("Poco/ActiveMethod.h" include nil nil [1971 2001])
+            ("Poco/ActiveResult.h" include nil nil [2002 2032])
+            ("Poco/Format.h" include nil nil [2033 2057])
+            ("algorithm" include (:system-flag t) nil [2058 2078])
+            ("Poco" type
+               (:members 
+                  ( ("Data" type
+                       (:members 
+                          ( ("AbstractBinding" type
+                               (:prototype t
+                                :type "class")
+                                (reparse-symbol namespacesubparts) [2117 2139])
+                            ("AbstractExtraction" type
+                               (:prototype t
+                                :type "class")
+                                (reparse-symbol namespacesubparts) [2140 2165])
+                            ("Session" type
+                               (:prototype t
+                                :type "class")
+                                (reparse-symbol namespacesubparts) [2166 2180])
+                            ("Limit" type
+                               (:prototype t
+                                :type "class")
+                                (reparse-symbol namespacesubparts) [2181 2193])
+                            ("Statement" variable (:type ("Data_API" type
+                                 (:prototype t
+                                  :type "class")
+                                  nil nil)) (reparse-symbol namespacesubparts) [2196 16801])
+                            ("subTotalRowCount" function
+                               (:parent "Statement"
+                                :typemodifiers ("inline")
+                                :arguments 
+                                  ( ("dataSet" variable (:type "int") (reparse-symbol arg-sub-list) [16865 16877]))                                  
+                                :type ("std::size_t" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [16818 16930])
+                            ("Keywords" type
+                               (:members 
+                                  ( ("now" function
+                                       (:arguments 
+                                          ( ("statement" variable
+                                               (:reference 1
+                                                :type ("Statement" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [17004 17025]))                                          
+                                        :type ("Data_API" type (:type "class") nil nil))
+                                        (reparse-symbol namespacesubparts) [16991 17176])
+                                    ("sync" function
+                                       (:arguments 
+                                          ( ("statement" variable
+                                               (:reference 1
+                                                :type ("Statement" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [17205 17226]))                                          
+                                        :type ("Data_API" type (:type "class") nil nil))
+                                        (reparse-symbol namespacesubparts) [17191 17470])
+                                    ("async" function
+                                       (:arguments 
+                                          ( ("statement" variable
+                                               (:reference 1
+                                                :type ("Statement" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [17500 17521]))                                          
+                                        :type ("Data_API" type (:type "class") nil nil))
+                                        (reparse-symbol namespacesubparts) [17485 17622])
+                                    ("deque" function
+                                       (:arguments 
+                                          ( ("statement" variable
+                                               (:reference 1
+                                                :type ("Statement" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [17652 17673]))                                          
+                                        :type ("Data_API" type (:type "class") nil nil))
+                                        (reparse-symbol namespacesubparts) [17637 17999])
+                                    ("vector" function
+                                       (:arguments 
+                                          ( ("statement" variable
+                                               (:reference 1
+                                                :type ("Statement" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [18030 18051]))                                          
+                                        :type ("Data_API" type (:type "class") nil nil))
+                                        (reparse-symbol namespacesubparts) [18014 18231])
+                                    ("list" function
+                                       (:arguments 
+                                          ( ("statement" variable
+                                               (:reference 1
+                                                :type ("Statement" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [18260 18281]))                                          
+                                        :type ("Data_API" type (:type "class") nil nil))
+                                        (reparse-symbol namespacesubparts) [18246 18457])
+                                    ("reset" function
+                                       (:arguments 
+                                          ( ("statement" variable
+                                               (:reference 1
+                                                :type ("Statement" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [18487 18508]))                                          
+                                        :type ("Data_API" type (:type "class") nil nil))
+                                        (reparse-symbol namespacesubparts) [18472 18736]))                                  
+                                :type "namespace")
+                                (reparse-symbol namespacesubparts) [16933 18740])
+                            ("," function
+                               (:operator-flag t
+                                :parent "Statement"
+                                :typemodifiers ("inline")
+                                :arguments 
+                                  ( ("pRowFformatter" variable (:type ("RowFormatter::Ptr" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [18824 18857]))                                  
+                                :type ("Statement" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [18783 18910])
+                            ("," function
+                               (:operator-flag t
+                                :parent "Statement"
+                                :typemodifiers ("inline")
+                                :arguments 
+                                  ( ("value" variable (:type "char") (reparse-symbol arg-sub-list) [18954 18965]))                                  
+                                :type ("Statement" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [18913 18998])
+                            ("," function
+                               (:operator-flag t
+                                :parent "Statement"
+                                :typemodifiers ("inline")
+                                :arguments 
+                                  ( ("value" variable (:type ("Poco::UInt8" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [19042 19060]))                                  
+                                :type ("Statement" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [19001 19093])
+                            ("," function
+                               (:operator-flag t
+                                :parent "Statement"
+                                :typemodifiers ("inline")
+                                :arguments 
+                                  ( ("value" variable (:type ("Poco::Int8" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [19137 19154]))                                  
+                                :type ("Statement" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [19096 19187])
+                            ("," function
+                               (:operator-flag t
+                                :parent "Statement"
+                                :typemodifiers ("inline")
+                                :arguments 
+                                  ( ("value" variable (:type ("Poco::UInt16" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [19231 19250]))                                  
+                                :type ("Statement" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [19190 19283])
+                            ("," function
+                               (:operator-flag t
+                                :parent "Statement"
+                                :typemodifiers ("inline")
+                                :arguments 
+                                  ( ("value" variable (:type ("Poco::Int16" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [19327 19345]))                                  
+                                :type ("Statement" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [19286 19378])
+                            ("," function
+                               (:operator-flag t
+                                :parent "Statement"
+                                :typemodifiers ("inline")
+                                :arguments 
+                                  ( ("value" variable (:type ("Poco::UInt32" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [19422 19441]))                                  
+                                :type ("Statement" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [19381 19474])
+                            ("," function
+                               (:operator-flag t
+                                :parent "Statement"
+                                :typemodifiers ("inline")
+                                :arguments 
+                                  ( ("value" variable (:type ("Poco::Int32" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [19518 19536]))                                  
+                                :type ("Statement" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [19477 19569])
+                            ("," function
+                               (:operator-flag t
+                                :parent "Statement"
+                                :typemodifiers ("inline")
+                                :arguments 
+                                  ( ("value" variable (:type "long") (reparse-symbol arg-sub-list) [19641 19652]))                                  
+                                :type ("Statement" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [19600 19685])
+                            ("," function
+                               (:operator-flag t
+                                :parent "Statement"
+                                :typemodifiers ("inline")
+                                :arguments 
+                                  ( ("value" variable (:type "unsigned long") (reparse-symbol arg-sub-list) [19729 19749]))                                  
+                                :type ("Statement" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [19688 19782])
+                            ("," function
+                               (:operator-flag t
+                                :parent "Statement"
+                                :typemodifiers ("inline")
+                                :arguments 
+                                  ( ("value" variable (:type ("Poco::UInt64" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [19833 19852]))                                  
+                                :type ("Statement" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [19792 19885])
+                            ("," function
+                               (:operator-flag t
+                                :parent "Statement"
+                                :typemodifiers ("inline")
+                                :arguments 
+                                  ( ("value" variable (:type ("Poco::Int64" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [19929 19947]))                                  
+                                :type ("Statement" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [19888 19980])
+                            ("," function
+                               (:operator-flag t
+                                :parent "Statement"
+                                :typemodifiers ("inline")
+                                :arguments 
+                                  ( ("value" variable (:type "double") (reparse-symbol arg-sub-list) [20024 20037]))                                  
+                                :type ("Statement" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [19983 20070])
+                            ("," function
+                               (:operator-flag t
+                                :parent "Statement"
+                                :typemodifiers ("inline")
+                                :arguments 
+                                  ( ("value" variable (:type "float") (reparse-symbol arg-sub-list) [20114 20126]))                                  
+                                :type ("Statement" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [20073 20159])
+                            ("," function
+                               (:operator-flag t
+                                :parent "Statement"
+                                :typemodifiers ("inline")
+                                :arguments 
+                                  ( ("value" variable (:type "bool") (reparse-symbol arg-sub-list) [20203 20214]))                                  
+                                :type ("Statement" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [20162 20247])
+                            ("," function
+                               (:operator-flag t
+                                :parent "Statement"
+                                :typemodifiers ("inline")
+                                :arguments 
+                                  ( ("value" variable
+                                       (:reference 1
+                                        :constant-flag t
+                                        :type ("std::string" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [20291 20316]))                                  
+                                :type ("Statement" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [20250 20349])
+                            ("," function
+                               (:operator-flag t
+                                :parent "Statement"
+                                :typemodifiers ("inline")
+                                :arguments 
+                                  ( ("value" variable
+                                       (:pointer 1
+                                        :constant-flag t
+                                        :type "char")
+                                        (reparse-symbol arg-sub-list) [20393 20411]))                                  
+                                :type ("Statement" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [20352 20457])
+                            ("removeBind" function
+                               (:parent "Statement"
+                                :typemodifiers ("inline")
+                                :arguments 
+                                  ( ("name" variable
+                                       (:reference 1
+                                        :constant-flag t
+                                        :type ("std::string" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [20494 20518]))                                  
+                                :type "void")
+                                (reparse-symbol namespacesubparts) [20460 20549])
+                            ("," function
+                               (:operator-flag t
+                                :parent "Statement"
+                                :typemodifiers ("inline")
+                                :arguments 
+                                  ( ("pBind" variable (:type ("AbstractBinding::Ptr" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [20593 20620]))                                  
+                                :type ("Statement" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [20552 20648])
+                            ("," function
+                               (:operator-flag t
+                                :parent "Statement"
+                                :typemodifiers ("inline")
+                                :arguments 
+                                  ( ("bindVec" variable
+                                       (:reference 1
+                                        :type ("AbstractBindingVec" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [20692 20720]))                                  
+                                :type ("Statement" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [20651 20760])
+                            ("," function
+                               (:operator-flag t
+                                :parent "Statement"
+                                :typemodifiers ("inline")
+                                :arguments 
+                                  ( ("pExtract" variable (:type ("AbstractExtraction::Ptr" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [20804 20837]))                                  
+                                :type ("Statement" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [20763 20871])
+                            ("," function
+                               (:operator-flag t
+                                :parent "Statement"
+                                :typemodifiers ("inline")
+                                :arguments 
+                                  ( ("extVec" variable
+                                       (:reference 1
+                                        :type ("AbstractExtractionVec" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [20915 20945]))                                  
+                                :type ("Statement" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [20874 20987])
+                            ("," function
+                               (:operator-flag t
+                                :parent "Statement"
+                                :typemodifiers ("inline")
+                                :arguments 
+                                  ( ("extVecVec" variable
+                                       (:reference 1
+                                        :type ("AbstractExtractionVecVec" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [21031 21067]))                                  
+                                :type ("Statement" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [20990 21106])
+                            ("impl" function
+                               (:parent "Statement"
+                                :typemodifiers ("inline")
+                                :type ("Statement::ImplPtr" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [21109 21178])
+                            ("toString" function
+                               (:parent "Statement"
+                                :typemodifiers ("inline")
+                                :constant-flag t
+                                :type ("std::string" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [21181 21280])
+                            ("extractions" function
+                               (:parent "Statement"
+                                :typemodifiers ("inline")
+                                :constant-flag t
+                                :type ("AbstractExtractionVec" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [21282 21383])
+                            ("metaColumn" function
+                               (:parent "Statement"
+                                :typemodifiers ("inline")
+                                :constant-flag t
+                                :arguments 
+                                  ( ("pos" variable (:type ("std::size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [21433 21449]))                                  
+                                :type ("MetaColumn" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [21386 21492])
+                            ("metaColumn" function
+                               (:parent "Statement"
+                                :typemodifiers ("inline")
+                                :constant-flag t
+                                :arguments 
+                                  ( ("name" variable
+                                       (:reference 1
+                                        :constant-flag t
+                                        :type ("std::string" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [21542 21566]))                                  
+                                :type ("MetaColumn" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [21495 21610])
+                            ("setStorage" function
+                               (:parent "Statement"
+                                :typemodifiers ("inline")
+                                :arguments 
+                                  ( ("storage" variable
+                                       (:reference 1
+                                        :constant-flag t
+                                        :type ("std::string" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [21647 21674]))                                  
+                                :type "void")
+                                (reparse-symbol namespacesubparts) [21613 21708])
+                            ("extractionCount" function
+                               (:parent "Statement"
+                                :typemodifiers ("inline")
+                                :type ("std::size_t" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [21711 21803])
+                            ("columnsExtracted" function
+                               (:parent "Statement"
+                                :typemodifiers ("inline")
+                                :arguments 
+                                  ( ("dataSet" variable (:type "int") (reparse-symbol arg-sub-list) [21853 21865]))                                  
+                                :type ("std::size_t" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [21806 21918])
+                            ("rowsExtracted" function
+                               (:parent "Statement"
+                                :typemodifiers ("inline")
+                                :arguments 
+                                  ( ("dataSet" variable (:type "int") (reparse-symbol arg-sub-list) [21965 21977]))                                  
+                                :type ("std::size_t" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [21921 22027])
+                            ("dataSetCount" function
+                               (:parent "Statement"
+                                :typemodifiers ("inline")
+                                :type ("std::size_t" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [22030 22116])
+                            ("nextDataSet" function
+                               (:parent "Statement"
+                                :typemodifiers ("inline")
+                                :type ("std::size_t" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [22119 22205])
+                            ("previousDataSet" function
+                               (:parent "Statement"
+                                :typemodifiers ("inline")
+                                :type ("std::size_t" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [22208 22302])
+                            ("hasMoreDataSets" function
+                               (:parent "Statement"
+                                :typemodifiers ("inline")
+                                :type "bool")
+                                (reparse-symbol namespacesubparts) [22305 22390])
+                            ("storage" function
+                               (:parent "Statement"
+                                :typemodifiers ("inline")
+                                :type ("Statement::Storage" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [22393 22501])
+                            ("canModifyStorage" function
+                               (:parent "Statement"
+                                :typemodifiers ("inline")
+                                :type "bool")
+                                (reparse-symbol namespacesubparts) [22504 22612])
+                            ("initialized" function
+                               (:parent "Statement"
+                                :typemodifiers ("inline")
+                                :type "bool")
+                                (reparse-symbol namespacesubparts) [22615 22716])
+                            ("paused" function
+                               (:parent "Statement"
+                                :typemodifiers ("inline")
+                                :type "bool")
+                                (reparse-symbol namespacesubparts) [22719 22810])
+                            ("done" function
+                               (:parent "Statement"
+                                :typemodifiers ("inline")
+                                :type "bool")
+                                (reparse-symbol namespacesubparts) [22813 22900])
+                            ("isNull" function
+                               (:parent "Statement"
+                                :typemodifiers ("inline")
+                                :arguments 
+                                  ( ("col" variable (:type ("std::size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [22933 22949])
+                                    ("row" variable (:type ("std::size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [22950 22966]))                                  
+                                :type "bool")
+                                (reparse-symbol namespacesubparts) [22903 23010])
+                            ("isBulkExtraction" function
+                               (:parent "Statement"
+                                :typemodifiers ("inline")
+                                :type "bool")
+                                (reparse-symbol namespacesubparts) [23013 23100])
+                            ("isAsync" function
+                               (:parent "Statement"
+                                :typemodifiers ("inline")
+                                :type "bool")
+                                (reparse-symbol namespacesubparts) [23103 23161])
+                            ("setRowFormatter" function
+                               (:parent "Statement"
+                                :typemodifiers ("inline")
+                                :arguments 
+                                  ( ("pRowFormatter" variable (:type ("RowFormatter::Ptr" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [23203 23235]))                                  
+                                :type "void")
+                                (reparse-symbol namespacesubparts) [23164 23272])
+                            ("getRowFormatter" function
+                               (:parent "Statement"
+                                :typemodifiers ("inline")
+                                :constant-flag t
+                                :type ("RowFormatter::Ptr" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [23275 23426])
+                            ("swap" function
+                               (:typemodifiers ("inline")
+                                :arguments 
+                                  ( ("s1" variable
+                                       (:reference 1
+                                        :type ("Statement" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [23446 23460])
+                                    ("s2" variable
+                                       (:reference 1
+                                        :type ("Statement" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [23461 23475]))                                  
+                                :type "void")
+                                (reparse-symbol namespacesubparts) [23429 23493]))                          
+                        :type "namespace")
+                        (reparse-symbol namespacesubparts) [2098 23497]))                  
+                :type "namespace")
+                nil [2081 23499])
+            ("std" type
+               (:members 
+                  ( ("swap" function
+                       (:type "void"
+                        :arguments 
+                          ( ("s1" variable
+                               (:reference 1
+                                :type ("Poco::Data::Statement" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [23595 23621])
+                            ("s2" variable
+                               (:reference 1
+                                :type ("Poco::Data::Statement" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [23625 23651]))                          
+                        :typemodifiers ("inline")
+                        :template-specifier 
+                          ( ("Poco::Data::Statement" type nil nil nil))                          )
+                        (reparse-symbol namespacesubparts) [23543 23734]))                  
+                :type "namespace")
+                nil [23526 23736]))          
+    :file "Statement.h"
+    :pointmax 23773
+    :fsize 24605
+    :lastmodtime '(21049 41898 0 0)
+    :unmatched-syntax '((VOID 18467 . 18471) (INLINE 18460 . 18466) (VOID 18241 . 18245) (INLINE 18234 . 18240) (VOID 18009 . 18013) (INLINE 18002 . 18008) (VOID 17632 . 17636) (INLINE 17625 . 17631) (VOID 17480 . 17484) (INLINE 17473 . 17479) (VOID 17186 . 17190) (INLINE 17179 . 17185) (VOID 16986 . 16990) (INLINE 16979 . 16985))
+    :lexical-table 
+        '(("Data_Statement_INCLUDED")
+          )
+
+    )
+   (semanticdb-table "Data.h"
+    :file "Data.h"
+    :fsize 2962
+    :lastmodtime '(21049 41898 0 0)
+    )
+   (semanticdb-table "StatementImpl.h"
+    :file "StatementImpl.h"
+    :fsize 18976
+    :lastmodtime '(21049 41898 0 0)
+    )
+   (semanticdb-table "Binding.h"
+    :file "Binding.h"
+    :fsize 34602
+    :lastmodtime '(21049 41898 0 0)
+    )
+   (semanticdb-table "Range.h"
+    :file "Range.h"
+    :fsize 3106
+    :lastmodtime '(21049 41898 0 0)
+    )
+   (semanticdb-table "Bulk.h"
+    :file "Bulk.h"
+    :fsize 2909
+    :lastmodtime '(21049 41898 0 0)
+    )
+   (semanticdb-table "Row.h"
+    :file "Row.h"
+    :fsize 9634
+    :lastmodtime '(21049 41898 0 0)
+    )
+   (semanticdb-table "SimpleRowFormatter.h"
+    :file "SimpleRowFormatter.h"
+    :fsize 3885
+    :lastmodtime '(21049 41898 0 0)
+    )
+   )
+  :file "!drive_d!database_manage!code!utils!poco-1.5.2!include!Poco!Data!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

@@ -1,0 +1,2002 @@
+;; Object include/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "include/"
+  :tables (list 
+   (semanticdb-table "big_endian.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("float4store" variable (:constant-flag t) nil [784 795])
+            ("float4get" variable (:constant-flag t) nil [1049 1058])
+            ("float8store" variable (:constant-flag t) nil [1404 1415])
+            ("float8get" variable (:constant-flag t) nil [1933 1942])
+            ("ushortget" variable (:constant-flag t) nil [2543 2552])
+            ("shortget" variable (:constant-flag t) nil [2696 2704])
+            ("longget" variable (:constant-flag t) nil [2845 2852])
+            ("ulongget" variable (:constant-flag t) nil [3193 3201])
+            ("shortstore" variable (:constant-flag t) nil [3537 3547])
+            ("longstore" variable (:constant-flag t) nil [3738 3747])
+            ("floatget" variable (:constant-flag t) nil [3984 3992])
+            ("floatstore" variable (:constant-flag t) nil [4120 4130])
+            ("doubleget" variable (:constant-flag t) nil [4188 4197])
+            ("doublestore" variable (:constant-flag t) nil [4325 4336])
+            ("longlongget" variable (:constant-flag t) nil [4392 4403])
+            ("longlongstore" variable (:constant-flag t) nil [4454 4467]))          
+    :file "big_endian.h"
+    :pointmax 4508
+    :fsize 4507
+    :lastmodtime '(20747 26182 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("longget" (spp-arg-list ("V" "M") 2852 . 2857) . 
+              ((DO "do" 2861 . 2863) (semantic-list "{ int32 def_temp;\\
+                             ((uchar*) &def_temp)[0]=(M)[0];\\
+                             ((uchar*) &def_temp)[1]=(M)[1];\\
+                             ((uchar*) &def_temp)[2]=(M)[2];\\
+                             ((uchar*) &def_temp)[3]=(M)[3];\\
+                             (V)=def_temp; }" 2864 . 3175) (WHILE "while" 3176 . 3181) (semantic-list "(0)" 3181 . 3184)))
+          ("float4store" (spp-arg-list ("T" "A") 795 . 800) . 
+              ((DO "do" 801 . 803) (semantic-list "{ *(T)= ((uchar *) &A)[3];\\
+                              *((T)+1)=(char) ((uchar *) &A)[2];\\
+                              *((T)+2)=(char) ((uchar *) &A)[1];\\
+                              *((T)+3)=(char) ((uchar *) &A)[0]; }" 804 . 1030) (WHILE "while" 1031 . 1036) (semantic-list "(0)" 1036 . 1039)))
+          ("doubleget" (spp-arg-list ("V" "M") 4197 . 4202) . ((symbol "memcpy" 4207 . 4213) (semantic-list "(&V, (M), sizeof(double))" 4213 . 4238)))
+          ("longlongstore" (spp-arg-list ("T" "V") 4467 . 4472) . ((symbol "memcpy" 4473 . 4479) (semantic-list "((T), &V, sizeof(ulonglong))" 4479 . 4507)))
+          ("shortstore" (spp-arg-list ("T" "A") 3547 . 3552) . 
+              ((DO "do" 3553 . 3555) (semantic-list "{ uint def_temp=(uint) (A) ;\\
+                             *(((char*)T)+1)=(char)(def_temp); \\
+                             *(((char*)T)+0)=(char)(def_temp >> 8); }" 3556 . 3720) (WHILE "while" 3721 . 3726) (semantic-list "(0)" 3726 . 3729)))
+          ("floatstore" (spp-arg-list ("T" "V") 4130 . 4135) . ((symbol "memcpy" 4139 . 4145) (semantic-list "((T), (void*) (&V), sizeof(float))" 4145 . 4179)))
+          ("doublestore" (spp-arg-list ("T" "V") 4336 . 4341) . ((symbol "memcpy" 4344 . 4350) (semantic-list "((T), (void*) &V, sizeof(double))" 4350 . 4383)))
+          ("float4get" (spp-arg-list ("V" "M") 1058 . 1063) . 
+              ((DO "do" 1066 . 1068) (semantic-list "{ float def_temp;\\
+                              ((uchar*) &def_temp)[0]=(M)[3];\\
+                              ((uchar*) &def_temp)[1]=(M)[2];\\
+                              ((uchar*) &def_temp)[2]=(M)[1];\\
+                              ((uchar*) &def_temp)[3]=(M)[0];\\
+                              (V)=def_temp; }" 1069 . 1385) (WHILE "while" 1386 . 1391) (semantic-list "(0)" 1391 . 1394)))
+          ("ulongget" (spp-arg-list ("V" "M") 3201 . 3206) . 
+              ((DO "do" 3209 . 3211) (semantic-list "{ uint32 def_temp;\\
+                            ((uchar*) &def_temp)[0]=(M)[0];\\
+                            ((uchar*) &def_temp)[1]=(M)[1];\\
+                            ((uchar*) &def_temp)[2]=(M)[2];\\
+                            ((uchar*) &def_temp)[3]=(M)[3];\\
+                            (V)=def_temp; }" 3212 . 3519) (WHILE "while" 3520 . 3525) (semantic-list "(0)" 3525 . 3528)))
+          ("float8get" (spp-arg-list ("V" "M") 1942 . 1947) . 
+              ((DO "do" 1950 . 1952) (semantic-list "{ double def_temp;\\
+                              ((uchar*) &def_temp)[0]=(M)[7];\\
+                              ((uchar*) &def_temp)[1]=(M)[6];\\
+                              ((uchar*) &def_temp)[2]=(M)[5];\\
+                              ((uchar*) &def_temp)[3]=(M)[4];\\
+                              ((uchar*) &def_temp)[4]=(M)[3];\\
+                              ((uchar*) &def_temp)[5]=(M)[2];\\
+                              ((uchar*) &def_temp)[6]=(M)[1];\\
+                              ((uchar*) &def_temp)[7]=(M)[0];\\
+                              (V) = def_temp; }" 1953 . 2524) (WHILE "while" 2525 . 2530) (semantic-list "(0)" 2530 . 2533)))
+          ("longstore" (spp-arg-list ("T" "A") 3747 . 3752) . 
+              ((DO "do" 3754 . 3756) (semantic-list "{ *(((char*)T)+3)=((A));\\
+                             *(((char*)T)+2)=(((A) >> 8));\\
+                             *(((char*)T)+1)=(((A) >> 16));\\
+                             *(((char*)T)+0)=(((A) >> 24)); }" 3757 . 3965) (WHILE "while" 3966 . 3971) (semantic-list "(0)" 3971 . 3974)))
+          ("float8store" (spp-arg-list ("T" "V") 1415 . 1420) . 
+              ((DO "do" 1421 . 1423) (semantic-list "{ *(T)= ((uchar *) &V)[7];\\
+                              *((T)+1)=(char) ((uchar *) &V)[6];\\
+                              *((T)+2)=(char) ((uchar *) &V)[5];\\
+                              *((T)+3)=(char) ((uchar *) &V)[4];\\
+                              *((T)+4)=(char) ((uchar *) &V)[3];\\
+                              *((T)+5)=(char) ((uchar *) &V)[2];\\
+                              *((T)+6)=(char) ((uchar *) &V)[1];\\
+                              *((T)+7)=(char) ((uchar *) &V)[0]; }" 1424 . 1914) (WHILE "while" 1915 . 1920) (semantic-list "(0)" 1920 . 1923)))
+          ("ushortget" (spp-arg-list ("V" "M") 2552 . 2557) . 
+              ((DO "do" 2559 . 2561) (semantic-list "{ V = (uint16) (((uint16) ((uchar) (M)[1]))+\\
+                                 ((uint16) ((uint16) (M)[0]) << 8)); }" 2562 . 2678) (WHILE "while" 2679 . 2684) (semantic-list "(0)" 2684 . 2687)))
+          ("shortget" (spp-arg-list ("V" "M") 2704 . 2709) . 
+              ((DO "do" 2712 . 2714) (semantic-list "{ V = (short) (((short) ((uchar) (M)[1]))+\\
+                                 ((short) ((short) (M)[0]) << 8)); }" 2715 . 2827) (WHILE "while" 2828 . 2833) (semantic-list "(0)" 2833 . 2836)))
+          ("floatget" (spp-arg-list ("V" "M") 3992 . 3997) . ((symbol "memcpy" 4003 . 4009) (semantic-list "(&V, (M), sizeof(float))" 4009 . 4033)))
+          ("longlongget" (spp-arg-list ("V" "M") 4403 . 4408) . ((symbol "memcpy" 4411 . 4417) (semantic-list "(&V, (M), sizeof(ulonglong))" 4417 . 4445)))
+          )
+
+    )
+   (semanticdb-table "mysql.h"
+    :major-mode 'c++-mode
+    :tags nil
+    :file "mysql.h"
+    :pointmax 29059
+    :fsize 29058
+    :lastmodtime '(20747 26182 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("IS_BLOB" (spp-arg-list ("n") 2428 . 2431) . ((semantic-list "((n) & BLOB_FLAG)" 2432 . 2449)))
+          ("HAVE_MYSQL_REAL_CONNECT")
+          ("MYSQL_NO_DATA" . ((number "100" 28609 . 28612)))
+          ("CLIENT_NET_WRITE_TIMEOUT" . 
+              ((number "365" 2289 . 2292) (punctuation "*" 2292 . 2293) (number "24" 2293 . 2295) (punctuation "*" 2295 . 2296) (number "3600" 2296 . 2300)))
+          ("IS_PRI_KEY" (spp-arg-list ("n") 2343 . 2346) . ((semantic-list "((n) & PRI_KEY_FLAG)" 2347 . 2367)))
+          ("_mysql_h")
+          ("CLIENT_NET_READ_TIMEOUT" . 
+              ((number "365" 2222 . 2225) (punctuation "*" 2225 . 2226) (number "24" 2226 . 2228) (punctuation "*" 2228 . 2229) (number "3600" 2229 . 2233)))
+          ("IS_NOT_NULL" (spp-arg-list ("n") 2387 . 2390) . ((semantic-list "((n) & NOT_NULL_FLAG)" 2391 . 2412)))
+          ("mysql_library_init" . ((symbol "mysql_server_init" 12105 . 12122)))
+          ("LOCAL_INFILE_ERROR_LEN" . ((number "512" 14888 . 14891)))
+          ("MYSQL_CLIENT")
+          ("IS_NUM" (spp-arg-list ("t") 2588 . 2591) . ((semantic-list "(((t) <= MYSQL_TYPE_INT24 && (t) != MYSQL_TYPE_TIMESTAMP) || (t) == MYSQL_TYPE_YEAR || (t) == MYSQL_TYPE_NEWDECIMAL)" 2592 . 2708)))
+          ("IS_LONGDATA" (spp-arg-list ("t") 2728 . 2731) . ((semantic-list "((t) >= MYSQL_TYPE_TINY_BLOB && (t) <= MYSQL_TYPE_STRING)" 2732 . 2789)))
+          ("net_buffer_length" . ((semantic-list "(*mysql_get_parameters()->p_net_buffer_length)" 11213 . 11259)))
+          ("max_allowed_packet" . ((semantic-list "(*mysql_get_parameters()->p_max_allowed_packet)" 11139 . 11186)))
+          ("STDCALL")
+          ("MYSQL_DATA_TRUNCATED" . ((number "101" 28642 . 28645)))
+          ("mysql_reload" (spp-arg-list ("mysql") 28667 . 28674) . ((symbol "mysql_refresh" 28675 . 28688) (semantic-list "((mysql),REFRESH_GRANT)" 28688 . 28711)))
+          ("ER_WARN_DATA_TRUNCATED" . ((symbol "WARN_DATA_TRUNCATED" 4402 . 4421)))
+          ("mysql_library_end" . ((symbol "mysql_server_end" 12149 . 12165)))
+          ("MYSQL_COUNT_ERROR" . ((semantic-list "(~(my_ulonglong) 0)" 4287 . 4306)))
+          )
+
+    )
+   (semanticdb-table "mysql_version.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("_mysql_version_h" variable (:constant-flag t) nil [201 217])
+            ("PROTOCOL_VERSION" variable (:constant-flag t) nil [279 295])
+            ("MYSQL_SERVER_VERSION" variable (:constant-flag t) nil [308 328])
+            ("MYSQL_BASE_VERSION" variable (:constant-flag t) nil [347 365])
+            ("MYSQL_SERVER_SUFFIX_DEF" variable (:constant-flag t) nil [388 411])
+            ("FRM_VER" variable (:constant-flag t) nil [424 431])
+            ("MYSQL_VERSION_ID" variable (:constant-flag t) nil [445 461])
+            ("MYSQL_PORT" variable (:constant-flag t) nil [477 487])
+            ("MYSQL_PORT_DEFAULT" variable (:constant-flag t) nil [503 521])
+            ("MYSQL_UNIX_ADDR" variable (:constant-flag t) nil [533 548])
+            ("MYSQL_CONFIG_NAME" variable (:constant-flag t) nil [577 594])
+            ("MYSQL_COMPILATION_COMMENT" variable (:constant-flag t) nil [609 634])
+            ("LICENSE" variable (:constant-flag t) nil [754 761]))          
+    :file "mysql_version.h"
+    :pointmax 821
+    :fsize 850
+    :lastmodtime '(20747 27188 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("PROTOCOL_VERSION" . ((number "10" 297 . 299)))
+          ("FRM_VER" . ((number "6" 435 . 436)))
+          ("MYSQL_CONFIG_NAME" . ((string "\"my\"" 596 . 600)))
+          ("MYSQL_VERSION_ID" . ((number "50610" 463 . 468)))
+          ("MYSQL_UNIX_ADDR" . ((string "\"/tmp/mysql.sock\"" 551 . 568)))
+          ("MYSQL_COMPILATION_COMMENT" . ((string "\"MySQL Community Server (GPL)\"" 635 . 665)))
+          ("_mysql_version_h")
+          ("LICENSE" . ((symbol "GPL" 765 . 768)))
+          ("MYSQL_BASE_VERSION" . ((string "\"mysqld-5.6\"" 367 . 379)))
+          ("MYSQL_PORT" . ((number "3306" 490 . 494)))
+          ("MYSQL_SERVER_VERSION" . ((string "\"5.6.10\"" 330 . 338)))
+          ("MYSQL_SERVER_SUFFIX_DEF" . ((string "\"\"" 413 . 415)))
+          ("MYSQL_PORT_DEFAULT" . ((number "0" 523 . 524)))
+          )
+
+    )
+   (semanticdb-table "mysql_com.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("_mysql_com_h" variable (:constant-flag t) nil [833 845])
+            ("HOSTNAME_LENGTH" variable (:constant-flag t) nil [855 870])
+            ("SYSTEM_CHARSET_MBMAXLEN" variable (:constant-flag t) nil [882 905])
+            ("NAME_CHAR_LEN" variable (:constant-flag t) nil [916 929])
+            ("USERNAME_CHAR_LENGTH" variable (:constant-flag t) nil [984 1004])
+            ("NAME_LEN" variable (:constant-flag t) nil [1016 1024])
+            ("USERNAME_LENGTH" variable (:constant-flag t) nil [1088 1103])
+            ("MYSQL_AUTODETECT_CHARSET_NAME" variable (:constant-flag t) nil [1168 1197])
+            ("SERVER_VERSION_LENGTH" variable (:constant-flag t) nil [1214 1235])
+            ("SQLSTATE_LENGTH" variable (:constant-flag t) nil [1247 1262])
+            ("TABLE_COMMENT_INLINE_MAXLEN" variable (:constant-flag t) nil [1309 1336])
+            ("TABLE_COMMENT_MAXLEN" variable (:constant-flag t) nil [1378 1398])
+            ("COLUMN_COMMENT_MAXLEN" variable (:constant-flag t) nil [1412 1433])
+            ("INDEX_COMMENT_MAXLEN" variable (:constant-flag t) nil [1447 1467])
+            ("TABLE_PARTITION_COMMENT_MAXLEN" variable (:constant-flag t) nil [1481 1511])
+            ("USER_HOST_BUFF_SIZE" variable (:constant-flag t) nil [1742 1761])
+            ("LOCAL_HOST" variable (:constant-flag t) nil [1809 1819])
+            ("LOCAL_HOST_NAMEDPIPE" variable (:constant-flag t) nil [1840 1860])
+            ("enum_server_command" type
+               (:members 
+                  ( ("COM_SLEEP" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2167 2177])
+                    ("COM_QUIT" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2178 2187])
+                    ("COM_INIT_DB" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2188 2200])
+                    ("COM_QUERY" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2201 2211])
+                    ("COM_FIELD_LIST" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2212 2227])
+                    ("COM_CREATE_DB" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2230 2244])
+                    ("COM_DROP_DB" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2245 2257])
+                    ("COM_REFRESH" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2258 2270])
+                    ("COM_SHUTDOWN" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2271 2284])
+                    ("COM_STATISTICS" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2285 2300])
+                    ("COM_PROCESS_INFO" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2303 2320])
+                    ("COM_CONNECT" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2321 2333])
+                    ("COM_PROCESS_KILL" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2334 2351])
+                    ("COM_DEBUG" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2352 2362])
+                    ("COM_PING" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2363 2372])
+                    ("COM_TIME" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2375 2384])
+                    ("COM_DELAYED_INSERT" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2385 2404])
+                    ("COM_CHANGE_USER" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2405 2421])
+                    ("COM_BINLOG_DUMP" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2422 2438])
+                    ("COM_TABLE_DUMP" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2441 2456])
+                    ("COM_CONNECT_OUT" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2457 2473])
+                    ("COM_REGISTER_SLAVE" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2474 2493])
+                    ("COM_STMT_PREPARE" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2496 2513])
+                    ("COM_STMT_EXECUTE" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2514 2531])
+                    ("COM_STMT_SEND_LONG_DATA" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2532 2556])
+                    ("COM_STMT_CLOSE" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2557 2572])
+                    ("COM_STMT_RESET" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2575 2590])
+                    ("COM_SET_OPTION" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2591 2606])
+                    ("COM_STMT_FETCH" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2607 2622])
+                    ("COM_DAEMON" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2623 2634])
+                    ("COM_BINLOG_DUMP_GTID" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2637 2658])
+                    ("COM_END" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [2757 2766]))                  
+                :type "enum")
+                nil [2138 2767])
+            ("SCRAMBLE_LENGTH" variable (:constant-flag t) nil [2906 2921])
+            ("SCRAMBLE_LENGTH_323" variable (:constant-flag t) nil [2933 2952])
+            ("SCRAMBLED_PASSWORD_CHAR_LENGTH" variable (:constant-flag t) nil [3043 3073])
+            ("SCRAMBLED_PASSWORD_CHAR_LENGTH_323" variable (:constant-flag t) nil [3104 3138])
+            ("NOT_NULL_FLAG" variable (:constant-flag t) nil [3173 3186])
+            ("PRI_KEY_FLAG" variable (:constant-flag t) nil [3224 3236])
+            ("UNIQUE_KEY_FLAG" variable (:constant-flag t) nil [3285 3300])
+            ("MULTIPLE_KEY_FLAG" variable (:constant-flag t) nil [3348 3365])
+            ("BLOB_FLAG" variable (:constant-flag t) nil [3406 3415])
+            ("UNSIGNED_FLAG" variable (:constant-flag t) nil [3450 3463])
+            ("ZEROFILL_FLAG" variable (:constant-flag t) nil [3500 3513])
+            ("BINARY_FLAG" variable (:constant-flag t) nil [3550 3561])
+            ("ENUM_FLAG" variable (:constant-flag t) nil [3649 3658])
+            ("AUTO_INCREMENT_FLAG" variable (:constant-flag t) nil [3695 3714])
+            ("TIMESTAMP_FLAG" variable (:constant-flag t) nil [3765 3779])
+            ("SET_FLAG" variable (:constant-flag t) nil [3821 3829])
+            ("NO_DEFAULT_VALUE_FLAG" variable (:constant-flag t) nil [3865 3886])
+            ("ON_UPDATE_NOW_FLAG" variable (:constant-flag t) nil [3939 3957])
+            ("NUM_FLAG" variable (:constant-flag t) nil [4015 4023])
+            ("PART_KEY_FLAG" variable (:constant-flag t) nil [4072 4085])
+            ("GROUP_FLAG" variable (:constant-flag t) nil [4132 4142])
+            ("UNIQUE_FLAG" variable (:constant-flag t) nil [4184 4195])
+            ("BINCMP_FLAG" variable (:constant-flag t) nil [4242 4253])
+            ("GET_FIXED_FIELDS_FLAG" variable (:constant-flag t) nil [4301 4322])
+            ("FIELD_IN_PART_FUNC_FLAG" variable (:constant-flag t) nil [4379 4402])
+            ("FIELD_IN_ADD_INDEX" variable (:constant-flag t) nil [4581 4599])
+            ("FIELD_IS_RENAMED" variable (:constant-flag t) nil [4618 4634])
+            ("FIELD_FLAGS_STORAGE_MEDIA" variable (:constant-flag t) nil [4695 4720])
+            ("FIELD_FLAGS_STORAGE_MEDIA_MASK" variable (:constant-flag t) nil [4772 4802])
+            ("FIELD_FLAGS_COLUMN_FORMAT" variable (:constant-flag t) nil [4844 4869])
+            ("FIELD_FLAGS_COLUMN_FORMAT_MASK" variable (:constant-flag t) nil [4921 4951])
+            ("FIELD_IS_DROPPED" variable (:constant-flag t) nil [4993 5009])
+            ("REFRESH_GRANT" variable (:constant-flag t) nil [5071 5084])
+            ("REFRESH_LOG" variable (:constant-flag t) nil [5123 5134])
+            ("REFRESH_TABLES" variable (:constant-flag t) nil [5174 5188])
+            ("REFRESH_HOSTS" variable (:constant-flag t) nil [5223 5236])
+            ("REFRESH_STATUS" variable (:constant-flag t) nil [5271 5285])
+            ("REFRESH_THREADS" variable (:constant-flag t) nil [5327 5342])
+            ("REFRESH_SLAVE" variable (:constant-flag t) nil [5380 5393])
+            ("REFRESH_MASTER" variable (:constant-flag t) nil [5477 5491])
+            ("REFRESH_ERROR_LOG" variable (:constant-flag t) nil [5587 5604])
+            ("REFRESH_ENGINE_LOG" variable (:constant-flag t) nil [5655 5673])
+            ("REFRESH_BINARY_LOG" variable (:constant-flag t) nil [5727 5745])
+            ("REFRESH_RELAY_LOG" variable (:constant-flag t) nil [5790 5807])
+            ("REFRESH_GENERAL_LOG" variable (:constant-flag t) nil [5852 5871])
+            ("REFRESH_SLOW_LOG" variable (:constant-flag t) nil [5916 5932])
+            ("REFRESH_READ_LOCK" variable (:constant-flag t) nil [6038 6055])
+            ("REFRESH_FAST" variable (:constant-flag t) nil [6097 6109])
+            ("REFRESH_QUERY_CACHE" variable (:constant-flag t) nil [6194 6213])
+            ("REFRESH_QUERY_CACHE_FREE" variable (:constant-flag t) nil [6228 6252])
+            ("REFRESH_DES_KEY_FILE" variable (:constant-flag t) nil [6293 6313])
+            ("REFRESH_USER_RESOURCES" variable (:constant-flag t) nil [6331 6353])
+            ("REFRESH_FOR_EXPORT" variable (:constant-flag t) nil [6371 6389])
+            ("CLIENT_LONG_PASSWORD" variable (:constant-flag t) nil [6448 6468])
+            ("CLIENT_FOUND_ROWS" variable (:constant-flag t) nil [6511 6528])
+            ("CLIENT_LONG_FLAG" variable (:constant-flag t) nil [6576 6592])
+            ("CLIENT_CONNECT_WITH_DB" variable (:constant-flag t) nil [6630 6652])
+            ("CLIENT_NO_SCHEMA" variable (:constant-flag t) nil [6699 6715])
+            ("CLIENT_COMPRESS" variable (:constant-flag t) nil [6767 6782])
+            ("CLIENT_ODBC" variable (:constant-flag t) nil [6830 6841])
+            ("CLIENT_LOCAL_FILES" variable (:constant-flag t) nil [6872 6890])
+            ("CLIENT_IGNORE_SPACE" variable (:constant-flag t) nil [6933 6952])
+            ("CLIENT_PROTOCOL_41" variable (:constant-flag t) nil [6996 7014])
+            ("CLIENT_INTERACTIVE" variable (:constant-flag t) nil [7050 7068])
+            ("CLIENT_SSL" variable (:constant-flag t) nil [7118 7128])
+            ("CLIENT_IGNORE_SIGPIPE" variable (:constant-flag t) nil [7191 7212])
+            ("CLIENT_TRANSACTIONS" variable (:constant-flag t) nil [7253 7272])
+            ("CLIENT_RESERVED" variable (:constant-flag t) nil [7324 7339])
+            ("CLIENT_SECURE_CONNECTION" variable (:constant-flag t) nil [7397 7421])
+            ("CLIENT_MULTI_STATEMENTS" variable (:constant-flag t) nil [7466 7489])
+            ("CLIENT_MULTI_RESULTS" variable (:constant-flag t) nil [7550 7570])
+            ("CLIENT_PS_MULTI_RESULTS" variable (:constant-flag t) nil [7629 7652])
+            ("CLIENT_PLUGIN_AUTH" variable (:constant-flag t) nil [7709 7727])
+            ("CLIENT_CONNECT_ATTRS" variable (:constant-flag t) nil [7793 7813])
+            ("CLIENT_PLUGIN_AUTH_LENENC_CLIENT_DATA" variable (:constant-flag t) nil [7952 7989])
+            ("CLIENT_CAN_HANDLE_EXPIRED_PASSWORDS" variable (:constant-flag t) nil [8084 8119])
+            ("CLIENT_SSL_VERIFY_SERVER_CERT" variable (:constant-flag t) nil [8141 8170])
+            ("CLIENT_REMEMBER_OPTIONS" variable (:constant-flag t) nil [8191 8214])
+            ("CAN_CLIENT_COMPRESS" variable (:constant-flag t) nil [8307 8326])
+            ("CLIENT_ALL_FLAGS" variable (:constant-flag t) nil [8415 8431])
+            ("CLIENT_BASIC_FLAGS" variable (:constant-flag t) nil [9943 9961])
+            ("SERVER_STATUS_IN_TRANS" variable (:constant-flag t) nil [10370 10392])
+            ("SERVER_STATUS_AUTOCOMMIT" variable (:constant-flag t) nil [10407 10431])
+            ("SERVER_MORE_RESULTS_EXISTS" variable (:constant-flag t) nil [10477 10503])
+            ("SERVER_QUERY_NO_GOOD_INDEX_USED" variable (:constant-flag t) nil [10555 10586])
+            ("SERVER_QUERY_NO_INDEX_USED" variable (:constant-flag t) nil [10598 10624])
+            ("SERVER_STATUS_CURSOR_EXISTS" variable (:constant-flag t) nil [10837 10864])
+            ("SERVER_STATUS_LAST_ROW_SENT" variable (:constant-flag t) nil [10979 11006])
+            ("SERVER_STATUS_DB_DROPPED" variable (:constant-flag t) nil [11019 11043])
+            ("SERVER_STATUS_NO_BACKSLASH_ESCAPES" variable (:constant-flag t) nil [11092 11126])
+            ("SERVER_STATUS_METADATA_CHANGED" variable (:constant-flag t) nil [11299 11329])
+            ("SERVER_QUERY_WAS_SLOW" variable (:constant-flag t) nil [11343 11364])
+            ("SERVER_PS_OUT_PARAMS" variable (:constant-flag t) nil [11451 11471])
+            ("SERVER_STATUS_IN_TRANS_READONLY" variable (:constant-flag t) nil [11813 11844])
+            ("SERVER_STATUS_CLEAR_SET" variable (:constant-flag t) nil [12162 12185])
+            ("MYSQL_ERRMSG_SIZE" variable (:constant-flag t) nil [12666 12683])
+            ("NET_READ_TIMEOUT" variable (:constant-flag t) nil [12696 12712])
+            ("NET_WRITE_TIMEOUT" variable (:constant-flag t) nil [12747 12764])
+            ("NET_WAIT_TIMEOUT" variable (:constant-flag t) nil [12800 12816])
+            ("ONLY_KILL_QUERY" variable (:constant-flag t) nil [12860 12875])
+            ("st_vio" type
+               (:prototype t
+                :type "struct")
+                nil [12888 12902])
+            ("Vio" type
+               (:typedef ("st_vio" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil)
+                :superclasses "st_vio"
+                :type "typedef")
+                nil [12920 12946])
+            ("MAX_TINYINT_WIDTH" variable (:constant-flag t) nil [12956 12973])
+            ("MAX_SMALLINT_WIDTH" variable (:constant-flag t) nil [13033 13051])
+            ("MAX_MEDIUMINT_WIDTH" variable (:constant-flag t) nil [13111 13130])
+            ("MAX_INT_WIDTH" variable (:constant-flag t) nil [13189 13202])
+            ("MAX_BIGINT_WIDTH" variable (:constant-flag t) nil [13266 13282])
+            ("MAX_CHAR_WIDTH" variable (:constant-flag t) nil [13337 13351])
+            ("MAX_BLOB_WIDTH" variable (:constant-flag t) nil [13399 13413])
+            ("vio" variable
+               (:pointer 1
+                :type ("Vio" type (:type "class") nil nil))
+                nil [13551 13560])
+            ("read_pos" variable
+               (:pointer 1
+                :type "unsigned char")
+                nil [13563 13614])
+            ("write_pos" variable
+               (:pointer 1
+                :type "unsigned char")
+                nil [13563 13614])
+            ("buff_end" variable
+               (:pointer 1
+                :type "unsigned char")
+                nil [13563 13614])
+            ("buff" variable
+               (:pointer 1
+                :type "unsigned char")
+                nil [13563 13614])
+            ("fd" variable (:type ("my_socket" type (:type "class") nil nil)) nil [13617 13630])
+            ("where_b" variable (:type "unsigned long") nil [13861 13917])
+            ("buf_length" variable (:type "unsigned long") nil [13861 13917])
+            ("length" variable (:type "unsigned long") nil [13861 13917])
+            ("remain_in_buf" variable (:type "unsigned long") nil [13861 13917])
+            ("max_packet_size" variable (:type "unsigned long") nil [13920 13961])
+            ("max_packet" variable (:type "unsigned long") nil [13920 13961])
+            ("compress_pkt_nr" variable (:type "unsigned int") nil [13964 14000])
+            ("pkt_nr" variable (:type "unsigned int") nil [13964 14000])
+            ("retry_count" variable (:type "unsigned int") nil [14003 14057])
+            ("read_timeout" variable (:type "unsigned int") nil [14003 14057])
+            ("write_timeout" variable (:type "unsigned int") nil [14003 14057])
+            ("fcntl" variable (:type "int") nil [14060 14070])
+            ("return_status" variable
+               (:pointer 1
+                :type "unsigned int")
+                nil [14073 14101])
+            ("reading_or_writing" variable (:type "unsigned char") nil [14104 14137])
+            ("save_char" variable (:type "char") nil [14140 14155])
+            ("unused1" variable (:type ("my_bool" type (:type "class") nil nil)) nil [14158 14174])
+            ("unused2" variable (:type ("my_bool" type (:type "class") nil nil)) nil [14235 14251])
+            ("compress" variable (:type ("my_bool" type (:type "class") nil nil)) nil [14312 14329])
+            ("unused3" variable (:type ("my_bool" type (:type "class") nil nil)) nil [14332 14348])
+            ("unused" variable
+               (:pointer 1
+                :type "unsigned char")
+                nil [14630 14652])
+            ("last_errno" variable (:type "unsigned int") nil [14655 14679])
+            ("error" variable (:type "unsigned char") nil [14682 14702])
+            ("unused4" variable (:type ("my_bool" type (:type "class") nil nil)) nil [14706 14722])
+            ("unused5" variable (:type ("my_bool" type (:type "class") nil nil)) nil [14784 14800])
+            ("last_error" variable
+               (:dereference 1
+                :type "char")
+                nil [14942 14977])
+            ("sqlstate" variable
+               (:dereference 1
+                :type "char")
+                nil [15055 15088])
+            ("extension" variable
+               (:pointer 1
+                :type "void")
+                nil [15444 15460])
+            ("NET" variable (:type "int") nil [15463 15467])
+            ("packet_error" variable (:constant-flag t) nil [15478 15490])
+            ("CLIENT_MULTI_QUERIES" variable (:constant-flag t) nil [16293 16313])
+            ("FIELD_TYPE_DECIMAL" variable (:constant-flag t) nil [16353 16371])
+            ("FIELD_TYPE_NEWDECIMAL" variable (:constant-flag t) nil [16403 16424])
+            ("FIELD_TYPE_TINY" variable (:constant-flag t) nil [16456 16471])
+            ("FIELD_TYPE_SHORT" variable (:constant-flag t) nil [16503 16519])
+            ("FIELD_TYPE_LONG" variable (:constant-flag t) nil [16551 16566])
+            ("FIELD_TYPE_FLOAT" variable (:constant-flag t) nil [16598 16614])
+            ("FIELD_TYPE_DOUBLE" variable (:constant-flag t) nil [16646 16663])
+            ("FIELD_TYPE_NULL" variable (:constant-flag t) nil [16695 16710])
+            ("FIELD_TYPE_TIMESTAMP" variable (:constant-flag t) nil [16742 16762])
+            ("FIELD_TYPE_LONGLONG" variable (:constant-flag t) nil [16794 16813])
+            ("FIELD_TYPE_INT24" variable (:constant-flag t) nil [16845 16861])
+            ("FIELD_TYPE_DATE" variable (:constant-flag t) nil [16893 16908])
+            ("FIELD_TYPE_TIME" variable (:constant-flag t) nil [16940 16955])
+            ("FIELD_TYPE_DATETIME" variable (:constant-flag t) nil [16987 17006])
+            ("FIELD_TYPE_YEAR" variable (:constant-flag t) nil [17038 17053])
+            ("FIELD_TYPE_NEWDATE" variable (:constant-flag t) nil [17085 17103])
+            ("FIELD_TYPE_ENUM" variable (:constant-flag t) nil [17135 17150])
+            ("FIELD_TYPE_SET" variable (:constant-flag t) nil [17182 17196])
+            ("FIELD_TYPE_TINY_BLOB" variable (:constant-flag t) nil [17228 17248])
+            ("FIELD_TYPE_MEDIUM_BLOB" variable (:constant-flag t) nil [17280 17302])
+            ("FIELD_TYPE_LONG_BLOB" variable (:constant-flag t) nil [17334 17354])
+            ("FIELD_TYPE_BLOB" variable (:constant-flag t) nil [17386 17401])
+            ("FIELD_TYPE_VAR_STRING" variable (:constant-flag t) nil [17433 17454])
+            ("FIELD_TYPE_STRING" variable (:constant-flag t) nil [17486 17503])
+            ("FIELD_TYPE_CHAR" variable (:constant-flag t) nil [17535 17550])
+            ("FIELD_TYPE_INTERVAL" variable (:constant-flag t) nil [17582 17601])
+            ("FIELD_TYPE_GEOMETRY" variable (:constant-flag t) nil [17629 17648])
+            ("FIELD_TYPE_BIT" variable (:constant-flag t) nil [17680 17694])
+            ("MYSQL_SHUTDOWN_KILLABLE_CONNECT" variable (:constant-flag t) nil [17800 17831])
+            ("MYSQL_SHUTDOWN_KILLABLE_TRANS" variable (:constant-flag t) nil [17867 17896])
+            ("MYSQL_SHUTDOWN_KILLABLE_LOCK_TABLE" variable (:constant-flag t) nil [17934 17968])
+            ("MYSQL_SHUTDOWN_KILLABLE_UPDATE" variable (:constant-flag t) nil [18001 18031])
+            ("net_new_transaction" variable (:constant-flag t) nil [19340 19359])
+            ("max_value" variable (:type "unsigned long") nil [20158 20194])
+            ("seed2" variable (:type "unsigned long") nil [20158 20194])
+            ("seed1" variable (:type "unsigned long") nil [20158 20194])
+            ("max_value_dbl" variable (:type "double") nil [20197 20218])
+            ("arg_count" variable (:type "unsigned int") nil [20444 20467])
+            ("arg_type" variable
+               (:pointer 1
+                :type ("Item_result" type (:type "enum") nil nil))
+                nil [20497 20524])
+            ("args" variable
+               (:pointer 2
+                :type "char")
+                nil [20558 20570])
+            ("lengths" variable
+               (:pointer 1
+                :type "unsigned long")
+                nil [20602 20625])
+            ("maybe_null" variable
+               (:pointer 1
+                :type "char")
+                nil [20662 20679])
+            ("attributes" variable
+               (:pointer 2
+                :type "char")
+                nil [20723 20741])
+            ("attribute_lengths" variable
+               (:pointer 1
+                :type "unsigned long")
+                nil [20795 20828])
+            ("extension" variable
+               (:pointer 1
+                :type "void")
+                nil [20871 20887])
+            ("UDF_ARGS" variable (:type "int") nil [20890 20899])
+            ("maybe_null" variable (:type ("my_bool" type (:type "class") nil nil)) nil [20981 21000])
+            ("decimals" variable (:type "unsigned int") nil [21048 21070])
+            ("max_length" variable (:type "unsigned long") nil [21104 21129])
+            ("ptr" variable
+               (:pointer 1
+                :type "char")
+                nil [21162 21172])
+            ("const_item" variable (:type ("my_bool" type (:type "class") nil nil)) nil [21230 21249])
+            ("extension" variable
+               (:pointer 1
+                :type "void")
+                nil [21311 21327])
+            ("UDF_INIT" variable (:type "int") nil [21330 21339])
+            ("NET_HEADER_SIZE" variable (:constant-flag t) nil [21490 21505])
+            ("COMP_HEADER_SIZE" variable (:constant-flag t) nil [21544 21560])
+            ("NULL_LENGTH" variable (:constant-flag t) nil [23435 23446])
+            ("MYSQL_STMT_HEADER" variable (:constant-flag t) nil [23503 23520])
+            ("MYSQL_LONG_DATA_HEADER" variable (:constant-flag t) nil [23537 23559])
+            ("NOT_FIXED_DEC" variable (:constant-flag t) nil [23572 23585]))          
+    :file "mysql_com.h"
+    :pointmax 23606
+    :fsize 23605
+    :lastmodtime '(20747 26182 0 0)
+    :unmatched-syntax '((punctuation 23208 . 23209) (close-paren 23207 . 23208) (VOID 23203 . 23207) (open-paren 23202 . 23203) (symbol 23189 . 23202) (VOID 23184 . 23188) (punctuation 23182 . 23183) (close-paren 23181 . 23182) (VOID 23177 . 23181) (open-paren 23176 . 23177) (symbol 23162 . 23176) (symbol 23154 . 23161) (punctuation 23116 . 23117) (close-paren 23115 . 23116) (symbol 23104 . 23115) (INT 23100 . 23103) (UNSIGNED 23091 . 23099) (open-paren 23090 . 23091) (symbol 23067 . 23090) (punctuation 23066 . 23067) (CHAR 23061 . 23065) (CONST 23055 . 23060) (punctuation 23053 . 23054) (close-paren 23052 . 23053) (symbol 23041 . 23052) (punctuation 23040 . 23041) (CHAR 23035 . 23039) (CONST 23029 . 23034) (open-paren 23028 . 23029) (symbol 23012 . 23028) (punctuation 23011 . 23012) (CHAR 23006 . 23010) (punctuation 22978 . 22979) (close-paren 22977 . 22978) (symbol 22974 . 22977) (INT 22970 . 22973) (UNSIGNED 22961 . 22969) (punctuation 22959 . 22960) (symbol 22956 . 22959) (punctuation 22955 . 22956) (CHAR 22950 . 22954) (CONST 22944 . 22949) (punctuation 22942 . 22943) (symbol 22940 . 22942) (punctuation 22939 . 22940) (CHAR 22934 . 22938) (open-paren 22933 . 22934) (symbol 22924 . 22933) (punctuation 22923 . 22924) (CHAR 22918 . 22922) (punctuation 22916 . 22917) (close-paren 22915 . 22916) (symbol 22904 . 22915) (punctuation 22903 . 22904) (CHAR 22898 . 22902) (UNSIGNED 22889 . 22897) (CONST 22883 . 22888) (punctuation 22881 . 22882) (symbol 22879 . 22881) (punctuation 22878 . 22879) (CHAR 22873 . 22877) (open-paren 22872 . 22873) (symbol 22849 . 22872) (VOID 22844 . 22848) (punctuation 22842 . 22843) (close-paren 22841 . 22842) (symbol 22833 . 22841) (punctuation 22832 . 22833) (CHAR 22827 . 22831) (CONST 22821 . 22826) (punctuation 22819 . 22820) (symbol 22816 . 22819) (punctuation 22815 . 22816) (CHAR 22810 . 22814) (UNSIGNED 22801 . 22809) (open-paren 22800 . 22801) (symbol 22778 . 22800) (VOID 22773 . 22777) (punctuation 22771 . 22772) (close-paren 22770 . 22771) (symbol 22759 . 22770) (punctuation 22758 . 22759) (CHAR 22753 . 22757) (UNSIGNED 22744 . 22752) (CONST 22738 . 22743) (punctuation 22713 . 22714) (symbol 22706 . 22713) (punctuation 22705 . 22706) (CHAR 22700 . 22704) (CONST 22694 . 22699) (punctuation 22692 . 22693) (symbol 22687 . 22692) (punctuation 22686 . 22687) (CHAR 22681 . 22685) (UNSIGNED 22672 . 22680) (CONST 22666 . 22671) (open-paren 22665 . 22666) (symbol 22651 . 22665) (symbol 22643 . 22650) (punctuation 22641 . 22642) (close-paren 22640 . 22641) (symbol 22632 . 22640) (punctuation 22631 . 22632) (CHAR 22626 . 22630) (CONST 22620 . 22625) (punctuation 22618 . 22619) (symbol 22611 . 22618) (punctuation 22610 . 22611) (CHAR 22605 . 22609) (CONST 22599 . 22604) (punctuation 22597 . 22598) (symbol 22595 . 22597) (punctuation 22594 . 22595) (CHAR 22589 . 22593) (open-paren 22588 . 22589) (symbol 22580 . 22588) (VOID 22575 . 22579) (punctuation 22573 . 22574) (close-paren 22572 . 22573) (symbol 22564 . 22572) (punctuation 22563 . 22564) (CHAR 22558 . 22562) (CONST 22552 . 22557) (punctuation 22550 . 22551) (symbol 22548 . 22550) (punctuation 22547 . 22548) (CHAR 22542 . 22546) (open-paren 22541 . 22542) (symbol 22518 . 22541) (VOID 22513 . 22517) (punctuation 22510 . 22511) (close-paren 22509 . 22510) (symbol 22505 . 22509) (punctuation 22504 . 22505) (LONG 22499 . 22503) (UNSIGNED 22490 . 22498) (CONST 22484 . 22489) (punctuation 22482 . 22483) (symbol 22480 . 22482) (punctuation 22479 . 22480) (CHAR 22474 . 22478) (open-paren 22473 . 22474) (symbol 22446 . 22473) (VOID 22441 . 22445) (punctuation 22439 . 22440) (close-paren 22438 . 22439) (symbol 22430 . 22438) (punctuation 22429 . 22430) (CHAR 22424 . 22428) (CONST 22418 . 22423) (punctuation 22416 . 22417) (symbol 22413 . 22416) (punctuation 22412 . 22413) (LONG 22407 . 22411) (UNSIGNED 22398 . 22406) (open-paren 22397 . 22398) (symbol 22371 . 22397) (VOID 22366 . 22370) (punctuation 22364 . 22365) (close-paren 22363 . 22364) (symbol 22359 . 22363) (punctuation 22358 . 22359) (LONG 22353 . 22357) (UNSIGNED 22344 . 22352) (punctuation 22315 . 22316) (symbol 22308 . 22315) (punctuation 22307 . 22308) (CHAR 22302 . 22306) (CONST 22296 . 22301) (punctuation 22294 . 22295) (symbol 22289 . 22294) (punctuation 22288 . 22289) (CHAR 22283 . 22287) (UNSIGNED 22274 . 22282) (CONST 22268 . 22273) (open-paren 22267 . 22268) (symbol 22249 . 22267) (symbol 22241 . 22248) (punctuation 22239 . 22240) (close-paren 22238 . 22239) (symbol 22230 . 22238) (punctuation 22229 . 22230) (CHAR 22224 . 22228) (CONST 22218 . 22223) (punctuation 22216 . 22217) (symbol 22209 . 22216) (punctuation 22208 . 22209) (CHAR 22203 . 22207) (CONST 22197 . 22202) (punctuation 22195 . 22196) (symbol 22193 . 22195) (punctuation 22192 . 22193) (CHAR 22187 . 22191) (open-paren 22186 . 22187) (symbol 22174 . 22186) (VOID 22169 . 22173) (punctuation 22167 . 22168) (close-paren 22166 . 22167) (symbol 22158 . 22166) (punctuation 22157 . 22158) (CHAR 22152 . 22156) (CONST 22146 . 22151) (punctuation 22144 . 22145) (symbol 22142 . 22144) (punctuation 22141 . 22142) (CHAR 22136 . 22140) (open-paren 22135 . 22136) (symbol 22108 . 22135) (VOID 22103 . 22107) (punctuation 22101 . 22102) (close-paren 22100 . 22101) (symbol 22088 . 22100) (INT 22084 . 22087) (UNSIGNED 22075 . 22083) (punctuation 22073 . 22074) (symbol 22065 . 22073) (punctuation 22064 . 22065) (CHAR 22059 . 22063) (CONST 22053 . 22058) (punctuation 22051 . 22052) (symbol 22049 . 22051) (punctuation 22048 . 22049) (LONG 22043 . 22047) (UNSIGNED 22034 . 22042) (open-paren 22033 . 22034) (symbol 22020 . 22033) (VOID 22015 . 22019) (punctuation 22012 . 22013) (close-paren 22011 . 22012) (symbol 22004 . 22011) (punctuation 22003 . 22004) (symbol 21991 . 22002) (STRUCT 21984 . 21990) (punctuation 21982 . 21983) (symbol 21976 . 21982) (INT 21972 . 21975) (UNSIGNED 21963 . 21971) (punctuation 21961 . 21962) (symbol 21959 . 21961) (punctuation 21958 . 21959) (CHAR 21953 . 21957) (open-paren 21952 . 21953) (symbol 21932 . 21952) (VOID 21927 . 21931) (punctuation 21925 . 21926) (close-paren 21924 . 21925) (punctuation 21923 . 21924) (symbol 21911 . 21922) (STRUCT 21904 . 21910) (open-paren 21903 . 21904) (symbol 21897 . 21903) (DOUBLE 21890 . 21896) (punctuation 21888 . 21889) (close-paren 21887 . 21888) (symbol 21882 . 21887) (LONG 21877 . 21881) (UNSIGNED 21868 . 21876) (punctuation 21850 . 21851) (symbol 21845 . 21850) (LONG 21840 . 21844) (UNSIGNED 21831 . 21839) (punctuation 21829 . 21830) (punctuation 21828 . 21829) (symbol 21816 . 21827) (STRUCT 21809 . 21815) (open-paren 21808 . 21809) (symbol 21798 . 21808) (VOID 21793 . 21797) (close-paren 21328 . 21329) (open-paren 20977 . 20978) (symbol 20965 . 20976) (STRUCT 20958 . 20964) (TYPEDEF 20950 . 20957) (close-paren 20888 . 20889) (open-paren 20440 . 20441) (symbol 20428 . 20439) (STRUCT 20421 . 20427) (TYPEDEF 20413 . 20420) (punctuation 20410 . 20411) (close-paren 20409 . 20410) (symbol 20395 . 20409) (punctuation 20375 . 20376) (symbol 20365 . 20375) (punctuation 20363 . 20364) (symbol 20353 . 20363) (punctuation 20351 . 20352) (symbol 20340 . 20351) (punctuation 20338 . 20339) (number 20337 . 20338) (punctuation 20336 . 20337) (symbol 20323 . 20336) (open-paren 20322 . 20323) (symbol 20310 . 20321) (ENUM 20305 . 20309) (punctuation 20220 . 20221) (close-paren 20219 . 20220) (open-paren 20154 . 20155) (symbol 20142 . 20153) (STRUCT 20135 . 20141) (punctuation 19989 . 19990) (close-paren 19988 . 19989) (symbol 19985 . 19988) (punctuation 19984 . 19985) (symbol 19980 . 19983) (open-paren 19979 . 19980) (symbol 19968 . 19979) (LONG 19963 . 19967) (UNSIGNED 19954 . 19962) (punctuation 19952 . 19953) (close-paren 19951 . 19952) (symbol 19945 . 19951) (symbol 19938 . 19944) (punctuation 19936 . 19937) (symbol 19930 . 19936) (punctuation 19929 . 19930) (CHAR 19924 . 19928) (UNSIGNED 19915 . 19923) (CONST 19909 . 19914) (punctuation 19907 . 19908) (symbol 19904 . 19907) (punctuation 19903 . 19904) (symbol 19899 . 19902) (open-paren 19898 . 19899) (symbol 19882 . 19898) (symbol 19874 . 19881) (punctuation 19872 . 19873) (close-paren 19871 . 19872) (symbol 19868 . 19871) (symbol 19861 . 19867) (punctuation 19859 . 19860) (symbol 19853 . 19859) (punctuation 19852 . 19853) (CHAR 19847 . 19851) (UNSIGNED 19838 . 19846) (CONST 19832 . 19837) (punctuation 19825 . 19826) (symbol 19817 . 19825) (symbol 19810 . 19816) (punctuation 19808 . 19809) (symbol 19802 . 19808) (punctuation 19801 . 19802) (CHAR 19796 . 19800) (UNSIGNED 19787 . 19795) (CONST 19781 . 19786) (punctuation 19774 . 19775) (symbol 19767 . 19774) (CHAR 19762 . 19766) (UNSIGNED 19753 . 19761) (punctuation 19752 . 19753) (symbol 19749 . 19752) (punctuation 19748 . 19749) (symbol 19744 . 19747) (open-paren 19743 . 19744) (symbol 19726 . 19743) (symbol 19718 . 19725) (punctuation 19716 . 19717) (close-paren 19715 . 19716) (symbol 19712 . 19715) (symbol 19705 . 19711) (punctuation 19703 . 19704) (symbol 19697 . 19703) (punctuation 19696 . 19697) (CHAR 19691 . 19695) (UNSIGNED 19682 . 19690) (CONST 19676 . 19681) (punctuation 19675 . 19676) (symbol 19672 . 19675) (punctuation 19671 . 19672) (symbol 19667 . 19670) (open-paren 19666 . 19667) (symbol 19654 . 19666) (symbol 19646 . 19653) (punctuation 19644 . 19645) (close-paren 19643 . 19644) (symbol 19640 . 19643) (punctuation 19639 . 19640) (symbol 19635 . 19638) (open-paren 19634 . 19635) (symbol 19625 . 19634) (symbol 19617 . 19624) (punctuation 19615 . 19616) (close-paren 19614 . 19615) (symbol 19608 . 19614) (symbol 19601 . 19607) (punctuation 19599 . 19600) (symbol 19596 . 19599) (punctuation 19595 . 19596) (symbol 19591 . 19594) (open-paren 19590 . 19591) (symbol 19579 . 19590) (symbol 19571 . 19578) (punctuation 19569 . 19570) (close-paren 19568 . 19569) (symbol 19556 . 19568) (symbol 19548 . 19555) (punctuation 19546 . 19547) (symbol 19543 . 19546) (punctuation 19542 . 19543) (symbol 19538 . 19541) (open-paren 19537 . 19538) (symbol 19528 . 19537) (VOID 19523 . 19527) (punctuation 19521 . 19522) (close-paren 19520 . 19521) (symbol 19517 . 19520) (punctuation 19516 . 19517) (symbol 19512 . 19515) (open-paren 19511 . 19512) (symbol 19504 . 19511) (VOID 19499 . 19503) (punctuation 19497 . 19498) (close-paren 19496 . 19497) (symbol 19493 . 19496) (punctuation 19492 . 19493) (symbol 19488 . 19491) (open-paren 19487 . 19488) (symbol 19470 . 19487) (VOID 19465 . 19469) (punctuation 19463 . 19464) (close-paren 19462 . 19463) (symbol 19459 . 19462) (punctuation 19457 . 19458) (symbol 19454 . 19457) (punctuation 19452 . 19453) (symbol 19449 . 19452) (punctuation 19448 . 19449) (symbol 19444 . 19447) (open-paren 19443 . 19444) (symbol 19432 . 19443) (symbol 19424 . 19431) (punctuation 19329 . 19330) (close-paren 19328 . 19329) (symbol 19294 . 19327) (punctuation 19290 . 19291) (symbol 19258 . 19290) (open-paren 19254 . 19255) (symbol 19232 . 19253) (ENUM 19227 . 19231) (punctuation 19188 . 19189) (close-paren 19187 . 19188) (number 19185 . 19186) (punctuation 19183 . 19184) (symbol 19161 . 19183) (punctuation 19157 . 19158) (number 19156 . 19157) (punctuation 19154 . 19155) (symbol 19132 . 19154) (punctuation 19128 . 19129) (number 19127 . 19128) (punctuation 19125 . 19126) (symbol 19104 . 19125) (punctuation 19100 . 19101) (number 19099 . 19100) (punctuation 19097 . 19098) (symbol 19076 . 19097) (open-paren 19072 . 19073) (symbol 19055 . 19071) (ENUM 19050 . 19054) (punctuation 19046 . 19047) (close-paren 19045 . 19046) (number 19041 . 19044) (punctuation 19039 . 19040) (symbol 19024 . 19039) (punctuation 18919 . 18920) (number 18918 . 18919) (punctuation 18916 . 18917) (semantic-list 18878 . 18915) (punctuation 18876 . 18877) (symbol 18846 . 18876) (punctuation 18770 . 18771) (semantic-list 18733 . 18770) (punctuation 18731 . 18732) (symbol 18706 . 18731) (punctuation 18639 . 18640) (semantic-list "(1 << 3)" 18609 . 18639) (semantic-list "(unsigned char)" 18609 . 18639) (punctuation 18607 . 18608) (symbol 18586 . 18607) (punctuation 18508 . 18509) (semantic-list "(1 << 1)" 18479 . 18508) (semantic-list "(unsigned char)" 18479 . 18508) (punctuation 18477 . 18478) (symbol 18451 . 18477) (punctuation 18405 . 18406) (semantic-list "(1 << 0)" 18374 . 18405) (semantic-list "(unsigned char)" 18374 . 18405) (punctuation 18372 . 18373) (symbol 18347 . 18372) (punctuation 18295 . 18296) (number 18294 . 18295) (punctuation 18292 . 18293) (symbol 18275 . 18291) (open-paren 18092 . 18093) (symbol 18066 . 18091) (ENUM 18061 . 18065) (punctuation 16249 . 16250) (close-paren 16248 . 16249) (number 16243 . 16246) (punctuation 16242 . 16243) (symbol 16223 . 16242) (punctuation 16218 . 16219) (number 16215 . 16218) (punctuation 16214 . 16215) (symbol 16197 . 16214) (punctuation 16192 . 16193) (number 16189 . 16192) (punctuation 16188 . 16189) (symbol 16167 . 16188) (punctuation 16162 . 16163) (number 16159 . 16162) (punctuation 16158 . 16159) (symbol 16143 . 16158) (punctuation 16138 . 16139) (number 16135 . 16138) (punctuation 16134 . 16135) (symbol 16114 . 16134) (punctuation 16109 . 16110) (number 16106 . 16109) (punctuation 16105 . 16106) (symbol 16083 . 16105) (punctuation 16078 . 16079) (number 16075 . 16078) (punctuation 16074 . 16075) (symbol 16054 . 16074) (punctuation 16049 . 16050) (number 16046 . 16049) (punctuation 16045 . 16046) (symbol 16031 . 16045) (punctuation 16026 . 16027) (number 16023 . 16026) (punctuation 16022 . 16023) (symbol 16007 . 16022) (punctuation 16002 . 16003) (number 15999 . 16002) (punctuation 15998 . 15999) (symbol 15977 . 15998) (punctuation 15951 . 15952) (symbol 15935 . 15951) (punctuation 15930 . 15931) (symbol 15910 . 15930) (punctuation 15905 . 15906) (symbol 15884 . 15905) (punctuation 15879 . 15880) (symbol 15865 . 15879) (punctuation 15860 . 15861) (symbol 15842 . 15860) (punctuation 15840 . 15841) (symbol 15822 . 15840) (punctuation 15817 . 15818) (symbol 15802 . 15817) (punctuation 15800 . 15801) (symbol 15781 . 15800) (punctuation 15776 . 15777) (symbol 15761 . 15776) (punctuation 15757 . 15758) (symbol 15742 . 15757) (punctuation 15737 . 15738) (symbol 15721 . 15737) (punctuation 15720 . 15721) (symbol 15701 . 15720) (punctuation 15696 . 15697) (symbol 15676 . 15696) (punctuation 15672 . 15673) (symbol 15657 . 15672) (punctuation 15652 . 15653) (symbol 15635 . 15652) (punctuation 15632 . 15633) (symbol 15616 . 15632) (punctuation 15611 . 15612) (symbol 15596 . 15611) (punctuation 15593 . 15594) (symbol 15577 . 15593) (punctuation 15572 . 15573) (symbol 15557 . 15572) (punctuation 15555 . 15556) (symbol 15537 . 15555) (open-paren 15535 . 15536) (symbol 15518 . 15534) (ENUM 15513 . 15517) (close-paren 15461 . 15462) (open-paren 13476 . 13477) (symbol 13469 . 13475) (STRUCT 13462 . 13468) (TYPEDEF 13454 . 13461) (close-paren 4411 . 4412))
+    :lexical-table 
+        '(("NAME_LEN" . ((semantic-list "(NAME_CHAR_LEN*SYSTEM_CHARSET_MBMAXLEN)" 1040 . 1079)))
+          ("LOCAL_HOST" . ((string "\"localhost\"" 1820 . 1831)))
+          ("FIELD_IS_DROPPED" . ((semantic-list "(1<< 26)" 5010 . 5018)))
+          ("REFRESH_GENERAL_LOG" . ((number "4096" 5875 . 5879)))
+          ("SERVER_QUERY_NO_INDEX_USED" . ((number "32" 10630 . 10632)))
+          ("ONLY_KILL_QUERY" . ((number "1" 12884 . 12885)))
+          ("MAX_TINYINT_WIDTH" . ((number "3" 12980 . 12981)))
+          ("MAX_BIGINT_WIDTH" . ((number "20" 13290 . 13292)))
+          ("FIELD_TYPE_MEDIUM_BLOB" . ((symbol "MYSQL_TYPE_MEDIUM_BLOB" 17303 . 17325)))
+          ("FIELD_TYPE_BIT" . ((symbol "MYSQL_TYPE_BIT" 17703 . 17717)))
+          ("SCRAMBLE_LENGTH_323" . ((number "8" 2953 . 2954)))
+          ("UNSIGNED_FLAG" . ((number "32" 3464 . 3466)))
+          ("ON_UPDATE_NOW_FLAG" . ((number "8192" 3958 . 3962)))
+          ("PART_KEY_FLAG" . ((number "16384" 4086 . 4091)))
+          ("FIELD_FLAGS_COLUMN_FORMAT_MASK" . ((semantic-list "(3 << FIELD_FLAGS_COLUMN_FORMAT)" 4952 . 4984)))
+          ("REFRESH_ERROR_LOG" . ((number "256" 5611 . 5614)))
+          ("CLIENT_COMPRESS" . ((number "32" 6784 . 6786)))
+          ("CLIENT_CONNECT_ATTRS" . ((semantic-list "(1UL << 20)" 7814 . 7825)))
+          ("SERVER_STATUS_AUTOCOMMIT" . ((number "2" 10434 . 10435)))
+          ("MAX_INT_WIDTH" . ((number "10" 13213 . 13215)))
+          ("FIELD_TYPE_NEWDECIMAL" . ((symbol "MYSQL_TYPE_NEWDECIMAL" 16426 . 16447)))
+          ("FIELD_TYPE_SHORT" . ((symbol "MYSQL_TYPE_SHORT" 16526 . 16542)))
+          ("FIELD_TYPE_DOUBLE" . ((symbol "MYSQL_TYPE_DOUBLE" 16669 . 16686)))
+          ("FIELD_TYPE_NULL" . ((symbol "MYSQL_TYPE_NULL" 16718 . 16733)))
+          ("FIELD_TYPE_INTERVAL" . ((symbol "MYSQL_TYPE_ENUM" 17605 . 17620)))
+          ("_mysql_com_h")
+          ("SYSTEM_CHARSET_MBMAXLEN" . ((number "3" 906 . 907)))
+          ("NO_DEFAULT_VALUE_FLAG" . ((number "4096" 3887 . 3891)))
+          ("NUM_FLAG" . ((number "32768" 4024 . 4029)))
+          ("GROUP_FLAG" . ((number "32768" 4143 . 4148)))
+          ("REFRESH_BINARY_LOG" . ((number "1024" 5750 . 5754)))
+          ("REFRESH_RELAY_LOG" . ((number "2048" 5813 . 5817)))
+          ("REFRESH_FAST" . ((number "32768" 6111 . 6116)))
+          ("REFRESH_QUERY_CACHE_FREE" . ((number "0x20000L" 6253 . 6261)))
+          ("CLIENT_SSL" . ((number "2048" 7142 . 7146)))
+          ("CLIENT_RESERVED" . ((number "16384" 7348 . 7353)))
+          ("SERVER_MORE_RESULTS_EXISTS" . ((number "8" 10504 . 10505)))
+          ("MAX_CHAR_WIDTH" . ((number "255" 13353 . 13356)))
+          ("FIELD_TYPE_CHAR" . ((symbol "MYSQL_TYPE_TINY" 17558 . 17573)))
+          ("PRI_KEY_FLAG" . ((number "2" 3237 . 3238)))
+          ("UNIQUE_KEY_FLAG" . ((number "4" 3301 . 3302)))
+          ("BINCMP_FLAG" . ((number "131072" 4254 . 4260)))
+          ("GET_FIXED_FIELDS_FLAG" . ((semantic-list "(1 << 18)" 4323 . 4332)))
+          ("REFRESH_HOSTS" . ((number "8" 5238 . 5239)))
+          ("CLIENT_IGNORE_SIGPIPE" . ((number "4096" 7215 . 7219)))
+          ("CLIENT_TRANSACTIONS" . ((number "8192" 7273 . 7277)))
+          ("CLIENT_ALL_FLAGS" . ((semantic-list "(CLIENT_LONG_PASSWORD \\
+                           | CLIENT_FOUND_ROWS \\
+                           | CLIENT_LONG_FLAG \\
+                           | CLIENT_CONNECT_WITH_DB \\
+                           | CLIENT_NO_SCHEMA \\
+                           | CLIENT_COMPRESS \\
+                           | CLIENT_ODBC \\
+                           | CLIENT_LOCAL_FILES \\
+                           | CLIENT_IGNORE_SPACE \\
+                           | CLIENT_PROTOCOL_41 \\
+                           | CLIENT_INTERACTIVE \\
+                           | CLIENT_SSL \\
+                           | CLIENT_IGNORE_SIGPIPE \\
+                           | CLIENT_TRANSACTIONS \\
+                           | CLIENT_RESERVED \\
+                           | CLIENT_SECURE_CONNECTION \\
+                           | CLIENT_MULTI_STATEMENTS \\
+                           | CLIENT_MULTI_RESULTS \\
+                           | CLIENT_PS_MULTI_RESULTS \\
+                           | CLIENT_SSL_VERIFY_SERVER_CERT \\
+                           | CLIENT_REMEMBER_OPTIONS \\
+                           | CLIENT_PLUGIN_AUTH \\
+                           | CLIENT_CONNECT_ATTRS \\
+                           | CLIENT_PLUGIN_AUTH_LENENC_CLIENT_DATA \\
+                           | CLIENT_CAN_HANDLE_EXPIRED_PASSWORDS \\
+)" 8433 . 9713)))
+          ("CLIENT_BASIC_FLAGS" . ((semantic-list "(((CLIENT_ALL_FLAGS & ~CLIENT_SSL) \\
+                                               & ~CLIENT_COMPRESS) \\
+                                               & ~CLIENT_SSL_VERIFY_SERVER_CERT)" 9962 . 10148)))
+          ("MYSQL_ERRMSG_SIZE" . ((number "512" 12684 . 12687)))
+          ("FIELD_TYPE_TIMESTAMP" . ((symbol "MYSQL_TYPE_TIMESTAMP" 16765 . 16785)))
+          ("CLIENT_IGNORE_SPACE" . ((number "256" 6953 . 6956)))
+          ("SERVER_STATUS_METADATA_CHANGED" . ((number "1024" 11330 . 11334)))
+          ("FIELD_TYPE_DATETIME" . ((symbol "MYSQL_TYPE_DATETIME" 17010 . 17029)))
+          ("FIELD_TYPE_VAR_STRING" . ((symbol "MYSQL_TYPE_VAR_STRING" 17456 . 17477)))
+          ("MYSQL_SHUTDOWN_KILLABLE_TRANS" . ((semantic-list "(unsigned char)" 17902 . 17917) (semantic-list "(1 << 1)" 17917 . 17925)))
+          ("BINARY_FLAG" . ((number "128" 3562 . 3565)))
+          ("FIELD_IN_PART_FUNC_FLAG" . ((semantic-list "(1 << 19" 4403 . 4411)))
+          ("CLIENT_MULTI_RESULTS" . ((semantic-list "(1UL << 17)" 7574 . 7585)))
+          ("NET_WRITE_TIMEOUT" . ((number "60" 12765 . 12767)))
+          ("NET_WAIT_TIMEOUT" . 
+              ((number "8" 12817 . 12818) (punctuation "*" 12818 . 12819) (number "60" 12819 . 12821) (punctuation "*" 12821 . 12822) (number "60" 12822 . 12824)))
+          ("MAX_MEDIUMINT_WIDTH" . ((number "8" 13135 . 13136)))
+          ("CLIENT_MULTI_QUERIES" . ((symbol "CLIENT_MULTI_STATEMENTS" 16317 . 16340)))
+          ("FIELD_TYPE_DECIMAL" . ((symbol "MYSQL_TYPE_DECIMAL" 16376 . 16394)))
+          ("MYSQL_SHUTDOWN_KILLABLE_UPDATE" . ((semantic-list "(unsigned char)" 18036 . 18051) (semantic-list "(1 << 3)" 18051 . 18059)))
+          ("USERNAME_CHAR_LENGTH" . ((number "16" 1005 . 1007)))
+          ("ENUM_FLAG" . ((number "256" 3659 . 3662)))
+          ("REFRESH_GRANT" . ((number "1" 5086 . 5087)))
+          ("REFRESH_SLAVE" . ((number "64" 5404 . 5406)))
+          ("REFRESH_DES_KEY_FILE" . ((number "0x40000L" 6314 . 6322)))
+          ("REFRESH_USER_RESOURCES" . ((number "0x80000L" 6354 . 6362)))
+          ("CLIENT_FOUND_ROWS" . ((number "2" 6529 . 6530)))
+          ("CLIENT_CONNECT_WITH_DB" . ((number "8" 6653 . 6654)))
+          ("CLIENT_INTERACTIVE" . ((number "1024" 7069 . 7073)))
+          ("CLIENT_MULTI_STATEMENTS" . ((semantic-list "(1UL << 16)" 7490 . 7501)))
+          ("CLIENT_PS_MULTI_RESULTS" . ((semantic-list "(1UL << 18)" 7653 . 7664)))
+          ("SERVER_PS_OUT_PARAMS" . ((number "4096" 11483 . 11487)))
+          ("FIELD_TYPE_FLOAT" . ((symbol "MYSQL_TYPE_FLOAT" 16621 . 16637)))
+          ("MYSQL_SHUTDOWN_KILLABLE_LOCK_TABLE" . ((semantic-list "(unsigned char)" 17969 . 17984) (semantic-list "(1 << 2)" 17984 . 17992)))
+          ("net_new_transaction" (spp-arg-list ("net") 19359 . 19364) . ((semantic-list "((net)->pkt_nr=0)" 19365 . 19382)))
+          ("NET_HEADER_SIZE" . ((number "4" 21506 . 21507)))
+          ("HOSTNAME_LENGTH" . ((number "60" 871 . 873)))
+          ("MYSQL_AUTODETECT_CHARSET_NAME" . ((string "\"auto\"" 1198 . 1204)))
+          ("SERVER_VERSION_LENGTH" . ((number "60" 1236 . 1238)))
+          ("TABLE_COMMENT_INLINE_MAXLEN" . ((number "180" 1337 . 1340)))
+          ("INDEX_COMMENT_MAXLEN" . ((number "1024" 1468 . 1472)))
+          ("SCRAMBLED_PASSWORD_CHAR_LENGTH" . ((semantic-list "(SCRAMBLE_LENGTH*2+1)" 3074 . 3095)))
+          ("NOT_NULL_FLAG" . ((number "1" 3187 . 3188)))
+          ("TIMESTAMP_FLAG" . ((number "1024" 3780 . 3784)))
+          ("REFRESH_SLOW_LOG" . ((number "8192" 5939 . 5943)))
+          ("REFRESH_FOR_EXPORT" . ((number "0x100000L" 6395 . 6404)))
+          ("CLIENT_SECURE_CONNECTION" . ((number "32768" 7422 . 7427)))
+          ("CLIENT_PLUGIN_AUTH_LENENC_CLIENT_DATA" . ((semantic-list "(1UL << 21)" 7990 . 8001)))
+          ("SERVER_STATUS_NO_BACKSLASH_ESCAPES" . ((number "512" 11127 . 11130)))
+          ("SERVER_STATUS_CLEAR_SET" . ((semantic-list "(SERVER_QUERY_NO_GOOD_INDEX_USED| \\
+                                 SERVER_QUERY_NO_INDEX_USED|\\
+                                 SERVER_MORE_RESULTS_EXISTS|\\
+                                 SERVER_STATUS_METADATA_CHANGED |\\
+                                 SERVER_QUERY_WAS_SLOW |\\
+                                 SERVER_STATUS_DB_DROPPED |\\
+                                 SERVER_STATUS_CURSOR_EXISTS|\\
+                                 SERVER_STATUS_LAST_ROW_SENT)" 12186 . 12656)))
+          ("MAX_SMALLINT_WIDTH" . ((number "5" 13057 . 13058)))
+          ("packet_error" . ((semantic-list "(~(unsigned long) 0)" 15491 . 15511)))
+          ("FIELD_TYPE_TINY_BLOB" . ((symbol "MYSQL_TYPE_TINY_BLOB" 17251 . 17271)))
+          ("COMP_HEADER_SIZE" . ((number "3" 21561 . 21562)))
+          ("MYSQL_STMT_HEADER" . ((number "4" 23527 . 23528)))
+          ("SCRAMBLED_PASSWORD_CHAR_LENGTH_323" . ((semantic-list "(SCRAMBLE_LENGTH_323*2)" 3139 . 3162)))
+          ("FIELD_IS_RENAMED" . ((semantic-list "(1<< 21)" 4635 . 4643)))
+          ("REFRESH_STATUS" . ((number "16" 5287 . 5289)))
+          ("CLIENT_ODBC" . ((number "64" 6843 . 6845)))
+          ("CLIENT_REMEMBER_OPTIONS" . ((semantic-list "(1UL << 31)" 8215 . 8226)))
+          ("SERVER_STATUS_IN_TRANS" . ((number "1" 10397 . 10398)))
+          ("SERVER_QUERY_NO_GOOD_INDEX_USED" . ((number "16" 10587 . 10589)))
+          ("SERVER_STATUS_CURSOR_EXISTS" . ((number "64" 10865 . 10867)))
+          ("SERVER_STATUS_IN_TRANS_READONLY" . ((number "8192" 11845 . 11849)))
+          ("MAX_BLOB_WIDTH" . ((number "16777216" 13415 . 13423)))
+          ("NOT_FIXED_DEC" . ((number "31" 23596 . 23598)))
+          ("TABLE_COMMENT_MAXLEN" . ((number "2048" 1399 . 1403)))
+          ("LOCAL_HOST_NAMEDPIPE" . ((string "\".\"" 1861 . 1864)))
+          ("BLOB_FLAG" . ((number "16" 3416 . 3418)))
+          ("ZEROFILL_FLAG" . ((number "64" 3514 . 3516)))
+          ("REFRESH_MASTER" . ((number "128" 5501 . 5504)))
+          ("CLIENT_CAN_HANDLE_EXPIRED_PASSWORDS" . ((semantic-list "(1UL << 22)" 8120 . 8131)))
+          ("CLIENT_SSL_VERIFY_SERVER_CERT" . ((semantic-list "(1UL << 30)" 8171 . 8182)))
+          ("CAN_CLIENT_COMPRESS" . ((number "0" 8327 . 8328)))
+          ("NET_READ_TIMEOUT" . ((number "30" 12713 . 12715)))
+          ("FIELD_TYPE_TINY" . ((symbol "MYSQL_TYPE_TINY" 16479 . 16494)))
+          ("FIELD_TYPE_ENUM" . ((symbol "MYSQL_TYPE_ENUM" 17158 . 17173)))
+          ("MYSQL_SHUTDOWN_KILLABLE_CONNECT" . ((semantic-list "(unsigned char)" 17835 . 17850) (semantic-list "(1 << 0)" 17850 . 17858)))
+          ("SQLSTATE_LENGTH" . ((number "5" 1263 . 1264)))
+          ("USER_HOST_BUFF_SIZE" . 
+              ((symbol "HOSTNAME_LENGTH" 1762 . 1777) (punctuation "+" 1778 . 1779) (symbol "USERNAME_LENGTH" 1780 . 1795) (punctuation "+" 1796 . 1797) (number "2" 1798 . 1799)))
+          ("UNIQUE_FLAG" . ((number "65536" 4196 . 4201)))
+          ("FIELD_FLAGS_STORAGE_MEDIA" . ((number "22" 4721 . 4723)))
+          ("REFRESH_TABLES" . ((number "4" 5190 . 5191)))
+          ("CLIENT_PLUGIN_AUTH" . ((semantic-list "(1UL << 19)" 7729 . 7740)))
+          ("FIELD_TYPE_DATE" . ((symbol "MYSQL_TYPE_DATE" 16916 . 16931)))
+          ("FIELD_TYPE_YEAR" . ((symbol "MYSQL_TYPE_YEAR" 17061 . 17076)))
+          ("NAME_CHAR_LEN" . ((number "64" 930 . 932)))
+          ("SCRAMBLE_LENGTH" . ((number "20" 2922 . 2924)))
+          ("MULTIPLE_KEY_FLAG" . ((number "8" 3366 . 3367)))
+          ("AUTO_INCREMENT_FLAG" . ((number "512" 3715 . 3718)))
+          ("FIELD_IN_ADD_INDEX" . ((semantic-list "(1 << 20)" 4600 . 4609)))
+          ("FIELD_FLAGS_COLUMN_FORMAT" . ((number "24" 4870 . 4872)))
+          ("REFRESH_THREADS" . ((number "32" 5344 . 5346)))
+          ("REFRESH_ENGINE_LOG" . ((number "512" 5679 . 5682)))
+          ("REFRESH_QUERY_CACHE" . ((number "65536" 6214 . 6219)))
+          ("CLIENT_NO_SCHEMA" . ((number "16" 6716 . 6718)))
+          ("CLIENT_PROTOCOL_41" . ((number "512" 7015 . 7018)))
+          ("SERVER_QUERY_WAS_SLOW" . ((number "2048" 11374 . 11378)))
+          ("FIELD_TYPE_LONG" . ((symbol "MYSQL_TYPE_LONG" 16574 . 16589)))
+          ("FIELD_TYPE_LONGLONG" . ((symbol "MYSQL_TYPE_LONGLONG" 16817 . 16836)))
+          ("FIELD_TYPE_INT24" . ((symbol "MYSQL_TYPE_INT24" 16868 . 16884)))
+          ("FIELD_TYPE_SET" . ((symbol "MYSQL_TYPE_SET" 17205 . 17219)))
+          ("FIELD_TYPE_LONG_BLOB" . ((symbol "MYSQL_TYPE_LONG_BLOB" 17357 . 17377)))
+          ("FIELD_TYPE_BLOB" . ((symbol "MYSQL_TYPE_BLOB" 17409 . 17424)))
+          ("FIELD_TYPE_STRING" . ((symbol "MYSQL_TYPE_STRING" 17509 . 17526)))
+          ("FIELD_TYPE_GEOMETRY" . ((symbol "MYSQL_TYPE_GEOMETRY" 17652 . 17671)))
+          ("NULL_LENGTH" . ((semantic-list "((unsigned long) ~0)" 23447 . 23467)))
+          ("MYSQL_LONG_DATA_HEADER" . ((number "6" 23561 . 23562)))
+          ("USERNAME_LENGTH" . ((semantic-list "(USERNAME_CHAR_LENGTH*SYSTEM_CHARSET_MBMAXLEN)" 1112 . 1158)))
+          ("COLUMN_COMMENT_MAXLEN" . ((number "1024" 1434 . 1438)))
+          ("TABLE_PARTITION_COMMENT_MAXLEN" . ((number "1024" 1512 . 1516)))
+          ("SET_FLAG" . ((number "2048" 3830 . 3834)))
+          ("FIELD_FLAGS_STORAGE_MEDIA_MASK" . ((semantic-list "(3 << FIELD_FLAGS_STORAGE_MEDIA)" 4803 . 4835)))
+          ("REFRESH_LOG" . ((number "2" 5136 . 5137)))
+          ("REFRESH_READ_LOCK" . ((number "16384" 6056 . 6061)))
+          ("CLIENT_LONG_PASSWORD" . ((number "1" 6469 . 6470)))
+          ("CLIENT_LONG_FLAG" . ((number "4" 6593 . 6594)))
+          ("CLIENT_LOCAL_FILES" . ((number "128" 6891 . 6894)))
+          ("SERVER_STATUS_LAST_ROW_SENT" . ((number "128" 11007 . 11010)))
+          ("SERVER_STATUS_DB_DROPPED" . ((number "256" 11051 . 11054)))
+          ("FIELD_TYPE_TIME" . ((symbol "MYSQL_TYPE_TIME" 16963 . 16978)))
+          ("FIELD_TYPE_NEWDATE" . ((symbol "MYSQL_TYPE_NEWDATE" 17108 . 17126)))
+          )
+
+    )
+   (semanticdb-table "mysql_time.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("_mysql_time_h_" variable (:constant-flag t) nil [757 771])
+            ("enum_mysql_timestamp_type" type
+               (:members 
+                  ( ("MYSQL_TIMESTAMP_NONE" variable
+                       (:constant-flag t
+                        :default-value (1182 1184)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1160 1184])
+                    ("MYSQL_TIMESTAMP_ERROR" variable
+                       (:constant-flag t
+                        :default-value (1209 1211)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1186 1211])
+                    ("MYSQL_TIMESTAMP_DATE" variable
+                       (:constant-flag t
+                        :default-value (1237 1238)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1215 1238])
+                    ("MYSQL_TIMESTAMP_DATETIME" variable
+                       (:constant-flag t
+                        :default-value (1266 1267)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1240 1267])
+                    ("MYSQL_TIMESTAMP_TIME" variable
+                       (:constant-flag t
+                        :default-value (1291 1292)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1269 1292]))                  
+                :type "enum")
+                nil [1125 1295])
+            ("MYSQL_TIME" type
+               (:typedef ("st_mysql_time" type (:type "struct") nil nil)
+                :superclasses "st_mysql_time"
+                :type "typedef")
+                nil [1923 2139])
+            ("st_mysql_time" type
+               (:members 
+                  ( ("second" variable (:type "unsigned int") (reparse-symbol classsubparts) [1956 2009])
+                    ("minute" variable (:type "unsigned int") (reparse-symbol classsubparts) [1956 2009])
+                    ("hour" variable (:type "unsigned int") (reparse-symbol classsubparts) [1956 2009])
+                    ("day" variable (:type "unsigned int") (reparse-symbol classsubparts) [1956 2009])
+                    ("month" variable (:type "unsigned int") (reparse-symbol classsubparts) [1956 2009])
+                    ("year" variable (:type "unsigned int") (reparse-symbol classsubparts) [1956 2009])
+                    ("second_part" variable (:type "unsigned long") (reparse-symbol classsubparts) [2012 2038])
+                    ("neg" variable (:type ("my_bool" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2063 2081])
+                    ("time_type" variable (:type ("enum_mysql_timestamp_type" type (:type "enum") nil nil)) (reparse-symbol classsubparts) [2084 2125]))                  
+                :type "struct")
+                nil [1923 2139]))          
+    :file "mysql_time.h"
+    :pointmax 2169
+    :fsize 2168
+    :lastmodtime '(20747 26182 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("_mysql_time_h_")
+          )
+
+    )
+   (semanticdb-table "my_list.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("_list_h_" variable (:constant-flag t) nil [771 779])
+            ("LIST" type
+               (:typedef ("st_list" type (:type "struct") nil nil)
+                :superclasses "st_list"
+                :type "typedef")
+                nil [821 897])
+            ("st_list" type
+               (:members 
+                  ( ("next" variable
+                       (:pointer 1
+                        :type ("st_list" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol classsubparts) [848 875])
+                    ("prev" variable
+                       (:pointer 1
+                        :type ("st_list" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol classsubparts) [848 875])
+                    ("data" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol classsubparts) [878 889]))                  
+                :type "struct")
+                nil [821 897])
+            ("list_walk_action" variable
+               (:functionpointer-flag t
+                :type "int")
+                nil [907 946])
+            ("list_add" function
+               (:prototype-flag t
+                :pointer 1
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("root" variable
+                       (:pointer 1
+                        :type ("LIST" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [970 981])
+                    ("element" variable
+                       (:pointer 1
+                        :type ("LIST" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [981 995]))                  
+                :type ("LIST" type (:type "class") nil nil))
+                nil [948 996])
+            ("list_delete" function
+               (:prototype-flag t
+                :pointer 1
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("root" variable
+                       (:pointer 1
+                        :type ("LIST" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1022 1033])
+                    ("element" variable
+                       (:pointer 1
+                        :type ("LIST" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1033 1047]))                  
+                :type ("LIST" type (:type "class") nil nil))
+                nil [997 1048])
+            ("list_cons" function
+               (:prototype-flag t
+                :pointer 1
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("data" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [1072 1083])
+                    ("root" variable
+                       (:pointer 1
+                        :type ("LIST" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1083 1094]))                  
+                :type ("LIST" type (:type "class") nil nil))
+                nil [1049 1095])
+            ("list_reverse" function
+               (:prototype-flag t
+                :pointer 1
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("root" variable
+                       (:pointer 1
+                        :type ("LIST" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1122 1133]))                  
+                :type ("LIST" type (:type "class") nil nil))
+                nil [1096 1134])
+            ("list_free" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("root" variable
+                       (:pointer 1
+                        :type ("LIST" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1157 1168])
+                    ("free_data" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [1168 1191]))                  
+                :type "void")
+                nil [1135 1192])
+            ("list_length" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("LIST" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1225 1232]))                  
+                :type "unsigned int")
+                nil [1193 1233])
+            ("list_walk" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type ("LIST" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1255 1262])
+                    ("action" variable (:type ("list_walk_action" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1262 1286])
+                    ("argument" variable
+                       (:pointer 1
+                        :type "unsigned char")
+                        (reparse-symbol arg-sub-list) [1286 1311]))                  
+                :type "int")
+                nil [1234 1312])
+            ("list_rest" variable (:constant-flag t) nil [1322 1331])
+            ("list_push" variable (:constant-flag t) nil [1355 1364])
+            ("list_pop" variable (:constant-flag t) nil [1401 1409]))          
+    :file "my_list.h"
+    :pointmax 1507
+    :fsize 1506
+    :lastmodtime '(20747 26182 0 0)
+    :unmatched-syntax '((TYPEDEF 899 . 906))
+    :lexical-table 
+        '(("list_pop" (spp-arg-list ("A") 1409 . 1412) . ((semantic-list "{LIST *old=(A); (A)=list_delete(old,old); my_free(old); }" 1413 . 1470)))
+          ("list_rest" (spp-arg-list ("a") 1331 . 1334) . ((semantic-list "((a)->next)" 1335 . 1346)))
+          ("list_push" (spp-arg-list ("a" "b") 1364 . 1369) . 
+              ((semantic-list "(a)" 1370 . 1373) (punctuation "=" 1373 . 1374) (symbol "list_cons" 1374 . 1383) (semantic-list "((b),(a))" 1383 . 1392)))
+          ("_list_h_")
+          )
+
+    )
+   (semanticdb-table "typelib.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("_typelib_h" variable (:constant-flag t) nil [774 784])
+            ("my_alloc.h" include nil nil [786 807])
+            ("TYPELIB" type
+               (:typedef ("st_typelib" type (:type "struct") nil nil)
+                :superclasses "st_typelib"
+                :type "typedef")
+                nil [809 1024])
+            ("st_typelib" type
+               (:members 
+                  ( ("count" variable (:type "unsigned int") (reparse-symbol classsubparts) [872 891])
+                    ("name" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol classsubparts) [916 933])
+                    ("type_names" variable
+                       (:pointer 2
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol classsubparts) [959 983])
+                    ("type_lengths" variable
+                       (:pointer 1
+                        :type "unsigned int")
+                        (reparse-symbol classsubparts) [986 1013]))                  
+                :type "struct")
+                nil [809 1024])
+            ("find_typeset" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("x" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1059 1067])
+                    ("typelib" variable
+                       (:pointer 1
+                        :type ("TYPELIB" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1068 1085])
+                    ("error_position" variable
+                       (:pointer 1
+                        :type "int")
+                        (reparse-symbol arg-sub-list) [1085 1105]))                  
+                :type ("my_ulonglong" type (:type "class") nil nil))
+                nil [1026 1106])
+            ("find_type_or_exit" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("x" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1136 1150])
+                    ("typelib" variable
+                       (:pointer 1
+                        :type ("TYPELIB" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1151 1168])
+                    ("option" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1198 1217]))                  
+                :type "int")
+                nil [1107 1218])
+            ("FIND_TYPE_BASIC" variable (:constant-flag t) nil [1227 1242])
+            ("FIND_TYPE_NO_PREFIX" variable (:constant-flag t) nil [1325 1344])
+            ("FIND_TYPE_NO_OVERWRITE" variable (:constant-flag t) nil [1433 1455])
+            ("FIND_TYPE_ALLOW_NUMBER" variable (:constant-flag t) nil [1519 1541])
+            ("FIND_TYPE_COMMA_TERM" variable (:constant-flag t) nil [1613 1633])
+            ("find_type" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("x" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1669 1683])
+                    ("typelib" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("TYPELIB" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1684 1707])
+                    ("flags" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [1708 1727]))                  
+                :type "int")
+                nil [1648 1728])
+            ("make_type" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("to" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1751 1760])
+                    ("nr" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [1760 1776])
+                    ("typelib" variable
+                       (:pointer 1
+                        :type ("TYPELIB" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1776 1793]))                  
+                :type "void")
+                nil [1729 1794])
+            ("get_type" function
+               (:prototype-flag t
+                :pointer 1
+                :typemodifiers ("extern")
+                :constant-flag t
+                :arguments 
+                  ( ("typelib" variable
+                       (:pointer 1
+                        :type ("TYPELIB" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1823 1840])
+                    ("nr" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [1840 1856]))                  
+                :type "char")
+                nil [1795 1857])
+            ("copy_typelib" function
+               (:prototype-flag t
+                :pointer 1
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("root" variable
+                       (:pointer 1
+                        :type ("MEM_ROOT" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1887 1902])
+                    ("from" variable
+                       (:pointer 1
+                        :type ("TYPELIB" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1903 1917]))                  
+                :type ("TYPELIB" type (:type "class") nil nil))
+                nil [1858 1918])
+            ("sql_protocol_typelib" variable
+               (:typemodifiers ("extern")
+                :type ("TYPELIB" type (:type "class") nil nil))
+                nil [1920 1956])
+            ("find_set_from_flags" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("lib" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("TYPELIB" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1991 2010])
+                    ("default_name" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [2011 2037])
+                    ("cur_set" variable (:type ("my_ulonglong" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2068 2089])
+                    ("default_set" variable (:type ("my_ulonglong" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2090 2115])
+                    ("str" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2146 2162])
+                    ("length" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [2163 2183])
+                    ("err_pos" variable
+                       (:pointer 2
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2214 2229])
+                    ("err_len" variable
+                       (:pointer 1
+                        :type "unsigned int")
+                        (reparse-symbol arg-sub-list) [2230 2252]))                  
+                :type ("my_ulonglong" type (:type "class") nil nil))
+                nil [1958 2253]))          
+    :file "typelib.h"
+    :pointmax 2279
+    :fsize 2278
+    :lastmodtime '(20747 26182 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("_typelib_h")
+          ("FIND_TYPE_COMMA_TERM" . ((semantic-list "(1 << 3)" 1638 . 1646)))
+          ("FIND_TYPE_BASIC" . ((number "0" 1253 . 1254)))
+          ("FIND_TYPE_ALLOW_NUMBER" . ((semantic-list "(1 << 2)" 1544 . 1552)))
+          ("FIND_TYPE_NO_PREFIX" . ((semantic-list "(1 << 0)" 1350 . 1358)))
+          ("FIND_TYPE_NO_OVERWRITE" . ((semantic-list "(1 << 1)" 1458 . 1466)))
+          )
+
+    )
+   (semanticdb-table "my_alloc.h"
+    :major-mode 'c++-mode
+    :tags nil
+    :file "my_alloc.h"
+    :pointmax 1925
+    :fsize 1924
+    :lastmodtime '(20747 26182 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "m_string.h"
+    :major-mode 'c++-mode
+    :tags nil
+    :file "m_string.h"
+    :pointmax 9541
+    :fsize 9540
+    :lastmodtime '(20747 26182 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("MY_GCVT_MAX_FIELD_WIDTH" . ((semantic-list "(DBL_DIG + 4 + MY_MAX(5, MAX_DECPT_FOR_F_FORMAT))" 4926 . 4975)))
+          ("_m_string_h")
+          ("strmake_overlapp" (spp-arg-list ("A" "B" "C") 2529 . 2536) . ((symbol "strmake" 2537 . 2544) (semantic-list "(A,B,C)" 2544 . 2551)))
+          ("bfill" . ((symbol "please_use_memset_rather_than_bfill" 1414 . 1449) (semantic-list "()" 1449 . 1451)))
+          ("HAVE_STRTOULL")
+          ("STRING_WITH_LEN" (spp-arg-list ("X") 6515 . 6518) . 
+              ((semantic-list "(X)" 6519 . 6522) (punctuation "," 6522 . 6523) (semantic-list "((size_t) (sizeof(X) - 1))" 6524 . 6550)))
+          ("__USE_GNU")
+          ("longlong10_to_str" (spp-arg-list ("A" "B" "C") 5610 . 5617) . ((symbol "int10_to_str" 5618 . 5630) (semantic-list "((A),(B),(C))" 5630 . 5643)))
+          ("strtoll" (spp-arg-list ("A" "B" "C") 5674 . 5681) . ((symbol "strtol" 5682 . 5688) (semantic-list "((A),(B),(C))" 5688 . 5701)))
+          ("MAX_DECPT_FOR_F_FORMAT" . ((symbol "DBL_DIG" 4675 . 4682)))
+          ("longlong2str" (spp-arg-list ("A" "B" "C") 6238 . 6245) . ((symbol "ll2str" 6246 . 6252) (semantic-list "((A),(B),(C),1)" 6252 . 6267)))
+          ("NOT_FIXED_DEC" . ((number "31" 3966 . 3968)))
+          ("strtoull" (spp-arg-list ("A" "B" "C") 5718 . 5725) . ((symbol "strtoul" 5726 . 5733) (semantic-list "((A),(B),(C))" 5733 . 5746)))
+          ("memmove" (spp-arg-list ("d" "s" "n") 1620 . 1629) . ((symbol "bmove" 1630 . 1635) (semantic-list "((d), (s), (n))" 1636 . 1651)))
+          ("FLOATING_POINT_BUFFER" . ((semantic-list "(311 + NOT_FIXED_DEC)" 4190 . 4211)))
+          ("ll2str" (spp-arg-list ("A" "B" "C" "D") 5550 . 5559) . ((symbol "int2str" 5560 . 5567) (semantic-list "((A),(B),(C),(D))" 5567 . 5584)))
+          ("bzero" . ((symbol "please_use_memset_rather_than_bzero" 1466 . 1501) (semantic-list "()" 1501 . 1503)))
+          ("strmov_overlapp" (spp-arg-list ("A" "B") 2487 . 2492) . ((symbol "strmov" 2493 . 2499) (semantic-list "(A,B)" 2499 . 2504)))
+          ("C_STRING_WITH_LEN" (spp-arg-list ("X") 6645 . 6648) . 
+              ((semantic-list "((char *) (X))" 6649 . 6663) (punctuation "," 6663 . 6664) (semantic-list "((size_t) (sizeof(X) - 1))" 6665 . 6691)))
+          ("memcpy" (spp-arg-list ("d" "s" "n") 1572 . 1581) . ((symbol "bcopy" 1582 . 1587) (semantic-list "((s), (d), (n))" 1588 . 1603)))
+          ("HAVE_STRTOLL")
+          ("USTRING_WITH_LEN" (spp-arg-list ("X") 6575 . 6578) . 
+              ((semantic-list "((uchar*) X)" 6579 . 6591) (punctuation "," 6591 . 6592) (semantic-list "((size_t) (sizeof(X) - 1))" 6593 . 6619)))
+          )
+
+    )
+   (semanticdb-table "my_global.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("MY_GLOBAL_INCLUDED" variable (:constant-flag t) nil [784 802])
+            ("INNODB_COMPATIBILITY_HOOKS" variable (:constant-flag t) nil [1383 1409])
+            ("C_MODE_START" variable (:constant-flag t) nil [1934 1946])
+            ("C_MODE_END" variable (:constant-flag t) nil [1955 1965])
+            ("my_config.h" include (:system-flag t) nil [2075 2097])
+            ("IF_WIN" variable (:constant-flag t) nil [2322 2328])
+            ("IF_PURIFY" variable (:constant-flag t) nil [2402 2411])
+            ("HAVE_REPLICATION" variable (:constant-flag t) nil [2573 2589])
+            ("HAVE_EXTERNAL_CLIENT" variable (:constant-flag t) nil [2598 2618])
+            ("__builtin_expect" variable (:constant-flag t) nil [5160 5176])
+            ("likely" variable (:constant-flag t) nil [5216 5222])
+            ("unlikely" variable (:constant-flag t) nil [5258 5266])
+            ("__EXTENSIONS__" variable (:constant-flag t) nil [5806 5820])
+            ("__STDC_EXT__" variable (:constant-flag t) nil [5881 5893])
+            ("_POSIX_PTHREAD_SEMANTICS" variable (:constant-flag t) nil [7151 7175])
+            ("_REENTRANT" variable (:constant-flag t) nil [7238 7248])
+            ("_THREAD_SAFE" variable (:constant-flag t) nil [7352 7364])
+            ("pthread.h" include (:system-flag t) nil [7535 7555])
+            ("stdio.h" include (:system-flag t) nil [8716 8734])
+            ("stdarg.h" include (:system-flag t) nil [8742 8761])
+            ("math.h" include (:system-flag t) nil [8859 8876])
+            ("time.h" include (:system-flag t) nil [9347 9366])
+            ("errno.h" include (:system-flag t) nil [9608 9626])
+            ("assert.h" include (:system-flag t) nil [9947 9966])
+            ("compile_time_assert" variable (:constant-flag t) nil [10175 10194])
+            ("QUOTE_ARG" variable (:constant-flag t) nil [11127 11136])
+            ("STRINGIFY_ARG" variable (:constant-flag t) nil [11186 11199])
+            ("SIGNAL_HANDLER_RESET_ON_DELIVERY" variable (:constant-flag t) nil [11538 11570])
+            ("LINT_INIT" variable (:constant-flag t) nil [11931 11940])
+            ("SO_EXT" variable (:constant-flag t) nil [12068 12074])
+            ("UNINIT_VAR" variable (:constant-flag t) nil [12422 12432])
+            ("HAVE_UINT" variable (:constant-flag t) nil [12598 12607])
+            ("uint" type
+               (:typedef ("unsigned int")
+                :superclasses "unsigned int"
+                :type "typedef")
+                nil [12608 12634])
+            ("ushort" type
+               (:typedef ("unsigned short")
+                :superclasses "unsigned short"
+                :type "typedef")
+                nil [12635 12665])
+            ("swap_variables" variable (:constant-flag t) nil [12682 12696])
+            ("test" variable (:constant-flag t) nil [12753 12757])
+            ("set_if_bigger" variable (:constant-flag t) nil [12784 12797])
+            ("set_if_smaller" variable (:constant-flag t) nil [12852 12866])
+            ("test_all_bits" variable (:constant-flag t) nil [12920 12933])
+            ("array_elements" variable (:constant-flag t) nil [12968 12982])
+            ("TRUE" variable (:constant-flag t) nil [13078 13082])
+            ("FALSE" variable (:constant-flag t) nil [13115 13120])
+            ("my_compiler.h" include (:system-flag t) nil [13154 13178])
+            ("File" type
+               (:typedef ("int")
+                :superclasses "int"
+                :type "typedef")
+                nil [13579 13596])
+            ("my_socket" type
+               (:typedef ("int")
+                :superclasses "int"
+                :type "typedef")
+                nil [13666 13688])
+            ("INVALID_SOCKET" variable (:constant-flag t) nil [13731 13745])
+            ("sig_handler" variable (:constant-flag t) nil [13809 13820])
+            ("sig_return" variable
+               (:functionpointer-flag t
+                :type "void")
+                nil [13853 13874])
+            ("pchar" type
+               (:typedef ("int")
+                :superclasses "int"
+                :type "typedef")
+                nil [14264 14282])
+            ("puchar" type
+               (:typedef ("uint" type (:type "class") nil nil)
+                :superclasses "uint"
+                :type "typedef")
+                nil [14323 14343])
+            ("pbool" type
+               (:typedef ("int")
+                :superclasses "int"
+                :type "typedef")
+                nil [14384 14402])
+            ("pshort" type
+               (:typedef ("int")
+                :superclasses "int"
+                :type "typedef")
+                nil [14443 14462])
+            ("pfloat" type
+               (:typedef ("double")
+                :superclasses "double"
+                :type "typedef")
+                nil [14508 14530])
+            ("qsort_cmp" variable
+               (:functionpointer-flag t
+                :type "int")
+                nil [14600 14644])
+            ("qsort_cmp2" variable
+               (:functionpointer-flag t
+                :type "int")
+                nil [14653 14711])
+            ("qsort_t" variable (:constant-flag t) nil [14731 14738])
+            ("size_socket" type
+               (:typedef ("SOCKET_SIZE_TYPE" type (:type "class") nil nil)
+                :superclasses "SOCKET_SIZE_TYPE"
+                :type "typedef")
+                nil [14850 14887])
+            ("SOCKOPT_OPTLEN_TYPE" variable (:constant-flag t) nil [14925 14944])
+            ("O_SHARE" variable (:constant-flag t) nil [15043 15050])
+            ("O_BINARY" variable (:constant-flag t) nil [15118 15126])
+            ("FILE_BINARY" variable (:constant-flag t) nil [15203 15214])
+            ("O_TEMPORARY" variable (:constant-flag t) nil [15436 15447])
+            ("O_SHORT_LIVED" variable (:constant-flag t) nil [15487 15500])
+            ("O_NOFOLLOW" variable (:constant-flag t) nil [15537 15547])
+            ("FN_LEN" variable (:constant-flag t) nil [15953 15959])
+            ("FN_HEADLEN" variable (:constant-flag t) nil [15997 16007])
+            ("FN_EXTLEN" variable (:constant-flag t) nil [16062 16071])
+            ("FN_REFLEN" variable (:constant-flag t) nil [16130 16139])
+            ("FN_EXTCHAR" variable (:constant-flag t) nil [16187 16197])
+            ("FN_HOMELIB" variable (:constant-flag t) nil [16210 16220])
+            ("FN_CURLIB" variable (:constant-flag t) nil [16273 16282])
+            ("FN_PARENTDIR" variable (:constant-flag t) nil [16338 16350])
+            ("FN_LIBCHAR" variable (:constant-flag t) nil [16779 16789])
+            ("FN_LIBCHAR2" variable (:constant-flag t) nil [16802 16813])
+            ("FN_DIRSEP" variable (:constant-flag t) nil [16826 16835])
+            ("FN_EXEEXT" variable (:constant-flag t) nil [16891 16900])
+            ("FN_SOEXT" variable (:constant-flag t) nil [16914 16922])
+            ("FN_ROOTDIR" variable (:constant-flag t) nil [16940 16950])
+            ("MY_FILE_MIN" variable (:constant-flag t) nil [17537 17548])
+            ("MY_NFILE" variable (:constant-flag t) nil [18056 18064])
+            ("OS_FILE_LIMIT" variable (:constant-flag t) nil [18106 18119])
+            ("IO_SIZE" variable (:constant-flag t) nil [18329 18336])
+            ("MALLOC_OVERHEAD" variable (:constant-flag t) nil [18465 18480])
+            ("ONCE_ALLOC_INIT" variable (:constant-flag t) nil [18519 18534])
+            ("RECORD_CACHE_SIZE" variable (:constant-flag t) nil [18601 18618])
+            ("KEY_CACHE_SIZE" variable (:constant-flag t) nil [18684 18698])
+            ("KEY_CACHE_BLOCK_SIZE" variable (:constant-flag t) nil [18771 18791])
+            ("closesocket" variable (:constant-flag t) nil [19054 19065])
+            ("ulonglong2double" variable (:constant-flag t) nil [19722 19738])
+            ("my_off_t2double" variable (:constant-flag t) nil [19777 19792])
+            ("double2ulonglong" variable (:constant-flag t) nil [19863 19879])
+            ("offsetof" variable (:constant-flag t) nil [19943 19951])
+            ("ulong_to_double" variable (:constant-flag t) nil [20013 20028])
+            ("strtok_r" variable (:constant-flag t) nil [20187 20195])
+            ("INT_MIN64" variable (:constant-flag t) nil [20943 20952])
+            ("INT_MAX64" variable (:constant-flag t) nil [20991 21000])
+            ("INT_MIN32" variable (:constant-flag t) nil [21036 21045])
+            ("INT_MAX32" variable (:constant-flag t) nil [21075 21084])
+            ("UINT_MAX32" variable (:constant-flag t) nil [21111 21121])
+            ("INT_MIN24" variable (:constant-flag t) nil [21147 21156])
+            ("INT_MAX24" variable (:constant-flag t) nil [21185 21194])
+            ("UINT_MAX24" variable (:constant-flag t) nil [21220 21230])
+            ("INT_MIN16" variable (:constant-flag t) nil [21255 21264])
+            ("INT_MAX16" variable (:constant-flag t) nil [21289 21298])
+            ("UINT_MAX16" variable (:constant-flag t) nil [21320 21330])
+            ("INT_MIN8" variable (:constant-flag t) nil [21351 21359])
+            ("INT_MAX8" variable (:constant-flag t) nil [21383 21391])
+            ("UINT_MAX8" variable (:constant-flag t) nil [21412 21421])
+            ("DBL_MIN" variable (:constant-flag t) nil [21486 21493])
+            ("FLT_MIN" variable (:constant-flag t) nil [21528 21535])
+            ("DBL_MAX" variable (:constant-flag t) nil [21601 21608])
+            ("FLT_MAX" variable (:constant-flag t) nil [21643 21650])
+            ("SIZE_T_MAX" variable (:constant-flag t) nil [21719 21729])
+            ("finite" variable (:constant-flag t) nil [21839 21845])
+            ("math.h" include (:system-flag t) nil [21919 21936])
+            ("isnan" variable (:constant-flag t) nil [21964 21969])
+            ("my_double_isnan" function
+               (:prototype-flag t
+                :typemodifiers ("extern")
+                :arguments 
+                  ( ("x" variable (:type "double") (reparse-symbol arg-sub-list) [22036 22045]))                  
+                :type "double")
+                nil [22006 22046])
+            ("my_isinf" variable (:constant-flag t) nil [22474 22482])
+            ("M_PI" variable (:constant-flag t) nil [22578 22582])
+            ("M_E" variable (:constant-flag t) nil [22633 22636])
+            ("M_LN2" variable (:constant-flag t) nil [22688 22693])
+            ("my_ptrdiff_t" type
+               (:typedef ("long long")
+                :superclasses "long long"
+                :type "typedef")
+                nil [22869 22900])
+            ("MY_ALIGN" variable (:constant-flag t) nil [22917 22925])
+            ("ALIGN_SIZE" variable (:constant-flag t) nil [22970 22980])
+            ("ADD_TO_PTR" variable (:constant-flag t) nil [23056 23066])
+            ("PTR_BYTE_DIFF" variable (:constant-flag t) nil [23119 23132])
+            ("my_offsetof" variable (:constant-flag t) nil [23709 23720])
+            ("NullS" variable (:constant-flag t) nil [23814 23819])
+            ("STDCALL" variable (:constant-flag t) nil [23925 23932])
+            ("uchar" type
+               (:typedef ("unsigned char")
+                :superclasses "unsigned char"
+                :type "typedef")
+                nil [23999 24027])
+            ("int8" type
+               (:typedef ("signed char")
+                :superclasses "signed char"
+                :type "typedef")
+                nil [24084 24109])
+            ("uint8" type
+               (:typedef ("unsigned char")
+                :superclasses "unsigned char"
+                :type "typedef")
+                nil [24174 24202])
+            ("int16" type
+               (:typedef ("short")
+                :superclasses "short"
+                :type "typedef")
+                nil [24266 24286])
+            ("uint16" type
+               (:typedef ("unsigned short")
+                :superclasses "unsigned short"
+                :type "typedef")
+                nil [24314 24344])
+            ("ulong" type
+               (:typedef ("unsigned long")
+                :superclasses "unsigned long"
+                :type "typedef")
+                nil [24709 24737])
+            ("ulonglong" type
+               (:typedef ("unsigned long")
+                :superclasses "unsigned long"
+                :type "typedef")
+                nil [25153 25185])
+            ("longlong" type
+               (:typedef ("long")
+                :superclasses "long"
+                :type "typedef")
+                nil [25222 25245])
+            ("int64" type
+               (:typedef ("longlong" type (:type "class") nil nil)
+                :superclasses "longlong"
+                :type "typedef")
+                nil [25279 25302])
+            ("uint64" type
+               (:typedef ("ulonglong" type (:type "class") nil nil)
+                :superclasses "ulonglong"
+                :type "typedef")
+                nil [25330 25355])
+            ("my_ulonglong" type
+               (:typedef ("unsigned long long")
+                :superclasses "unsigned long long"
+                :type "typedef")
+                nil [25502 25542])
+            ("intptr" type
+               (:typedef ("int")
+                :superclasses "int"
+                :type "typedef")
+                nil [25582 25601])
+            ("intptr" type
+               (:typedef ("long")
+                :superclasses "long"
+                :type "typedef")
+                nil [25636 25656])
+            ("intptr" type
+               (:typedef ("long long")
+                :superclasses "long long"
+                :type "typedef")
+                nil [25696 25721])
+            ("MY_ERRPTR" variable (:constant-flag t) nil [25828 25837])
+            ("os_off_t" type
+               (:typedef ("off_t" type (:type "class") nil nil)
+                :superclasses "off_t"
+                :type "typedef")
+                nil [25958 25981])
+            ("my_off_t" type
+               (:typedef ("unsigned long")
+                :superclasses "unsigned long"
+                :type "typedef")
+                nil [26037 26068])
+            ("MY_FILEPOS_ERROR" variable (:constant-flag t) nil [26102 26118])
+            ("table_map" type
+               (:typedef ("ulonglong" type (:type "class") nil nil)
+                :superclasses "ulonglong"
+                :type "typedef")
+                nil [26185 26213])
+            ("nesting_map" type
+               (:typedef ("ulong" type (:type "class") nil nil)
+                :superclasses "ulong"
+                :type "typedef")
+                nil [26257 26283])
+            ("socket_errno" variable (:constant-flag t) nil [26699 26711])
+            ("closesocket" variable (:constant-flag t) nil [26726 26737])
+            ("SOCKET_EINTR" variable (:constant-flag t) nil [26758 26770])
+            ("SOCKET_EAGAIN" variable (:constant-flag t) nil [26785 26798])
+            ("SOCKET_EWOULDBLOCK" variable (:constant-flag t) nil [26814 26832])
+            ("SOCKET_EADDRINUSE" variable (:constant-flag t) nil [26853 26870])
+            ("SOCKET_ETIMEDOUT" variable (:constant-flag t) nil [26890 26906])
+            ("SOCKET_ECONNRESET" variable (:constant-flag t) nil [26925 26942])
+            ("SOCKET_ENFILE" variable (:constant-flag t) nil [26962 26975])
+            ("SOCKET_EMFILE" variable (:constant-flag t) nil [26991 27004])
+            ("myf" type
+               (:typedef ("int")
+                :superclasses "int"
+                :type "typedef")
+                nil [27020 27037])
+            ("my_bool" type
+               (:typedef ("char")
+                :superclasses "char"
+                :type "typedef")
+                nil [27072 27094])
+            ("MYF" variable (:constant-flag t) nil [27179 27182])
+            ("LL" variable (:constant-flag t) nil [27267 27269])
+            ("ULL" variable (:constant-flag t) nil [27367 27370])
+            ("reg1" variable (:constant-flag t) nil [27543 27547])
+            ("reg2" variable (:constant-flag t) nil [27565 27569])
+            ("reg3" variable (:constant-flag t) nil [27587 27591])
+            ("reg4" variable (:constant-flag t) nil [27609 27613])
+            ("reg5" variable (:constant-flag t) nil [27631 27635])
+            ("reg6" variable (:constant-flag t) nil [27653 27657])
+            ("reg7" variable (:constant-flag t) nil [27675 27679])
+            ("reg8" variable (:constant-flag t) nil [27697 27701])
+            ("reg9" variable (:constant-flag t) nil [27719 27723])
+            ("reg10" variable (:constant-flag t) nil [27741 27746])
+            ("reg11" variable (:constant-flag t) nil [27764 27769])
+            ("reg12" variable (:constant-flag t) nil [27787 27792])
+            ("reg13" variable (:constant-flag t) nil [27810 27815])
+            ("reg14" variable (:constant-flag t) nil [27833 27838])
+            ("reg15" variable (:constant-flag t) nil [27856 27861])
+            ("reg16" variable (:constant-flag t) nil [27879 27884])
+            ("my_dbug.h" include (:system-flag t) nil [27902 27922])
+            ("YESNO" variable (:constant-flag t) nil [27957 27962])
+            ("MY_HOW_OFTEN_TO_ALARM" variable (:constant-flag t) nil [27996 28017])
+            ("MY_HOW_OFTEN_TO_WRITE" variable (:constant-flag t) nil [28067 28088])
+            ("my_byteorder.h" include (:system-flag t) nil [28134 28159])
+            ("MYSQL_UNIVERSAL_CLIENT_CHARSET" variable (:constant-flag t) nil [28246 28276])
+            ("dlerror" variable (:constant-flag t) nil [29319 29326])
+            ("DLERROR_GENERATE" variable (:constant-flag t) nil [29386 29402])
+            ("dlopen_errno" variable (:constant-flag t) nil [29451 29463])
+            ("MY_INT32_NUM_DECIMAL_DIGITS" variable (:constant-flag t) nil [29806 29833])
+            ("MY_INT64_NUM_DECIMAL_DIGITS" variable (:constant-flag t) nil [29900 29927])
+            ("MY_MAX" variable (:constant-flag t) nil [30017 30023])
+            ("MY_MIN" variable (:constant-flag t) nil [30062 30068])
+            ("WT_RWLOCKS_USE_MUTEXES" variable (:constant-flag t) nil [30541 30563])
+            ("bool" variable (:constant-flag t) nil [30626 30630])
+            ("__func__" variable (:constant-flag t) nil [31082 31090])
+            ("MAX_EXACT_INTEGER" variable (:constant-flag t) nil [31279 31296])
+            ("rint" function
+               (:typemodifiers ("static" "inline")
+                :arguments 
+                  ( ("x" variable (:type "double") (reparse-symbol arg-sub-list) [31730 31739]))                  
+                :type "double")
+                nil [31704 32257])
+            ("MYSQL_PLUGIN_IMPORT" variable (:constant-flag t) nil [32593 32612])
+            ("loglevel" type
+               (:members 
+                  ( ("ERROR_LEVEL" variable
+                       (:constant-flag t
+                        :default-value (32990 32991)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [32971 32991])
+                    ("WARNING_LEVEL" variable
+                       (:constant-flag t
+                        :default-value (33015 33016)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [32996 33016])
+                    ("INFORMATION_LEVEL" variable
+                       (:constant-flag t
+                        :default-value (33040 33041)
+                        :type "int")
+                        (reparse-symbol enumsubparts) [33021 33041]))                  
+                :type "enum")
+                nil [32952 33044]))          
+    :file "my_global.h"
+    :pointmax 33361
+    :fsize 33360
+    :lastmodtime '(20747 26182 0 0)
+    :unmatched-syntax '((symbol 24646 . 24651) (symbol 24640 . 24645) (number 24638 . 24639) (symbol 24635 . 24637) (symbol 24632 . 24634) (LONG 24627 . 24631) (symbol 24624 . 24626) (INT 24620 . 24623) (symbol 24612 . 24619) (symbol 24606 . 24611) (punctuation 24605 . 24606) (string 20087 . 20142) (symbol 20081 . 20086) (punctuation 20080 . 20081) (TYPEDEF 14645 . 14652) (TYPEDEF 14592 . 14599) (TYPEDEF 13845 . 13852) (semantic-list 12403 . 12413) (symbol 12396 . 12403) (punctuation 12395 . 12396) (punctuation 12393 . 12394) (punctuation 12392 . 12393) (semantic-list 12378 . 12391) (symbol 12371 . 12378))
+    :lexical-table 
+        '(("INVALID_SOCKET" . ((punctuation "-" 13746 . 13747) (number "1" 13747 . 13748)))
+          ("ulong_to_double" (spp-arg-list ("X") 20028 . 20031) . ((semantic-list "((double) (ulong) (X))" 20032 . 20054)))
+          ("INT_MAX24" . ((number "0x007FFFFF" 21201 . 21211)))
+          ("INT_MAX8" . ((number "0x7F" 21399 . 21403)))
+          ("socket_errno" . ((symbol "errno" 26712 . 26717)))
+          ("MY_HOW_OFTEN_TO_ALARM" . ((number "2" 28018 . 28019)))
+          ("C_MODE_START")
+          ("IF_WIN" (spp-arg-list ("A" "B") 2328 . 2333) . ((symbol "B" 2334 . 2335)))
+          ("UNINIT_VAR" (spp-arg-list ("x") 12432 . 12435) . 
+              ((symbol "x" 12436 . 12437) (punctuation "=" 12437 . 12438) (number "0" 12439 . 12440)))
+          ("swap_variables" (spp-arg-list ("t" "a" "b") 12696 . 12705) . ((semantic-list "{ t dummy; dummy= a; a= b; b= dummy; }" 12706 . 12744)))
+          ("sig_handler" . ((symbol "RETSIGTYPE" 13821 . 13831)))
+          ("MY_NFILE" . ((number "64" 18065 . 18067)))
+          ("INT_MAX32" . ((number "0x7FFFFFFFL" 21091 . 21102)))
+          ("isnan" (spp-arg-list ("x") 21969 . 21972) . ((semantic-list "((x) != (x))" 21973 . 21985)))
+          ("MY_ALIGN" (spp-arg-list ("A" "L") 22925 . 22930) . ((semantic-list "(((A) + (L) - 1) & ~((L) - 1))" 22931 . 22961)))
+          ("NullS" . ((semantic-list "(char *)" 23821 . 23829) (number "0" 23830 . 23831)))
+          ("SOCKET_EADDRINUSE" . ((symbol "EADDRINUSE" 26871 . 26881)))
+          ("SOCKET_ETIMEDOUT" . ((symbol "ETIMEDOUT" 26907 . 26916)))
+          ("SOCKET_ECONNRESET" . ((symbol "ECONNRESET" 26943 . 26953)))
+          ("HAVE_EXTERNAL_CLIENT")
+          ("_REENTRANT" . ((number "1" 7249 . 7250)))
+          ("set_if_bigger" (spp-arg-list ("a" "b") 12797 . 12802) . 
+              ((DO "do" 12804 . 12806) (semantic-list "{ if ((a) < (b)) (a)=(b); }" 12807 . 12834) (WHILE "while" 12835 . 12840) (semantic-list "(0)" 12840 . 12843)))
+          ("array_elements" (spp-arg-list ("A") 12982 . 12985) . ((semantic-list "((uint) (sizeof(A)/sizeof(A[0])))" 12986 . 13019)))
+          ("TRUE" . ((semantic-list "(1)" 13084 . 13087)))
+          ("O_TEMPORARY" . ((number "0" 15448 . 15449)))
+          ("KEY_CACHE_SIZE" . ((semantic-list "(uint)" 18700 . 18706) (semantic-list "(8*1024*1024)" 18707 . 18720)))
+          ("closesocket" (spp-arg-list ("A") 26737 . 26740) . ((symbol "close" 26741 . 26746) (semantic-list "(A)" 26746 . 26749)))
+          ("strtok_r" (spp-arg-list ("A" "B" "C") 20195 . 20202) . ((symbol "strtok" 20203 . 20209) (semantic-list "((A),(B))" 20209 . 20218)))
+          ("SOCKET_EMFILE" . ((symbol "EMFILE" 27005 . 27011)))
+          ("LINT_INIT" (spp-arg-list ("var") 11940 . 11945))
+          ("FALSE" . ((semantic-list "(0)" 13122 . 13125)))
+          ("FILE_BINARY" . ((symbol "O_BINARY" 15215 . 15223)))
+          ("FN_REFLEN" . ((number "512" 16140 . 16143)))
+          ("FN_HOMELIB" . ((string "'~'" 16221 . 16224)))
+          ("FN_SOEXT" . ((string "\".so\"" 16926 . 16931)))
+          ("IO_SIZE" . ((number "4096" 18339 . 18343)))
+          ("ONCE_ALLOC_INIT" . ((semantic-list "(uint)" 18536 . 18542) (semantic-list "(4096-MALLOC_OVERHEAD)" 18543 . 18565)))
+          ("INT_MIN8" . ((semantic-list "(~0x7F)" 21367 . 21374)))
+          ("SOCKET_EINTR" . ((symbol "EINTR" 26771 . 26776)))
+          ("SOCKET_EWOULDBLOCK" . ((symbol "EWOULDBLOCK" 26833 . 26844)))
+          ("MYF" (spp-arg-list ("v") 27182 . 27185) . ((semantic-list "(myf)" 27187 . 27192) (semantic-list "(v)" 27193 . 27196)))
+          ("ULL" (spp-arg-list ("A") 27370 . 27373) . ((spp-symbol-merge ((symbol "A" 27374 . 27375) (symbol "UL" 27379 . 27381)) 27374 . 27381)))
+          ("reg1" . ((REGISTER "register" 27548 . 27556)))
+          ("MY_MAX" (spp-arg-list ("a" "b") 30023 . 30029) . ((semantic-list "((a) > (b) ? (a) : (b))" 30030 . 30053)))
+          ("test" (spp-arg-list ("a") 12757 . 12760) . ((semantic-list "((a) ? 1 : 0)" 12762 . 12775)))
+          ("FN_LEN" . ((number "256" 15961 . 15964)))
+          ("FN_EXTCHAR" . ((string "'.'" 16198 . 16201)))
+          ("FN_LIBCHAR" . ((string "'/'" 16790 . 16793)))
+          ("FN_LIBCHAR2" . ((string "'/'" 16814 . 16817)))
+          ("FN_ROOTDIR" . ((string "\"/\"" 16951 . 16954)))
+          ("SIZE_T_MAX" . ((semantic-list "(~((size_t) 0))" 21735 . 21750)))
+          ("reg2" . ((REGISTER "register" 27570 . 27578)))
+          ("MY_MIN" (spp-arg-list ("a" "b") 30068 . 30074) . ((semantic-list "((a) < (b) ? (a) : (b))" 30075 . 30098)))
+          ("bool" . ((symbol "In_C_you_should_use_my_bool_instead" 30631 . 30666) (semantic-list "()" 30666 . 30668)))
+          ("__builtin_expect" (spp-arg-list ("x" "expected_value") 5176 . 5195) . ((semantic-list "(x)" 5196 . 5199)))
+          ("likely" (spp-arg-list ("x") 5222 . 5225) . ((symbol "__builtin_expect" 5226 . 5242) (semantic-list "((x),1)" 5242 . 5249)))
+          ("__EXTENSIONS__" . ((number "1" 5821 . 5822)))
+          ("_POSIX_PTHREAD_SEMANTICS")
+          ("SOCKOPT_OPTLEN_TYPE" . ((symbol "size_socket" 14945 . 14956)))
+          ("FN_DIRSEP" . ((string "\"/\"" 16842 . 16845)))
+          ("SOCKET_ENFILE" . ((symbol "ENFILE" 26976 . 26982)))
+          ("LL" (spp-arg-list ("A") 27269 . 27272) . ((spp-symbol-merge ((symbol "A" 27273 . 27274) (symbol "L" 27278 . 27279)) 27273 . 27279)))
+          ("reg3" . ((REGISTER "register" 27592 . 27600)))
+          ("reg10" . ((REGISTER "register" 27747 . 27755)))
+          ("YESNO" (spp-arg-list ("X") 27962 . 27965) . ((semantic-list "((X) ? \"yes\" : \"no\")" 27966 . 27986)))
+          ("__func__" . ((string "\"<unknown>\"" 31091 . 31102)))
+          ("MYSQL_PLUGIN_IMPORT")
+          ("IF_PURIFY" (spp-arg-list ("A" "B") 2411 . 2416) . ((symbol "B" 2417 . 2418)))
+          ("HAVE_REPLICATION")
+          ("compile_time_assert" (spp-arg-list ("X") 10194 . 10197) . 
+              ((DO "do" 10235 . 10237) (semantic-list "{                                                             \\
+    typedef char compile_time_assert[(X) ? 1 : -1];             \\
+  }" 10301 . 10434) (WHILE "while" 10435 . 10440) (semantic-list "(0)" 10440 . 10443)))
+          ("STRINGIFY_ARG" (spp-arg-list ("x") 11199 . 11202) . ((symbol "QUOTE_ARG" 11203 . 11212) (semantic-list "(x)" 11212 . 11215)))
+          ("FN_HEADLEN" . ((number "253" 16008 . 16011)))
+          ("FN_CURLIB" . ((string "'.'" 16283 . 16286)))
+          ("MY_FILE_MIN" . ((number "0" 17550 . 17551)))
+          ("OS_FILE_LIMIT" . ((symbol "UINT_MAX" 18120 . 18128)))
+          ("reg4" . ((REGISTER "register" 27614 . 27622)))
+          ("reg11" . ((REGISTER "register" 27770 . 27778)))
+          ("dlopen_errno" . ((symbol "errno" 29464 . 29469)))
+          ("MY_GLOBAL_INCLUDED")
+          ("INNODB_COMPATIBILITY_HOOKS")
+          ("unlikely" (spp-arg-list ("x") 5266 . 5269) . ((symbol "__builtin_expect" 5270 . 5286) (semantic-list "((x),0)" 5286 . 5293)))
+          ("SO_EXT" . ((string "\".so\"" 12075 . 12080)))
+          ("FN_EXEEXT" . ((string "\"\"" 16903 . 16905)))
+          ("UINT_MAX16" . ((number "0xFFFF" 21336 . 21342)))
+          ("UINT_MAX8" . ((number "0xFF" 21428 . 21432)))
+          ("finite" (spp-arg-list ("x") 21845 . 21848) . ((semantic-list "(1.0 / fabs(x) > 0.0)" 21849 . 21870)))
+          ("M_E" . ((number "2.7182818284590452354" 22637 . 22658)))
+          ("M_LN2" . ((number "0.69314718055994530942" 22694 . 22716)))
+          ("ADD_TO_PTR" (spp-arg-list ("ptr" "size" "type") 23066 . 23081) . ((semantic-list "(type)" 23082 . 23088) (semantic-list "((uchar*) (ptr)+size)" 23089 . 23110)))
+          ("my_offsetof" (spp-arg-list ("TYPE" "MEMBER") 23720 . 23734) . ((semantic-list "((size_t)((char *)&(((TYPE *)0x10)->MEMBER) - (char*)0x10))" 23745 . 23804)))
+          ("reg5" . ((REGISTER "register" 27636 . 27644)))
+          ("reg12" . ((REGISTER "register" 27793 . 27801)))
+          ("DLERROR_GENERATE" (spp-arg-list ("errmsg" "error_number") 29402 . 29424) . 
+              ((symbol "errmsg" 29425 . 29431) (punctuation "=" 29431 . 29432) (symbol "dlerror" 29433 . 29440) (semantic-list "()" 29440 . 29442)))
+          ("WT_RWLOCKS_USE_MUTEXES" . ((number "1" 30564 . 30565)))
+          ("MAX_EXACT_INTEGER" . ((semantic-list "((1LL << DBL_MANT_DIG) - 1)" 31297 . 31324)))
+          ("QUOTE_ARG" (spp-arg-list ("x") 11136 . 11139) . ((punctuation "#" 11141 . 11142) (symbol "x" 11142 . 11143)))
+          ("SIGNAL_HANDLER_RESET_ON_DELIVERY")
+          ("O_SHORT_LIVED" . ((number "0" 15501 . 15502)))
+          ("O_NOFOLLOW" . ((number "0" 15553 . 15554)))
+          ("RECORD_CACHE_SIZE" . ((semantic-list "(uint)" 18619 . 18625) (semantic-list "(64*1024-MALLOC_OVERHEAD)" 18626 . 18651)))
+          ("INT_MIN64" . ((semantic-list "(~0x7FFFFFFFFFFFFFFFLL)" 20959 . 20982)))
+          ("UINT_MAX24" . ((number "0x00FFFFFF" 21236 . 21246)))
+          ("INT_MIN16" . ((semantic-list "(~0x7FFF)" 21271 . 21280)))
+          ("ALIGN_SIZE" (spp-arg-list ("A") 22980 . 22983) . ((symbol "MY_ALIGN" 22984 . 22992) (semantic-list "((A),sizeof(double))" 22992 . 23012)))
+          ("PTR_BYTE_DIFF" (spp-arg-list ("A" "B") 23132 . 23137) . ((semantic-list "(my_ptrdiff_t)" 23138 . 23152) (semantic-list "((uchar*) (A) - (uchar*) (B))" 23153 . 23182)))
+          ("MY_FILEPOS_ERROR" . ((semantic-list "(~(my_off_t) 0)" 26119 . 26134)))
+          ("reg6" . ((REGISTER "register" 27658 . 27666)))
+          ("reg13" . ((REGISTER "register" 27816 . 27824)))
+          ("MYSQL_UNIVERSAL_CLIENT_CHARSET" . ((symbol "MYSQL_DEFAULT_CHARSET_NAME" 28277 . 28303)))
+          ("_THREAD_SAFE")
+          ("FN_EXTLEN" . ((number "20" 16072 . 16074)))
+          ("KEY_CACHE_BLOCK_SIZE" . ((semantic-list "(uint)" 18792 . 18798) (number "1024" 18799 . 18803)))
+          ("ulonglong2double" (spp-arg-list ("A") 19738 . 19741) . ((semantic-list "((double) (ulonglong) (A))" 19742 . 19768)))
+          ("UINT_MAX32" . ((number "0xFFFFFFFFL" 21127 . 21138)))
+          ("INT_MIN24" . ((semantic-list "(~0x007FFFFF)" 21163 . 21176)))
+          ("reg7" . ((REGISTER "register" 27680 . 27688)))
+          ("reg14" . ((REGISTER "register" 27839 . 27847)))
+          ("set_if_smaller" (spp-arg-list ("a" "b") 12866 . 12871) . 
+              ((DO "do" 12872 . 12874) (semantic-list "{ if ((a) > (b)) (a)=(b); }" 12875 . 12902) (WHILE "while" 12903 . 12908) (semantic-list "(0)" 12908 . 12911)))
+          ("test_all_bits" (spp-arg-list ("a" "b") 12933 . 12938) . ((semantic-list "(((a) & (b)) == (b))" 12939 . 12959)))
+          ("O_SHARE" . ((number "0" 15052 . 15053)))
+          ("O_BINARY" . ((number "0" 15127 . 15128)))
+          ("FN_PARENTDIR" . ((string "\"..\"" 16351 . 16355)))
+          ("MALLOC_OVERHEAD" . ((number "8" 18481 . 18482)))
+          ("my_off_t2double" (spp-arg-list ("A") 19792 . 19795) . ((semantic-list "((double) (my_off_t) (A))" 19797 . 19822)))
+          ("INT_MIN32" . ((semantic-list "(~0x7FFFFFFFL)" 21052 . 21066)))
+          ("FLT_MAX" . ((semantic-list "((float)3.40282346638528860e+38)" 21652 . 21684)))
+          ("M_PI" . ((number "3.14159265358979323846" 22583 . 22605)))
+          ("STDCALL")
+          ("MY_ERRPTR" . ((semantic-list "((void*)(intptr)1)" 25838 . 25856)))
+          ("reg8" . ((REGISTER "register" 27702 . 27710)))
+          ("reg15" . ((REGISTER "register" 27862 . 27870)))
+          ("MY_INT64_NUM_DECIMAL_DIGITS" . ((symbol "21U" 29928 . 29931)))
+          ("C_MODE_END")
+          ("qsort_t" . ((symbol "RETQSORTTYPE" 14739 . 14751)))
+          ("double2ulonglong" (spp-arg-list ("A") 19879 . 19882) . ((semantic-list "((ulonglong) (double) (A))" 19883 . 19909)))
+          ("offsetof" (spp-arg-list ("TYPE" "MEMBER") 19951 . 19965) . ((semantic-list "((size_t) &((TYPE *)0)->MEMBER)" 19966 . 19997)))
+          ("FLT_MIN" . ((semantic-list "((float)1.40129846432481707e-45)" 21537 . 21569)))
+          ("DBL_MAX" . ((number "1.79769313486231470e+308" 21610 . 21634)))
+          ("reg9" . ((REGISTER "register" 27724 . 27732)))
+          ("reg16" . ((REGISTER "register" 27885 . 27893)))
+          ("dlerror" (spp-arg-list nil 29326 . 29328) . ((string "\"No support for dynamic loading (static build?)\"" 29329 . 29377)))
+          ("__STDC_EXT__" . ((number "1" 5894 . 5895)))
+          ("HAVE_UINT")
+          ("INT_MAX64" . ((symbol "0x7FFFFFFFFFFFFFFFLL" 21007 . 21027)))
+          ("INT_MAX16" . ((number "0x7FFF" 21305 . 21311)))
+          ("DBL_MIN" . ((number "4.94065645841246544e-324" 21495 . 21519)))
+          ("my_isinf" (spp-arg-list ("X") 22482 . 22485) . ((semantic-list "(!finite(X) && !isnan(X))" 22486 . 22511)))
+          ("SOCKET_EAGAIN" . ((symbol "EAGAIN" 26799 . 26805)))
+          ("MY_HOW_OFTEN_TO_WRITE" . ((number "1000" 28089 . 28093)))
+          ("MY_INT32_NUM_DECIMAL_DIGITS" . ((symbol "11U" 29834 . 29837)))
+          )
+
+    )
+   (semanticdb-table "my_config.h"
+    :file "my_config.h"
+    :fsize 18134
+    :lastmodtime '(20747 26756 0 0)
+    )
+   (semanticdb-table "my_compiler.h"
+    :file "my_compiler.h"
+    :fsize 4236
+    :lastmodtime '(20747 26182 0 0)
+    )
+   (semanticdb-table "my_dbug.h"
+    :file "my_dbug.h"
+    :fsize 7981
+    :lastmodtime '(20747 26182 0 0)
+    )
+   (semanticdb-table "my_byteorder.h"
+    :file "my_byteorder.h"
+    :fsize 1979
+    :lastmodtime '(20747 26182 0 0)
+    )
+   (semanticdb-table "my_xml.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("_my_xml_h" variable (:constant-flag t) nil [725 734])
+            ("MY_XML_OK" variable (:constant-flag t) nil [785 794])
+            ("MY_XML_ERROR" variable (:constant-flag t) nil [805 817])
+            ("MY_XML_FLAG_RELATIVE_NAMES" variable (:constant-flag t) nil [1013 1039])
+            ("MY_XML_FLAG_SKIP_TEXT_NORMALIZATION" variable (:constant-flag t) nil [1209 1244])
+            ("my_xml_node_type" type
+               (:members 
+                  ( ("MY_XML_NODE_TAG" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1274 1290])
+                    ("MY_XML_NODE_ATTR" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1338 1355])
+                    ("MY_XML_NODE_TEXT" variable
+                       (:constant-flag t
+                        :type "int")
+                        (reparse-symbol enumsubparts) [1402 1465]))                  
+                :type "enum")
+                nil [1248 1466])
+            ("MY_XML_PARSER" type
+               (:typedef ("xml_stack_st" type (:type "struct") nil nil)
+                :superclasses "xml_stack_st"
+                :type "typedef")
+                nil [1468 2006])
+            ("xml_stack_st" type
+               (:members 
+                  ( ("flags" variable (:type "int") (reparse-symbol classsubparts) [1500 1510])
+                    ("current_node_type" variable (:type ("my_xml_node_type" type (:type "enum") nil nil)) (reparse-symbol classsubparts) [1513 1553])
+                    ("errstr" variable
+                       (:dereference 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [1556 1573])
+                    ("attr" variable (:type ("" type
+                         (:members 
+                            ( ("static_buffer" variable
+                                 (:dereference 1
+                                  :type "char")
+                                  (reparse-symbol classsubparts) [1590 1614])
+                              ("buffer" variable
+                                 (:pointer 1
+                                  :type "char")
+                                  (reparse-symbol classsubparts) [1619 1632])
+                              ("buffer_size" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1637 1656])
+                              ("start" variable
+                                 (:pointer 1
+                                  :type "char")
+                                  (reparse-symbol classsubparts) [1661 1673])
+                              ("end" variable
+                                 (:pointer 1
+                                  :type "char")
+                                  (reparse-symbol classsubparts) [1678 1688]))                            
+                          :type "struct")
+                          nil nil)) (reparse-symbol classsubparts) [1577 1698])
+                    ("beg" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol classsubparts) [1702 1718])
+                    ("cur" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol classsubparts) [1721 1737])
+                    ("end" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol classsubparts) [1740 1756])
+                    ("user_data" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol classsubparts) [1759 1775])
+                    ("enter" variable
+                       (:functionpointer-flag t
+                        :type "int")
+                        (reparse-symbol classsubparts) [1778 1845])
+                    ("value" variable
+                       (:functionpointer-flag t
+                        :type "int")
+                        (reparse-symbol classsubparts) [1848 1915])
+                    ("leave_xml" variable
+                       (:functionpointer-flag t
+                        :type "int")
+                        (reparse-symbol classsubparts) [1918 1989]))                  
+                :type "struct")
+                nil [1468 2006])
+            ("my_xml_parser_create" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("st" variable
+                       (:pointer 1
+                        :type ("MY_XML_PARSER" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2034 2052]))                  
+                :type "void")
+                nil [2008 2053])
+            ("my_xml_parser_free" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("st" variable
+                       (:pointer 1
+                        :type ("MY_XML_PARSER" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2078 2096]))                  
+                :type "void")
+                nil [2054 2097])
+            ("my_xml_parse" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("st" variable
+                       (:pointer 1
+                        :type ("MY_XML_PARSER" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2116 2134])
+                    ("str" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2134 2150])
+                    ("len" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2151 2162]))                  
+                :type "int")
+                nil [2098 2163])
+            ("my_xml_set_value_handler" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("st" variable
+                       (:pointer 1
+                        :type ("MY_XML_PARSER" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2195 2213])
+                    ("" variable (:type "int") (reparse-symbol arg-sub-list) [2214 2221]))                  
+                :type "void")
+                nil [2165 2282])
+            ("my_xml_set_enter_handler" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("st" variable
+                       (:pointer 1
+                        :type ("MY_XML_PARSER" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2313 2331])
+                    ("" variable (:type "int") (reparse-symbol arg-sub-list) [2332 2339]))                  
+                :type "void")
+                nil [2283 2400])
+            ("my_xml_set_leave_handler" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("st" variable
+                       (:pointer 1
+                        :type ("MY_XML_PARSER" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2431 2449])
+                    ("" variable (:type "int") (reparse-symbol arg-sub-list) [2450 2457]))                  
+                :type "void")
+                nil [2401 2518])
+            ("my_xml_set_user_data" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("st" variable
+                       (:pointer 1
+                        :type ("MY_XML_PARSER" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2545 2563])
+                    ("" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [2564 2571]))                  
+                :type "void")
+                nil [2519 2572])
+            ("my_xml_error_pos" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("st" variable
+                       (:pointer 1
+                        :type ("MY_XML_PARSER" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2598 2616]))                  
+                :type ("size_t" type (:type "class") nil nil))
+                nil [2574 2617])
+            ("my_xml_error_lineno" function
+               (:prototype-flag t
+                :arguments 
+                  ( ("st" variable
+                       (:pointer 1
+                        :type ("MY_XML_PARSER" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2643 2661]))                  
+                :type ("uint" type (:type "class") nil nil))
+                nil [2618 2662])
+            ("my_xml_error_string" function
+               (:prototype-flag t
+                :pointer 1
+                :constant-flag t
+                :arguments 
+                  ( ("st" variable
+                       (:pointer 1
+                        :type ("MY_XML_PARSER" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2696 2714]))                  
+                :type "char")
+                nil [2664 2715]))          
+    :file "my_xml.h"
+    :pointmax 2769
+    :fsize 2768
+    :lastmodtime '(20747 26182 0 0)
+    :unmatched-syntax '((semantic-list 2457 . 2516) (semantic-list 2454 . 2457) (semantic-list 2339 . 2398) (semantic-list 2336 . 2339) (semantic-list 2221 . 2280) (semantic-list 2218 . 2221))
+    :lexical-table 
+        '(("_my_xml_h")
+          ("MY_XML_OK" . ((number "0" 795 . 796)))
+          ("MY_XML_ERROR" . ((number "1" 818 . 819)))
+          ("MY_XML_FLAG_RELATIVE_NAMES" . ((number "1" 1040 . 1041)))
+          ("MY_XML_FLAG_SKIP_TEXT_NORMALIZATION" . ((number "2" 1245 . 1246)))
+          )
+
+    )
+   )
+  :file "!drive_d!work!rtSuite!code!utils!mysql!include!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

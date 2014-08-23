@@ -1,0 +1,22 @@
+;; Object examples/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "examples/"
+  :tables (list 
+   (semanticdb-table "example1.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("cppdb/frontend.h" include (:system-flag t) nil [838 865])
+            ("iostream" include (:system-flag t) nil [866 885])
+            ("ctime" include (:system-flag t) nil [886 902])
+            ("main" function (:type "int") nil [905 2337]))          
+    :file "example1.cpp"
+    :pointmax 2338
+    :fsize 2337
+    :lastmodtime '(20344 1426 0 0)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!drive_c!Users!hyphen!Downloads!cppdb-0.3.1!examples!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

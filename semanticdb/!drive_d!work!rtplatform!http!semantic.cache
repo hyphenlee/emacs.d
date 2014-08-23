@@ -1,0 +1,73 @@
+;; Object http/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "http/"
+  :tables (list 
+   (semanticdb-table "client_session.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__rtplatform_client_session_h__" variable (:constant-flag t) nil [49 80])
+            ("Poco/Net/HTTPClientSession.h" include nil nil [82 121])
+            ("rtplatform_export.h" include nil nil [123 153])
+            ("rtplatform" type
+               (:members 
+                  ( ("HttpClientSession" variable (:type ("rtplatform_export" type
+                         (:prototype t
+                          :type "class")
+                          nil nil)) (reparse-symbol namespacesubparts) [179 562]))                  
+                :type "namespace")
+                nil [155 564]))          
+    :file "client_session.h"
+    :pointmax 574
+    :fsize 603
+    :lastmodtime '(21198 17486 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("__rtplatform_client_session_h__")
+          )
+
+    )
+   (semanticdb-table "client_session.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("client_session.h" include nil nil [1 28])
+            ("rtplatform" type
+               (:members 
+                  ( ("HttpClientSession::instance_" variable
+                       (:pointer 1
+                        :type ("HttpClientSession" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [53 111])
+                    ("HttpClientSession" function
+                       (:constructor-flag t
+                        :parent "HttpClientSession"
+                        :type ("HttpClientSession" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [113 181])
+                    ("HttpClientSession" function
+                       (:destructor-flag t
+                        :parent "HttpClientSession"
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [182 248])
+                    ("get_instance" function
+                       (:pointer 1
+                        :parent "HttpClientSession"
+                        :type ("HttpClientSession" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [251 383])
+                    ("initiate" function
+                       (:parent "HttpClientSession"
+                        :arguments 
+                          ( ("server_address" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [419 446])
+                            ("server_port" variable (:type "int") (reparse-symbol arg-sub-list) [446 463]))                          
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [385 722]))                  
+                :type "namespace")
+                nil [30 726]))          
+    :file "client_session.cpp"
+    :pointmax 728
+    :fsize 770
+    :lastmodtime '(21205 61276 0 0)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!drive_d!work!rtplatform!http!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

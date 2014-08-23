@@ -1,0 +1,55 @@
+;; Object wx/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "wx/"
+  :tables (list 
+   (semanticdb-table "setup.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("wx/version.h" include nil nil [715 738])
+            ("wx/cpp.h" include nil nil [739 758])
+            ("wxSUFFIX_DEBUG" variable (:constant-flag t) nil [1113 1127])
+            ("wxCOMPILER_PREFIX" variable (:constant-flag t) nil [2509 2526])
+            ("wxARCH_SUFFIX" variable (:constant-flag t) nil [2756 2769])
+            ("wxLIB_SUBDIR" variable (:constant-flag t) nil [2897 2909])
+            ("wxTOOLKIT_PREFIX" variable (:constant-flag t) nil [3189 3205])
+            ("wxSETUPH_PATH" variable (:constant-flag t) nil [3525 3538])
+            ("wxSETUPH_PATH_STR" variable (:constant-flag t) nil [3638 3655])
+            ("wxSUFFIX_STR" variable (:constant-flag t) nil [3926 3938])
+            ("wxSHORT_VERSION_STRING" variable (:constant-flag t) nil [3957 3979])
+            ("wxWX_LIB_NAME" variable (:constant-flag t) nil [4053 4066])
+            ("wxBASE_LIB_NAME" variable (:constant-flag t) nil [4151 4166])
+            ("wxTOOLKIT_LIB_NAME" variable (:constant-flag t) nil [4213 4231])
+            ("wx3RD_PARTY_LIB_NAME" variable (:constant-flag t) nil [4613 4633])
+            ("wx3RD_PARTY_LIB_NAME_U" variable (:constant-flag t) nil [4737 4759]))          
+    :file "setup.h"
+    :pointmax 8593
+    :fsize 8838
+    :lastmodtime '(20965 11528 0 0)
+    :unmatched-syntax '((semantic-list 8014 . 8030) (symbol 8007 . 8014) (string 8020 . 8029) (symbol 8000 . 8006) (string 8020 . 8029) (punctuation 7999 . 8000) (semantic-list 7977 . 7994) (symbol 7970 . 7977) (string 7983 . 7993) (symbol 7963 . 7969) (string 7983 . 7993) (punctuation 7962 . 7963) (semantic-list 7942 . 7957) (symbol 7935 . 7942) (string 7948 . 7956) (symbol 7928 . 7934) (string 7948 . 7956) (punctuation 7927 . 7928) (semantic-list 7909 . 7922) (symbol 7902 . 7909) (string 7915 . 7921) (symbol 7895 . 7901) (string 7915 . 7921) (punctuation 7894 . 7895) (semantic-list 7872 . 7889) (symbol 7865 . 7872) (string 7878 . 7888) (symbol 7858 . 7864) (string 7878 . 7888) (punctuation 7857 . 7858) (semantic-list 7838 . 7852) (symbol 7831 . 7838) (string 7844 . 7851) (symbol 7824 . 7830) (string 7844 . 7851) (punctuation 7823 . 7824) (semantic-list 7801 . 7818) (symbol 7794 . 7801) (string 7807 . 7817) (symbol 7787 . 7793) (string 7807 . 7817) (punctuation 7786 . 7787) (semantic-list 7765 . 7781) (symbol 7758 . 7765) (string 7771 . 7780) (symbol 7751 . 7757) (string 7771 . 7780) (punctuation 7750 . 7751) (semantic-list 7731 . 7745) (symbol 7724 . 7731) (string 7737 . 7744) (symbol 7717 . 7723) (string 7737 . 7744) (punctuation 7716 . 7717) (semantic-list 7694 . 7711) (symbol 7687 . 7694) (string 7700 . 7710) (symbol 7680 . 7686) (string 7700 . 7710) (punctuation 7679 . 7680) (semantic-list 7657 . 7674) (symbol 7650 . 7657) (string 7663 . 7673) (symbol 7643 . 7649) (string 7663 . 7673) (punctuation 7642 . 7643) (semantic-list 7623 . 7637) (symbol 7616 . 7623) (string 7629 . 7636) (symbol 7609 . 7615) (string 7629 . 7636) (punctuation 7608 . 7609) (semantic-list 7588 . 7603) (symbol 7581 . 7588) (string 7594 . 7602) (symbol 7574 . 7580) (string 7594 . 7602) (punctuation 7573 . 7574) (semantic-list 7551 . 7568) (symbol 7544 . 7551) (string 7557 . 7567) (symbol 7537 . 7543) (string 7557 . 7567) (punctuation 7536 . 7537) (semantic-list 4956 . 4985) (symbol 4949 . 4956) (string "\"\"" 4962 . 4984) (semantic-list "(wxMINOR_VERSION)" 4962 . 4984) (semantic-list "(wxMAJOR_VERSION)" 4962 . 4984) (string "\"wx\"" 4962 . 4984) (symbol 4942 . 4948) (string "\"\"" 4962 . 4984) (semantic-list "(wxMINOR_VERSION)" 4962 . 4984) (semantic-list "(wxMAJOR_VERSION)" 4962 . 4984) (string "\"wx\"" 4962 . 4984) (punctuation 4941 . 4942) (semantic-list 4879 . 4908) (symbol 4872 . 4879) (string "\"\"" 4885 . 4907) (semantic-list "(wxMINOR_VERSION)" 4885 . 4907) (semantic-list "(wxMAJOR_VERSION)" 4885 . 4907) (string "\"wx\"" 4885 . 4907) (symbol 4865 . 4871) (string "\"\"" 4885 . 4907) (semantic-list "(wxMINOR_VERSION)" 4885 . 4907) (semantic-list "(wxMAJOR_VERSION)" 4885 . 4907) (string "\"wx\"" 4885 . 4907) (punctuation 4864 . 4865) (semantic-list 4805 . 4837) (symbol 4798 . 4805) (string "\"\"" 4811 . 4836) (string "\"\"" 4811 . 4836) (semantic-list "(wxMINOR_VERSION)" 4811 . 4836) (semantic-list "(wxMAJOR_VERSION)" 4811 . 4836) (string "\"base\"" 4811 . 4836) (string "\"wx\"" 4811 . 4836) (symbol 4791 . 4797) (string "\"\"" 4811 . 4836) (string "\"\"" 4811 . 4836) (semantic-list "(wxMINOR_VERSION)" 4811 . 4836) (semantic-list "(wxMAJOR_VERSION)" 4811 . 4836) (string "\"base\"" 4811 . 4836) (string "\"wx\"" 4811 . 4836) (punctuation 4790 . 4791) (semantic-list "(wxSETUPH_PATH)" 3693 . 3710) (symbol "wxSTRINGIZE" 3693 . 3710) (symbol 3685 . 3692) (punctuation 3684 . 3685) (string 473 . 540) (symbol 467 . 472) (punctuation 466 . 467))
+    :lexical-table 
+        '(("wxSHORT_VERSION_STRING" . 
+              ((symbol "wxSTRINGIZE" 3986 . 3997) (semantic-list "(wxMAJOR_VERSION)" 3997 . 4014) (symbol "wxSTRINGIZE" 4015 . 4026) (semantic-list "(wxMINOR_VERSION)" 4026 . 4043)))
+          ("wxTOOLKIT_PREFIX" . ((symbol "msw" 3206 . 3209)))
+          ("wxSETUPH_PATH" . ((symbol "wxCONCAT5" 3549 . 3558) (semantic-list "(../../../lib/, wxLIB_SUBDIR, /, wxTOOLKIT_PREFIX, /wx/setup.h)" 3558 . 3621)))
+          ("wxTOOLKIT_LIB_NAME" (spp-arg-list ("name") 4231 . 4237) . ((symbol "wxWX_LIB_NAME" 4238 . 4251) (semantic-list "(wxSTRINGIZE(wxTOOLKIT_PREFIX), \"_\" name)" 4251 . 4292)))
+          ("wxSUFFIX_STR" . ((string "\"\"" 3939 . 3941)))
+          ("wxWX_LIB_NAME" (spp-arg-list ("name" "subname") 4066 . 4081) . 
+              ((string "\"wx\"" 4088 . 4092) (symbol "name" 4093 . 4097) (symbol "wxSHORT_VERSION_STRING" 4098 . 4120) (symbol "wxSUFFIX_STR" 4121 . 4133) (symbol "subname" 4134 . 4141)))
+          ("wx3RD_PARTY_LIB_NAME" (spp-arg-list ("name") 4633 . 4639) . 
+              ((string "\"wx\"" 4640 . 4644) (symbol "name" 4645 . 4649) (symbol "wxSUFFIX_DEBUG" 4650 . 4664)))
+          ("wx3RD_PARTY_LIB_NAME_U" (spp-arg-list ("name") 4759 . 4765) . 
+              ((string "\"wx\"" 4766 . 4770) (symbol "name" 4771 . 4775) (symbol "wxSUFFIX_STR" 4776 . 4788)))
+          ("wxSUFFIX_DEBUG" . ((string "\"\"" 1128 . 1130)))
+          ("wxARCH_SUFFIX")
+          ("wxLIB_SUBDIR" . ((symbol "wxCONCAT3" 2910 . 2919) (semantic-list "(wxCOMPILER_PREFIX, wxARCH_SUFFIX, _lib)" 2919 . 2959)))
+          ("wxCOMPILER_PREFIX" . ((symbol "vc" 2527 . 2529)))
+          ("wxSETUPH_PATH_STR" . ((symbol "wxSTRINGIZE" 3656 . 3667) (semantic-list "(wxSETUPH_PATH)" 3667 . 3682)))
+          ("wxBASE_LIB_NAME" (spp-arg-list ("name") 4166 . 4172) . ((symbol "wxWX_LIB_NAME" 4173 . 4186) (semantic-list "(\"base\", \"_\" name)" 4186 . 4204)))
+          )
+
+    )
+   )
+  :file "!drive_c!Users!hyphen!Desktop!wxWidgets-2.9.5!include!msvc!wx!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

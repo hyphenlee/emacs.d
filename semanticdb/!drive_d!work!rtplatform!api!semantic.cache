@@ -1,0 +1,1450 @@
+;; Object api/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "api/"
+  :tables (list 
+   (semanticdb-table "rtss_list_handler.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__rtplatform_rtss_list_handler__" variable (:constant-flag t) nil [50 82])
+            ("handler.h" include nil nil [83 103])
+            ("rtstruct.h" include nil nil [104 125])
+            ("rtplatform" type
+               (:members 
+                  ( ("Handler" variable (:type "int") (reparse-symbol namespacesubparts) [199 427]))                  
+                :type "namespace")
+                nil [127 429]))          
+    :file "rtss_list_handler.h"
+    :pointmax 439
+    :fsize 508
+    :lastmodtime '(21269 11630 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("__rtplatform_rtss_list_handler__")
+          )
+
+    )
+   (semanticdb-table "handler.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__rtplatform_handler__" variable (:constant-flag t) nil [40 62])
+            ("string" include (:system-flag t) nil [64 81])
+            ("rtplatform_export.h" include nil nil [83 113])
+            ("image.h" include nil nil [114 132])
+            ("mesh.h" include nil nil [133 150])
+            ("rtplatform" type
+               (:members 
+                  ( ("Handler" variable (:type ("rtplatform_export" type
+                         (:prototype t
+                          :type "class")
+                          nil nil)) (reparse-symbol namespacesubparts) [175 1919]))                  
+                :type "namespace")
+                nil [152 1921]))          
+    :file "handler.h"
+    :pointmax 1931
+    :fsize 2007
+    :lastmodtime '(21289 23020 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("__rtplatform_handler__")
+          )
+
+    )
+   (semanticdb-table "rtss_list_handler.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("Poco/Net/HTTPRequestHandler.h" include nil nil [1 41])
+            ("Poco/Net/HTTPServerRequest.h" include nil nil [42 81])
+            ("Poco/Net/HTTPServerResponse.h" include nil nil [82 122])
+            ("Poco/JSON/JSON.h" include (:system-flag t) nil [124 151])
+            ("Poco/JSON/Parser.h" include (:system-flag t) nil [152 181])
+            ("Poco/Net/HTTPRequest.h" include nil nil [182 215])
+            ("Poco/Net/HTTPResponse.h" include nil nil [216 250])
+            ("Poco/StreamCopier.h" include nil nil [251 281])
+            ("Poco/Net/HTTPServerRequestImpl.h" include nil nil [283 326])
+            ("Poco/Base64Encoder.h" include nil nil [327 358])
+            ("Poco/Base64Decoder.h" include nil nil [359 390])
+            ("rtss_list_handler.h" include nil nil [392 422])
+            ("client_session.h" include nil nil [423 450])
+            ("user_manager.h" include nil nil [451 476])
+            ("data_manager.h" include nil nil [477 502])
+            ("color.h" include nil nil [503 521])
+            ("rtplatform" type
+               (:members 
+                  ( ("RtssListHandler" function
+                       (:constructor-flag t
+                        :parent "RtssListHandler"
+                        :arguments 
+                          ( ("username" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [580 601]))                          
+                        :type ("RtssListHandler" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [547 626])
+                    ("UpdateList" function
+                       (:parent "RtssListHandler"
+                        :arguments 
+                          ( ("rtss" variable (:type ("dtl::RTStruct::Pointer" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [662 691]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [629 852])
+                    ("LocalUpdateRtssList" function
+                       (:parent "RtssListHandler"
+                        :arguments 
+                          ( ("rtss" variable (:type ("dtl::RTStruct::Pointer" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [897 925]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [855 946])
+                    ("HttpUpdateRtssList" function
+                       (:parent "RtssListHandler"
+                        :arguments 
+                          ( ("rtss" variable (:type ("dtl::RTStruct::Pointer" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [990 1018]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [949 4811])
+                    ("HttpRequestRtssListHandler" type
+                       (:superclasses 
+                          ( ("Poco::Net::HTTPRequestHandler" type
+                               (:protection "public"
+                                :type "class")
+                                nil nil))                          
+                        :members 
+                          ( ("public" label nil (reparse-symbol classsubparts) [4889 4896])
+                            ("HttpRequestRtssListHandler" function
+                               (:constructor-flag t
+                                :arguments 
+                                  ( ("username" variable
+                                       (:pointer 1
+                                        :type "char")
+                                        (reparse-symbol arg-sub-list) [4926 4941]))                                  
+                                :type ("HttpRequestRtssListHandler" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [4899 4987])
+                            ("handleRequest" function
+                               (:parent "HttpRequestRtssListHandler"
+                                :arguments 
+                                  ( ("request" variable
+                                       (:reference 1
+                                        :type ("Poco::Net::HTTPServerRequest" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [5038 5076])
+                                    ("response" variable
+                                       (:reference 1
+                                        :type ("Poco::Net::HTTPServerResponse" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [5077 5117]))                                  
+                                :type "void")
+                                (reparse-symbol classsubparts) [4991 8196])
+                            ("private" label nil (reparse-symbol classsubparts) [8198 8206])
+                            ("username_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [8209 8231]))                          
+                        :type "class")
+                        (reparse-symbol namespacesubparts) [4814 8235]))                  
+                :type "namespace")
+                nil [523 8443]))          
+    :file "rtss_list_handler.cpp"
+    :pointmax 8443
+    :fsize 10507
+    :lastmodtime '(21290 47334 0 0)
+    :unmatched-syntax '((punctuation 8440 . 8441) (semantic-list 8305 . 8440) (string 8301 . 8304) (EXTERN 8294 . 8300))
+    )
+   (semanticdb-table "export_handler.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__rtplatform_export_handler__" variable (:constant-flag t) nil [47 76])
+            ("handler.h" include nil nil [77 97])
+            ("rtplatform" type
+               (:members 
+                  ( ("Handler" variable (:type "int") (reparse-symbol namespacesubparts) [169 526]))                  
+                :type "namespace")
+                nil [99 528]))          
+    :file "export_handler.h"
+    :pointmax 536
+    :fsize 576
+    :lastmodtime '(21273 10398 0 0)
+    :unmatched-syntax '((PUBLIC 162 . 168) (punctuation 160 . 161) (symbol 147 . 160) (symbol 129 . 146) (CLASS 123 . 128))
+    :lexical-table 
+        '(("__rtplatform_export_handler__")
+          )
+
+    )
+   (semanticdb-table "rtplan_handler.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__rtplatform_rtplan_list_handler__" variable (:constant-flag t) nil [52 86])
+            ("handler.h" include nil nil [87 107])
+            ("rtplan.h" include nil nil [108 127])
+            ("rtplatform" type
+               (:members 
+                  ( ("Handler" variable (:type "int") (reparse-symbol namespacesubparts) [203 452]))                  
+                :type "namespace")
+                nil [129 454]))          
+    :file "rtplan_handler.h"
+    :pointmax 462
+    :fsize 481
+    :lastmodtime '(21214 15397 0 0)
+    :unmatched-syntax '((PUBLIC 196 . 202) (punctuation 194 . 195) (symbol 177 . 194) (symbol 159 . 176) (CLASS 153 . 158))
+    :lexical-table 
+        '(("__rtplatform_rtplan_list_handler__")
+          )
+
+    )
+   (semanticdb-table "export_handler.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("Poco/Net/HTTPRequestHandler.h" include nil nil [2 42])
+            ("Poco/Net/HTTPServerRequest.h" include nil nil [43 82])
+            ("Poco/Net/HTTPServerResponse.h" include nil nil [83 123])
+            ("Poco/JSON/JSON.h" include (:system-flag t) nil [125 152])
+            ("Poco/JSON/Parser.h" include (:system-flag t) nil [153 182])
+            ("Poco/Net/HTTPRequest.h" include nil nil [183 216])
+            ("Poco/Net/HTTPResponse.h" include nil nil [217 251])
+            ("Poco/StreamCopier.h" include nil nil [252 282])
+            ("Poco/Net/HTTPServerRequestImpl.h" include nil nil [284 327])
+            ("Poco/Base64Encoder.h" include nil nil [328 359])
+            ("Poco/Base64Decoder.h" include nil nil [360 391])
+            ("export_handler.h" include nil nil [393 420])
+            ("client_session.h" include nil nil [421 448])
+            ("user_manager.h" include nil nil [449 474])
+            ("data_manager.h" include nil nil [475 500])
+            ("color.h" include nil nil [501 519])
+            ("rtplan.h" include nil nil [520 539])
+            ("dicom_rtplan_io2.h" include nil nil [540 569])
+            ("dicom_rt_structure_set_io2.h" include nil nil [570 609])
+            ("dicom_rtdose_io2.h" include nil nil [610 639])
+            ("dicom_ct_volume_io2.h" include nil nil [640 672])
+            ("dcmtk/dcmdata/dcostrmb.h" include nil nil [673 708])
+            ("dcmtk/dcmdata/dcistrmb.h" include nil nil [709 744])
+            ("dicom_store_scu.h" include nil nil [745 773])
+            ("Poco/File.h" include nil nil [774 796])
+            ("rtplatform" type
+               (:members 
+                  ( ("ExportHandler" function
+                       (:constructor-flag t
+                        :parent "ExportHandler"
+                        :arguments 
+                          ( ("username" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [851 872]))                          
+                        :type ("ExportHandler" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [822 897])
+                    ("Export" function
+                       (:parent "ExportHandler"
+                        :arguments 
+                          ( ("type" variable (:type ("ExportType" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [927 943])
+                            ("range" variable (:type ("ExportRange" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [943 961])
+                            ("id" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [961 976])
+                            ("destination" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [976 1000]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [900 1164])
+                    ("LocalExport" function
+                       (:parent "ExportHandler"
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [1167 1221])
+                    ("HttpExport" function
+                       (:parent "ExportHandler"
+                        :arguments 
+                          ( ("type" variable (:type ("ExportType" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1255 1271])
+                            ("range" variable (:type ("ExportRange" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1271 1289])
+                            ("id" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1289 1304])
+                            ("destination" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1304 1328]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [1224 3447])
+                    ("HttpRequestExportHandler" type
+                       (:superclasses 
+                          ( ("Poco::Net::HTTPRequestHandler" type
+                               (:protection "public"
+                                :type "class")
+                                nil nil))                          
+                        :members 
+                          ( ("public" label nil (reparse-symbol classsubparts) [3524 3531])
+                            ("HttpRequestExportHandler" function
+                               (:constructor-flag t
+                                :arguments 
+                                  ( ("username" variable
+                                       (:pointer 1
+                                        :type "char")
+                                        (reparse-symbol arg-sub-list) [3559 3574]))                                  
+                                :type ("HttpRequestExportHandler" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [3534 3620])
+                            ("handleRequest" function
+                               (:parent "HttpRequestExportHandler"
+                                :arguments 
+                                  ( ("request" variable
+                                       (:reference 1
+                                        :type ("Poco::Net::HTTPServerRequest" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [3669 3707])
+                                    ("response" variable
+                                       (:reference 1
+                                        :type ("Poco::Net::HTTPServerResponse" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [3708 3748]))                                  
+                                :type "void")
+                                (reparse-symbol classsubparts) [3624 13497])
+                            ("private" label nil (reparse-symbol classsubparts) [13499 13507])
+                            ("username_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [13510 13532]))                          
+                        :type "class")
+                        (reparse-symbol namespacesubparts) [3451 13536]))                  
+                :type "namespace")
+                nil [798 13740]))          
+    :file "export_handler.cpp"
+    :pointmax 13741
+    :fsize 11706
+    :lastmodtime '(21281 19544 0 0)
+    :unmatched-syntax '((punctuation 13737 . 13738) (semantic-list 13606 . 13737) (string 13602 . 13605) (EXTERN 13595 . 13601))
+    )
+   (semanticdb-table "rtplan_handler.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("Poco/Net/HTTPRequestHandler.h" include nil nil [2 42])
+            ("Poco/Net/HTTPServerRequest.h" include nil nil [43 82])
+            ("Poco/Net/HTTPServerResponse.h" include nil nil [83 123])
+            ("Poco/JSON/JSON.h" include (:system-flag t) nil [125 152])
+            ("Poco/JSON/Parser.h" include (:system-flag t) nil [153 182])
+            ("Poco/Net/HTTPRequest.h" include nil nil [183 216])
+            ("Poco/Net/HTTPResponse.h" include nil nil [217 251])
+            ("Poco/StreamCopier.h" include nil nil [252 282])
+            ("Poco/Net/HTTPServerRequestImpl.h" include nil nil [284 327])
+            ("Poco/Base64Encoder.h" include nil nil [328 359])
+            ("Poco/Base64Decoder.h" include nil nil [360 391])
+            ("rtplan_handler.h" include nil nil [393 420])
+            ("client_session.h" include nil nil [421 448])
+            ("user_manager.h" include nil nil [449 474])
+            ("data_manager.h" include nil nil [475 500])
+            ("color.h" include nil nil [501 519])
+            ("rtplatform" type
+               (:members 
+                  ( ("RtplanListHandler" function
+                       (:constructor-flag t
+                        :parent "RtplanListHandler"
+                        :arguments 
+                          ( ("username" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [582 603]))                          
+                        :type ("RtplanListHandler" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [545 628])
+                    ("UpdateList" function
+                       (:parent "RtplanListHandler"
+                        :arguments 
+                          ( ("rtplan" variable (:type ("dtl::RTPlan::Pointer" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [666 694]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [631 863])
+                    ("LocalUpdateRTPlanList" function
+                       (:parent "RtplanListHandler"
+                        :arguments 
+                          ( ("rtplan_list" variable (:type ("dtl::RTPlan::Pointer" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [912 945]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [866 966])
+                    ("HttpUpdateRTPlanList" function
+                       (:parent "RtplanListHandler"
+                        :arguments 
+                          ( ("rtplan" variable (:type ("dtl::RTPlan::Pointer" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1014 1042]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [969 15123])
+                    ("HttpRequestRTPlanListHandler" type
+                       (:superclasses 
+                          ( ("Poco::Net::HTTPRequestHandler" type
+                               (:protection "public"
+                                :type "class")
+                                nil nil))                          
+                        :members 
+                          ( ("public" label nil (reparse-symbol classsubparts) [15203 15210])
+                            ("HttpRequestRTPlanListHandler" function
+                               (:constructor-flag t
+                                :arguments 
+                                  ( ("username" variable
+                                       (:pointer 1
+                                        :type "char")
+                                        (reparse-symbol arg-sub-list) [15242 15257]))                                  
+                                :type ("HttpRequestRTPlanListHandler" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [15213 15303])
+                            ("handleRequest" function
+                               (:parent "HttpRequestRTPlanListHandler"
+                                :arguments 
+                                  ( ("request" variable
+                                       (:reference 1
+                                        :type ("Poco::Net::HTTPServerRequest" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [15356 15394])
+                                    ("response" variable
+                                       (:reference 1
+                                        :type ("Poco::Net::HTTPServerResponse" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [15395 15435]))                                  
+                                :type "void")
+                                (reparse-symbol classsubparts) [15307 27711])
+                            ("private" label nil (reparse-symbol classsubparts) [27713 27721])
+                            ("username_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [27724 27746]))                          
+                        :type "class")
+                        (reparse-symbol namespacesubparts) [15126 27750]))                  
+                :type "namespace")
+                nil [521 27962]))          
+    :file "rtplan_handler.cpp"
+    :pointmax 27963
+    :fsize 29246
+    :lastmodtime '(21290 46213 0 0)
+    :unmatched-syntax '((punctuation 27959 . 27960) (semantic-list 27820 . 27959) (string 27816 . 27819) (EXTERN 27809 . 27815))
+    )
+   (semanticdb-table "delete_patient_handler.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__rtplatform_delete_patient_handler__" variable (:constant-flag t) nil [56 93])
+            ("handler.h" include nil nil [95 115])
+            ("rtplatform" type
+               (:members 
+                  ( ("Handler" variable (:type "int") (reparse-symbol namespacesubparts) [194 298]))                  
+                :type "namespace")
+                nil [117 300]))          
+    :file "delete_patient_handler.h"
+    :pointmax 308
+    :fsize 316
+    :lastmodtime '(21244 13279 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("__rtplatform_delete_patient_handler__")
+          )
+
+    )
+   (semanticdb-table "delete_polygon_handler.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__rtplatform_delete_polygon_handler__" variable (:constant-flag t) nil [55 92])
+            ("handler.h" include nil nil [94 114])
+            ("polygon.h" include nil nil [115 135])
+            ("volume.h" include nil nil [136 155])
+            ("rtplatform" type
+               (:members 
+                  ( ("Handler" variable (:type "int") (reparse-symbol namespacesubparts) [234 355]))                  
+                :type "namespace")
+                nil [157 357]))          
+    :file "delete_polygon_handler.h"
+    :pointmax 367
+    :fsize 385
+    :lastmodtime '(21215 36032 0 0)
+    :unmatched-syntax '((PUBLIC 227 . 233) (punctuation 225 . 226) (symbol 204 . 224) (symbol 186 . 203) (CLASS 180 . 185))
+    :lexical-table 
+        '(("__rtplatform_delete_polygon_handler__")
+          )
+
+    )
+   (semanticdb-table "delete_patient_handler.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("Poco/Net/HTTPRequestHandler.h" include nil nil [2 42])
+            ("Poco/Net/HTTPServerRequest.h" include nil nil [43 82])
+            ("Poco/Net/HTTPServerResponse.h" include nil nil [83 123])
+            ("Poco/JSON/JSON.h" include (:system-flag t) nil [125 152])
+            ("Poco/JSON/Parser.h" include (:system-flag t) nil [153 182])
+            ("Poco/Net/HTTPRequest.h" include nil nil [183 216])
+            ("Poco/Net/HTTPResponse.h" include nil nil [217 251])
+            ("Poco/StreamCopier.h" include nil nil [252 282])
+            ("Poco/Net/HTTPServerRequestImpl.h" include nil nil [284 327])
+            ("Poco/Base64Encoder.h" include nil nil [328 359])
+            ("Poco/Base64Decoder.h" include nil nil [360 391])
+            ("delete_patient_handler.h" include nil nil [393 428])
+            ("client_session.h" include nil nil [429 456])
+            ("user_manager.h" include nil nil [457 482])
+            ("data_manager.h" include nil nil [483 508])
+            ("rtplatform" type
+               (:members 
+                  ( ("DeletePatientHandler" function
+                       (:constructor-flag t
+                        :parent "DeletePatientHandler"
+                        :arguments 
+                          ( ("username" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [577 598]))                          
+                        :type ("DeletePatientHandler" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [534 623])
+                    ("delete_patient" function
+                       (:parent "DeletePatientHandler"
+                        :arguments 
+                          ( ("patient_key" variable (:type "int") (reparse-symbol arg-sub-list) [668 684]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [626 1281])
+                    ("HttpRequestDeletePatientHandler" type
+                       (:superclasses 
+                          ( ("Poco::Net::HTTPRequestHandler" type
+                               (:protection "public"
+                                :type "class")
+                                nil nil))                          
+                        :members 
+                          ( ("public" label nil (reparse-symbol classsubparts) [1364 1371])
+                            ("HttpRequestDeletePatientHandler" function
+                               (:constructor-flag t
+                                :arguments 
+                                  ( ("username" variable
+                                       (:pointer 1
+                                        :type "char")
+                                        (reparse-symbol arg-sub-list) [1406 1421]))                                  
+                                :type ("HttpRequestDeletePatientHandler" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [1374 1467])
+                            ("handleRequest" function
+                               (:arguments 
+                                  ( ("request" variable
+                                       (:reference 1
+                                        :type ("Poco::Net::HTTPServerRequest" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [1489 1527])
+                                    ("response" variable
+                                       (:reference 1
+                                        :type ("Poco::Net::HTTPServerResponse" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [1528 1568]))                                  
+                                :type "void")
+                                (reparse-symbol classsubparts) [1470 2602])
+                            ("private" label nil (reparse-symbol classsubparts) [2605 2613])
+                            ("username_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2616 2638]))                          
+                        :type "class")
+                        (reparse-symbol namespacesubparts) [1284 2643]))                  
+                :type "namespace")
+                nil [510 2861]))          
+    :file "delete_patient_handler.cpp"
+    :pointmax 2862
+    :fsize 2385
+    :lastmodtime '(21244 17460 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "delete_polygon_handler.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("Poco/Net/HTTPRequestHandler.h" include nil nil [1 41])
+            ("Poco/Net/HTTPServerRequest.h" include nil nil [42 81])
+            ("Poco/Net/HTTPServerResponse.h" include nil nil [82 122])
+            ("Poco/JSON/JSON.h" include (:system-flag t) nil [124 151])
+            ("Poco/JSON/Parser.h" include (:system-flag t) nil [152 181])
+            ("Poco/Net/HTTPRequest.h" include nil nil [182 215])
+            ("Poco/Net/HTTPResponse.h" include nil nil [216 250])
+            ("Poco/StreamCopier.h" include nil nil [251 281])
+            ("Poco/Net/HTTPServerRequestImpl.h" include nil nil [283 326])
+            ("Poco/Base64Encoder.h" include nil nil [327 358])
+            ("Poco/Base64Decoder.h" include nil nil [359 390])
+            ("delete_polygon_handler.h" include nil nil [392 427])
+            ("polygon_handler.h" include nil nil [428 456])
+            ("client_session.h" include nil nil [457 484])
+            ("user_manager.h" include nil nil [485 510])
+            ("data_manager.h" include nil nil [511 536])
+            ("ctvolume.h" include nil nil [537 558])
+            ("polygon_fill.h" include nil nil [559 584])
+            ("vector.h" include nil nil [585 604])
+            ("rtplatform" type
+               (:members 
+                  ( ("DeletePolygonHandler" function
+                       (:constructor-flag t
+                        :parent "DeletePolygonHandler"
+                        :arguments 
+                          ( ("username" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [696 717]))                          
+                        :type ("DeletePolygonHandler" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [653 742])
+                    ("delete_polygon" function
+                       (:parent "DeletePolygonHandler"
+                        :arguments 
+                          ( ("roi_index" variable (:type "int") (reparse-symbol arg-sub-list) [787 801])
+                            ("poly" variable (:type ("dtl::Polygon" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [802 820]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [745 2207])
+                    ("HttpRequestDeletePolygonHandler" type
+                       (:superclasses 
+                          ( ("Poco::Net::HTTPRequestHandler" type
+                               (:protection "public"
+                                :type "class")
+                                nil nil))                          
+                        :members 
+                          ( ("public" label nil (reparse-symbol classsubparts) [2290 2297])
+                            ("HttpRequestDeletePolygonHandler" function
+                               (:constructor-flag t
+                                :arguments 
+                                  ( ("username" variable
+                                       (:pointer 1
+                                        :type "char")
+                                        (reparse-symbol arg-sub-list) [2332 2347]))                                  
+                                :type ("HttpRequestDeletePolygonHandler" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [2300 2393])
+                            ("handleRequest" function
+                               (:arguments 
+                                  ( ("request" variable
+                                       (:reference 1
+                                        :type ("Poco::Net::HTTPServerRequest" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [2415 2453])
+                                    ("response" variable
+                                       (:reference 1
+                                        :type ("Poco::Net::HTTPServerResponse" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [2454 2494]))                                  
+                                :type "void")
+                                (reparse-symbol classsubparts) [2396 3831])
+                            ("private" label nil (reparse-symbol classsubparts) [3834 3842])
+                            ("username_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3845 3867])
+                            ("update_vol" function
+                               (:arguments 
+                                  ( ("vol" variable
+                                       (:pointer 1
+                                        :type ("dtl::Volume" type
+                                             (:template-specifier 
+                                                ( ("dtl::uint8" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [3887 3916])
+                                    ("poly" variable (:type ("dtl::Polygon" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3917 3935]))                                  
+                                :type "bool")
+                                (reparse-symbol classsubparts) [3871 8881]))                          
+                        :type "class")
+                        (reparse-symbol namespacesubparts) [2210 8885]))                  
+                :type "namespace")
+                nil [629 9103]))          
+    :file "delete_polygon_handler.cpp"
+    :pointmax 9103
+    :fsize 9429
+    :lastmodtime '(21216 28255 0 0)
+    :unmatched-syntax '((punctuation 9099 . 9100) (semantic-list 8955 . 9099) (string 8951 . 8954) (EXTERN 8944 . 8950))
+    )
+   (semanticdb-table "polygon_handler.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__rtplatform_polygon_handler__" variable (:constant-flag t) nil [48 78])
+            ("handler.h" include nil nil [80 100])
+            ("polygon.h" include nil nil [101 121])
+            ("rtplatform" type
+               (:members 
+                  ( ("Handler" variable (:type "int") (reparse-symbol namespacesubparts) [194 691]))                  
+                :type "namespace")
+                nil [123 693]))          
+    :file "polygon_handler.h"
+    :pointmax 703
+    :fsize 783
+    :lastmodtime '(21269 11630 0 0)
+    :unmatched-syntax '((PUBLIC 187 . 193) (punctuation 185 . 186) (symbol 170 . 184) (symbol 152 . 169) (CLASS 146 . 151))
+    :lexical-table 
+        '(("__rtplatform_polygon_handler__")
+          )
+
+    )
+   (semanticdb-table "roi_template_handler.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__rtplatform_roi_template_handler_h__" variable (:constant-flag t) nil [56 93])
+            ("handler.h" include nil nil [95 115])
+            ("rtplatform" type
+               (:members 
+                  ( ("Handler" variable (:type "int") (reparse-symbol namespacesubparts) [196 523]))                  
+                :type "namespace")
+                nil [117 525]))          
+    :file "roi_template_handler.h"
+    :pointmax 534
+    :fsize 422
+    :lastmodtime '(21263 59172 0 0)
+    :unmatched-syntax '((PUBLIC 189 . 195) (punctuation 187 . 188) (symbol 168 . 186) (symbol 150 . 167) (CLASS 144 . 149))
+    :lexical-table 
+        '(("__rtplatform_roi_template_handler_h__")
+          )
+
+    )
+   (semanticdb-table "patient_list_handler.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("Poco/Net/HTTPRequestHandler.h" include nil nil [1 41])
+            ("Poco/Net/HTTPServerRequest.h" include nil nil [42 81])
+            ("Poco/Net/HTTPServerResponse.h" include nil nil [82 122])
+            ("Poco/JSON/JSON.h" include (:system-flag t) nil [124 151])
+            ("Poco/JSON/Parser.h" include (:system-flag t) nil [152 181])
+            ("Poco/Net/HTTPRequest.h" include nil nil [182 215])
+            ("Poco/Net/HTTPResponse.h" include nil nil [216 250])
+            ("Poco/StreamCopier.h" include nil nil [251 281])
+            ("Poco/Net/HTTPServerRequestImpl.h" include nil nil [283 326])
+            ("Poco/Base64Encoder.h" include nil nil [327 358])
+            ("Poco/Base64Decoder.h" include nil nil [359 390])
+            ("patient_list_handler.h" include nil nil [392 425])
+            ("client_session.h" include nil nil [426 453])
+            ("user_manager.h" include nil nil [454 479])
+            ("data_manager.h" include nil nil [480 505])
+            ("rtplatform" type
+               (:members 
+                  ( ("PatientListHandler" function
+                       (:constructor-flag t
+                        :parent "PatientListHandler"
+                        :arguments 
+                          ( ("username" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [570 591]))                          
+                        :type ("PatientListHandler" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [531 616])
+                    ("UpdateList" function
+                       (:parent "PatientListHandler"
+                        :arguments 
+                          ( ("patients" variable
+                               (:reference 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("dtl::Patient::Pointer" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [975 1020])
+                            ("range_beg" variable (:type "int") (reparse-symbol arg-sub-list) [1020 1034])
+                            ("range_end" variable (:type "int") (reparse-symbol arg-sub-list) [1034 1048])
+                            ("search_string" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1048 1070])
+                            ("sort_column_index" variable (:type "int") (reparse-symbol arg-sub-list) [1071 1093])
+                            ("is_increment" variable (:type "bool") (reparse-symbol arg-sub-list) [1093 1112]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [938 3220])
+                    ("HttpRequestPatientListHandler" type
+                       (:superclasses 
+                          ( ("Poco::Net::HTTPRequestHandler" type
+                               (:protection "public"
+                                :type "class")
+                                nil nil))                          
+                        :members 
+                          ( ("public" label nil (reparse-symbol classsubparts) [5573 5580])
+                            ("HttpRequestPatientListHandler" function
+                               (:constructor-flag t
+                                :arguments 
+                                  ( ("username" variable
+                                       (:pointer 1
+                                        :type "char")
+                                        (reparse-symbol arg-sub-list) [5613 5628]))                                  
+                                :type ("HttpRequestPatientListHandler" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [5583 5674])
+                            ("handleRequest" function
+                               (:arguments 
+                                  ( ("request" variable
+                                       (:reference 1
+                                        :type ("Poco::Net::HTTPServerRequest" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [5696 5734])
+                                    ("response" variable
+                                       (:reference 1
+                                        :type ("Poco::Net::HTTPServerResponse" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [5735 5775]))                                  
+                                :type "void")
+                                (reparse-symbol classsubparts) [5677 7888])
+                            ("private" label nil (reparse-symbol classsubparts) [7891 7899])
+                            ("username_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [7902 7924]))                          
+                        :type "class")
+                        (reparse-symbol namespacesubparts) [5495 7928]))                  
+                :type "namespace")
+                nil [507 8144]))          
+    :file "patient_list_handler.cpp"
+    :pointmax 8144
+    :fsize 8358
+    :lastmodtime '(21212 53034 0 0)
+    :unmatched-syntax '((punctuation 8139 . 8140) (semantic-list 7998 . 8139) (string 7994 . 7997) (EXTERN 7987 . 7993))
+    )
+   (semanticdb-table "patient_list_handler.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__rtplatform_patient_list_handler__" variable (:constant-flag t) nil [53 88])
+            ("string" include (:system-flag t) nil [90 107])
+            ("vector" include (:system-flag t) nil [108 125])
+            ("handler.h" include nil nil [128 148])
+            ("patient.h" include nil nil [149 169])
+            ("rtplatform" type
+               (:members 
+                  ( ("Handler" variable (:type "int") (reparse-symbol namespacesubparts) [246 751]))                  
+                :type "namespace")
+                nil [170 753]))          
+    :file "patient_list_handler.h"
+    :pointmax 763
+    :fsize 790
+    :lastmodtime '(21204 36632 0 0)
+    :unmatched-syntax '((PUBLIC 239 . 245) (punctuation 237 . 238) (symbol 218 . 236) (symbol 200 . 217) (CLASS 194 . 199))
+    :lexical-table 
+        '(("__rtplatform_patient_list_handler__")
+          )
+
+    )
+   (semanticdb-table "MBS_handler.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__rtplatform_MBS_handler_h__" variable (:constant-flag t) nil [46 74])
+            ("handler.h" include nil nil [76 96])
+            ("matrix4x4.h" include nil nil [97 119])
+            ("rtplatform" type
+               (:members 
+                  ( ("Handler" variable (:type "int") (reparse-symbol namespacesubparts) [188 513]))                  
+                :type "namespace")
+                nil [121 515]))          
+    :file "MBS_handler.h"
+    :pointmax 525
+    :fsize 550
+    :lastmodtime '(21267 55124 0 0)
+    :unmatched-syntax '((PUBLIC 181 . 187) (punctuation 179 . 180) (symbol 168 . 178) (symbol 150 . 167) (CLASS 144 . 149))
+    :lexical-table 
+        '(("__rtplatform_MBS_handler_h__")
+          )
+
+    )
+   (semanticdb-table "roi_template_handler.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("Poco/Net/HTTPRequestHandler.h" include nil nil [1 41])
+            ("Poco/Net/HTTPServerRequest.h" include nil nil [42 81])
+            ("Poco/Net/HTTPServerResponse.h" include nil nil [82 122])
+            ("Poco/JSON/JSON.h" include (:system-flag t) nil [124 151])
+            ("Poco/JSON/Parser.h" include (:system-flag t) nil [152 181])
+            ("Poco/Net/HTTPRequest.h" include nil nil [182 215])
+            ("Poco/Net/HTTPResponse.h" include nil nil [216 250])
+            ("Poco/StreamCopier.h" include nil nil [251 281])
+            ("Poco/Net/HTTPServerRequestImpl.h" include nil nil [283 326])
+            ("roi_template_handler.h" include nil nil [328 361])
+            ("rtplatform" type
+               (:members 
+                  ( ("RoiTemplateHandler" function
+                       (:constructor-flag t
+                        :parent "MBSHandler"
+                        :arguments 
+                          ( ("username" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [417 438]))                          
+                        :type ("MBSHandler" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [386 463])
+                    ("create" function
+                       (:parent "MBSHandler"
+                        :arguments 
+                          ( ("roi_index" variable (:type "int") (reparse-symbol arg-sub-list) [488 502])
+                            ("label" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [503 521]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [464 657])
+                    ("LocalCreate" function
+                       (:parent "MBSHandler"
+                        :arguments 
+                          ( ("roi_index" variable (:type "int") (reparse-symbol arg-sub-list) [688 702])
+                            ("label" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [703 721]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [659 791])
+                    ("HttpCreate" function
+                       (:parent "MBSHandler"
+                        :arguments 
+                          ( ("roi_index" variable (:type "int") (reparse-symbol arg-sub-list) [821 835])
+                            ("label" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [836 854]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [793 1610])
+                    ("HttpRequestMBSHandler" type
+                       (:superclasses 
+                          ( ("Poco::Net::HTTPRequestHandler" type
+                               (:protection "public"
+                                :type "class")
+                                nil nil))                          
+                        :members 
+                          ( ("public" label nil (reparse-symbol classsubparts) [1681 1688])
+                            ("HttpRequestMBSHandler" function
+                               (:constructor-flag t
+                                :arguments 
+                                  ( ("username" variable
+                                       (:pointer 1
+                                        :type "char")
+                                        (reparse-symbol arg-sub-list) [1712 1727]))                                  
+                                :type ("HttpRequestMBSHandler" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [1690 1770])
+                            ("handleRequest" function
+                               (:arguments 
+                                  ( ("request" variable
+                                       (:reference 1
+                                        :type ("Poco::Net::HTTPServerRequest" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [1791 1829])
+                                    ("response" variable
+                                       (:reference 1
+                                        :type ("Poco::Net::HTTPServerResponse" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [1830 1870]))                                  
+                                :type "void")
+                                (reparse-symbol classsubparts) [1772 3248])
+                            ("private" label nil (reparse-symbol classsubparts) [3250 3258])
+                            ("username_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3260 3282]))                          
+                        :type "class")
+                        (reparse-symbol namespacesubparts) [1613 3285]))                  
+                :type "namespace")
+                nil [363 3480]))          
+    :file "roi_template_handler.cpp"
+    :pointmax 3481
+    :fsize 3835
+    :lastmodtime '(21262 48702 0 0)
+    :unmatched-syntax '((punctuation 3476 . 3477) (semantic-list 3353 . 3476) (string 3349 . 3352) (EXTERN 3342 . 3348))
+    )
+   (semanticdb-table "MBS_handler.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("Poco/Net/HTTPRequestHandler.h" include nil nil [1 41])
+            ("Poco/Net/HTTPServerRequest.h" include nil nil [42 81])
+            ("Poco/Net/HTTPServerResponse.h" include nil nil [82 122])
+            ("Poco/JSON/JSON.h" include (:system-flag t) nil [124 151])
+            ("Poco/JSON/Parser.h" include (:system-flag t) nil [152 181])
+            ("Poco/Net/HTTPRequest.h" include nil nil [182 215])
+            ("Poco/Net/HTTPResponse.h" include nil nil [216 250])
+            ("Poco/StreamCopier.h" include nil nil [251 281])
+            ("Poco/Net/HTTPServerRequestImpl.h" include nil nil [283 326])
+            ("MBS_handler.h" include nil nil [328 352])
+            ("client_session.h" include nil nil [353 380])
+            ("user_manager.h" include nil nil [381 406])
+            ("data_manager.h" include nil nil [407 432])
+            ("ctvolume.h" include nil nil [433 454])
+            ("helper.h" include nil nil [455 474])
+            ("rtplatform" type
+               (:members 
+                  ( ("MBSHandler" function
+                       (:constructor-flag t
+                        :parent "MBSHandler"
+                        :arguments 
+                          ( ("username" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [522 543]))                          
+                        :type ("MBSHandler" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [499 568])
+                    ("create" function
+                       (:parent "MBSHandler"
+                        :arguments 
+                          ( ("roi_index" variable (:type "int") (reparse-symbol arg-sub-list) [593 607])
+                            ("mat" variable (:type ("dtl::Matrix4x4" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [608 627])
+                            ("label" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [628 646]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [569 790])
+                    ("LocalCreate" function
+                       (:parent "MBSHandler"
+                        :arguments 
+                          ( ("roi_index" variable (:type "int") (reparse-symbol arg-sub-list) [821 835])
+                            ("mat" variable (:type ("dtl::Matrix4x4" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [836 855])
+                            ("label" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [856 874]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [792 944])
+                    ("HttpCreate" function
+                       (:parent "MBSHandler"
+                        :arguments 
+                          ( ("roi_index" variable (:type "int") (reparse-symbol arg-sub-list) [974 988])
+                            ("mat" variable (:type ("dtl::Matrix4x4" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [989 1008])
+                            ("label" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1009 1027]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [946 1901])
+                    ("HttpRequestMBSHandler" type
+                       (:superclasses 
+                          ( ("Poco::Net::HTTPRequestHandler" type
+                               (:protection "public"
+                                :type "class")
+                                nil nil))                          
+                        :members 
+                          ( ("public" label nil (reparse-symbol classsubparts) [1972 1979])
+                            ("HttpRequestMBSHandler" function
+                               (:constructor-flag t
+                                :arguments 
+                                  ( ("username" variable
+                                       (:pointer 1
+                                        :type "char")
+                                        (reparse-symbol arg-sub-list) [2003 2018]))                                  
+                                :type ("HttpRequestMBSHandler" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [1981 2061])
+                            ("handleRequest" function
+                               (:arguments 
+                                  ( ("request" variable
+                                       (:reference 1
+                                        :type ("Poco::Net::HTTPServerRequest" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [2082 2120])
+                                    ("response" variable
+                                       (:reference 1
+                                        :type ("Poco::Net::HTTPServerResponse" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [2121 2161]))                                  
+                                :type "void")
+                                (reparse-symbol classsubparts) [2063 3792])
+                            ("private" label nil (reparse-symbol classsubparts) [3794 3802])
+                            ("username_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3804 3826]))                          
+                        :type "class")
+                        (reparse-symbol namespacesubparts) [1904 3829]))                  
+                :type "namespace")
+                nil [476 4024]))          
+    :file "MBS_handler.cpp"
+    :pointmax 4024
+    :fsize 4175
+    :lastmodtime '(21280 10177 0 0)
+    :unmatched-syntax '((punctuation 4020 . 4021) (semantic-list 3897 . 4020) (string 3893 . 3896) (EXTERN 3886 . 3892))
+    )
+   (semanticdb-table "pacs_request_handler.h"
+    :major-mode 'c++-mode
+    :tags nil
+    :file "pacs_request_handler.h"
+    :pointmax 1
+    :fsize 609
+    :lastmodtime '(21279 56076 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "pacs_request_handler.cpp"
+    :major-mode 'c++-mode
+    :tags nil
+    :file "pacs_request_handler.cpp"
+    :pointmax 1
+    :fsize 10396
+    :lastmodtime '(21281 29398 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "switch_data_handler.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__rtplatform_switch_data_handler_h__" variable (:constant-flag t) nil [55 91])
+            ("handler.h" include nil nil [93 113])
+            ("rtplatform" type
+               (:members 
+                  ( ("Handler" variable (:type "int") (reparse-symbol namespacesubparts) [187 302]))                  
+                :type "namespace")
+                nil [114 304]))          
+    :file "switch_data_handler.h"
+    :pointmax 313
+    :fsize 330
+    :lastmodtime '(21270 56280 0 0)
+    :unmatched-syntax '((PUBLIC 180 . 186) (punctuation 178 . 179) (symbol 161 . 178) (symbol 143 . 160) (CLASS 137 . 142))
+    :lexical-table 
+        '(("__rtplatform_switch_data_handler_h__")
+          )
+
+    )
+   (semanticdb-table "switch_data_handler.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("Poco/Net/HTTPRequestHandler.h" include nil nil [1 41])
+            ("Poco/Net/HTTPServerRequest.h" include nil nil [42 81])
+            ("Poco/Net/HTTPServerResponse.h" include nil nil [82 122])
+            ("Poco/JSON/JSON.h" include (:system-flag t) nil [124 151])
+            ("Poco/JSON/Parser.h" include (:system-flag t) nil [152 181])
+            ("Poco/Net/HTTPRequest.h" include nil nil [182 215])
+            ("Poco/Net/HTTPResponse.h" include nil nil [216 250])
+            ("Poco/StreamCopier.h" include nil nil [251 281])
+            ("Poco/Net/HTTPServerRequestImpl.h" include nil nil [283 326])
+            ("switch_data_handler.h" include nil nil [328 360])
+            ("client_session.h" include nil nil [361 388])
+            ("user_manager.h" include nil nil [389 414])
+            ("data_manager.h" include nil nil [415 440])
+            ("rtplatform" type
+               (:members 
+                  ( ("SwitchDataHandler" function
+                       (:constructor-flag t
+                        :parent "SwitchDataHandler"
+                        :arguments 
+                          ( ("username" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [502 523]))                          
+                        :type ("SwitchDataHandler" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [465 547])
+                    ("SelectCt" function
+                       (:parent "SwitchDataHandler"
+                        :arguments 
+                          ( ("series_uid" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [583 608]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [549 1363])
+                    ("HttpRequestSwitchDataHandler" type
+                       (:superclasses 
+                          ( ("Poco::Net::HTTPRequestHandler" type
+                               (:protection "public"
+                                :type "class")
+                                nil nil))                          
+                        :members 
+                          ( ("public" label nil (reparse-symbol classsubparts) [1440 1447])
+                            ("HttpRequestSwitchDataHandler" function
+                               (:constructor-flag t
+                                :arguments 
+                                  ( ("username" variable
+                                       (:pointer 1
+                                        :type "char")
+                                        (reparse-symbol arg-sub-list) [1478 1493]))                                  
+                                :type ("HttpRequestSwitchDataHandler" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [1449 1536])
+                            ("handleRequest" function
+                               (:arguments 
+                                  ( ("request" variable
+                                       (:reference 1
+                                        :type ("Poco::Net::HTTPServerRequest" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [1557 1595])
+                                    ("response" variable
+                                       (:reference 1
+                                        :type ("Poco::Net::HTTPServerResponse" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [1596 1636]))                                  
+                                :type "void")
+                                (reparse-symbol classsubparts) [1538 2407])
+                            ("private" label nil (reparse-symbol classsubparts) [2409 2417])
+                            ("username_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2419 2441]))                          
+                        :type "class")
+                        (reparse-symbol namespacesubparts) [1365 2444]))                  
+                :type "namespace")
+                nil [442 2652]))          
+    :file "switch_data_handler.cpp"
+    :pointmax 2653
+    :fsize 2743
+    :lastmodtime '(21270 56280 0 0)
+    :unmatched-syntax '((punctuation 2648 . 2649) (semantic-list 2511 . 2648) (string 2507 . 2510) (EXTERN 2500 . 2506))
+    )
+   (semanticdb-table "scan_files_handler.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__rtplatform_scan_files_h__" variable (:constant-flag t) nil [46 73])
+            ("handler.h" include nil nil [75 95])
+            ("patient.h" include nil nil [96 116])
+            ("rtplatform" type
+               (:members 
+                  ( ("Handler" variable (:type "int") (reparse-symbol namespacesubparts) [191 359]))                  
+                :type "namespace")
+                nil [118 361]))          
+    :file "scan_files_handler.h"
+    :pointmax 370
+    :fsize 408
+    :lastmodtime '(21276 26329 0 0)
+    :unmatched-syntax '((PUBLIC 184 . 190) (punctuation 182 . 183) (symbol 165 . 181) (symbol 147 . 164) (CLASS 141 . 146))
+    :lexical-table 
+        '(("__rtplatform_scan_files_h__")
+          )
+
+    )
+   (semanticdb-table "scan_files_handler.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("Poco/Net/HTTPRequestHandler.h" include nil nil [2 42])
+            ("Poco/Net/HTTPServerRequest.h" include nil nil [43 82])
+            ("Poco/Net/HTTPServerResponse.h" include nil nil [83 123])
+            ("Poco/JSON/JSON.h" include (:system-flag t) nil [125 152])
+            ("Poco/JSON/Parser.h" include (:system-flag t) nil [153 182])
+            ("Poco/Net/HTTPRequest.h" include nil nil [183 216])
+            ("Poco/Net/HTTPResponse.h" include nil nil [217 251])
+            ("Poco/StreamCopier.h" include nil nil [252 282])
+            ("Poco/Net/HTTPServerRequestImpl.h" include nil nil [284 327])
+            ("scan_files_handler.h" include nil nil [329 360])
+            ("client_session.h" include nil nil [361 388])
+            ("user_manager.h" include nil nil [389 414])
+            ("data_manager.h" include nil nil [415 440])
+            ("iostream" include (:system-flag t) nil [441 460])
+            ("fstream" include (:system-flag t) nil [461 479])
+            ("Poco/Base64Encoder.h" include nil nil [480 511])
+            ("Poco/Base64Decoder.h" include nil nil [512 543])
+            ("dicom_file_parser2.h" include nil nil [544 575])
+            ("rtplatform" type
+               (:members 
+                  ( ("ScanFilesHandler" function
+                       (:constructor-flag t
+                        :parent "ScanFilesHandler"
+                        :arguments 
+                          ( ("username" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [635 656]))                          
+                        :type ("ScanFilesHandler" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [600 681])
+                    ("GetPatientInfoFromFiles" function
+                       (:parent "ScanFilesHandler"
+                        :arguments 
+                          ( ("filenames" variable
+                               (:reference 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("std::string" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [730 766])
+                            ("patient" variable (:type ("dtl::Patient::Pointer" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [766 796]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [683 4332])
+                    ("HttpRequestScanFilesHandler" type
+                       (:superclasses 
+                          ( ("Poco::Net::HTTPRequestHandler" type
+                               (:protection "public"
+                                :type "class")
+                                nil nil))                          
+                        :members 
+                          ( ("public" label nil (reparse-symbol classsubparts) [4407 4414])
+                            ("HttpRequestScanFilesHandler" function
+                               (:constructor-flag t
+                                :arguments 
+                                  ( ("username" variable
+                                       (:pointer 1
+                                        :type "char")
+                                        (reparse-symbol arg-sub-list) [4444 4459]))                                  
+                                :type ("HttpRequestScanFilesHandler" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [4416 4502])
+                            ("handleRequest" function
+                               (:arguments 
+                                  ( ("request" variable
+                                       (:reference 1
+                                        :type ("Poco::Net::HTTPServerRequest" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [4523 4561])
+                                    ("response" variable
+                                       (:reference 1
+                                        :type ("Poco::Net::HTTPServerResponse" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [4562 4602]))                                  
+                                :type "void")
+                                (reparse-symbol classsubparts) [4504 7355])
+                            ("private" label nil (reparse-symbol classsubparts) [7357 7365])
+                            ("username_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [7367 7389]))                          
+                        :type "class")
+                        (reparse-symbol namespacesubparts) [4333 7392]))                  
+                :type "namespace")
+                nil [577 7599]))          
+    :file "scan_files_handler.cpp"
+    :pointmax 7600
+    :fsize 12650
+    :lastmodtime '(21280 5729 0 0)
+    :unmatched-syntax '((punctuation 7595 . 7596) (semantic-list 7460 . 7595) (string 7456 . 7459) (EXTERN 7449 . 7455))
+    )
+   (semanticdb-table "import_set_handler.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__rtplatform_import_set_handler__" variable (:constant-flag t) nil [53 86])
+            ("handler.h" include nil nil [87 107])
+            ("rtplatform" type
+               (:members 
+                  ( ("Handler" variable (:type "int") (reparse-symbol namespacesubparts) [182 328]))                  
+                :type "namespace")
+                nil [109 330]))          
+    :file "import_set_handler.h"
+    :pointmax 332
+    :fsize 470
+    :lastmodtime '(21280 1929 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("__rtplatform_import_set_handler__")
+          )
+
+    )
+   (semanticdb-table "setting_handler.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__rtplatform_setting_handler__" variable (:constant-flag t) nil [49 79])
+            ("handler.h" include nil nil [80 100])
+            ("rtplatform" type
+               (:members 
+                  ( ("Handler" variable (:type "int") (reparse-symbol namespacesubparts) [173 1153]))                  
+                :type "namespace")
+                nil [102 1155]))          
+    :file "setting_handler.h"
+    :pointmax 1163
+    :fsize 1211
+    :lastmodtime '(21260 26421 0 0)
+    :unmatched-syntax '((PUBLIC 166 . 172) (punctuation 164 . 165) (symbol 150 . 164) (symbol 132 . 149) (CLASS 126 . 131))
+    :lexical-table 
+        '(("__rtplatform_setting_handler__")
+          )
+
+    )
+   (semanticdb-table "import_set_handler.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("Poco/Net/HTTPRequestHandler.h" include nil nil [2 42])
+            ("Poco/Net/HTTPServerRequest.h" include nil nil [43 82])
+            ("Poco/Net/HTTPServerResponse.h" include nil nil [83 123])
+            ("Poco/JSON/JSON.h" include (:system-flag t) nil [125 152])
+            ("Poco/JSON/Parser.h" include (:system-flag t) nil [153 182])
+            ("Poco/Net/HTTPRequest.h" include nil nil [183 216])
+            ("Poco/Net/HTTPResponse.h" include nil nil [217 251])
+            ("Poco/StreamCopier.h" include nil nil [252 282])
+            ("Poco/Net/HTTPServerRequestImpl.h" include nil nil [284 327])
+            ("import_set_handler.h" include nil nil [329 360])
+            ("client_session.h" include nil nil [361 388])
+            ("user_manager.h" include nil nil [389 414])
+            ("data_manager.h" include nil nil [415 440])
+            ("ctvolume.h" include nil nil [441 462])
+            ("helper.h" include nil nil [463 482])
+            ("dicom_file_parser2.h" include nil nil [483 514])
+            ("rtplatform" type
+               (:members 
+                  ( ("ImportSetHandler" function
+                       (:constructor-flag t
+                        :parent "ImportSetHandler"
+                        :arguments 
+                          ( ("username" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [574 595]))                          
+                        :type ("ImportSetHandler" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [539 620])
+                    ("SetSelectedUidList" function
+                       (:parent "ImportSetHandler"
+                        :arguments 
+                          ( ("uid_list" variable (:type ("std::vector" type
+                                 (:template-specifier 
+                                    ( ("std::string" type nil nil nil))                                    
+                                  :type "class")
+                                  nil nil)) (reparse-symbol arg-sub-list) [665 700]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [622 1604])
+                    ("HttpRequestImportSetHandler" type
+                       (:superclasses 
+                          ( ("Poco::Net::HTTPRequestHandler" type
+                               (:protection "public"
+                                :type "class")
+                                nil nil))                          
+                        :members 
+                          ( ("public" label nil (reparse-symbol classsubparts) [1682 1689])
+                            ("HttpRequestImportSetHandler" function
+                               (:constructor-flag t
+                                :arguments 
+                                  ( ("username" variable
+                                       (:pointer 1
+                                        :type "char")
+                                        (reparse-symbol arg-sub-list) [1719 1734]))                                  
+                                :type ("HttpRequestImportSetHandler" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [1691 1777])
+                            ("handleRequest" function
+                               (:arguments 
+                                  ( ("request" variable
+                                       (:reference 1
+                                        :type ("Poco::Net::HTTPServerRequest" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [1798 1836])
+                                    ("response" variable
+                                       (:reference 1
+                                        :type ("Poco::Net::HTTPServerResponse" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [1837 1877]))                                  
+                                :type "void")
+                                (reparse-symbol classsubparts) [1779 3530])
+                            ("private" label nil (reparse-symbol classsubparts) [3532 3540])
+                            ("username_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3542 3564]))                          
+                        :type "class")
+                        (reparse-symbol namespacesubparts) [1608 3567]))                  
+                :type "namespace")
+                nil [516 3774]))          
+    :file "import_set_handler.cpp"
+    :pointmax 3775
+    :fsize 7064
+    :lastmodtime '(21282 33352 0 0)
+    :unmatched-syntax '((punctuation 3770 . 3771) (semantic-list 3635 . 3770) (string 3631 . 3634) (EXTERN 3624 . 3630))
+    )
+   (semanticdb-table "edit_patient_handler.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__rtplatform_edit_patient_handler_h__" variable (:constant-flag t) nil [56 93])
+            ("handler.h" include nil nil [95 115])
+            ("data_type.h" include nil nil [116 138])
+            ("std" using (:type ("std" type
+                 (:prototype t
+                  :type "namespace")
+                  nil nil)) nil [139 159])
+            ("rtplatform" type
+               (:members 
+                  ( ("Handler" variable (:type "int") (reparse-symbol namespacesubparts) [236 387]))                  
+                :type "namespace")
+                nil [160 389]))          
+    :file "edit_patient_handler.h"
+    :pointmax 398
+    :fsize 417
+    :lastmodtime '(21281 27213 0 0)
+    :unmatched-syntax '((PUBLIC 229 . 235) (punctuation 227 . 228) (symbol 208 . 226) (symbol 190 . 207) (CLASS 184 . 189))
+    :lexical-table 
+        '(("__rtplatform_edit_patient_handler_h__")
+          )
+
+    )
+   (semanticdb-table "edit_patient_handler.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("Poco/Net/HTTPRequestHandler.h" include nil nil [2 42])
+            ("Poco/Net/HTTPServerRequest.h" include nil nil [43 82])
+            ("Poco/Net/HTTPServerResponse.h" include nil nil [83 123])
+            ("Poco/JSON/JSON.h" include (:system-flag t) nil [125 152])
+            ("Poco/JSON/Parser.h" include (:system-flag t) nil [153 182])
+            ("Poco/Net/HTTPRequest.h" include nil nil [183 216])
+            ("Poco/Net/HTTPResponse.h" include nil nil [217 251])
+            ("Poco/StreamCopier.h" include nil nil [252 282])
+            ("Poco/Net/HTTPServerRequestImpl.h" include nil nil [284 327])
+            ("edit_patient_handler.h" include nil nil [329 362])
+            ("client_session.h" include nil nil [363 390])
+            ("user_manager.h" include nil nil [391 416])
+            ("data_manager.h" include nil nil [417 442])
+            ("rtplatform" type
+               (:members 
+                  ( ("EditPatientHandler" function
+                       (:constructor-flag t
+                        :parent "EditPatientHandler"
+                        :arguments 
+                          ( ("username" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [507 528]))                          
+                        :type ("EditPatientHandler" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [468 556])
+                    ("UpdatePatientInfo" function
+                       (:parent "EditPatientHandler"
+                        :arguments 
+                          ( ("patient_info" variable
+                               (:reference 1
+                                :type ("PatientInfoForEdit" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [602 634]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [559 1893])
+                    ("HttpRequestEditPatientHandler" type
+                       (:superclasses 
+                          ( ("Poco::Net::HTTPRequestHandler" type
+                               (:protection "public"
+                                :type "class")
+                                nil nil))                          
+                        :members 
+                          ( ("public" label nil (reparse-symbol classsubparts) [1974 1981])
+                            ("HttpRequestEditPatientHandler" function
+                               (:constructor-flag t
+                                :arguments 
+                                  ( ("username" variable
+                                       (:pointer 1
+                                        :type "char")
+                                        (reparse-symbol arg-sub-list) [2014 2029]))                                  
+                                :type ("HttpRequestEditPatientHandler" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [1984 2075])
+                            ("handleRequest" function
+                               (:arguments 
+                                  ( ("request" variable
+                                       (:reference 1
+                                        :type ("Poco::Net::HTTPServerRequest" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [2097 2135])
+                                    ("response" variable
+                                       (:reference 1
+                                        :type ("Poco::Net::HTTPServerResponse" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [2136 2176]))                                  
+                                :type "void")
+                                (reparse-symbol classsubparts) [2078 3753])
+                            ("private" label nil (reparse-symbol classsubparts) [3756 3764])
+                            ("username_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3767 3789]))                          
+                        :type "class")
+                        (reparse-symbol namespacesubparts) [1896 3793]))                  
+                :type "namespace")
+                nil [444 4007]))          
+    :file "edit_patient_handler.cpp"
+    :pointmax 4008
+    :fsize 4132
+    :lastmodtime '(21282 28002 0 0)
+    :unmatched-syntax '((punctuation 4003 . 4004) (semantic-list 3863 . 4003) (string 3859 . 3862) (EXTERN 3852 . 3858))
+    )
+    (semanticdb-table "approval_handler.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("Poco/Net/HTTPRequestHandler.h" include nil nil [1 41])
+            ("Poco/Net/HTTPServerRequest.h" include nil nil [42 81])
+            ("Poco/Net/HTTPServerResponse.h" include nil nil [82 122])
+            ("Poco/JSON/JSON.h" include (:system-flag t) nil [124 151])
+            ("Poco/JSON/Parser.h" include (:system-flag t) nil [152 181])
+            ("Poco/Net/HTTPRequest.h" include nil nil [182 215])
+            ("Poco/Net/HTTPResponse.h" include nil nil [216 250])
+            ("Poco/StreamCopier.h" include nil nil [251 281])
+            ("Poco/Net/HTTPServerRequestImpl.h" include nil nil [283 326])
+            ("approval_handler.h" include nil nil [328 357])
+            ("client_session.h" include nil nil [358 385])
+            ("user_manager.h" include nil nil [386 411])
+            ("data_manager.h" include nil nil [412 437])
+            ("ctvolume.h" include nil nil [438 459])
+            ("helper.h" include nil nil [460 479])
+            ("rtplatform" type
+               (:members 
+                  ( ("ApprovalHandler" function
+                       (:constructor-flag t
+                        :parent "ApprovalHandler"
+                        :arguments 
+                          ( ("username" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [538 559]))                          
+                        :type ("ApprovalHandler" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [505 587])
+                    ("UpdateRTStructApprovalStatus" function
+                       (:parent "ApprovalHandler"
+                        :arguments 
+                          ( ("series_uid" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [642 665])
+                            ("name" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [665 682])
+                            ("time_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [682 700])
+                            ("status_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [700 721]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [590 1610])
+                    ("UpdateRTPlanApprovalStatus" function
+                       (:parent "ApprovalHandler"
+                        :arguments 
+                          ( ("series_uid" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1663 1686])
+                            ("name" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1686 1703])
+                            ("time_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1703 1721])
+                            ("status_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1721 1742]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [1613 2630])
+                    ("HttpRequestApprovalHandler" type
+                       (:superclasses 
+                          ( ("Poco::Net::HTTPRequestHandler" type
+                               (:protection "public"
+                                :type "class")
+                                nil nil))                          
+                        :members 
+                          ( ("public" label nil (reparse-symbol classsubparts) [2708 2715])
+                            ("HttpRequestApprovalHandler" function
+                               (:constructor-flag t
+                                :arguments 
+                                  ( ("username" variable
+                                       (:pointer 1
+                                        :type "char")
+                                        (reparse-symbol arg-sub-list) [2745 2760]))                                  
+                                :type ("HttpRequestApprovalHandler" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [2718 2806])
+                            ("handleRequest" function
+                               (:arguments 
+                                  ( ("request" variable
+                                       (:reference 1
+                                        :type ("Poco::Net::HTTPServerRequest" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [2828 2866])
+                                    ("response" variable
+                                       (:reference 1
+                                        :type ("Poco::Net::HTTPServerResponse" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [2867 2907]))                                  
+                                :type "void")
+                                (reparse-symbol classsubparts) [2809 4403])
+                            ("private" label nil (reparse-symbol classsubparts) [4406 4414])
+                            ("username_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [4417 4439]))                          
+                        :type "class")
+                        (reparse-symbol namespacesubparts) [2633 4443]))                  
+                :type "namespace")
+                nil [481 4649]))          
+    :file "approval_handler.cpp"
+    :pointmax 4650
+    :fsize 4801
+    :lastmodtime '(21290 46060 0 0)
+    :unmatched-syntax '((punctuation 4645 . 4646) (semantic-list 4512 . 4645) (string 4508 . 4511) (EXTERN 4501 . 4507))
+    )
+   )
+  :file "!drive_d!work!rtplatform!api!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

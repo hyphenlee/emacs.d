@@ -1,0 +1,529 @@
+;; Object Lib/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "Lib/"
+  :tables (list 
+   (semanticdb-table "os.py"
+    :major-mode 'python-mode
+    :tags 
+        '( ("r\"\"\"OS routines for Mac, NT, or Posix depending on what system we're on.
+
+This exports:
+  - all functions from posix, nt, os2, or ce, e.g. unlink, stat, etc.
+  - os.path is one of the modules posixpath, or ntpath
+  - os.name is 'posix', 'nt', 'os2', 'ce' or 'riscos'
+  - os.curdir is a string representing the current directory ('.' or ':')
+  - os.pardir is a string representing the parent directory ('..' or '::')
+  - os.sep is the (or a most common) pathname separator ('/' or ':' or '\\\\')
+  - os.extsep is the extension separator ('.' or '/')
+  - os.altsep is the alternate pathname separator (None or '/')
+  - os.pathsep is the component separator used in $PATH etc
+  - os.linesep is the line separator in text files ('\\r' or '\\n' or '\\r\\n')
+  - os.defpath is the default search path for executables
+  - os.devnull is the file path of the null device ('/dev/null', etc.)
+
+Programs that import and use 'os' stand a better chance of being
+portable between different platforms.  Of course, they must then
+only use functions that are defined by all platforms (e.g., unlink
+and opendir), and leave all pathname manipulation to os.path
+(e.g., split and join).
+\"\"\"" code nil nil [1 1163])
+            ("sys" include nil nil [1169 1186])
+            ("errno" include nil nil [1169 1186])
+            ("_names" variable nil nil [1188 1221])
+            ("__all__" variable nil nil [1271 1446])
+            ("_get_exports_list" function (:arguments 
+              ( ("module" variable nil (reparse-symbol function_parameters) [1470 1476]))              ) nil [1448 1606])
+            ("if" code nil nil [1607 3137])
+            ("sys" variable nil nil [3138 3167])
+            ("" code nil nil [3188 3256])
+            ("del" code nil nil [3258 3268])
+            ("SEEK_SET" variable nil nil [3390 3402])
+            ("SEEK_CUR" variable nil nil [3403 3415])
+            ("SEEK_END" variable nil nil [3416 3428])
+            ("makedirs" function
+               (:documentation "makedirs(path [, mode=0777])
+
+    Super-mkdir; create a leaf directory and all intermediate ones.
+    Works like mkdir, except that any intermediate path segment (not
+    just the rightmost) will be created if it does not exist.  This is
+    recursive.
+
+    "
+                :arguments 
+                  ( ("name" variable nil (reparse-symbol function_parameters) [3538 3542])
+                    ("mode" variable nil (reparse-symbol function_parameters) [3544 3548]))                  )
+                nil [3525 4277])
+            ("removedirs" function
+               (:documentation "removedirs(path)
+
+    Super-rmdir; remove a leaf directory and all empty intermediate
+    ones.  Works like rmdir except that, if the leaf directory is
+    successfully removed, directories corresponding to rightmost path
+    segments will be pruned away until either the whole path is
+    consumed or an error occurs.  Errors during this latter phase are
+    ignored -- they generally mean that a directory was not empty.
+
+    "
+                :arguments 
+                  ( ("name" variable nil (reparse-symbol function_parameters) [4293 4297]))                  )
+                nil [4278 4984])
+            ("renames" function
+               (:documentation "renames(old, new)
+
+    Super-rename; create directories as necessary and delete any left
+    empty.  Works like rename, except creation of any intermediate
+    directories needed to make the new pathname good is attempted
+    first.  After the rename, directories corresponding to rightmost
+    path segments of the old name will be pruned way until either the
+    whole path is consumed or a nonempty directory is found.
+
+    Note: this function can fail with the new directory structure made
+    if you lack permissions needed to unlink the leaf directory or
+    file.
+
+    "
+                :arguments 
+                  ( ("old" variable nil (reparse-symbol function_parameters) [4997 5000])
+                    ("new" variable nil (reparse-symbol function_parameters) [5002 5005]))                  )
+                nil [4985 5856])
+            ("__all__" code nil nil [5857 5910])
+            ("walk" function
+               (:documentation "Directory tree generator.
+
+    For each directory in the directory tree rooted at top (including top
+    itself, but excluding '.' and '..'), yields a 3-tuple
+
+        dirpath, dirnames, filenames
+
+    dirpath is a string, the path to the directory.  dirnames is a list of
+    the names of the subdirectories in dirpath (excluding '.' and '..').
+    filenames is a list of the names of the non-directory files in dirpath.
+    Note that the names in the lists are just names, with no path components.
+    To get a full path (which begins with top) to a file or directory in
+    dirpath, do os.path.join(dirpath, name).
+
+    If optional arg 'topdown' is true or not specified, the triple for a
+    directory is generated before the triples for any of its subdirectories
+    (directories are generated top down).  If topdown is false, the triple
+    for a directory is generated after the triples for all of its
+    subdirectories (directories are generated bottom up).
+
+    When topdown is true, the caller can modify the dirnames list in-place
+    (e.g., via del or slice assignment), and walk will only recurse into the
+    subdirectories whose names remain in dirnames; this can be used to prune
+    the search, or to impose a specific order of visiting.  Modifying
+    dirnames when topdown is false is ineffective, since the directories in
+    dirnames have already been generated by the time dirnames itself is
+    generated.
+
+    By default errors from the os.listdir() call are ignored.  If
+    optional arg 'onerror' is specified, it should be a function; it
+    will be called with one argument, an os.error instance.  It can
+    report the error to continue with the walk, or raise the exception
+    to abort the walk.  Note that the filename is available as the
+    filename attribute of the exception object.
+
+    By default, os.walk does not follow symbolic links to subdirectories on
+    systems that support them.  In order to get this functionality, set the
+    optional argument 'followlinks' to true.
+
+    Caution:  if you pass a relative pathname for top, don't change the
+    current working directory between resumptions of walk.  walk never
+    changes the current directory, and assumes that the client doesn't
+    either.
+
+    Example:
+
+    import os
+    from os.path import join, getsize
+    for root, dirs, files in os.walk('python/Lib/email'):
+        print root, \"consumes\",
+        print sum([getsize(join(root, name)) for name in files]),
+        print \"bytes in\", len(files), \"non-directory files\"
+        if 'CVS' in dirs:
+            dirs.remove('CVS')  # don't visit CVS directories
+    "
+                :arguments 
+                  ( ("top" variable nil (reparse-symbol function_parameters) [5921 5924])
+                    ("topdown" variable nil (reparse-symbol function_parameters) [5926 5933])
+                    ("onerror" variable nil (reparse-symbol function_parameters) [5940 5947])
+                    ("followlinks" variable nil (reparse-symbol function_parameters) [5954 5965]))                  )
+                nil [5912 9693])
+            ("__all__" code nil nil [9694 9716])
+            ("try" code nil nil [9758 9810])
+            ("execl" function
+               (:documentation "execl(file, *args)
+
+    Execute the executable file with argument list args, replacing the
+    current process. "
+                :arguments 
+                  ( ("file" variable nil (reparse-symbol function_parameters) [9821 9825])
+                    ("args" variable nil (reparse-symbol function_parameters) [9827 9832]))                  )
+                nil [9811 9980])
+            ("execle" function
+               (:documentation "execle(file, *args, env)
+
+    Execute the executable file with argument list args and
+    environment env, replacing the current process. "
+                :arguments 
+                  ( ("file" variable nil (reparse-symbol function_parameters) [9992 9996])
+                    ("args" variable nil (reparse-symbol function_parameters) [9998 10003]))                  )
+                nil [9981 10207])
+            ("execlp" function
+               (:documentation "execlp(file, *args)
+
+    Execute the executable file (which is searched for along $PATH)
+    with argument list args, replacing the current process. "
+                :arguments 
+                  ( ("file" variable nil (reparse-symbol function_parameters) [10219 10223])
+                    ("args" variable nil (reparse-symbol function_parameters) [10225 10230]))                  )
+                nil [10208 10416])
+            ("execlpe" function
+               (:documentation "execlpe(file, *args, env)
+
+    Execute the executable file (which is searched for along $PATH)
+    with argument list args and environment env, replacing the current
+    process. "
+                :arguments 
+                  ( ("file" variable nil (reparse-symbol function_parameters) [10429 10433])
+                    ("args" variable nil (reparse-symbol function_parameters) [10435 10440]))                  )
+                nil [10417 10686])
+            ("execvp" function
+               (:documentation "execvp(file, args)
+
+    Execute the executable file (which is searched for along $PATH)
+    with argument list args, replacing the current process.
+    args may be a list or tuple of strings. "
+                :arguments 
+                  ( ("file" variable nil (reparse-symbol function_parameters) [10698 10702])
+                    ("args" variable nil (reparse-symbol function_parameters) [10704 10708]))                  )
+                nil [10687 10939])
+            ("execvpe" function
+               (:documentation "execvpe(file, args, env)
+
+    Execute the executable file (which is searched for along $PATH)
+    with argument list args and environment env , replacing the
+    current process.
+    args may be a list or tuple of strings. "
+                :arguments 
+                  ( ("file" variable nil (reparse-symbol function_parameters) [10952 10956])
+                    ("args" variable nil (reparse-symbol function_parameters) [10958 10962])
+                    ("env" variable nil (reparse-symbol function_parameters) [10964 10967]))                  )
+                nil [10940 11234])
+            ("__all__" code nil nil [11235 11307])
+            ("_execvpe" function (:arguments 
+              ( ("file" variable nil (reparse-symbol function_parameters) [11322 11326])
+                ("args" variable nil (reparse-symbol function_parameters) [11328 11332])
+                ("env" variable nil (reparse-symbol function_parameters) [11334 11337]))              ) nil [11309 12177])
+            ("try" code nil nil [12239 16448])
+            ("getenv" function
+               (:documentation "Get an environment variable, return None if it doesn't exist.
+    The optional second argument can specify an alternate default."
+                :arguments 
+                  ( ("key" variable nil (reparse-symbol function_parameters) [16460 16463])
+                    ("default" variable nil (reparse-symbol function_parameters) [16465 16472]))                  )
+                nil [16449 16656])
+            ("__all__" code nil nil [16656 16680])
+            ("_exists" function (:arguments 
+              ( ("name" variable nil (reparse-symbol function_parameters) [16694 16698]))              ) nil [16682 16730])
+            ("if" code nil nil [16774 19677])
+            ("if" code nil nil [19678 20675])
+            ("if" code nil nil [20677 21783])
+            ("if" code nil nil [21817 25083])
+            ("copy_reg" include nil nil [25084 25112])
+            ("_make_stat_result" function (:arguments 
+              ( ("tup" variable nil (reparse-symbol function_parameters) [25136 25139])
+                ("dict" variable nil (reparse-symbol function_parameters) [25141 25145]))              ) nil [25114 25182])
+            ("_pickle_stat_result" function (:arguments 
+              ( ("sr" variable nil (reparse-symbol function_parameters) [25207 25209]))              ) nil [25183 25284])
+            ("try" code nil nil [25285 25419])
+            ("_make_statvfs_result" function (:arguments 
+              ( ("tup" variable nil (reparse-symbol function_parameters) [25445 25448])
+                ("dict" variable nil (reparse-symbol function_parameters) [25450 25454]))              ) nil [25420 25494])
+            ("_pickle_statvfs_result" function (:arguments 
+              ( ("sr" variable nil (reparse-symbol function_parameters) [25522 25524]))              ) nil [25495 25602])
+            ("try" code nil nil [25603 25770]))          
+    :file "os.py"
+    :pointmax 25770
+    :fsize 26509
+    :lastmodtime '(20295 35180 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "copy_reg.py"
+    :file "copy_reg.py"
+    :fsize 7001
+    :lastmodtime '(19829 31650 0 0)
+    )
+   (semanticdb-table "textwrap.py"
+    :major-mode 'python-mode
+    :tags 
+        '( ("\"\"\"Text wrapping and filling.
+\"\"\"" code nil nil [1 34])
+            ("__revision__" variable nil nil [177 198])
+            ("string" include nil nil [200 217])
+            ("re" include nil nil [200 217])
+            ("try" code nil nil [219 405])
+            ("__all__" variable nil nil [693 744])
+            ("_whitespace" variable nil nil [1249 1280])
+            ("TextWrapper" type
+               (:documentation "
+    Object for wrapping/filling text.  The public interface consists of
+    the wrap() and fill() methods; the other methods are just there for
+    subclasses to override in order to tweak the default behaviour.
+    If you want to completely replace the main wrapping algorithm,
+    you'll probably have to override _wrap_chunks().
+
+    Several instance attributes control various aspects of wrapping:
+      width (default: 70)
+        the maximum width of wrapped lines (unless break_long_words
+        is false)
+      initial_indent (default: \"\")
+        string that will be prepended to the first line of wrapped
+        output.  Counts towards the line's width.
+      subsequent_indent (default: \"\")
+        string that will be prepended to all lines save the first
+        of wrapped output; also counts towards each line's width.
+      expand_tabs (default: true)
+        Expand tabs in input text to spaces before further processing.
+        Each tab will become 1 .. 8 spaces, depending on its position in
+        its line.  If false, each tab is treated as a single character.
+      replace_whitespace (default: true)
+        Replace all whitespace characters in the input text by spaces
+        after tab expansion.  Note that if expand_tabs is false and
+        replace_whitespace is true, every tab will be converted to a
+        single space!
+      fix_sentence_endings (default: false)
+        Ensure that sentence-ending punctuation is always followed
+        by two spaces.  Off by default because the algorithm is
+        (unavoidably) imperfect.
+      break_long_words (default: true)
+        Break words longer than 'width'.  If false, those words will not
+        be broken, and some lines might be longer than 'width'.
+      break_on_hyphens (default: true)
+        Allow breaking hyphenated words. If true, wrapping will occur
+        preferably on whitespaces and right after hyphens part of
+        compound words.
+      drop_whitespace (default: true)
+        Drop leading and trailing whitespace from lines.
+    "
+                :members 
+                  ( ("whitespace_trans" variable nil (reparse-symbol indented_block_body) [3356 3428])
+                    ("unicode_whitespace_trans" variable nil (reparse-symbol indented_block_body) [3434 3463])
+                    ("uspace" variable nil (reparse-symbol indented_block_body) [3468 3486])
+                    ("for" code nil (reparse-symbol indented_block_body) [3491 3568])
+                    ("wordsep_re" variable nil (reparse-symbol indented_block_body) [3877 4085])
+                    ("wordsep_simple_re" variable nil (reparse-symbol indented_block_body) [4327 4367])
+                    ("sentence_end_re" variable nil (reparse-symbol indented_block_body) [4492 4839])
+                    ("__init__" function
+                       (:suite 
+                          ( ("self" variable nil (reparse-symbol indented_block_body) [5217 5235])
+                            ("self" variable nil (reparse-symbol indented_block_body) [5244 5280])
+                            ("self" variable nil (reparse-symbol indented_block_body) [5289 5331])
+                            ("self" variable nil (reparse-symbol indented_block_body) [5340 5370])
+                            ("self" variable nil (reparse-symbol indented_block_body) [5379 5423])
+                            ("self" variable nil (reparse-symbol indented_block_body) [5432 5480])
+                            ("self" variable nil (reparse-symbol indented_block_body) [5489 5529])
+                            ("self" variable nil (reparse-symbol indented_block_body) [5538 5576])
+                            ("self" variable nil (reparse-symbol indented_block_body) [5585 5625])
+                            ("self" variable nil (reparse-symbol indented_block_body) [5847 5910])
+                            ("self" variable nil (reparse-symbol indented_block_body) [5919 6009]))                          
+                        :parent "dummy"
+                        :arguments 
+                          ( ("self" variable nil (reparse-symbol function_parameters) [4859 4863])
+                            ("width" variable nil (reparse-symbol function_parameters) [4882 4887])
+                            ("initial_indent" variable nil (reparse-symbol function_parameters) [4909 4923])
+                            ("subsequent_indent" variable nil (reparse-symbol function_parameters) [4945 4962])
+                            ("expand_tabs" variable nil (reparse-symbol function_parameters) [4984 4995])
+                            ("replace_whitespace" variable nil (reparse-symbol function_parameters) [5019 5037])
+                            ("fix_sentence_endings" variable nil (reparse-symbol function_parameters) [5061 5081])
+                            ("break_long_words" variable nil (reparse-symbol function_parameters) [5106 5122])
+                            ("drop_whitespace" variable nil (reparse-symbol function_parameters) [5146 5161])
+                            ("break_on_hyphens" variable nil (reparse-symbol function_parameters) [5185 5201]))                          
+                        :constructor-flag t)
+                        (reparse-symbol indented_block_body) [4846 6010])
+                    ("_munge_whitespace" function
+                       (:parent "dummy"
+                        :arguments 
+                          ( ("self" variable nil (reparse-symbol function_parameters) [6163 6167])
+                            ("text" variable nil (reparse-symbol function_parameters) [6169 6173]))                          
+                        :documentation "_munge_whitespace(text : string) -> string
+
+        Munge whitespace in text: expand tabs and convert all other
+        whitespace characters to spaces.  Eg. \" foo\\tbar\\n\\nbaz\"
+        becomes \" foo    bar  baz\".
+        ")
+                        (reparse-symbol indented_block_body) [6141 6747])
+                    ("_split" function
+                       (:parent "dummy"
+                        :arguments 
+                          ( ("self" variable nil (reparse-symbol function_parameters) [6764 6768])
+                            ("text" variable nil (reparse-symbol function_parameters) [6770 6774]))                          
+                        :documentation "_split(text : string) -> [string]
+
+        Split the text to wrap into indivisible chunks.  Chunks are
+        not quite the same as words; see _wrap_chunks() for full
+        details.  As an example, the text
+          Look, goof-ball -- use the -b option!
+        breaks into the following chunks:
+          'Look,', ' ', 'goof-', 'ball', ' ', '--', ' ',
+          'use', ' ', 'the', ' ', '-b', ' ', 'option!'
+        if break_on_hyphens is True, or in:
+          'Look,', ' ', 'goof-ball', ' ', '--', ' ',
+          'use', ' ', 'the', ' ', '-b', ' ', option!'
+        otherwise.
+        ")
+                        (reparse-symbol indented_block_body) [6753 7837])
+                    ("_fix_sentence_endings" function
+                       (:parent "dummy"
+                        :arguments 
+                          ( ("self" variable nil (reparse-symbol function_parameters) [7868 7872])
+                            ("chunks" variable nil (reparse-symbol function_parameters) [7874 7880]))                          
+                        :documentation "_fix_sentence_endings(chunks : [string])
+
+        Correct for sentence endings buried in 'chunks'.  Eg. when the
+        original text contains \"... foo.\\nBar ...\", munge_whitespace()
+        and split() will convert that to [..., \"foo.\", \" \", \"Bar\", ...]
+        which has one too few spaces; this method simply changes the one
+        space to two.
+        ")
+                        (reparse-symbol indented_block_body) [7842 8511])
+                    ("_handle_long_word" function
+                       (:parent "dummy"
+                        :arguments 
+                          ( ("self" variable nil (reparse-symbol function_parameters) [8538 8542])
+                            ("reversed_chunks" variable nil (reparse-symbol function_parameters) [8544 8559])
+                            ("cur_line" variable nil (reparse-symbol function_parameters) [8561 8569])
+                            ("cur_len" variable nil (reparse-symbol function_parameters) [8571 8578])
+                            ("width" variable nil (reparse-symbol function_parameters) [8580 8585]))                          
+                        :documentation "_handle_long_word(chunks : [string],
+                             cur_line : [string],
+                             cur_len : int, width : int)
+
+        Handle a chunk of text (most likely a word, not whitespace) that
+        is too long to fit in any line.
+        ")
+                        (reparse-symbol indented_block_body) [8516 9706])
+                    ("_wrap_chunks" function
+                       (:parent "dummy"
+                        :arguments 
+                          ( ("self" variable nil (reparse-symbol function_parameters) [10074 10078])
+                            ("chunks" variable nil (reparse-symbol function_parameters) [10080 10086]))                          
+                        :documentation "_wrap_chunks(chunks : [string]) -> [string]
+
+        Wrap a sequence of text chunks and return a list of lines of
+        length 'self.width' or less.  (If 'break_long_words' is false,
+        some lines may be longer than this.)  Chunks correspond roughly
+        to words and the whitespace between them: each chunk is
+        indivisible (modulo 'break_long_words'), but a line break can
+        come between any two chunks.  Chunks should not have internal
+        whitespace; ie. a chunk is either all whitespace or a \"word\".
+        Whitespace chunks will be removed from the beginning and end of
+        lines, but apart from that whitespace is preserved.
+        ")
+                        (reparse-symbol indented_block_body) [10057 12809])
+                    ("wrap" function
+                       (:parent "dummy"
+                        :arguments 
+                          ( ("self" variable nil (reparse-symbol function_parameters) [12898 12902])
+                            ("text" variable nil (reparse-symbol function_parameters) [12904 12908]))                          
+                        :documentation "wrap(text : string) -> [string]
+
+        Reformat the single paragraph in 'text' so it fits in lines of
+        no more than 'self.width' columns, and return a list of wrapped
+        lines.  Tabs in 'text' are expanded with string.expandtabs(),
+        and all other whitespace characters (including newline) are
+        converted to space.
+        ")
+                        (reparse-symbol indented_block_body) [12889 13481])
+                    ("fill" function
+                       (:parent "dummy"
+                        :arguments 
+                          ( ("self" variable nil (reparse-symbol function_parameters) [13495 13499])
+                            ("text" variable nil (reparse-symbol function_parameters) [13501 13505]))                          
+                        :documentation "fill(text : string) -> string
+
+        Reformat the single paragraph in 'text' to fit in lines of no
+        more than 'self.width' columns, and return a new string
+        containing the entire wrapped paragraph.
+        ")
+                        (reparse-symbol indented_block_body) [13486 13787]))                  
+                :type "class")
+                nil [1282 13787])
+            ("wrap" function
+               (:documentation "Wrap a single paragraph of text, returning a list of wrapped lines.
+
+    Reformat the single paragraph in 'text' so it fits in lines of no
+    more than 'width' columns, and return a list of wrapped lines.  By
+    default, tabs in 'text' are expanded with string.expandtabs(), and
+    all other whitespace characters (including newline) are converted to
+    space.  See TextWrapper class for available keyword args to customize
+    wrapping behaviour.
+    "
+                :arguments 
+                  ( ("text" variable nil (reparse-symbol function_parameters) [13872 13876])
+                    ("width" variable nil (reparse-symbol function_parameters) [13878 13883])
+                    ("kwargs" variable nil (reparse-symbol function_parameters) [13888 13896]))                  )
+                nil [13863 14433])
+            ("fill" function
+               (:documentation "Fill a single paragraph of text, returning a new string.
+
+    Reformat the single paragraph in 'text' to fit in lines of no more
+    than 'width' columns, and return a new string containing the entire
+    wrapped paragraph.  As with wrap(), tabs are expanded and other
+    whitespace characters converted to space.  See TextWrapper class for
+    available keyword args to customize wrapping behaviour.
+    "
+                :arguments 
+                  ( ("text" variable nil (reparse-symbol function_parameters) [14443 14447])
+                    ("width" variable nil (reparse-symbol function_parameters) [14449 14454])
+                    ("kwargs" variable nil (reparse-symbol function_parameters) [14459 14467]))                  )
+                nil [14434 14954])
+            ("_whitespace_only_re" variable nil nil [15030 15088])
+            ("_leading_whitespace_re" variable nil nil [15089 15163])
+            ("dedent" function
+               (:documentation "Remove any common leading whitespace from every line in `text`.
+
+    This can be used to make triple-quoted strings line up with the left
+    edge of the display, while still presenting them in the source code
+    in indented form.
+
+    Note that tabs and spaces are both treated as whitespace, but they
+    are not equal: the lines \"  hello\" and \"\\thello\" are
+    considered to have no common leading whitespace.  (This behaviour is
+    new in Python 2.5; older versions of this module incorrectly
+    expanded tabs before searching for common leading whitespace.)
+    "
+                :arguments 
+                  ( ("text" variable nil (reparse-symbol function_parameters) [15176 15180]))                  )
+                nil [15165 16865])
+            ("if" code nil nil [16866 17038]))          
+    :file "textwrap.py"
+    :pointmax 17038
+    :fsize 17462
+    :lastmodtime '(20504 32502 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "string.py"
+    :file "string.py"
+    :fsize 21398
+    :lastmodtime '(20812 22178 0 0)
+    )
+   (semanticdb-table "re.py"
+    :file "re.py"
+    :fsize 13283
+    :lastmodtime '(20295 35182 0 0)
+    )
+   (semanticdb-table "contextlib.py"
+    :major-mode 'python-mode
+    :tags nil
+    :file "contextlib.py"
+    :pointmax 4425
+    :fsize 4578
+    :lastmodtime '(19829 31650 0 0)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!drive_c!Python27!Lib!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

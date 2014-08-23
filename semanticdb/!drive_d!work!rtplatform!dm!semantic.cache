@@ -1,0 +1,887 @@
+;; Object dm/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "dm/"
+  :tables (list 
+   (semanticdb-table "dicom_store_scu.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__dicom_store_scu_h__" variable (:constant-flag t) nil [40 61])
+            ("dcmtk/config/osconfig.h" include nil nil [63 97])
+            ("INCLUDE_CSTDLIB" variable (:constant-flag t) nil [166 181])
+            ("INCLUDE_CSTDIO" variable (:constant-flag t) nil [190 204])
+            ("INCLUDE_CSTRING" variable (:constant-flag t) nil [213 228])
+            ("INCLUDE_CCTYPE" variable (:constant-flag t) nil [237 251])
+            ("dcmtk/ofstd/ofstdinc.h" include nil nil [252 285])
+            ("dcmtk/ofstd/ofstd.h" include nil nil [287 317])
+            ("dcmtk/ofstd/ofconapp.h" include nil nil [318 351])
+            ("dcmtk/ofstd/ofstring.h" include nil nil [352 385])
+            ("dcmtk/ofstd/ofstream.h" include nil nil [386 419])
+            ("dcmtk/dcmnet/dicom.h" include nil nil [420 451])
+            ("dcmtk/dcmnet/dimse.h" include nil nil [495 526])
+            ("dcmtk/dcmnet/diutil.h" include nil nil [527 559])
+            ("dcmtk/dcmnet/dcasccfg.h" include nil nil [560 594])
+            ("dcmtk/dcmnet/dcasccff.h" include nil nil [641 675])
+            ("dcmtk/dcmdata/dcdatset.h" include nil nil [726 761])
+            ("dcmtk/dcmdata/dcmetinf.h" include nil nil [762 797])
+            ("dcmtk/dcmdata/dcfilefo.h" include nil nil [798 833])
+            ("dcmtk/dcmdata/dcuid.h" include nil nil [834 866])
+            ("dcmtk/dcmdata/dcdict.h" include nil nil [867 900])
+            ("dcmtk/dcmdata/dcdeftag.h" include nil nil [901 936])
+            ("dcmtk/dcmdata/cmdlnarg.h" include nil nil [937 972])
+            ("dcmtk/dcmdata/dcuid.h" include nil nil [973 1005])
+            ("dcmtk/dcmdata/dcostrmz.h" include nil nil [1039 1074])
+            ("PatientStoreScu" type
+               (:members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [1135 1142])
+                    ("PatientStoreScu" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :arguments 
+                          ( ("argc" variable (:type "int") (reparse-symbol arg-sub-list) [1159 1168])
+                            ("argv" variable
+                               (:pointer 1
+                                :dereference 1
+                                :type "char")
+                                (reparse-symbol arg-sub-list) [1169 1182]))                          
+                        :type ("PatientStoreScu" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1143 1183])
+                    ("public" label nil (reparse-symbol classsubparts) [1185 1192])
+                    ("PatientStoreScu" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :type ("PatientStoreScu" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1193 1211])
+                    ("PatientStoreScu" function
+                       (:prototype-flag t
+                        :destructor-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [1214 1233])
+                    ("run" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("argc" variable (:type "int") (reparse-symbol arg-sub-list) [1243 1252])
+                            ("argv" variable
+                               (:pointer 1
+                                :dereference 1
+                                :type "char")
+                                (reparse-symbol arg-sub-list) [1253 1266]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1234 1267])
+                    ("replaceSOPInstanceInformation" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("dataset" variable
+                               (:pointer 1
+                                :type ("DcmDataset" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1304 1324]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1269 1325])
+                    ("storeSCU" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("assoc" variable
+                               (:pointer 1
+                                :type ("T_ASC_Association" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1347 1372])
+                            ("fname" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type "char")
+                                (reparse-symbol arg-sub-list) [1373 1391]))                          
+                        :type ("OFCondition" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1326 1392])
+                    ("cstore" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("assoc" variable
+                               (:pointer 1
+                                :type ("T_ASC_Association" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1412 1437])
+                            ("fname" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("OFString" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1438 1460]))                          
+                        :type ("OFCondition" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1393 1461])
+                    ("addStoragePresentationContexts" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("params" variable
+                               (:pointer 1
+                                :type ("T_ASC_Parameters" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1505 1530])
+                            ("sopClasses" variable
+                               (:reference 1
+                                :type ("OFList" type
+                                     (:template-specifier 
+                                        ( ("OFString" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [1531 1560]))                          
+                        :type ("OFCondition" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1462 1561])
+                    ("findSOPClassAndInstanceInFile" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("fname" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type "char")
+                                (reparse-symbol arg-sub-list) [1600 1618])
+                            ("sopClass" variable
+                               (:pointer 1
+                                :type "char")
+                                (reparse-symbol arg-sub-list) [1619 1634])
+                            ("sopInstance" variable
+                               (:pointer 1
+                                :type "char")
+                                (reparse-symbol arg-sub-list) [1635 1653]))                          
+                        :type ("OFBool" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1562 1654])
+                    ("configureUserIdentityRequest" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("params" variable
+                               (:pointer 1
+                                :type ("T_ASC_Parameters" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1696 1721]))                          
+                        :type ("OFCondition" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1655 1722])
+                    ("checkUserIdentityResponse" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("params" variable
+                               (:pointer 1
+                                :type ("T_ASC_Parameters" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1761 1786]))                          
+                        :type ("OFCondition" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1723 1787])
+                    ("opt_showPresentationContexts" variable (:type ("OFBool" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1790 1827])
+                    ("opt_abortAssociation" variable (:type ("OFBool" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1828 1857])
+                    ("opt_maxReceivePDULength" variable (:type ("OFCmdUnsignedInt" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1858 1900])
+                    ("opt_maxSendPDULength" variable (:type ("OFCmdUnsignedInt" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1901 1940])
+                    ("opt_networkTransferSyntax" variable (:type ("E_TransferSyntax" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1941 1985])
+                    ("opt_readMode" variable (:type ("E_FileReadMode" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1986 2015])
+                    ("opt_scanDir" variable (:type ("OFBool" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2017 2037])
+                    ("opt_recurse" variable (:type ("OFBool" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2038 2058])
+                    ("opt_haltOnUnsuccessfulStore" variable (:type ("OFBool" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2060 2096])
+                    ("unsuccessfulStoreEncountered" variable (:type ("OFBool" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2097 2134])
+                    ("lastStatusCode" variable (:type "int") (reparse-symbol classsubparts) [2135 2155])
+                    ("opt_proposeOnlyRequiredPresentationContexts" variable (:type ("OFBool" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2157 2209])
+                    ("opt_combineProposedTransferSyntaxes" variable (:type ("OFBool" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2210 2254])
+                    ("opt_repeatCount" variable (:type ("OFCmdUnsignedInt" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2256 2290])
+                    ("opt_inventPatientCount" variable (:type ("OFCmdUnsignedInt" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2291 2332])
+                    ("opt_inventStudyCount" variable (:type ("OFCmdUnsignedInt" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2333 2372])
+                    ("opt_inventSeriesCount" variable (:type ("OFCmdUnsignedInt" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2373 2412])
+                    ("opt_inventSOPInstanceInformation" variable (:type ("OFBool" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2413 2454])
+                    ("opt_correctUIDPadding" variable (:type ("OFBool" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2455 2485])
+                    ("patientNamePrefix" variable (:type ("OFString" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2486 2513])
+                    ("patientIDPrefix" variable (:type ("OFString" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2514 2539])
+                    ("studyIDPrefix" variable (:type ("OFString" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2540 2563])
+                    ("accessionNumberPrefix" variable (:type ("OFString" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2564 2595])
+                    ("opt_secureConnection" variable (:type ("OFBool" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2642 2671])
+                    ("opt_configFile" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol classsubparts) [2672 2700])
+                    ("opt_profileName" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol classsubparts) [2701 2729])
+                    ("opt_blockMode_store" variable (:type ("T_DIMSE_BlockingMode" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2730 2772])
+                    ("opt_dimse_timeout_store" variable (:type "int") (reparse-symbol classsubparts) [2773 2803])
+                    ("opt_acse_timeout_store" variable (:type "int") (reparse-symbol classsubparts) [2804 2832])
+                    ("opt_identMode" variable (:type ("T_ASC_UserIdentityNegotiationMode" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2863 2912])
+                    ("opt_user" variable (:type ("OFString" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2913 2931])
+                    ("opt_password" variable (:type ("OFString" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2932 2954])
+                    ("opt_identFile" variable (:type ("OFString" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2955 2978])
+                    ("opt_identResponse" variable (:type ("OFBool" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2979 3005]))                  
+                :type "class")
+                nil [1110 3008]))          
+    :file "dicom_store_scu.h"
+    :pointmax 3018
+    :fsize 3106
+    :lastmodtime '(21221 48926 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("__dicom_store_scu_h__")
+          ("INCLUDE_CSTRING")
+          ("INCLUDE_CCTYPE")
+          ("INCLUDE_CSTDLIB")
+          ("INCLUDE_CSTDIO")
+          )
+
+    )
+   (semanticdb-table "data_manager.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__rtsuite_data_manager_h__" variable (:constant-flag t) nil [44 70])
+            ("memory" include (:system-flag t) nil [72 89])
+            ("assert.h" include (:system-flag t) nil [90 109])
+            ("rtplatform_export.h" include nil nil [110 140])
+            ("patient.h" include nil nil [141 161])
+            ("study.h" include nil nil [162 180])
+            ("series.h" include nil nil [181 200])
+            ("ctvolume.h" include nil nil [201 222])
+            ("rtstruct.h" include nil nil [223 244])
+            ("rtplan.h" include nil nil [245 264])
+            ("rtdose.h" include nil nil [265 284])
+            ("db_mysql_io.h" include nil nil [285 309])
+            ("rtbeam.h" include nil nil [310 329])
+            ("renderer.h" include nil nil [330 351])
+            ("context.h" include nil nil [352 372])
+            ("DatabaseIO" type
+               (:prototype t
+                :type "class")
+                nil [374 391])
+            ("dtl" using (:type ("dtl" type
+                 (:prototype t
+                  :type "namespace")
+                  nil nil)) nil [392 412])
+            ("rtplatform" type
+               (:members 
+                  ( ("DataManager" variable (:type ("rtplatform_export" type
+                         (:prototype t
+                          :type "class")
+                          nil nil)) (reparse-symbol namespacesubparts) [436 2732]))                  
+                :type "namespace")
+                nil [413 2734]))          
+    :file "data_manager.h"
+    :pointmax 2743
+    :fsize 5685
+    :lastmodtime '(21270 56280 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("__rtsuite_data_manager_h__")
+          )
+
+    )
+   (semanticdb-table "dicom_store_scu.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("dicom_store_scu.h" include nil nil [2 29])
+            ("dcmtk/config/osconfig.h" include nil nil [30 64])
+            ("INCLUDE_CSTDLIB" variable (:constant-flag t) nil [133 148])
+            ("INCLUDE_CSTDIO" variable (:constant-flag t) nil [157 171])
+            ("INCLUDE_CSTRING" variable (:constant-flag t) nil [180 195])
+            ("INCLUDE_CCTYPE" variable (:constant-flag t) nil [204 218])
+            ("dcmtk/ofstd/ofstdinc.h" include nil nil [219 252])
+            ("dcmtk/ofstd/ofstd.h" include nil nil [254 284])
+            ("dcmtk/ofstd/ofconapp.h" include nil nil [285 318])
+            ("dcmtk/ofstd/ofstring.h" include nil nil [319 352])
+            ("dcmtk/ofstd/ofstream.h" include nil nil [353 386])
+            ("dcmtk/dcmnet/dicom.h" include nil nil [387 418])
+            ("dcmtk/dcmnet/dimse.h" include nil nil [462 493])
+            ("dcmtk/dcmnet/diutil.h" include nil nil [494 526])
+            ("dcmtk/dcmnet/dcasccfg.h" include nil nil [527 561])
+            ("dcmtk/dcmnet/dcasccff.h" include nil nil [608 642])
+            ("dcmtk/dcmdata/dcdatset.h" include nil nil [693 728])
+            ("dcmtk/dcmdata/dcmetinf.h" include nil nil [729 764])
+            ("dcmtk/dcmdata/dcfilefo.h" include nil nil [765 800])
+            ("dcmtk/dcmdata/dcuid.h" include nil nil [801 833])
+            ("dcmtk/dcmdata/dcdict.h" include nil nil [834 867])
+            ("dcmtk/dcmdata/dcdeftag.h" include nil nil [868 903])
+            ("dcmtk/dcmdata/cmdlnarg.h" include nil nil [904 939])
+            ("dcmtk/dcmdata/dcuid.h" include nil nil [940 972])
+            ("dcmtk/dcmdata/dcostrmz.h" include nil nil [1006 1041])
+            ("PATTERN_MATCHING_AVAILABLE" variable (:constant-flag t) nil [1086 1112])
+            ("OFFIS_CONSOLE_APPLICATION" variable (:constant-flag t) nil [1122 1147])
+            ("APPLICATIONTITLE" variable (:constant-flag t) nil [1322 1338])
+            ("PEERAPPLICATIONTITLE" variable (:constant-flag t) nil [1362 1382])
+            ("CONVERT_TO_STRING" variable (:constant-flag t) nil [1463 1480])
+            ("SHORTCOL" variable (:constant-flag t) nil [1658 1666])
+            ("LONGCOL" variable (:constant-flag t) nil [1677 1684])
+            ("opt_scanPattern" variable
+               (:pointer 1
+                :typemodifiers ("static")
+                :type "char")
+                nil [1689 1723])
+            ("PatientStoreScu" function
+               (:constructor-flag t
+                :parent "PatientStoreScu"
+                :arguments 
+                  ( ("argc" variable (:type "int") (reparse-symbol arg-sub-list) [1757 1766])
+                    ("argv" variable
+                       (:pointer 1
+                        :dereference 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [1767 1780]))                  
+                :type ("PatientStoreScu" type (:type "class") nil nil))
+                nil [1724 30139])
+            ("PatientStoreScu" function
+               (:constructor-flag t
+                :parent "PatientStoreScu"
+                :type ("PatientStoreScu" type (:type "class") nil nil))
+                nil [30141 30180])
+            ("PatientStoreScu" function
+               (:destructor-flag t
+                :parent "PatientStoreScu"
+                :type "void")
+                nil [30182 30221])
+            ("isaListMember" function
+               (:arguments 
+                  ( ("lst" variable
+                       (:reference 1
+                        :type ("OFList" type
+                             (:template-specifier 
+                                ( ("OFString" type nil nil nil))                                
+                              :type "class")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [30244 30266])
+                    ("s" variable
+                       (:reference 1
+                        :type ("OFString" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [30267 30279]))                  
+                :type ("OFBool" type (:type "class") nil nil))
+                nil [30223 30490])
+            ("addPresentationContext" function
+               (:arguments 
+                  ( ("params" variable
+                       (:pointer 1
+                        :type ("T_ASC_Parameters" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [30527 30552])
+                    ("presentationContextId" variable (:type "int") (reparse-symbol arg-sub-list) [30555 30581])
+                    ("abstractSyntax" variable
+                       (:reference 1
+                        :constant-flag t
+                        :type ("OFString" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [30584 30615])
+                    ("transferSyntax" variable
+                       (:reference 1
+                        :constant-flag t
+                        :type ("OFString" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [30618 30649])
+                    ("proposedRole" variable (:type ("T_ASC_SC_ROLE" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [30652 30680])
+                    ("" variable (:type ("ASC_SC_ROLE_DEFAULT" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [30681 30701]))                  
+                :type ("OFCondition" type (:type "class") nil nil))
+                nil [30492 30895])
+            ("addPresentationContext" function
+               (:arguments 
+                  ( ("params" variable
+                       (:pointer 1
+                        :type ("T_ASC_Parameters" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [30932 30957])
+                    ("presentationContextId" variable (:type "int") (reparse-symbol arg-sub-list) [30960 30986])
+                    ("abstractSyntax" variable
+                       (:reference 1
+                        :constant-flag t
+                        :type ("OFString" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [30989 31020])
+                    ("transferSyntaxList" variable
+                       (:reference 1
+                        :constant-flag t
+                        :type ("OFList" type
+                             (:template-specifier 
+                                ( ("OFString" type nil nil nil))                                
+                              :type "class")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [31023 31066])
+                    ("proposedRole" variable (:type ("T_ASC_SC_ROLE" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [31069 31097])
+                    ("" variable (:type ("ASC_SC_ROLE_DEFAULT" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [31098 31118]))                  
+                :type ("OFCondition" type (:type "class") nil nil))
+                nil [30897 31741])
+            ("addStoragePresentationContexts" function
+               (:parent "PatientStoreScu"
+                :arguments 
+                  ( ("params" variable
+                       (:pointer 1
+                        :type ("T_ASC_Parameters" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [31803 31828])
+                    ("sopClasses" variable
+                       (:reference 1
+                        :type ("OFList" type
+                             (:template-specifier 
+                                ( ("OFString" type nil nil nil))                                
+                              :type "class")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [31829 31858]))                  
+                :type ("OFCondition" type (:type "class") nil nil))
+                nil [31743 36457])
+            ("secondsSince1970" function (:type "int") nil [36459 36542])
+            ("intToString" function
+               (:arguments 
+                  ( ("i" variable (:type "int") (reparse-symbol arg-sub-list) [36565 36571]))                  
+                :type ("OFString" type (:type "class") nil nil))
+                nil [36544 36639])
+            ("makeUID" function
+               (:arguments 
+                  ( ("basePrefix" variable (:type ("OFString" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [36658 36678])
+                    ("counter" variable (:type "int") (reparse-symbol arg-sub-list) [36679 36691]))                  
+                :type ("OFString" type (:type "class") nil nil))
+                nil [36641 36859])
+            ("updateStringAttributeValue" function
+               (:arguments 
+                  ( ("dataset" variable
+                       (:pointer 1
+                        :type ("DcmItem" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [36895 36912])
+                    ("key" variable
+                       (:reference 1
+                        :constant-flag t
+                        :type ("DcmTagKey" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [36913 36934])
+                    ("value" variable
+                       (:reference 1
+                        :type ("OFString" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [36935 36951]))                  
+                :type ("OFBool" type (:type "class") nil nil))
+                nil [36861 37415])
+            ("replaceSOPInstanceInformation" function
+               (:parent "PatientStoreScu"
+                :arguments 
+                  ( ("dataset" variable
+                       (:pointer 1
+                        :type ("DcmDataset" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [37468 37488]))                  
+                :type "void")
+                nil [37416 40590])
+            ("progressCallback" function
+               (:arguments 
+                  ( ("" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [40613 40637])
+                    ("progress" variable
+                       (:pointer 1
+                        :type ("T_DIMSE_StoreProgress" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [40638 40670])
+                    ("req" variable
+                       (:pointer 1
+                        :type ("T_DIMSE_C_StoreRQ" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [40671 40695]))                  
+                :type "void")
+                nil [40591 41039])
+            ("storeSCU" function
+               (:parent "PatientStoreScu"
+                :arguments 
+                  ( ("assoc" variable
+                       (:pointer 1
+                        :type ("T_ASC_Association" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [41078 41103])
+                    ("fname" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [41104 41122]))                  
+                :type ("OFCondition" type (:type "class") nil nil))
+                nil [41040 45410])
+            ("cstore" function
+               (:parent "PatientStoreScu"
+                :arguments 
+                  ( ("assoc" variable
+                       (:pointer 1
+                        :type ("T_ASC_Association" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [45447 45472])
+                    ("fname" variable
+                       (:reference 1
+                        :constant-flag t
+                        :type ("OFString" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [45473 45495]))                  
+                :type ("OFCondition" type (:type "class") nil nil))
+                nil [45411 46495])
+            ("findSOPClassAndInstanceInFile" function
+               (:parent "PatientStoreScu"
+                :arguments 
+                  ( ("fname" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [46553 46571])
+                    ("sopClass" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [46572 46587])
+                    ("sopInstance" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [46588 46606]))                  
+                :type ("OFBool" type (:type "class") nil nil))
+                nil [46498 47063])
+            ("configureUserIdentityRequest" function
+               (:parent "PatientStoreScu"
+                :arguments 
+                  ( ("params" variable
+                       (:pointer 1
+                        :type ("T_ASC_Parameters" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [47124 47149]))                  
+                :type ("OFCondition" type (:type "class") nil nil))
+                nil [47066 48546])
+            ("checkUserIdentityResponse" function
+               (:parent "PatientStoreScu"
+                :arguments 
+                  ( ("params" variable
+                       (:pointer 1
+                        :type ("T_ASC_Parameters" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [48602 48627]))                  
+                :type ("OFCondition" type (:type "class") nil nil))
+                nil [48547 49311])
+            ("run" function
+               (:parent "PatientStoreScu"
+                :arguments 
+                  ( ("argc" variable (:type "int") (reparse-symbol arg-sub-list) [49340 49349])
+                    ("argv" variable
+                       (:pointer 1
+                        :dereference 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [49350 49364]))                  
+                :type "void")
+                nil [49313 77724]))          
+    :file "dicom_store_scu.cpp"
+    :pointmax 77725
+    :fsize 79584
+    :lastmodtime '(21221 48926 0 0)
+    :unmatched-syntax '((punctuation 31096 . 31097) (punctuation 30679 . 30680) (punctuation 1278 . 1279) (string 1274 . 1278) (symbol 1250 . 1273) (string 1246 . 1249) (symbol 1226 . 1245) (string 1219 . 1223) (string "\"storescu\"" 1193 . 1218) (string 1182 . 1192) (punctuation 1180 . 1181) (semantic-list 1177 . 1179) (symbol 1172 . 1177) (CHAR 1167 . 1171) (STATIC 1160 . 1166))
+    :lexical-table 
+        '(("PEERAPPLICATIONTITLE" . ((string "\"ANY-SCP\"" 1383 . 1392)))
+          ("SHORTCOL" . ((number "4" 1667 . 1668)))
+          ("CONVERT_TO_STRING" (spp-arg-list ("output" "string") 1480 . 1496) . 
+              ((symbol "optStream" 1503 . 1512) (punctuation "." 1512 . 1513) (symbol "str" 1513 . 1516) (semantic-list "(\"\")" 1516 . 1520) (punctuation ";" 1520 . 1521) (symbol "optStream" 1528 . 1537) (punctuation "." 1537 . 1538) (symbol "clear" 1538 . 1543) (semantic-list "()" 1543 . 1545) (punctuation ";" 1545 . 1546) (symbol "optStream" 1553 . 1562) (punctuation "<" 1563 . 1564) (punctuation "<" 1564 . 1565) (symbol "output" 1566 . 1572) (punctuation "<" 1573 . 1574) (punctuation "<" 1574 . 1575) (symbol "OFStringStream_ends" 1576 . 1595) (punctuation ";" 1595 . 1596) (symbol "OFSTRINGSTREAM_GETOFSTRING" 1603 . 1629) (semantic-list "(optStream, string)" 1629 . 1648)))
+          ("INCLUDE_CSTRING")
+          ("PATTERN_MATCHING_AVAILABLE")
+          ("OFFIS_CONSOLE_APPLICATION" . ((string "\"storescu\"" 1148 . 1158)))
+          ("LONGCOL" . ((number "19" 1685 . 1687)))
+          ("INCLUDE_CCTYPE")
+          ("INCLUDE_CSTDLIB")
+          ("INCLUDE_CSTDIO")
+          ("APPLICATIONTITLE" . ((string "\"STORESCU\"" 1343 . 1353)))
+          )
+
+    )
+   (semanticdb-table "db_mysql_io.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__db_mysql_h__" variable (:constant-flag t) nil [32 46])
+            ("winsock.h" include (:system-flag t) nil [48 68])
+            ("iostream" include (:system-flag t) nil [69 88])
+            ("string" include (:system-flag t) nil [89 106])
+            ("mysql.h" include nil nil [107 125])
+            ("database_io.h" include nil nil [126 150])
+            ("std" using (:type ("std" type
+                 (:prototype t
+                  :type "namespace")
+                  nil nil)) nil [151 171])
+            ("MySqlDatabaseIO" type
+               (:members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [197 204])
+                    ("MySqlDatabaseIO" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :type ("MySqlDatabaseIO" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [206 224])
+                    ("MySqlDatabaseIO" function
+                       (:prototype-flag t
+                        :destructor-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [226 245])
+                    ("GetVolumeMySQL" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("vol" variable
+                               (:reference 1
+                                :type ("DatabaseIO::Volume" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [268 292])
+                            ("id" variable (:type "int") (reparse-symbol arg-sub-list) [293 300]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [248 301])
+                    ("private" label nil (reparse-symbol classsubparts) [302 310])
+                    ("mydata_" variable (:type ("MYSQL" type (:type "class") nil nil)) (reparse-symbol classsubparts) [312 326]))                  
+                :type "class")
+                nil [173 329]))          
+    :file "db_mysql_io.h"
+    :pointmax 360
+    :fsize 548
+    :lastmodtime '(21265 18744 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("__db_mysql_h__")
+          )
+
+    )
+   (semanticdb-table "database_io.h"
+    :file "database_io.h"
+    :fsize 106281
+    :lastmodtime '(21269 38512 0 0)
+    )
+   (semanticdb-table "dicom_store_scp.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__dicom_store_scp_h__" variable (:constant-flag t) nil [40 61])
+            ("dcmtk/config/osconfig.h" include nil nil [62 96])
+            ("INCLUDE_CSTDLIB" variable (:constant-flag t) nil [168 183])
+            ("INCLUDE_CSTRING" variable (:constant-flag t) nil [192 207])
+            ("INCLUDE_CSTDARG" variable (:constant-flag t) nil [216 231])
+            ("INCLUDE_CCTYPE" variable (:constant-flag t) nil [240 254])
+            ("INCLUDE_CSIGNAL" variable (:constant-flag t) nil [263 278])
+            ("dcmtk/ofstd/ofstdinc.h" include nil nil [279 312])
+            ("direct.h" include (:system-flag t) nil [313 332])
+            ("dcmtk/dcmnet/dul.h" include nil nil [357 386])
+            ("dcmtk/ofstd/ofstd.h" include nil nil [387 417])
+            ("dcmtk/ofstd/ofconapp.h" include nil nil [418 451])
+            ("dcmtk/ofstd/ofdatime.h" include nil nil [452 485])
+            ("dcmtk/dcmnet/dicom.h" include nil nil [486 517])
+            ("dcmtk/dcmnet/dimse.h" include nil nil [563 594])
+            ("dcmtk/dcmnet/diutil.h" include nil nil [595 627])
+            ("dcmtk/dcmnet/dcasccfg.h" include nil nil [628 662])
+            ("dcmtk/dcmnet/dcasccff.h" include nil nil [712 746])
+            ("dcmtk/dcmdata/dcfilefo.h" include nil nil [800 835])
+            ("dcmtk/dcmdata/dcuid.h" include nil nil [836 868])
+            ("dcmtk/dcmdata/dcdict.h" include nil nil [869 902])
+            ("dcmtk/dcmdata/cmdlnarg.h" include nil nil [903 938])
+            ("dcmtk/dcmdata/dcmetinf.h" include nil nil [939 974])
+            ("dcmtk/dcmdata/dcuid.h" include nil nil [975 1007])
+            ("dcmtk/dcmdata/dcdeftag.h" include nil nil [1044 1079])
+            ("dcmtk/dcmdata/dcostrmz.h" include nil nil [1080 1115])
+            ("dcmtk/ofstd/ofnetdb.h" include nil nil [1154 1186])
+            ("dcmtk/dcmnet/dcmlayer.h" include nil nil [1187 1221])
+            ("dicom_file_parser2.h" include nil nil [1222 1253])
+            ("Poco/File.h" include nil nil [1254 1276])
+            ("Poco/Path.h" include nil nil [1277 1299])
+            ("Poco/DirectoryIterator.h" include nil nil [1300 1335])
+            ("data_manager.h" include nil nil [1336 1361])
+            ("rtplatform_export.h" include nil nil [1362 1392])
+            ("OFFIS_CONSOLE_APPLICATION" variable (:constant-flag t) nil [1401 1426])
+            ("bzero" variable (:constant-flag t) nil [1464 1469])
+            ("StoreCallbackData" type
+               (:members 
+                  ( ("imageFileName" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol classsubparts) [1535 1555])
+                    ("dcmff" variable
+                       (:pointer 1
+                        :type ("DcmFileFormat" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1557 1578])
+                    ("assoc" variable
+                       (:pointer 1
+                        :type ("T_ASC_Association" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1580 1605]))                  
+                :type "struct")
+                nil [1507 1608])
+            ("StoreScp" variable (:type ("rtplatform_export" type
+                 (:prototype t
+                  :type "class")
+                  nil nil)) nil [1609 2089]))          
+    :file "dicom_store_scp.h"
+    :pointmax 2097
+    :fsize 2161
+    :lastmodtime '(21258 47209 0 0)
+    :unmatched-syntax '((symbol 1446 . 1455) (symbol 1439 . 1445) (punctuation 1438 . 1439))
+    :lexical-table 
+        '(("__dicom_store_scp_h__")
+          ("INCLUDE_CSTRING")
+          ("OFFIS_CONSOLE_APPLICATION" . ((string "\"storescp\"" 1427 . 1437)))
+          ("INCLUDE_CSTDARG")
+          ("INCLUDE_CCTYPE")
+          ("INCLUDE_CSTDLIB")
+          ("INCLUDE_CSIGNAL")
+          ("bzero" (spp-arg-list ("p" "len") 1469 . 1476) . 
+              ((symbol "memset" 1477 . 1483) (semantic-list "((void*)(p), 0, (len))" 1483 . 1505) (punctuation ";" 1505 . 1506)))
+          )
+
+    )
+   (semanticdb-table "dicom_store_scp.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("dicom_store_scp.h" include nil nil [2 30])
+            ("data_manager.h" include nil nil [31 56])
+            ("dicom_rt_structure_set_io2.h" include nil nil [57 96])
+            ("Poco\\DirectoryIterator.h" include nil nil [97 132])
+            ("user.h" include nil nil [133 150])
+            ("user_manager.h" include nil nil [151 176])
+            ("StoreScp" function
+               (:constructor-flag t
+                :parent "StoreScp"
+                :type ("StoreScp" type (:type "class") nil nil))
+                nil [178 289])
+            ("storeSCPCallback" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("callbackData" variable
+                       (:pointer 1
+                        :type "void")
+                        (reparse-symbol arg-sub-list) [323 342])
+                    ("progress" variable
+                       (:pointer 1
+                        :type ("T_DIMSE_StoreProgress" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [344 376])
+                    ("req" variable
+                       (:pointer 1
+                        :type ("T_DIMSE_C_StoreRQ" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [378 401])
+                    ("" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [403 428])
+                    ("imageDataSet" variable
+                       (:pointer 2
+                        :type ("DcmDataset" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [429 455])
+                    ("rsp" variable
+                       (:pointer 1
+                        :type ("T_DIMSE_C_StoreRSP" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [457 481])
+                    ("statusDetail" variable
+                       (:pointer 2
+                        :type ("DcmDataset" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [483 509]))                  
+                :type "void")
+                nil [292 2932])
+            ("storeSCP" function
+               (:parent "StoreScp"
+                :arguments 
+                  ( ("assoc" variable
+                       (:pointer 1
+                        :type ("T_ASC_Association" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2967 2992])
+                    ("msg" variable
+                       (:pointer 1
+                        :type ("T_DIMSE_Message" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2994 3015])
+                    ("presID" variable (:type ("T_ASC_PresentationContextID" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3017 3052]))                  
+                :type ("OFCondition" type (:type "class") nil nil))
+                nil [2934 6009])
+            ("echoSCP" function
+               (:parent "StoreScp"
+                :arguments 
+                  ( ("assoc" variable
+                       (:pointer 1
+                        :type ("T_ASC_Association" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6042 6068])
+                    ("msg" variable
+                       (:pointer 1
+                        :type ("T_DIMSE_Message" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6069 6091])
+                    ("presID" variable (:type ("T_ASC_PresentationContextID" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [6092 6127]))                  
+                :type ("OFCondition" type (:type "class") nil nil))
+                nil [6011 6404])
+            ("processCommands" function
+               (:parent "StoreScp"
+                :arguments 
+                  ( ("assoc" variable
+                       (:pointer 1
+                        :type ("T_ASC_Association" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6444 6470]))                  
+                :type ("OFCondition" type (:type "class") nil nil))
+                nil [6406 8772])
+            ("StoreScp" function
+               (:destructor-flag t
+                :parent "StoreScp"
+                :type "void")
+                nil [8773 8901])
+            ("Run" function
+               (:pointer 1
+                :parent "StoreScp"
+                :type "void")
+                nil [8903 12967])
+            ("ImportPatient" function
+               (:parent "StoreScp"
+                :type "void")
+                nil [12969 19217]))          
+    :file "dicom_store_scp.cpp"
+    :pointmax 19218
+    :fsize 19554
+    :lastmodtime '(21258 47318 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "dicom_rt_structure_set_io2.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__dtl_rt_structure_set_io2_h__" variable (:constant-flag t) nil [48 78])
+            ("string" include (:system-flag t) nil [79 96])
+            ("export.h" include nil nil [97 116])
+            ("dcmtk\\dcmdata\\dcdeftag.h" include nil nil [117 152])
+            ("patient_dir.h" include nil nil [153 177])
+            ("dicom_io_base.h" include nil nil [178 204])
+            ("rtstruct.h" include nil nil [205 226])
+            ("patient.h" include nil nil [227 247])
+            ("ctvolume.h" include nil nil [248 269])
+            ("dcmtk\\dcmdata\\dcfilefo.h" include nil nil [270 305])
+            ("dcmtk\\ofstd\\offile.h" include nil nil [306 337])
+            ("dcmtk\\dcmrt\\drmstrct.h" include (:system-flag t) nil [338 371])
+            ("dcmtk\\dcmrt\\seq\\drtssrs.h" include (:system-flag t) nil [372 408])
+            ("dtl" using (:type ("dtl" type
+                 (:prototype t
+                  :type "namespace")
+                  nil nil)) nil [409 429])
+            ("rtStructureSetIO2" type
+               (:superclasses 
+                  ( ("DicomIOBase" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [475 482])
+                    ("Write" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("fileformat" variable (:type ("std::shared_ptr" type
+                                 (:template-specifier 
+                                    ( ("DcmFileFormat" type nil nil nil))                                    
+                                  :type "class")
+                                  nil nil)) (reparse-symbol arg-sub-list) [560 601])
+                            ("rtss" variable (:type ("RTStruct::Pointer" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [601 624])
+                            ("patient_" variable (:type ("Patient::Pointer" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [624 651])
+                            ("ct_volume" variable (:type ("CTVolume::Pointer" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [651 679]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [549 680]))                  
+                :type "class")
+                nil [430 683]))          
+    :file "dicom_rt_structure_set_io2.h"
+    :pointmax 691
+    :fsize 712
+    :lastmodtime '(21220 47495 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("__dtl_rt_structure_set_io2_h__")
+          )
+
+    )
+   (semanticdb-table "dicom_io_base.h"
+    :file "dicom_io_base.h"
+    :fsize 381
+    :lastmodtime '(21207 32279 0 0)
+    )
+   (semanticdb-table "dicom_file_parser2.h"
+    :major-mode 'c++-mode
+    :tags nil
+    :file "dicom_file_parser2.h"
+    :pointmax 545
+    :fsize 647
+    :lastmodtime '(21273 31094 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("__dtl_dicom_file_parser2_h__")
+          )
+
+    )
+   (semanticdb-table "dicom_c_find_scu.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__dicom_c_find_scu_h__" variable (:constant-flag t) nil [40 62]))          
+    :file "dicom_c_find_scu.h"
+    :pointmax 64
+    :fsize 504
+    :lastmodtime '(21269 38512 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("__dicom_c_find_scu_h__")
+          )
+
+    )
+   (semanticdb-table "dicom_c_find_scu.cpp"
+    :major-mode 'c++-mode
+    :tags nil
+    :file "dicom_c_find_scu.cpp"
+    :pointmax 3247
+    :fsize 3203
+    :lastmodtime '(21269 40169 0 0)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!drive_d!work!rtplatform!dm!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

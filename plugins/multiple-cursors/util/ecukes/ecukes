@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+# ecukes --- Cucumber for Emacs
+# Copyright (C) 2012 Joel McCracken
+
+# License:
+
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3, or (at your option)
+# any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with GNU Emacs; see the file COPYING.  If not, write to the
+# Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+# Boston, MA 02110-1301, USA.
+
+
+# see README for information
+
+ECUKES_EL=$(dirname $BASH_SOURCE)/ecukes.el
+
+
+if [ -z "$ECUKES_EMACS" ] ; then
+    ECUKES_EMACS="emacs"
+fi
+
+if [ "$1" == "--graphical" ] ; then
+    # create spec output file
+    export ECUKES_OUTFILE=`mktemp /tmp/emacsoutput.XXXXX`
+    $ECUKES_EMACS --load "$ECUKES_EL" -q "${@:2}"
+
+    # send that file to the console
+    cat $ECUKES_OUTFILE
+
+    # clean up
+    rm $ECUKES_OUTFILE
+else
+    $ECUKES_EMACS --script $ECUKES_EL "$@"
+fi

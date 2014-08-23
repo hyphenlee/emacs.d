@@ -1,0 +1,211 @@
+;; Object eoc/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "eoc/"
+  :tables (list 
+   (semanticdb-table "position_scene_controller.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("position_scene_controller.h" include nil nil [1 39])
+            ("rtplatform" type
+               (:members 
+                  ( ("PositionSceneController" function
+                       (:constructor-flag t
+                        :parent "PositionSceneController"
+                        :arguments 
+                          ( ("e" variable (:type ("PositionEvent::Pointer" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [115 140])
+                            ("scene" variable (:type ("dtl::SceneNode::Pointer" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [140 170])
+                            ("ren" variable
+                               (:pointer 1
+                                :type ("dtl::Renderer" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [170 189]))                          
+                        :type ("PositionSceneController" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [66 319])
+                    ("PositionSceneController" function
+                       (:destructor-flag t
+                        :parent "PositionSceneController"
+                        :arguments 
+                          ( ("" variable (:type "void") (reparse-symbol arg-sub-list) [372 377]))                          
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [322 384])
+                    ("OnMouseDown" function
+                       (:parent "PositionSceneController"
+                        :arguments 
+                          ( ("x" variable (:type "int") (reparse-symbol arg-sub-list) [429 435])
+                            ("y" variable (:type "int") (reparse-symbol arg-sub-list) [436 442]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [387 486])
+                    ("OnMouseWheel" function
+                       (:parent "PositionSceneController"
+                        :arguments 
+                          ( ("tick" variable (:type "int") (reparse-symbol arg-sub-list) [532 541]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [489 1348])
+                    ("OnMouseMove" function
+                       (:parent "PositionSceneController"
+                        :arguments 
+                          ( ("x" variable (:type "int") (reparse-symbol arg-sub-list) [1393 1399])
+                            ("y" variable (:type "int") (reparse-symbol arg-sub-list) [1400 1406]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [1351 2453])
+                    ("OnMouseUp" function
+                       (:parent "PositionSceneController"
+                        :arguments 
+                          ( ("x" variable (:type "int") (reparse-symbol arg-sub-list) [2496 2502])
+                            ("y" variable (:type "int") (reparse-symbol arg-sub-list) [2503 2509]))                          
+                        :type "bool")
+                        (reparse-symbol namespacesubparts) [2456 2553]))                  
+                :type "namespace")
+                nil [41 2557]))          
+    :file "position_scene_controller.cpp"
+    :pointmax 2557
+    :fsize 2684
+    :lastmodtime '(21332 30195 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "position_scene_controller.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__rtplatform_position_scene_controller_h__" variable (:constant-flag t) nil [60 102])
+            ("scene_controller.h" include nil nil [105 134])
+            ("position_event.h" include nil nil [135 162])
+            ("dtl" using (:type ("dtl" type
+                 (:prototype t
+                  :type "namespace")
+                  nil nil)) nil [164 184])
+            ("rtplatform" type
+               (:members 
+                  ( ("PositionSceneController" type
+                       (:superclasses 
+                          ( ("SceneController" type
+                               (:protection "public"
+                                :type "class")
+                                nil nil))                          
+                        :members 
+                          ( ("public" label nil (reparse-symbol classsubparts) [273 280])
+                            ("Pointer" type
+                               (:typedef ("std::shared_ptr" type
+                                     (:template-specifier 
+                                        ( ("PositionSceneController" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil)
+                                :superclasses "std::shared_ptr"
+                                :type "typedef")
+                                (reparse-symbol classsubparts) [284 341])
+                            ("PositionSceneController" function
+                               (:prototype-flag t
+                                :constructor-flag t
+                                :arguments 
+                                  ( ("e" variable (:type ("PositionEvent::Pointer" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [429 454])
+                                    ("scene" variable (:type ("dtl::SceneNode::Pointer" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [454 484])
+                                    ("ren" variable
+                                       (:pointer 1
+                                        :type ("dtl::Renderer" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [484 503]))                                  
+                                :type ("PositionSceneController" type (:type "class") nil nil))
+                                (reparse-symbol classsubparts) [405 504])
+                            ("PositionSceneController" function
+                               (:prototype-flag t
+                                :destructor-flag t
+                                :typemodifiers ("virtual")
+                                :type "void")
+                                (reparse-symbol classsubparts) [506 541])
+                            ("set_delta" function
+                               (:arguments 
+                                  ( ("d" variable (:type "double") (reparse-symbol arg-sub-list) [604 613]))                                  
+                                :type "void")
+                                (reparse-symbol classsubparts) [589 626])
+                            ("set_normal" function
+                               (:arguments 
+                                  ( ("x" variable (:type "double") (reparse-symbol arg-sub-list) [644 653])
+                                    ("y" variable (:type "double") (reparse-symbol arg-sub-list) [653 662])
+                                    ("z" variable (:type "double") (reparse-symbol arg-sub-list) [663 672]))                                  
+                                :type "void")
+                                (reparse-symbol classsubparts) [628 721])
+                            ("set_normal" function
+                               (:arguments 
+                                  ( ("n" variable
+                                       (:pointer 1
+                                        :type "double")
+                                        (reparse-symbol arg-sub-list) [740 750]))                                  
+                                :type "void")
+                                (reparse-symbol classsubparts) [724 785])
+                            ("set_bounder" function
+                               (:arguments 
+                                  ( ("b" variable
+                                       (:pointer 1
+                                        :type "double")
+                                        (reparse-symbol arg-sub-list) [805 815]))                                  
+                                :type "void")
+                                (reparse-symbol classsubparts) [788 853])
+                            ("OnMouseDown" function
+                               (:prototype-flag t
+                                :typemodifiers ("virtual")
+                                :arguments 
+                                  ( ("x" variable (:type "int") (reparse-symbol arg-sub-list) [965 971])
+                                    ("y" variable (:type "int") (reparse-symbol arg-sub-list) [972 978]))                                  
+                                :type "bool")
+                                (reparse-symbol classsubparts) [940 979])
+                            ("OnMouseUp" function
+                               (:prototype-flag t
+                                :typemodifiers ("virtual")
+                                :arguments 
+                                  ( ("x" variable (:type "int") (reparse-symbol arg-sub-list) [1007 1013])
+                                    ("y" variable (:type "int") (reparse-symbol arg-sub-list) [1014 1020]))                                  
+                                :type "bool")
+                                (reparse-symbol classsubparts) [984 1021])
+                            ("OnMouseMove" function
+                               (:prototype-flag t
+                                :typemodifiers ("virtual")
+                                :arguments 
+                                  ( ("x" variable (:type "int") (reparse-symbol arg-sub-list) [1054 1060])
+                                    ("y" variable (:type "int") (reparse-symbol arg-sub-list) [1061 1067]))                                  
+                                :type "bool")
+                                (reparse-symbol classsubparts) [1029 1068])
+                            ("OnMouseWheel" function
+                               (:prototype-flag t
+                                :typemodifiers ("virtual")
+                                :arguments 
+                                  ( ("tick" variable (:type "int") (reparse-symbol arg-sub-list) [1103 1112]))                                  
+                                :type "bool")
+                                (reparse-symbol classsubparts) [1077 1113])
+                            ("protected" label nil (reparse-symbol classsubparts) [1117 1127])
+                            ("normal_" variable
+                               (:dereference 1
+                                :type "double")
+                                (reparse-symbol classsubparts) [1132 1150])
+                            ("delta_" variable (:type "double") (reparse-symbol classsubparts) [1152 1166])
+                            ("bounder_" variable
+                               (:dereference 1
+                                :type "double")
+                                (reparse-symbol classsubparts) [1168 1187])
+                            ("public" label nil (reparse-symbol classsubparts) [1191 1198])
+                            ("is_pick_" variable (:type "bool") (reparse-symbol classsubparts) [1200 1214]))                          
+                        :type "class")
+                        (reparse-symbol namespacesubparts) [211 1237]))                  
+                :type "namespace")
+                nil [185 1239]))          
+    :file "position_scene_controller.h"
+    :pointmax 1246
+    :fsize 1286
+    :lastmodtime '(21329 2409 0 0)
+    :unmatched-syntax '((punctuation 785 . 786) (punctuation 721 . 722))
+    :lexical-table 
+        '(("__rtplatform_position_scene_controller_h__")
+          )
+
+    )
+   (semanticdb-table "scene_controller.h"
+    :file "scene_controller.h"
+    :fsize 1469
+    :lastmodtime '(21326 12322 0 0)
+    )
+   (semanticdb-table "position_event.h"
+    :file "position_event.h"
+    :fsize 465
+    :lastmodtime '(21309 12698 0 0)
+    )
+   )
+  :file "!drive_d!work!rtsuite-new!rtsuite!common!eoc!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

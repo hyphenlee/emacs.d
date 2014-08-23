@@ -1,0 +1,128 @@
+grep -nH -e . parse_di*
+grep -nH -e . par*
+grep -nH -e . p*
+grep -nH -e . di*
+grep -nH -e ret di*
+grep -nH -e ret .
+grep -nH -e ret *
+grep -nH -e ret *.cpp
+grep -nH -e rtdicom *.cpp
+grep -nH -e rt *.cpp
+grep -nH -e rtdicom *.h
+grep  -nH -e "format" *.cpp
+grep  -nH -e "form" *.cpp
+grep  -nH -e "form" * 
+cd ../rtSuite_pc/
+grep  -nH -e "form" * 
+grep  -nH -e "formate" * 
+grep  -nH -e "ip_address" * 
+grep  -nH -e "ip_address" *.cpp
+grep  -nH -e "ip_address" *.h
+grep  -nH -e "include" *.cpp
+grep  -nH -e "include" *.h
+grep  -nH -e -r "include" *.h
+grep  -nH -e -R "include" *.h
+grep  -nH -e  "include" *.h
+grep --h
+grep -r "include" *.h
+grep -R "include" *.h
+grep --h
+ls
+ls -r
+ls -R
+ls -R |grep include
+ls -R |grep include *.h
+kdisk_check.h:
+ls
+cd dm
+ls
+grep include *.h
+grep include *.cpp
+cd ..
+grep -r include *.cpp
+grep -r include ./*.cpp
+grep -r include ./
+grep -R include  *
+ls -R | grep  include 
+ls -R | grep -nH  include 
+grep -REn "include" * 
+find
+cd dm
+ls
+cd ..
+ls
+cd output/
+ls
+cd ..
+cd ..
+ls
+cd rtplatform/
+ls
+cd dm/
+ls
+cd ..
+ls
+cd ..
+ls
+cd ../learning/
+ls
+grep "loop" python/
+grep "loop" python/*
+grep -R "loop " ./
+grep -D "loop " ./
+find . -iname "*" -exec grep "loop" {} \;
+grep -r
+ls
+cd ..
+ls
+grep -nH -e -r include *
+grep -nH -e -r include ./*
+mysql
+mysql -u root -p
+git
+cdd:/learning/
+cd d:/learning/
+cd compiler/
+ls
+git clone git https://github.com/larcenists/larceny.git
+git clone  https://github.com/larcenists/larceny.git
+kd
+l
+j
+f
+a
+s
+d
+e
+w
+e
+f
+exit
+mysql -u root -p
+cl /EHsc test.cpp 
+ls
+cd learning/
+ls
+cl /EHsc test.cpp 
+ls
+cl -EHsc test.cpp 
+ls
+rm test.*
+ls
+cd ~
+cd c:/work/rtsuite-new/
+cmake .
+cd output/
+cd ../../output
+cd ..
+cd ..
+cd ../output/
+ls
+devenv
+devenv
+devenv.exe 
+cd ..
+cd ../..
+cd output/
+devenv.exe /Build rtSuite-new.sln
+devenv.exe rtSuite-new.sln

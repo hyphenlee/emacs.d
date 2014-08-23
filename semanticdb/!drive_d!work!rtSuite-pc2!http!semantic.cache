@@ -1,0 +1,213 @@
+;; Object http/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "http/"
+  :tables (list 
+   (semanticdb-table "http_client.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("Poco/Net/HTTPClientSession.h" include nil nil [1 40])
+            ("ct_volume_info.h" include nil nil [41 68])
+            ("rt_structure_set.h" include nil nil [69 98])
+            ("ct_image.h" include nil nil [99 120])
+            ("polygon.h" include nil nil [121 141])
+            ("__http_client__" variable (:constant-flag t) nil [174 189])
+            ("SystemPara" type
+               (:members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [209 216])
+                    ("SystemPara" function
+                       (:constructor-flag t
+                        :type ("SystemPara" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [218 293])
+                    ("get_server_address" function
+                       (:constant-flag t
+                        :type ("std::string" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [295 358])
+                    ("get_server_port" function (:type "unsigned short") (reparse-symbol classsubparts) [360 414])
+                    ("private" label nil (reparse-symbol classsubparts) [415 423])
+                    ("server_address_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [425 453])
+                    ("server_port_" variable (:type "unsigned short") (reparse-symbol classsubparts) [455 483]))                  
+                :type "class")
+                nil [190 486])
+            ("MyHTTPClient" type
+               (:members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [509 516])
+                    ("MyHTTPClient" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :type ("MyHTTPClient" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [518 533])
+                    ("get_vol_info" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("ptr_ct_vol_" variable
+                               (:pointer 1
+                                :type ("ctVolumeInfo" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [553 579]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [535 580])
+                    ("get_rtss_info" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("ptr_rtss_vec_" variable
+                               (:pointer 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("rtStructureSet" type (:pointer 1) nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [601 645])
+                            ("rtss_order_vec_" variable
+                               (:pointer 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("std::vector" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [648 695])
+                            ("rtss_visible_list" variable
+                               (:pointer 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("std::vector" type (:pointer 1) nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [698 749])
+                            ("rtss_fill_list" variable
+                               (:pointer 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("std::vector" type (:pointer 1) nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [749 797])
+                            ("rtss_mesh_opacity_list" variable
+                               (:pointer 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("std::vector" type (:pointer 1) nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [800 855]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [582 856])
+                    ("get_rtss_mesh" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("ptr_rtss_vec_" variable
+                               (:pointer 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("rtStructureSet" type (:pointer 1) nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [877 921]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [858 922])
+                    ("get_ct_image" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("pos" variable
+                               (:pointer 1
+                                :type "double")
+                                (reparse-symbol arg-sub-list) [942 954])
+                            ("ptr_ct_vol_" variable
+                               (:pointer 1
+                                :type ("ctVolumeInfo" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [954 980])
+                            ("img" variable
+                               (:pointer 1
+                                :type ("ctImage" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [980 993])
+                            ("normal" variable
+                               (:pointer 1
+                                :type "int")
+                                (reparse-symbol arg-sub-list) [993 1005]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [924 1006])
+                    ("get_polygon" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("rtss_index" variable (:type "int") (reparse-symbol arg-sub-list) [1025 1040])
+                            ("roi_index" variable (:type "int") (reparse-symbol arg-sub-list) [1040 1054])
+                            ("pos" variable
+                               (:pointer 1
+                                :type "double")
+                                (reparse-symbol arg-sub-list) [1054 1066])
+                            ("normal" variable
+                               (:pointer 1
+                                :type "double")
+                                (reparse-symbol arg-sub-list) [1067 1082])
+                            ("polys" variable
+                               (:pointer 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("dtl::Polygon" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [1082 1115]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [1008 1116])
+                    ("private" label nil (reparse-symbol classsubparts) [1117 1125])
+                    ("ReadMeshBuf" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("buf" variable
+                               (:pointer 1
+                                :type "char")
+                                (reparse-symbol arg-sub-list) [1144 1154])
+                            ("mesh" variable
+                               (:pointer 1
+                                :type ("Mesh" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1155 1166]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1127 1167])
+                    ("ReadCTBuffer" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("buf" variable
+                               (:pointer 1
+                                :type "char")
+                                (reparse-symbol arg-sub-list) [1187 1197])
+                            ("img" variable
+                               (:pointer 1
+                                :type ("ctImage" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1198 1211])
+                            ("len" variable (:type "int") (reparse-symbol arg-sub-list) [1212 1220]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1169 1221])
+                    ("ReadPolyFromStream" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("is" variable
+                               (:reference 1
+                                :type ("std::istream" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1247 1264])
+                            ("polys" variable
+                               (:pointer 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("dtl::Polygon" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [1265 1298]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1223 1299])
+                    ("protected" label nil (reparse-symbol classsubparts) [1300 1310])
+                    ("s" variable (:type ("Poco::Net::HTTPClientSession" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1312 1343]))                  
+                :type "class")
+                nil [488 1348]))          
+    :file "http_client.h"
+    :pointmax 1358
+    :fsize 1402
+    :lastmodtime '(21087 18157 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("__http_client__")
+          )
+
+    )
+   )
+  :file "!drive_d!work!rtSuite-pc2!http!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

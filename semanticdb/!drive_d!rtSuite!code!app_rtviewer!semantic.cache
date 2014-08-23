@@ -1,0 +1,1194 @@
+;; Object app_rtviewer/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "app_rtviewer/"
+  :tables (list 
+   (semanticdb-table "rt_view.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__rt_view__" variable (:constant-flag t) nil [29 40])
+            ("wxID_PATIENT" variable (:constant-flag t) nil [50 62])
+            ("wxID_CT" variable (:constant-flag t) nil [76 83])
+            ("wxID_FUSION" variable (:constant-flag t) nil [102 113])
+            ("wxID_CONTOUR" variable (:constant-flag t) nil [128 140])
+            ("wxID_PLAN" variable (:constant-flag t) nil [154 163])
+            ("wxID_DOSE" variable (:constant-flag t) nil [180 189])
+            ("wxID_DICOM" variable (:constant-flag t) nil [206 216])
+            ("wxID_COMMISSIONING" variable (:constant-flag t) nil [232 250])
+            ("wxID_SETTING" variable (:constant-flag t) nil [264 276])
+            ("rt_frame.h" include nil nil [361 382])
+            ("vector" include (:system-flag t) nil [383 400])
+            ("database_io.h" include nil nil [401 425])
+            ("map" include (:system-flag t) nil [426 440])
+            ("rtView" type
+               (:superclasses 
+                  ( ("rtFrame" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [532 539])
+                    ("rtView" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :arguments 
+                          ( ("parent" variable
+                               (:pointer 1
+                                :type ("wxWindow" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [552 570]))                          
+                        :type ("rtView" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [544 571])
+                    ("m_grid1OnGridCellLeftClick" function
+                       (:prototype-flag t
+                        :typemodifiers ("virtual")
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxGridEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [615 635]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [574 637])
+                    ("m_grid2OnGridCellLeftClick" function
+                       (:prototype-flag t
+                        :typemodifiers ("virtual")
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxGridEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [681 701]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [640 703])
+                    ("delete_buttonOnButtonClick" function
+                       (:prototype-flag t
+                        :typemodifiers ("virtual")
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxCommandEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [747 770]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [706 772])
+                    ("m_dirPicker1OnDirChanged" function
+                       (:prototype-flag t
+                        :typemodifiers ("virtual")
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxFileDirPickerEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [814 843]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [775 845])
+                    ("regenerateOnButtonClick" function
+                       (:prototype-flag t
+                        :typemodifiers ("virtual")
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxCommandEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [886 909]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [848 911])
+                    ("RefleshGrid" function
+                       (:prototype-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [914 933])
+                    ("rtView" function
+                       (:prototype-flag t
+                        :destructor-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [938 948])
+                    ("protected" label nil (reparse-symbol classsubparts) [949 959])
+                    ("pa_list" variable (:type ("std::vector" type
+                         (:template-specifier 
+                            ( ("PatientInfo" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [964 997])
+                    ("image_list" variable (:type ("std::vector" type
+                         (:template-specifier 
+                            ( ("CtImage" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [1002 1034])
+                    ("select_patient" variable (:type "int") (reparse-symbol classsubparts) [1039 1058]))                  
+                :type "class")
+                nil [500 1061]))          
+    :file "rt_view.h"
+    :pointmax 1085
+    :fsize 1131
+    :lastmodtime '(21082 19297 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("wxID_CT" . ((number "1020" 89 . 93)))
+          ("wxID_FUSION" . ((number "1030" 115 . 119)))
+          ("wxID_CONTOUR" . ((number "1040" 141 . 145)))
+          ("__rt_view__")
+          ("wxID_DOSE" . ((number "1060" 193 . 197)))
+          ("wxID_SETTING" . ((number "1090" 283 . 287)))
+          ("wxID_PATIENT" . ((number "1010" 63 . 67)))
+          ("wxID_PLAN" . ((number "1050" 167 . 171)))
+          ("wxID_DICOM" . ((number "1070" 219 . 223)))
+          ("wxID_COMMISSIONING" . ((number "1080" 251 . 255)))
+          )
+
+    )
+   (semanticdb-table "rt_frame.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__RT_FRAME_H__" variable (:constant-flag t) nil [319 333])
+            ("wx/artprov.h" include (:system-flag t) nil [335 358])
+            ("wx/xrc/xmlres.h" include (:system-flag t) nil [359 385])
+            ("wx/colour.h" include (:system-flag t) nil [386 408])
+            ("wx/settings.h" include (:system-flag t) nil [409 433])
+            ("wx/string.h" include (:system-flag t) nil [434 456])
+            ("wx/font.h" include (:system-flag t) nil [457 477])
+            ("wx/grid.h" include (:system-flag t) nil [478 498])
+            ("wx/gdicmn.h" include (:system-flag t) nil [499 521])
+            ("wx/sizer.h" include (:system-flag t) nil [522 543])
+            ("wx/panel.h" include (:system-flag t) nil [544 565])
+            ("wx/button.h" include (:system-flag t) nil [566 588])
+            ("wx/filepicker.h" include (:system-flag t) nil [589 615])
+            ("wx/stattext.h" include (:system-flag t) nil [616 640])
+            ("wx/frame.h" include (:system-flag t) nil [641 662])
+            ("rtFrame" type
+               (:superclasses 
+                  ( ("wxFrame" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("private" label nil (reparse-symbol classsubparts) [955 963])
+                    ("protected" label nil (reparse-symbol classsubparts) [967 977])
+                    ("panel_top_toolbar_" variable
+                       (:pointer 1
+                        :type ("wxPanel" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [980 1008])
+                    ("bSizer_top" variable
+                       (:pointer 1
+                        :type ("wxBoxSizer" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1011 1034])
+                    ("m_grid1" variable
+                       (:pointer 1
+                        :type ("wxGrid" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1037 1053])
+                    ("delete_button" variable
+                       (:pointer 1
+                        :type ("wxButton" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1056 1080])
+                    ("m_dirPicker1" variable
+                       (:pointer 1
+                        :type ("wxDirPickerCtrl" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1083 1113])
+                    ("m_staticText1" variable
+                       (:pointer 1
+                        :type ("wxStaticText" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1116 1144])
+                    ("regenerate" variable
+                       (:pointer 1
+                        :type ("wxButton" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1147 1168])
+                    ("m_grid1OnGridCellLeftClick" function
+                       (:typemodifiers ("virtual")
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxGridEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1279 1299]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1238 1317])
+                    ("delete_buttonOnButtonClick" function
+                       (:typemodifiers ("virtual")
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxCommandEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1361 1384]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1320 1402])
+                    ("m_dirPicker1OnDirChanged" function
+                       (:typemodifiers ("virtual")
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxFileDirPickerEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1444 1473]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1405 1491])
+                    ("regenerateOnButtonClick" function
+                       (:typemodifiers ("virtual")
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxCommandEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1532 1555]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1494 1573])
+                    ("public" label nil (reparse-symbol classsubparts) [1580 1587])
+                    ("rtFrame" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :arguments 
+                          ( ("parent" variable
+                               (:pointer 1
+                                :type ("wxWindow" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1602 1619])
+                            ("id" variable (:type ("wxWindowID" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1620 1635])
+                            ("" variable (:type ("wxID_ANY" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1636 1645])
+                            ("title" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("wxString" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1646 1669])
+                            ("" variable (:type ("wxT" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1670 1689])
+                            ("pos" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("wxPoint" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1691 1711])
+                            ("" variable (:type ("wxDefaultPosition" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1712 1730])
+                            ("size" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("wxSize" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1731 1751])
+                            ("" variable (:type ("wxSize" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1752 1769])
+                            ("style" variable (:type "long") (reparse-symbol arg-sub-list) [1771 1783])
+                            ("" variable (:type ("wxDEFAULT_FRAME_STYLE" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1784 1807]))                          
+                        :type ("rtFrame" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1593 1808])
+                    ("rtFrame" function
+                       (:prototype-flag t
+                        :destructor-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [1814 1825]))                  
+                :type "class")
+                nil [920 1830]))          
+    :file "rt_frame.h"
+    :pointmax 1856
+    :fsize 1915
+    :lastmodtime '(21082 19101 0 0)
+    :unmatched-syntax '((punctuation 1782 . 1783) (semantic-list 1758 . 1769) (punctuation 1750 . 1751) (punctuation 1710 . 1711) (semantic-list 1673 . 1689) (punctuation 1668 . 1669) (punctuation 1634 . 1635))
+    :lexical-table 
+        '(("__RT_FRAME_H__")
+          )
+
+    )
+   (semanticdb-table "database_io.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__database_io_h__" variable (:constant-flag t) nil [35 52])
+            ("string" include (:system-flag t) nil [54 71])
+            ("Poco/Data/Session.h" include nil nil [72 102])
+            ("Poco/Data/Statement.h" include nil nil [103 135])
+            ("Poco/Data/ODBC/Connector.h" include nil nil [136 173])
+            ("Common.h" include nil nil [174 193])
+            ("Triple.h" include nil nil [194 213])
+            ("point.h" include nil nil [214 232])
+            ("rt_structure_set.h" include nil nil [233 262])
+            ("ct_volume.h" include nil nil [263 285])
+            ("Poco::Data" using (:type ("Poco::Data" type
+                 (:prototype t
+                  :type "namespace")
+                  nil nil)) nil [286 313])
+            ("PatientInfo" type
+               (:members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [335 342])
+                    ("approval_status" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [344 405])
+                    ("plan_date" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [344 405])
+                    ("birth_date" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [344 405])
+                    ("sex" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [344 405])
+                    ("name" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [344 405])
+                    ("id" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [344 405])
+                    ("ct_count_" variable (:type "int") (reparse-symbol classsubparts) [407 466])
+                    ("rtdose_count_" variable (:type "int") (reparse-symbol classsubparts) [407 466])
+                    ("rtplan_count_" variable (:type "int") (reparse-symbol classsubparts) [407 466])
+                    ("rtss_count_" variable (:type "int") (reparse-symbol classsubparts) [407 466])
+                    ("key_" variable (:type "int") (reparse-symbol classsubparts) [407 466])
+                    ("<" function
+                       (:operator-flag t
+                        :arguments 
+                          ( ("p" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("PatientInfo" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [483 503]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [468 537])
+                    ("()" function
+                       (:operator-flag t
+                        :type ("std::string" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [539 588]))                  
+                :type "struct")
+                nil [314 591])
+            ("CtImage" type
+               (:members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [610 617])
+                    ("key" variable (:type "int") (reparse-symbol classsubparts) [619 627])
+                    ("patient_key" variable (:type "int") (reparse-symbol classsubparts) [629 645])
+                    ("size_x" variable (:type "unsigned short") (reparse-symbol classsubparts) [647 669])
+                    ("size_y" variable (:type "unsigned short") (reparse-symbol classsubparts) [671 693])
+                    ("size_z" variable (:type "unsigned short") (reparse-symbol classsubparts) [695 717])
+                    ("voxel_spacing_" variable (:type ("dtl::Triple" type
+                         (:template-specifier 
+                            ( ("double" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [719 754])
+                    ("origin_" variable (:type ("dtl::Triple" type
+                         (:template-specifier 
+                            ( ("double" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [756 784])
+                    ("voxel_blob" variable (:type ("Poco::Data::BLOB" type (:type "class") nil nil)) (reparse-symbol classsubparts) [786 814]))                  
+                :type "struct")
+                nil [593 817])
+            ("Rtss" type
+               (:members 
+                  ( ("key_" variable (:type "int") (reparse-symbol classsubparts) [834 843])
+                    ("patient_key" variable (:type "int") (reparse-symbol classsubparts) [845 861])
+                    ("series_uid_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [863 887])
+                    ("label_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [889 908])
+                    ("name_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [910 928])
+                    ("description_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [930 955])
+                    ("date_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [957 975])
+                    ("time_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [977 995]))                  
+                :type "struct")
+                nil [818 998])
+            ("db_roi" type
+               (:members 
+                  ( ("key_" variable (:type "int") (reparse-symbol classsubparts) [1016 1025])
+                    ("rtss_key" variable (:type "int") (reparse-symbol classsubparts) [1027 1040])
+                    ("series_uid" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1042 1065])
+                    ("number_" variable (:type "int") (reparse-symbol classsubparts) [1067 1079])
+                    ("name_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1081 1099])
+                    ("description_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1101 1126])
+                    ("referenced_frame_of_reference_uid_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1128 1175])
+                    ("volume_" variable (:type "double") (reparse-symbol classsubparts) [1177 1192])
+                    ("generation_algorithm_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1194 1228])
+                    ("obs_number_" variable (:type "int") (reparse-symbol classsubparts) [1230 1246])
+                    ("obs_lable_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1248 1271])
+                    ("obs_description_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1273 1302])
+                    ("interpreted_type_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1304 1334])
+                    ("interpreter_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1336 1361])
+                    ("type_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1363 1381])
+                    ("color_r" variable (:type "float") (reparse-symbol classsubparts) [1383 1397])
+                    ("color_g" variable (:type "float") (reparse-symbol classsubparts) [1399 1413])
+                    ("color_b" variable (:type "float") (reparse-symbol classsubparts) [1415 1429])
+                    ("contour_data" variable (:type ("Poco::Data::BLOB" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1431 1461]))                  
+                :type "struct")
+                nil [999 1464])
+            ("Poco" type
+               (:members 
+                  ( ("Data" type
+                       (:members 
+                          ( ("TypeHandler" type
+                               (:type "class"
+                                :members 
+                                  ( ("public" label nil (reparse-symbol classsubparts) [1557 1564])
+                                    ("size" function
+                                       (:typemodifiers ("static")
+                                        :type ("std::size_t" type (:type "class") nil nil))
+                                        (reparse-symbol classsubparts) [1568 1618])
+                                    ("approval_status" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1622 1683])
+                                    ("plan_date" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1622 1683])
+                                    ("birth_date" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1622 1683])
+                                    ("sex" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1622 1683])
+                                    ("name" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1622 1683])
+                                    ("id" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1622 1683])
+                                    ("ct_count_" variable (:type "int") (reparse-symbol classsubparts) [1687 1746])
+                                    ("rtdose_count_" variable (:type "int") (reparse-symbol classsubparts) [1687 1746])
+                                    ("rtplan_count_" variable (:type "int") (reparse-symbol classsubparts) [1687 1746])
+                                    ("rtss_count_" variable (:type "int") (reparse-symbol classsubparts) [1687 1746])
+                                    ("key_" variable (:type "int") (reparse-symbol classsubparts) [1687 1746])
+                                    ("bind" function
+                                       (:typemodifiers ("static")
+                                        :arguments 
+                                          ( ("pos" variable (:type ("std::size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1767 1783])
+                                            ("obj" variable
+                                               (:reference 1
+                                                :constant-flag t
+                                                :type ("PatientInfo" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [1783 1806])
+                                            ("pBinder" variable (:type ("AbstractBinder::Ptr" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1806 1834])
+                                            ("dir" variable (:type ("AbstractBinder::Direction" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1834 1864]))                                          
+                                        :type "void")
+                                        (reparse-symbol classsubparts) [1750 2628])
+                                    ("prepare" function
+                                       (:typemodifiers ("static")
+                                        :arguments 
+                                          ( ("pos" variable (:type ("std::size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2652 2668])
+                                            ("obj" variable
+                                               (:reference 1
+                                                :constant-flag t
+                                                :type ("PatientInfo" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [2669 2692])
+                                            ("pPrepare" variable (:type ("AbstractPreparator::Ptr" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2693 2726]))                                          
+                                        :type "void")
+                                        (reparse-symbol classsubparts) [2632 3513])
+                                    ("extract" function
+                                       (:typemodifiers ("static")
+                                        :arguments 
+                                          ( ("pos" variable (:type ("std::size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3537 3553])
+                                            ("obj" variable
+                                               (:reference 1
+                                                :type ("PatientInfo" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [3554 3571])
+                                            ("defVal" variable
+                                               (:reference 1
+                                                :constant-flag t
+                                                :type ("PatientInfo" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [3572 3598])
+                                            ("pExt" variable (:type ("AbstractExtractor::Ptr" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3599 3627]))                                          
+                                        :type "void")
+                                        (reparse-symbol classsubparts) [3517 4951]))                                  
+                                :template-specifier 
+                                  ( ("PatientInfo" type (:type "class") nil nil))                                  )
+                                (reparse-symbol namespacesubparts) [1500 4956])
+                            ("TypeHandler" type
+                               (:type "class"
+                                :members 
+                                  ( ("public" label nil (reparse-symbol classsubparts) [5012 5019])
+                                    ("size" function
+                                       (:typemodifiers ("static")
+                                        :type ("std::size_t" type (:type "class") nil nil))
+                                        (reparse-symbol classsubparts) [5023 5073])
+                                    ("bind" function
+                                       (:typemodifiers ("static")
+                                        :arguments 
+                                          ( ("pos" variable (:type ("std::size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5094 5110])
+                                            ("obj" variable
+                                               (:reference 1
+                                                :constant-flag t
+                                                :type ("CtImage" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [5110 5129])
+                                            ("pBinder" variable (:type ("AbstractBinder::Ptr" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5129 5157])
+                                            ("dir" variable (:type ("AbstractBinder::Direction" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5157 5187]))                                          
+                                        :type "void")
+                                        (reparse-symbol classsubparts) [5077 6073])
+                                    ("prepare" function
+                                       (:typemodifiers ("static")
+                                        :arguments 
+                                          ( ("pos" variable (:type ("std::size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [6097 6113])
+                                            ("obj" variable
+                                               (:reference 1
+                                                :constant-flag t
+                                                :type ("CtImage" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [6114 6133])
+                                            ("pPrepare" variable (:type ("AbstractPreparator::Ptr" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [6134 6167]))                                          
+                                        :type "void")
+                                        (reparse-symbol classsubparts) [6077 7054])
+                                    ("extract" function
+                                       (:typemodifiers ("static")
+                                        :arguments 
+                                          ( ("pos" variable (:type ("std::size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [7078 7094])
+                                            ("obj" variable
+                                               (:reference 1
+                                                :type ("CtImage" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [7095 7108])
+                                            ("defVal" variable
+                                               (:reference 1
+                                                :constant-flag t
+                                                :type ("CtImage" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [7109 7131])
+                                            ("pExt" variable (:type ("AbstractExtractor::Ptr" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [7132 7160]))                                          
+                                        :type "void")
+                                        (reparse-symbol classsubparts) [7058 8833]))                                  
+                                :template-specifier 
+                                  ( ("CtImage" type (:type "class") nil nil))                                  )
+                                (reparse-symbol namespacesubparts) [4959 8838])
+                            ("TypeHandler" type
+                               (:type "class"
+                                :members 
+                                  ( ("public" label nil (reparse-symbol classsubparts) [8891 8898])
+                                    ("size" function
+                                       (:typemodifiers ("static")
+                                        :type ("std::size_t" type (:type "class") nil nil))
+                                        (reparse-symbol classsubparts) [8902 8951])
+                                    ("bind" function
+                                       (:typemodifiers ("static")
+                                        :arguments 
+                                          ( ("pos" variable (:type ("std::size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [8972 8988])
+                                            ("obj" variable
+                                               (:reference 1
+                                                :constant-flag t
+                                                :type ("Rtss" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [8988 9004])
+                                            ("pBinder" variable (:type ("AbstractBinder::Ptr" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [9004 9032])
+                                            ("dir" variable (:type ("AbstractBinder::Direction" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [9032 9062]))                                          
+                                        :type "void")
+                                        (reparse-symbol classsubparts) [8955 9636])
+                                    ("prepare" function
+                                       (:typemodifiers ("static")
+                                        :arguments 
+                                          ( ("pos" variable (:type ("std::size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [9660 9676])
+                                            ("obj" variable
+                                               (:reference 1
+                                                :constant-flag t
+                                                :type ("Rtss" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [9677 9693])
+                                            ("pPrepare" variable (:type ("AbstractPreparator::Ptr" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [9694 9727]))                                          
+                                        :type "void")
+                                        (reparse-symbol classsubparts) [9640 10302])
+                                    ("extract" function
+                                       (:typemodifiers ("static")
+                                        :arguments 
+                                          ( ("pos" variable (:type ("std::size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [10326 10342])
+                                            ("obj" variable
+                                               (:reference 1
+                                                :type ("Rtss" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [10343 10353])
+                                            ("defVal" variable
+                                               (:reference 1
+                                                :constant-flag t
+                                                :type ("Rtss" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [10354 10373])
+                                            ("pExt" variable (:type ("AbstractExtractor::Ptr" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [10374 10402]))                                          
+                                        :type "void")
+                                        (reparse-symbol classsubparts) [10306 11422]))                                  
+                                :template-specifier 
+                                  ( ("Rtss" type (:type "class") nil nil))                                  )
+                                (reparse-symbol namespacesubparts) [8841 11427])
+                            ("TypeHandler" type
+                               (:type "class"
+                                :members 
+                                  ( ("public" label nil (reparse-symbol classsubparts) [11482 11489])
+                                    ("size" function
+                                       (:typemodifiers ("static")
+                                        :type ("std::size_t" type (:type "class") nil nil))
+                                        (reparse-symbol classsubparts) [11493 11543])
+                                    ("bind" function
+                                       (:typemodifiers ("static")
+                                        :arguments 
+                                          ( ("pos" variable (:type ("std::size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [11564 11580])
+                                            ("obj" variable
+                                               (:reference 1
+                                                :constant-flag t
+                                                :type ("db_roi" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [11580 11598])
+                                            ("pBinder" variable (:type ("AbstractBinder::Ptr" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [11598 11626])
+                                            ("dir" variable (:type ("AbstractBinder::Direction" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [11626 11656]))                                          
+                                        :type "void")
+                                        (reparse-symbol classsubparts) [11547 13010])
+                                    ("prepare" function
+                                       (:typemodifiers ("static")
+                                        :arguments 
+                                          ( ("pos" variable (:type ("std::size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [13034 13050])
+                                            ("obj" variable
+                                               (:reference 1
+                                                :constant-flag t
+                                                :type ("db_roi" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [13051 13069])
+                                            ("pPrepare" variable (:type ("AbstractPreparator::Ptr" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [13070 13103]))                                          
+                                        :type "void")
+                                        (reparse-symbol classsubparts) [13014 14458])
+                                    ("extract" function
+                                       (:typemodifiers ("static")
+                                        :arguments 
+                                          ( ("pos" variable (:type ("std::size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [14482 14498])
+                                            ("obj" variable
+                                               (:reference 1
+                                                :type ("db_roi" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [14499 14511])
+                                            ("defVal" variable
+                                               (:reference 1
+                                                :constant-flag t
+                                                :type ("db_roi" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [14512 14533])
+                                            ("pExt" variable (:type ("AbstractExtractor::Ptr" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [14534 14562]))                                          
+                                        :type "void")
+                                        (reparse-symbol classsubparts) [14462 17259]))                                  
+                                :template-specifier 
+                                  ( ("db_roi" type (:type "class") nil nil))                                  )
+                                (reparse-symbol namespacesubparts) [11430 17264]))                          
+                        :type "namespace")
+                        (reparse-symbol namespacesubparts) [1482 17267]))                  
+                :type "namespace")
+                nil [1465 17269])
+            ("DatabaseIO" type
+               (:members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [17290 17297])
+                    ("DatabaseIO" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :type ("DatabaseIO" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [17299 17312])
+                    ("DatabaseIO" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :arguments 
+                          ( ("_dsn" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [17325 17342]))                          
+                        :type ("DatabaseIO" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [17314 17343])
+                    ("DatabaseIO" function
+                       (:prototype-flag t
+                        :destructor-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [17345 17359])
+                    ("CreateTables" function
+                       (:prototype-flag t
+                        :type "bool")
+                        (reparse-symbol classsubparts) [17361 17381])
+                    ("DropTables" function
+                       (:prototype-flag t
+                        :type "bool")
+                        (reparse-symbol classsubparts) [17383 17401])
+                    ("DeletePatient" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("patient_key" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [17422 17446]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [17403 17447])
+                    ("ReadPatientList" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("patient" variable
+                               (:reference 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("PatientInfo" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [17470 17503]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [17449 17504])
+                    ("ReadPatientList" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("patient" variable
+                               (:reference 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("PatientInfo" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [17527 17560])
+                            ("patient_key" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [17560 17584]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [17506 17585])
+                    ("WritePatientList" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("patient" variable
+                               (:reference 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("PatientInfo" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [17609 17644]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [17587 17645])
+                    ("GetStructureSet" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("rtss_list" variable
+                               (:reference 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("dtl::rtStructureSet" type (:pointer 1) nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [17668 17712]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [17647 17713])
+                    ("GetStructureSet" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("rtss_list" variable
+                               (:reference 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("dtl::rtStructureSet" type (:pointer 1) nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [17736 17780])
+                            ("patient_key" variable (:type "int") (reparse-symbol arg-sub-list) [17780 17796]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [17715 17797])
+                    ("SetSturctureSet" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("rtss_list" variable
+                               (:reference 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("dtl::rtStructureSet" type (:pointer 1) nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [17820 17865])
+                            ("patient_key" variable (:type "int") (reparse-symbol arg-sub-list) [17865 17881]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [17799 17882])
+                    ("SetCtVolumn" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("ct_volume_list" variable
+                               (:reference 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("dtl::ctVolume" type (:pointer 1) nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [17901 17944])
+                            ("patient_key" variable (:type "int") (reparse-symbol arg-sub-list) [17944 17960]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [17884 17961])
+                    ("GetCtVolumn" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("ct_volume_list" variable
+                               (:reference 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("dtl::ctVolume" type (:pointer 1) nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [17980 18023])
+                            ("patient_key" variable (:type "int") (reparse-symbol arg-sub-list) [18023 18039]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [17963 18040])
+                    ("NextPatientKey" function
+                       (:prototype-flag t
+                        :type "int")
+                        (reparse-symbol classsubparts) [18042 18063])
+                    ("private" label nil (reparse-symbol classsubparts) [18064 18072])
+                    ("NextRtssKey" function
+                       (:prototype-flag t
+                        :type "int")
+                        (reparse-symbol classsubparts) [18074 18092])
+                    ("ReadCtImage" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("image" variable
+                               (:reference 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("CtImage" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [18111 18138]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [18094 18139])
+                    ("ReadCtImage" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("image" variable
+                               (:reference 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("CtImage" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [18158 18185])
+                            ("patient_key" variable (:type "int") (reparse-symbol arg-sub-list) [18185 18201]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [18141 18202])
+                    ("WriteCtImage" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("image" variable
+                               (:reference 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("CtImage" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [18222 18251]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [18204 18252])
+                    ("ReadRtss" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("rtss_" variable
+                               (:reference 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("Rtss" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [18268 18292]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [18254 18293])
+                    ("ReadRtss" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("rtss_" variable
+                               (:reference 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("Rtss" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [18309 18333])
+                            ("patient_key" variable (:type "int") (reparse-symbol arg-sub-list) [18333 18349]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [18295 18350])
+                    ("WriteRtss" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("rtss_" variable
+                               (:reference 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("Rtss" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [18367 18393]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [18352 18394])
+                    ("ReadRoi" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("roi_" variable
+                               (:reference 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("db_roi" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [18409 18434]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [18396 18435])
+                    ("ReadRoi" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("roi_" variable
+                               (:reference 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("db_roi" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [18450 18475])
+                            ("rtss_key" variable (:type "int") (reparse-symbol arg-sub-list) [18475 18488]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [18437 18489])
+                    ("WriteRoi" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("roi_" variable
+                               (:reference 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("db_roi" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [18505 18532]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [18491 18533])
+                    ("sess_ptr" variable
+                       (:pointer 1
+                        :type ("Session" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [18535 18554])
+                    ("stm_ptr" variable
+                       (:pointer 1
+                        :type ("Statement" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [18556 18576]))                  
+                :type "class")
+                nil [17271 18581]))          
+    :file "database_io.h"
+    :pointmax 18611
+    :fsize 19049
+    :lastmodtime '(21096 52571 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("__database_io_h__")
+          )
+
+    )
+   (semanticdb-table "rt_view.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("wx/msgdlg.h" include (:system-flag t) nil [1 23])
+            ("rt_view.h" include nil nil [24 44])
+            ("rt_app.h" include nil nil [45 64])
+            ("dicom_patient_dir_io2.h" include nil nil [65 99])
+            ("wx/dir.h" include nil nil [100 119])
+            ("dicom_ct_volume_io2.h" include nil nil [120 152])
+            ("ct_volume.h" include nil nil [153 175])
+            ("database_io.h" include nil nil [176 200])
+            ("dicom_rt_structure_set_io2.h" include nil nil [201 240])
+            ("dcmtk/config/osconfig.h" include nil nil [241 275])
+            ("dcmtk/dcmnet/scu.h" include nil nil [276 305])
+            ("dcmtk/dcmnet/diutil.h" include nil nil [306 338])
+            ("rtView" function
+               (:constructor-flag t
+                :parent "rtView"
+                :arguments 
+                  ( ("parent" variable
+                       (:pointer 1
+                        :type ("wxWindow" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1210 1228]))                  
+                :type ("rtView" type (:type "class") nil nil))
+                nil [1194 5077])
+            ("rtView" function
+               (:destructor-flag t
+                :parent "rtView"
+                :type "void")
+                nil [5078 5099])
+            ("std" using (:type ("std" type
+                 (:prototype t
+                  :type "namespace")
+                  nil nil)) nil [5101 5122])
+            ("dtl" using (:type ("dtl" type
+                 (:prototype t
+                  :type "namespace")
+                  nil nil)) nil [5123 5143])
+            ("m_grid1OnGridCellLeftClick" function
+               (:parent "rtView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxGridEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5185 5205]))                  
+                :type "void")
+                nil [5144 5321])
+            ("delete_buttonOnButtonClick" function
+               (:parent "rtView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxCommandEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5364 5387]))                  
+                :type "void")
+                nil [5323 5508])
+            ("m_dirPicker1OnDirChanged" function
+               (:parent "rtView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxFileDirPickerEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5549 5578]))                  
+                :type "void")
+                nil [5510 7121])
+            ("RefleshGrid" function
+               (:parent "rtView"
+                :type "void")
+                nil [7124 7894])
+            ("m_grid2OnGridCellLeftClick" function
+               (:parent "rtView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxGridEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7937 7957]))                  
+                :type "void")
+                nil [7896 7962])
+            ("regenerateOnButtonClick" function
+               (:parent "rtView"
+                :arguments 
+                  ( ("event" variable
+                       (:reference 1
+                        :type ("wxCommandEvent" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [8002 8025]))                  
+                :type "void")
+                nil [7964 8186]))          
+    :file "rt_view.cpp"
+    :pointmax 8187
+    :fsize 8443
+    :lastmodtime '(21096 55080 0 0)
+    :unmatched-syntax '((punctuation 7121 . 7122) (punctuation 5508 . 5509) (punctuation 5321 . 5322))
+    )
+   (semanticdb-table "rt_app.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__rt_app_h__" variable (:constant-flag t) nil [31 43])
+            ("wx/wx.h" include (:system-flag t) nil [46 64])
+            ("rt_view.h" include nil nil [66 86])
+            ("rtViewerApp" type
+               (:superclasses 
+                  ( ("wxApp" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [122 129])
+                    ("OnInit" function
+                       (:prototype-flag t
+                        :typemodifiers ("virtual")
+                        :type "bool")
+                        (reparse-symbol classsubparts) [131 153])
+                    ("rtViewerApp" function
+                       (:prototype-flag t
+                        :destructor-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [155 170])
+                    ("private" label nil (reparse-symbol classsubparts) [172 180])
+                    ("public" label nil (reparse-symbol classsubparts) [181 188]))                  
+                :type "class")
+                nil [88 191]))          
+    :file "rt_app.h"
+    :pointmax 259
+    :fsize 282
+    :lastmodtime '(21079 36463 0 0)
+    :unmatched-syntax '((semantic-list 236 . 249) (symbol 225 . 236))
+    :lexical-table 
+        '(("__rt_app_h__")
+          )
+
+    )
+   (semanticdb-table "dicom_patient_dir_io2.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__dtl_dicom_patient_dir_io2_h__" variable (:constant-flag t) nil [50 81])
+            ("patient_dir.h" include nil nil [83 107])
+            ("DicomPatientDirIO2" type
+               (:members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [140 147])
+                    ("Read" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("path" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [162 179])
+                            ("pd" variable
+                               (:pointer 1
+                                :type ("dtl::PatientDir" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [180 200]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [152 201]))                  
+                :type "class")
+                nil [110 206]))          
+    :file "dicom_patient_dir_io2.h"
+    :pointmax 215
+    :fsize 229
+    :lastmodtime '(21061 8615 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("__dtl_dicom_patient_dir_io2_h__")
+          )
+
+    )
+   (semanticdb-table "dicom_ct_volume_io2.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__dtl_dicom_ct_volume_io2_h__" variable (:constant-flag t) nil [47 76])
+            ("vector" include (:system-flag t) nil [78 95])
+            ("ct_volume.h" include nil nil [96 118])
+            ("patient_dir.h" include nil nil [119 143])
+            ("dicom_io_base.h" include nil nil [144 170])
+            ("dtl" using (:type ("dtl" type
+                 (:prototype t
+                  :type "namespace")
+                  nil nil)) nil [172 192])
+            ("DicomCTVolumeIO2" type
+               (:superclasses 
+                  ( ("DicomIOBase" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [241 248])
+                    ("Read" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("filenames" variable (:type ("std::vector" type
+                                 (:template-specifier 
+                                    ( ("std::string" type nil nil nil))                                    
+                                  :type "class")
+                                  nil nil)) (reparse-symbol arg-sub-list) [262 297])
+                            ("vol" variable
+                               (:pointer 1
+                                :type ("ctVolume" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [297 311]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [252 312])
+                    ("Write" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("filenames" variable (:type ("std::vector" type
+                                 (:template-specifier 
+                                    ( ("std::string" type nil nil nil))                                    
+                                  :type "class")
+                                  nil nil)) (reparse-symbol arg-sub-list) [332 367])
+                            ("vol" variable
+                               (:pointer 1
+                                :type ("ctVolume" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [367 381])
+                            ("patient_dir" variable
+                               (:pointer 1
+                                :type ("PatientDir" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [381 405]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [321 406]))                  
+                :type "class")
+                nil [194 410]))          
+    :file "dicom_ct_volume_io2.h"
+    :pointmax 419
+    :fsize 436
+    :lastmodtime '(21061 8614 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("__dtl_dicom_ct_volume_io2_h__")
+          )
+
+    )
+   (semanticdb-table "dicom_io_base.h"
+    :file "dicom_io_base.h"
+    :fsize 328
+    :lastmodtime '(21061 8614 0 0)
+    )
+   (semanticdb-table "dicom_rt_structure_set_io2.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__dtl_rt_structure_set_io2_h__" variable (:constant-flag t) nil [48 78])
+            ("string" include (:system-flag t) nil [79 96])
+            ("rt_structure_set.h" include nil nil [97 126])
+            ("export.h" include nil nil [127 146])
+            ("rt_structure_set.h" include nil nil [147 176])
+            ("dcmtk\\dcmdata\\dcdeftag.h" include nil nil [177 212])
+            ("patient_dir.h" include nil nil [213 237])
+            ("dicom_io_base.h" include nil nil [238 264])
+            ("rtStructureSetIO2" type
+               (:superclasses 
+                  ( ("DicomIOBase" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [311 318])
+                    ("Read" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("filename" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [333 354])
+                            ("rtss" variable
+                               (:pointer 1
+                                :type ("dtl::rtStructureSet" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [355 381]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [323 382])
+                    ("Write" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("filename" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [395 416])
+                            ("rtss" variable
+                               (:pointer 1
+                                :type ("dtl::rtStructureSet" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [416 442])
+                            ("patient_dir" variable
+                               (:pointer 1
+                                :type ("dtl::PatientDir" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [442 472])
+                            ("contour_location" variable (:type ("std::vector" type
+                                 (:template-specifier 
+                                    ( ("double" type nil nil nil))                                    
+                                  :type "class")
+                                  nil nil)) (reparse-symbol arg-sub-list) [472 509])
+                            ("ct_image_uid" variable (:type ("std::vector" type
+                                 (:template-specifier 
+                                    ( ("std::string" type nil nil nil))                                    
+                                  :type "class")
+                                  nil nil)) (reparse-symbol arg-sub-list) [509 548]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [384 549]))                  
+                :type "class")
+                nil [266 552]))          
+    :file "dicom_rt_structure_set_io2.h"
+    :pointmax 560
+    :fsize 576
+    :lastmodtime '(21061 8614 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("__dtl_rt_structure_set_io2_h__")
+          )
+
+    )
+   )
+  :file "!drive_d!rtSuite!code!app_rtviewer!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

@@ -1,0 +1,118 @@
+;; Object vc/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "vc/"
+  :tables (list 
+   (semanticdb-table "ediff-hook.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("ediff-menu" variable nil nil [1349 1368])
+            ("ediff-merge-menu" variable nil nil [1369 1394])
+            ("epatch-menu" variable nil nil [1395 1415])
+            ("ediff-misc-menu" variable nil nil [1416 1440])
+            ("ediff-window-setup-function" variable nil nil [1521 1557])
+            ("if" code nil nil [1685 11939])
+            ("ediff-hook" package nil nil [11941 11962]))          
+    :file "ediff-hook.el"
+    :pointmax 11993
+    :fsize 11992
+    :lastmodtime '(20806 7945 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "vc-hooks.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("cl-lib" include nil nil [1181 1198])
+            ("vc-ignore-dir-regexp" variable (:default-value locate-dominating-stop-dir-regexp) nil [1252 1630])
+            ("vc-handled-backends" variable (:default-value (quote (RCS CVS SVN SCCS Bzr Git Hg Mtn Arch))) nil [1632 2298])
+            ("vc-directory-exclusion-list" variable (:default-value (purecopy (quote ("SCCS" "RCS" "CVS" "MCVS" ".svn" ".git" ".hg" ".bzr" "_MTN" "_darcs" "{arch}")))) nil [2412 2665])
+            ("vc-make-backup-files" variable nil nil [2667 2898])
+            ("vc-follow-symlinks" variable (:default-value (quote ask)) nil [2900 3521])
+            ("vc-display-status" variable (:default-value t) nil [3523 3680])
+            ("vc-consult-headers" variable (:default-value t) nil [3683 3815])
+            ("vc-keep-workfiles" variable (:default-value t) nil [3817 4027])
+            ("vc-mistrust-permissions" variable (:default-value t) nil [4093 4377])
+            ("vc-mistrust-permissions" function (:arguments ("file")) nil [4379 4649])
+            ("vc-stay-local" variable (:default-value (quote only-file)) nil [4651 5864])
+            ("vc-stay-local-p" function (:arguments ("file" "backend")) nil [5866 7113])
+            ("put" code nil nil [7268 7306])
+            ("make-variable-buffer-local" code nil nil [7307 7344])
+            ("put" code nil nil [7345 7378])
+            ("vc-mode" function (:arguments ("arg")) nil [7380 7712])
+            ("vc-error-occurred" function (:arguments ("body")) nil [7714 7808])
+            ("vc-file-prop-obarray" variable (:default-value (make-vector 17 0)) nil [8088 8173])
+            ("vc-touched-properties" variable nil nil [8175 8209])
+            ("vc-file-setprop" function (:arguments ("file" "property" "value")) nil [8211 8534])
+            ("vc-file-getprop" function (:arguments ("file" "property")) nil [8536 8666])
+            ("vc-file-clearprops" function (:arguments ("file")) nil [8668 8870])
+            ("vc-make-backend-sym" function (:arguments ("backend" "sym")) nil [9016 9196])
+            ("vc-find-backend-function" function (:arguments ("backend" "fun")) nil [9198 9711])
+            ("vc-call-backend" function (:arguments ("backend" "function-name" "args")) nil [9713 10454])
+            ("vc-call" function (:arguments ("fun" "file" "args")) nil [10456 10785])
+            ("vc-parse-buffer" function (:arguments ("pattern" "i")) nil [10788 10984])
+            ("vc-insert-file" function (:arguments ("file" "limit" "blocksize")) nil [10986 12005])
+            ("vc-find-root" function (:arguments ("file" "witness")) nil [12007 12379])
+            ("vc-registered" function (:arguments ("file")) nil [12734 13972])
+            ("vc-backend" function (:arguments ("file-or-list")) nil [13974 14766])
+            ("vc-backend-subdirectory-name" function (:arguments ("file")) nil [14769 14913])
+            ("vc-name" function (:arguments ("file")) nil [14915 15415])
+            ("vc-checkout-model" function (:arguments ("backend" "files")) nil [15417 16129])
+            ("vc-user-login-name" function (:arguments ("file")) nil [16131 16902])
+            ("vc-state" function (:arguments ("file" "backend")) nil [16904 20303])
+            ("vc-state-refresh" function (:arguments ("file" "backend")) nil [20305 20476])
+            ("vc-up-to-date-p" function (:arguments ("file")) nil [20478 20627])
+            ("vc-default-state-heuristic" function (:arguments ("backend" "file")) nil [20629 20890])
+            ("vc-workfile-unchanged-p" function (:arguments ("file")) nil [20892 21578])
+            ("vc-default-workfile-unchanged-p" function (:arguments ("backend" "file")) nil [21580 22546])
+            ("vc-working-revision" function (:arguments ("file" "backend")) nil [22548 22958])
+            ("define-obsolete-function-alias" code nil nil [22987 23070])
+            ("vc-default-working-revision" function (:arguments ("backend" "file")) nil [23071 23260])
+            ("vc-default-registered" function (:arguments ("backend" "file")) nil [23262 23689])
+            ("vc-possible-master" function (:arguments ("s" "dirname" "basename")) nil [23711 24214])
+            ("vc-check-master-templates" function (:arguments ("file" "templates")) nil [24216 25650])
+            ("define-obsolete-function-alias" code nil nil [25652 25732])
+            ("vc-default-make-version-backups-p" function (:arguments ("backend" "file")) nil [25734 25910])
+            ("vc-version-backup-file-name" function (:arguments ("file" "rev" "manual" "regexp")) nil [25912 26684])
+            ("vc-delete-automatic-version-backups" function (:arguments ("file")) nil [26686 27050])
+            ("vc-make-version-backup" function (:arguments ("file")) nil [27052 27776])
+            ("vc-before-save" function nil nil [27778 28504])
+            ("declare-function" code nil nil [28506 28571])
+            ("vc-dir-buffers" variable nil nil [28573 28626])
+            ("vc-after-save" function nil nil [28628 29558])
+            ("vc-menu-entry" variable (:default-value (\` (menu-item (\, (purecopy "Version Control")) vc-menu-map :filter vc-menu-map-filter))) nil [29560 29670])
+            ("when" code nil nil [29672 29932])
+            ("vc-mode-line-map" variable
+               (:constant-flag t
+                :default-value (let ((map (make-sparse-keymap))) (define-key map [mode-line down-mouse-1] vc-menu-entry) map))
+                nil [29934 30066])
+            ("vc-mode-line" function
+               (:user-visible-flag t
+                :arguments ("file" "backend"))
+                nil [30068 31393])
+            ("vc-default-mode-line-string" function (:arguments ("backend" "file")) nil [31395 33332])
+            ("vc-follow-link" function nil nil [33334 34071])
+            ("vc-default-find-file-hook" function (:arguments ("backend")) nil [34073 34122])
+            ("vc-find-file-hook" function nil nil [34124 36083])
+            ("add-hook" code nil nil [36085 36130])
+            ("vc-kill-buffer-hook" function nil nil [36132 36284])
+            ("add-hook" code nil nil [36286 36335])
+            ("vc-prefix-map" variable (:default-value (let ((map (make-sparse-keymap))) (define-key map "a" (quote vc-update-change-log)) (define-key map "b" (quote vc-switch-backend)) (define-key map "c" (quote vc-rollback)) (define-key map "d" (quote vc-dir)) (define-key map "g" (quote vc-annotate)) (define-key map "h" (quote vc-insert-headers)) (define-key map "i" (quote vc-register)) (define-key map "l" (quote vc-print-log)) (define-key map "L" (quote vc-print-root-log)) (define-key map "I" (quote vc-log-incoming)) (define-key map "O" (quote vc-log-outgoing)) (define-key map "m" (quote vc-merge)) (define-key map "r" (quote vc-retrieve-tag)) (define-key map "s" (quote vc-create-tag)) (define-key map "u" (quote vc-revert)) (define-key map "v" (quote vc-next-action)) (define-key map "+" (quote vc-update)) (define-key map "=" (quote vc-diff)) (define-key map "D" (quote vc-root-diff)) (define-key map "~" (quote vc-revision-other-window)) map)) nil [36694 37564])
+            ("fset" code nil nil [37565 37600])
+            ("define-key" code nil nil [37601 37642])
+            ("vc-menu-map" variable (:default-value (let ((map (make-sparse-keymap "Version Control"))) (bindings--define-key map [vc-retrieve-tag] (quote (menu-item "Retrieve Tag" vc-retrieve-tag :help "Retrieve tagged version or branch"))) (bindings--define-key map [vc-create-tag] (quote (menu-item "Create Tag" vc-create-tag :help "Create version tag"))) (bindings--define-key map [separator1] menu-bar-separator) (bindings--define-key map [vc-annotate] (quote (menu-item "Annotate" vc-annotate :help "Display the edit history of the current file using colors"))) (bindings--define-key map [vc-rename-file] (quote (menu-item "Rename File" vc-rename-file :help "Rename file"))) (bindings--define-key map [vc-revision-other-window] (quote (menu-item "Show Other Version" vc-revision-other-window :help "Visit another version of the current file in another window"))) (bindings--define-key map [vc-diff] (quote (menu-item "Compare with Base Version" vc-diff :help "Compare file set with the base version"))) (bindings--define-key map [vc-root-diff] (quote (menu-item "Compare Tree with Base Version" vc-root-diff :help "Compare current tree with the base version"))) (bindings--define-key map [vc-update-change-log] (quote (menu-item "Update ChangeLog" vc-update-change-log :help "Find change log file and add entries from recent version control logs"))) (bindings--define-key map [vc-log-out] (quote (menu-item "Show Outgoing Log" vc-log-outgoing :help "Show a log of changes that will be sent with a push operation"))) (bindings--define-key map [vc-log-in] (quote (menu-item "Show Incoming Log" vc-log-incoming :help "Show a log of changes that will be received with a pull operation"))) (bindings--define-key map [vc-print-log] (quote (menu-item "Show History" vc-print-log :help "List the change log of the current file set in a window"))) (bindings--define-key map [vc-print-root-log] (quote (menu-item "Show Top of the Tree History " vc-print-root-log :help "List the change log for the current tree in a window"))) (bindings--define-key map [separator2] menu-bar-separator) (bindings--define-key map [vc-insert-header] (quote (menu-item "Insert Header" vc-insert-headers :help "Insert headers into a file for use with a version control system.
+"))) (bindings--define-key map [undo] (quote (menu-item "Undo Last Check-In" vc-rollback :help "Remove the most recent changeset committed to the repository"))) (bindings--define-key map [vc-revert] (quote (menu-item "Revert to Base Version" vc-revert :help "Revert working copies of the selected file set to their repository contents"))) (bindings--define-key map [vc-update] (quote (menu-item "Update to Latest Version" vc-update :help "Update the current fileset's files to their tip revisions"))) (bindings--define-key map [vc-next-action] (quote (menu-item "Check In/Out" vc-next-action :help "Do the next logical version control operation on the current fileset"))) (bindings--define-key map [vc-register] (quote (menu-item "Register" vc-register :help "Register file set into a version control system"))) (bindings--define-key map [vc-dir] (quote (menu-item "VC Dir" vc-dir :help "Show the VC status of files in a directory"))) map)) nil [37644 41040])
+            ("defalias" code nil nil [41042 41077])
+            ("declare-function" code nil nil [41079 41132])
+            ("vc-menu-map-filter" function (:arguments ("orig-binding")) nil [41134 41718])
+            ("vc-default-extra-menu" function (:arguments ("backend")) nil [41720 41765])
+            ("vc-hooks" package nil nil [41767 41786]))          
+    :file "vc-hooks.el"
+    :pointmax 41814
+    :fsize 41813
+    :lastmodtime '(20806 7946 0 0)
+    :unmatched-syntax '((close-paren 1198 . 1199) (symbol 1163 . 1180) (open-paren 1162 . 1163))
+    )
+   )
+  :file "!drive_c!emacs-24.3!lisp!vc!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

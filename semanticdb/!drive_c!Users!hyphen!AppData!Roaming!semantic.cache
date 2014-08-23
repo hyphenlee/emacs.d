@@ -1,0 +1,20 @@
+;; Object Roaming/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "Roaming/"
+  :tables (list 
+   (semanticdb-table ".emacs"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("setenv" code nil nil [1 34])
+            ("load-file" code nil nil [35 57]))          
+    :file ".emacs"
+    :pointmax 58
+    :fsize 59
+    :lastmodtime '(21088 53882 0 0)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!drive_c!Users!hyphen!AppData!Roaming!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

@@ -1,0 +1,120 @@
+;; Object gtags/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "gtags/"
+  :tables (list 
+   (semanticdb-table "gtags.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("gtags-mode" variable nil nil [2344 2405])
+            ("make-variable-buffer-local" code nil nil [2406 2446])
+            ("gtags" customgroup (:user-visible-flag t) nil [2483 2588])
+            ("gtags-path-style" variable
+               (:user-visible-flag t
+                :default-value (quote root))
+                nil [2590 2907])
+            ("gtags-read-only" variable nil nil [2909 2998])
+            ("gtags-pop-delete" variable (:user-visible-flag t) nil [3000 3116])
+            ("gtags-select-buffer-single" variable (:user-visible-flag t) nil [3118 3241])
+            ("gtags-disable-pushy-mouse-mapping" variable (:user-visible-flag t) nil [3243 3373])
+            ("gtags-suggested-key-mapping" variable (:user-visible-flag t) nil [3375 3502])
+            ("gtags-use-old-key-map" variable (:user-visible-flag t) nil [3504 3619])
+            ("gtags-grep-all-text-files" variable (:user-visible-flag t) nil [3621 3765])
+            ("gtags-current-buffer" variable nil nil [3780 3833])
+            ("gtags-buffer-stack" variable nil nil [3834 3893])
+            ("gtags-point-stack" variable nil nil [3894 3952])
+            ("gtags-history-list" variable nil nil [3953 4008])
+            ("gtags-symbol-regexp" variable
+               (:constant-flag t
+                :default-value "[A-Za-z_][A-Za-z_0-9]*")
+                nil [4009 4094])
+            ("gtags-definition-regexp" variable
+               (:constant-flag t
+                :default-value "#[ 	]*define[ 	]+\\|ENTRY(\\|ALTENTRY(")
+                nil [4095 4213])
+            ("gtags-mode-map" variable (:default-value (make-sparse-keymap)) nil [4214 4289])
+            ("gtags-select-mode-map" variable (:default-value (make-sparse-keymap)) nil [4290 4379])
+            ("gtags-running-xemacs" variable (:default-value (string-match "XEmacs\\|Lucid" emacs-version)) nil [4380 4501])
+            ("gtags-rootdir" variable nil nil [4502 4563])
+            ("gtags-global-command" variable nil nil [4564 4625])
+            ("setq" code nil nil [4656 4706])
+            ("if" code nil nil [4707 4816])
+            ("if" code nil nil [4848 6044])
+            ("if" code nil nil [6090 7233])
+            ("if" code nil nil [7272 8447])
+            ("gtags-tramp-path-regexp" variable
+               (:constant-flag t
+                :default-value "^/\\([^:]+\\):\\([^:]+\\):\\(.*\\)")
+                nil [8604 8712])
+            ("gtags-tramp-user-host-regexp" variable
+               (:constant-flag t
+                :default-value "^\\([^@]+\\)@\\(.*\\)")
+                nil [8713 8818])
+            ("gtags-tramp-active" variable nil nil [8819 8870])
+            ("gtags-tramp-saved-global-command" variable nil nil [8871 8961])
+            ("gtags-buffer-file-name" function nil nil [9000 9159])
+            ("gtags-push-tramp-environment" function nil nil [9161 11198])
+            ("gtags-pop-tramp-environment" function nil nil [11200 11521])
+            ("gtags-match-string" function (:arguments ("n")) nil [11565 11650])
+            ("gtags-current-token" function nil nil [11719 12159])
+            ("gtags-push-context" function nil nil [12194 12354])
+            ("gtags-pop-context" function nil nil [12382 12697])
+            ("gtags-exist-in-stack" function (:arguments ("buffer")) nil [12735 12807])
+            ("gtags-current-lineno" function nil nil [12836 13060])
+            ("gtags-completing-gtags" function (:arguments ("string" "predicate" "code")) nil [13107 13211])
+            ("gtags-completing-grtags" function (:arguments ("string" "predicate" "code")) nil [13212 13318])
+            ("gtags-completing-gsyms" function (:arguments ("string" "predicate" "code")) nil [13319 13423])
+            ("gtags-completing-files" function (:arguments ("string" "predicate" "code")) nil [13424 13528])
+            ("gtags-completing-idutils" function (:arguments ("string" "predicate" "code")) nil [13529 13637])
+            ("gtags-completing" function (:arguments ("flag" "string" "predicate" "code")) nil [13710 15256])
+            ("gtags-get-rootpath" function nil nil [15299 15692])
+            ("gtags-decode-pathname" function (:arguments ("path")) nil [15817 16208])
+            ("gtags-visit-rootdir" function (:user-visible-flag t) nil [16238 16869])
+            ("gtags-find-tag" function
+               (:user-visible-flag t
+                :arguments ("other-win"))
+                nil [16871 17404])
+            ("gtags-find-tag-other-window" function (:user-visible-flag t) nil [17406 17544])
+            ("gtags-find-rtag" function (:user-visible-flag t) nil [17546 18075])
+            ("gtags-find-symbol" function (:user-visible-flag t) nil [18077 18585])
+            ("gtags-find-pattern" function (:user-visible-flag t) nil [18587 18723])
+            ("gtags-find-with-grep" function (:user-visible-flag t) nil [18725 19259])
+            ("gtags-find-with-idutils" function (:user-visible-flag t) nil [19261 19800])
+            ("gtags-find-file" function (:user-visible-flag t) nil [19802 20186])
+            ("gtags-parse-file" function (:user-visible-flag t) nil [20188 20653])
+            ("gtags-find-tag-from-here" function (:user-visible-flag t) nil [20655 20931])
+            ("gtags-display-browser" function (:user-visible-flag t) nil [21020 21416])
+            ("if" code nil nil [21516 21617])
+            ("gtags-find-tag-by-event" function
+               (:user-visible-flag t
+                :arguments ("event"))
+                nil [21620 22300])
+            ("gtags-select-tag" function
+               (:user-visible-flag t
+                :arguments ("other-win"))
+                nil [22302 22477])
+            ("gtags-select-tag-other-window" function (:user-visible-flag t) nil [22479 22630])
+            ("gtags-select-tag-by-event" function
+               (:user-visible-flag t
+                :arguments ("event"))
+                nil [22632 23020])
+            ("gtags-pop-stack" function (:user-visible-flag t) nil [23022 23944])
+            ("gtags-goto-tag" function (:arguments ("tagname" "flag" "other-win")) nil [23992 28748])
+            ("gtags-select-it" function (:arguments ("delete" "other-win")) nil [28782 29931])
+            ("gtags-make-complete-list" function (:user-visible-flag t) nil [29968 30153])
+            ("gtags-mode" function
+               (:user-visible-flag t
+                :arguments ("forces"))
+                nil [30170 31855])
+            ("gtags-select-mode" function (:user-visible-flag t) nil [31883 32649])
+            ("gtags" package nil nil [32651 32667]))          
+    :file "gtags.el"
+    :pointmax 32692
+    :fsize 32691
+    :lastmodtime '(21005 33503 0 0)
+    :unmatched-syntax '((close-paren 21617 . 21618) (symbol 21497 . 21513) (open-paren 21496 . 21497))
+    )
+   )
+  :file "!drive_c!Users!hyphen!.emacs.d!plugins!gtags!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

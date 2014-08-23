@@ -1,0 +1,186 @@
+;; Object quickpeek/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "quickpeek/"
+  :tables (list 
+   (semanticdb-table "Project.ede"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("ede-proj-project" code nil nil [49 374]))          
+    :file "Project.ede"
+    :pointmax 375
+    :fsize 374
+    :lastmodtime '(21005 33496 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "qp-base.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("condition-case" code nil nil [1427 1503])
+            ("tempo" include nil nil [1506 1522])
+            ("quickpeek-default" type (:type "class") nil [1534 1631])
+            ("quickpeek-language" type
+               (:superclasses "quickpeek-default"
+                :members 
+                  ( ("keywords" variable
+                       (:documentation "Keywords available in the current buffer.
+This is a list of the form:
+ (\"KEYWORD\" \"Formatted description string.\" ([TEMPO-TEMPLATES]))
+where KEYWORD is the keyword followed by a nice description.
+TEMPO-TEMPLATES is an optional list of templates that can be used to
+auto-insert a code structure that uses this keyword."
+                        :default-value ":keywords")
+                        nil nil)
+                    ("builtintype" variable
+                       (:documentation "Built in types available for current buffer.
+This is a list of the form:
+ (\"TYPE\" \"Formatted description string.\" ([TEMPO-TEMPLATES]))
+where KEYWORD is the keyword followed by a nice description.
+TEMPO-TEMPLATES is an optional list of templates that can be used to
+auto-insert a code structure that uses this keyword."
+                        :default-value ":builtintype")
+                        nil nil)
+                    ("current-fn" variable
+                       (:documentation "Store the current function here."
+                        :default-value "nil")
+                        nil nil)
+                    ("current-thing" variable
+                       (:documentation "Store the current thing here.
+The thing is the text under the cursor."
+                        :default-value "nil")
+                        nil nil))                  
+                :type "class")
+                nil [1633 2887])
+            ("quickpeek-semantic" type
+               (:superclasses "quickpeek-language"
+                :members 
+                  ( ("local-context" variable
+                       (:documentation "Store the local context here.
+The local context are variables that are in a local context, and won't
+show up in a top level parse, but must be searched anyway."
+                        :default-value "nil")
+                        nil nil))                  
+                :type "class")
+                nil [2889 3226])
+            ("quickpeek-thing-bounds" function
+               (:parent "quickpeek-default"
+                :arguments ("obj" "thing"))
+                nil [3241 3649])
+            ("quickpeek-thing" function
+               (:parent "quickpeek-default"
+                :arguments ("obj" "type"))
+                nil [3651 3936])
+            ("quickpeek-thing-beginning" function
+               (:parent "quickpeek-default"
+                :arguments ("obj" "type"))
+                nil [3938 4149])
+            ("quickpeek-collect" function
+               (:parent "quickpeek-default"
+                :arguments ("obj"))
+                nil [4151 4300])
+            ("quickpeek-display" function
+               (:parent "quickpeek-default"
+                :arguments ("obj"))
+                nil [4302 4760])
+            ("quickpeek-beginning-of-defun" function
+               (:parent "quickpeek-language"
+                :arguments ("obj"))
+                nil [4781 5238])
+            ("quickpeek-current-function" function
+               (:parent "quickpeek-language"
+                :arguments ("obj"))
+                nil [5240 5562])
+            ("quickpeek-save-current-thing" function
+               (:parent "quickpeek-language"
+                :arguments ("obj"))
+                nil [5564 5723])
+            ("quickpeek-collect" function
+               (:parent "quickpeek-language"
+                :arguments ("obj"))
+                nil [5725 5959])
+            ("quickpeek-insert-context" function
+               (:parent "quickpeek-language"
+                :arguments ("obj"))
+                nil [5961 6129])
+            ("quickpeek-insert-description" function
+               (:parent "quickpeek-language"
+                :arguments ("obj"))
+                nil [6131 6342])
+            ("quickpeek-insert-completions" function
+               (:parent "quickpeek-language"
+                :arguments ("obj"))
+                nil [6344 6583])
+            ("quickpeek-display" function
+               (:parent "quickpeek-default"
+                :arguments ("obj"))
+                nil [6585 6956])
+            ("quickpeek-beginning-of-defun" function
+               (:parent "quickpeek-semantic"
+                :arguments ("obj"))
+                nil [6981 7168])
+            ("quickpeek-current-function" function
+               (:parent "quickpeek-semantic"
+                :arguments ("obj"))
+                nil [7170 7354])
+            ("quickpeek-current-context" function
+               (:parent "quickpeek-semantic"
+                :arguments ("obj"))
+                nil [7356 7502])
+            ("quickpeek-collect" function
+               (:parent "quickpeek-semantic"
+                :arguments ("obj"))
+                nil [7504 7700])
+            ("quickpeek-insert-token" function
+               (:parent "quickpeek-semantic"
+                :arguments ("obj" "token"))
+                nil [7702 7879])
+            ("quickpeek-insert-context" function
+               (:parent "quickpeek-semantic"
+                :arguments ("obj"))
+                nil [7881 8047])
+            ("quickpeek-insert-description" function
+               (:parent "quickpeek-semantic"
+                :arguments ("obj"))
+                nil [8049 8333])
+            ("quickpeek-calc-context-completions" function
+               (:parent "quickpeek-semantic"
+                :arguments ("obj"))
+                nil [8335 8565])
+            ("quickpeek-insert-completions" function
+               (:parent "quickpeek-semantic"
+                :arguments ("obj"))
+                nil [8567 8931])
+            ("qp-base" package nil nil [8933 8951]))          
+    :file "qp-base.el"
+    :pointmax 8978
+    :fsize 8977
+    :lastmodtime '(21005 33496 0 0)
+    :unmatched-syntax '((close-paren 1503 . 1504) (symbol 1408 . 1424) (open-paren 1407 . 1408))
+    )
+   (semanticdb-table "qp-c.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("c-quickpeek-collect-data" function nil nil [1061 3083])
+            ("c-quickpeek-symbol-constants" variable (:default-value (quote (("return" ("return " . font-lock-keyword-face) "<return value of function>;") ("continue" ("continue" . font-lock-keyword-face) "; - continue the current loop.") ("break" ("break " . font-lock-keyword-face) "- exit the current loop.") ("case" ("case " . font-lock-keyword-face) ("<CONSTANT>" . font-lock-string-face) ": - element of a switch statement.") ("default" ("default" . font-lock-keyword-face) ": - The default tag in a switch statement.") ("const" ("const <type> " . font-lock-type-face) ("<variable>" . font-lock-variable-name-face) "; - Declare a variable as a constant.") ("static" ("static <type> " . font-lock-type-face) "- Declare an object as having local persistant meaning.") ("struct" ("struct <name> " . font-lock-type-face) ("{ <vardef>; }; - Define a structure of data.")) ("union" ("union <name> " . font-lock-type-face) ("{ <vardef>; }; - Define a union of definitions")) ("else" ("if" . font-lock-keyword-face) "(condition) { <then clause> } " ("else" . font-lock-keyword-face) " { <else clause> } ") ("do" ("do " . font-lock-keyword-face) "{ <repeat> } " ("while" . font-lock-keyword-face) "(condition);") ("False" ("False " . font-lock-constant-face) "- Not true.") ("True" ("True " . font-lock-constant-face) "- Not false") ("void" ("void " . font-lock-type-face) "- Unknown (opaque) data type.") ("char" ("char " . font-lock-type-face) "- Character (8 bit) data type.") ("int" ("int " . font-lock-type-face) "- Integer data type.") ("float" ("float " . font-lock-type-face) "- Floating point data type.") ("double" ("double " . font-lock-type-face) "- Double precision data type.")))) nil [3085 5172])
+            ("c-quickpeek-variable-type" function (:arguments ("variable")) nil [5174 7144])
+            ("c-quickpeek-context-for-variable" function (:arguments ("symbol")) nil [7146 9289])
+            ("c-quickpeek-context-for-structure" function (:arguments ("symbol")) nil [9291 9478])
+            ("c-quickpeek-function-alist" variable (:default-value (quote (("if" ("if" . font-lock-keyword-face) "(condition) { <then clause> } [ " ("else" . font-lock-keyword-face) " { <else clause> } ]") ("switch" ("switch" . font-lock-keyword-face) "(condition) { " ("case " . font-lock-keyword-face) ("<constant>" . font-lock-string-face) ": <case clause> " ("break" . font-lock-keyword-face) "; " ("default" . font-lock-keyword-face) ": }") ("while" ("do " . font-lock-keyword-face) "{ <repeat> } " ("while" . font-lock-keyword-face) "(condition); OR " ("while" . font-lock-keyword-face) "(condition) { <repeat> }") ("for" ("for" . font-lock-function-name-face) "(<init>; <condition>; <repeat>) { <for body> }") ("sizeof" ("int " . font-lock-type-face) ("sizeof" . font-lock-function-name-face) "(" ("type" . font-lock-type-face) ") - Size of TYPE in bytes")))) nil [9480 10478])
+            ("c-quickpeek-context-for-function" function (:arguments ("symbol")) nil [10480 12618])
+            ("c-quickpeek-macro-matches" variable
+               (:constant-flag t
+                :default-value (quote (("define" ("#define " . bold) ("<var> " . italic) "[value]") ("if" ("#if " . bold) ("<cond> " . italic) " code " ("#endif" . bold)) ("else" ("#if " . bold) ("<cond> " . italic) "code " ("#else " . bold) "code " ("#endif" . bold)) ("elseif" ("#if " . bold) ("<cond> " . italic) "code " ("#elseif" . bold) ("<cond> " . italic) "code " ("#endif" . bold)) ("endif" ("#if " . bold) ("<cond> " . italic) "code " ("#endif" . bold)) ("pragma" ("#pragma " . bold) "<compiler key word>") ("include" ("#include " . bold) "\"file.h\" -OR- <file.h>"))))
+                nil [12620 13362])
+            ("c-quickpeek-macro" function nil nil [13364 13660])
+            ("add-hook" code nil nil [13662 13762])
+            ("qp-c" package nil nil [13764 13779]))          
+    :file "qp-c.el"
+    :pointmax 13803
+    :fsize 13802
+    :lastmodtime '(21005 33496 0 0)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!drive_c!Users!hyphen!.emacs.d!plugins!cedet!quickpeek!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

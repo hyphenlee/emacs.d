@@ -1,0 +1,153 @@
+;; Object code/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "code/"
+  :tables (list 
+       (semanticdb-table "us_frame.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__US_FRAME_H__" variable (:constant-flag t) nil [319 333])
+            ("wx/artprov.h" include (:system-flag t) nil [335 358])
+            ("wx/xrc/xmlres.h" include (:system-flag t) nil [359 385])
+            ("wx/gdicmn.h" include (:system-flag t) nil [386 408])
+            ("wx/notebook.h" include (:system-flag t) nil [409 433])
+            ("wx/font.h" include (:system-flag t) nil [434 454])
+            ("wx/colour.h" include (:system-flag t) nil [455 477])
+            ("wx/settings.h" include (:system-flag t) nil [478 502])
+            ("wx/string.h" include (:system-flag t) nil [503 525])
+            ("wx/sizer.h" include (:system-flag t) nil [526 547])
+            ("wx/frame.h" include (:system-flag t) nil [548 569])
+            ("UsFrame" type
+               (:superclasses 
+                  ( ("wxFrame" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("private" label nil (reparse-symbol classsubparts) [862 870])
+                    ("protected" label nil (reparse-symbol classsubparts) [874 884])
+                    ("m_notebook1" variable
+                       (:pointer 1
+                        :type ("wxNotebook" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [887 911])
+                    ("public" label nil (reparse-symbol classsubparts) [915 922])
+                    ("UsFrame" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :arguments 
+                          ( ("parent" variable
+                               (:pointer 1
+                                :type ("wxWindow" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [937 954])
+                            ("id" variable (:type ("wxWindowID" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [955 970])
+                            ("" variable (:type ("wxID_ANY" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [971 980])
+                            ("title" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("wxString" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [981 1004])
+                            ("" variable (:type ("wxEmptyString" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1005 1019])
+                            ("pos" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("wxPoint" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1020 1040])
+                            ("" variable (:type ("wxDefaultPosition" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1041 1059])
+                            ("size" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("wxSize" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1060 1080])
+                            ("" variable (:type ("wxSize" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1081 1098])
+                            ("style" variable (:type "long") (reparse-symbol arg-sub-list) [1100 1112])
+                            ("" variable (:type ("wxDEFAULT_FRAME_STYLE" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1113 1135])
+                            ("" variable (:type ("wxTAB_TRAVERSAL" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1135 1152]))                          
+                        :type ("UsFrame" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [928 1153])
+                    ("UsFrame" function
+                       (:prototype-flag t
+                        :destructor-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [1159 1170]))                  
+                :type "class")
+                nil [827 1175]))          
+    :file "us_frame.h"
+    :pointmax 1201
+    :fsize 1243
+    :lastmodtime '(21104 37956 0 0)
+    :unmatched-syntax '((punctuation 1134 . 1135) (punctuation 1111 . 1112) (semantic-list 1087 . 1098) (punctuation 1079 . 1080) (punctuation 1039 . 1040) (punctuation 1003 . 1004) (punctuation 969 . 970))
+    :lexical-table 
+        '(("__US_FRAME_H__")
+          )
+
+    )
+   (semanticdb-table "us_view.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("us_view.h" include nil nil [1 21])
+            ("UsView" function
+               (:constructor-flag t
+                :parent "UsView"
+                :arguments 
+                  ( ("parent" variable
+                       (:pointer 1
+                        :type ("wxWindow" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [39 57]))                  
+                :type ("UsView" type (:type "class") nil nil))
+                nil [23 83])
+            ("UsView" function
+               (:destructor-flag t
+                :parent "UsView"
+                :type "void")
+                nil [84 105]))          
+    :file "us_view.cpp"
+    :pointmax 106
+    :fsize 115
+    :lastmodtime '(21104 39049 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "us_view.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__us_view__" variable (:constant-flag t) nil [29 40])
+            ("us_frame.h" include nil nil [41 62])
+            ("UsView" type
+               (:superclasses 
+                  ( ("UsFrame" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [95 102])
+                    ("UsView" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :arguments 
+                          ( ("parent" variable
+                               (:pointer 1
+                                :type ("wxWindow" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [115 133]))                          
+                        :type ("UsView" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [107 134])
+                    ("UsView" function
+                       (:prototype-flag t
+                        :destructor-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [137 147])
+                    ("protected" label nil (reparse-symbol classsubparts) [148 158]))                  
+                :type "class")
+                nil [63 161]))          
+    :file "us_view.h"
+    :pointmax 171
+    :fsize 182
+    :lastmodtime '(21104 38378 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("__us_view__")
+          )
+
+    )
+     )
+  :file "!drive_d!work!myus!code!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

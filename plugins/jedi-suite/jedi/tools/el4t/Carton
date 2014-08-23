@@ -1,0 +1,4 @@
+(package "EL4T" "0" "Emacs Launcher for Testing")
+
+(development
+ (depends-on "queue"))

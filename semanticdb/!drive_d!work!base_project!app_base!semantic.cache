@@ -1,0 +1,279 @@
+;; Object app_base/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "app_base/"
+  :tables (list 
+   (semanticdb-table "rt_app.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("rt_app.h" include nil nil [1 20])
+            ("rt_view.h" include nil nil [21 41])
+            ("OnInit" function
+               (:parent "rtViewerApp"
+                :type "bool")
+                nil [123 220])
+            ("rtViewerApp" function
+               (:destructor-flag t
+                :parent "rtViewerApp"
+                :type "void")
+                nil [222 254]))          
+    :file "rt_app.cpp"
+    :pointmax 396
+    :fsize 418
+    :lastmodtime '(21105 54024 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "rt_app.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__rt_app_h__" variable (:constant-flag t) nil [31 43])
+            ("wx/wx.h" include (:system-flag t) nil [46 64])
+            ("rt_view.h" include nil nil [66 86])
+            ("rtViewerApp" type
+               (:superclasses 
+                  ( ("wxApp" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [122 129])
+                    ("OnInit" function
+                       (:prototype-flag t
+                        :typemodifiers ("virtual")
+                        :type "bool")
+                        (reparse-symbol classsubparts) [131 153])
+                    ("rtViewerApp" function
+                       (:prototype-flag t
+                        :destructor-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [155 170])
+                    ("private" label nil (reparse-symbol classsubparts) [172 180])
+                    ("public" label nil (reparse-symbol classsubparts) [181 188]))                  
+                :type "class")
+                nil [88 191]))          
+    :file "rt_app.h"
+    :pointmax 259
+    :fsize 282
+    :lastmodtime '(21079 36463 0 0)
+    :unmatched-syntax '((semantic-list 236 . 249) (symbol 225 . 236))
+    :lexical-table 
+        '(("__rt_app_h__")
+          )
+
+    )
+   (semanticdb-table "rt_view.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__rt_view__" variable (:constant-flag t) nil [29 40])
+            ("rt_frame.h" include nil nil [114 135])
+            ("vector" include (:system-flag t) nil [136 153])
+            ("map" include (:system-flag t) nil [154 168])
+            ("rtView" type
+               (:superclasses 
+                  ( ("rtFrame" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [260 267])
+                    ("rtView" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :arguments 
+                          ( ("parent" variable
+                               (:pointer 1
+                                :type ("wxWindow" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [280 298]))                          
+                        :type ("rtView" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [272 299])
+                    ("rtView" function
+                       (:prototype-flag t
+                        :destructor-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [302 312])
+                    ("protected" label nil (reparse-symbol classsubparts) [313 323]))                  
+                :type "class")
+                nil [228 326]))          
+    :file "rt_view.h"
+    :pointmax 350
+    :fsize 375
+    :lastmodtime '(21109 52178 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("__rt_view__")
+          )
+
+    )
+   (semanticdb-table "rt_frame.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__RT_FRAME_H__" variable (:constant-flag t) nil [319 333])
+            ("wx/artprov.h" include (:system-flag t) nil [335 358])
+            ("wx/xrc/xmlres.h" include (:system-flag t) nil [359 385])
+            ("wx/colour.h" include (:system-flag t) nil [386 408])
+            ("wx/settings.h" include (:system-flag t) nil [409 433])
+            ("wx/string.h" include (:system-flag t) nil [434 456])
+            ("wx/font.h" include (:system-flag t) nil [457 477])
+            ("wx/grid.h" include (:system-flag t) nil [478 498])
+            ("wx/gdicmn.h" include (:system-flag t) nil [499 521])
+            ("wx/sizer.h" include (:system-flag t) nil [522 543])
+            ("wx/panel.h" include (:system-flag t) nil [544 565])
+            ("wx/button.h" include (:system-flag t) nil [566 588])
+            ("wx/filepicker.h" include (:system-flag t) nil [589 615])
+            ("wx/stattext.h" include (:system-flag t) nil [616 640])
+            ("wx/frame.h" include (:system-flag t) nil [641 662])
+            ("rtFrame" type
+               (:superclasses 
+                  ( ("wxFrame" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("private" label nil (reparse-symbol classsubparts) [955 963])
+                    ("protected" label nil (reparse-symbol classsubparts) [967 977])
+                    ("panel_top_toolbar_" variable
+                       (:pointer 1
+                        :type ("wxPanel" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [980 1008])
+                    ("bSizer_top" variable
+                       (:pointer 1
+                        :type ("wxBoxSizer" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1011 1034])
+                    ("m_grid1" variable
+                       (:pointer 1
+                        :type ("wxGrid" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1037 1053])
+                    ("delete_button" variable
+                       (:pointer 1
+                        :type ("wxButton" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1056 1080])
+                    ("m_dirPicker1" variable
+                       (:pointer 1
+                        :type ("wxDirPickerCtrl" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1083 1113])
+                    ("m_staticText1" variable
+                       (:pointer 1
+                        :type ("wxStaticText" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1116 1144])
+                    ("regenerate" variable
+                       (:pointer 1
+                        :type ("wxButton" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1147 1168])
+                    ("m_grid1OnGridCellLeftClick" function
+                       (:typemodifiers ("virtual")
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxGridEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1279 1299]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1238 1317])
+                    ("delete_buttonOnButtonClick" function
+                       (:typemodifiers ("virtual")
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxCommandEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1361 1384]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1320 1402])
+                    ("m_dirPicker1OnDirChanged" function
+                       (:typemodifiers ("virtual")
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxFileDirPickerEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1444 1473]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1405 1491])
+                    ("regenerateOnButtonClick" function
+                       (:typemodifiers ("virtual")
+                        :arguments 
+                          ( ("event" variable
+                               (:reference 1
+                                :type ("wxCommandEvent" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1532 1555]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [1494 1573])
+                    ("public" label nil (reparse-symbol classsubparts) [1580 1587])
+                    ("rtFrame" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :arguments 
+                          ( ("parent" variable
+                               (:pointer 1
+                                :type ("wxWindow" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1602 1619])
+                            ("id" variable (:type ("wxWindowID" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1620 1635])
+                            ("" variable (:type ("wxID_ANY" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1636 1645])
+                            ("title" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("wxString" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1646 1669])
+                            ("" variable (:type ("wxT" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1670 1689])
+                            ("pos" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("wxPoint" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1691 1711])
+                            ("" variable (:type ("wxDefaultPosition" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1712 1730])
+                            ("size" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("wxSize" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [1731 1751])
+                            ("" variable (:type ("wxSize" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1752 1769])
+                            ("style" variable (:type "long") (reparse-symbol arg-sub-list) [1771 1783])
+                            ("" variable (:type ("wxDEFAULT_FRAME_STYLE" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1784 1807]))                          
+                        :type ("rtFrame" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1593 1808])
+                    ("rtFrame" function
+                       (:prototype-flag t
+                        :destructor-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [1814 1825]))                  
+                :type "class")
+                nil [920 1830]))          
+    :file "rt_frame.h"
+    :pointmax 1856
+    :fsize 1915
+    :lastmodtime '(21082 19101 0 0)
+    :unmatched-syntax '((punctuation 1782 . 1783) (semantic-list 1758 . 1769) (punctuation 1750 . 1751) (punctuation 1710 . 1711) (semantic-list 1673 . 1689) (punctuation 1668 . 1669) (punctuation 1634 . 1635))
+    :lexical-table 
+        '(("__RT_FRAME_H__")
+          )
+
+    )
+   (semanticdb-table "rt_view.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("wx/msgdlg.h" include (:system-flag t) nil [1 23])
+            ("rt_view.h" include nil nil [24 44])
+            ("rt_app.h" include nil nil [45 64])
+            ("wx/dir.h" include nil nil [65 84])
+            ("rtView" function
+               (:constructor-flag t
+                :parent "rtView"
+                :arguments 
+                  ( ("parent" variable
+                       (:pointer 1
+                        :type ("wxWindow" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [101 119]))                  
+                :type ("rtView" type (:type "class") nil nil))
+                nil [85 144])
+            ("rtView" function
+               (:destructor-flag t
+                :parent "rtView"
+                :type "void")
+                nil [145 166]))          
+    :file "rt_view.cpp"
+    :pointmax 168
+    :fsize 181
+    :lastmodtime '(21109 52343 0 0)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!drive_d!work!base_project!app_base!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

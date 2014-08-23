@@ -1,0 +1,116 @@
+;; Object dcmdata/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "dcmdata/"
+  :tables (list 
+   (semanticdb-table "dcdatset.h"
+    :file "dcdatset.h"
+    :fsize 17298
+    :lastmodtime '(21306 8311 0 0)
+    )
+   (semanticdb-table "dctk.h"
+    :file "dctk.h"
+    :fsize 2866
+    :lastmodtime '(21306 8311 0 0)
+    )
+   (semanticdb-table "dcistrmb.h"
+    :file "dcistrmb.h"
+    :fsize 6287
+    :lastmodtime '(21306 8311 0 0)
+    )
+   (semanticdb-table "dcdeftag.h"
+    :file "dcdeftag.h"
+    :fsize 285995
+    :lastmodtime '(21306 8311 0 0)
+    )
+   (semanticdb-table "dcfilefo.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("DCFILEFO_H" variable (:constant-flag t) nil [425 435])
+            ("dcmtk/config/osconfig.h" include nil nil [437 471])
+            ("dcmtk/dcmdata/dcsequen.h" include nil nil [536 571])
+            ("dcmtk/dcmdata/dcdatset.h" include nil nil [572 607])
+            ("DcmMetaInfo" type
+               (:prototype t
+                :type "class")
+                nil [634 652])
+            ("DcmInputStream" type
+               (:prototype t
+                :type "class")
+                nil [653 674])
+            ("DcmOutputStream" type
+               (:prototype t
+                :type "class")
+                nil [675 697])
+            ("DcmRepresentationParameter" type
+               (:prototype t
+                :type "class")
+                nil [698 731])
+            ("DcmSequenceOfItems" variable (:type "int") nil [852 21668]))          
+    :file "dcfilefo.h"
+    :pointmax 21692
+    :fsize 22140
+    :lastmodtime '(21306 8311 0 0)
+    :unmatched-syntax '((PUBLIC 845 . 851) (punctuation 843 . 844) (symbol 827 . 840) (symbol 806 . 826) (CLASS 800 . 805))
+    :lexical-table 
+        '(("DCFILEFO_H")
+          )
+
+    )
+   (semanticdb-table "dcmetinf.h"
+    :file "dcmetinf.h"
+    :fsize 10784
+    :lastmodtime '(21306 8311 0 0)
+    )
+   (semanticdb-table "dcuid.h"
+    :file "dcuid.h"
+    :fsize 46412
+    :lastmodtime '(21306 8311 0 0)
+    )
+   (semanticdb-table "dcdict.h"
+    :file "dcdict.h"
+    :fsize 10028
+    :lastmodtime '(21306 8311 0 0)
+    )
+   (semanticdb-table "cmdlnarg.h"
+    :file "cmdlnarg.h"
+    :fsize 1825
+    :lastmodtime '(21306 8311 0 0)
+    )
+   (semanticdb-table "dcostrmz.h"
+    :file "dcostrmz.h"
+    :fsize 5743
+    :lastmodtime '(21306 8311 0 0)
+    )
+   (semanticdb-table "dcsequen.h"
+    :file "dcsequen.h"
+    :fsize 30928
+    :lastmodtime '(21306 8311 0 0)
+    )
+   (semanticdb-table "dcostrmb.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("DCOSTRMB_H" variable (:constant-flag t) nil [500 510])
+            ("dcmtk/config/osconfig.h" include nil nil [512 546])
+            ("dcmtk/dcmdata/dcostrma.h" include nil nil [547 582])
+            ("DcmConsumer" variable (:type "int") nil [755 3637])
+            ("DcmOutputStream" variable (:type "int") nil [3803 4916]))          
+    :file "dcostrmb.h"
+    :pointmax 4926
+    :fsize 5083
+    :lastmodtime '(21306 8311 0 0)
+    :unmatched-syntax '((PUBLIC 3796 . 3802) (punctuation 3794 . 3795) (symbol 3773 . 3794) (symbol 3752 . 3772) (CLASS 3746 . 3751) (PUBLIC 748 . 754) (punctuation 746 . 747) (symbol 729 . 746) (symbol 708 . 728) (CLASS 702 . 707))
+    :lexical-table 
+        '(("DCOSTRMB_H")
+          )
+
+    )
+   (semanticdb-table "dcostrma.h"
+    :file "dcostrma.h"
+    :fsize 6686
+    :lastmodtime '(21306 8311 0 0)
+    )
+   )
+  :file "!drive_d!work!rtsuite-new!utils!dcmtk-3.6.1!include!dcmtk!dcmdata!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

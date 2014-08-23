@@ -1,0 +1,859 @@
+;; Object dm/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "dm/"
+  :tables (list 
+   (semanticdb-table "database_io.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__database_io_h__" variable (:constant-flag t) nil [35 52])
+            ("string" include (:system-flag t) nil [54 71])
+            ("Poco/Data/Session.h" include nil nil [72 102])
+            ("Poco/Data/Statement.h" include nil nil [103 135])
+            ("Poco/Data/ODBC/Connector.h" include nil nil [136 173])
+            ("Common.h" include nil nil [174 193])
+            ("Triple.h" include nil nil [194 213])
+            ("point.h" include nil nil [214 232])
+            ("rt_structure_set.h" include nil nil [233 262])
+            ("patient.h" include nil nil [263 283])
+            ("Poco::Data" using (:type ("Poco::Data" type
+                 (:prototype t
+                  :type "namespace")
+                  nil nil)) nil [284 311])
+            ("std" using (:type ("std" type
+                 (:prototype t
+                  :type "namespace")
+                  nil nil)) nil [312 332])
+            ("SelectedPatientInfo" type
+               (:members 
+                  ( ("rtss_name" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [363 380])
+                    ("rtss_status" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [382 401])
+                    ("rtss_approved_by" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [403 427])
+                    ("rtss_approved_time" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [429 455])
+                    ("rtss_roi_number" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [457 480])
+                    ("rtss_poi_number" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [482 505])
+                    ("plan_name" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [507 524])
+                    ("plan_status" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [526 545])
+                    ("plan_approved_by" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [547 571])
+                    ("plan_approved_time" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [573 599])
+                    ("plan_beam_sets" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [601 623])
+                    ("plan_treatment_technique" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [625 657])
+                    ("plan_fractions_number" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [659 688])
+                    ("plan_saved_by" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [690 711])
+                    ("last_saved" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [713 731]))                  
+                :type "struct")
+                nil [333 734])
+            ("UserInfo" type
+               (:members 
+                  ( ("id" variable (:type "int") (reparse-symbol classsubparts) [754 761])
+                    ("name" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [763 775])
+                    ("password" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [777 793]))                  
+                :type "struct")
+                nil [735 796])
+            ("PatientInfo" type
+               (:members 
+                  ( ("id" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [819 834])
+                    ("name" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [836 853])
+                    ("sex" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [855 871])
+                    ("birth_date" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [873 896])
+                    ("plan_date" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [898 920])
+                    ("approval_status" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [922 950])
+                    ("ct_count_" variable (:type "int") (reparse-symbol classsubparts) [952 1011])
+                    ("rtdose_count_" variable (:type "int") (reparse-symbol classsubparts) [952 1011])
+                    ("rtplan_count_" variable (:type "int") (reparse-symbol classsubparts) [952 1011])
+                    ("rtss_count_" variable (:type "int") (reparse-symbol classsubparts) [952 1011])
+                    ("key_" variable (:type "int") (reparse-symbol classsubparts) [952 1011]))                  
+                :type "struct")
+                nil [797 1014])
+            ("DatabaseIO" type
+               (:members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [1036 1043])
+                    ("Patient" type
+                       (:members 
+                          ( ("key" variable (:type "int") (reparse-symbol classsubparts) [1065 1073])
+                            ("name" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1076 1088])
+                            ("sex" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1091 1102])
+                            ("birthdate" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1105 1122])
+                            ("patient_id" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1125 1143])
+                            ("physician" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1146 1163])
+                            ("body_site" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1166 1183])
+                            ("image_sets" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1186 1204])
+                            ("treatment_techniques" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1207 1235])
+                            ("status" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1238 1252])
+                            ("create_time" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1255 1274]))                          
+                        :type "struct")
+                        (reparse-symbol classsubparts) [1045 1278])
+                    ("Study" type
+                       (:members 
+                          ( ("id" variable (:type "int") (reparse-symbol classsubparts) [1298 1305])
+                            ("patient_id" variable (:type "int") (reparse-symbol classsubparts) [1308 1323])
+                            ("uid" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1326 1337])
+                            ("date" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1340 1352])
+                            ("time" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1355 1367])
+                            ("referring_physician_name" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1370 1402])
+                            ("accession_number" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1405 1429])
+                            ("description" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1432 1451]))                          
+                        :type "struct")
+                        (reparse-symbol classsubparts) [1280 1455])
+                    ("Series" type
+                       (:members 
+                          ( ("id" variable (:type "int") (reparse-symbol classsubparts) [1476 1483])
+                            ("study_id" variable (:type "int") (reparse-symbol classsubparts) [1486 1499])
+                            ("uid" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1502 1513])
+                            ("number" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1516 1530])
+                            ("modality" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1533 1549])
+                            ("description" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1552 1571])
+                            ("sop_class_uid" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1574 1595]))                          
+                        :type "struct")
+                        (reparse-symbol classsubparts) [1457 1599])
+                    ("Rtss" type
+                       (:members 
+                          ( ("id" variable (:type "int") (reparse-symbol classsubparts) [1619 1626])
+                            ("series_id" variable (:type "int") (reparse-symbol classsubparts) [1629 1643])
+                            ("label_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1646 1665])
+                            ("name_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1668 1686])
+                            ("description_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1689 1714])
+                            ("date_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1717 1735])
+                            ("time_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1738 1756]))                          
+                        :type "struct")
+                        (reparse-symbol classsubparts) [1601 1760])
+                    ("Contour" type
+                       (:members 
+                          ( ("id" variable (:type "int") (reparse-symbol classsubparts) [1782 1789])
+                            ("rtss_id" variable (:type "int") (reparse-symbol classsubparts) [1792 1804])
+                            ("number" variable (:type "int") (reparse-symbol classsubparts) [1807 1818])
+                            ("interpreter" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1821 1845])
+                            ("name" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1848 1865])
+                            ("color_r" variable (:type "float") (reparse-symbol classsubparts) [1868 1882])
+                            ("color_g" variable (:type "float") (reparse-symbol classsubparts) [1885 1899])
+                            ("color_b" variable (:type "float") (reparse-symbol classsubparts) [1902 1916])
+                            ("description" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1919 1943])
+                            ("generation_algorithm" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1946 1979])
+                            ("obs_label" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1982 2004])
+                            ("obs_description" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2007 2035])
+                            ("interpreted_type" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2038 2067])
+                            ("contour_type" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2070 2095])
+                            ("point_x" variable (:type "float") (reparse-symbol classsubparts) [2098 2112])
+                            ("point_y" variable (:type "float") (reparse-symbol classsubparts) [2115 2129])
+                            ("point_z" variable (:type "float") (reparse-symbol classsubparts) [2132 2146])
+                            ("volume_id" variable (:type "int") (reparse-symbol classsubparts) [2149 2163]))                          
+                        :type "struct")
+                        (reparse-symbol classsubparts) [1762 2167])
+                    ("Roi" type
+                       (:members 
+                          ( ("id" variable (:type "int") (reparse-symbol classsubparts) [2185 2192])
+                            ("rtss_id" variable (:type "int") (reparse-symbol classsubparts) [2195 2207])
+                            ("number_" variable (:type "int") (reparse-symbol classsubparts) [2210 2222])
+                            ("name_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2225 2243])
+                            ("description_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2246 2271])
+                            ("volume_" variable (:type "double") (reparse-symbol classsubparts) [2274 2289])
+                            ("generation_algorithm_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2292 2326])
+                            ("obs_number_" variable (:type "int") (reparse-symbol classsubparts) [2329 2345])
+                            ("obs_lable_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2348 2371])
+                            ("obs_description_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2374 2403])
+                            ("interpreted_type_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2406 2436])
+                            ("interpreter_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2439 2464])
+                            ("type_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2467 2485])
+                            ("color_r" variable (:type "float") (reparse-symbol classsubparts) [2488 2502])
+                            ("color_g" variable (:type "float") (reparse-symbol classsubparts) [2505 2519])
+                            ("color_b" variable (:type "float") (reparse-symbol classsubparts) [2522 2536])
+                            ("roi_data" variable (:type ("Poco::Data::BLOB" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2539 2565]))                          
+                        :type "struct")
+                        (reparse-symbol classsubparts) [2169 2569])
+                    ("CT" type
+                       (:members 
+                          ( ("id" variable (:type "int") (reparse-symbol classsubparts) [2586 2593])
+                            ("series_id" variable (:type "int") (reparse-symbol classsubparts) [2596 2610])
+                            ("vol_id" variable (:type "int") (reparse-symbol classsubparts) [2613 2624])
+                            ("window_width" variable (:type "double") (reparse-symbol classsubparts) [2627 2647])
+                            ("window_center" variable (:type "double") (reparse-symbol classsubparts) [2650 2671]))                          
+                        :type "struct")
+                        (reparse-symbol classsubparts) [2571 2675])
+                    ("Volume" type
+                       (:members 
+                          ( ("id" variable (:type "int") (reparse-symbol classsubparts) [2696 2703])
+                            ("size_x" variable (:type "int") (reparse-symbol classsubparts) [2706 2717])
+                            ("size_y" variable (:type "int") (reparse-symbol classsubparts) [2720 2731])
+                            ("size_z" variable (:type "int") (reparse-symbol classsubparts) [2734 2745])
+                            ("spacing_x" variable (:type "double") (reparse-symbol classsubparts) [2748 2765])
+                            ("spacing_y" variable (:type "double") (reparse-symbol classsubparts) [2768 2785])
+                            ("spacing_z" variable (:type "double") (reparse-symbol classsubparts) [2788 2805])
+                            ("origin_x" variable (:type "double") (reparse-symbol classsubparts) [2808 2824])
+                            ("origin_y" variable (:type "double") (reparse-symbol classsubparts) [2827 2843])
+                            ("origin_z" variable (:type "double") (reparse-symbol classsubparts) [2846 2862])
+                            ("orientation_ox1" variable (:type "double") (reparse-symbol classsubparts) [2865 2888])
+                            ("orientation_ox2" variable (:type "double") (reparse-symbol classsubparts) [2891 2914])
+                            ("orientation_ox3" variable (:type "double") (reparse-symbol classsubparts) [2917 2940])
+                            ("orientation_oy1" variable (:type "double") (reparse-symbol classsubparts) [2943 2966])
+                            ("orientation_oy2" variable (:type "double") (reparse-symbol classsubparts) [2969 2992])
+                            ("orientation_oy3" variable (:type "double") (reparse-symbol classsubparts) [2995 3018])
+                            ("orientation_oz1" variable (:type "double") (reparse-symbol classsubparts) [3021 3044])
+                            ("orientation_oz2" variable (:type "double") (reparse-symbol classsubparts) [3047 3070])
+                            ("orientation_oz3" variable (:type "double") (reparse-symbol classsubparts) [3073 3096])
+                            ("volume_data" variable (:type ("Poco::Data::BLOB" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3099 3128]))                          
+                        :type "struct")
+                        (reparse-symbol classsubparts) [2677 3132])
+                    ("Plan" type
+                       (:members 
+                          ( ("key_" variable (:type "int") (reparse-symbol classsubparts) [3151 3160])
+                            ("rtss_key" variable (:type "int") (reparse-symbol classsubparts) [3163 3176])
+                            ("series_key" variable (:type "int") (reparse-symbol classsubparts) [3179 3194])
+                            ("course_label_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3197 3223])
+                            ("label_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3226 3245])
+                            ("name_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3248 3266])
+                            ("description_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3269 3294])
+                            ("operator_name_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3297 3324])
+                            ("date_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3328 3346])
+                            ("time_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3354 3372])
+                            ("treatment_protocols_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3379 3412])
+                            ("intent_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3415 3435])
+                            ("treatment_site_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3438 3466])
+                            ("geometry_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3469 3491])
+                            ("prescription_description_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3494 3532])
+                            ("approval_status_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3535 3564])
+                            ("approval_name_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3567 3594])
+                            ("approval_time_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3597 3625]))                          
+                        :type "struct")
+                        (reparse-symbol classsubparts) [3134 3629])
+                    ("PatientSetup" type
+                       (:members 
+                          ( ("key_" variable (:type "int") (reparse-symbol classsubparts) [3657 3666])
+                            ("plan_key_" variable (:type "int") (reparse-symbol classsubparts) [3669 3683])
+                            ("number_" variable (:type "int") (reparse-symbol classsubparts) [3686 3698])
+                            ("patient_position_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3701 3731])
+                            ("setup_technique_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3734 3763]))                          
+                        :type "struct")
+                        (reparse-symbol classsubparts) [3632 3767])
+                    ("RTBeam" type
+                       (:members 
+                          ( ("key_" variable (:type "int") (reparse-symbol classsubparts) [3788 3797])
+                            ("plan_key_" variable (:type "int") (reparse-symbol classsubparts) [3800 3814])
+                            ("beam_number_" variable (:type "int") (reparse-symbol classsubparts) [3817 3834])
+                            ("beam_name_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3907 3930])
+                            ("beam_description_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3962 3992])
+                            ("beam_type_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3995 4018])
+                            ("radiation_type_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [4041 4069])
+                            ("treatment_machine_name_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [4122 4158])
+                            ("manufacturer_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [4161 4187])
+                            ("dose_unit_type_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [4190 4218])
+                            ("treatment_delivery_type_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [4235 4272])
+                            ("final_cumulative_meterset_weight_" variable (:type "double") (reparse-symbol classsubparts) [4275 4316])
+                            ("applicator_id_" variable (:type "int") (reparse-symbol classsubparts) [4319 4338])
+                            ("applicator_type_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [4341 4370])
+                            ("applicator_accessory_code_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [4373 4412])
+                            ("sad_" variable (:type "double") (reparse-symbol classsubparts) [4415 4427])
+                            ("beam_color_x" variable (:type "float") (reparse-symbol classsubparts) [4463 4482])
+                            ("beam_color_y" variable (:type "float") (reparse-symbol classsubparts) [4485 4504])
+                            ("beam_color_z" variable (:type "float") (reparse-symbol classsubparts) [4507 4526]))                          
+                        :type "struct")
+                        (reparse-symbol classsubparts) [3769 4530])
+                    ("Wedge" type
+                       (:members 
+                          ( ("key_" variable (:type "int") (reparse-symbol classsubparts) [4550 4559])
+                            ("rtbeam_key_" variable (:type "int") (reparse-symbol classsubparts) [4562 4578])
+                            ("number_" variable (:type "int") (reparse-symbol classsubparts) [4581 4593])
+                            ("wedge_type_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [4596 4620])
+                            ("id_" variable (:type "int") (reparse-symbol classsubparts) [4655 4663])
+                            ("accessory_code_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [4666 4694])
+                            ("wedge_angle_" variable (:type "double") (reparse-symbol classsubparts) [4697 4717])
+                            ("wedge_orientation_" variable (:type "double") (reparse-symbol classsubparts) [4720 4746])
+                            ("source_to_wedge_tray_dis_" variable (:type "double") (reparse-symbol classsubparts) [4749 4782]))                          
+                        :type "struct")
+                        (reparse-symbol classsubparts) [4532 4786])
+                    ("Compensator" type
+                       (:members 
+                          ( ("key_" variable (:type "int") (reparse-symbol classsubparts) [4812 4821])
+                            ("rtbeam_key" variable (:type "int") (reparse-symbol classsubparts) [4824 4839])
+                            ("description_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [4842 4867])
+                            ("number_" variable (:type "int") (reparse-symbol classsubparts) [4870 4882])
+                            ("type_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [4885 4903])
+                            ("material_id_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [4925 4950])
+                            ("id_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [4953 4969])
+                            ("accessory_code_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [4972 5000])
+                            ("source_to_compensator_tray_dis_" variable (:type "double") (reparse-symbol classsubparts) [5003 5042])
+                            ("divergence_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [5045 5069])
+                            ("mounting_pos_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [5089 5115])
+                            ("rows_" variable (:type "int") (reparse-symbol classsubparts) [5158 5168])
+                            ("cols_" variable (:type "int") (reparse-symbol classsubparts) [5171 5181])
+                            ("pixel_spacing_x" variable (:type "double") (reparse-symbol classsubparts) [5184 5207])
+                            ("pixel_spacing_y" variable (:type "double") (reparse-symbol classsubparts) [5210 5233])
+                            ("pos_x" variable (:type "double") (reparse-symbol classsubparts) [5236 5249])
+                            ("pos_y" variable (:type "double") (reparse-symbol classsubparts) [5252 5265])
+                            ("transmission_data_" variable (:type ("Poco::Data::BLOB" type (:type "class") nil nil)) (reparse-symbol classsubparts) [5268 5304])
+                            ("thickness_data_" variable (:type ("Poco::Data::BLOB" type (:type "class") nil nil)) (reparse-symbol classsubparts) [5307 5340]))                          
+                        :type "struct")
+                        (reparse-symbol classsubparts) [4788 5344])
+                    ("Bolus" type
+                       (:members 
+                          ( ("key_" variable (:type "int") (reparse-symbol classsubparts) [5364 5373])
+                            ("rtbeam_key" variable (:type "int") (reparse-symbol classsubparts) [5376 5391])
+                            ("roi_number" variable (:type "int") (reparse-symbol classsubparts) [5394 5409])
+                            ("id" variable (:type "int") (reparse-symbol classsubparts) [5412 5419])
+                            ("accessory_code_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [5422 5450]))                          
+                        :type "struct")
+                        (reparse-symbol classsubparts) [5346 5454])
+                    ("Block" type
+                       (:members 
+                          ( ("key_" variable (:type "int") (reparse-symbol classsubparts) [5474 5483])
+                            ("rtbeam_key" variable (:type "int") (reparse-symbol classsubparts) [5486 5501])
+                            ("tray_id_" variable (:type "int") (reparse-symbol classsubparts) [5504 5517])
+                            ("accessory_code_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [5520 5548])
+                            ("source_to_block_tray_dis_" variable (:type "double") (reparse-symbol classsubparts) [5551 5584])
+                            ("block_type_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [5587 5611])
+                            ("block_divergence_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [5639 5669])
+                            ("mounting_position_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [5691 5722])
+                            ("number_" variable (:type "int") (reparse-symbol classsubparts) [5754 5766])
+                            ("name_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [5769 5787])
+                            ("material_id_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [5790 5815])
+                            ("thickness_" variable (:type "double") (reparse-symbol classsubparts) [5818 5836])
+                            ("transmission_" variable (:type "double") (reparse-symbol classsubparts) [5839 5860])
+                            ("data_" variable (:type ("Poco::Data::BLOB" type (:type "class") nil nil)) (reparse-symbol classsubparts) [5863 5886]))                          
+                        :type "struct")
+                        (reparse-symbol classsubparts) [5456 5890])
+                    ("LimitingDevice" type
+                       (:members 
+                          ( ("key_" variable (:type "int") (reparse-symbol classsubparts) [5919 5928])
+                            ("rtbeam_key" variable (:type "int") (reparse-symbol classsubparts) [5931 5946])
+                            ("device_type_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [5949 5974])
+                            ("source_to_device_distance_" variable (:type "double") (reparse-symbol classsubparts) [5977 6011])
+                            ("number_leaf_jaw_pairs_" variable (:type "int") (reparse-symbol classsubparts) [6014 6041])
+                            ("leaf_pos_boundaries_" variable (:type ("Poco::Data::BLOB" type (:type "class") nil nil)) (reparse-symbol classsubparts) [6044 6082]))                          
+                        :type "struct")
+                        (reparse-symbol classsubparts) [5892 6095])
+                    ("ControlPoint" type
+                       (:members 
+                          ( ("key_" variable (:type "int") (reparse-symbol classsubparts) [6122 6131])
+                            ("rtbeam_key_" variable (:type "int") (reparse-symbol classsubparts) [6134 6150])
+                            ("index_" variable (:type "int") (reparse-symbol classsubparts) [6153 6164])
+                            ("cumulative_meterset_weight_" variable (:type "double") (reparse-symbol classsubparts) [6167 6202])
+                            ("nominal_beam_energy_" variable (:type "double") (reparse-symbol classsubparts) [6205 6233])
+                            ("dose_rate_" variable (:type "double") (reparse-symbol classsubparts) [6236 6254])
+                            ("gantry_angle_" variable (:type "double") (reparse-symbol classsubparts) [6257 6278])
+                            ("gantry_rot_dir_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [6281 6309])
+                            ("gantry_pitch_angle_" variable (:type "double") (reparse-symbol classsubparts) [6312 6339])
+                            ("gantry_pitch_rot_dir_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [6342 6376])
+                            ("limiting_device_angle_" variable (:type "double") (reparse-symbol classsubparts) [6379 6409])
+                            ("limiting_device_rot_dir_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [6412 6449])
+                            ("patient_support_angle_" variable (:type "double") (reparse-symbol classsubparts) [6452 6482])
+                            ("patient_support_rot_dir_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [6485 6522])
+                            ("table_top_eccentric_axis_dis_" variable (:type "double") (reparse-symbol classsubparts) [6525 6562])
+                            ("table_top_eccentric_angle_" variable (:type "double") (reparse-symbol classsubparts) [6565 6599])
+                            ("table_top_eccentric_rot_dir_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [6602 6643])
+                            ("table_top_vertical_pos_" variable (:type "double") (reparse-symbol classsubparts) [6646 6677])
+                            ("table_top_logitudinal_pos_" variable (:type "double") (reparse-symbol classsubparts) [6680 6714])
+                            ("table_top_lateral_pos_" variable (:type "double") (reparse-symbol classsubparts) [6717 6747])
+                            ("isocenter_pos_x" variable (:type "double") (reparse-symbol classsubparts) [6750 6773])
+                            ("isocenter_pos_y" variable (:type "double") (reparse-symbol classsubparts) [6776 6799])
+                            ("isocenter_pos_z" variable (:type "double") (reparse-symbol classsubparts) [6802 6825])
+                            ("ssd_" variable (:type "double") (reparse-symbol classsubparts) [6828 6840]))                          
+                        :type "struct")
+                        (reparse-symbol classsubparts) [6097 6844])
+                    ("WedegPosition" type
+                       (:members 
+                          ( ("key_" variable (:type "int") (reparse-symbol classsubparts) [6872 6881])
+                            ("contour_point_key_" variable (:type "int") (reparse-symbol classsubparts) [6884 6907])
+                            ("number_" variable (:type "int") (reparse-symbol classsubparts) [6910 6922])
+                            ("position_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [6925 6947]))                          
+                        :type "struct")
+                        (reparse-symbol classsubparts) [6846 6951])
+                    ("LimitingDevicePosition" type
+                       (:members 
+                          ( ("key_" variable (:type "int") (reparse-symbol classsubparts) [6988 6997])
+                            ("contour_point_key_" variable (:type "int") (reparse-symbol classsubparts) [7000 7023])
+                            ("device_type_" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [7026 7051])
+                            ("leaf_jaw_pos_" variable (:type ("Poco::Data::BLOB" type (:type "class") nil nil)) (reparse-symbol classsubparts) [7054 7085]))                          
+                        :type "struct")
+                        (reparse-symbol classsubparts) [6953 7129])
+                    ("DatabaseIO" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :type ("DatabaseIO" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [7131 7144])
+                    ("DatabaseIO" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :arguments 
+                          ( ("_dsn" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [7157 7174]))                          
+                        :type ("DatabaseIO" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [7146 7175])
+                    ("DatabaseIO" function
+                       (:prototype-flag t
+                        :destructor-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [7177 7191])
+                    ("GetPatientByPatientID" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("patient_" variable
+                               (:reference 1
+                                :type ("Patient" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [7232 7250])
+                            ("dtl_patient_id" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [7250 7277]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [7205 7278])
+                    ("GetStudyByPatientID" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("study_" variable
+                               (:reference 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("Study" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [7305 7332])
+                            ("patient_id" variable (:type "int") (reparse-symbol arg-sub-list) [7332 7347]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [7280 7348])
+                    ("GetSeriesByStudyID" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("series_" variable
+                               (:reference 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("Series" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [7374 7403])
+                            ("study_id" variable (:type "int") (reparse-symbol arg-sub-list) [7403 7416]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [7350 7417])
+                    ("GetSeriesIDByUID" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("series_id" variable
+                               (:reference 1
+                                :type "int")
+                                (reparse-symbol arg-sub-list) [7442 7457])
+                            ("uid" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [7457 7473]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [7420 7474])
+                    ("WritePatient" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("patient" variable
+                               (:reference 1
+                                :type ("DatabaseIO::Patient" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [7495 7524])
+                            ("user_id" variable (:type "int") (reparse-symbol arg-sub-list) [7524 7536]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [7477 7537])
+                    ("GetPatientListByUser" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("user_id" variable (:type "int") (reparse-symbol arg-sub-list) [7565 7577])
+                            ("patient_list" variable
+                               (:reference 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("Patient" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [7577 7611]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [7539 7612])
+                    ("GetPatientList" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("patient_list" variable
+                               (:reference 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("Patient" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [7635 7669])
+                            ("user_key" variable (:type "int") (reparse-symbol arg-sub-list) [7669 7682])
+                            ("range_beg" variable (:type "int") (reparse-symbol arg-sub-list) [7685 7699])
+                            ("range_end" variable (:type "int") (reparse-symbol arg-sub-list) [7699 7713])
+                            ("search_string" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [7713 7735])
+                            ("sort_column_index" variable (:type "int") (reparse-symbol arg-sub-list) [7738 7760])
+                            ("is_increment" variable (:type "bool") (reparse-symbol arg-sub-list) [7760 7778]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [7614 7779])
+                    ("WriteStudy" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("study" variable
+                               (:reference 1
+                                :type ("DatabaseIO::Study" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [7798 7823]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [7782 7824])
+                    ("WriteSeries" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("series" variable
+                               (:reference 1
+                                :type ("DatabaseIO::Series" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [7843 7870]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [7826 7871])
+                    ("WriteVolume" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("vol" variable
+                               (:reference 1
+                                :type ("Volume" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [8119 8131]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [8102 8132])
+                    ("GetVolumeByID" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("vol" variable
+                               (:reference 1
+                                :type ("Volume" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [8153 8165])
+                            ("id" variable (:type "int") (reparse-symbol arg-sub-list) [8166 8173]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [8134 8174])
+                    ("GetCTVolumeBySeriesID" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("ct" variable
+                               (:reference 1
+                                :type ("DatabaseIO::CT" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [8216 8235])
+                            ("series_id" variable (:type "int") (reparse-symbol arg-sub-list) [8236 8250]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [8189 8251])
+                    ("WriteCT" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("ct" variable
+                               (:reference 1
+                                :type ("CT" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [8266 8273]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [8253 8274])
+                    ("GetRtssBySeriesID" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("rtss" variable
+                               (:reference 1
+                                :type ("Rtss" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [8315 8326])
+                            ("series_id" variable (:type "int") (reparse-symbol arg-sub-list) [8327 8341]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [8292 8342])
+                    ("GetContourByRtssID" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("contour" variable
+                               (:reference 1
+                                :type ("std::vector" type
+                                     (:template-specifier 
+                                        ( ("Contour" type nil nil nil))                                        
+                                      :type "class")
+                                      nil nil))
+                                (reparse-symbol arg-sub-list) [8368 8398])
+                            ("rtss_id" variable (:type "int") (reparse-symbol arg-sub-list) [8399 8411]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [8344 8412])
+                    ("WriteRtss" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("rtss_" variable
+                               (:reference 1
+                                :type ("DatabaseIO::Rtss" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [8446 8470]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [8431 8471])
+                    ("WriteContour" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("contour" variable
+                               (:reference 1
+                                :type ("Contour" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [8491 8508]))                          
+                        :type "bool")
+                        (reparse-symbol classsubparts) [8473 8509])
+                    ("NextStudyId" function
+                       (:prototype-flag t
+                        :type "int")
+                        (reparse-symbol classsubparts) [8512 8530])
+                    ("NextSeriesId" function
+                       (:prototype-flag t
+                        :type "int")
+                        (reparse-symbol classsubparts) [8532 8551])
+                    ("NextPatientId" function
+                       (:prototype-flag t
+                        :type "int")
+                        (reparse-symbol classsubparts) [8553 8573])
+                    ("NextRtssId" function
+                       (:prototype-flag t
+                        :type "int")
+                        (reparse-symbol classsubparts) [8575 8592])
+                    ("NextContourId" function
+                       (:prototype-flag t
+                        :type "int")
+                        (reparse-symbol classsubparts) [8594 8614])
+                    ("NextVolumeId" function
+                       (:prototype-flag t
+                        :type "int")
+                        (reparse-symbol classsubparts) [8616 8635])
+                    ("NextCTId" function
+                       (:prototype-flag t
+                        :type "int")
+                        (reparse-symbol classsubparts) [8637 8652])
+                    ("GetPassword" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("name" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [8679 8696]))                          
+                        :type ("std::string" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [8655 8697])
+                    ("GetPassword" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("id" variable (:type "int") (reparse-symbol arg-sub-list) [8723 8730]))                          
+                        :type ("std::string" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [8699 8731])
+                    ("GetUserID" function
+                       (:prototype-flag t
+                        :arguments 
+                          ( ("name" variable (:type ("string" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [8747 8759]))                          
+                        :type "int")
+                        (reparse-symbol classsubparts) [8733 8760])
+                    ("private" label nil (reparse-symbol classsubparts) [9511 9519])
+                    ("sess_ptr" variable
+                       (:pointer 1
+                        :type ("Session" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [9521 9540])
+                    ("stm_ptr" variable
+                       (:pointer 1
+                        :type ("Statement" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [9542 9562]))                  
+                :type "class")
+                nil [1017 9565])
+            ("Poco" type
+               (:members 
+                  ( ("Data" type
+                       (:members 
+                          ( ("TypeHandler" type
+                               (:type "class"
+                                :members 
+                                  ( ("public" label nil (reparse-symbol classsubparts) [9659 9666])
+                                    ("size" function
+                                       (:typemodifiers ("static")
+                                        :type ("std::size_t" type (:type "class") nil nil))
+                                        (reparse-symbol classsubparts) [9670 9720])
+                                    ("bind" function
+                                       (:typemodifiers ("static")
+                                        :arguments 
+                                          ( ("pos" variable (:type ("std::size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [9741 9757])
+                                            ("obj" variable
+                                               (:reference 1
+                                                :constant-flag t
+                                                :type ("PatientInfo" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [9757 9780])
+                                            ("pBinder" variable (:type ("AbstractBinder::Ptr" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [9780 9808])
+                                            ("dir" variable (:type ("AbstractBinder::Direction" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [9808 9838]))                                          
+                                        :type "void")
+                                        (reparse-symbol classsubparts) [9724 10602])
+                                    ("prepare" function
+                                       (:typemodifiers ("static")
+                                        :arguments 
+                                          ( ("pos" variable (:type ("std::size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [10626 10642])
+                                            ("obj" variable
+                                               (:reference 1
+                                                :constant-flag t
+                                                :type ("PatientInfo" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [10643 10666])
+                                            ("pPrepare" variable (:type ("AbstractPreparator::Ptr" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [10667 10700]))                                          
+                                        :type "void")
+                                        (reparse-symbol classsubparts) [10606 11487])
+                                    ("extract" function
+                                       (:typemodifiers ("static")
+                                        :arguments 
+                                          ( ("pos" variable (:type ("std::size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [11511 11527])
+                                            ("obj" variable
+                                               (:reference 1
+                                                :type ("PatientInfo" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [11528 11545])
+                                            ("defVal" variable
+                                               (:reference 1
+                                                :constant-flag t
+                                                :type ("PatientInfo" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [11546 11572])
+                                            ("pExt" variable (:type ("AbstractExtractor::Ptr" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [11573 11601]))                                          
+                                        :type "void")
+                                        (reparse-symbol classsubparts) [11491 12925]))                                  
+                                :template-specifier 
+                                  ( ("PatientInfo" type (:type "struct") nil nil))                                  )
+                                (reparse-symbol namespacesubparts) [9601 12930])
+                            ("TypeHandler" type
+                               (:type "class"
+                                :members 
+                                  ( ("public" label nil (reparse-symbol classsubparts) [28453 28460])
+                                    ("size" function
+                                       (:typemodifiers ("static")
+                                        :type ("std::size_t" type (:type "class") nil nil))
+                                        (reparse-symbol classsubparts) [28464 28513])
+                                    ("bind" function
+                                       (:typemodifiers ("static")
+                                        :arguments 
+                                          ( ("pos" variable (:type ("std::size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [28534 28550])
+                                            ("obj" variable
+                                               (:reference 1
+                                                :constant-flag t
+                                                :type ("DatabaseIO::Patient" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [28550 28581])
+                                            ("pBinder" variable (:type ("AbstractBinder::Ptr" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [28581 28609])
+                                            ("dir" variable (:type ("AbstractBinder::Direction" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [28609 28639]))                                          
+                                        :type "void")
+                                        (reparse-symbol classsubparts) [28517 29386])
+                                    ("prepare" function
+                                       (:typemodifiers ("static")
+                                        :arguments 
+                                          ( ("pos" variable (:type ("std::size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [29410 29426])
+                                            ("obj" variable
+                                               (:reference 1
+                                                :constant-flag t
+                                                :type ("DatabaseIO::Patient" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [29427 29458])
+                                            ("pPrepare" variable (:type ("AbstractPreparator::Ptr" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [29459 29492]))                                          
+                                        :type "void")
+                                        (reparse-symbol classsubparts) [29390 30240])
+                                    ("extract" function
+                                       (:typemodifiers ("static")
+                                        :arguments 
+                                          ( ("pos" variable (:type ("std::size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [30264 30280])
+                                            ("obj" variable
+                                               (:reference 1
+                                                :type ("DatabaseIO::Patient" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [30281 30306])
+                                            ("defVal" variable
+                                               (:reference 1
+                                                :constant-flag t
+                                                :type ("DatabaseIO::Patient" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [30307 30341])
+                                            ("pExt" variable (:type ("AbstractExtractor::Ptr" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [30342 30370]))                                          
+                                        :type "void")
+                                        (reparse-symbol classsubparts) [30244 31751]))                                  
+                                :template-specifier 
+                                  ( ("DatabaseIO::Patient" type nil nil nil))                                  )
+                                (reparse-symbol namespacesubparts) [28394 31756])
+                            ("TypeHandler" type
+                               (:type "class"
+                                :members 
+                                  ( ("public" label nil (reparse-symbol classsubparts) [31816 31823])
+                                    ("size" function
+                                       (:typemodifiers ("static")
+                                        :type ("std::size_t" type (:type "class") nil nil))
+                                        (reparse-symbol classsubparts) [31827 31876])
+                                    ("bind" function
+                                       (:typemodifiers ("static")
+                                        :arguments 
+                                          ( ("pos" variable (:type ("std::size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [31897 31913])
+                                            ("obj" variable
+                                               (:reference 1
+                                                :constant-flag t
+                                                :type ("DatabaseIO::Study" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [31913 31942])
+                                            ("pBinder" variable (:type ("AbstractBinder::Ptr" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [31942 31970])
+                                            ("dir" variable (:type ("AbstractBinder::Direction" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [31970 32000]))                                          
+                                        :type "void")
+                                        (reparse-symbol classsubparts) [31880 32559])
+                                    ("prepare" function
+                                       (:typemodifiers ("static")
+                                        :arguments 
+                                          ( ("pos" variable (:type ("std::size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [32583 32599])
+                                            ("obj" variable
+                                               (:reference 1
+                                                :constant-flag t
+                                                :type ("DatabaseIO::Study" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [32600 32629])
+                                            ("pPrepare" variable (:type ("AbstractPreparator::Ptr" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [32630 32663]))                                          
+                                        :type "void")
+                                        (reparse-symbol classsubparts) [32563 33223])
+                                    ("extract" function
+                                       (:typemodifiers ("static")
+                                        :arguments 
+                                          ( ("pos" variable (:type ("std::size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [33247 33263])
+                                            ("obj" variable
+                                               (:reference 1
+                                                :type ("DatabaseIO::Study" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [33264 33287])
+                                            ("defVal" variable
+                                               (:reference 1
+                                                :constant-flag t
+                                                :type ("DatabaseIO::Study" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [33288 33320])
+                                            ("pExt" variable (:type ("AbstractExtractor::Ptr" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [33321 33349]))                                          
+                                        :type "void")
+                                        (reparse-symbol classsubparts) [33227 34387]))                                  
+                                :template-specifier 
+                                  ( ("DatabaseIO::Study" type nil nil nil))                                  )
+                                (reparse-symbol namespacesubparts) [31759 34392])
+                            ("TypeHandler" type
+                               (:type "class"
+                                :members 
+                                  ( ("public" label nil (reparse-symbol classsubparts) [34453 34460])
+                                    ("size" function
+                                       (:typemodifiers ("static")
+                                        :type ("std::size_t" type (:type "class") nil nil))
+                                        (reparse-symbol classsubparts) [34464 34513])
+                                    ("bind" function
+                                       (:typemodifiers ("static")
+                                        :arguments 
+                                          ( ("pos" variable (:type ("std::size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [34534 34550])
+                                            ("obj" variable
+                                               (:reference 1
+                                                :constant-flag t
+                                                :type ("DatabaseIO::Series" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [34550 34580])
+                                            ("pBinder" variable (:type ("AbstractBinder::Ptr" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [34580 34608])
+                                            ("dir" variable (:type ("AbstractBinder::Direction" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [34608 34638]))                                          
+                                        :type "void")
+                                        (reparse-symbol classsubparts) [34517 35119])
+                                    ("prepare" function
+                                       (:typemodifiers ("static")
+                                        :arguments 
+                                          ( ("pos" variable (:type ("std::size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [35143 35159])
+                                            ("obj" variable
+                                               (:reference 1
+                                                :constant-flag t
+                                                :type ("DatabaseIO::Series" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [35160 35190])
+                                            ("pPrepare" variable (:type ("AbstractPreparator::Ptr" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [35191 35224]))                                          
+                                        :type "void")
+                                        (reparse-symbol classsubparts) [35123 35706])
+                                    ("extract" function
+                                       (:typemodifiers ("static")
+                                        :arguments 
+                                          ( ("pos" variable (:type ("std::size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [35730 35746])
+                                            ("obj" variable
+                                               (:reference 1
+                                                :type ("DatabaseIO::Series" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [35747 35771])
+                                            ("defVal" variable
+                                               (:reference 1
+                                                :constant-flag t
+                                                :type ("DatabaseIO::Series" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [35772 35805])
+                                            ("pExt" variable (:type ("AbstractExtractor::Ptr" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [35806 35834]))                                          
+                                        :type "void")
+                                        (reparse-symbol classsubparts) [35710 36678]))                                  
+                                :template-specifier 
+                                  ( ("DatabaseIO::Series" type nil nil nil))                                  )
+                                (reparse-symbol namespacesubparts) [34395 36683]))                          
+                        :type "namespace")
+                        (reparse-symbol namespacesubparts) [9583 79213]))                  
+                :type "namespace")
+                nil [9566 79215]))          
+    :file "database_io.h"
+    :pointmax 79245
+    :fsize 81072
+    :lastmodtime '(21204 57931 0 0)
+    :unmatched-syntax '((punctuation 79209 . 79210) (semantic-list 77447 . 79209) (punctuation 77443 . 77444) (symbol 77421 . 77443) (punctuation 77420 . 77421) (punctuation 77419 . 77420) (symbol 77409 . 77419) (STRUCT 77402 . 77408) (punctuation 77401 . 77402) (symbol 77390 . 77401) (CLASS 77384 . 77389) (punctuation 77380 . 77381) (punctuation 77379 . 77380) (TEMPLATE 77370 . 77378) (punctuation 77365 . 77366) (semantic-list 75754 . 77365) (punctuation 75750 . 75751) (symbol 75737 . 75750) (punctuation 75736 . 75737) (punctuation 75735 . 75736) (symbol 75725 . 75735) (STRUCT 75718 . 75724) (punctuation 75717 . 75718) (symbol 75706 . 75717) (CLASS 75700 . 75705) (punctuation 75696 . 75697) (punctuation 75695 . 75696) (TEMPLATE 75686 . 75694) (punctuation 75681 . 75682) (semantic-list 67392 . 75681) (punctuation 67388 . 67389) (symbol 67376 . 67388) (punctuation 67375 . 67376) (punctuation 67374 . 67375) (symbol 67364 . 67374) (STRUCT 67357 . 67363) (punctuation 67356 . 67357) (symbol 67345 . 67356) (CLASS 67339 . 67344) (punctuation 67335 . 67336) (punctuation 67334 . 67335) (TEMPLATE 67325 . 67333) (punctuation 67320 . 67321) (semantic-list 64895 . 67320) (punctuation 64891 . 64892) (symbol 64877 . 64891) (punctuation 64876 . 64877) (punctuation 64875 . 64876) (symbol 64865 . 64875) (STRUCT 64858 . 64864) (punctuation 64857 . 64858) (symbol 64846 . 64857) (CLASS 64840 . 64845) (punctuation 64836 . 64837) (punctuation 64835 . 64836) (TEMPLATE 64826 . 64834) (punctuation 64822 . 64823) (semantic-list 60370 . 64822) (punctuation 60366 . 60367) (symbol 60361 . 60366) (punctuation 60360 . 60361) (punctuation 60359 . 60360) (symbol 60349 . 60359) (STRUCT 60342 . 60348) (punctuation 60341 . 60342) (symbol 60330 . 60341) (CLASS 60324 . 60329) (punctuation 60320 . 60321) (punctuation 60319 . 60320) (TEMPLATE 60310 . 60318) (punctuation 60306 . 60307) (semantic-list 58529 . 60306) (punctuation 58525 . 58526) (symbol 58520 . 58525) (punctuation 58519 . 58520) (punctuation 58518 . 58519) (symbol 58508 . 58518) (STRUCT 58501 . 58507) (punctuation 58500 . 58501) (symbol 58489 . 58500) (CLASS 58483 . 58488) (punctuation 58479 . 58480) (punctuation 58478 . 58479) (TEMPLATE 58469 . 58477) (punctuation 58464 . 58465) (semantic-list 52369 . 58464) (punctuation 52365 . 52366) (symbol 52354 . 52365) (punctuation 52353 . 52354) (punctuation 52352 . 52353) (symbol 52342 . 52352) (STRUCT 52335 . 52341) (punctuation 52334 . 52335) (symbol 52323 . 52334) (CLASS 52317 . 52322) (punctuation 52313 . 52314) (punctuation 52312 . 52313) (TEMPLATE 52303 . 52311) (punctuation 52299 . 52300) (semantic-list 49287 . 52299) (punctuation 49283 . 49284) (symbol 49278 . 49283) (punctuation 49277 . 49278) (punctuation 49276 . 49277) (symbol 49266 . 49276) (STRUCT 49259 . 49265) (punctuation 49258 . 49259) (symbol 49247 . 49258) (CLASS 49241 . 49246) (punctuation 49237 . 49238) (punctuation 49236 . 49237) (TEMPLATE 49227 . 49235) (punctuation 49223 . 49224) (semantic-list 42508 . 49223) (punctuation 42504 . 42505) (symbol 42498 . 42504) (punctuation 42497 . 42498) (punctuation 42496 . 42497) (symbol 42486 . 42496) (STRUCT 42479 . 42485) (punctuation 42478 . 42479) (symbol 42467 . 42478) (CLASS 42461 . 42466) (punctuation 42457 . 42458) (punctuation 42456 . 42457) (TEMPLATE 42447 . 42455) (punctuation 42442 . 42443) (semantic-list 36746 . 42442) (punctuation 36742 . 36743) (symbol 36738 . 36742) (punctuation 36737 . 36738) (punctuation 36736 . 36737) (symbol 36726 . 36736) (STRUCT 36719 . 36725) (punctuation 36718 . 36719) (symbol 36707 . 36718) (CLASS 36701 . 36706) (punctuation 36697 . 36698) (punctuation 36696 . 36697) (TEMPLATE 36687 . 36695) (punctuation 28390 . 28391) (semantic-list 23166 . 28390) (punctuation 23162 . 23163) (symbol 23155 . 23162) (punctuation 23154 . 23155) (punctuation 23153 . 23154) (symbol 23143 . 23153) (STRUCT 23136 . 23142) (punctuation 23135 . 23136) (symbol 23124 . 23135) (CLASS 23118 . 23123) (punctuation 23114 . 23115) (punctuation 23113 . 23114) (TEMPLATE 23104 . 23112) (punctuation 23100 . 23101) (semantic-list 20803 . 23100) (punctuation 20799 . 20800) (symbol 20795 . 20799) (punctuation 20794 . 20795) (punctuation 20793 . 20794) (symbol 20783 . 20793) (STRUCT 20776 . 20782) (punctuation 20775 . 20776) (symbol 20764 . 20775) (CLASS 20758 . 20763) (punctuation 20754 . 20755) (punctuation 20753 . 20754) (TEMPLATE 20744 . 20752) (punctuation 20740 . 20741) (semantic-list 14820 . 20740) (punctuation 14816 . 14817) (symbol 14810 . 14816) (punctuation 14809 . 14810) (punctuation 14808 . 14809) (symbol 14798 . 14808) (STRUCT 14791 . 14797) (punctuation 14790 . 14791) (symbol 14779 . 14790) (CLASS 14773 . 14778) (punctuation 14769 . 14770) (punctuation 14768 . 14769) (TEMPLATE 14759 . 14767) (punctuation 14755 . 14756) (semantic-list 12990 . 14755) (punctuation 12986 . 12987) (symbol 12984 . 12986) (punctuation 12983 . 12984) (punctuation 12982 . 12983) (symbol 12972 . 12982) (STRUCT 12965 . 12971) (punctuation 12964 . 12965) (symbol 12953 . 12964) (CLASS 12947 . 12952) (punctuation 12943 . 12944) (punctuation 12942 . 12943) (TEMPLATE 12933 . 12941))
+    :lexical-table 
+        '(("__database_io_h__")
+          )
+
+    )
+   )
+  :file "!drive_d!work!rtplatform-clone!dm!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

@@ -1,0 +1,18 @@
+;; Object nyan-mode/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "nyan-mode/"
+  :tables (list 
+   (semanticdb-table "nyan-mode.el"
+    :major-mode 'emacs-lisp-mode
+    :tags nil
+    :file "nyan-mode.el"
+    :pointmax 7251
+    :fsize 7445
+    :lastmodtime '(21005 33751 0 0)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!drive_c!Users!hyphen!.emacs.d!plugins!nyan-mode!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

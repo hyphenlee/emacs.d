@@ -1,0 +1,18 @@
+;; Object mysql/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "mysql/"
+  :tables (list 
+   (semanticdb-table "plugin.h"
+    :major-mode 'c++-mode
+    :tags nil
+    :file "plugin.h"
+    :pointmax 23603
+    :fsize 23602
+    :lastmodtime '(20747 26182 0 0)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!drive_d!work!rtSuite!code!utils!mysql!include!mysql!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

@@ -1,0 +1,87 @@
+;; Object review/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "review/"
+  :tables (list 
+   (semanticdb-table "dose_compare_model.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("dose_compare_model.h" include nil nil [1 32])
+            ("app_model.h" include nil nil [33 55])
+            ("dvh_handler.h" include nil nil [56 80])
+            ("DoseCompareModel" function
+               (:constructor-flag t
+                :parent "DoseCompareModel"
+                :type ("DoseCompareModel" type (:type "class") nil nil))
+                nil [82 238])
+            ("DoseCompareModel" function
+               (:destructor-flag t
+                :parent "DoseCompareModel"
+                :type "void")
+                nil [240 459]))          
+    :file "dose_compare_model.cpp"
+    :pointmax 465
+    :fsize 490
+    :lastmodtime '(21306 8311 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "dose_compare_model.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__rtsuite_dose_compare_model__" variable (:constant-flag t) nil [50 80])
+            ("vector" include (:system-flag t) nil [83 100])
+            ("axial_scene_model.h" include nil nil [101 131])
+            ("dvh_scene_model.h" include nil nil [132 160])
+            ("dvh_list_event.h" include nil nil [161 188])
+            ("isoline_val_event.h" include nil nil [189 219])
+            ("color_map_event.h" include nil nil [220 248])
+            ("iso_val_observer_isoline_list.h" include nil nil [249 291])
+            ("color_map_observer_isoline_list.h" include nil nil [292 336])
+            ("color_map_observer_dose_image.h" include nil nil [337 379])
+            ("color_map_observer_dose_colorbar.h" include nil nil [380 425])
+            ("color_bar.h" include nil nil [482 504])
+            ("image3d_scene_model.h" include nil nil [505 537])
+            ("bev_scene_model.h" include nil nil [538 566])
+            ("DoseCompareModel" type
+               (:members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [597 604])
+                    ("DoseCompareModel" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :type ("DoseCompareModel" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [607 626])
+                    ("DoseCompareModel" function
+                       (:prototype-flag t
+                        :destructor-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [628 648])
+                    ("get_dvh_scene_model" function
+                       (:pointer 1
+                        :type ("DVHSceneModel" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [827 889])
+                    ("private" label nil (reparse-symbol classsubparts) [972 980])
+                    ("RequestDVHList" function
+                       (:prototype-flag t
+                        :type "bool")
+                        (reparse-symbol classsubparts) [982 1004])
+                    ("private" label nil (reparse-symbol classsubparts) [1008 1016])
+                    ("dvh_scene_model_" variable
+                       (:pointer 1
+                        :type ("DVHSceneModel" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1019 1051]))                  
+                :type "class")
+                nil [569 1110]))          
+    :file "dose_compare_model.h"
+    :pointmax 1147
+    :fsize 1192
+    :lastmodtime '(21306 8311 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("__rtsuite_dose_compare_model__")
+          )
+
+    )
+   )
+  :file "!drive_d!work!rtsuite-new!rtsuite!review!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

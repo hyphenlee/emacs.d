@@ -1,0 +1,317 @@
+;; Object eshell/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "eshell/"
+  :tables (list 
+   (semanticdb-table "em-unix.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("eshell" include nil nil [1253 1270])
+            ("esh-opt" include nil nil [1271 1289])
+            ("pcomplete" include nil nil [1290 1310])
+            ("progn" code nil nil [1327 1969])
+            ("eshell-unix-load-hook" variable nil nil [1971 2158])
+            ("eshell-plain-grep-behavior" variable nil nil [2160 2410])
+            ("eshell-no-grep-available" variable (:default-value (not (eshell-search-path "grep"))) nil [2412 2582])
+            ("eshell-plain-diff-behavior" variable nil nil [2584 2834])
+            ("eshell-plain-locate-behavior" variable (:default-value (featurep (quote xemacs))) nil [2836 3105])
+            ("eshell-rm-removes-directories" variable nil nil [3107 3275])
+            ("eshell-rm-interactive-query" variable (:default-value (= (user-uid) 0)) nil [3277 3430])
+            ("eshell-mv-interactive-query" variable (:default-value (= (user-uid) 0)) nil [3432 3588])
+            ("eshell-mv-overwrite-files" variable (:default-value t) nil [3590 3727])
+            ("eshell-cp-interactive-query" variable (:default-value (= (user-uid) 0)) nil [3729 3885])
+            ("eshell-cp-overwrite-files" variable (:default-value t) nil [3887 4024])
+            ("eshell-ln-interactive-query" variable (:default-value (= (user-uid) 0)) nil [4026 4182])
+            ("eshell-ln-overwrite-files" variable nil nil [4184 4323])
+            ("eshell-default-target-is-dot" variable nil nil [4325 4473])
+            ("eshell-du-prefer-over-ange" variable nil nil [4475 4685])
+            ("eshell-unix-initialize" function nil nil [4703 5143])
+            ("defalias" code nil nil [5145 5193])
+            ("defalias" code nil nil [5194 5245])
+            ("defalias" code nil nil [5246 5294])
+            ("em-interactive" variable nil nil [5296 5319])
+            ("em-preview" variable nil nil [5320 5339])
+            ("em-recursive" variable nil nil [5340 5361])
+            ("em-verbose" variable nil nil [5362 5381])
+            ("eshell/man" function (:arguments ("args")) nil [5383 5530])
+            ("put" code nil nil [5532 5582])
+            ("eshell/info" function (:arguments ("args")) nil [5584 6733])
+            ("eshell-remove-entries" function (:arguments ("path" "files" "top-level")) nil [6735 7755])
+            ("eshell/rm" function (:arguments ("args")) nil [7757 10258])
+            ("put" code nil nil [10260 10309])
+            ("eshell/mkdir" function (:arguments ("args")) nil [10311 10712])
+            ("put" code nil nil [10714 10766])
+            ("eshell/rmdir" function (:arguments ("args")) nil [10768 11160])
+            ("put" code nil nil [11162 11214])
+            ("no-dereference" variable nil nil [11216 11239])
+            ("eshell-warn-dot-directories" variable (:default-value t) nil [11241 11279])
+            ("eshell-shuffle-files" function (:arguments ("command" "action" "files" "target" "func" "deep" "args")) nil [11281 14751])
+            ("eshell-shorthand-tar-command" function (:arguments ("command" "args")) nil [14753 15509])
+            ("eshell-mvcpln-template" function (:arguments ("command" "action" "func" "query-var" "force-var" "preserve")) nil [15551 16556])
+            ("eshell/mv" function (:arguments ("args")) nil [16558 17392])
+            ("put" code nil nil [17394 17443])
+            ("eshell/cp" function (:arguments ("args")) nil [17445 18565])
+            ("put" code nil nil [18567 18616])
+            ("eshell/ln" function (:arguments ("args")) nil [18618 19816])
+            ("put" code nil nil [19818 19867])
+            ("eshell/cat" function (:arguments ("args")) nil [19869 21649])
+            ("put" code nil nil [21651 21701])
+            ("eshell/make" function (:arguments ("args")) nil [21764 22261])
+            ("put" code nil nil [22263 22314])
+            ("eshell-occur-mode-goto-occurrence" function (:user-visible-flag t) nil [22316 22552])
+            ("eshell-occur-mode-mouse-goto" function
+               (:user-visible-flag t
+                :arguments ("event"))
+                nil [22554 22957])
+            ("eshell-poor-mans-grep" function (:arguments ("args")) nil [22959 24429])
+            ("eshell-grep" function (:arguments ("command" "args" "maybe-use-occur")) nil [24431 25455])
+            ("eshell/grep" function (:arguments ("args")) nil [25457 25581])
+            ("eshell/egrep" function (:arguments ("args")) nil [25583 25710])
+            ("eshell/fgrep" function (:arguments ("args")) nil [25712 25839])
+            ("eshell/agrep" function (:arguments ("args")) nil [25841 25966])
+            ("eshell/glimpse" function (:arguments ("args")) nil [25968 26145])
+            ("eshell-complete-hostname" function nil nil [26199 26343])
+            ("eshell-complete-host-reference" function nil nil [26345 26690])
+            ("defalias" code nil nil [26692 26746])
+            ("defalias" code nil nil [26747 26801])
+            ("defalias" code nil nil [26802 26856])
+            ("defalias" code nil nil [26857 26911])
+            ("pcomplete/telnet" function nil nil [26913 27039])
+            ("pcomplete/rsh" function nil nil [27041 27419])
+            ("block-size" variable nil nil [27421 27440])
+            ("by-bytes" variable nil nil [27441 27458])
+            ("dereference-links" variable nil nil [27459 27485])
+            ("grand-total" variable nil nil [27486 27506])
+            ("human-readable" variable nil nil [27507 27530])
+            ("max-depth" variable nil nil [27531 27549])
+            ("only-one-filesystem" variable nil nil [27550 27578])
+            ("show-all" variable nil nil [27579 27596])
+            ("eshell-du-size-string" function (:arguments ("size")) nil [27598 27797])
+            ("eshell-du-sum-directory" function (:arguments ("path" "depth")) nil [27799 28904])
+            ("eshell/du" function (:arguments ("args")) nil [28906 31307])
+            ("eshell-time-start" variable nil nil [31309 31339])
+            ("eshell-show-elapsed-time" function nil nil [31341 31629])
+            ("eshell/time" function (:arguments ("args")) nil [31631 32595])
+            ("eshell/whoami" function (:arguments ("args")) nil [32597 32729])
+            ("eshell-diff-window-config" variable nil nil [32731 32769])
+            ("eshell-diff-quit" function (:user-visible-flag t) nil [32771 32965])
+            ("nil-blank-string" function (:arguments ("string")) nil [32967 33141])
+            ("diff-no-select" function (:prototype-flag t) nil [33143 33176])
+            ("eshell/diff" function (:arguments ("args")) nil [33178 34650])
+            ("put" code nil nil [34652 34703])
+            ("eshell/locate" function (:arguments ("args")) nil [34705 35281])
+            ("put" code nil nil [35283 35336])
+            ("eshell/occur" function (:arguments ("args")) nil [35338 35561])
+            ("put" code nil nil [35563 35615])
+            ("eshell/su" function (:arguments ("args")) nil [35617 37017])
+            ("put" code nil nil [37019 37068])
+            ("eshell/sudo" function (:arguments ("args")) nil [37070 38456])
+            ("put" code nil nil [38458 38509])
+            ("em-unix" package nil nil [38511 38529]))          
+    :file "em-unix.el"
+    :pointmax 38629
+    :fsize 38628
+    :lastmodtime '(20806 7941 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "eshell.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("cl-lib" include nil nil [9133 9150])
+            ("esh-util" include nil nil [9153 9172])
+            ("esh-util" include nil nil [9174 9193])
+            ("esh-mode" include nil nil [9194 9213])
+            ("eshell" customgroup (:user-visible-flag t) nil [9215 9530])
+            ("eshell-buffer-name" variable nil nil [9623 9650])
+            ("eshell-add-to-window-buffer-names" function nil nil [9652 9851])
+            ("eshell-remove-from-window-buffer-names" function nil nil [9853 10089])
+            ("eshell-load-hook" variable nil nil [10091 10198])
+            ("eshell-unload-hook" variable (:default-value (quote (eshell-unload-all-modules))) nil [10200 10342])
+            ("eshell-buffer-name" variable (:default-value "*eshell*") nil [10344 10460])
+            ("eshell-directory-name" variable (:default-value (locate-user-emacs-file "eshell/" ".eshell/")) nil [10462 10640])
+            ("eshell" function
+               (:user-visible-flag t
+                :arguments ("arg"))
+                nil [10846 11805])
+            ("eshell-return-exits-minibuffer" function nil nil [11807 12231])
+            ("eshell-non-interactive-p" variable nil nil [12233 12467])
+            ("eshell-command" function
+               (:user-visible-flag t
+                :arguments ("command" "arg"))
+                nil [12484 15126])
+            ("eshell-command-result" function (:arguments ("command" "status-var")) nil [15143 16028])
+            ("define-obsolete-function-alias" code nil nil [16269 16345])
+            ("eshell-unload-all-modules" function nil nil [16358 17346])
+            ("run-hooks" code nil nil [17348 17377])
+            ("eshell" package nil nil [17379 17396]))          
+    :file "eshell.el"
+    :pointmax 17422
+    :fsize 17421
+    :lastmodtime '(20806 7941 0 0)
+    :unmatched-syntax '((close-paren 9172 . 9173) (symbol 9113 . 9130) (open-paren 9112 . 9113))
+    )
+   (semanticdb-table "esh-opt.el"
+    :file "esh-opt.el"
+    :fsize 9200
+    :lastmodtime '(20806 7941 0 0)
+    )
+   (semanticdb-table "esh-util.el"
+    :file "esh-util.el"
+    :fsize 25557
+    :lastmodtime '(20806 7941 0 0)
+    )
+   (semanticdb-table "esh-mode.el"
+    :major-mode 'emacs-lisp-mode
+    :tags 
+        '( ("esh-mode" package nil nil [2467 2486])
+            ("esh-util" include nil nil [2507 2526])
+            ("esh-module" include nil nil [2528 2549])
+            ("esh-cmd" include nil nil [2550 2568])
+            ("esh-io" include nil nil [2569 2586])
+            ("esh-var" include nil nil [2587 2605])
+            ("eshell-mode" customgroup (:user-visible-flag t) nil [2607 2738])
+            ("eshell-mode-unload-hook" variable nil nil [2761 2893])
+            ("eshell-mode-hook" variable nil nil [2895 3019])
+            ("eshell-first-time-mode-hook" variable nil nil [3021 3222])
+            ("eshell-exit-hook" variable nil nil [3224 3482])
+            ("eshell-kill-on-exit" variable (:default-value t) nil [3484 3663])
+            ("eshell-input-filter-functions" variable nil nil [3665 3891])
+            ("eshell-send-direct-to-subprocesses" variable nil nil [3893 4036])
+            ("eshell-expand-input-functions" variable nil nil [4038 4255])
+            ("eshell-scroll-to-bottom-on-input" variable nil nil [4257 4737])
+            ("eshell-scroll-to-bottom-on-output" variable nil nil [4739 5405])
+            ("eshell-scroll-show-maximum-output" variable (:default-value t) nil [5407 5725])
+            ("eshell-buffer-maximum-lines" variable (:default-value 1024) nil [5727 6018])
+            ("eshell-output-filter-functions" variable (:default-value (quote (eshell-postoutput-scroll-to-bottom eshell-handle-control-codes eshell-handle-ansi-color eshell-watch-for-password-prompt))) nil [6020 6402])
+            ("eshell-preoutput-filter-functions" variable nil nil [6404 6683])
+            ("eshell-password-prompt-regexp" variable (:default-value "[Pp]ass\\(word\\|phrase\\).*:\\s *\\'") nil [6685 6925])
+            ("eshell-skip-prompt-function" variable nil nil [6927 7096])
+            ("define-obsolete-variable-alias" code nil nil [7098 7194])
+            ("eshell-status-in-mode-line" variable (:default-value t) nil [7196 7348])
+            ("eshell-first-time-p" variable (:default-value t) nil [7350 7445])
+            ("eshell-mode" variable nil nil [7602 7626])
+            ("eshell-mode-map" variable nil nil [7627 7655])
+            ("eshell-command-running-string" variable (:default-value "--") nil [7656 7699])
+            ("eshell-command-map" variable nil nil [7700 7731])
+            ("eshell-command-prefix" variable nil nil [7732 7766])
+            ("eshell-last-input-start" variable nil nil [7767 7803])
+            ("eshell-last-input-end" variable nil nil [7804 7838])
+            ("eshell-last-output-start" variable nil nil [7839 7876])
+            ("eshell-last-output-block-begin" variable nil nil [7877 7920])
+            ("eshell-last-output-end" variable nil nil [7921 7956])
+            ("eshell-currently-handling-window" variable nil nil [7958 8003])
+            ("eshell-mode-syntax-table" variable nil nil [8004 8041])
+            ("eshell-mode-abbrev-table" variable nil nil [8042 8079])
+            ("define-abbrev-table" code nil nil [8081 8131])
+            ("if" code nil nil [8133 10801])
+            ("eshell-kill-buffer-function" function nil nil [10824 11318])
+            ("eshell-mode" function nil nil [11335 17657])
+            ("put" code nil nil [17659 17698])
+            ("eshell-command-started" function nil nil [17700 17862])
+            ("eshell-command-finished" function nil nil [17864 18028])
+            ("eshell-toggle-direct-send" function nil nil [18055 18479])
+            ("eshell-self-insert-command" function (:arguments ("N")) nil [18481 18726])
+            ("eshell-intercept-commands" function nil nil [18728 19530])
+            ("declare-function" code nil nil [19532 19609])
+            ("eshell-find-tag" function
+               (:user-visible-flag t
+                :arguments ("tagname" "next-p" "regexp-p"))
+                nil [19611 19970])
+            ("eshell-move-argument" function (:arguments ("limit" "func" "property" "arg")) nil [19972 20522])
+            ("eshell-forward-argument" function
+               (:user-visible-flag t
+                :arguments ("arg"))
+                nil [20524 20687])
+            ("eshell-backward-argument" function
+               (:user-visible-flag t
+                :arguments ("arg"))
+                nil [20689 20857])
+            ("eshell-repeat-argument" function (:arguments ("arg")) nil [20859 21051])
+            ("eshell-bol" function (:user-visible-flag t) nil [21053 21264])
+            ("eshell-push-command-mark" function nil nil [21266 21398])
+            ("custom-add-option" code nil nil [21400 21470])
+            ("eshell-goto-input-start" function nil nil [21472 21680])
+            ("custom-add-option" code nil nil [21682 21752])
+            ("eshell-interactive-print" function (:arguments ("string")) nil [21754 21881])
+            ("eshell-begin-on-new-line" function nil nil [21883 22093])
+            ("eshell-reset" function (:arguments ("no-hooks")) nil [22095 22623])
+            ("eshell-parse-command-input" function (:arguments ("beg" "end" "args")) nil [22625 23390])
+            ("eshell-update-markers" function (:arguments ("pmark")) nil [23392 23634])
+            ("eshell-queue-input" function
+               (:user-visible-flag t
+                :arguments ("use-region"))
+                nil [23636 23888])
+            ("eshell-send-input" function
+               (:user-visible-flag t
+                :arguments ("use-region" "queue-p" "no-newline"))
+                nil [23890 26839])
+            ("eshell-kill-new" function nil nil [26841 26981])
+            ("custom-add-option" code nil nil [26983 27050])
+            ("eshell-output-filter" function (:arguments ("process" "string")) nil [27052 28614])
+            ("eshell-run-output-filters" function nil nil [28616 28874])
+            ("eshell-preinput-scroll-to-bottom" function nil nil [28917 29876])
+            ("eshell-postoutput-scroll-to-bottom" function nil nil [29919 31257])
+            ("eshell-beginning-of-input" function nil nil [31259 31381])
+            ("eshell-beginning-of-output" function nil nil [31383 31509])
+            ("eshell-end-of-output" function nil nil [31511 31709])
+            ("eshell-kill-output" function (:user-visible-flag t) nil [31711 31994])
+            ("eshell-show-output" function
+               (:user-visible-flag t
+                :arguments ("arg"))
+                nil [31996 32554])
+            ("eshell-mark-output" function
+               (:user-visible-flag t
+                :arguments ("arg"))
+                nil [32556 32850])
+            ("eshell-kill-input" function (:user-visible-flag t) nil [32852 33134])
+            ("eshell-show-maximum-output" function
+               (:user-visible-flag t
+                :arguments ("interactive"))
+                nil [33136 33396])
+            ("eshell-get-old-input" function (:arguments ("use-current-region")) nil [33398 33807])
+            ("eshell-copy-old-input" function (:user-visible-flag t) nil [33809 34038])
+            ("eshell/exit" function nil nil [34040 34164])
+            ("eshell-life-is-too-much" function (:user-visible-flag t) nil [34166 34364])
+            ("eshell-truncate-buffer" function (:user-visible-flag t) nil [34366 35111])
+            ("custom-add-option" code nil nil [35113 35193])
+            ("eshell-send-invisible" function
+               (:user-visible-flag t
+                :arguments ("str"))
+                nil [35195 35660])
+            ("eshell-watch-for-password-prompt" function nil nil [35662 36278])
+            ("custom-add-option" code nil nil [36280 36370])
+            ("eshell-handle-control-codes" function nil nil [36372 37177])
+            ("custom-add-option" code nil nil [37179 37264])
+            ("ansi-color-apply-on-region" function (:prototype-flag t) nil [37266 37317])
+            ("eshell-handle-ansi-color" function nil nil [37319 37492])
+            ("custom-add-option" code nil nil [37494 37576]))          
+    :file "esh-mode.el"
+    :pointmax 37604
+    :fsize 37603
+    :lastmodtime '(20806 7941 0 0)
+    :unmatched-syntax '((close-paren 2526 . 2527) (symbol 2489 . 2506) (open-paren 2488 . 2489))
+    )
+   (semanticdb-table "esh-module.el"
+    :file "esh-module.el"
+    :fsize 3216
+    :lastmodtime '(20806 7941 0 0)
+    )
+   (semanticdb-table "esh-cmd.el"
+    :file "esh-cmd.el"
+    :fsize 49664
+    :lastmodtime '(20806 7941 0 0)
+    )
+   (semanticdb-table "esh-io.el"
+    :file "esh-io.el"
+    :fsize 17081
+    :lastmodtime '(20806 7941 0 0)
+    )
+   (semanticdb-table "esh-var.el"
+    :file "esh-var.el"
+    :fsize 21035
+    :lastmodtime '(20806 7941 0 0)
+    )
+   )
+  :file "!drive_c!emacs-24.3!lisp!eshell!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

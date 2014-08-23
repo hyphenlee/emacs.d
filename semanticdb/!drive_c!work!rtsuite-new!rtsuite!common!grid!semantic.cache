@@ -1,0 +1,321 @@
+;; Object grid/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "grid/"
+  :tables (list 
+   (semanticdb-table "limiting_rois_grid_model.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("limiting_rois_grid_model.h" include nil nil [1 38])
+            ("rt_model.h" include nil nil [39 60])
+            ("LimitingRoisGridModel" function
+               (:constructor-flag t
+                :parent "LimitingRoisGridModel"
+                :arguments 
+                  ( ("roi_model" variable
+                       (:pointer 1
+                        :type ("CreateRoiModel" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [106 131]))                  
+                :type ("LimitingRoisGridModel" type (:type "class") nil nil))
+                nil [61 765])
+            ("LimitingRoisGridModel" function
+               (:destructor-flag t
+                :parent "LimitingRoisGridModel"
+                :type "void")
+                nil [767 819]))          
+    :file "limiting_rois_grid_model.cpp"
+    :pointmax 821
+    :fsize 1112
+    :lastmodtime '(21490 43435 0 0)
+    :unmatched-syntax 'nil
+    )
+   (semanticdb-table "limiting_rois_grid_model.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__limiting_rois_grid_model_h__" variable (:constant-flag t) nil [48 78])
+            ("grid_model.h" include nil nil [79 102])
+            ("vector" include (:system-flag t) nil [103 120])
+            ("create_roi_model.h" include nil nil [121 150])
+            ("LimitingRoisGridModel" type
+               (:superclasses 
+                  ( ("GridModel" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [198 205])
+                    ("LimitingType" type
+                       (:members 
+                          ( ("NONE" variable
+                               (:constant-flag t
+                                :type "int")
+                                (reparse-symbol enumsubparts) [230 235])
+                            ("INCLUDE" variable
+                               (:constant-flag t
+                                :type "int")
+                                (reparse-symbol enumsubparts) [235 243])
+                            ("EXCLUDE" variable
+                               (:constant-flag t
+                                :type "int")
+                                (reparse-symbol enumsubparts) [243 253]))                          
+                        :type "enum")
+                        (reparse-symbol classsubparts) [207 254])
+                    ("LimitingROI" type
+                       (:members 
+                          ( ("name" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [280 297])
+                            ("color" variable (:type ("std::string" type (:type "class") nil nil)) (reparse-symbol classsubparts) [300 318])
+                            ("type" variable (:type ("LimitingType" type (:type "class") nil nil)) (reparse-symbol classsubparts) [321 339])
+                            ("distance_value" variable (:type "float") (reparse-symbol classsubparts) [342 363]))                          
+                        :type "struct")
+                        (reparse-symbol classsubparts) [256 368])
+                    ("LimitingRoisGridModel" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :arguments 
+                          ( ("roi_model" variable
+                               (:pointer 1
+                                :type ("CreateRoiModel" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [392 417]))                          
+                        :type ("LimitingRoisGridModel" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [370 418])
+                    ("LimitingRoisGridModel" function
+                       (:prototype-flag t
+                        :destructor-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [420 445])
+                    ("limiting_roi_list" variable (:type ("std::vector" type
+                         (:template-specifier 
+                            ( ("LimitingROI" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol classsubparts) [447 490])
+                    ("private" label nil (reparse-symbol classsubparts) [492 500]))                  
+                :type "class")
+                nil [151 504]))          
+    :file "limiting_rois_grid_model.h"
+    :pointmax 548
+    :fsize 591
+    :lastmodtime '(21490 43435 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("__limiting_rois_grid_model_h__")
+          )
+
+    )
+   (semanticdb-table "limiting_rois_grid_presenter.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__limiting_rois_grid_presenter_h__" variable (:constant-flag t) nil [52 86])
+            ("grid_presenter.h" include nil nil [87 114])
+            ("limiting_rois_grid_model.h" include nil nil [115 152])
+            ("LimitingRoisGridPresenter" type
+               (:superclasses 
+                  ( ("GridPresenter" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [208 215])
+                    ("LimitingRoisGridPresenter" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :arguments 
+                          ( ("model" variable
+                               (:pointer 1
+                                :type ("LimitingRoisGridModel" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [243 272])
+                            ("grid" variable
+                               (:pointer 1
+                                :type ("wxGrid" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [272 285]))                          
+                        :type ("LimitingRoisGridPresenter" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [217 286])
+                    ("LimitingRoisGridPresenter" function
+                       (:prototype-flag t
+                        :destructor-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [288 317])
+                    ("Render" function
+                       (:prototype-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [319 333])
+                    ("private" label nil (reparse-symbol classsubparts) [334 342])
+                    ("roi_model_" variable
+                       (:pointer 1
+                        :type ("LimitingRoisGridModel" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [344 377]))                  
+                :type "class")
+                nil [153 380]))          
+    :file "limiting_rois_grid_presenter.h"
+    :pointmax 388
+    :fsize 401
+    :lastmodtime '(21489 49913 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("__limiting_rois_grid_presenter_h__")
+          )
+
+    )
+   (semanticdb-table "limiting_rois_grid_presenter.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("limiting_rois_grid_presenter.h" include nil nil [1 42])
+            ("language.h" include nil nil [43 64])
+            ("LimitingRoisGridPresenter" function
+               (:constructor-flag t
+                :parent "LimitingRoisGridPresenter"
+                :arguments 
+                  ( ("model" variable
+                       (:pointer 1
+                        :type ("LimitingRoisGridModel" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [118 147])
+                    ("grid" variable
+                       (:pointer 1
+                        :type ("wxGrid" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [147 160]))                  
+                :type ("LimitingRoisGridPresenter" type (:type "class") nil nil))
+                nil [65 809])
+            ("Render" function
+               (:parent "LimitingRoisGridPresenter"
+                :type "void")
+                nil [812 1622])
+            ("LimitingRoisGridPresenter" function
+               (:destructor-flag t
+                :parent "LimitingRoisGridPresenter"
+                :type "void")
+                nil [1624 1684]))          
+    :file "limiting_rois_grid_presenter.cpp"
+    :pointmax 1685
+    :fsize 2151
+    :lastmodtime '(21490 43843 0 0)
+    :unmatched-syntax 'nil
+    )
+    (semanticdb-table "grid_model.h"
+    :file "grid_model.h"
+    :fsize 528
+    :lastmodtime '(21369 28182 0 0)
+    )
+   (semanticdb-table "grid_presenter.h"
+    :file "grid_presenter.h"
+    :fsize 1286
+    :lastmodtime '(21399 46903 0 0)
+    )
+   (semanticdb-table "color_cell_render.h"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("__color_cell_render_h__" variable (:constant-flag t) nil [41 64])
+            ("wx/grid.h" include (:system-flag t) nil [65 85])
+            ("wx\\generic\\grideditors.h" include nil nil [86 121])
+            ("ColorCellRenderer" type
+               (:superclasses 
+                  ( ("wxGridCellStringRenderer" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [182 189])
+                    ("Draw" function
+                       (:prototype-flag t
+                        :typemodifiers ("virtual")
+                        :arguments 
+                          ( ("grid" variable
+                               (:reference 1
+                                :type ("wxGrid" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [209 222])
+                            ("attr" variable
+                               (:reference 1
+                                :type ("wxGridCellAttr" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [225 246])
+                            ("dc" variable
+                               (:reference 1
+                                :type ("wxDC" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [249 258])
+                            ("rect" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("wxRect" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [261 280])
+                            ("row" variable (:type "int") (reparse-symbol arg-sub-list) [283 291])
+                            ("col" variable (:type "int") (reparse-symbol arg-sub-list) [292 300])
+                            ("isSelected" variable (:type "bool") (reparse-symbol arg-sub-list) [303 319]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [191 320])
+                    ("ColorCellRenderer" function
+                       (:prototype-flag t
+                        :constructor-flag t
+                        :type ("ColorCellRenderer" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [322 342])
+                    ("ColorCellRenderer" function
+                       (:prototype-flag t
+                        :destructor-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [344 365])
+                    ("set_color" function
+                       (:arguments 
+                          ( ("colour" variable (:type ("wxColour" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [382 398]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [367 415])
+                    ("private" label nil (reparse-symbol classsubparts) [416 424])
+                    ("colour_" variable (:type ("wxColour" type (:type "class") nil nil)) (reparse-symbol classsubparts) [426 443]))                  
+                :type "class")
+                nil [122 446]))          
+    :file "color_cell_render.h"
+    :pointmax 454
+    :fsize 473
+    :lastmodtime '(21490 43557 0 0)
+    :unmatched-syntax 'nil
+    :lexical-table 
+        '(("__color_cell_render_h__")
+          )
+
+    )
+   (semanticdb-table "color_cell_render.cpp"
+    :major-mode 'c++-mode
+    :tags 
+        '( ("color_cell_render.h" include nil nil [1 31])
+            ("wx/brush.h" include nil nil [32 53])
+            ("wx/dc.h" include nil nil [54 72])
+            ("Draw" function
+               (:parent "ColorCellRenderer"
+                :arguments 
+                  ( ("grid" variable
+                       (:reference 1
+                        :type ("wxGrid" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [104 117])
+                    ("attr" variable
+                       (:reference 1
+                        :type ("wxGridCellAttr" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [118 139])
+                    ("dc" variable
+                       (:reference 1
+                        :type ("wxDC" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [140 149])
+                    ("rect" variable
+                       (:reference 1
+                        :constant-flag t
+                        :type ("wxRect" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [150 169])
+                    ("row" variable (:type "int") (reparse-symbol arg-sub-list) [170 178])
+                    ("col" variable (:type "int") (reparse-symbol arg-sub-list) [179 187])
+                    ("isSelected" variable (:type "bool") (reparse-symbol arg-sub-list) [188 205]))                  
+                :type "void")
+                nil [74 520])
+            ("ColorCellRenderer" function
+               (:constructor-flag t
+                :parent "ColorCellRenderer"
+                :type ("ColorCellRenderer" type (:type "class") nil nil))
+                nil [522 565])
+            ("ColorCellRenderer" function
+               (:destructor-flag t
+                :parent "ColorCellRenderer"
+                :type "void")
+                nil [567 611]))          
+    :file "color_cell_render.cpp"
+    :pointmax 612
+    :fsize 634
+    :lastmodtime '(21490 43634 0 0)
+    :unmatched-syntax 'nil
+    )
+   )
+  :file "!drive_c!work!rtsuite-new!rtsuite!common!grid!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2"
+  )

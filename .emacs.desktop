@@ -2,172 +2,72 @@
 ;; --------------------------------------------------------------------------
 ;; Desktop File for Emacs
 ;; --------------------------------------------------------------------------
-;; Created Fri Oct  3 08:50:14 2014
+;; Created Wed Oct  8 11:59:41 2014
 ;; Desktop file format version 206
-;; Emacs version 24.4.50.1
+;; Emacs version 24.3.1
 
 ;; Global section:
-(setq desktop-saved-frameset [frameset 1 (21549 62150 508489 0) (desktop . "206") "hyphen@rimihos-Mac.local" nil nil ((((font-backend mac-ct ns) (fontsize . 0) (font . "-*-Menlo-normal-normal-normal-*-12-*-*-*-m-0-iso10646-1") (border-width . 0) (internal-border-width . 2) (vertical-scroll-bars) (horizontal-scroll-bars . t) (foreground-color . "Grey") (background-color . "MidnightBlue") (line-spacing) (left-fringe . 8) (right-fringe . 8) (menu-bar-lines . 1) (tool-bar-lines . 1) (title) (icon-type) (auto-raise) (auto-lower) (cursor-type . box) (scroll-bar-width . 0) (scroll-bar-height . 0) (alpha) (fullscreen . fullboth) (display-type . color) (background-mode . dark) (cursor-color . "Grey") (environment) (mouse-color . "Grey") (border-color . "Grey") (frameset--id . "CD17-9D0A-870B-7B4B") (frameset--mini t . t) (modeline . t) (minibuffer . t) (unsplittable) (right-divider-width . 0) (bottom-divider-width . 0) (icon-name) (display . "rimihos-Mac.local") (explicit-name) (tool-bar-position . top) (user-size . t) (visibility . t) (height . 54) (width . 143) (left . 0) (top . 0)) ((min-height . 4) (min-width . 10) (min-height-ignore . 3) (min-width-ignore . 5) (min-height-safe . 1) (min-width-safe . 2) (min-pixel-height . 56) (min-pixel-width . 70) (min-pixel-height-ignore . 42) (min-pixel-width-ignore . 35) (min-pixel-height-safe . 14) (min-pixel-width-safe . 14)) leaf (pixel-width . 1020) (pixel-height . 750) (total-width . 145) (total-height . 53) (normal-height . 1.0) (normal-width . 1.0) (buffer "test.cpp" (selected . t) (hscroll . 0) (fringes 8 8 nil) (margins nil) (scroll-bars 0 0 t 0 0 nil) (vscroll . 0) (dedicated) (point . 615) (start . 1))))])
 (setq desktop-missing-file-warning nil)
 (setq tags-file-name nil)
 (setq tags-table-list nil)
-(setq search-ring '("co" "ac-sources" "link" "exec" "ac-define-source" "process" "auto" "plug" "-l " "-l" "complete" "source" "ac-clang-" "ac-clang-launch-completion-process-with-file" "next" "edit-command"))
+(setq search-ring '("rtags" "dar" "da" "rtags"))
 (setq regexp-search-ring nil)
-(setq register-alist '((106) (26) (113)))
-(setq file-name-history '("~/.emacs.d/wttr-config/wttr-modes.el" "~/.emacs.d/wttr-config/modes/rtags.el" "~/.emacs.d/plugins/clang-async/makefile.mk" "~/.emacs.d/wttr-config/wttr-basic.el" "~/.emacs.d/plugins/clang-async/makefile" "~/.emacs.d/wttr-config/modes/auto-complete.el" "~/.emacs.d/plugins/clang-async/src/parse_results.c" "~/.emacs.d/plugins/clang-async/src/completion_serv.c" "~/code/cpp-test/test.cpp" "~/.emacs.d/wttr-config/wttr-font.el" "~/code/c-test/test.c" "~/code/wxwidgets-test/test.cpp" "~/code/c-test/test" "~/.rdm" "~/code/c-test/makefile" "~/code/test.c" "~/Documents/emacs/src/emacs.c" "~/code/wxwidgets-test/makefile" "~/Documents/emacs/src/lisp.h" "~/.zshrc" "~/.emacs.d/plugins/rtags/README.org" "~/.emacs.d/wttr-config/modes/ace-jump.el" "~/.emacs.d/plugins/rtags/src/rtags.el" "~/.emacs.d/plugins/rtags/src/CMakeLists.txt" "~/code/cpp-test/makefile" "~/.emacs.d/wttr-config/wttr-mode-line.el" "~/code/cpp-test/GPATH" "/Users/hyphen/.emacs.d/wttr-config/wttr-modes.el" "/Users/hyphen/.emacs.d/wttr-config/wttr-basic.el" "/Users/hyphen/.emacs.d/wttr-config/modes/ace-jump.el" "/Users/hyphen/.emacs.d/wttr-config/modes/helm.el" "/Users/hyphen/.emacs.d/plugins/helm/" "/Users/hyphen/.emacs.d/places" "/Users/hyphen/.emacs.d/wttr-config/modes/xcscope.el" "/Users/hyphen/.emacs.d/wttr-config/wttr-modes.el" "/Users/hyphen/.emacs.d/wttr-config/modes/gtags.el" "/Users/hyphen/code/cpp-test/test.dSYM/Contents/Resources/DWARF/test" "/Users/hyphen/code/cpp-test/test.cpp" "/Users/hyphen/.emacs.d/plugins/yasnippet/snippets/text-mode/" "/Users/hyphen/.emacs.d/wttr-config/modes/yasnippet.el" "/Users/hyphen/.emacs.d/plugins/yasnippet/" "/Users/hyphen/.emacs.d/plugins/yasnippet/snippets/" "/Users/hyphen/.emacs.d/wttr-config/modes/yasnippet.el" "/Users/hyphen/.emacs.d/wttr-config/wttr-modes.el" "/Users/hyphen/.emacs.d/wttr-config/modes/yasnippet.el" "/Users/hyphen/.emacs.d/wttr-config/modes/auto-complete.el" "/Users/hyphen/code/cpp-test/test.cpp" "/Users/hyphen/code/wxwidgets-test/test.cpp" "/Users/hyphen/code/elisp/learn_lisp.el" "/Users/hyphen/code/cpp-test/makefile" "/Users/hyphen/code/cpp-test/test.cpp" "/Users/hyphen/.emacs.d/plugins/" "/Users/hyphen/code/wxwidgets-test/makefile" "/Users/hyphen/code/wxwidgets-test/test.h" "/Users/hyphen/code/wxwidgets-test/test.cpp" "/Users/hyphen/code/wxwidgets-test/test.h" "/Users/hyphen/code/wxwidgets-test/test.cpp" "/Users/hyphen/code/test.h" "/Users/hyphen/code/test.cpp" "/Users/hyphen/code/test2.c" "/Users/hyphen/code/" "/usr/local/include/wx-3.0/wx/" "/usr/local/include/wx-3.0/wx/setup.h" "/usr/local/lib/wx" "/usr/local/lib/wx/config/osx_cocoa-unicode-3.0" "/Users/hyphen/.emacs.d/wttr-config/modes/cedet.el" "/Users/hyphen/.emacs.d/wttr-config/wttr-key.el" "/Users/hyphen/.emacs.d/wttr-config/modes/xcscope.el" "~/code/elisp/learn_lisp.elc" "/Users/hyphen/code/elisp/" "~/code/elisp/learn_lisp.el" "/Users/hyphen/code/elisp/learn_lisp.el" "~/code/elisp" "/Users/hyphen/code/" "/Users/hyphen/.CFUserTextEncoding" "/Users/hyphen/Documents/emacs/src/lisp.h" "/Users/hyphen/Documents/emacs/src/emacs.c" "/Users/hyphen/Documents/blog/source/_posts/" "/Users/hyphen/Documents/blog/source/_posts/2014-02-09-the-egg.markdown" "/Users/hyphen/Documents/blog/source/_posts/2014-09-03-about-reading.markdown" "/Users/hyphen/Documents/blog/source/_posts/2013-07-30-blog.markdown" "/Users/hyphen/Documents/blog/source/_posts/2014-09-03-about-reading.markdown" "/Users/hyphen/Documents/blog/source/_posts/" "/Users/hyphen/Documents/blog/_config.yml" "/Users/hyphen/code/wxWidgets-3.0.1/docs/osx/install.txt" "/Users/hyphen/.emacs.d/" "/Users/hyphen/.emacs.d/wttr-config/wttr-basic.el" "/Users/hyphen/code/wxwidgets-test/test.cpp" "/Users/hyphen/code/wxwidgets-test/test.h" "/Users/hyphen/Downloads/source/README" "/Users/hyphen/code/wxwidgets-test/" "/Users/hyphen/.emacs.d/wttr-config/modes/" "/Users/hyphen/.emacs.d/plugins/w3m/" "~/.emacs.d/plugins/w3m/w3m.el" "/Users/hyphen/.emacs.d/wttr-config/wttr-modes.el" "/Users/hyphen/.emacs.d/wttr-config/modes/w3m.el" "/Users/hyphen/.emacs.d/wttr-config/modes/ace-jump.el" "/Users/hyphen/Downloads/emacs-w3m-1.4.4/" "/Users/hyphen/.emacs.d/wttr-config/modes/w3m.el"))
+(setq register-alist nil)
+(setq file-name-history '("c:/Users/haifeng/.emacs.d/wttr-config/wttr-modes.el" "c:/Users/haifeng/.emacs.d/wttr-config/modes/" "c:/Users/haifeng/.emacs.d/wttr-config/modes/cedet.el" "c:/Users/haifeng/.emacs.d/wttr-config/wttr-basic.el" "c:/Users/haifeng/.emacs.d/wttr-config/modes/auto-complete.el" "~/.emacs.d/wttr-config/wttr-modes.el"))
 
 ;; Buffer section -- buffers listed in same order as in buffer list:
 (desktop-create-buffer 206
-  "/Users/hyphen/code/cpp-test/test.cpp"
-  "test.cpp"
-  'c++-mode
-  '(abbrev-mode auto-complete-mode yas-minor-mode helm-mode)
-  615
-  '(166 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-unix)))
-
-(desktop-create-buffer 206
-  "/Users/hyphen/.emacs.d/wttr-config/wttr-modes.el"
+  "c:/Users/haifeng/.emacs.d/wttr-config/wttr-modes.el"
   "wttr-modes.el"
   'emacs-lisp-mode
-  '(auto-complete-mode yas-minor-mode helm-mode)
-  688
-  '(470 nil)
+  '(auto-complete-mode helm-mode yas-minor-mode)
+  593
+  '(495 nil)
   nil
   nil
-  '((buffer-file-coding-system . utf-8-unix)))
+  '((buffer-file-coding-system . utf-8-dos)))
 
 (desktop-create-buffer 206
-  "/Users/hyphen/.emacs.d/wttr-config/modes/cc.el"
-  "cc.el"
+  "c:/Users/haifeng/.emacs.d/wttr-config/modes/auto-complete.el"
+  "auto-complete.el"
   'emacs-lisp-mode
-  '(auto-complete-mode yas-minor-mode helm-mode)
-  58
-  '(nil nil)
+  '(auto-complete-mode helm-mode yas-minor-mode)
+  4482
+  '(3513 nil)
   nil
   nil
-  '((buffer-file-coding-system . utf-8-unix)))
-
-(desktop-create-buffer 206
-  "/Users/hyphen/.emacs.d/wttr-config/modes/rtags.el"
-  "rtags.el"
-  'emacs-lisp-mode
-  '(auto-complete-mode yas-minor-mode helm-mode)
-  1
-  '(nil nil)
-  nil
-  nil
-  '((buffer-file-coding-system . prefer-utf-8-unix)))
+  '((buffer-file-coding-system . utf-8-dos)))
 
 (desktop-create-buffer 206
   nil
   "modes"
   'dired-mode
-  '(yas-minor-mode helm-mode)
-  853
-  '(254 nil)
+  '(helm-mode yas-minor-mode)
+  510
+  '(nil nil)
   t
-  '("/Users/hyphen/.emacs.d/wttr-config/modes/")
+  '("c:/Users/haifeng/.emacs.d/wttr-config/modes/")
   nil)
 
 (desktop-create-buffer 206
-  "/Users/hyphen/.emacs.d/wttr-config/wttr-basic.el"
+  "c:/Users/haifeng/.emacs.d/wttr-config/wttr-basic.el"
   "wttr-basic.el"
   'emacs-lisp-mode
-  '(auto-complete-mode yas-minor-mode helm-mode)
-  6174
-  '(6155 nil)
+  '(auto-complete-mode helm-mode yas-minor-mode)
+  993
+  '(1 nil)
   nil
   nil
-  '((buffer-file-coding-system . utf-8-unix)))
+  '((buffer-file-coding-system . utf-8-dos)))
 
 (desktop-create-buffer 206
-  "/Users/hyphen/.emacs.d/plugins/clang-async/makefile"
-  "makefile"
-  'makefile-bsdmake-mode
-  '(yas-minor-mode helm-mode)
-  144
-  '(174 nil)
-  nil
-  nil
-  '((indent-tabs-mode . t) (buffer-file-coding-system . undecided-unix)))
-
-(desktop-create-buffer 206
-  nil
-  "clang-async"
-  'dired-mode
-  '(yas-minor-mode helm-mode)
-  579
-  '(nil nil)
-  t
-  '("/Users/hyphen/.emacs.d/plugins/clang-async/")
-  nil)
-
-(desktop-create-buffer 206
-  "/Users/hyphen/.emacs.d/plugins/clang-async/auto-complete-clang-async.el"
-  "auto-complete-clang-async.el"
+  "c:/Users/haifeng/.emacs.d/wttr-config/modes/cedet.el"
+  "cedet.el"
   'emacs-lisp-mode
-  '(auto-complete-mode yas-minor-mode helm-mode view-mode)
-  11175
-  '(2317 nil)
-  t
-  nil
-  '((buffer-file-coding-system . prefer-utf-8-unix)))
-
-(desktop-create-buffer 206
-  nil
-  "wttr-config"
-  'dired-mode
-  '(yas-minor-mode helm-mode)
-  441
-  '(nil nil)
-  t
-  '("/Users/hyphen/.emacs.d/wttr-config/")
-  nil)
-
-(desktop-create-buffer 206
-  nil
-  ".emacs.d"
-  'dired-mode
-  '(yas-minor-mode helm-mode)
-  1750
-  '(1441 nil)
-  t
-  '("/Users/hyphen/.emacs.d/")
-  nil)
-
-(desktop-create-buffer 206
-  nil
-  "plugins"
-  'dired-mode
-  '(yas-minor-mode helm-mode)
-  1314
-  '(1258 nil)
-  t
-  '("/Users/hyphen/.emacs.d/plugins/")
-  nil)
-
-(desktop-create-buffer 206
-  "/usr/local/Cellar/llvm35/3.5.0/lib/llvm-3.5/include/c++/v1/vector"
-  "vector"
-  'c++-mode
-  '(abbrev-mode auto-complete-mode yas-minor-mode helm-mode)
-  18515
-  '(nil nil)
-  t
-  nil
-  '((buffer-file-coding-system . undecided-unix)))
-
-(desktop-create-buffer 206
-  "/Users/hyphen/.emacs.d/wttr-config/modes/ace-jump.el"
-  "ace-jump.el"
-  'emacs-lisp-mode
-  '(auto-complete-mode yas-minor-mode helm-mode)
-  1
-  '(nil nil)
+  '(auto-complete-mode helm-mode yas-minor-mode)
+  8278
+  '(1 nil)
   nil
   nil
-  '((buffer-file-coding-system . utf-8-unix)))
+  '((buffer-file-coding-system . utf-8-dos)))
 

@@ -3,22 +3,34 @@
 (require 'cl)
 
 
-(if (string-equal system-type "windows-nt")
-    (loop for file in (directory-files "~/.emacs.d/wttr-config/modes" t "\\.el$")
-          do (load file nil nil t)))
-
-(if (string-equal system-type "darwin")
+;;(if (string-equal system-type "windows-nt")
+;;    (loop for file in (directory-files "~/.emacs.d/wttr-config/modes" t "\\.el$")
+;;          do (load file nil nil t)))
+(if wttr/os:win64p
+    ( mapc (lambda (filename) (load (concat "~/.emacs.d/wttr-config/modes/" filename)))
+             (list 
+              "ace-jump.el"
+              "auto-complete.el"
+              "dash.el"
+              "dired.el"
+              "dos.el"
+              "evil.el"
+              "grep.el"
+              "helm.el"
+              "ibuffer.el"
+              "org.el"
+              "slime.el"
+              "undo-tree.el"
+              "yasnippet.el"
+              )))
+(if wttr/os:osxp
     (mapc (lambda (filename) (load (concat "~/.emacs.d/wttr-config/modes/" filename)))
           (list ;; "ido.el"
            "evil.el"
            "ace-jump.el"
            "dired.el"
-           ;;                "linum.el"
            "rtags.el"
            "auto-complete.el"
-           ;;          "cedet.el"
-           ;; "gtags.el"
-           ;;                "xcscope.el"
            "yasnippet.el"
            "helm.el"
            "cc.el"

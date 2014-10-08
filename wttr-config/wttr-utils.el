@@ -4,6 +4,9 @@
 (defconst wttr/os:windowsp (eq system-type 'windows-nt)
   "if current operation system is windows system")
 
+(defconst wttr/os:osxp (eq system-type 'darwin)
+  "if current operation system is mac system")
+
 (defconst wttr/os:linuxp (eq system-type 'gnu/linux)
   "if current operation system is linux")
 

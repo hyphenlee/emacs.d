@@ -5,7 +5,7 @@
 (setq user-full-name "hyphen")
 (setq user-mail-address "lhfcjhyy@gmail.com")
 
-(set-language-environment 'Chinese-GBK)
+
 (desktop-save-mode 1)
 (setq default-directory "~/")
                                         ;====================================
@@ -81,8 +81,12 @@
 
 ;; encoding
 ;;(set-language-environment 'UTF-8)
-(if wttr/os:windowsp
-    (setq file-name-coding-system 'gb2312))
+(cond (wttr/os:windowsp
+       (progn (setq file-name-coding-system 'gb2312)
+              (set-language-environment 'Chinese-GBK)))
+      (wttr/os:osxp
+       (progn (setq file-name-coding-system 'utf-8)
+              (set-language-environment 'utf-8))))
 
 ;; setup up a big kill-ring, so i will never miss anything:-)
 (setq kill-ring-max 100)
@@ -116,21 +120,25 @@
 ;; add extra binary path
 ;; it seems the "find" in "unix-utils-bin" works better and the
 ;; on in the "etc", so we put "ect" after "unix-utils-bin"
-(when wttr/os:windowsp
-  (mapc #'wttr/prepend-to-exec-path
-        (reverse 
-         (list  "C:/emacs-24.3/bin"
-                "C:/MinGW/bin"
-                "C:/Program Files (x86)/Git/bin"
-                "~/.emacs.d/extra-bin/gnuwin32"
-                "~/.emacs.d/extra-bin/unix-utils-bin"
-                "C:/cygwin/bin"
-                "c:/Program Files/MySQL/MySQL Server 5.6/bin"
-                "C:/Program Files (x86)/cmake/bin"
-                "c:/Program Files (x86)/Microsoft Visual Studio 11.0/VC/bin"
-                "c:/Program Files (x86)/Microsoft Visual Studio 11.0/Common7/IDE"
-                ))))
-
+(cond (wttr/os:windowsp
+       (mapc #'wttr/prepend-to-exec-path
+             (list  "C:/emacs-24.3/bin"
+                    "C:/MinGW/bin"
+                    "C:/Program Files (x86)/Git/bin"
+                    "~/.emacs.d/extra-bin/gnuwin32"
+                    "~/.emacs.d/extra-bin/unix-utils-bin"
+                    "C:/cygwin/bin"
+                    "c:/Program Files/MySQL/MySQL Server 5.6/bin"
+                    "C:/Program Files (x86)/cmake/bin"
+                    "c:/Program Files (x86)/Microsoft Visual Studio 11.0/VC/bin"
+                    "c:/Program Files (x86)/Microsoft Visual Studio 11.0/Common7/IDE"
+                    )))
+      (wttr/os:osxp
+       (mapc #'wttr/prepend-to-exec-path
+             (list
+              "~/.emacs.d/plugins/rtags/bin"
+              "~/.emacs.d/plugins/clang-async"
+              ))))
 ;; time stamp support
 
                                         ;(setq time-stamp-warn-inactive t)
@@ -154,4 +162,13 @@
                   (line-end-position))
   (message "line copied"))
 (custom-set-variables '(scheme-program-name "petite"))
+(wttr/plugin:prepend-to-load-path "switch-window")
+(require 'switch-window)
+(global-set-key (kbd "C-x o") 'switch-window)
+(wttr/plugin:prepend-to-load-path "w3m")
+(require 'w3m-load)
+(defun indent-buffer()
+  (interactive)
+  (indent-region (buffer-end 0) (buffer-end 1)))
+(global-set-key (kbd "C-M-\\") 'indent-buffer)
 (provide 'wttr-basic)

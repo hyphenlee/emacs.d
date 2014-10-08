@@ -1,0 +1,32 @@
+;;; -*- coding: utf-8 -*-
+(("/Users/hyphen/.emacs.d/plugins/yasnippet/README.mdown" . 6991)
+ ("/Users/hyphen/code/cpp-test/makefile" . 44)
+ ("/Users/hyphen/.emacs.d/plugins/yasnippet/snippets/text-mode/email" . 43)
+ ("/Users/hyphen/.emacs.d/plugins/yasnippet/snippets/text-mode/"
+  (dired-filename . "/Users/hyphen/.emacs.d/plugins/yasnippet/snippets/text-mode/.."))
+ ("/Users/hyphen/code/wxwidgets-test/test.cpp" . 859)
+ ("/Users/hyphen/.emacs.d/plugins/yasnippet/snippets/snippet-mode/"
+  (dired-filename . "/Users/hyphen/.emacs.d/plugins/yasnippet/snippets/snippet-mode/.."))
+ ("/Users/hyphen/.emacs.d/plugins/yasnippet/snippets/sql-mode/"
+  (dired-filename . "/Users/hyphen/.emacs.d/plugins/yasnippet/snippets/sql-mode/.."))
+ ("/Users/hyphen/.emacs.d/plugins/yasnippet/snippets/"
+  (dired-filename . "/Users/hyphen/.emacs.d/plugins/yasnippet/snippets/emacs-lisp-mode"))
+ ("/Users/hyphen/.emacs.d/plugins/yasnippet/"
+  (dired-filename . "/Users/hyphen/.emacs.d/plugins/yasnippet/snippets"))
+ ("/Users/hyphen/.emacs.d/plugins/tabbar-2.0/"
+  (dired-filename . "/Users/hyphen/.emacs.d/plugins/tabbar-2.0/tabbar.el"))
+ ("/Users/hyphen/code/cpp-test/test.cpp" . 299)
+ ("/Users/hyphen/.emacs.d/plugins/yasnippet/snippets/python-mode/"
+  (dired-filename . "/Users/hyphen/.emacs.d/plugins/yasnippet/snippets/python-mode/while"))
+ ("/Users/hyphen/.emacs.d/plugins/"
+  (dired-filename . "/Users/hyphen/.emacs.d/plugins/tabbar-2.0"))
+ ("/Users/hyphen/.emacs.d/plugins/yasnippet/snippets/emacs-lisp-mode/"
+  (dired-filename . "/Users/hyphen/.emacs.d/plugins/yasnippet/snippets/emacs-lisp-mode/match-string.yasnippet"))
+ ("/Users/hyphen/.emacs.d/plugins/yasnippet/snippets/cc-mode/" . 703)
+ ("/Users/hyphen/code/wxwidgets-test/test.h" . 193)
+ ("/Users/hyphen/.emacs.d/wttr-config/modes/auto-complete.el" . 2959)
+ ("/Applications/Emacs.app/Contents/Resources/lisp/progmodes/compile.el.gz" . 73269)
+ ("/Users/hyphen/.emacs.d/wttr-config/modes/yasnippet.el" . 223)
+ ("/Users/hyphen/.emacs.d/wttr-config/wttr-modes.el" . 358)
+ ("/Users/hyphen/.emacs.d/plugins/tabbar-2.0/tabbar.el" . 71609)
+ ("/Users/hyphen/code/elisp/learn_lisp.el" . 35))

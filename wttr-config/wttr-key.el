@@ -49,4 +49,5 @@
 (global-set-key (kbd "<C-S-f6>") 'kid-switch-to-shell)
 (global-set-key (kbd "<C-f5>") 'w32-open-current-file-in-explorer)
 (global-set-key (kbd "<C-f6>") 'w32-open-shell-from-current-file-directory)
+(global-set-key (kbd "C-c s") 'set-mark-command)
 (provide 'wttr-key)

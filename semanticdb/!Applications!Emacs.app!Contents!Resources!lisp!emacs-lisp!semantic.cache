@@ -1,0 +1,103 @@
+;; Object emacs-lisp/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "emacs-lisp/"
+  :tables
+  (list
+    (semanticdb-table "cl.el.gz"
+      :major-mode 'emacs-lisp-mode
+      :tags 
+        '( ("cl-lib" include nil nil [1047 1064])
+            ("macroexp" include nil nil [1065 1084])
+            ("gv" include nil nil [1085 1098])
+            ("cl-unload-function" function nil nil [3594 3752])
+            ("dolist" code nil nil [3789 4502])
+            ("dolist" code nil nil [4504 9695])
+            ("cl--wrap-in-nil-block" function (:arguments ("fun" "args")) nil [9697 9779])
+            ("advice-add" code nil nil [9780 9832])
+            ("advice-add" code nil nil [9833 9886])
+            ("cl--pass-args-to-cl-declare" function (:arguments ("specs")) nil [9888 9976])
+            ("advice-add" code nil nil [9977 10035])
+            ("cl-closure-vars" variable nil nil [10195 10223])
+            ("cl--function-convert-cache" variable nil nil [10224 10263])
+            ("cl--function-convert" function (:arguments ("f")) nil [10265 12578])
+            ("lexical-let" function (:arguments ("bindings" "body")) nil [12580 14610])
+            ("lexical-let*" function (:arguments ("bindings" "body")) nil [14612 15142])
+            ("flet" function (:arguments ("bindings" "body")) nil [15221 16975])
+            ("labels" function (:arguments ("bindings" "body")) nil [16977 17921])
+            ("cl--gv-adapt" function (:arguments ("cl-gv" "do")) nil [18117 19007])
+            ("define-setf-expander" function (:arguments ("name" "arglist" "body")) nil [19009 19912])
+            ("defsetf" function (:arguments ("name" "arg1" "args")) nil [19914 21529])
+            ("make-obsolete" code nil nil [23443 23495])
+            ("define-modify-macro" function (:arguments ("name" "arglist" "func" "doc")) nil [23497 24256])
+            ("define-obsolete-function-alias" code nil nil [24358 24426])
+            ("define-obsolete-variable-alias" code nil nil [24427 24519])
+            ("define-obsolete-function-alias" code nil nil [24520 24596])
+            ("cl-not-hash-table" function (:arguments ("x" "y" "_z")) nil [24734 24883])
+            ("cl-builtin-gethash" variable (:default-value (symbol-function (quote gethash))) nil [24885 24939])
+            ("make-obsolete-variable" code nil nil [24940 24995])
+            ("cl-builtin-remhash" variable (:default-value (symbol-function (quote remhash))) nil [24996 25050])
+            ("make-obsolete-variable" code nil nil [25051 25106])
+            ("cl-builtin-clrhash" variable (:default-value (symbol-function (quote clrhash))) nil [25107 25161])
+            ("make-obsolete-variable" code nil nil [25162 25217])
+            ("cl-builtin-maphash" variable (:default-value (symbol-function (quote maphash))) nil [25218 25272])
+            ("make-obsolete-variable" code nil nil [25274 25329])
+            ("define-obsolete-function-alias" code nil nil [25330 25396])
+            ("define-obsolete-function-alias" code nil nil [25397 25461])
+            ("define-obsolete-function-alias" code nil nil [25462 25522])
+            ("define-obsolete-function-alias" code nil nil [25523 25583])
+            ("define-obsolete-function-alias" code nil nil [25584 25644])
+            ("define-obsolete-function-alias" code nil nil [25645 25705])
+            ("define-obsolete-function-alias" code nil nil [25706 25766])
+            ("define-obsolete-function-alias" code nil nil [25767 25843])
+            ("define-obsolete-function-alias" code nil nil [25844 25914])
+            ("define-obsolete-function-alias" code nil nil [25915 25993])
+            ("define-obsolete-function-alias" code nil nil [25995 26091])
+            ("define-obsolete-function-alias" code nil nil [26092 26168])
+            ("define-obsolete-function-alias" code nil nil [26169 26242])
+            ("define-obsolete-function-alias" code nil nil [26243 26309])
+            ("cl-maclisp-member" function (:arguments ("item" "list")) nil [26311 26466])
+            ("cl-struct-setf-expander" function (:arguments ("x" "name" "accessor" "pred-form" "pos")) nil [26517 27451])
+            ("cl" package nil nil [27453 27466])
+            ("run-hooks" code nil nil [27468 27493]))          
+      :file "cl.el.gz"
+      :pointmax 27515
+      :fsize 7980
+      :lastmodtime '(21495 62583 0 0)
+      :unmatched-syntax nil)
+    (semanticdb-table "byte-run.el.gz"
+      :major-mode 'emacs-lisp-mode
+      :tags 
+        '( ("defalias" code nil nil [1120 1541])
+            ("function-put" code nil nil [1542 1584])
+            ("function-put" code nil nil [1585 1633])
+            ("macro-declaration-function" variable (:default-value (function macro-declaration-function)) nil [1754 2086])
+            ("defalias" code nil nil [2088 3230])
+            ("defun-declarations-alist" variable (:default-value (list (list (quote advertised-calling-convention) (function (lambda (f _args arglist when) (list (quote set-advertised-calling-convention) (list (quote quote) f) (list (quote quote) arglist) (list (quote quote) when))))) (list (quote obsolete) (function (lambda (f _args new-name when) (list (quote make-obsolete) (list (quote quote) f) (list (quote quote) new-name) (list (quote quote) when))))) (list (quote interactive-only) (function (lambda (f _args instead) (list (quote function-put) (list (quote quote) f) (quote (quote interactive-only)) (list (quote quote) instead))))) (list (quote pure) (function (lambda (f _args val) (list (quote function-put) (list (quote quote) f) (quote (quote pure)) (list (quote quote) val)))) "If non-nil, the compiler can replace calls with their return value.
+This may shift errors from run-time to compile-time.") (list (quote side-effect-free) (function (lambda (f _args val) (list (quote function-put) (list (quote quote) f) (quote (quote side-effect-free)) (list (quote quote) val)))) "If non-nil, calls can be ignored if their value is unused.
+If `error-free', drop calls even if `byte-compile-delete-errors' is nil.") (list (quote compiler-macro) (function (lambda (f args compiler-function) (\` (eval-and-compile (function-put (quote (\, f)) (quote compiler-macro) (\, (if (eq (car-safe compiler-function) (quote lambda)) (\` (lambda (\, (append (cadr compiler-function) args)) (\,@ (cddr compiler-function)))) (\` (function (\, compiler-function))))))))))) (list (quote doc-string) (function (lambda (f _args pos) (list (quote function-put) (list (quote quote) f) (quote (quote doc-string-elt)) (list (quote quote) pos))))) (list (quote indent) (function (lambda (f _args val) (list (quote function-put) (list (quote quote) f) (quote (quote lisp-indent-function)) (list (quote quote) val))))))) nil [3486 6021])
+            ("macro-declarations-alist" variable (:default-value (cons (list (quote debug) (function (lambda (name _args spec) (list (quote progn) :autoload-end (list (quote put) (list (quote quote) name) (quote (quote edebug-form-spec)) (list (quote quote) spec)))))) defun-declarations-alist)) nil [6023 6678])
+            ("defalias" code nil nil [6680 8399])
+            ("defun" function (:arguments ("name" "arglist" "docstring" "body")) nil [8448 10827])
+            ("fset" code nil nil [10934 10955])
+            ("defsubst" function (:arguments ("name" "arglist" "body")) nil [11966 12437])
+            ("advertised-signature-table" variable (:default-value (make-hash-table :test (quote eq) :weakness (quote key))) nil [12439 12517])
+            ("set-advertised-calling-convention" function (:arguments ("function" "signature" "_when")) nil [12519 12889])
+            ("make-obsolete" function (:arguments ("obsolete-name" "current-name" "when")) nil [12891 13784])
+            ("define-obsolete-function-alias" function (:arguments ("obsolete-name" "current-name" "when" "docstring")) nil [13786 14603])
+            ("make-obsolete-variable" function (:arguments ("obsolete-name" "current-name" "when" "access-type")) nil [14605 15436])
+            ("define-obsolete-variable-alias" function (:arguments ("obsolete-name" "current-name" "when" "docstring")) nil [15439 17134])
+            ("define-obsolete-face-alias" function (:arguments ("obsolete-face" "current-face" "when")) nil [17464 17850])
+            ("dont-compile" function (:arguments ("body")) nil [17852 18161])
+            ("eval-when-compile" function (:arguments ("body")) nil [18404 18897])
+            ("eval-and-compile" function (:arguments ("body")) nil [18899 19470])
+            ("with-no-warnings" function (:arguments ("body")) nil [19472 19680])
+            ("make-obsolete-variable" code nil nil [20975 21084])
+            ("make-obsolete" code nil nil [21085 21176]))          
+      :file "byte-run.el.gz"
+      :pointmax 21204
+      :fsize 6301
+      :lastmodtime '(21495 62583 0 0)
+      :unmatched-syntax nil))
+  :file "!Applications!Emacs.app!Contents!Resources!lisp!emacs-lisp!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

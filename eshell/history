@@ -1,82 +1,3 @@
-grep -nH -e . parse_di*
-grep -nH -e . par*
-grep -nH -e . p*
-grep -nH -e . di*
-grep -nH -e ret di*
-grep -nH -e ret .
-grep -nH -e ret *
-grep -nH -e ret *.cpp
-grep -nH -e rtdicom *.cpp
-grep -nH -e rt *.cpp
-grep -nH -e rtdicom *.h
-grep  -nH -e "format" *.cpp
-grep  -nH -e "form" *.cpp
-grep  -nH -e "form" * 
-cd ../rtSuite_pc/
-grep  -nH -e "form" * 
-grep  -nH -e "formate" * 
-grep  -nH -e "ip_address" * 
-grep  -nH -e "ip_address" *.cpp
-grep  -nH -e "ip_address" *.h
-grep  -nH -e "include" *.cpp
-grep  -nH -e "include" *.h
-grep  -nH -e -r "include" *.h
-grep  -nH -e -R "include" *.h
-grep  -nH -e  "include" *.h
-grep --h
-grep -r "include" *.h
-grep -R "include" *.h
-grep --h
-ls
-ls -r
-ls -R
-ls -R |grep include
-ls -R |grep include *.h
-kdisk_check.h:
-ls
-cd dm
-ls
-grep include *.h
-grep include *.cpp
-cd ..
-grep -r include *.cpp
-grep -r include ./*.cpp
-grep -r include ./
-grep -R include  *
-ls -R | grep  include 
-ls -R | grep -nH  include 
-grep -REn "include" * 
-find
-cd dm
-ls
-cd ..
-ls
-cd output/
-ls
-cd ..
-cd ..
-ls
-cd rtplatform/
-ls
-cd dm/
-ls
-cd ..
-ls
-cd ..
-ls
-cd ../learning/
-ls
-grep "loop" python/
-grep "loop" python/*
-grep -R "loop " ./
-grep -D "loop " ./
-find . -iname "*" -exec grep "loop" {} \;
-grep -r
-ls
-cd ..
-ls
-grep -nH -e -r include *
-grep -nH -e -r include ./*
 mysql
 mysql -u root -p
 git
@@ -126,3 +47,82 @@ cd ../..
 cd output/
 devenv.exe /Build rtSuite-new.sln
 devenv.exe rtSuite-new.sln
+apropos lisp
+man dumpemacs
+ls
+gcc -v
+clang -v
+echo $INCLUDE
+env
+gcc -i
+gtags -v
+gtags -v
+gtags -v
+ls
+ls -l
+chmod 775 2014-09-03-about-reading.markdown 
+sudo chmod 775 2014-09-03-about-reading.markdown 
+sudo rake generate
+-rw-r--r--   1 hyphen         staff    6965 2014-09-03 10:25 2014-02-09-the-egg.markdown
+ls
+cd ~/Downloads/
+ls
+cd source/
+ls
+cd src/
+ls
+cd ..
+cd ..
+ls
+rm *
+rm -r *
+ls
+l
+man brew
+brew search llvm
+brew tap homebrew/versions
+brew install llvm35 --with-libcxx --with-clang --disable-assertions --rtti
+rdm &
+rdm
+brew search rdm
+brew install llvm35 --with-libcxx --with-clang --disable-assertions --rtti
+rdm&
+l
+ls
+cmake .
+cd src/rct/
+ls
+cmake .
+cd ..
+cd ..
+cmake .
+make
+rc
+./bin/rdm ^
+./bin/rdm &
+./bin/rc -J
+ls
+ls /bin/
+ls bin/
+ll bin
+export PATH=~/.emacs.d/plugins/rtags/src/:~/bin/:$PATH
+echo $PATH 
+mkdir ~/bin
+https://github.com/Andersbakken/rct.git
+ln -s /path/to/rtags/gcc-rtags-wrapper.sh ~/bin/c++
+rm ~/bin/c++
+ls
+ln -s bin/gcc-rtags-wrapper.sh ~/bin/c++
+ln -s bin/gcc-rtags-wrapper.sh ~/bin/cc
+ln -s bin/gcc-rtags-wrapper.sh ~/bin/g++
+ln -s bin/gcc-rtags-wrapper.sh ~/bin/gcc
+gcc -v
+g++ -v
+ls
+cd ~/bin/
+ls
+g++ -v
+./g++ -v
+ls
+c++ -v
+g++ -v

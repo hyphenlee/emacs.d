@@ -1,4 +1,4 @@
-t; -*- coding: utf-8 -*-
+;; -*- coding: utf-8 -*-
 (wttr/plugin:prepend-to-load-path "ace-jump-mode")
 
 ;;

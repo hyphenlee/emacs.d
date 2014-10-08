@@ -2,7 +2,32 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("work.org"
+(("R_3"
+ (filename . "~/code/wxwidgets-test/test.cpp")
+ (front-context-string . "menuBar->Append(")
+ (rear-context-string . " \"&File\" );\n    ")
+ (position . 920))
+("R_2"
+ (filename . "~/code/wxwidgets-test/test.cpp")
+ (front-context-string . "menuBar->Append(")
+ (rear-context-string . " wxMenuBar;\n    ")
+ (position . 878))
+("R_1"
+ (filename . "~/code/wxwidgets-test/test.cpp")
+ (front-context-string . "menuBar );\n    C")
+ (rear-context-string . "    SetMenuBar( ")
+ (position . 974))
+("wttr-basic.el"
+ (filename . "~/.emacs.d/wttr-config/wttr-basic.el")
+ (front-context-string . "; -*- coding: ut")
+ (rear-context-string)
+ (position . 2))
+("test.cpp"
+ (filename . "~/code/cpp-test/test.cpp")
+ (front-context-string . "#include<iostrea")
+ (rear-context-string)
+ (position . 1))
+("work.org"
  (filename . "c:/Users/hyphen/work.org")
  (front-context-string . "rtss not support")
  (rear-context-string . " missing\nthird: ")

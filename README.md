@@ -1,4 +1,5 @@
-emacs.d2
+emacs.d
 ========
 
-my another emacs configuration
+my emacs configuratio.  
+Mainly working with C++.

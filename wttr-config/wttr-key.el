@@ -50,4 +50,6 @@
 (global-set-key (kbd "<C-f5>") 'w32-open-current-file-in-explorer)
 (global-set-key (kbd "<C-f6>") 'w32-open-shell-from-current-file-directory)
 (global-set-key (kbd "C-c s") 'set-mark-command)
+(global-set-key (kbd "C-M-\\") 'indent-buffer)
+(global-set-key (kbd "C-x o") 'switch-window)
 (provide 'wttr-key)

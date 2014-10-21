@@ -2,7 +2,7 @@
 ;; --------------------------------------------------------------------------
 ;; Desktop File for Emacs
 ;; --------------------------------------------------------------------------
-;; Created Wed Oct  8 15:42:14 2014
+;; Created Mon Oct 20 17:17:59 2014
 ;; Desktop file format version 206
 ;; Emacs version 24.3.1
 
@@ -10,130 +10,119 @@
 (setq desktop-missing-file-warning nil)
 (setq tags-file-name nil)
 (setq tags-table-list nil)
-(setq search-ring '("clang" "switch" "dcmtk" "wx" "w" "dcmtk" "dcm" "uploader_src" "common_src" "rtview" "uploader_src" "Data" "rtviewer_src" "database" "dcmtk" "buffer"))
+(setq search-ring '("define" "da" "closest" "if" "len" "learn" "clang" "switch" "dcmtk" "wx" "w" "dcmtk" "dcm" "uploader_src" "common_src" "rtview"))
 (setq regexp-search-ring nil)
 (setq register-alist nil)
-(setq file-name-history '("c:/Users/haifeng/.emacs.d/wttr-config/wttr-utils.el" "c:/Users/haifeng/.emacs.d/wttr-config/wttr-mode-line.el" "c:/Users/haifeng/.emacs.d/wttr-config/wttr-key.el" "c:/Users/haifeng/.emacs.d/wttr-config/wttr-font.el" "c:/Users/haifeng/.emacs.d/wttr-config/modes/auto-complete.el" "c:/Users/haifeng/.emacs.d/wttr-config/modes/rtags.el" "c:/Users/haifeng/.emacs.d/plugins/" "c:/Users/haifeng/.emacs.d/" "c:/Users/haifeng/MUF/BuildingCocoaApps.pdf" "c:/work/base_project/app_base/" "c:/work/base_project/app_base/src.cmake" "c:/work/base_project/app_base/CMakeLists.txt" "c:/work/rtsuite-new/dicom/CMakeLists.txt" "c:/work/rtsuite-new/CMakeLists.txt" "c:/work/base_project/CMakeLists.txt" "c:/work/base_project/CMakeCache.txt" "c:/work/base_project/app_base/CMakeLists.txt" "c:/work/rtsuite-new/dicom/CMakeLists.txt" "c:/work/rtsuite-new/utils/path.macro" "c:/work/base_project/utils/path.macro" "c:/work/library/base_project/base_project/app_base/CMakeLists.txt" "c:/work/library/base_project/base_project/app_base/src.cmake" "c:/work/rtsuite-new/rtsuite/app/src.cmake" "c:/work/rtsuite-new/rtsuite/rtsuite.cmake" "c:/work/rtsuite-new/rtsuite/CMakeLists.txt" "c:/work/library/base_project/base_project/CMakeLists.txt" "c:/work/library/base_project/base_project/app_base/CMakeLists.txt" "c:/work/rtsuite-new/utils/path.macro" "c:/work/library/base_project/base_project/utils/path.macro" "c:/work/rtsuite-new/"))
+(setq file-name-history '("c:/work/rtsuite-new/rtsuite/contour/src.cmake" "c:/work/rtsuite-new/rtsuite/contour/define_roi_view.h" "c:/work/rtsuite-new/output/data/Volume/3" "c:/work/rtsuite-new/output/data/Volume/2" "c:/work/rtsuite-new/output/data/Volume/10" "c:/work/rtsuite-new/output/data/Volume/1" "c:/Program Files (x86)/rtstation/mysql/data/FileSystem/Volume/12" "c:/work/rtsuite-new/database/src.cmake" "c:/Users/haifeng/MUF/CV.org" "c:/Users/haifeng/.emacs.d/wttr-config/wttr-utils.el" "c:/Users/haifeng/.emacs.d/wttr-config/wttr-mode-line.el" "c:/Users/haifeng/.emacs.d/wttr-config/wttr-key.el" "c:/Users/haifeng/.emacs.d/wttr-config/wttr-font.el" "c:/Users/haifeng/.emacs.d/wttr-config/modes/auto-complete.el" "c:/Users/haifeng/.emacs.d/wttr-config/modes/rtags.el" "c:/Users/haifeng/.emacs.d/plugins/" "c:/Users/haifeng/.emacs.d/" "c:/Users/haifeng/MUF/BuildingCocoaApps.pdf" "c:/work/base_project/app_base/" "c:/work/base_project/app_base/src.cmake" "c:/work/base_project/app_base/CMakeLists.txt" "c:/work/rtsuite-new/dicom/CMakeLists.txt" "c:/work/rtsuite-new/CMakeLists.txt" "c:/work/base_project/CMakeLists.txt" "c:/work/base_project/CMakeCache.txt" "c:/work/base_project/app_base/CMakeLists.txt" "c:/work/rtsuite-new/dicom/CMakeLists.txt" "c:/work/rtsuite-new/utils/path.macro" "c:/work/base_project/utils/path.macro" "c:/work/library/base_project/base_project/app_base/CMakeLists.txt"))
 
 ;; Buffer section -- buffers listed in same order as in buffer list:
 (desktop-create-buffer 206
-  "c:/Users/haifeng/.emacs.d/wttr-config/wttr-utils.el"
-  "wttr-utils.el"
-  'emacs-lisp-mode
-  '(auto-complete-mode helm-mode yas-minor-mode)
-  905
-  '(447 nil)
+  "c:/Users/haifeng/MUF/learning/js/test.html"
+  "test.html"
+  'html-mode
+  '(helm-mode yas-minor-mode)
+  536
+  '(216 nil)
   nil
   nil
-  '((buffer-file-coding-system . utf-8-dos)))
-
-(desktop-create-buffer 206
-  "c:/Users/haifeng/.emacs.d/wttr-config/wttr-key.el"
-  "wttr-key.el"
-  'emacs-lisp-mode
-  '(auto-complete-mode helm-mode yas-minor-mode)
-  1937
-  '(1871 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . utf-8-dos)))
-
-(desktop-create-buffer 206
-  "c:/Users/haifeng/.emacs.d/wttr-config/wttr-mode-line.el"
-  "wttr-mode-line.el"
-  'emacs-lisp-mode
-  '(auto-complete-mode helm-mode yas-minor-mode)
-  1134
-  '(10221 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . utf-8-dos)))
-
-(desktop-create-buffer 206
-  "c:/Users/haifeng/.emacs.d/wttr-config/wttr-basic.el"
-  "wttr-basic.el"
-  'emacs-lisp-mode
-  '(auto-complete-mode helm-mode yas-minor-mode)
-  6206
-  '(5313 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . utf-8-dos)))
-
-(desktop-create-buffer 206
-  "c:/Users/haifeng/.emacs.d/wttr-config/wttr-font.el"
-  "wttr-font.el"
-  'emacs-lisp-mode
-  '(auto-complete-mode helm-mode yas-minor-mode)
-  3102
-  '(333 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . utf-8-dos)))
+  '((buffer-file-coding-system . chinese-gbk-dos)))
 
 (desktop-create-buffer 206
   nil
-  "wttr-config"
+  "js"
   'dired-mode
   '(helm-mode yas-minor-mode)
-  501
-  '(449 nil)
-  t
-  '("c:/Users/haifeng/.emacs.d/wttr-config/")
-  nil)
-
-(desktop-create-buffer 206
-  nil
-  "backup"
-  'dired-mode
-  '(helm-mode yas-minor-mode)
-  198
+  260
   '(nil nil)
   t
-  '("c:/Users/haifeng/.emacs.d/wttr-config/backup/")
+  '("c:/Users/haifeng/MUF/learning/js/")
   nil)
 
 (desktop-create-buffer 206
   nil
-  ".emacs.d"
+  "learning"
   'dired-mode
   '(helm-mode yas-minor-mode)
-  2117
-  '(2109 nil)
-  t
-  '("c:/Users/haifeng/.emacs.d/")
-  nil)
-
-(desktop-create-buffer 206
-  nil
-  "modes"
-  'dired-mode
-  '(helm-mode yas-minor-mode)
-  203
+  258
   '(nil nil)
   t
-  '("c:/Users/haifeng/.emacs.d/wttr-config/modes/")
+  '("c:/Users/haifeng/MUF/learning/")
   nil)
 
 (desktop-create-buffer 206
-  "c:/Users/haifeng/.emacs.d/wttr-config/modes/auto-complete.el"
-  "auto-complete.el"
-  'emacs-lisp-mode
-  '(auto-complete-mode helm-mode yas-minor-mode)
-  4482
-  '(3692 nil)
   nil
-  nil
-  '((buffer-file-coding-system . utf-8-dos)))
+  "MUF"
+  'dired-mode
+  '(helm-mode yas-minor-mode)
+  268
+  '(nil nil)
+  t
+  '("c:/Users/haifeng/MUF/")
+  nil)
 
 (desktop-create-buffer 206
-  "c:/Users/haifeng/.emacs.d/wttr-config/modes/rtags.el"
-  "rtags.el"
-  'emacs-lisp-mode
-  '(auto-complete-mode helm-mode yas-minor-mode)
-  399
-  '(1 nil)
   nil
+  "contour"
+  'dired-mode
+  '(helm-mode yas-minor-mode)
+  1442
+  '(1442 nil)
+  t
+  '("c:/work/rtsuite-new/rtsuite/contour/")
+  nil)
+
+(desktop-create-buffer 206
   nil
-  '((buffer-file-coding-system . undecided-dos)))
+  "rtsuite"
+  'dired-mode
+  '(helm-mode yas-minor-mode)
+  479
+  '(nil nil)
+  t
+  '("c:/work/rtsuite-new/rtsuite/")
+  nil)
+
+(desktop-create-buffer 206
+  nil
+  "rtsuite-new"
+  'dired-mode
+  '(helm-mode yas-minor-mode)
+  1166
+  '(nil nil)
+  t
+  '("c:/work/rtsuite-new/")
+  nil)
+
+(desktop-create-buffer 206
+  nil
+  "output"
+  'dired-mode
+  '(helm-mode yas-minor-mode)
+  1472
+  '(442 nil)
+  t
+  '("c:/work/rtsuite-new/output/")
+  nil)
+
+(desktop-create-buffer 206
+  nil
+  "data"
+  'dired-mode
+  '(helm-mode yas-minor-mode)
+  267
+  '(267 nil)
+  t
+  '("c:/work/rtsuite-new/output/data/")
+  nil)
+
+(desktop-create-buffer 206
+  nil
+  "Volume"
+  'dired-mode
+  '(helm-mode yas-minor-mode)
+  853
+  '(nil nil)
+  t
+  '("c:/work/rtsuite-new/output/data/Volume/")
+  nil)
 

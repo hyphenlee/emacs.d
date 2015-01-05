@@ -1,1 +1,0 @@
-emacs --batch --eval "(byte-compile-file \"js2.el\")"

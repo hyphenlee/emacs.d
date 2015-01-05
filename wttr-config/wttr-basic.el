@@ -4,7 +4,7 @@
 ;; set user information
 (setq user-full-name "hyphen")
 (setq user-mail-address "lhfcjhyy@gmail.com")
-
+(menu-bar-mode 'nil)
 
 (desktop-save-mode 1)
 (setq default-directory "~/")
@@ -169,4 +169,12 @@
 (defun indent-buffer()
   (interactive)
   (indent-region (buffer-end 0) (buffer-end 1)))
+
+(require 'package) ;; You might already have this line
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
+(when (< emacs-major-version 24)
+  ;; For important compatibility libraries like cl-lib
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(package-initialize) ;; You might already have this line
 (provide 'wttr-basic)

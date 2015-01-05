@@ -2,127 +2,84 @@
 ;; --------------------------------------------------------------------------
 ;; Desktop File for Emacs
 ;; --------------------------------------------------------------------------
-;; Created Mon Oct 20 17:17:59 2014
+;; Created Mon Jan  5 10:11:23 2015
 ;; Desktop file format version 206
-;; Emacs version 24.3.1
+;; Emacs version 24.4.1
 
 ;; Global section:
+(setq desktop-saved-frameset [frameset 1 (21673 62155 250000 0) (desktop . "206") "haifeng@HYPHEN-PC" nil nil ((((font-backend uniscribe gdi) (font . "-outline-Consolas-normal-normal-normal-mono-15-*-*-*-c-*-iso8859-1") (border-width . 2) (internal-border-width . 0) (right-divider-width . 0) (bottom-divider-width . 0) (vertical-scroll-bars) (foreground-color . "#fff8dc") (background-color . "#233b5a") (mouse-color . "Grey") (border-color . "black") (screen-gamma) (line-spacing) (left-fringe . 8) (right-fringe . 8) (alpha) (menu-bar-lines . 0) (tool-bar-lines . 0) (title) (fullscreen . maximized) (icon-type) (auto-raise) (auto-lower) (cursor-type . box) (scroll-bar-width . 0) (horizontal-scroll-bars . t) (display-type . color) (background-mode . dark) (cursor-color . "Yellow") (environment) (viper-saved-cursor-color-in-replace-mode . "Red3") (top-toolbar-shadow-color . "#fffffbeeffff") (bottom-toolbar-shadow-color . "#79e77df779e7") (background-toolbar-color . "#cf3ccf3ccf3c") (frameset--id . "C4EF-481B-1F11-70F5") (frameset--mini t . t) (modeline . t) (minibuffer . t) (unsplittable) (icon-name) (display . "w32") (explicit-name) (tool-bar-position . top) (maximized) (visibility . t) (height . 56) (width . 238) (left + -8) (top + -8)) ((min-height . 4) (min-width . 10) (min-height-ignore . 3) (min-width-ignore . 4) (min-height-safe . 1) (min-width-safe . 2) (min-pixel-height . 72) (min-pixel-width . 80) (min-pixel-height-ignore . 54) (min-pixel-width-ignore . 32) (min-pixel-height-safe . 18) (min-pixel-width-safe . 16)) leaf (pixel-width . 1920) (pixel-height . 999) (total-width . 240) (total-height . 55) (normal-height . 1.0) (normal-width . 1.0) (buffer "todo_list.org" (selected . t) (hscroll . 0) (fringes 8 8 nil) (margins nil) (scroll-bars 0 0 t nil) (vscroll . 0) (dedicated) (point . 1698) (start . 1183))))])
 (setq desktop-missing-file-warning nil)
 (setq tags-file-name nil)
 (setq tags-table-list nil)
-(setq search-ring '("define" "da" "closest" "if" "len" "learn" "clang" "switch" "dcmtk" "wx" "w" "dcmtk" "dcm" "uploader_src" "common_src" "rtview"))
-(setq regexp-search-ring nil)
-(setq register-alist nil)
-(setq file-name-history '("c:/work/rtsuite-new/rtsuite/contour/src.cmake" "c:/work/rtsuite-new/rtsuite/contour/define_roi_view.h" "c:/work/rtsuite-new/output/data/Volume/3" "c:/work/rtsuite-new/output/data/Volume/2" "c:/work/rtsuite-new/output/data/Volume/10" "c:/work/rtsuite-new/output/data/Volume/1" "c:/Program Files (x86)/rtstation/mysql/data/FileSystem/Volume/12" "c:/work/rtsuite-new/database/src.cmake" "c:/Users/haifeng/MUF/CV.org" "c:/Users/haifeng/.emacs.d/wttr-config/wttr-utils.el" "c:/Users/haifeng/.emacs.d/wttr-config/wttr-mode-line.el" "c:/Users/haifeng/.emacs.d/wttr-config/wttr-key.el" "c:/Users/haifeng/.emacs.d/wttr-config/wttr-font.el" "c:/Users/haifeng/.emacs.d/wttr-config/modes/auto-complete.el" "c:/Users/haifeng/.emacs.d/wttr-config/modes/rtags.el" "c:/Users/haifeng/.emacs.d/plugins/" "c:/Users/haifeng/.emacs.d/" "c:/Users/haifeng/MUF/BuildingCocoaApps.pdf" "c:/work/base_project/app_base/" "c:/work/base_project/app_base/src.cmake" "c:/work/base_project/app_base/CMakeLists.txt" "c:/work/rtsuite-new/dicom/CMakeLists.txt" "c:/work/rtsuite-new/CMakeLists.txt" "c:/work/base_project/CMakeLists.txt" "c:/work/base_project/CMakeCache.txt" "c:/work/base_project/app_base/CMakeLists.txt" "c:/work/rtsuite-new/dicom/CMakeLists.txt" "c:/work/rtsuite-new/utils/path.macro" "c:/work/base_project/utils/path.macro" "c:/work/library/base_project/base_project/app_base/CMakeLists.txt"))
+(setq search-ring '("index" "svg" "game" "music" "js2-mode" "js" "over" "icon" "indent" "add-hook" "putim" "ra" "ran" "put" "javasc" "js2"))
+(setq regexp-search-ring '("export" "\\_<rtViewer\\_>" "\\_<reViewer\\_>" "\\_<create\\_>" "\\_<OnPanelSelectChange\\_>" "\\_<selectpanelinitialize\\_>" "\\_<listeners\\_>" "\\_<panelSelect\\_>" "\\_<panel_select\\_>" "\\_<panelSelect\\_>" "\\_<panel_select\\_>" "\\_<panelSelect\\_>" "js" "\\_<RenderImage\\_>" "\\_<old_touch_position\\_>" "\\_<old_zoom_image_position\\_>"))
+(setq register-alist '((105) (97 . "    var image_view=Ext.getCmp('imageView');\n") (107) (106) (26) (24) (27 . [escape]) (113)))
+(setq file-name-history '("c:/Users/haifeng/MUF/todo_list.ics" "c:/Users/haifeng/MUF/todo_list.org" "c:/Users/haifeng/MUF/CV.org" "c:/Users/haifeng/.emacs.d/wttr-config/wttr-key.el" "c:/Users/haifeng/.emacs.d/wttr-config/modes/dired.el" "c:/work/rtviewer/app/view/BevView.js" "c:/work/rtviewer/app.js" "c:/work/rtviewer/app/controller/ImageViewController.js" "c:/work/rtviewer/app/view/ImageToolsView.js" "c:/work/rtviewer/app/view/ImageSettingView.js" "c:/work/rtviewer/app/view/Main.js" "c:/work/rtviewer/app/view/ImageView.js" "c:/work/rtviewer/app/controller/MainController.js" "c:/work/mob/app.js" "c:/Users/haifeng/MUF/learning/js/test.html" "c:/Users/haifeng/.emacs.d/wttr-config/wttr-basic.el" "c:/Users/haifeng/.emacs.d/wttr-config/modes/helm.el" "c:/work/myapp/app.json" "c:/work/rtviewer-server/static/js/rtviewer.js" "c:/work/touch-2.4.1/examples/particles/app/view/Particles.js" "c:/work/touch-2.4.1/examples/particles/app/view/Main.js" "c:/work/touch-2.4.1/examples/particles/app.js" "c:/work/rtviewer-server/index.html" "c:/work/rtsuite-web/WebSite3/contour.html" "c:/work/rtsuite-web/WebSite3/jquery-1.11.1.min.js" "c:/work/rtsuite-web/WebSite3/JavaScript.js" "c:/work/rtsuite-web/WebSite3/login.html" "c:/Users/haifeng/.emacs.d/wttr-config/modes/js2.el" "c:/Users/haifeng/MUF/learning/js/test.js" "c:/work/rtviewer-server/CImg.h"))
 
 ;; Buffer section -- buffers listed in same order as in buffer list:
 (desktop-create-buffer 206
-  "c:/Users/haifeng/MUF/learning/js/test.html"
-  "test.html"
-  'html-mode
-  '(helm-mode yas-minor-mode)
-  536
-  '(216 nil)
+  "c:/Users/haifeng/MUF/todo_list.org"
+  "todo_list.org"
+  'org-mode
+  '(helm-mode yas-minor-mode org-indent-mode)
+  1698
+  '(828 nil)
   nil
   nil
-  '((buffer-file-coding-system . chinese-gbk-dos)))
-
-(desktop-create-buffer 206
-  nil
-  "js"
-  'dired-mode
-  '(helm-mode yas-minor-mode)
-  260
-  '(nil nil)
-  t
-  '("c:/Users/haifeng/MUF/learning/js/")
-  nil)
-
-(desktop-create-buffer 206
-  nil
-  "learning"
-  'dired-mode
-  '(helm-mode yas-minor-mode)
-  258
-  '(nil nil)
-  t
-  '("c:/Users/haifeng/MUF/learning/")
-  nil)
+  '((indent-tabs-mode) (buffer-file-coding-system . utf-8-dos) (truncate-lines . t)))
 
 (desktop-create-buffer 206
   nil
   "MUF"
   'dired-mode
   '(helm-mode yas-minor-mode)
-  268
-  '(nil nil)
+  2379
+  '(268 nil)
   t
   '("c:/Users/haifeng/MUF/")
   nil)
 
 (desktop-create-buffer 206
   nil
-  "contour"
+  "haifeng"
   'dired-mode
   '(helm-mode yas-minor-mode)
-  1442
-  '(1442 nil)
-  t
-  '("c:/work/rtsuite-new/rtsuite/contour/")
-  nil)
-
-(desktop-create-buffer 206
-  nil
-  "rtsuite"
-  'dired-mode
-  '(helm-mode yas-minor-mode)
-  479
+  257
   '(nil nil)
   t
-  '("c:/work/rtsuite-new/rtsuite/")
+  '("c:/Users/haifeng/")
   nil)
 
 (desktop-create-buffer 206
   nil
-  "rtsuite-new"
+  "c:/"
   'dired-mode
   '(helm-mode yas-minor-mode)
-  1166
+  731
   '(nil nil)
   t
-  '("c:/work/rtsuite-new/")
+  '("c:/")
   nil)
 
 (desktop-create-buffer 206
   nil
-  "output"
+  "work"
   'dired-mode
   '(helm-mode yas-minor-mode)
-  1472
-  '(442 nil)
-  t
-  '("c:/work/rtsuite-new/output/")
-  nil)
-
-(desktop-create-buffer 206
-  nil
-  "data"
-  'dired-mode
-  '(helm-mode yas-minor-mode)
-  267
-  '(267 nil)
-  t
-  '("c:/work/rtsuite-new/output/data/")
-  nil)
-
-(desktop-create-buffer 206
-  nil
-  "Volume"
-  'dired-mode
-  '(helm-mode yas-minor-mode)
-  853
+  284
   '(nil nil)
   t
-  '("c:/work/rtsuite-new/output/data/Volume/")
+  '("c:/work/")
   nil)
+
+(desktop-create-buffer 206
+  "c:/work/rtviewer/app/controller/ImageViewController.js"
+  "ImageViewController.js"
+  'js2-mode
+  '(auto-complete-mode helm-mode yas-minor-mode hs-minor-mode js2-imenu-extras-mode)
+  26680
+  '(26568 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
 

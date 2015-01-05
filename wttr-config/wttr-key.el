@@ -22,7 +22,7 @@
        nil
        "explorer.exe"
        (concat "/e,/select," (replace-in-string file "/" "\\\\") )))))
-; open external shell from current file directory
+                                        ; open external shell from current file directory
 (defun w32-open-shell-from-current-file-directory ()
   "open cmd from current file directory"
   (interactive)
@@ -50,6 +50,11 @@
 (global-set-key (kbd "<C-f5>") 'w32-open-current-file-in-explorer)
 (global-set-key (kbd "<C-f6>") 'w32-open-shell-from-current-file-directory)
 (global-set-key (kbd "C-c s") 'set-mark-command)
-(global-set-key (kbd "C-M-\\") 'indent-buffer)
+(global-set-key (kbd "C-\\") 'indent-buffer)
 (global-set-key (kbd "C-x o") 'switch-window)
+;;(add-hook 'js-mode-hook '(lambda ()(local-set-key (kbd "C-c s") 'hs-toggle-hiding)))
+                                        ;(define-key js-mode-map (kbd "C-c s") 'hs-toggle-hiding)
+(add-hook 'js-mode-hook '(lambda ()(local-set-key (kbd "C-c n") 'flycheck-next-error)))
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+(global-set-key (kbd "M-m") 'helm-imenu)
 (provide 'wttr-key)

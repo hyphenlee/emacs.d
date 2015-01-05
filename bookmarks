@@ -2,66 +2,36 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("R_3"
- (filename . "~/code/wxwidgets-test/test.cpp")
- (front-context-string . "menuBar->Append(")
- (rear-context-string . " \"&File\" );\n    ")
- (position . 920))
-("R_2"
- (filename . "~/code/wxwidgets-test/test.cpp")
- (front-context-string . "menuBar->Append(")
- (rear-context-string . " wxMenuBar;\n    ")
- (position . 878))
-("R_1"
- (filename . "~/code/wxwidgets-test/test.cpp")
- (front-context-string . "menuBar );\n    C")
- (rear-context-string . "    SetMenuBar( ")
- (position . 974))
+(("Main.js"
+ (filename . "c:/work/myapp/app/view/Main.js")
+ (front-context-string . "Ext.define('Myap")
+ (rear-context-string)
+ (position . 1))
+("test.js"
+ (filename . "c:/Users/haifeng/MUF/learning/js/test.js")
+ (front-context-string)
+ (rear-context-string . "2;\nvar ok;\nok=j;")
+ (position . 27))
+("js-mode"
+ (filename . "c:/Users/haifeng/.emacs.d/plugins/yasnippet/snippets/js-mode/")
+ (front-context-string . "mod.yasnippet\n  ")
+ (rear-context-string . "20 Aug 16  2013 ")
+ (position . 1324))
+("work.org"
+ (filename . "c:/Users/haifeng/MUF/work.org")
+ (front-context-string . "* 工作杂思\n** 总结工作文档")
+ (rear-context-string)
+ (position . 1))
+("code.org"
+ (filename . "c:/Users/haifeng/OneDrive/code.org")
+ (front-context-string . "#+STARUP: overvi")
+ (rear-context-string)
+ (position . 1))
 ("wttr-basic.el"
  (filename . "~/.emacs.d/wttr-config/wttr-basic.el")
  (front-context-string . "; -*- coding: ut")
  (rear-context-string)
  (position . 2))
-("test.cpp"
- (filename . "~/code/cpp-test/test.cpp")
- (front-context-string . "#include<iostrea")
- (rear-context-string)
- (position . 1))
-("work.org"
- (filename . "c:/Users/hyphen/work.org")
- (front-context-string . "rtss not support")
- (rear-context-string . " missing\nthird: ")
- (position . 1429))
-("scheme.ss"
- (filename . "d:/learning/scheme.ss")
- (front-context-string)
- (rear-context-string . "3)))\n  (newline)")
- (position . 1616))
-("learning"
- (filename . "d:/learning/")
- (front-context-string . "lisp\n  drwxrwxrw")
- (rear-context-string . "96 Oct 25 17:01 ")
- (position . 237))
-("_posts"
- (filename . "d:/blog/source/_posts/")
- (front-context-string . "2013-07-30-blog.")
- (rear-context-string . "33 Jan 29 11:32 ")
- (position . 247))
-("todo_list.org"
- (filename . "c:/Users/hyphen/todo_list.org")
- (front-context-string)
- (rear-context-string)
- (position . 1))
-("Microsoft.PowerShell_profile.ps1"
- (filename . "c:/Users/hyphen/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1")
- (front-context-string . "#$OutputEncoding")
- (rear-context-string . "rk\\rtSuite-pc2\"\n")
- (position . 106))
-("code.org"
- (filename . "c:/Users/hyphen/SkyDrive/Documents/code.org")
- (front-context-string . "                ")
- (rear-context-string . "                ")
- (position . 12499))
 ("wttr-config"
  (filename . "~/.emacs.d/wttr-config/")
  (front-context-string . "backup\n  -rw-rw-")

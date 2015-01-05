@@ -17,8 +17,8 @@
 ;; load
 (wttr/plugin:prepend-to-load-path "evil")
 (require 'evil)
-(global-set-key "\C-z" 'evil-mode)
-;;(evil-mode 1)
+;(global-set-key "\C-z" 'evil-mode)
+(evil-mode 1)
 ;;(global-set-key "\C-z" 'evil-mode)
 ;;;; cursor appearance
 ;evil-default-cursor [Variable]

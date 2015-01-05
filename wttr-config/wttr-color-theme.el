@@ -9,7 +9,7 @@
 ;(require 'color-theme-subdued)
 ;(color-theme-subdued)
 (color-theme-initialize)
-(color-theme-blue-sea)
+(color-theme-dark-blue2)
 
 ;(wttr/plugin:prepend-to-load-path "color-theme-solarized")
 ;(require 'color-theme-solarized)

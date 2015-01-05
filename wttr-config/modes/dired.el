@@ -20,7 +20,11 @@
 (require 'wdired)
 (setq wdired-allow-to-change-permissions 'advanced)
 (define-key dired-mode-map (kbd "r") 'wdired-change-to-wdired-mode)
-
+(add-hook 'dired-mode-hook
+ (lambda ()
+  (define-key dired-mode-map (kbd "u")
+    (lambda () (interactive) (find-alternate-file "..")))
+ ))
 (defun open-in-external-app ()
   "Open the current file or dired marked files in external app."
   (interactive)
@@ -44,4 +48,4 @@
         (mapc (lambda (fPath) (let ((process-connection-type nil)) (start-process "" nil "xdg-open" fPath)) ) myFileList) ) ) )
     (local-set-key (kbd "C-c C-o") 'open-in-external-app)) )
 (add-hook 'dired-mode-hook 'open-in-external-app)
-
+(put 'dired-find-alternate-file 'disabled nil)

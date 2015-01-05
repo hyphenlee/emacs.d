@@ -22,6 +22,8 @@
               "slime.el"
               "undo-tree.el"
               "yasnippet.el"
+              "js2.el"
+              "flycheck.el"
               )))
 (if wttr/os:osxp
     (mapc (lambda (filename) (load (concat "~/.emacs.d/wttr-config/modes/" filename)))

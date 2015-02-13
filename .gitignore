@@ -1,1 +1,12 @@
 */.git
+auto-save-list/*
+.emacs-places
+.emacs.desktop
+ac-comphist.dat
+bookmarks
+history
+ido.last
+places
+projectile.cache
+recentf
+.emacs.desktop.lock

@@ -1,874 +1,1126 @@
-((("ct_context" .
-   [0 0 0 0 0 0 0 1 0 0])
-  ("touch_start" .
-   [0 0 0 0 0 0 0 2 0 0 0])
-  ("TouchEnd" .
-   [1 0 0 0 0 0 0 0])
-  ("image_position" .
-   [0 0 0 0 0 0 0 0 4 1 0 0 0 1])
-  ("old_pos" .
-   [0 0 0 2 0 0 1])
-  ("old_position" .
-   [0 0 0 0 0 0 2 0 0 0 0 1])
-  ("touch_count" .
-   [0 0 0 0 0 0 0 0 1 1 0])
-  ("offset" .
-   [1 0 0 1 0 0])
-  ("curY" .
-   [2 0 0 0])
-  ("curX" .
-   [0 0 1 3])
-  ("preventDefault" .
-   [0 0 0 1 0 0 0 0 0 0 0 0 0 0])
-  ("eventcontroller" .
-   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
-  ("SetImageWindow" .
-   [0 0 0 0 0 0 1 0 0 0 0 0 0 0])
-  ("current_tool" .
-   [0 0 0 0 0 0 0 0 0 0 0 3])
-  ("TouchStart" .
-   [0 0 0 0 0 0 1 0 0 0])
-  ("TouchMove" .
-   [0 0 0 0 0 0 0 1 0])
-  ("touchs" .
-   [0 0 0 0 0 1])
-  ("addListener" .
-   [0 0 0 0 0 1 0 0 0 0 0])
-  ("getValue" .
-   [0 0 0 0 0 1 0 0])
-  ("tool" .
-   [2 0 0 0])
-  ("ct" .
+((("op/git-branch-name" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
+  ("op/repository-org-branch" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
+  ("op/repository-directory" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2])
+  ("op/git-change-branch" .
+   [0 0 0 0 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 0])
+  ("sagittal_image_size" .
+   [0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("OnCTLoad" .
+   [0 0 0 1 1 0 0 0])
+  ("nb" .
    [2 0])
-  ("fly" .
-   [0 0 1])
-  ("working" .
-   [1 0 0 0 0 1 1])
-  ("undefined" .
-   [0 0 2 2 2 4 0 0 0])
-  ("ready" .
-   [0 0 0 1 0])
-  ("false" .
-   [0 0 0 4 3])
-  ("newValue" .
-   [0 0 0 0 4 1 0 1])
-  ("contour_url" .
-   [0 0 0 0 0 0 0 0 0 1 0])
-  ("text" .
-   [1 0 0 0])
-  ("responseType" .
-   [0 0 0 0 0 0 0 0 0 0 1 0])
-  ("session_id" .
-   [1 0 0 0 0 0 0 2 0 1])
-  ("GetData" .
-   [0 0 0 0 3 0 0])
-  ("OpenPatient" .
-   [0 0 0 0 0 0 2 0 0 0 0])
-  ("ReadyToRender" .
-   [0 0 0 1 0 2 1 0 0 0 0 0 0])
-  ("session" .
-   [0 0 0 0 0 0 1])
-  ("ready_contour" .
-   [0 0 0 0 0 0 0 0 0 3 0 0 1])
-  ("ready_ct" .
-   [0 0 0 1 1 0 0 4])
-  ("else" .
-   [13 0 0 0])
-  ("type" .
-   [4 0 0 0])
-  ("clearRect" .
-   [0 0 0 0 2 0 0 0 0])
-  ("stroke" .
-   [0 0 0 0 0 1])
-  ("lineTo" .
-   [0 0 0 1 0 1])
-  ("moveTo" .
-   [0 0 1 1 0 0])
-  ("strokeStyle" .
-   [0 0 0 0 0 0 0 1 0 0 0])
-  ("console" .
-   [3 0 0 0 3 0 2])
-  ("pos_y" .
-   [2 0 2 0 0])
-  ("pos_x" .
-   [6 0 1 3 0])
-  ("context" .
-   [4 0 0 0 1 1 14])
-  ("RenderImage" .
-   [0 0 0 5 5 0 0 0 0 0 0])
-  ("contour_data" .
-   [0 0 0 0 0 0 3 2 0 3 0 2])
-  ("send" .
-   [1 0 0 0])
-  ("OnContourLoad" .
-   [0 0 0 0 0 4 0 0 0 0 0 0 0])
-  ("sessionid" .
-   [1 0 0 0 2 0 0 0 1])
-  ("get_contour_url" .
-   [0 0 0 1 1 0 0 0 0 0 0 0 0 0 0])
-  ("OpenImage" .
-   [0 0 0 0 1 0 0 0 0])
-  ("contour_request" .
-   [0 0 0 0 0 0 1 0 0 0 0 0 1 0 4])
-  ("contour" .
-   [10 0 0 0 0 0 0])
-  ("parse" .
-   [0 0 0 0 1])
-  ("JSON" .
-   [0 0 1 0])
-  ("responseText" .
-   [0 0 0 0 1 1 0 0 0 1 0 1])
-  ("slice" .
-   [35 0 1 5 10])
-  ("bytes" .
-   [3 0 0 0 0])
-  ("initialize" .
-   [0 0 0 0 0 0 0 0 0 3])
-  ("image_view" .
-   [18 0 1 2 0 0 0 27 48 28])
-  ("html-mode" .
-   [0 0 0 0 0 1 0 0 0])
-  ("getContext" .
-   [0 0 0 0 0 0 1 0 1 0])
-  ("ctx" .
-   [4 0 0])
-  ("fillRect" .
-   [0 0 0 0 0 1 0 0])
-  ("yellow" .
-   [0 0 0 0 1 0])
-  ("fillStyle" .
-   [0 0 0 0 0 0 2 0 0])
-  ("imageView" .
-   [0 0 0 1 0 0 0 0 0])
-  ("image_canvas" .
-   [0 0 0 1 0 0 0 4 1 0 0 1])
-  ("document" .
-   [1 0 0 0 0 0 0 0])
-  ("log" .
-   [9 0 0])
-  ("js2-mode" .
-   [0 0 0 0 0 0 0 1])
-  ("my-js-mode-auto-pair" .
-   [0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("hs-show-block" .
-   [0 0 0 0 0 0 0 0 0 0 0 1 0])
-  ("hs-hide-block" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("js-mode-map" .
-   [0 0 0 0 0 0 0 0 0 0 1])
-  ("define-key" .
-   [0 0 0 0 0 0 0 0 0 1])
-  ("noargs" .
-   [0 0 0 1 0 0])
-  ("javascript-mode" .
-   [0 0 0 0 0 0 2 1 0 0 0 0 0 0 0])
-  ("Javascript" .
-   [0 0 0 0 0 0 2 0 0 0])
-  ("dired-up-directory" .
-   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
-  ("distance_two_points_old" .
-   [0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("image_position_x" .
-   [3 0 0 0 0 5 2 1 1 0 0 0 0 0 0 4])
-  ("center_x" .
-   [2 0 0 0 0 0 1 2])
-  ("zoom_ratio" .
-   [0 0 0 5 1 0 0 0 0 0])
-  ("String" .
-   [4 0 0 0 1 1])
-  ("buffer" .
-   [2 0 0 0 0 0])
-  ("OnLoad" .
-   [0 0 0 1 1 0])
-  ("onload" .
-   [3 0 0 0 0 0])
-  ("this" .
-   [9 0 0 0])
-  ("resp" .
-   [5 0 0 0])
-  ("response" .
-   [2 0 0 0 0 0 0 0])
-  ("Uint16Array" .
-   [0 0 0 0 0 1 0 0 0 0 2])
-  ("return" .
-   [2 0 0 0 1 8])
-  ("image_data" .
-   [1 0 0 0 0 0 1 7 1 3])
-  ("event" .
-   [6 0 0 0 1])
-  ("Mark" .
-   [7 0 0 0])
-  ("you" .
+  ("set_ct_sagittal" .
+   [0 0 0 0 0 0 1 1 1 0 0 0 0 0 0])
+  ("set_ct_coronal" .
+   [0 0 0 0 4 0 0 0 0 0 0 0 0 0])
+  ("image_actual_size" .
+   [0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0])
+  ("del" .
    [1 0 0])
-  ("Period." .
-   [1 0 0 0 0 0 0])
-  ("copy" .
-   [1 0 0 0])
-  ("limitationlimitation" .
-   [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
-  ("each { |...| ... }" .
-   [0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("image" .
-   [10 0 0 1 0])
-  ("line" .
-   [6 0 0 0])
-  ("that" .
-   [2 0 0 0])
-  ("labels" .
-   [1 0 0 0 0 0])
-  ("life" .
-   [4 0 0 0])
-  ("home" .
-   [1 0 0 0])
-  ("help" .
-   [1 0 0 0])
-  ("deactivate-mark" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("color-theme-blue-sea" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
-  ("color-theme-lethe" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
-  ("color-theme-billw" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
-  ("color-theme-xemacs" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
-  ("color-theme-select" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
-  ("color-theme-alist" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
-  ("color-theme-wheat" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
-  ("color-theme-jsc-light2" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1])
-  ("save-buffer" .
-   [0 0 0 0 0 0 1 0 0 0 0])
-  ("value" .
-   [4 0 0 0 1])
-  ("dolist" .
-   [0 0 0 0 1 0])
-  ("reverse" .
-   [0 0 0 0 0 0 2])
-  ("count" .
-   [11 0 0 0 1])
-  ("list-length" .
-   [0 0 0 0 0 0 0 1 0 0 1])
-  ("print" .
-   [4 0 0 0 0])
-  ("while" .
-   [9 0 0 0 0])
-  ("let" .
-   [6 0 0])
-  ("loop" .
-   [10 0 0 1])
-  ("concat" .
-   [1 0 0 0 1 2])
-  ("string-to-int" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("number-to-string" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 5])
-  ("number" .
-   [0 0 0 0 0 1])
-  ("not" .
-   [4 0 0])
-  ("listp" .
-   [0 0 0 1 2])
-  ("getset" .
-   [2 0 0 0 0 0])
-  ("me" .
-   [8 0])
-  ("function" .
-   [0 0 0 18 16 0 0 3])
-  ("desktop-save-mode" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("!include" .
-   [0 0 0 0 1 0 0 0])
-  ("OnClick_BrowseButton" .
-   [0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("StrCpy" .
-   [0 0 0 1 0 0])
-  ("SetDir" .
-   [0 0 0 0 1 0])
-  ("$Text" .
-   [1 0 0 0 1])
-  ("$Text2" .
-   [0 0 0 3 0 1])
-  ("Pop" .
-   [2 0 0])
-  ("${NSD_CreateDirRequest}" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0])
-  ("macroexpand" .
-   [0 0 0 0 0 0 0 0 0 0 1])
-  ("&rest" .
-   [2 0 0 0 0])
-  ("mywhen" .
-   [1 0 0 1 0 1])
-  ("forms" .
-   [3 0 0 0 0])
-  ("progn" .
-   [3 0 0 0 1])
-  ("test" .
-   [0 0 0 1])
-  ("if" .
-   [39 1])
-  ("when" .
-   [1 0 0 0])
-  ("defmacro" .
-   [0 0 0 0 0 1 0 1])
-  ("append" .
-   [2 0 0 0 0 2])
-  ("cons" .
-   [14 0 0 0])
-  ("cdr" .
-   [7 0 0])
-  ("car" .
-   [4 0 2])
-  ("list" .
-   [4 0 0 0])
-  ("interactive" .
-   [0 0 0 0 0 1 0 0 0 0 2])
-  ("fine" .
-   [3 0 0 0])
-  ("commandp" .
-   [0 0 0 0 0 0 0 1])
-  ("insert" .
-   [8 0 1 0 0 0])
-  ("lambda" .
-   [1 0 0 4 2 1])
-  ("l" .
-   [6])
-  ("local-set-key" .
-   [0 0 0 0 0 0 0 0 1 0 0 0 1])
-  ("apply" .
-   [1 0 0 0 1])
-  ("read" .
-   [1 0 0 0])
-  ("eval-region" .
-   [0 0 0 0 0 1 0 0 0 0 0])
-  ("eval" .
-   [4 0 0 0])
-  ("shell-command" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("command" .
-   [1 0 0 0 0 0 0])
-  ("shell" .
-   [1 0 0 0 0])
-  ("random" .
-   [0 0 0 0 0 1])
-  ("m" .
-   [3])
-  ("funcall" .
-   [1 0 0 1 1 0 5])
-  ("func_list" .
-   [1 0 1 0 0 1 0 1 1])
-  ("set" .
-   [9 0 0])
-  ("timer-create" .
+  ("defun*" .
+   [2 0 0 0 0 1])
+  ("ct_canvas" .
+   [0 0 0 0 0 1 2 0 0])
+  ("drawImage" .
+   [0 0 0 0 1 0 0 0 0])
+  ("axial_image_size" .
+   [0 0 0 3 0 0 0 1 1 0 0 0 0 0 0 0])
+  ("size" .
+   [0 0 8 3])
+  ("current_request_slice" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
+  ("ctInfoParser" .
    [0 0 0 0 1 0 0 0 0 0 0 0])
-  ("time-stamp" .
-   [0 0 0 0 1 0 0 0 0 0])
-  ("date-to-day" .
-   [0 0 0 1 1 0 0 0 0 0 0])
-  ("time" .
-   [1 0 0 1])
-  ("message" .
-   [1 0 0 0 3 0 13])
-  ("df" .
-   [3 0])
-  ("save" .
-   [0 0 2 0])
-  ("setq" .
-   [31 0 0 4])
-  ("autopair-mode" .
-   [0 0 0 0 0 0 0 0 0 0 0 1 0])
-  ("lisp-mode" .
-   [0 0 0 0 0 0 0 0 1])
-  ("scheme-mode" .
-   [0 0 0 0 0 0 0 0 0 0 1])
-  ("kbd" .
-   [4 0 2])
-  ("color-theme-dark-blue2" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0])
-  ("global-unset-key" .
-   [0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("color-theme-dark-blue" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
-  ("global-set-key" .
-   [0 0 0 1 0 0 0 0 0 0 0 0 0 4])
-  ("evil-mode" .
-   [0 0 0 0 0 0 0 0 1])
-  ("custom-set-variables" .
-   [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
-  ("scheme-program-name" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
-  ("email" .
-   [0 0 0 1 0])
-  ("wttr/prepend-to-exec-path" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("ac-source-clang" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0])
-  ("table" .
+  ("slider" .
+   [3 0 0 0 0 0])
+  ("GetSliceData" .
+   [0 0 0 0 0 1 0 0 0 0 0 0])
+  ("beams" .
    [1 0 0 0 0])
-  ("data" .
-   [3 0 0 0])
-  ("with" .
-   [3 0 0 0])
-  ("or" .
-   [1 0])
-  ("length" .
-   [1 0 0 5 6 0])
-  ("the" .
-   [5 0 0])
-  ("elt" .
-   [8 0 0])
-  ("string" .
-   [4 0 0 0 0 1])
-  ("d" .
-   [1])
-  ("PORT=3306" .
-   [0 0 0 0 1 0 0 0 0])
-  ("defun" .
-   [3 0 0 0 4])
-  ("funtest" .
-   [1 0 0 0 0 0 0])
-  ("&optional" .
-   [0 0 0 1 1 0 0 0 0])
-  ("character" .
-   [2 0 0 0 0 0 0 0 0])
-  ("name" .
-   [5 0 0 0])
-  ("version" .
-   [1 0 0 0 0 0 0])
-  ("private" .
-   [3 0 0 0 0 0 0])
-  ("creator" .
-   [1 0 0 0 0 0 0])
-  ("status" .
-   [1 0 0 0 0 0])
-  ("set-frame-parameter" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
-  ("nil" .
-   [6 0 0])
-  ("alpha" .
-   [0 0 0 1 0])
-  ("what" .
-   [4 0 0 1])
-  ("wh" .
-   [1 0])
-  ("vector" .
-   [1 0 0 0 0 3])
-  ("aset" .
-   [9 0 0 2])
-  ("mapcar" .
-   [2 0 0 0 0 0])
-  ("1+" .
-   [4 0])
-  ("mapc" .
-   [1 0 0 0])
-  ("vconcat" .
-   [0 0 0 0 0 1 0])
-  ("mylist" .
-   [0 0 0 1 0 0])
-  ("prin1" .
-   [1 0 0 0 1])
-  ("number-sequence" .
-   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
-  ("b" .
-   [2])
-  ("delete-file" .
-   [0 0 0 0 0 0 0 0 0 0 3])
-  ("D:/123.txt" .
-   [1 0 0 0 0 0 0 0 0 0])
-  ("new-file" .
-   [0 0 0 0 0 0 0 1])
-  ("create-file-buffer" .
-   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
-  ("exit-and-delete-file" .
-   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
-  ("save-buffers-kill-emacs" .
-   [0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
-  ("buffer-file-name" .
-   [0 0 0 0 0 0 0 0 0 0 1 2 0 0 0 0])
-  ("describe-bindings" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("ido-switch-buffer" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("delete-directory" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("insert-image" .
-   [0 0 0 0 0 0 0 0 0 0 0 1])
-  ("color-theme-comidia" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
-  ("color-theme-xp" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 1 0])
-  ("color-theme-example" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0])
-  ("color-theme-montz" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
-  ("color-theme-jsc-dark" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
-  ("color-theme-snow" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
-  ("switch-window" .
+  ("image_info" .
+   [0 0 0 0 0 0 0 1 3 0])
+  ("beam_info" .
+   [1 0 0 0 0 0 0 1 0])
+  ("dose_image_size" .
+   [0 0 0 0 0 0 0 0 0 0 0 2 0 0 0])
+  ("contours" .
+   [5 0 0 0 0 0 0 0])
+  ("insertrandowchar" .
+   [0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0])
+  ("view" .
+   [0 0 1 0])
+  ("toString" .
+   [1 0 0 0 0 0 0 0])
+  ("ToString" .
+   [0 0 0 1 0 0 0 0])
+  ("series" .
+   [0 0 0 0 1 0])
+  ("dose_value" .
+   [0 0 0 0 0 0 3 2 0 0])
+  ("values" .
+   [1 0 0 1 0 0])
+  ("key" .
+   [1 0 0])
+  ("dvh" .
+   [3 0 0])
+  ("line_data" .
+   [0 0 0 0 0 1 4 0 0])
+  ("For" .
+   [0 0 1])
+  ("dvhs" .
+   [7 0 0 0])
+  ("chart_data" .
+   [1 0 0 0 0 1 1 1 0 0])
+  ("color" .
+   [4 1 0 1 2])
+  ("chart" .
+   [1 0 0 0 0])
+  ("renderChartData" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("dvh_chart" .
+   [1 0 0 0 0 0 1 0 0])
+  ("chartData" .
+   [1 0 0 0 0 0 0 0 0])
+  ("decode" .
+   [0 0 0 0 2 0])
+  ("dvh_data" .
+   [1 0 0 0 0 0 1 0])
+  ("dvh_message" .
+   [0 0 0 0 0 1 3 0 0 0 0])
+  ("DVHParser" .
+   [0 0 0 0 3 0 0 0 1])
+  ("dvh_view" .
+   [0 0 0 0 0 0 4 0])
+  ("DvhViewController" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("helm-bookmark" .
    [0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("indent-buffer" .
-   [0 0 0 0 0 0 0 0 0 1 0 0 0])
-  ("p" .
-   [1])
-  ("let*" .
-   [2 0 0 0])
-  ("stringp" .
-   [1 0 0 0 0 0 0])
-  ("makunbound" .
-   [0 0 0 0 0 2 0 0 0 0])
-  ("boundp" .
-   [0 0 0 0 0 1])
-  ("defvar" .
-   [0 0 0 0 0 1])
-  ("aaa" .
-   [5 0 0])
-  ("symbol-value" .
-   [0 0 0 0 0 0 0 0 2 0 0 0])
-  ("setcar" .
-   [0 0 0 0 0 2])
-  ("my-li" .
-   [0 0 0 0 5])
-  ("make-vector" .
-   [0 0 0 0 0 0 1 1 0 0 4])
-  ("my-vec" .
-   [3 0 0 0 4 3])
-  ("a" .
-   [2])
-  ("c" .
-   [1])
-  ("nth" .
-   [1 0 0])
-  ("my-vec2" .
-   [1 0 0 1 1 0 0])
-  ("aref" .
-   [13 0 0 1])
-  ("fillarray" .
-   [0 0 0 0 0 0 0 0 1])
-  ("defstruct" .
-   [0 0 0 0 1 0 0 0 0])
-  ("s" .
-   [1])
-  ("id" .
-   [2 0])
-  ("hyphen" .
-   [6 0 0 0 0 0])
-  ("Patient" .
-   [1 0 0 0 0 0 0])
-  (":id" .
-   [1 0 0])
-  (":name" .
-   [1 0 0 0 0])
-  ("setf" .
-   [1 0 0 0])
-  ("Patient-name" .
-   [0 0 0 0 0 0 0 0 0 0 1 0])
-  ("Patient-id" .
-   [1 0 0 0 0 0 0 0 0 0])
-  ("graph-vec" .
-   [2 0 0 1 0 1 1 0 7])
-  ("node" .
-   [2 0 0 0])
-  ("node-number" .
-   [1 0 0 0 0 3 1 1 0 0 0])
-  ("len" .
-   [7 0 0])
-  ("lowcost" .
-   [0 0 0 1 3 0 3])
-  ("min" .
-   [5 0 0])
-  ("i" .
-   [2])
-  ("from" .
-   [6 0 0 0])
-  ("f" .
-   [1])
-  ("by" .
-   [3 0])
-  ("for" .
-   [7 0 0])
-  ("do" .
-   [7 0])
-  ("%d" .
-   [1 0])
-  ("closest" .
-   [1 0 0 0 0 0 3])
-  ("clone" .
-   [0 0 0 0 1])
-  ("close-node" .
-   [0 0 0 0 0 0 0 3 4 1])
-  ("to" .
-   [4 0])
-  ("and" .
-   [4 0 0])
-  ("v" .
-   [1])
-  ("vec" .
-   [1 0 0])
-  ("get_vec_element" .
-   [0 0 0 0 2 1 0 0 0 0 0 0 0 0 1])
-  ("element" .
-   [2 0 0 0 0 0 3])
-  ("PRIM" .
-   [0 0 0 1])
-  ("cond" .
-   [1 0 0 0])
-  ("script" .
+  ("org-mode" .
+   [0 0 0 0 0 0 1 0])
+  ("bev_view" .
+   [2 0 0 0 3 1 1 4])
+  ("bev" .
+   [3 0 0])
+  ("remove" .
    [1 0 0 0 0 0])
-  ("assq" .
+  ("maxWidth" .
+   [0 0 0 0 0 0 1 0])
+  ("ok" .
+   [8 0])
+  ("eopts" .
+   [0 0 1 0 0])
+  ("selectpanelinitialize" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
+  ("onselectmousedown" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
+  ("onpanelselectmousedown" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("mousedown" .
+   [4 0 0 0 0 0 0 0 0])
+  ("oldValue" .
+   [0 0 0 0 1 0 1 0])
+  ("change" .
+   [4 0 0 1 1 1])
+  ("panelSelect" .
+   [0 0 0 0 0 0 0 1 0 0 0])
+  ("panel_select" .
+   [0 0 0 0 0 0 0 1 1 0 0 0])
+  ("max" .
+   [1 0 0])
+  ("docked" .
+   [0 0 0 0 2 0])
+  ("vbox" .
    [1 0 0 0])
-  ("space" .
-   [1 0 0 0 0])
-  ("it" .
-   [5 0])
-  ("tools" .
+  ("layout" .
+   [0 0 0 1 0 0])
+  ("panel" .
    [3 0 0 0 0])
-  ("choice" .
-   [1 0 0 0 0 0])
-  ("again" .
-   [1 0 0 0 0])
-  ("in" .
-   [2 0])
-  ("is" .
-   [1 0])
-  ("semantic-mode" .
-   [0 0 0 0 0 0 1 0 0 0 0 0 1])
-  ("var" .
-   [56 0 0])
-  ("xmlhttp" .
-   [6 0 0 0 0 0 1])
-  ("new" .
-   [6 0 0])
-  ("XMLHttpRequest" .
-   [0 0 1 2 0 0 0 0 0 0 0 0 0 0])
-  ("url" .
-   [5 0 0])
-  ("open" .
+  ("RenderImageInfo" .
+   [0 0 0 0 1 0 0 0 0 0 0 0 0 1 0])
+  ("old_zoom_image_position" .
+   [0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("current_window_width" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
+  ("window" .
+   [2 0 0 0 0 0])
+  ("Window" .
+   [0 0 0 0 1 0])
+  ("OnResetButtonTap" .
+   [0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("tap" .
+   [2 0 0])
+  ("resetButton" .
+   [0 0 0 0 0 0 0 1 0 0 0])
+  ("contour_state" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("image_state" .
+   [0 0 0 0 0 0 0 0 0 1 0])
+  ("RequireForData" .
+   [0 0 0 0 0 0 0 0 0 2 0 0 0 0])
+  ("state" .
+   [2 0 0 0 0])
+  ("dose_progress" .
+   [0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("null" .
+   [1 0 0 1])
+  ("OnDoseLoad" .
+   [0 0 0 0 0 1 0 0 0 0])
+  ("contour_progress" .
+   [0 0 0 0 0 0 0 0 0 2 0 1 0 0 0 0])
+  ("red" .
+   [1 0 0])
+  ("image_size" .
+   [1 0 0 0 0 2 1 2 3 2])
+  ("ct_progress" .
+   [0 0 0 0 0 0 3 0 0 0 1])
+  ("slice_to_get" .
+   [1 0 0 0 1 0 1 4 7 1 0 5])
+  ("CTLoad" .
+   [0 0 0 1 0 0])
+  ("dose" .
+   [16 0 0 0])
+  ("dose_data" .
+   [1 0 0 0 0 3 2 0 0])
+  ("need_image" .
+   [0 0 0 4 2 1 0 0 0 1])
+  ("need" .
    [2 0 0 0])
-  ("true" .
-   [7 0 0 5])
-  ("alert" .
-   [42 0 0 0 0])
-  ("onopen" .
-   [1 0 0 0 1 0])
-  ("state_changed" .
-   [0 0 0 0 0 1 1 1 1 0 0 0 0])
-  ("min_size" .
-   [1 0 0 1 1 1 2 2])
-  ("old_x1" .
-   [0 0 1 0 0 0])
-  ("old_" .
-   [0 0 0 1])
-  ("old_x2" .
+  ("ct_offset" .
+   [1 0 0 0 0 0 0 0 0])
+  ("ct_spacing" .
+   [0 0 0 0 0 0 1 0 0 0])
+  ("ct_size" .
+   [1 0 0 0 2 4 0])
+  ("json_data" .
+   [0 0 0 0 0 0 2 0 0])
+  ("basic_info" .
+   [0 0 1 3 3 3 1 0 0 0])
+  ("contour_" .
+   [0 0 0 0 0 0 0 1])
+  ("contour_header" .
+   [0 0 0 0 0 0 0 2 0 1 0 0 0 0])
+  ("image_data_head" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("dose_header" .
+   [2 0 0 0 0 0 0 0 0 0 0])
+  ("ct_header" .
+   [4 0 0 0 0 0 0 0 0])
+  ("img_slice_nb" .
+   [0 0 0 0 0 0 0 0 0 1 0 0])
+  ("getResponseHeader" .
+   [0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0])
+  ("ct_head" .
+   [1 0 0 0 0 0 0])
+  ("canvas" .
+   [3 0 0 0 2 5])
+  ("js2-mode-hook" .
+   [0 0 0 0 0 0 0 0 0 1 1 0 0])
+  ("centered" .
+   [1 0 0 0 0 0 0 0])
+  ("show" .
+   [5 0 0 0])
+  ("label" .
+   [0 0 0 0 2])
+  ("setText" .
+   [0 0 0 0 0 1 0])
+  ("tools_button" .
+   [0 0 0 0 0 0 0 1 0 0 0 0])
+  ("getCmp" .
+   [0 0 0 0 3 6])
+  ("hide" .
+   [1 0 0 1])
+  ("button" .
+   [6 0 0 0 0 1])
+  ("checked" .
+   [0 0 0 0 1 0 0])
+  ("listeners" .
+   [1 0 0 0 0 0 1 1 0])
+  ("defaults" .
+   [1 0 0 0 0 0 0 0])
+  ("default" .
+   [0 0 0 1 0 1 2])
+  ("xtype" .
+   [7 0 0 0 1])
+  ("items" .
+   [4 0 0 0 0])
+  ("labelWidth" .
+   [0 0 0 0 0 0 1 0 0 0])
+  ("ths" .
+   [2 0 0])
+  ("showBy" .
+   [1 0 0 0 0 0])
+  ("tools_view" .
+   [0 0 0 0 0 0 1 0 1 3])
+  ("create" .
+   [2 0 0 0 1 0])
+  ("add" .
+   [3 0 0])
+  ("Viewport" .
+   [1 0 0 0 1 0 0 2])
+  ("Ext" .
+   [14 0 3])
+  ("menu-bar-mode" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("js-mode-hook" .
+   [0 0 0 0 0 1 1 0 0 0 0 0])
+  ("add-hook" .
+   [0 0 0 0 0 0 0 1])
+  ("hs-toggle-hiding" .
+   [0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0])
+  ("js" .
+   [1 0])
+  ("round" .
+   [0 0 0 2 1])
+  ("old_img_pos_" .
+   [0 0 0 0 0 0 0 0 1 0 0 1])
+  ("old_img_pos_y" .
+   [1 0 0 0 0 0 1 1 0 0 0 0 0])
+  ("old_img_pos_x" .
+   [2 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("image_position_" .
+   [0 0 0 0 0 0 0 0 2 0 0 0 0 0 1])
+  ("old_min_size" .
+   [0 0 0 2 1 0 0 1 0 0 0 0])
+  ("image_position_y" .
+   [3 0 0 1 0 0 0 1 1 0 0 0 0 0 0 0])
+  ("str" .
+   [1 0 0])
+  ("pow" .
+   [1 0 0])
+  ("Math" .
+   [3 0 0 1])
+  ("height" .
+   [3 0 0 10 0 0])
+  ("width" .
+   [3 0 1 8 5])
+  ("screen_size" .
+   [0 0 0 0 0 1 2 0 0 0 3])
+  ("center_y_old" .
+   [0 0 0 0 0 0 0 0 1 0 0 1])
+  ("center_y" .
+   [1 0 0 0 0 0 0 0])
+  ("center_x_old" .
+   [0 0 0 0 0 0 1 0 0 1 0 0])
+  ("old_y2" .
    [1 0 0 0 0 0])
   ("old_y1" .
    [1 0 0 0 0 0])
-  ("old_y2" .
+  ("old_x2" .
    [1 0 0 0 0 0])
-  ("center_x_old" .
-   [0 0 0 0 0 0 1 0 0 1 0 0])
-  ("center_y" .
-   [1 0 0 0 0 0 0 0])
-  ("center_y_old" .
-   [0 0 0 0 0 0 0 0 1 0 0 1])
-  ("screen_size" .
-   [0 0 0 0 0 1 2 0 0 0 3])
-  ("width" .
-   [2 0 1 8 3])
-  ("height" .
-   [2 0 0 8 0 0])
-  ("Math" .
-   [3 0 0 1])
-  ("pow" .
-   [1 0 0])
-  ("str" .
-   [1 0 0])
-  ("image_position_y" .
-   [3 0 0 1 0 0 0 1 1 0 0 0 0 0 0 0])
-  ("old_min_size" .
-   [0 0 0 2 1 0 0 1 0 0 0 0])
-  ("image_position_" .
-   [0 0 0 0 0 0 0 0 2 0 0 0 0 0 1])
-  ("old_img_pos_x" .
-   [2 0 0 0 0 0 0 1 0 0 0 0 0])
-  ("old_img_pos_y" .
-   [1 0 0 0 0 0 1 1 0 0 0 0 0])
-  ("old_img_pos_" .
-   [0 0 0 0 0 0 0 0 1 0 0 1])
-  ("round" .
-   [0 0 0 2 1])
-  ("js" .
-   [1 0])
-  ("hs-toggle-hiding" .
-   [0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0])
-  ("add-hook" .
-   [0 0 0 0 0 0 0 1])
-  ("js-mode-hook" .
-   [0 0 0 0 0 1 1 0 0 0 0 0])
-  ("menu-bar-mode" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("Ext" .
-   [11 0 1])
-  ("Viewport" .
-   [1 0 0 0 1 0 0 2])
-  ("add" .
-   [3 0 0])
-  ("create" .
-   [2 0 0 0 1 0])
-  ("tools_view" .
-   [0 0 0 0 0 0 1 0 1 3])
-  ("showBy" .
-   [1 0 0 0 0 0])
-  ("ths" .
-   [2 0 0])
-  ("labelWidth" .
-   [0 0 0 0 0 0 1 0 0 0])
-  ("items" .
-   [4 0 0 0 0])
-  ("xtype" .
-   [7 0 0 0 1])
-  ("default" .
-   [0 0 0 1 0 1 2])
-  ("defaults" .
-   [1 0 0 0 0 0 0 0])
-  ("listeners" .
-   [1 0 0 0 0 0 1 1 0])
-  ("checked" .
-   [0 0 0 0 1 0 0])
-  ("button" .
-   [6 0 0 0 0 1])
-  ("hide" .
-   [1 0 0 1])
-  ("getCmp" .
-   [0 0 0 0 1 4])
-  ("tools_button" .
-   [0 0 0 0 0 0 0 1 0 0 0 0])
-  ("setText" .
-   [0 0 0 0 0 1 0])
-  ("label" .
-   [0 0 0 0 2])
-  ("show" .
-   [5 0 0 0])
-  ("centered" .
-   [1 0 0 0 0 0 0 0])
-  ("js2-mode-hook" .
-   [0 0 0 0 0 0 0 0 0 0 1 0 0])
-  ("canvas" .
-   [2 0 0 0 2 5])
-  ("ct_head" .
-   [1 0 0 0 0 0 0])
-  ("getResponseHeader" .
-   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
-  ("img_slice_nb" .
-   [0 0 0 0 0 0 0 0 0 1 0 0])
-  ("ct_header" .
-   [4 0 0 0 0 0 0 0 0])
-  ("dose_header" .
-   [2 0 0 0 0 0 0 0 0 0 0])
-  ("image_data_head" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("contour_header" .
-   [0 0 0 0 0 0 0 2 0 1 0 0 0 0])
-  ("contour_" .
-   [0 0 0 0 0 0 0 1])
-  ("basic_info" .
-   [0 0 1 3 3 3 1 0 0 0])
-  ("json_data" .
-   [0 0 0 0 0 0 2 0 0])
-  ("ct_size" .
-   [1 0 0 0 2 4 0])
-  ("ct_spacing" .
-   [0 0 0 0 0 0 1 0 0 0])
-  ("ct_offset" .
-   [1 0 0 0 0 0 0 0 0])
-  ("need" .
+  ("old_" .
+   [0 0 0 1])
+  ("old_x1" .
+   [0 0 1 0 0 0])
+  ("min_size" .
+   [1 0 0 1 1 1 2 2])
+  ("state_changed" .
+   [0 0 0 0 0 1 1 1 1 0 0 0 0])
+  ("onopen" .
+   [1 0 0 0 1 0])
+  ("alert" .
+   [75 0 2 0 1])
+  ("true" .
+   [7 0 1 8])
+  ("open" .
    [2 0 0 0])
-  ("need_image" .
-   [0 0 0 3 2 1 0 0 0 1])
-  ("dose_data" .
-   [0 0 0 0 0 2 2 0 0])
-  ("dose" .
-   [6 0 0 0])
-  ("CTLoad" .
-   [0 0 0 1 0 0])
-  ("slice_to_get" .
-   [1 0 0 0 1 0 1 4 7 1 0 5])
-  ("ct_progress" .
-   [0 0 0 0 0 0 3 0 0 0 1])
-  ("image_size" .
-   [1 0 0 0 0 1 1 2 3 2])
-  ("red" .
-   [1 0 0])
-  ("contour_progress" .
-   [0 0 0 0 0 0 0 0 0 2 0 1 0 0 0 0])
-  ("OnDoseLoad" .
-   [0 0 0 0 0 1 0 0 0 0])
-  ("null" .
-   [1 0 0 1])
-  ("dose_progress" .
-   [0 0 0 0 0 0 1 0 0 0 0 0 0])
-  ("state" .
-   [2 0 0 0 0])
-  ("RequireForData" .
-   [0 0 0 0 0 0 0 0 0 2 0 0 0 0])
-  ("image_state" .
-   [0 0 0 0 0 0 0 0 0 1 0])
-  ("contour_state" .
-   [0 0 0 0 0 0 0 0 0 1 0 0 0])
-  ("resetButton" .
-   [0 0 0 0 0 0 0 1 0 0 0])
-  ("tap" .
-   [2 0 0])
-  ("OnResetButtonTap" .
-   [0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("Window" .
-   [0 0 0 0 1 0])
-  ("window" .
-   [1 0 0 0 0 0])
-  ("current_window_width" .
-   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
-  ("old_zoom_image_position" .
-   [0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
-  ("RenderImageInfo" .
-   [0 0 0 0 1 0 0 0 0 0 0 0 0 1 0])
-  ("panel" .
+  ("url" .
+   [6 0 0])
+  ("XMLHttpRequest" .
+   [0 0 1 2 0 0 0 0 0 0 0 0 0 0])
+  ("new" .
+   [7 0 0])
+  ("xmlhttp" .
+   [6 0 0 0 0 0 1])
+  ("var" .
+   [87 0 0])
+  ("semantic-mode" .
+   [0 0 0 0 0 0 1 0 0 0 0 0 1])
+  ("is" .
+   [2 0])
+  ("in" .
+   [2 0])
+  ("again" .
    [1 0 0 0 0])
-  ("layout" .
-   [0 0 0 1 0 0])
-  ("vbox" .
-   [1 0 0 0])
-  ("docked" .
-   [0 0 0 0 1 0])
-  ("max" .
-   [1 0 0])
-  ("panel_select" .
-   [0 0 0 0 0 0 0 1 1 0 0 0])
-  ("panelSelect" .
-   [0 0 0 0 0 0 0 1 0 0 0])
-  ("change" .
-   [2 0 0 0 0 0])
-  ("oldValue" .
-   [0 0 0 0 1 0 1 0])
-  ("mousedown" .
-   [4 0 0 0 0 0 0 0 0])
-  ("onpanelselectmousedown" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
-  ("onselectmousedown" .
-   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
-  ("selectpanelinitialize" .
-   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
-  ("eopts" .
-   [0 0 1 0 0])
-  ("ok" .
-   [1 0])
-  ("maxWidth" .
-   [0 0 0 0 0 0 1 0])
-  ("remove" .
+  ("choice" .
    [1 0 0 0 0 0])
-  ("bev" .
+  ("tools" .
+   [3 0 0 0 0])
+  ("it" .
+   [8 0])
+  ("space" .
+   [1 0 0 0 0])
+  ("assq" .
+   [1 0 0 0])
+  ("script" .
+   [1 0 0 0 0 0])
+  ("cond" .
+   [1 0 0 0])
+  ("PRIM" .
+   [0 0 0 1])
+  ("element" .
+   [2 0 0 0 0 0 4])
+  ("get_vec_element" .
+   [0 0 0 0 2 1 0 0 0 0 0 0 0 0 1])
+  ("vec" .
    [1 0 0])
-  ("bev_view" .
-   [1 0 0 0 0 1 0 0])))
+  ("v" .
+   [1])
+  ("and" .
+   [4 0 0])
+  ("to" .
+   [6 0])
+  ("close-node" .
+   [0 0 0 0 0 0 0 3 4 1])
+  ("clone" .
+   [0 0 0 0 1])
+  ("closest" .
+   [1 0 0 0 0 0 3])
+  ("%d" .
+   [1 0])
+  ("do" .
+   [7 0])
+  ("for" .
+   [9 0 1])
+  ("by" .
+   [3 0])
+  ("f" .
+   [1])
+  ("from" .
+   [6 0 0 0])
+  ("i" .
+   [2])
+  ("min" .
+   [5 0 0])
+  ("lowcost" .
+   [0 0 0 1 3 0 3])
+  ("len" .
+   [9 0 0])
+  ("node-number" .
+   [1 0 0 0 0 3 1 1 0 0 0])
+  ("node" .
+   [2 0 0 0])
+  ("graph-vec" .
+   [2 0 0 1 0 1 1 0 7])
+  ("Patient-id" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("Patient-name" .
+   [0 0 0 0 0 0 0 0 0 0 1 0])
+  ("setf" .
+   [1 0 0 0])
+  (":name" .
+   [1 0 0 0 0])
+  (":id" .
+   [1 0 0])
+  ("Patient" .
+   [1 0 0 0 0 0 0])
+  ("hyphen" .
+   [6 0 0 0 0 0])
+  ("id" .
+   [5 0])
+  ("s" .
+   [1])
+  ("defstruct" .
+   [0 0 0 0 1 0 0 0 0])
+  ("fillarray" .
+   [0 0 0 0 0 0 0 0 1])
+  ("aref" .
+   [13 0 0 1])
+  ("my-vec2" .
+   [1 0 0 1 1 0 0])
+  ("nth" .
+   [1 0 0])
+  ("c" .
+   [1])
+  ("a" .
+   [2])
+  ("my-vec" .
+   [3 0 0 0 4 3])
+  ("make-vector" .
+   [0 0 0 0 0 0 1 1 0 0 4])
+  ("my-li" .
+   [0 0 0 0 5])
+  ("setcar" .
+   [0 0 0 0 0 2])
+  ("symbol-value" .
+   [0 0 0 0 0 0 0 0 2 0 0 0])
+  ("aaa" .
+   [5 0 0])
+  ("defvar" .
+   [0 0 0 0 0 1])
+  ("boundp" .
+   [0 0 0 0 0 1])
+  ("makunbound" .
+   [0 0 0 0 0 2 0 0 0 0])
+  ("stringp" .
+   [1 0 0 0 0 0 0])
+  ("let*" .
+   [2 0 0 0])
+  ("p" .
+   [1])
+  ("indent-buffer" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("switch-window" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("color-theme-snow" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("color-theme-jsc-dark" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("color-theme-montz" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("color-theme-example" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0])
+  ("color-theme-xp" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0])
+  ("color-theme-comidia" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("insert-image" .
+   [0 0 0 0 0 0 0 0 0 0 0 1])
+  ("delete-directory" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("ido-switch-buffer" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("describe-bindings" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("buffer-file-name" .
+   [0 0 0 0 0 0 0 0 0 0 1 2 0 0 0 0])
+  ("save-buffers-kill-emacs" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  ("exit-and-delete-file" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("create-file-buffer" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  ("new-file" .
+   [0 0 0 0 0 0 0 1])
+  ("D:/123.txt" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("delete-file" .
+   [0 0 0 0 0 0 0 0 0 0 3])
+  ("b" .
+   [2])
+  ("number-sequence" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("prin1" .
+   [1 0 0 0 1])
+  ("mylist" .
+   [0 0 0 1 0 0])
+  ("vconcat" .
+   [0 0 0 0 0 1 0])
+  ("mapc" .
+   [1 0 0 0])
+  ("1+" .
+   [4 0])
+  ("mapcar" .
+   [2 0 0 0 0 0])
+  ("aset" .
+   [9 0 0 2])
+  ("vector" .
+   [1 0 0 0 0 3])
+  ("wh" .
+   [1 0])
+  ("what" .
+   [5 0 0 1])
+  ("alpha" .
+   [0 0 0 1 0])
+  ("nil" .
+   [7 0 0])
+  ("set-frame-parameter" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("status" .
+   [1 0 0 0 0 0])
+  ("creator" .
+   [1 0 0 0 0 0 0])
+  ("private" .
+   [3 0 0 0 0 0 0])
+  ("version" .
+   [1 0 0 0 0 0 0])
+  ("name" .
+   [5 0 0 0])
+  ("character" .
+   [2 0 0 0 0 0 0 0 0])
+  ("&optional" .
+   [1 0 0 1 1 0 0 0 0])
+  ("funtest" .
+   [1 0 0 0 0 0 0])
+  ("defun" .
+   [4 0 0 0 6])
+  ("PORT=3306" .
+   [0 0 0 0 1 0 0 0 0])
+  ("d" .
+   [2])
+  ("string" .
+   [7 0 0 0 0 1])
+  ("elt" .
+   [8 0 0])
+  ("the" .
+   [6 0 0])
+  ("length" .
+   [1 0 1 10 7 1])
+  ("or" .
+   [1 0])
+  ("with" .
+   [3 0 0 0])
+  ("data" .
+   [8 0 0 0])
+  ("table" .
+   [1 0 0 0 0])
+  ("ac-source-clang" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0])
+  ("wttr/prepend-to-exec-path" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("email" .
+   [0 0 0 1 0])
+  ("scheme-program-name" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("custom-set-variables" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
+  ("evil-mode" .
+   [0 0 0 0 0 0 0 0 1])
+  ("global-set-key" .
+   [0 0 0 1 0 0 0 0 0 0 0 0 0 4])
+  ("color-theme-dark-blue" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("global-unset-key" .
+   [0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("color-theme-dark-blue2" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0])
+  ("kbd" .
+   [4 0 2])
+  ("scheme-mode" .
+   [0 0 0 0 0 0 0 0 0 0 1])
+  ("lisp-mode" .
+   [0 0 0 0 0 0 0 0 1])
+  ("autopair-mode" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0])
+  ("setq" .
+   [35 0 0 4])
+  ("save" .
+   [0 0 2 0])
+  ("df" .
+   [3 0])
+  ("message" .
+   [1 0 0 0 3 0 14])
+  ("time" .
+   [1 0 0 1])
+  ("date-to-day" .
+   [0 0 0 1 1 0 0 0 0 0 0])
+  ("time-stamp" .
+   [0 0 0 0 1 0 0 0 0 0])
+  ("timer-create" .
+   [0 0 0 0 1 0 0 0 0 0 0 0])
+  ("set" .
+   [10 0 0])
+  ("func_list" .
+   [1 0 1 0 0 1 0 1 1])
+  ("funcall" .
+   [1 0 0 1 1 0 5])
+  ("m" .
+   [3])
+  ("random" .
+   [0 0 0 0 0 2])
+  ("shell" .
+   [1 0 0 0 0])
+  ("command" .
+   [1 0 0 0 0 0 0])
+  ("shell-command" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("eval" .
+   [4 0 0 0])
+  ("eval-region" .
+   [0 0 0 0 0 1 0 0 0 0 0])
+  ("read" .
+   [1 0 0 0])
+  ("apply" .
+   [1 0 0 0 1])
+  ("local-set-key" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 1])
+  ("l" .
+   [7])
+  ("lambda" .
+   [2 0 0 4 2 2])
+  ("insert" .
+   [14 0 1 0 0 1])
+  ("commandp" .
+   [0 0 0 0 0 0 0 1])
+  ("fine" .
+   [3 0 0 0])
+  ("interactive" .
+   [1 0 0 0 0 1 0 0 0 0 5])
+  ("list" .
+   [4 0 0 0])
+  ("car" .
+   [6 0 2])
+  ("cdr" .
+   [7 0 0])
+  ("cons" .
+   [14 0 0 0])
+  ("append" .
+   [2 0 0 0 0 2])
+  ("defmacro" .
+   [0 0 0 0 0 1 0 1])
+  ("when" .
+   [1 0 0 0])
+  ("if" .
+   [44 1])
+  ("test" .
+   [1 0 0 1])
+  ("progn" .
+   [3 0 0 0 2])
+  ("forms" .
+   [3 0 0 0 0])
+  ("mywhen" .
+   [1 0 0 1 0 1])
+  ("&rest" .
+   [2 0 0 0 0])
+  ("macroexpand" .
+   [0 0 0 0 0 0 0 0 0 0 1])
+  ("${NSD_CreateDirRequest}" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("Pop" .
+   [2 0 0])
+  ("$Text2" .
+   [0 0 0 3 0 1])
+  ("$Text" .
+   [1 0 0 0 1])
+  ("SetDir" .
+   [0 0 0 0 1 0])
+  ("StrCpy" .
+   [0 0 0 1 0 0])
+  ("OnClick_BrowseButton" .
+   [0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("!include" .
+   [0 0 0 0 1 0 0 0])
+  ("desktop-save-mode" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("function" .
+   [0 0 0 19 22 0 0 7])
+  ("me" .
+   [9 0])
+  ("getset" .
+   [2 0 0 0 0 0])
+  ("listp" .
+   [0 0 0 1 2])
+  ("not" .
+   [4 0 0])
+  ("number" .
+   [0 0 0 0 0 1])
+  ("number-to-string" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 5])
+  ("string-to-int" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("concat" .
+   [1 0 0 0 1 2])
+  ("loop" .
+   [10 0 0 1])
+  ("let" .
+   [8 0 0])
+  ("while" .
+   [12 0 0 1 2])
+  ("print" .
+   [4 0 0 0 0])
+  ("list-length" .
+   [0 0 0 0 0 0 0 1 0 0 1])
+  ("count" .
+   [13 0 0 0 1])
+  ("reverse" .
+   [0 0 0 0 0 0 2])
+  ("dolist" .
+   [0 0 0 0 1 0])
+  ("value" .
+   [6 0 0 2 1])
+  ("save-buffer" .
+   [0 0 0 0 0 0 1 0 0 0 0])
+  ("color-theme-jsc-light2" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1])
+  ("color-theme-wheat" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("color-theme-alist" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("color-theme-select" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("color-theme-xemacs" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("color-theme-billw" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("color-theme-lethe" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("color-theme-blue-sea" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("deactivate-mark" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("help" .
+   [1 0 0 0])
+  ("home" .
+   [1 0 0 0])
+  ("life" .
+   [4 0 0 0])
+  ("labels" .
+   [1 0 0 0 0 0])
+  ("that" .
+   [3 0 0 0])
+  ("line" .
+   [9 0 0 0])
+  ("image" .
+   [13 0 0 1 0])
+  ("each { |...| ... }" .
+   [0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("limitationlimitation" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
+  ("copy" .
+   [1 0 0 0])
+  ("Period." .
+   [1 0 0 0 0 0 0])
+  ("you" .
+   [2 0 0])
+  ("Mark" .
+   [9 0 0 0])
+  ("event" .
+   [6 0 0 0 1])
+  ("image_data" .
+   [2 0 0 0 0 0 2 11 1 15])
+  ("return" .
+   [2 0 0 0 1 9])
+  ("Uint16Array" .
+   [0 0 0 0 1 1 0 0 0 0 2])
+  ("response" .
+   [3 0 0 0 0 1 1 0])
+  ("resp" .
+   [5 0 0 0])
+  ("this" .
+   [17 0 0 0])
+  ("onload" .
+   [3 0 0 0 0 0])
+  ("OnLoad" .
+   [0 0 0 1 1 0])
+  ("buffer" .
+   [2 0 0 0 0 0])
+  ("String" .
+   [4 0 0 0 1 1])
+  ("zoom_ratio" .
+   [0 0 0 5 1 0 0 0 0 0])
+  ("center_x" .
+   [2 0 0 0 0 0 1 2])
+  ("image_position_x" .
+   [3 0 0 0 0 5 2 1 1 0 0 0 0 0 0 4])
+  ("distance_two_points_old" .
+   [0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("dired-up-directory" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
+  ("Javascript" .
+   [0 0 0 0 0 0 2 0 0 0])
+  ("javascript-mode" .
+   [0 0 0 0 0 0 2 1 0 0 0 0 0 0 0])
+  ("noargs" .
+   [0 0 0 1 0 0])
+  ("define-key" .
+   [0 0 0 0 0 0 0 0 0 1])
+  ("js-mode-map" .
+   [0 0 0 0 0 0 0 0 0 0 1])
+  ("hs-hide-block" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("hs-show-block" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0])
+  ("my-js-mode-auto-pair" .
+   [0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("js2-mode" .
+   [0 0 0 0 0 0 0 1])
+  ("log" .
+   [43 0 1])
+  ("document" .
+   [1 0 0 0 0 0 0 0])
+  ("image_canvas" .
+   [0 0 0 1 0 0 0 4 1 0 0 1])
+  ("imageView" .
+   [0 0 0 1 0 0 0 0 0])
+  ("fillStyle" .
+   [0 0 0 0 0 0 2 0 0])
+  ("yellow" .
+   [0 0 0 0 2 0])
+  ("fillRect" .
+   [0 0 0 0 0 1 0 0])
+  ("ctx" .
+   [4 0 0])
+  ("getContext" .
+   [0 0 0 0 0 0 1 0 1 0])
+  ("html-mode" .
+   [0 0 0 0 0 1 0 0 0])
+  ("image_view" .
+   [18 0 1 2 1 0 0 31 64 37])
+  ("initialize" .
+   [0 0 0 0 0 0 0 0 0 3])
+  ("bytes" .
+   [4 0 0 0 0])
+  ("slice" .
+   [38 0 4 12 14])
+  ("responseText" .
+   [0 0 0 1 2 1 0 0 0 1 0 1])
+  ("JSON" .
+   [0 0 1 0])
+  ("parse" .
+   [0 0 0 0 1])
+  ("contour" .
+   [10 0 0 0 0 0 0])
+  ("contour_request" .
+   [0 0 0 0 0 0 1 0 0 0 0 0 1 0 4])
+  ("OpenImage" .
+   [0 0 0 0 1 0 0 0 0])
+  ("get_contour_url" .
+   [0 0 1 1 1 0 0 0 0 0 0 0 0 0 0])
+  ("sessionid" .
+   [1 0 0 0 2 0 0 0 1])
+  ("OnContourLoad" .
+   [0 0 0 0 0 4 0 0 0 0 0 0 0])
+  ("send" .
+   [2 0 0 0])
+  ("contour_data" .
+   [0 0 0 0 0 0 4 2 0 3 1 2])
+  ("RenderImage" .
+   [0 0 0 6 5 0 0 0 0 0 0])
+  ("context" .
+   [4 0 0 0 2 2 14])
+  ("pos_x" .
+   [6 0 1 3 0])
+  ("pos_y" .
+   [2 0 2 0 0])
+  ("console" .
+   [4 0 0 0 5 1 3])
+  ("strokeStyle" .
+   [0 0 0 0 0 0 0 1 0 0 0])
+  ("moveTo" .
+   [0 0 1 1 0 0])
+  ("lineTo" .
+   [0 0 0 1 0 1])
+  ("stroke" .
+   [0 0 0 0 0 1])
+  ("clearRect" .
+   [0 0 0 0 2 0 0 0 0])
+  ("type" .
+   [4 0 0 0])
+  ("else" .
+   [15 0 0 0])
+  ("ready_ct" .
+   [0 0 0 1 1 0 0 4])
+  ("ready_contour" .
+   [0 0 0 0 0 0 0 0 0 3 0 0 1])
+  ("session" .
+   [0 0 0 0 0 0 1])
+  ("ReadyToRender" .
+   [0 0 0 1 0 2 1 0 0 0 0 0 0])
+  ("OpenPatient" .
+   [0 0 0 0 0 0 2 0 0 0 0])
+  ("GetData" .
+   [0 0 0 0 3 0 0])
+  ("session_id" .
+   [1 0 0 0 0 0 0 2 0 1])
+  ("responseType" .
+   [0 0 0 0 0 0 0 0 0 0 1 0])
+  ("text" .
+   [3 0 0 0])
+  ("contour_url" .
+   [0 0 0 0 0 0 0 0 0 1 0])
+  ("newValue" .
+   [0 0 0 1 4 1 0 1])
+  ("false" .
+   [0 0 0 7 3])
+  ("ready" .
+   [0 0 0 1 0])
+  ("undefined" .
+   [0 0 2 2 3 4 0 0 0])
+  ("working" .
+   [1 0 0 0 0 1 1])
+  ("fly" .
+   [0 0 1])
+  ("ct" .
+   [3 0])
+  ("tool" .
+   [2 0 0 0])
+  ("getValue" .
+   [0 0 0 0 0 1 0 0])
+  ("addListener" .
+   [0 0 0 0 0 1 0 0 0 0 0])
+  ("touchs" .
+   [0 0 0 0 0 1])
+  ("TouchMove" .
+   [0 0 0 0 0 0 0 1 0])
+  ("TouchStart" .
+   [0 0 0 0 0 0 1 0 0 0])
+  ("current_tool" .
+   [0 0 0 0 0 0 0 0 0 0 0 3])
+  ("SetImageWindow" .
+   [0 0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("eventcontroller" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
+  ("preventDefault" .
+   [0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  ("curX" .
+   [0 0 1 3])
+  ("curY" .
+   [2 0 0 0])
+  ("offset" .
+   [1 0 0 1 0 0])
+  ("touch_count" .
+   [0 0 0 0 0 0 0 1 1 2 0])
+  ("old_position" .
+   [0 0 0 0 0 0 2 0 0 0 0 1])
+  ("old_pos" .
+   [0 0 0 2 0 0 1])
+  ("image_position" .
+   [0 0 0 0 0 0 0 0 5 3 2 0 0 1])
+  ("TouchEnd" .
+   [1 0 0 0 0 0 0 0])
+  ("touch_start" .
+   [0 0 0 0 0 0 0 2 0 0 0])
+  ("ct_context" .
+   [0 0 0 0 0 0 3 1 1 0])
+  ("LoadPatientList" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
+  ("mainView" .
+   [0 0 0 0 0 1 0 1])
+  ("main_view" .
+   [0 0 0 0 0 2 2 0 0])
+  ("patient_list_store" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("on" .
+   [1 0])
+  ("get" .
+   [2 0 0])
+  ("index" .
+   [2 0 0 0 0])
+  ("record" .
+   [0 0 0 0 1 0])
+  ("selected_patient" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("device_size" .
+   [0 0 0 1 8 0 0 0 0 0 0])
+  ("RenderContourPlanImage" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("zooming" .
+   [1 0 0 0 0 1 2])
+  ("BevViewController" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("BevView" .
+   [2 0 0 0 0 0 0])
+  ("OnBevViewActivate" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("first_show" .
+   [0 0 0 1 0 0 0 0 0 0])
+  ("need_data" .
+   [0 0 0 0 0 0 0 1 0])
+  ("OnBevLoad" .
+   [0 0 0 0 0 0 0 1 0])
+  ("bev_header" .
+   [0 0 0 0 0 2 1 0 0 0])
+  ("delivery_type" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("x" .
+   [1])
+  ("getWidth" .
+   [0 0 0 0 0 1 0 0])
+  ("class" .
+   [0 0 0 0 1])
+  ("def" .
+   [0 0 1])
+  ("contour_info" .
+   [1 0 0 0 0 0 0 0 0 1 2 0])
+  ("contour_color" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0])
+  ("kill-ring" .
+   [2 0 0 0 0 0 0 0 0])
+  ("current-kill" .
+   [1 0 0 0 0 0 0 0 0 0 0 0])
+  ("paste" .
+   [1 0 0 0 0])
+  ("mypaste" .
+   [0 0 0 0 0 1 0])
+  ("format" .
+   [0 0 0 0 0 2])
+  ("great" .
+   [5 0 0 0 0])
+  ("buffer." .
+   [1 0 0 0 0 0 0])
+  ("try" .
+   [1 0 0])
+  ("file" .
+   [1 0 0 0])
+  ("Studio" .
+   [2 0 0 0 0 0])
+  ("of" .
+   [1 0])
+  ("all" .
+   [1 0 0])
+  ("using" .
+   [1 0 0 0 0])
+  ("sample" .
+   [1 0 0 0 0 0])
+  ("will" .
+   [1 0 0 0])
+  ("talk" .
+   [3 0 0 0])
+  ("clock" .
+   [1 0 0 0 0])
+  ("kill" .
+   [3 0 0 0])
+  ("To" .
+   [1 0])
+  ("right" .
+   [1 0 0 0 0])
+  ("take" .
+   [2 0 0 0])
+  ("be" .
+   [1 0])
+  ("good" .
+   [2 0 0 0])
+  ("man" .
+   [1 0 0])
+  ("screen" .
+   [1 0 0 0 0 0])
+  ("work" .
+   [1 0 0 0])
+  ("CompoundRule" .
+   [0 0 0 0 0 0 1 0 0 0 0 0])
+  ("spec" .
+   [1 0 0 0])
+  ("extras" .
+   [0 0 0 0 0 1])
+  ("compressed" .
+   [2 0 0 0 0 0 0 0 0 0])
+  ("decompressed_data" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("compressed_data" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("buf" .
+   [1 0 0])
+  ("val" .
+   [2 0 0])
+  ("set_ct_axial" .
+   [0 0 0 1 1 0 0 0 0 0 0 0])
+  ("coronal" .
+   [1 0 0 0 0 0 1])
+  ("axial_slice" .
+   [0 0 0 1 0 0 0 0 0 1 0])
+  ("coronal_slice" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 1])
+  ("sagittal_slice" .
+   [0 0 0 0 1 0 0 0 0 1 0 0 0 0])
+  ("slider_axial" .
+   [0 0 0 0 0 0 0 0 0 2 0 1])
+  ("onChange" .
+   [0 0 0 3 2 0 0 0])
+  ("panel_axial" .
+   [0 0 0 1 0 0 0 0 1 0 1])
+  ("OnResize" .
+   [0 0 0 0 0 0 1 0])
+  ("wid" .
+   [2 0 0])
+  ("res" .
+   [2 0 0])
+  ("onResize" .
+   [0 0 0 0 0 0 1 0])
+  ("onLoad" .
+   [1 0 0 0 0 0])
+  ("op/item-cache" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("%S" .
+   [1 0])))

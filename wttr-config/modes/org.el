@@ -3,12 +3,12 @@
 
 ;; org-mode setting
 
-; always use english times format
+                                        ; always use english times format
 (setq system-time-locale "C")
 
-; add new path at the begining
+                                        ; add new path at the begining
 (setq load-path (cons "~/.emacs.d/plugins/org-mode/lisp/" load-path) )
-; we also turn on contrib : htmlize.el
+                                        ; we also turn on contrib : htmlize.el
 (setq load-path (cons "~/.emacs.d/plugins/org-mode/contrib/lisp/" load-path) )
 
 
@@ -17,14 +17,12 @@
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
 (setq org-agenda-files
-      (list "C:/Users/hyphen/todo_list.org"
- "C:/Users/hyphen/Desktop/code.org"))
+      (list "~/todo_list.org"))
 (setq org-insert-mode-line-in-empty-file t)
 (setq org-hierarchical-todo-statistics t)
 
 
 (defun wttr/org-mode-setup ()
-  (linum-mode -1)
   (define-key org-mode-map (kbd "C-c i") #'(lambda ()
                                              (interactive)
                                              (org-time-stamp 4))))
@@ -57,10 +55,10 @@
         )) 
 
 ;; setting for the inline source code.
-;(setq org-src-lang-modes
-;      (append org-src-lang-modes
-;              '( ("latex" . latex-mode)
-;                 ("powershell" . powershell-mode))))
+                                        ;(setq org-src-lang-modes
+                                        ;      (append org-src-lang-modes
+                                        ;              '( ("latex" . latex-mode)
+                                        ;                 ("powershell" . powershell-mode))))
 (setq org-src-preserve-indentation t)
 (setq org-src-ask-before-returning-to-edit-buffer nil)
 (setq org-src-fontify-natively t)
@@ -68,7 +66,7 @@
 ;; startup settings i like
 (setq org-startup-folded 'content)
 (setq org-startup-indented t)
-; (setq org-startup-align-all-tables t)
+                                        ; (setq org-startup-align-all-tables t)
 (setq org-startup-with-inline-images t)
 (setq org-hide-leading-stars t)
 
@@ -77,5 +75,14 @@
 ;;;; prevent the _ to become a sub title
 (setq org-export-with-sub-superscripts nil)
 (setq org-todo-keywords
-    '((sequence "TODO(t!)" "GOAL(g)" "|" "DONE(d@/!)" "ABORT(a@/!)")
-     )) 
+      '((sequence "TODO(t!)" "GOAL(g)" "|" "DONE(d@/!)" "ABORT(a@/!)")
+        )) 
+(setq org-default-notes-file "~/org/notes.org")
+(define-key global-map "\C-cc" 'org-capture)
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline "~/org/gtd.org" "Tasks")
+         "* TODO %?\n  %i\n  %a")
+        ("n" "Note" entry (file+headline "~/org/note.org" "Notes")
+         "* %?\n  %i\n  %a")
+        ("j" "Journal" entry (file+datetree "~/org/journal.org")
+         "* %?\nEntered on %U\n  %i\n  %a")))

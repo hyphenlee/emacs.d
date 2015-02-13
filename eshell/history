@@ -1,20 +1,3 @@
-mysql
-mysql -u root -p
-git
-cdd:/learning/
-cd d:/learning/
-cd compiler/
-ls
-git clone git https://github.com/larcenists/larceny.git
-git clone  https://github.com/larcenists/larceny.git
-kd
-l
-j
-f
-a
-s
-d
-e
 w
 e
 f
@@ -126,3 +109,20 @@ g++ -v
 ls
 c++ -v
 g++ -v
+ls
+git
+git branch source
+git check source
+git checkout source
+ls
+cd ..
+mkdir test
+ls
+cd ..
+git checkout source
+ls
+git checkout
+git bransh
+git branch
+git checkout source
+ls

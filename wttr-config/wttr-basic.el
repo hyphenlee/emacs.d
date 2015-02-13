@@ -177,4 +177,7 @@
   ;; For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize) ;; You might already have this line
+
+ (add-to-list 'auto-mode-alist '("\\.txt$" . view-mode))
+ (modify-coding-system-alist 'file "\\.txt\\'" 'gb18030)
 (provide 'wttr-basic)

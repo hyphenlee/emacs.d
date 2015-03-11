@@ -2,6 +2,7 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
+
 (("js2-mode"
  (filename . "c:/Users/haifeng/.emacs.d/plugins/yasnippet/snippets/js2-mode/")
  (front-context-string . "assert.yasnippet")

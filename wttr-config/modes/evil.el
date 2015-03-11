@@ -52,6 +52,9 @@
 ;; add ";" sub map
 (define-prefix-command 'wttr/my-evil-normal-map)
 (define-key evil-normal-state-map (kbd ";") 'wttr/my-evil-normal-map)
+(defun kill-current-buffer()
+  (interactive)
+  (kill-buffer (current-buffer)))
 (mapc (lambda (info)
         (define-key wttr/my-evil-normal-map
           (read-kbd-macro (car info))
@@ -63,7 +66,7 @@
         ("f" . ido-find-file)
         ("r" . revert-buffer-with-coding-system)
         ("4" . wttr/kill-buffer-may-have-clients)
-        ("k" . ido-kill-buffer)
+        ("k" . kill-current-buffer)
         ("o" . other-window)
         ("w" . ido-write-file)
         ("b" . ido-switch-buffer)

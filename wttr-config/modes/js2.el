@@ -21,3 +21,5 @@
   (local-set-key (kbd "{") 'skeleton-pair-insert-maybe)    
   (backward-char))
 (add-hook 'js2-mode-hook 'my-js-mode-auto-pair)
+
+(require 'emmet-mode)

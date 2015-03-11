@@ -1,5 +1,6 @@
-;; -*- emacs-lisp -*- <14/03/20 17:49:11 c:/Users/hyphen/.emacs.d/tramp>
+;; -*- emacs-lisp -*- <15/02/13 17:27:29 c:/Users/haifeng/.emacs.d/tramp>
 ;; Tramp connection history.  Don't change this file.
 ;; You can delete it, forcing Tramp to reapply the checks.
 
-(nil)
+((["scp" nil "http" nil nil]
+  nil))

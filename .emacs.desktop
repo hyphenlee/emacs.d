@@ -2,315 +2,183 @@
 ;; --------------------------------------------------------------------------
 ;; Desktop File for Emacs
 ;; --------------------------------------------------------------------------
-;; Created Fri Feb 13 17:06:45 2015
+;; Created Wed Mar 11 11:57:14 2015
 ;; Desktop file format version 206
 ;; Emacs version 24.4.1
 
 ;; Global section:
-(setq desktop-saved-frameset [frameset 1 (21725 48805 623000 0) (desktop . "206") "haifeng@HYPHEN-PC" nil nil ((((font-backend uniscribe gdi) (font . "-outline-Consolas-normal-normal-normal-mono-15-*-*-*-c-*-iso8859-1") (border-width . 2) (internal-border-width . 0) (right-divider-width . 0) (bottom-divider-width . 0) (vertical-scroll-bars) (foreground-color . "#fff8dc") (background-color . "#233b5a") (mouse-color . "Grey") (border-color . "black") (screen-gamma) (line-spacing) (left-fringe . 8) (right-fringe . 8) (alpha) (menu-bar-lines . 0) (tool-bar-lines . 0) (title) (fullscreen . maximized) (icon-type) (auto-raise) (auto-lower) (cursor-type . box) (scroll-bar-width . 0) (horizontal-scroll-bars . t) (display-type . color) (background-mode . dark) (cursor-color . "Yellow") (environment) (viper-saved-cursor-color-in-replace-mode . "Red3") (top-toolbar-shadow-color . "#fffffbeeffff") (bottom-toolbar-shadow-color . "#79e77df779e7") (background-toolbar-color . "#cf3ccf3ccf3c") (frameset--id . "C4EF-481B-1F11-70F5") (frameset--mini t . t) (modeline . t) (minibuffer . t) (unsplittable) (icon-name) (display . "w32") (explicit-name) (tool-bar-position . top) (maximized) (visibility . t) (height . 39) (width . 80) (left . 692) (top . 112)) ((min-height . 8) (min-width . 10) (min-height-ignore . 6) (min-width-ignore . 4) (min-height-safe . 2) (min-width-safe . 2) (min-pixel-height . 144) (min-pixel-width . 80) (min-pixel-height-ignore . 108) (min-pixel-width-ignore . 32) (min-pixel-height-safe . 36) (min-pixel-width-safe . 16)) vc (pixel-width . 656) (pixel-height . 686) (total-width . 82) (total-height . 38) (normal-height . 1.0) (normal-width . 1.0) (combination-limit) (leaf (pixel-width . 656) (pixel-height . 344) (total-width . 82) (total-height . 19) (normal-height . 0.5) (normal-width . 1.0) (buffer "op-export.el" (selected . t) (hscroll . 0) (fringes 8 8 nil) (margins nil) (scroll-bars 0 0 t nil) (vscroll . 0) (dedicated) (point . 340) (start . 1))) (leaf (last . t) (pixel-width . 656) (pixel-height . 342) (total-width . 82) (total-height . 19) (normal-height . 0.5) (normal-width . 1.0) (buffer "*magit: .emacs.d*" (selected) (hscroll . 0) (fringes 8 8 nil) (margins nil) (scroll-bars 0 0 t nil) (vscroll . 0) (dedicated) (point . 127) (start . 1)))))])
+(setq desktop-saved-frameset [frameset 1 (21759 48410 329000 0) (desktop . "206") "haifeng@HYPHEN-PC" nil nil ((((font-backend uniscribe gdi) (font . "-outline-Consolas-normal-normal-normal-mono-15-*-*-*-c-*-iso8859-1") (border-width . 2) (internal-border-width . 0) (right-divider-width . 0) (bottom-divider-width . 0) (vertical-scroll-bars) (foreground-color . "wheat") (background-color . "darkslategrey") (mouse-color . "Grey") (border-color . "black") (screen-gamma) (line-spacing) (left-fringe . 8) (right-fringe . 8) (alpha) (menu-bar-lines . 0) (tool-bar-lines . 0) (title) (fullscreen . fullscreen) (icon-type) (auto-raise) (auto-lower) (cursor-type . box) (scroll-bar-width . 0) (horizontal-scroll-bars . t) (display-type . color) (background-mode . dark) (cursor-color . "LightGray") (environment) (top-toolbar-shadow-color . "#fffffbeeffff") (bottom-toolbar-shadow-color . "#79e77df779e7") (background-toolbar-color . "#cf3ccf3ccf3c") (frameset--id . "56B2-7A5A-5913-DC03") (frameset--mini t . t) (modeline . t) (minibuffer . t) (unsplittable) (icon-name) (display . "w32") (explicit-name) (tool-bar-position . top) (maximized) (viper-saved-cursor-color-in-replace-mode . "Red3") (senator-eldoc-use-color . t) (vc-annotate-very-old-color . "#0046FF") (visibility . t) (height . 60) (width . 238) (left . 0) (top . 0)) ((min-height . 8) (min-width . 10) (min-height-ignore . 6) (min-width-ignore . 4) (min-height-safe . 2) (min-width-safe . 2) (min-pixel-height . 144) (min-pixel-width . 80) (min-pixel-height-ignore . 108) (min-pixel-width-ignore . 32) (min-pixel-height-safe . 36) (min-pixel-width-safe . 16)) vc (pixel-width . 1920) (pixel-height . 1062) (total-width . 240) (total-height . 59) (normal-height . 1.0) (normal-width . 1.0) (combination-limit) (leaf (pixel-width . 1920) (pixel-height . 522) (total-width . 240) (total-height . 29) (normal-height . 0.5) (normal-width . 1.0) (buffer "ImageViewController.js" (selected . t) (hscroll . 0) (fringes 8 8 nil) (margins nil) (scroll-bars 0 0 t nil) (vscroll . 0) (dedicated) (point . 8332) (start . 7197))) (leaf (last . t) (pixel-width . 1920) (pixel-height . 540) (total-width . 240) (total-height . 30) (normal-height . 0.5) (normal-width . 1.0) (buffer "main_controller.js" (selected) (hscroll . 0) (fringes 8 8 nil) (margins nil) (scroll-bars 0 0 t nil) (vscroll . 0) (dedicated) (point . 14797) (start . 14293)))))])
 (setq desktop-missing-file-warning nil)
 (setq tags-file-name nil)
 (setq tags-table-list nil)
-(setq search-ring '("test" "reset" "media" "github" "g" "hyphen" "branch" "anything" "every" "org-page" "org" "org-page" "delete" "jus" "projectile" "lock_rule"))
-(setq regexp-search-ring '("keyword" "\\_<basic_info\\_>" "\\_<RenderImage\\_>" "\\_<OnResetButtonTap\\_>" "\\_<resetButton\\_>" "\\_<op/repository-html-branch\\_>" "branch" "\\_<pred\\_>" "\\_<arg\\_>" "\\_<buffer-save-without-query\\_>" "commit" "working dir" "pwd" "img" "im" "push"))
-(setq register-alist '((110) (99 . "        image_position=[device_size[0]/2-image_data.image_actual_size[0]/2,0];\n") (98 . "	canvas = $(\"#canvas_coronal\")[0];\n    var coronal_device_size=[canvas.parentNode.clientWidth,canvas.parentNode.clientHeight];\n	canvas.width = coronal_device_size[0];\n	canvas.height = coronal_device_size[1];\n") (32) (134217776) (105) (97 . "	canvas = $(\"#canvas_sagittal\")[0];\n    var sagittal_device_size=[canvas.parentNode.clientWidth,canvas.parentNode.clientHeight];\n	canvas.width = sagittal_device_size[0];\n	canvas.height = sagittal_device_size[1];\n") (107) (106) (26) (24) (27 . [escape]) (113)))
-(setq file-name-history '("c:/work/rtviewer/app/controller/ImageViewController.js" "c:/work/rtviewer/app/view/ImageSettingView.js" "c:/blog/index.html" "c:/Users/haifeng/.emacs.d/wttr-config/modes/org-page.el" "c:/blog/about.org" "c:/Users/haifeng/.emacs.d/elpa/org-page-readme.txt" "c:/Users/haifeng/npm-debug.log" "c:/blog/blog/life.org" "c:/blog/blog/first-post.org" "c:/blog/index.org" "c:/Users/haifeng/.emacs.d/elpa/org-page-20150208.2126/themes/mdo/templates/category-index.mustache" "c:/Users/haifeng/.emacs.d/elpa/org-page-20150208.2126/themes/mdo/templates/about.mustache" "c:/Users/haifeng/.emacs.d/elpa/org-page-20150208.2126/themes/phaer/templates/tag.mustache" "c:/Users/haifeng/.emacs.d/elpa/org-page-20150208.2126/themes/phaer/templates/tag-index.mustache" "c:/Users/haifeng/.emacs.d/elpa/org-page-20150208.2126/themes/phaer/templates/post.mustache" "c:/Users/haifeng/.emacs.d/elpa/org-page-20150208.2126/themes/phaer/templates/nav.mustache" "c:/Users/haifeng/.emacs.d/elpa/org-page-20150208.2126/themes/phaer/templates/index.mustache" "c:/Users/haifeng/.emacs.d/elpa/org-page-20150208.2126/themes/phaer/templates/header.mustache" "c:/Users/haifeng/.emacs.d/elpa/org-page-20150208.2126/themes/phaer/templates/footer.mustache" "c:/Users/haifeng/.emacs.d/elpa/org-page-20150208.2126/themes/phaer/templates/container.mustache" "c:/Users/haifeng/.emacs.d/elpa/org-page-20150208.2126/themes/phaer/templates/category-index.mustache" "c:/Users/haifeng/.emacs.d/elpa/org-page-20150208.2126/themes/mdo/templates/nav.mustache" "c:/Users/haifeng/.emacs.d/elpa/org-page-20150208.2126/themes/mdo/templates/index.mustache" "c:/Users/haifeng/.emacs.d/elpa/org-page-20150208.2126/themes/mdo/templates/header.mustache" "c:/Users/haifeng/.emacs.d/elpa/org-page-20150208.2126/themes/mdo/templates/footer.mustache" "c:/Users/haifeng/.emacs.d/elpa/org-page-20150208.2126/themes/mdo/templates/container.mustache" "c:/Users/haifeng/.emacs.d/elpa/org-page-20150208.2126/themes/mdo/templates/template.html" "c:/Users/haifeng/.emacs.d/elpa/org-page-20150208.2126/themes/mdo/templates/tag.mustache" "c:/Users/haifeng/.emacs.d/elpa/org-page-20150208.2126/themes/mdo/templates/tag-index.mustache" "c:/Users/haifeng/.emacs.d/elpa/org-page-20150208.2126/themes/mdo/templates/post.mustache"))
+(setq search-ring '("color-theme" "theme" "color" "foot" "text" "com" "grid" "panel" "evil" "web" "html" "test" "reset" "media" "github" "g"))
+(setq regexp-search-ring '("series" "tt" "easyui" "\\_<Search\\_>" "\\_<current_tool\\_>" "force" "\\_<_32\\_>" "\\_<onOpen\\_>" "open" "click" "\\_<login_button\\_>" "butt" "close" "'open'" "open" "close"))
+(setq register-alist '((110) (99 . "        image_position=[device_size[0]/2-image_data.image_actual_size[0]/2,0];\n") (98 . "	canvas = $(\"#canvas_coronal\")[0];\n    var coronal_device_size=[canvas.parentNode.clientWidth,canvas.parentNode.clientHeight];\n	canvas.width = coronal_device_size[0];\n	canvas.height = coronal_device_size[1];\n") (32) (134217776) (105) (97 . "    <h2>great</h2>\n    <h2>great</h2>\n") (107) (106) (26) (24) (27 . [escape]) (113)))
+(setq file-name-history '("c:/work/rtviewer/app/controller/ImageViewController.js" "c:/inetpub/wwwroot/test.js" "c:/work/rtviewer-server/static/app/controller/main_controller.js" "c:/work/rtviewer-server/static/app/view/main_view.js" "c:/work/rtviewer-server/static/index.html" "c:/inetpub/wwwroot/easyui/plugins/jquery.panel.js" "c:/inetpub/wwwroot/index.html" "c:/inetpub/wwwroot/main_view.html" "c:/Users/haifeng/.emacs.d/wttr-config/modes/yasnippet.el" "c:/Users/haifeng/.emacs.d/wttr-config/modes/js2.el" "c:/work/rtviewer-server/static/app/view/main_view.html" "c:/work/rtviewer-server/static/app/view/login_view.html" "c:/inetpub/wwwroot/easyui/demo/datagrid/datagrid_data1.json" "c:/Users/haifeng/MUF/learning/elisp/learn_lisp.el" "c:/work/rtviewer/app/controller/MainController.js" "c:/Users/haifeng/.gitconfig" "c:/work/rtviewer-server/static/app/controller/login_view.js" "c:/work/rtviewer-server/static/2index.html" "c:/Users/haifeng/MUF/learning/js/test.js" "" "c:/inetpub/wwwroot/readme.txt" "c:/work/rtviewer-server/static/demo.css" "c:/work/rtviewer-server/static/te.html" "main_view.js" "c:/Users/haifeng/.emacs.d/wttr-config/modes/hilight-symbol.el" "inflate.min.js" "c:/Users/haifeng/.emacs.d/wttr-config/wttr-mode-line.el" "c:/work/rtviewer-server/static/1index.html" "c:/Users/haifeng/.emacs" "c:/Users/haifeng/MUF/learning/js/test.html"))
 
 ;; Buffer section -- buffers listed in same order as in buffer list:
-(desktop-create-buffer 206
-  "c:/Users/haifeng/.emacs.d/elpa/org-page-20150208.2126/op-export.el"
-  "op-export.el"
-  'emacs-lisp-mode
-  '(auto-complete-mode helm-mode yas-minor-mode)
-  340
-  '(340 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . prefer-utf-8-unix)))
-
-(desktop-create-buffer 206
-  nil
-  ".emacs.d"
-  'dired-mode
-  '(helm-mode yas-minor-mode)
-  1132
-  '(1670 nil)
-  t
-  '("c:/Users/haifeng/.emacs.d/")
-  nil)
-
-(desktop-create-buffer 206
-  "c:/work/rtviewer/app/view/ImageSettingView.js"
-  "ImageSettingView.js"
-  'js2-mode
-  '(auto-complete-mode helm-mode yas-minor-mode)
-  1612
-  '(3733 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-dos)))
-
-(desktop-create-buffer 206
-  "c:/emacs-24.4/share/emacs/24.4/lisp/emacs-lisp/cl.el"
-  "cl.el"
-  'emacs-lisp-mode
-  '(auto-complete-mode helm-mode yas-minor-mode)
-  4081
-  '(205 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . utf-8-unix)))
-
-(desktop-create-buffer 206
-  nil
-  "*info*"
-  'Info-mode
-  '(helm-mode yas-minor-mode)
-  602220
-  '(588247 nil)
-  t
-  '("c:/emacs-24.4/share/info/elisp" "Macros" ((history ("c:/emacs-24.4/share/info/elisp" "Related Topics" 601936) ("c:/emacs-24.4/share/info/elisp" "Function Safety" 599388) ("c:/emacs-24.4/share/info/elisp" "Declaring Functions" 598126) ("c:/emacs-24.4/share/info/elisp" "Declare Form" 593887) ("c:/emacs-24.4/share/info/elisp" "Inline Functions" 589196) ("c:/emacs-24.4/share/info/elisp" "Obsolete Functions" 588247) ("c:/emacs-24.4/share/info/elisp" "Porting old advices" 584759) ("c:/emacs-24.4/share/info/elisp" "Advice combinators" 580665) ("c:/emacs-24.4/share/info/elisp" "Advising Named Functions" 577553) ("c:/emacs-24.4/share/info/elisp" "Core Advising Primitives" 572360) ("c:/emacs-24.4/share/info/elisp" "Advising Functions" 568711) ("c:/emacs-24.4/share/info/elisp" "Closures" 565079) ("c:/emacs-24.4/share/info/elisp" "Function Cells" 563791) ("c:/emacs-24.4/share/info/elisp" "Anonymous Functions" 560509) ("c:/emacs-24.4/share/info/elisp" "Mapping Functions" 557054) ("c:/emacs-24.4/share/info/elisp" "Calling Functions" 553782) ("c:/emacs-24.4/share/info/elisp" "Defining Functions" 547561) ("c:/emacs-24.4/share/info/elisp" "Functions" 525985) ("c:/emacs-24.4/share/info/elisp" "Top" 2895) ("c:/emacs-24.4/share/info/elisp" "Macros" 602220) ("c:/emacs-24.4/share/info/elisp" "Functions" 525567) ("c:/emacs-24.4/share/info/elisp" "Top" 2893) ("dir" "Top" 906) ("c:/emacs-24.4/share/info/eintr" "Top" 3253) ("c:/emacs-24.4/share/info/eintr" "Buffer Walk Through" 162522) ("c:/emacs-24.4/share/info/eintr" "Finding More" 163057) ("c:/emacs-24.4/share/info/eintr" "Buffer Walk Through" 161975) ("c:/emacs-24.4/share/info/eintr" "defun Exercises" 161533) ("c:/emacs-24.4/share/info/eintr" "Review" 159584) ("c:/emacs-24.4/share/info/eintr" "Template for save-excursion" 152639) ("c:/emacs-24.4/share/info/eintr" "Point and mark" 152283) ("c:/emacs-24.4/share/info/eintr" "save-excursion" 148944) ("c:/emacs-24.4/share/info/eintr" "nil explained" 146909) ("c:/emacs-24.4/share/info/eintr" "Truth & Falsehood" 146052) ("c:/emacs-24.4/share/info/eintr" "else" 145387) ("c:/emacs-24.4/share/info/eintr" "type-of-animal in detail" 142585) ("c:/emacs-24.4/share/info/eintr" "if in more detail" 140207) ("c:/emacs-24.4/share/info/eintr" "if" 137212) ("c:/emacs-24.4/share/info/eintr" "Uninitialized let Variables" 135690) ("c:/emacs-24.4/share/info/eintr" "Sample let Expression" 133721) ("c:/emacs-24.4/share/info/eintr" "Parts of let Expression" 132175) ("c:/emacs-24.4/share/info/eintr" "Prevent confusion" 130283) ("c:/emacs-24.4/share/info/eintr" "let" 129009) ("c:/emacs-24.4/share/info/eintr" "Permanent Installation" 126935) ("c:/emacs-24.4/share/info/eintr" "Interactive Options" 126278) ("c:/emacs-24.4/share/info/eintr" "multiply-by-seven in detail" 123540) ("c:/emacs-24.4/share/info/eintr" "Interactive multiply-by-seven" 119409) ("c:/emacs-24.4/share/info/eintr" "Interactive" 118356) ("c:/emacs-24.4/share/info/eintr" "Change a defun" 116656) ("c:/emacs-24.4/share/info/eintr" "Effect of installation" 115868) ("c:/emacs-24.4/share/info/eintr" "Install" 114552) ("c:/emacs-24.4/share/info/eintr" "defun" 113101) ("c:/emacs-24.4/share/info/eintr" "Primitive Functions" 107013) ("c:/emacs-24.4/share/info/eintr" "Writing Defuns" 105708) ("c:/emacs-24.4/share/info/eintr" "Evaluation Exercise" 105429) ("c:/emacs-24.4/share/info/eintr" "Buffer Size & Locations" 103344) ("c:/emacs-24.4/share/info/eintr" "Switching Buffers" 101773) ("c:/emacs-24.4/share/info/eintr" "Getting Buffers" 98635) ("c:/emacs-24.4/share/info/eintr" "Buffer Names" 95995) ("c:/emacs-24.4/share/info/eintr" "How to Evaluate" 89290) ("c:/emacs-24.4/share/info/eintr" "Practicing Evaluation" 88139) ("c:/emacs-24.4/share/info/eintr" "Error Message Exercises" 87620) ("c:/emacs-24.4/share/info/eintr" "Summary" 85858) ("c:/emacs-24.4/share/info/eintr" "Counting" 83870) ("c:/emacs-24.4/share/info/eintr" "Using setq" 81754) ("c:/emacs-24.4/share/info/eintr" "Using set" 79503) ("c:/emacs-24.4/share/info/eintr" "set & setq" 78820) ("c:/emacs-24.4/share/info/eintr" "message" 77009) ("c:/emacs-24.4/share/info/eintr" "Wrong Type of Argument" 73637) ("c:/emacs-24.4/share/info/eintr" "Variable Number of Arguments" 70583) ("c:/emacs-24.4/share/info/eintr" "Args as Variable or List" 69040) ("c:/emacs-24.4/share/info/eintr" "Data types" 67041) ("c:/emacs-24.4/share/info/eintr" "Arguments" 64592) ("c:/emacs-24.4/share/info/eintr" "Top" 5375) ("dir" "Top" 227))))
-  '((tab-width . 8) (buffer-file-coding-system . utf-8-unix) (case-fold-search . t)))
-
 (desktop-create-buffer 206
   "c:/work/rtviewer/app/controller/ImageViewController.js"
   "ImageViewController.js"
   'js2-mode
   '(auto-complete-mode helm-mode yas-minor-mode)
-  32081
-  '(32083 nil)
+  8332
+  '(2922 nil)
   nil
   nil
   '((buffer-file-coding-system . undecided-unix)))
 
 (desktop-create-buffer 206
-  "c:/blog/blog/summary-of-2014.org"
-  "summary-of-2014.org"
-  'org-mode
-  '(helm-mode yas-minor-mode org-indent-mode)
-  342
-  '(338 nil)
-  nil
-  nil
-  '((indent-tabs-mode) (buffer-file-coding-system . chinese-gbk-dos) (truncate-lines . t)))
-
-(desktop-create-buffer 206
-  "c:/Users/haifeng/.emacs.d/wttr-config/modes/org-page.el"
-  "org-page.el"
-  'emacs-lisp-mode
+  "c:/work/rtviewer-server/static/app/controller/main_controller.js"
+  "main_controller.js"
+  'js2-mode
   '(auto-complete-mode helm-mode yas-minor-mode)
-  1136
-  '(890 nil)
+  14797
+  '(14798 nil)
   nil
   nil
-  '((buffer-file-coding-system . prefer-utf-8-dos)))
+  '((buffer-file-coding-system . chinese-gbk-dos)))
 
 (desktop-create-buffer 206
-  "c:/Users/haifeng/.emacs.d/elpa/org-page-20150208.2126/org-page.el"
-  "org-page.el"
-  'emacs-lisp-mode
-  '(auto-complete-mode helm-mode yas-minor-mode)
-  4387
-  '(2976 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . prefer-utf-8-unix)))
-
-(desktop-create-buffer 206
-  nil
-  "blog"
-  'dired-mode
+  "c:/work/rtviewer-server/static/app/view/main_view.html"
+  "main_view.html"
+  'html-mode
   '(helm-mode yas-minor-mode)
-  654
-  '(1 nil)
-  t
-  '("c:/blog/")
-  nil)
-
-(desktop-create-buffer 206
-  "c:/emacs-24.4/share/emacs/24.4/lisp/files.el"
-  "files.el"
-  'emacs-lisp-mode
-  '(auto-complete-mode helm-mode yas-minor-mode)
-  208853
-  '(208083 nil)
+  906
+  '(752 nil)
   nil
   nil
-  '((buffer-file-coding-system . prefer-utf-8-unix)))
+  '((buffer-file-coding-system . undecided-dos)))
 
 (desktop-create-buffer 206
-  "c:/blog/index.html"
+  "c:/work/rtviewer-server/static/index.html"
   "index.html"
   'html-mode
   '(helm-mode yas-minor-mode)
-  16
-  '(16 nil)
+  318
+  '(807 nil)
   nil
   nil
-  '((buffer-file-coding-system . utf-8-unix)))
+  '((buffer-file-coding-system . undecided-dos)))
+
+(desktop-create-buffer 206
+  "c:/inetpub/wwwroot/test.js"
+  "test.js"
+  'js2-mode
+  '(auto-complete-mode helm-mode yas-minor-mode)
+  390
+  '(267 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-dos)))
+
+(desktop-create-buffer 206
+  "c:/inetpub/wwwroot/index.html"
+  "index.html"
+  'html-mode
+  '(helm-mode yas-minor-mode)
+  922
+  '(952 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-dos)))
 
 (desktop-create-buffer 206
   nil
-  "templates"
+  "controller"
   'dired-mode
   '(helm-mode yas-minor-mode)
-  883
+  388
   '(nil nil)
   t
-  '("c:/Users/haifeng/.emacs.d/elpa/org-page-20150208.2126/themes/mdo/templates/")
+  '("c:/work/rtviewer-server/static/app/controller/")
   nil)
 
 (desktop-create-buffer 206
   nil
-  "c:/"
+  "app"
   'dired-mode
   '(helm-mode yas-minor-mode)
-  1929
-  '(2514 nil)
+  242
+  '(nil nil)
   t
-  '("c:/")
+  '("c:/work/rtviewer-server/static/app/")
   nil)
 
 (desktop-create-buffer 206
-  "c:/Users/haifeng/.emacs.d/elpa/org-page-20150208.2126/themes/mdo/templates/nav.mustache"
-  "nav.mustache"
+  nil
+  "static"
+  'dired-mode
+  '(helm-mode yas-minor-mode)
+  304
+  '(nil nil)
+  t
+  '("c:/work/rtviewer-server/static/")
+  nil)
+
+(desktop-create-buffer 206
+  nil
+  "view"
+  'dired-mode
+  '(helm-mode yas-minor-mode)
+  193
+  '(nil nil)
+  t
+  '("c:/work/rtviewer-server/static/app/view/")
+  nil)
+
+(desktop-create-buffer 206
+  "c:/work/rtviewer-server/static/app/con"
+  "con"
   'fundamental-mode
   '(helm-mode yas-minor-mode)
   1
   '(nil nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-unix)))
-
-(desktop-create-buffer 206
-  "c:/Users/haifeng/.emacs.d/elpa/org-page-20150208.2126/themes/mdo/resources/css/main.css"
-  "main.css"
-  'css-mode
-  '(auto-complete-mode helm-mode yas-minor-mode)
-  975
-  '(nil nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-unix)))
-
-(desktop-create-buffer 206
-  nil
-  "css"
-  'dired-mode
-  '(helm-mode yas-minor-mode)
-  285
-  '(nil nil)
   t
-  '("c:/Users/haifeng/.emacs.d/elpa/org-page-20150208.2126/themes/mdo/resources/css/")
+  nil
   nil)
 
 (desktop-create-buffer 206
-  nil
-  "resources"
-  'dired-mode
-  '(helm-mode yas-minor-mode)
-  272
-  '(nil nil)
-  t
-  '("c:/Users/haifeng/.emacs.d/elpa/org-page-20150208.2126/themes/mdo/resources/")
-  nil)
-
-(desktop-create-buffer 206
-  nil
-  "mdo"
-  'dired-mode
-  '(helm-mode yas-minor-mode)
-  271
-  '(nil nil)
-  t
-  '("c:/Users/haifeng/.emacs.d/elpa/org-page-20150208.2126/themes/mdo/")
-  nil)
-
-(desktop-create-buffer 206
-  nil
-  "themes"
-  'dired-mode
-  '(helm-mode yas-minor-mode)
-  322
-  '(nil nil)
-  t
-  '("c:/Users/haifeng/.emacs.d/elpa/org-page-20150208.2126/themes/")
-  nil)
-
-(desktop-create-buffer 206
-  nil
-  "org-page-20150208.2126"
-  'dired-mode
-  '(helm-mode yas-minor-mode)
-  1353
-  '(nil nil)
-  t
-  '("c:/Users/haifeng/.emacs.d/elpa/org-page-20150208.2126/")
-  nil)
-
-(desktop-create-buffer 206
-  nil
-  "gray"
-  'dired-mode
-  '(helm-mode yas-minor-mode)
-  219
-  '(nil nil)
-  t
-  '("c:/Users/haifeng/.emacs.d/elpa/org-page-20150208.2126/themes/gray/")
-  nil)
-
-(desktop-create-buffer 206
-  nil
-  "templates"
-  'dired-mode
-  '(helm-mode yas-minor-mode)
-  229
-  '(nil nil)
-  t
-  '("c:/Users/haifeng/.emacs.d/elpa/org-page-20150208.2126/themes/gray/templates/")
-  nil)
-
-(desktop-create-buffer 206
-  nil
-  "elpa"
-  'dired-mode
-  '(helm-mode yas-minor-mode)
-  2230
-  '(242 nil)
-  t
-  '("c:/Users/haifeng/.emacs.d/elpa/")
-  nil)
-
-(desktop-create-buffer 206
-  nil
-  "haifeng"
-  'dired-mode
-  '(helm-mode yas-minor-mode)
-  536
-  '(3974 nil)
-  t
-  '("c:/Users/haifeng/")
-  nil)
-
-(desktop-create-buffer 206
-  "c:/Users/haifeng/.emacs.d/wttr-config/wttr-basic.el"
-  "wttr-basic.el"
-  'emacs-lisp-mode
-  '(auto-complete-mode helm-mode yas-minor-mode)
-  2
-  '(nil nil)
-  nil
-  nil
-  '((buffer-file-coding-system . utf-8-dos)))
-
-(desktop-create-buffer 206
-  "c:/Users/haifeng/.emacs.d/elpa/org-page-20150208.2126/themes/mdo/templates/template.html"
-  "template.html"
+  "c:/work/rtviewer-server/static/app/view/login_view.html"
+  "login_view.html"
   'html-mode
   '(helm-mode yas-minor-mode)
-  4453
-  '(4453 nil)
+  362
+  '(378 nil)
   nil
   nil
-  '((buffer-file-coding-system . utf-8-unix)))
+  '((buffer-file-coding-system . undecided-dos)))
+
+(desktop-create-buffer 206
+  "c:/inetpub/wwwroot/second_view.html"
+  "second_view.html"
+  'html-mode
+  '(helm-mode yas-minor-mode)
+  86
+  '(86 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . chinese-gbk-dos)))
+
+(desktop-create-buffer 206
+  "c:/inetpub/wwwroot/main_view.html"
+  "main_view.html"
+  'html-mode
+  '(helm-mode yas-minor-mode)
+  180
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-dos)))
+
+(desktop-create-buffer 206
+  "c:/work/rtviewer-server/static/app/view/patient_list.html"
+  "patient_list.html"
+  'html-mode
+  '(helm-mode yas-minor-mode)
+  789
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-dos)))
 

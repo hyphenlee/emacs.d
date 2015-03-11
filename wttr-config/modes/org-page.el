@@ -14,15 +14,14 @@
 ;; (setq op/personal-avatar "/media/img/profile.jpg")
 (defun lhf/public-blog ()
   (interactive)
-  (let ((dir (pwd)))
+  (let ()
     (cd op/repository-directory)
     (save-some-buffers t nil)
     (shell-command "git commit -am \"post\"")
     (op/do-publication t nil nil)
     (shell-command "git commit -am \"post\"")
     (shell-command "git push")
-    (op/git-change-branch op/repository-directory op/repository-org-branch)
-    (cd dir)))
+    (op/git-change-branch op/repository-directory op/repository-org-branch)))
 
 
 

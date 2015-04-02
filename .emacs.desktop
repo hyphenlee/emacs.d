@@ -2,205 +2,95 @@
 ;; --------------------------------------------------------------------------
 ;; Desktop File for Emacs
 ;; --------------------------------------------------------------------------
-;; Created Wed Mar 11 13:09:50 2015
+;; Created Thu Apr  2 02:12:40 2015
 ;; Desktop file format version 206
-;; Emacs version 24.4.1
+;; Emacs version 24.3.50.1
 
 ;; Global section:
-(setq desktop-saved-frameset [frameset 1 (21759 52766 781000 0) (desktop . "206") "haifeng@HYPHEN-PC" nil nil ((((font-backend uniscribe gdi) (font . "-outline-Consolas-normal-normal-normal-mono-15-*-*-*-c-*-iso8859-1") (border-width . 2) (internal-border-width . 0) (right-divider-width . 0) (bottom-divider-width . 0) (vertical-scroll-bars) (foreground-color . "wheat") (background-color . "darkslategrey") (mouse-color . "Grey") (border-color . "black") (screen-gamma) (line-spacing) (left-fringe . 8) (right-fringe . 8) (alpha) (menu-bar-lines . 0) (tool-bar-lines . 0) (title) (fullscreen . fullscreen) (icon-type) (auto-raise) (auto-lower) (cursor-type . box) (scroll-bar-width . 0) (horizontal-scroll-bars . t) (display-type . color) (background-mode . dark) (cursor-color . "LightGray") (environment) (top-toolbar-shadow-color . "#fffffbeeffff") (bottom-toolbar-shadow-color . "#79e77df779e7") (background-toolbar-color . "#cf3ccf3ccf3c") (frameset--id . "56B2-7A5A-5913-DC03") (frameset--mini t . t) (modeline . t) (minibuffer . t) (unsplittable) (icon-name) (display . "w32") (explicit-name) (tool-bar-position . top) (maximized) (viper-saved-cursor-color-in-replace-mode . "Red3") (senator-eldoc-use-color . t) (vc-annotate-very-old-color . "#0046FF") (visibility . t) (height . 60) (width . 238) (left . 0) (top . 0)) ((min-height . 8) (min-width . 10) (min-height-ignore . 6) (min-width-ignore . 4) (min-height-safe . 2) (min-width-safe . 2) (min-pixel-height . 144) (min-pixel-width . 80) (min-pixel-height-ignore . 108) (min-pixel-width-ignore . 32) (min-pixel-height-safe . 36) (min-pixel-width-safe . 16)) vc (pixel-width . 1920) (pixel-height . 1062) (total-width . 240) (total-height . 59) (normal-height . 1.0) (normal-width . 1.0) (combination-limit) (leaf (pixel-width . 1920) (pixel-height . 528) (total-width . 240) (total-height . 29) (normal-height . 0.5) (normal-width . 1.0) (buffer "org-page.el" (selected) (hscroll . 0) (fringes 8 8 nil) (margins nil) (scroll-bars 0 0 t nil) (vscroll . 0) (dedicated) (point . 1112) (start . 710))) (leaf (last . t) (pixel-width . 1920) (pixel-height . 534) (total-width . 240) (total-height . 29) (normal-height . 0.5) (normal-width . 1.0) (buffer "emacs-config.org" (selected . t) (hscroll . 0) (fringes 8 8 nil) (margins nil) (scroll-bars 0 0 t nil) (vscroll . 0) (dedicated) (point . 1403) (start . 949)))))])
+(setq desktop-saved-frameset [frameset 1 (21789 2056 649182 764000) (desktop . "206") "hyphen@ubuntu" nil nil ((((font-backend xft x) (font . "-unknown-WenQuanYi Micro Hei Mono-normal-normal-normal-*-15-*-*-*-*-0-iso10646-1") (font-parameter) (border-width . 0) (internal-border-width . 0) (vertical-scroll-bars) (foreground-color . "wheat") (background-color . "darkslategrey") (mouse-color . "Grey") (border-color . "black") (screen-gamma) (line-spacing) (left-fringe . 9) (right-fringe . 9) (scroll-bar-foreground) (scroll-bar-background . "grey75") (menu-bar-lines . 1) (tool-bar-lines . 0) (title) (wait-for-wm . t) (fullscreen . fullboth) (tool-bar-position . top) (icon-type . t) (auto-raise) (auto-lower) (cursor-type . box) (scroll-bar-width . 0) (alpha) (horizontal-scroll-bars . t) (display-type . color) (background-mode . dark) (cursor-color . "LightGray") (sticky) (environment) (frameset--id . "0276-466F-E19B-0EEF") (frameset--mini t . t) (modeline . t) (minibuffer . t) (unsplittable) (right-divider-width . 0) (bottom-divider-width . 0) (icon-name) (visibility . t) (display . ":0") (explicit-name) (maximized) (height . 52) (width . 140) (left . 0) (top . 0)) ((min-height . 4) (min-width . 10) (min-height-ignore . 2) (min-width-ignore . 4) (min-height-safe . 1) (min-width-safe . 2) (min-pixel-height . 76) (min-pixel-width . 90) (min-pixel-height-ignore . 41) (min-pixel-width-ignore . 36) (min-pixel-height-safe . 19) (min-pixel-width-safe . 18)) leaf (pixel-width . 1280) (pixel-height . 982) (total-width . 142) (total-height . 52) (normal-height . 1.0) (normal-width . 1.0) (buffer "TRF_TT_TravelTimeArriveTimeReq.cpp" (selected . t) (hscroll . 0) (fringes 9 9 nil) (margins nil) (scroll-bars 16 0 t nil) (vscroll . 0) (dedicated) (point . 1) (start . 1))))])
 (setq desktop-missing-file-warning nil)
 (setq tags-file-name nil)
 (setq tags-table-list nil)
-(setq search-ring '("begin_src emacs-lisp" "begin" "git clone" "rtags" "color-theme" "theme" "color" "foot" "text" "com" "grid" "panel" "evil" "web" "html" "test"))
-(setq regexp-search-ring '("dir" "series" "tt" "easyui" "\\_<Search\\_>" "\\_<current_tool\\_>" "force" "\\_<_32\\_>" "\\_<onOpen\\_>" "open" "click" "\\_<login_button\\_>" "butt" "close" "'open'" "open"))
+(setq search-ring '("helm" "plu" "helm-ag" "helm" " helm " "helm" "wt" "helm" "cc" "helm" "begin_src emacs-lisp" "begin" "git clone" "rtags" "color-theme" "theme"))
+(setq regexp-search-ring '("S-" "ace" "dir" "series" "tt" "easyui" "\\_<Search\\_>" "\\_<current_tool\\_>" "force" "\\_<_32\\_>" "\\_<onOpen\\_>" "open" "click" "\\_<login_button\\_>" "butt" "close"))
 (setq register-alist '((110) (99 . "        image_position=[device_size[0]/2-image_data.image_actual_size[0]/2,0];\n") (98 . "	canvas = $(\"#canvas_coronal\")[0];\n    var coronal_device_size=[canvas.parentNode.clientWidth,canvas.parentNode.clientHeight];\n	canvas.width = coronal_device_size[0];\n	canvas.height = coronal_device_size[1];\n") (32) (134217776) (105) (97 . "    <h2>great</h2>\n    <h2>great</h2>\n") (107) (106) (26) (24) (27 . [escape]) (113)))
-(setq file-name-history '("c:/blog/blog/emacs-config.org" "c:/blog/blog/c++-api-disign.org" "c:/Users/haifeng/.emacs.d/README.md" "c:/work/rtviewer/app/controller/ImageViewController.js" "c:/inetpub/wwwroot/test.js" "c:/work/rtviewer-server/static/app/controller/main_controller.js" "c:/work/rtviewer-server/static/app/view/main_view.js" "c:/work/rtviewer-server/static/index.html" "c:/inetpub/wwwroot/easyui/plugins/jquery.panel.js" "c:/inetpub/wwwroot/index.html" "c:/inetpub/wwwroot/main_view.html" "c:/Users/haifeng/.emacs.d/wttr-config/modes/yasnippet.el" "c:/Users/haifeng/.emacs.d/wttr-config/modes/js2.el" "c:/work/rtviewer-server/static/app/view/main_view.html" "c:/work/rtviewer-server/static/app/view/login_view.html" "c:/inetpub/wwwroot/easyui/demo/datagrid/datagrid_data1.json" "c:/Users/haifeng/MUF/learning/elisp/learn_lisp.el" "c:/work/rtviewer/app/controller/MainController.js" "c:/Users/haifeng/.gitconfig" "c:/work/rtviewer-server/static/app/controller/login_view.js" "c:/work/rtviewer-server/static/2index.html" "c:/Users/haifeng/MUF/learning/js/test.js" "" "c:/inetpub/wwwroot/readme.txt" "c:/work/rtviewer-server/static/demo.css" "c:/work/rtviewer-server/static/te.html" "main_view.js" "c:/Users/haifeng/.emacs.d/wttr-config/modes/hilight-symbol.el" "inflate.min.js" "c:/Users/haifeng/.emacs.d/wttr-config/wttr-mode-line.el"))
+(setq file-name-history '("~/.emacs.d/wttr-config/" "~/.emacs.d/elpa/" "~/.emacs.d" "~/.emacs.d/wttr-config/modes/helm.el" "~/.emacs.d/wttr-config/wttr-modes.el" "~/.emacs.d/wttr-config/modes/rtags.el" "~/.emacs.d/wttr-config/wttr-key.el" "~/.emacs.d/wttr-config/modes/evil.el" "~/.emacs.d/init.el" "~/.emacs.d/wttr-config/modes/cc.el" "~/.emacs.d/elpa/" "c:/blog/blog/emacs-config.org" "c:/blog/blog/c++-api-disign.org" "c:/Users/haifeng/.emacs.d/README.md" "c:/work/rtviewer/app/controller/ImageViewController.js" "c:/inetpub/wwwroot/test.js" "c:/work/rtviewer-server/static/app/controller/main_controller.js" "c:/work/rtviewer-server/static/app/view/main_view.js" "c:/work/rtviewer-server/static/index.html" "c:/inetpub/wwwroot/easyui/plugins/jquery.panel.js" "c:/inetpub/wwwroot/index.html" "c:/inetpub/wwwroot/main_view.html" "c:/Users/haifeng/.emacs.d/wttr-config/modes/yasnippet.el" "c:/Users/haifeng/.emacs.d/wttr-config/modes/js2.el" "c:/work/rtviewer-server/static/app/view/main_view.html" "c:/work/rtviewer-server/static/app/view/login_view.html" "c:/inetpub/wwwroot/easyui/demo/datagrid/datagrid_data1.json" "c:/Users/haifeng/MUF/learning/elisp/learn_lisp.el" "c:/work/rtviewer/app/controller/MainController.js" "c:/Users/haifeng/.gitconfig"))
 
 ;; Buffer section -- buffers listed in same order as in buffer list:
 (desktop-create-buffer 206
-  "c:/blog/blog/emacs-config.org"
-  "emacs-config.org"
-  'org-mode
-  '(helm-mode yas-minor-mode org-indent-mode)
-  1403
-  '(4923 nil)
-  nil
-  nil
-  '((indent-tabs-mode) (buffer-file-coding-system . chinese-gbk-dos) (truncate-lines . t)))
-
-(desktop-create-buffer 206
-  "c:/Users/haifeng/.emacs.d/wttr-config/modes/org-page.el"
-  "org-page.el"
-  'emacs-lisp-mode
-  '(auto-complete-mode helm-mode yas-minor-mode)
-  1112
-  '(1076 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . prefer-utf-8-dos)))
-
-(desktop-create-buffer 206
-  "c:/work/rtviewer/app/controller/ImageViewController.js"
-  "ImageViewController.js"
-  'js2-mode
-  '(auto-complete-mode helm-mode yas-minor-mode)
-  8332
-  '(2922 nil)
+  "/home/hyphen/17Cy/framework/service/navi/src/traffic/traffic/TravelTime/TRF_TT_TravelTimeArriveTimeReq.cpp"
+  "TRF_TT_TravelTimeArriveTimeReq.cpp"
+  'c++-mode
+  '(abbrev-mode auto-complete-mode yas-minor-mode)
+  1
+  '(1 nil)
   nil
   nil
   '((buffer-file-coding-system . undecided-unix)))
 
 (desktop-create-buffer 206
-  "c:/work/rtviewer-server/static/app/controller/main_controller.js"
-  "main_controller.js"
-  'js2-mode
-  '(auto-complete-mode helm-mode yas-minor-mode)
-  14797
-  '(14798 nil)
+  "/home/hyphen/17Cy/framework/service/navi/src/traffic/traffic/TravelTime/TRF_TT_TravelTimeArriveTimeReq.h"
+  "TRF_TT_TravelTimeArriveTimeReq.h"
+  'c++-mode
+  '(abbrev-mode auto-complete-mode yas-minor-mode view-mode)
+  1490
+  '(nil nil)
+  t
   nil
-  nil
-  '((buffer-file-coding-system . chinese-gbk-dos)))
-
-(desktop-create-buffer 206
-  "c:/work/rtviewer-server/static/app/view/main_view.html"
-  "main_view.html"
-  'html-mode
-  '(helm-mode yas-minor-mode)
-  906
-  '(752 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-dos)))
-
-(desktop-create-buffer 206
-  "c:/work/rtviewer-server/static/index.html"
-  "index.html"
-  'html-mode
-  '(helm-mode yas-minor-mode)
-  318
-  '(807 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-dos)))
-
-(desktop-create-buffer 206
-  "c:/inetpub/wwwroot/test.js"
-  "test.js"
-  'js2-mode
-  '(auto-complete-mode helm-mode yas-minor-mode)
-  390
-  '(267 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-dos)))
-
-(desktop-create-buffer 206
-  "c:/inetpub/wwwroot/index.html"
-  "index.html"
-  'html-mode
-  '(helm-mode yas-minor-mode)
-  922
-  '(952 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-dos)))
+  '((buffer-file-coding-system . undecided-unix)))
 
 (desktop-create-buffer 206
   nil
-  "controller"
+  "TravelTime"
   'dired-mode
-  '(helm-mode yas-minor-mode)
-  388
+  '(yas-minor-mode)
+  808
   '(nil nil)
   t
-  '("c:/work/rtviewer-server/static/app/controller/")
+  '("/home/hyphen/17Cy/framework/service/navi/src/traffic/traffic/TravelTime/")
   nil)
 
 (desktop-create-buffer 206
+  "/home/hyphen/17Cy/framework/service/navi/src/traffic/traffic/TravelTime/Traffic/TRF_TT_TravelTimeTilesData.h"
+  "TRF_TT_TravelTimeTilesData.h"
+  'c++-mode
+  '(abbrev-mode auto-complete-mode yas-minor-mode)
+  1047
+  '(nil nil)
   nil
-  "app"
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/home/hyphen/.emacs.d/wttr-config/modes/helm.el"
+  "helm.el"
+  'emacs-lisp-mode
+  '(auto-complete-mode yas-minor-mode)
+  412
+  '(412 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . prefer-utf-8-unix)))
+
+(desktop-create-buffer 206
+  "/home/hyphen/.emacs.d/plugins/helm/helm-grep.el"
+  "helm-grep.el"
+  'emacs-lisp-mode
+  '(auto-complete-mode yas-minor-mode)
+  47429
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . utf-8-unix)))
+
+(desktop-create-buffer 206
+  nil
+  "traffic"
   'dired-mode
-  '(helm-mode yas-minor-mode)
-  242
+  '(yas-minor-mode)
+  256
   '(nil nil)
   t
-  '("c:/work/rtviewer-server/static/app/")
+  '("/home/hyphen/17Cy/framework/service/navi/src/traffic/traffic/")
   nil)
-
-(desktop-create-buffer 206
-  nil
-  "static"
-  'dired-mode
-  '(helm-mode yas-minor-mode)
-  304
-  '(nil nil)
-  t
-  '("c:/work/rtviewer-server/static/")
-  nil)
-
-(desktop-create-buffer 206
-  nil
-  "view"
-  'dired-mode
-  '(helm-mode yas-minor-mode)
-  193
-  '(nil nil)
-  t
-  '("c:/work/rtviewer-server/static/app/view/")
-  nil)
-
-(desktop-create-buffer 206
-  "c:/work/rtviewer-server/static/app/con"
-  "con"
-  'fundamental-mode
-  '(helm-mode yas-minor-mode)
-  1
-  '(nil nil)
-  t
-  nil
-  nil)
-
-(desktop-create-buffer 206
-  "c:/work/rtviewer-server/static/app/view/login_view.html"
-  "login_view.html"
-  'html-mode
-  '(helm-mode yas-minor-mode)
-  362
-  '(378 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-dos)))
-
-(desktop-create-buffer 206
-  "c:/inetpub/wwwroot/second_view.html"
-  "second_view.html"
-  'html-mode
-  '(helm-mode yas-minor-mode)
-  86
-  '(86 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . chinese-gbk-dos)))
-
-(desktop-create-buffer 206
-  "c:/inetpub/wwwroot/main_view.html"
-  "main_view.html"
-  'html-mode
-  '(helm-mode yas-minor-mode)
-  180
-  '(nil nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-dos)))
-
-(desktop-create-buffer 206
-  "c:/work/rtviewer-server/static/app/view/patient_list.html"
-  "patient_list.html"
-  'html-mode
-  '(helm-mode yas-minor-mode)
-  789
-  '(nil nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-dos)))
 

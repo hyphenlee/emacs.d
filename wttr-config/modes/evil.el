@@ -83,8 +83,8 @@
         ("m" . magit-status)
         ))
 
-(define-key evil-visual-state-map (kbd "SPC") 'ace-jump-mode)
-(define-key evil-normal-state-map (kbd "SPC") 'ace-jump-mode)
+(define-key evil-visual-state-map (kbd "SPC") 'scroll-up)
+(define-key evil-normal-state-map (kbd "SPC") 'scroll-up)
 ;; opposite to C-o : evil-jump-backward
 (define-key evil-normal-state-map (kbd "TAB") 'evil-jump-forward)
 ;; opposite to u : undo-tree-undo

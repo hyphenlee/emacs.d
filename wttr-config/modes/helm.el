@@ -1,4 +1,4 @@
 (wttr/plugin:prepend-to-load-path "helm")
+(require 'helm)
 (require 'helm-config)
-(require 'helm-ag)
-(helm-mode 1)
+(global-set-key (kbd "C-c f") 'helm-do-grep)

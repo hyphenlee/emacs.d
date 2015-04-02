@@ -2,60 +2,14 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-
-(("js2-mode"
- (filename . "c:/Users/haifeng/.emacs.d/plugins/yasnippet/snippets/js2-mode/")
- (front-context-string . "assert.yasnippet")
- (rear-context-string . "81 Aug 16  2013 ")
- (position . 272))
-("modes"
- (filename . "c:/Users/haifeng/.emacs.d/wttr-config/modes/")
- (front-context-string . "ace-jump.el\n  -r")
- (rear-context-string . "10 Jan 12 11:36 ")
- (position . 258))
-("org-capture-last-stored"
- (filename . "c:/Users/haifeng/org/gtd.org")
- (front-context-string . "** TODO this is ")
- (rear-context-string . "?\\n %i\\n %a\")]]\n")
- (position . 242))
-("Main.js"
- (filename . "c:/work/myapp/app/view/Main.js")
- (front-context-string . "Ext.define('Myap")
- (rear-context-string)
- (position . 1))
-("test.js"
- (filename . "c:/Users/haifeng/MUF/learning/js/test.js")
- (front-context-string)
- (rear-context-string . "2;\nvar ok;\nok=j;")
- (position . 27))
-("js-mode"
- (filename . "c:/Users/haifeng/.emacs.d/plugins/yasnippet/snippets/js-mode/")
- (front-context-string . "mod.yasnippet\n  ")
- (rear-context-string . "20 Aug 16  2013 ")
- (position . 1324))
-("work.org"
- (filename . "c:/Users/haifeng/org/work.org")
- (front-context-string . "* 工作杂思\n** 总结工作文档")
- (rear-context-string)
- (position . 1))
-("code.org"
- (filename . "c:/Users/haifeng/OneDrive/code.org")
- (front-context-string . "#+STARUP: overvi")
- (rear-context-string)
- (position . 1))
-("wttr-basic.el"
- (filename . "~/.emacs.d/wttr-config/wttr-basic.el")
- (front-context-string . "; -*- coding: ut")
- (rear-context-string)
- (position . 2))
-("wttr-config"
+(("wttr-config"
  (filename . "~/.emacs.d/wttr-config/")
- (front-context-string . "backup\n  -rw-rw-")
- (rear-context-string . " 0 Aug 16 10:29 ")
- (position . 252))
-(".emacs"
- (filename . "~/.emacs")
- (front-context-string . "(load-file \"C:/U")
+ (front-context-string . "backup\n  -rw-r--")
+ (rear-context-string . "96 Mar 31 19:58 ")
+ (position . 229))
+("TRF_TT_RoutePoint.cpp"
+ (filename . "~/17Cy/framework/service/navi/src/traffic/traffic/TravelTime/TRF_TT_RoutePoint.cpp")
+ (front-context-string . "/**\n * Copyright")
  (rear-context-string)
  (position . 1))
 )

@@ -8,8 +8,6 @@
   (interactive)
   (save-buffer)
   (recompile))
-
-(commandp 'cc-hook-func)
 (defun cc-hook-func()
   (local-set-key (kbd "M-g o") 'ff-find-other-file)
   (rtags-start-process-maybe)

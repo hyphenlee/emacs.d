@@ -2,95 +2,61 @@
 ;; --------------------------------------------------------------------------
 ;; Desktop File for Emacs
 ;; --------------------------------------------------------------------------
-;; Created Thu Apr  2 02:12:40 2015
+;; Created Tue Apr  7 17:55:49 2015
 ;; Desktop file format version 206
-;; Emacs version 24.3.50.1
+;; Emacs version 24.3.1
 
 ;; Global section:
-(setq desktop-saved-frameset [frameset 1 (21789 2056 649182 764000) (desktop . "206") "hyphen@ubuntu" nil nil ((((font-backend xft x) (font . "-unknown-WenQuanYi Micro Hei Mono-normal-normal-normal-*-15-*-*-*-*-0-iso10646-1") (font-parameter) (border-width . 0) (internal-border-width . 0) (vertical-scroll-bars) (foreground-color . "wheat") (background-color . "darkslategrey") (mouse-color . "Grey") (border-color . "black") (screen-gamma) (line-spacing) (left-fringe . 9) (right-fringe . 9) (scroll-bar-foreground) (scroll-bar-background . "grey75") (menu-bar-lines . 1) (tool-bar-lines . 0) (title) (wait-for-wm . t) (fullscreen . fullboth) (tool-bar-position . top) (icon-type . t) (auto-raise) (auto-lower) (cursor-type . box) (scroll-bar-width . 0) (alpha) (horizontal-scroll-bars . t) (display-type . color) (background-mode . dark) (cursor-color . "LightGray") (sticky) (environment) (frameset--id . "0276-466F-E19B-0EEF") (frameset--mini t . t) (modeline . t) (minibuffer . t) (unsplittable) (right-divider-width . 0) (bottom-divider-width . 0) (icon-name) (visibility . t) (display . ":0") (explicit-name) (maximized) (height . 52) (width . 140) (left . 0) (top . 0)) ((min-height . 4) (min-width . 10) (min-height-ignore . 2) (min-width-ignore . 4) (min-height-safe . 1) (min-width-safe . 2) (min-pixel-height . 76) (min-pixel-width . 90) (min-pixel-height-ignore . 41) (min-pixel-width-ignore . 36) (min-pixel-height-safe . 19) (min-pixel-width-safe . 18)) leaf (pixel-width . 1280) (pixel-height . 982) (total-width . 142) (total-height . 52) (normal-height . 1.0) (normal-width . 1.0) (buffer "TRF_TT_TravelTimeArriveTimeReq.cpp" (selected . t) (hscroll . 0) (fringes 9 9 nil) (margins nil) (scroll-bars 16 0 t nil) (vscroll . 0) (dedicated) (point . 1) (start . 1))))])
 (setq desktop-missing-file-warning nil)
 (setq tags-file-name nil)
 (setq tags-table-list nil)
 (setq search-ring '("helm" "plu" "helm-ag" "helm" " helm " "helm" "wt" "helm" "cc" "helm" "begin_src emacs-lisp" "begin" "git clone" "rtags" "color-theme" "theme"))
-(setq regexp-search-ring '("S-" "ace" "dir" "series" "tt" "easyui" "\\_<Search\\_>" "\\_<current_tool\\_>" "force" "\\_<_32\\_>" "\\_<onOpen\\_>" "open" "click" "\\_<login_button\\_>" "butt" "close"))
+(setq regexp-search-ring '("\\_<custom-set-faces\\_>" "S-" "ace" "dir" "series" "tt" "easyui" "\\_<Search\\_>" "\\_<current_tool\\_>" "force" "\\_<_32\\_>" "\\_<onOpen\\_>" "open" "click" "\\_<login_button\\_>" "butt"))
 (setq register-alist '((110) (99 . "        image_position=[device_size[0]/2-image_data.image_actual_size[0]/2,0];\n") (98 . "	canvas = $(\"#canvas_coronal\")[0];\n    var coronal_device_size=[canvas.parentNode.clientWidth,canvas.parentNode.clientHeight];\n	canvas.width = coronal_device_size[0];\n	canvas.height = coronal_device_size[1];\n") (32) (134217776) (105) (97 . "    <h2>great</h2>\n    <h2>great</h2>\n") (107) (106) (26) (24) (27 . [escape]) (113)))
-(setq file-name-history '("~/.emacs.d/wttr-config/" "~/.emacs.d/elpa/" "~/.emacs.d" "~/.emacs.d/wttr-config/modes/helm.el" "~/.emacs.d/wttr-config/wttr-modes.el" "~/.emacs.d/wttr-config/modes/rtags.el" "~/.emacs.d/wttr-config/wttr-key.el" "~/.emacs.d/wttr-config/modes/evil.el" "~/.emacs.d/init.el" "~/.emacs.d/wttr-config/modes/cc.el" "~/.emacs.d/elpa/" "c:/blog/blog/emacs-config.org" "c:/blog/blog/c++-api-disign.org" "c:/Users/haifeng/.emacs.d/README.md" "c:/work/rtviewer/app/controller/ImageViewController.js" "c:/inetpub/wwwroot/test.js" "c:/work/rtviewer-server/static/app/controller/main_controller.js" "c:/work/rtviewer-server/static/app/view/main_view.js" "c:/work/rtviewer-server/static/index.html" "c:/inetpub/wwwroot/easyui/plugins/jquery.panel.js" "c:/inetpub/wwwroot/index.html" "c:/inetpub/wwwroot/main_view.html" "c:/Users/haifeng/.emacs.d/wttr-config/modes/yasnippet.el" "c:/Users/haifeng/.emacs.d/wttr-config/modes/js2.el" "c:/work/rtviewer-server/static/app/view/main_view.html" "c:/work/rtviewer-server/static/app/view/login_view.html" "c:/inetpub/wwwroot/easyui/demo/datagrid/datagrid_data1.json" "c:/Users/haifeng/MUF/learning/elisp/learn_lisp.el" "c:/work/rtviewer/app/controller/MainController.js" "c:/Users/haifeng/.gitconfig"))
+(setq file-name-history '("~/.emacs.d/wttr-config/wttr-font.el" "~/.emacs.d/init.el" "~/.emacs.d2/init.el" "~/.emacs.d/wttr-config/" "~/.emacs.d/elpa/" "~/.emacs.d" "~/.emacs.d/wttr-config/modes/helm.el" "~/.emacs.d/wttr-config/wttr-modes.el" "~/.emacs.d/wttr-config/modes/rtags.el" "~/.emacs.d/wttr-config/wttr-key.el" "~/.emacs.d/wttr-config/modes/evil.el" "~/.emacs.d/wttr-config/modes/cc.el" "~/.emacs.d/elpa/" "c:/blog/blog/emacs-config.org" "c:/blog/blog/c++-api-disign.org" "c:/Users/haifeng/.emacs.d/README.md" "c:/work/rtviewer/app/controller/ImageViewController.js" "c:/inetpub/wwwroot/test.js" "c:/work/rtviewer-server/static/app/controller/main_controller.js" "c:/work/rtviewer-server/static/app/view/main_view.js" "c:/work/rtviewer-server/static/index.html" "c:/inetpub/wwwroot/easyui/plugins/jquery.panel.js" "c:/inetpub/wwwroot/index.html" "c:/inetpub/wwwroot/main_view.html" "c:/Users/haifeng/.emacs.d/wttr-config/modes/yasnippet.el" "c:/Users/haifeng/.emacs.d/wttr-config/modes/js2.el" "c:/work/rtviewer-server/static/app/view/main_view.html" "c:/work/rtviewer-server/static/app/view/login_view.html" "c:/inetpub/wwwroot/easyui/demo/datagrid/datagrid_data1.json" "c:/Users/haifeng/MUF/learning/elisp/learn_lisp.el"))
 
 ;; Buffer section -- buffers listed in same order as in buffer list:
 (desktop-create-buffer 206
-  "/home/hyphen/17Cy/framework/service/navi/src/traffic/traffic/TravelTime/TRF_TT_TravelTimeArriveTimeReq.cpp"
-  "TRF_TT_TravelTimeArriveTimeReq.cpp"
-  'c++-mode
-  '(abbrev-mode auto-complete-mode yas-minor-mode)
-  1
-  '(1 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-unix)))
-
-(desktop-create-buffer 206
-  "/home/hyphen/17Cy/framework/service/navi/src/traffic/traffic/TravelTime/TRF_TT_TravelTimeArriveTimeReq.h"
-  "TRF_TT_TravelTimeArriveTimeReq.h"
-  'c++-mode
-  '(abbrev-mode auto-complete-mode yas-minor-mode view-mode)
-  1490
-  '(nil nil)
-  t
-  nil
-  '((buffer-file-coding-system . undecided-unix)))
-
-(desktop-create-buffer 206
-  nil
-  "TravelTime"
-  'dired-mode
-  '(yas-minor-mode)
-  808
-  '(nil nil)
-  t
-  '("/home/hyphen/17Cy/framework/service/navi/src/traffic/traffic/TravelTime/")
-  nil)
-
-(desktop-create-buffer 206
-  "/home/hyphen/17Cy/framework/service/navi/src/traffic/traffic/TravelTime/Traffic/TRF_TT_TravelTimeTilesData.h"
-  "TRF_TT_TravelTimeTilesData.h"
-  'c++-mode
-  '(abbrev-mode auto-complete-mode yas-minor-mode)
-  1047
-  '(nil nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-unix)))
-
-(desktop-create-buffer 206
-  "/home/hyphen/.emacs.d/wttr-config/modes/helm.el"
-  "helm.el"
+  "/home/hyphen/.emacs.d/init.el"
+  "init.el<2>"
   'emacs-lisp-mode
   '(auto-complete-mode yas-minor-mode)
-  412
-  '(412 nil)
+  241
+  '(241 nil)
   nil
   nil
-  '((buffer-file-coding-system . prefer-utf-8-unix)))
+  '((buffer-file-coding-system . utf-8-unix)))
+
+(desktop-create-buffer 206
+  "/home/hyphen/.emacs.d/wttr-config/wttr-font.el"
+  "wttr-font.el"
+  'emacs-lisp-mode
+  '(auto-complete-mode yas-minor-mode)
+  3098
+  '(3080 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix)))
+
+(desktop-create-buffer 206
+  "/home/hyphen/.emacs.d2/init.el"
+  "init.el"
+  'emacs-lisp-mode
+  '(auto-complete-mode yas-minor-mode)
+  241
+  '(259 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix)))
 
 (desktop-create-buffer 206
   "/home/hyphen/.emacs.d/plugins/helm/helm-grep.el"
   "helm-grep.el"
   'emacs-lisp-mode
   '(auto-complete-mode yas-minor-mode)
-  47429
-  '(nil nil)
+  47858
+  '(47858 nil)
   nil
   nil
   '((indent-tabs-mode) (buffer-file-coding-system . utf-8-unix)))
-
-(desktop-create-buffer 206
-  nil
-  "traffic"
-  'dired-mode
-  '(yas-minor-mode)
-  256
-  '(nil nil)
-  t
-  '("/home/hyphen/17Cy/framework/service/navi/src/traffic/traffic/")
-  nil)
 

@@ -168,8 +168,8 @@ and BG-COLOR to be the background color"
 
 
 
-(wttr/defun-bicolor-face 'mode-line-face/encoding-writable-modified "#000000" "#999999")
-(wttr/defun-bicolor-face 'mode-line-face/buffer-name "#FFFFFF" "#555555")
+(wttr/defun-bicolor-face 'mode-line-face/encoding-writable-modified "#334433" "#999999")
+(wttr/defun-bicolor-face 'mode-line-face/buffer-name "#335533" "#999999")
 (wttr/defun-bicolor-transition-face 'mode-line-face/transition1
                                     'mode-line-face/encoding-writable-modified
                                     'mode-line-face/buffer-name)
@@ -199,12 +199,12 @@ and BG-COLOR to be the background color"
                                    'face 'mode-line-face/encoding-writable-modified))
                (wttr/mode-line:decorate-string-face mode-line-modified
                                                     'mode-line-face/encoding-writable-modified)
-               (wttr/mode-line:create-eight-trigrams-seperator 'mode-line-face/transition1)
+;;               (wttr/mode-line:create-eight-trigrams-seperator 'mode-line-face/transition1)
                ;mode-line-remote, remove
                ;mode-line-frame-identification, remove
                (wttr/mode-line:decorate-string-face mode-line-buffer-identification
                                                     'mode-line-face/buffer-name)
-               (wttr/mode-line:create-triangle-seperator 'mode-line-face/transition2)
+  ;;             (wttr/mode-line:create-triangle-seperator 'mode-line-face/transition2)
                mode-line-position
                '(:eval (list (nyan-create)))
                '(vc-mode vc-mode)

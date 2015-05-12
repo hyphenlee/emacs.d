@@ -1,4 +1,4 @@
-/* This file is part of RTags.
+/* This file is part of RTags (http://rtags.net).
 
    RTags is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -23,6 +23,7 @@
 #include <assert.h>
 #include <clang-c/Index.h>
 #include <stdio.h>
+#include <rct/Flags.h>
 #if defined(OS_Linux)
 #include <linux/limits.h>
 #endif
@@ -51,14 +52,14 @@ static inline int comparePosition(uint32_t lline, uint32_t lcol, uint32_t rline,
 class Location
 {
 public:
-    uint64_t mData;
+    uint64_t value;
 
     Location()
-        : mData(0)
+        : value(0)
     {}
 
     Location(uint32_t fileId, uint32_t line, uint32_t col)
-        : mData((static_cast<uint64_t>(fileId) << (64 - FileBits)) | (static_cast<uint64_t>(line) << (64 - FileBits - LineBits)) | col)
+        : value((static_cast<uint64_t>(col) << (FileBits + LineBits)) | (static_cast<uint64_t>(line) << (FileBits)) | fileId)
     {
     }
 
@@ -81,20 +82,33 @@ public:
 
     static inline uint32_t insertFile(const Path &path)
     {
+        bool save = false;
+        (void)save;
         assert(!path.contains(".."));
         assert(path.resolved() == path);
-        LOCK();
-        uint32_t &id = sPathsToIds[path];
-        if (!id) {
-            id = ++sLastId;
-            sIdsToPaths[id] = path;
+        uint32_t ret;
+        {
+            LOCK();
+            uint32_t &id = sPathsToIds[path];
+            if (!id) {
+                id = ++sLastId;
+                sIdsToPaths[id] = path;
+                save = true;
+            }
+            ret = id;
         }
-        return id;
+#ifndef RTAGS_SINGLE_THREAD
+        extern void saveFileIds();
+        if (save)
+            saveFileIds();
+#endif
+
+        return ret;
     }
 
-    inline uint32_t fileId() const { return ((mData & FILEID_MASK) >> (64 - FileBits)); }
-    inline uint32_t line() const { return ((mData & LINE_MASK) >> (64 - FileBits - LineBits)); }
-    inline uint32_t column() const { return static_cast<uint32_t>(mData & COLUMN_MASK); }
+    inline uint32_t fileId() const { return static_cast<uint32_t>(value & FILEID_MASK); }
+    inline uint32_t line() const { return static_cast<uint32_t>((value & LINE_MASK) >> FileBits); }
+    inline uint32_t column() const { return static_cast<uint32_t>((value & COLUMN_MASK) >> (FileBits + LineBits)); }
 
     inline Path path() const
     {
@@ -104,9 +118,9 @@ public:
         }
         return mCachedPath;
     }
-    inline bool isNull() const { return !mData; }
-    inline bool isValid() const { return mData; }
-    inline void clear() { mData = 0; mCachedPath.clear(); }
+    inline bool isNull() const { return !value; }
+    inline bool isValid() const { return value; }
+    inline void clear() { value = 0; mCachedPath.clear(); }
     inline bool operator==(const String &str) const
     {
         const Location fromPath = Location::fromPathLineAndColumn(str);
@@ -117,8 +131,8 @@ public:
         const Location fromPath = Location::fromPathLineAndColumn(str);
         return operator!=(fromPath);
     }
-    inline bool operator==(const Location &other) const { return mData == other.mData; }
-    inline bool operator!=(const Location &other) const { return mData != other.mData; }
+    inline bool operator==(const Location &other) const { return value == other.value; }
+    inline bool operator!=(const Location &other) const { return value != other.value; }
     inline int compare(const Location &other) const
     {
         int ret = intCompare(fileId(), other.fileId());
@@ -139,14 +153,15 @@ public:
         return compare(other) > 0;
     }
 
-    String context() const;
-
     enum KeyFlag {
         NoFlag = 0x0,
-        ShowContext = 0x1
+        ShowContext = 0x1,
+        NoColor = 0x2
     };
 
-    String key(unsigned flags = NoFlag) const;
+    String key(Flags<KeyFlag> flags = NoFlag) const;
+    String context(Flags<KeyFlag> flags) const;
+
     static Location decode(const String &data)
     {
         uint32_t col;
@@ -162,14 +177,14 @@ public:
         error("Failed to make location from [%s:%d:%d]", path.constData(), line, col);
         return Location();
     }
-    static String encode(const String &key)
+    static String encode(const String &key, const Path &pwd = Path())
     {
         char path[PATH_MAX];
         uint32_t line, col;
         if (sscanf(key.constData(), "%[^':']:%d:%d", path, &line, &col) != 3)
             return String();
 
-        Path resolved = Path::resolved(path, Path::MakeAbsolute);
+        Path resolved = Path::resolved(path, Path::MakeAbsolute, pwd);
         {
             char buf[8];
             memcpy(buf, &line, sizeof(line));
@@ -180,15 +195,18 @@ public:
         return resolved;
     }
 
-    static Location fromPathLineAndColumn(const String &str)
+    static Location fromPathLineAndColumn(const String &str, const Path &pwd = Path())
     {
         char path[PATH_MAX];
         uint32_t line, col;
         if (sscanf(str.constData(), "%[^':']:%d:%d", path, &line, &col) != 3)
             return Location();
 
-        const Path resolved = Path::resolved(path);
-        return Location(Location::insertFile(resolved), line, col);
+        const Path resolved = Path::resolved(path, Path::RealPath, pwd);
+        const uint32_t fileId = Location::fileId(resolved);
+        if (!fileId)
+            return Location();
+        return Location(fileId, line, col);
     }
     static Hash<uint32_t, Path> idsToPaths()
     {
@@ -244,14 +262,16 @@ private:
     static const uint64_t COLUMN_MASK;
 };
 
-template <> inline int fixedSize(const Location &)
+RCT_FLAGS(Location::KeyFlag);
+
+template <> struct FixedSize<Location>
 {
-    return sizeof(uint64_t);
-}
+    static constexpr size_t value = sizeof(Location::value);
+};
 
 template <> inline Serializer &operator<<(Serializer &s, const Location &t)
 {
-    s.write(reinterpret_cast<const char*>(&t.mData), sizeof(uint64_t));
+    s.write(reinterpret_cast<const char*>(&t.value), sizeof(uint64_t));
     return s;
 }
 

@@ -1,4 +1,4 @@
-/* This file is part of RTags.
+/* This file is part of RTags (http://rtags.net).
 
    RTags is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -13,19 +13,20 @@
    You should have received a copy of the GNU General Public License
    along with RTags.  If not, see <http://www.gnu.org/licenses/>. */
 
+#include "RTagsLogOutput.h"
 #include "CompletionThread.h"
 #include "RTagsClang.h"
 #include "Server.h"
 #include "Token.h"
 
 CompletionThread::CompletionThread(int cacheSize)
-    : mShutdown(false), mCacheSize(cacheSize), mDump(0), mIndex(0), mFirstCache(0), mLastCache(0)
+    : mShutdown(false), mCacheSize(cacheSize), mDump(0), mIndex(0)
 {
 }
 
 CompletionThread::~CompletionThread()
 {
-    Rct::LinkedList::deleteAll(mFirstCache);
+    mCacheList.deleteAll();
 }
 
 void CompletionThread::run()
@@ -61,11 +62,11 @@ void CompletionThread::run()
         if (dump) {
             std::unique_lock<std::mutex> lock(dump->mutex);
             Log out(&dump->string);
-            for (SourceFile *cache = mFirstCache; cache; cache = cache->next) {
+            for (SourceFile *cache = mCacheList.first(); cache; cache = cache->next) {
                 out << cache->source << "\nhash:" << cache->unsavedHash
                     << "lastModified:" << cache->lastModified
                     << "translationUnit:" << cache->translationUnit << "\n";
-                for (Completions *completion = cache->firstCompletion; completion; completion = completion->next) {
+                for (Completions *completion = cache->completionsList.first(); completion; completion = completion->next) {
                     out << "    " << completion->location.key() << "\n";
                     for (const auto &c : completion->candidates) {
                         out << "        " << c.completion << c.signature << c.priority << c.distance
@@ -86,7 +87,8 @@ void CompletionThread::run()
 }
 
 void CompletionThread::completeAt(const Source &source, const Location &location,
-                                  unsigned int flags, const String &unsaved, Connection *conn)
+                                  Flags<Flag> flags, const String &unsaved,
+                                  const std::shared_ptr<Connection> &conn)
 {
     Request *request = new Request({ source, location, flags, unsaved, conn});
     std::unique_lock<std::mutex> lock(mMutex);
@@ -105,7 +107,8 @@ void CompletionThread::completeAt(const Source &source, const Location &location
 
 String CompletionThread::dump()
 {
-    Dump dump = { false };
+    Dump dump;
+    dump.done = false;
     {
         std::unique_lock<std::mutex> lock(mMutex);
         if (mDump)
@@ -215,14 +218,16 @@ void CompletionThread::process(Request *request)
     }
     if (!cache) {
         cache = new SourceFile;
-        Rct::LinkedList::insert(cache, mFirstCache, mLastCache, mLastCache);
+        mCacheList.append(cache);
         while (mCacheMap.size() > mCacheSize) {
-            SourceFile *c = mFirstCache;
-            Rct::LinkedList::remove(c, mFirstCache, mLastCache);
+            SourceFile *c = mCacheList.removeFirst();
             mCacheMap.remove(c->source.fileId);
             delete c;
         }
+    } else {
+        mCacheList.moveToEnd(cache);
     }
+
     if (cache->translationUnit && cache->source != request->source) {
         clang_disposeTranslationUnit(cache->translationUnit);
         cache->translationUnit = 0;
@@ -249,10 +254,9 @@ void CompletionThread::process(Request *request)
 
     if (!cache->translationUnit) {
         cache->completionsMap.clear();
-        Rct::LinkedList::deleteAll(cache->firstCompletion);
-        cache->firstCompletion = cache->lastCompletion = 0;
+        cache->completionsList.deleteAll();
         sw.restart();
-        unsigned int flags = clang_defaultEditingTranslationUnitOptions();
+        Flags<CXTranslationUnit_Flags> flags = static_cast<CXTranslationUnit_Flags>(clang_defaultEditingTranslationUnitOptions());
         flags |= CXTranslationUnit_PrecompiledPreamble;
         flags |= CXTranslationUnit_CacheCompletionResults;
         flags |= CXTranslationUnit_SkipFunctionBodies;
@@ -282,14 +286,13 @@ void CompletionThread::process(Request *request)
         cache->lastModified = lastModified;
     } else if (cache->unsavedHash != hash || cache->lastModified != lastModified) {
         cache->completionsMap.clear();
-        Rct::LinkedList::deleteAll(cache->firstCompletion);
-        cache->firstCompletion = cache->lastCompletion = 0;
+        cache->completionsList.deleteAll();
         cache->unsavedHash = hash;
         cache->lastModified = lastModified;
     } else if (!(request->flags & Refresh)) {
         const auto it = cache->completionsMap.find(request->location);
         if (it != cache->completionsMap.end()) {
-            Rct::LinkedList::moveToEnd(it->second, cache->firstCompletion, cache->lastCompletion);
+            cache->completionsList.moveToEnd(it->second);
             error("Found completions (%d) in cache %s:%d:%d",
                   it->second->candidates.size(), sourceFile.constData(),
                   request->location.line(), request->location.column());
@@ -315,7 +318,7 @@ void CompletionThread::process(Request *request)
             //     error() << String(it->first.data, it->first.length) << it->second;
             // }
         }
-        for (unsigned i = 0; i < results->NumResults; ++i) {
+        for (unsigned int i = 0; i < results->NumResults; ++i) {
             const CXCursorKind kind = results->Results[i].CursorKind;
             if (kind == CXCursor_Destructor)
                 continue;
@@ -368,14 +371,13 @@ void CompletionThread::process(Request *request)
             qsort(nodes, nodeCount, sizeof(Completions::Candidate), compareCompletionCandidates);
             Completions *&c = cache->completionsMap[request->location];
             if (c) {
-                Rct::LinkedList::moveToEnd(c, cache->firstCompletion, cache->lastCompletion);
+                cache->completionsList.moveToEnd(c);
             } else {
                 enum { MaxCompletionCache = 10 }; // ### configurable?
                 c = new Completions(request->location);
-                Rct::LinkedList::insert(c, cache->firstCompletion, cache->lastCompletion, cache->lastCompletion);
+                cache->completionsList.append(c);
                 while (cache->completionsMap.size() > MaxCompletionCache) {
-                    Completions *cc = cache->firstCompletion;
-                    Rct::LinkedList::remove(cc, cache->firstCompletion, cache->lastCompletion);
+                    Completions *cc = cache->completionsList.takeFirst();
                     cache->completionsMap.remove(cc->location);
                     delete cc;
                 }
@@ -389,61 +391,107 @@ void CompletionThread::process(Request *request)
                   sourceFile.constData(), parseTime, reparseTime, completeTime, processTime, nodeCount, request->unsaved.size());
             delete[] nodes;
         } else {
+            printCompletions(List<Completions::Candidate>(), request);
             error() << "No completion results available" << request->location << results->NumResults;
         }
         clang_disposeCodeCompleteResults(results);
     }
 }
 
+struct Output
+{
+    void send(const String &string)
+    {
+        if (connection) {
+            connection->write(string);
+            connection->finish();
+        } else {
+            output->log(string.constData(), string.size());
+        }
+    }
+    std::shared_ptr<LogOutput> output;
+    std::shared_ptr<Connection> connection;
+    bool xml;
+};
+
 void CompletionThread::printCompletions(const List<Completions::Candidate> &completions, Request *request)
 {
     static List<String> cursorKindNames;
     // error() << request->flags << testLog(RTags::CompilationErrorXml) << completions.size() << request->conn;
-    const bool doLog = testLog(RTags::CompilationErrorXml);
-    if (!(request->flags & Refresh) && (doLog || request->conn) && !completions.isEmpty()) {
-        // Does this need to be called in the main thread?
-        String out;
-        out.reserve(16384);
-        if (doLog)
-            log(RTags::CompilationErrorXml, "<?xml version=\"1.0\" encoding=\"utf-8\"?><completions location=\"%s\"><![CDATA[",
-                request->location.key().constData());
+    List<std::shared_ptr<Output> > outputs;
+    bool xml = false;
+    bool elisp = false;
+    if (request->conn) {
+        std::shared_ptr<Output> output(new Output);
+        output->connection = request->conn;
+        output->xml = !(request->flags & Elisp);
+        outputs.append(output);
+        if (request->flags & Elisp) {
+            elisp = true;
+        } else {
+            xml = true;
+        }
+        request->conn.reset();
+    }
+    log([&xml, &elisp, &outputs](const std::shared_ptr<LogOutput> &output) {
+            // error() << "Got a dude" << output->testLog(RTags::CompilationErrorXml);
+            if (output->testLog(RTags::CompilationErrorXml)) {
+                std::shared_ptr<Output> out(new Output);
+                out->output = output;
+                if (output->flags() & RTagsLogOutput::ElispList) {
+                    out->xml = false;
+                    elisp = true;
+                } else {
+                    out->xml = true;
+                    xml = true;
+                }
+                outputs.append(out);
+            }
+        });
 
-        if (request->flags & Elisp)
-            out += "'(";
+    if (!(request->flags & Refresh) && !outputs.isEmpty()) {
+        String xmlOut, elispOut;
+        if (xml) {
+            xmlOut.reserve(16384);
+            xmlOut << String::format<128>("<?xml version=\"1.0\" encoding=\"utf-8\"?><completions location=\"%s\"><![CDATA[",
+                                          request->location.key().constData());
+        }
+        if (elisp) {
+            elispOut.reserve(16384);
+            elispOut += String::format<256>("(list 'completions (list \"%s\" (list", request->location.key().constData());
+        }
         for (const auto &val : completions) {
             if (val.cursorKind >= cursorKindNames.size())
                 cursorKindNames.resize(val.cursorKind + 1);
             String &kind = cursorKindNames[val.cursorKind];
             if (kind.isEmpty())
                 kind = RTags::eatString(clang_getCursorKindSpelling(val.cursorKind));
-            if (request->flags & Elisp) {
-                out += String::format<128>("(\"%s\" \"%s\" \"%s\")",
-                                           val.completion.constData(),
-                                           val.signature.constData(),
-                                           kind.constData());
-            } else {
-                out += String::format<128>("%s %s %s\n",
-                                           val.completion.constData(),
-                                           val.signature.constData(),
-                                           kind.constData());
+            if (xml) {
+                xmlOut += String::format<128>(" %s %s %s\n",
+                                              val.completion.constData(),
+                                              val.signature.constData(),
+                                              kind.constData());
+            }
+            if (elisp) {
+                elispOut += String::format<128>(" (list \"%s\" \"%s\" \"%s\")",
+                                                val.completion.constData(),
+                                                val.signature.constData(),
+                                                kind.constData());
             }
         }
-        if (request->flags & Elisp)
-            out += ")";
+        if (elisp)
+            elispOut += ")))";
+        if (xml)
+            xmlOut += "]]></completions>\n";
 
-        if (doLog) {
-            logDirect(RTags::CompilationErrorXml, out);
-            logDirect(RTags::CompilationErrorXml, "]]></completions>\n");
-        }
-        if (request->conn) {
-            Connection *conn = request->conn;
-            request->conn = 0;
-            EventLoop::mainEventLoop()->callLater([conn, out]() {
-                    // ### need to make sure this connection doesn't go away,
-                    // probably need to disconnect something
-                    conn->write(out);
-                    conn->finish();
-                });
-        }
+        EventLoop::mainEventLoop()->callLater([outputs, xmlOut, elispOut]() {
+                for (auto &it : outputs) {
+                    if (it->xml) {
+                        it->send(xmlOut);
+                    } else {
+                        it->send(elispOut);
+                    }
+                }
+            });
     }
 }

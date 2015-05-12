@@ -1,4 +1,4 @@
-/* This file is part of RTags.
+/* This file is part of RTags (http://rtags.net).
 
 RTags is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -17,23 +17,33 @@ along with RTags.  If not, see <http://www.gnu.org/licenses/>. */
 #define RTags_h
 
 #include "rct-config.h"
-#include <rct/String.h>
-#include "Location.h"
-#include <rct/Log.h>
 #include "FixIt.h"
-#include <rct/Path.h>
+#include "Location.h"
 #include "Source.h"
+#include "Symbol.h"
 #include <assert.h>
 #include <getopt.h>
+#include <rct/Log.h>
+#include <rct/Path.h>
+#include <rct/String.h>
 #include <stdio.h>
 #include <typeinfo>
+#include <rct/Flags.h>
 
 class Database;
 class Project;
 namespace RTags {
 
-enum { DatabaseVersion = 49 };
-enum { ASTManifestVersion = 1 };
+enum {
+    MajorVersion = 2,
+    MinorVersion = 0,
+    DatabaseVersion = 67
+};
+
+inline String versionString()
+{
+    return String::format<64>("%d.%d.%d", MajorVersion, MinorVersion, DatabaseVersion);
+}
 
 enum {
     CompilationError = -1,
@@ -46,31 +56,27 @@ enum UnitType {
     CompileCPlusPlus
 };
 enum CursorType {
-    Include,
-    Cursor,
-    Reference,
-    Other
+    Type_Include,
+    Type_Cursor,
+    Type_Reference,
+    Type_Other
 };
 void initMessages();
 }
 
-class CursorInfo;
-typedef Map<Location, std::shared_ptr<CursorInfo> > SymbolMap;
-typedef Hash<uint32_t, SymbolMap> ErrorSymbolMap;
-typedef Hash<String, Set<Location> > UsrMap;
-typedef Map<Location, Set<Location> > ReferenceMap;
-typedef Map<String, Set<Location> > SymbolNameMap;
-typedef Hash<uint32_t, Set<uint32_t> > DependencyMap;
-typedef Map<uint64_t, Source> SourceMap;
-typedef Map<Path, Set<String> > FilesMap;
-typedef Hash<uint32_t, Set<FixIt> > FixItMap;
-typedef Hash<uint32_t, List<String> > DiagnosticsMap;
+struct Diagnostic;
+typedef Map<Location, Diagnostic> Diagnostics;
+struct DependencyNode;
+typedef List<std::pair<uint32_t, uint32_t> > Includes;
+typedef Hash<uint32_t, DependencyNode*> Dependencies;
+typedef Hash<String, Set<uint32_t> > Declarations;
+typedef Map<uint64_t, Source> Sources;
+typedef Map<Path, Set<String> > Files;
+typedef Hash<uint32_t, Set<FixIt> > FixIts;
 typedef Hash<Path, String> UnsavedFiles;
 
 namespace RTags {
-void dirtySymbolNames(SymbolNameMap &map, const Set<uint32_t> &dirty);
-void dirtySymbols(SymbolMap &map, const Set<uint32_t> &dirty);
-void dirtyUsr(UsrMap &map, const Set<uint32_t> &dirty);
+Path encodeSourceFilePath(const Path &dataDir, const Path &project, uint32_t fileId = 0);
 
 template <typename Container, typename Value>
 inline bool addTo(Container &container, const Value &value)
@@ -83,6 +89,23 @@ inline bool addTo(Container &container, const Value &value)
 static inline bool isSymbol(char ch)
 {
     return (isalnum(ch) || ch == '_' || ch == '~');
+}
+
+static inline bool isFunctionVariable(const String &entry)
+{
+    assert(entry.contains('('));
+    const int endParen = entry.lastIndexOf(')');
+    if (endParen != -1) {
+        const char *p = entry.constData() + endParen;
+        if (*++p == ':' && *++p == ':') {
+            while (*++p) {
+                if (!RTags::isSymbol(*p))
+                    return false;
+            }
+            return true;
+        }
+    }
+    return false;
 }
 
 static inline bool isOperator(char ch)
@@ -198,8 +221,63 @@ enum FindAncestorFlag {
     Shallow = 0x1,
     Wildcard = 0x2
 };
-Path findAncestor(Path path, const char *fn, unsigned flags);
+RCT_FLAGS(FindAncestorFlag);
+Path findAncestor(Path path, const char *fn, Flags<FindAncestorFlag> flags);
 Map<String, String> rtagsConfig(const Path &path);
+
+enum { DefinitionBit = 0x1000 };
+inline CXCursorKind targetsValueKind(uint16_t val)
+{
+    return static_cast<CXCursorKind>(val & ~DefinitionBit);
+}
+inline bool targetsValueIsDefinition(uint16_t val)
+{
+    return val & DefinitionBit;
+}
+inline uint16_t createTargetsValue(CXCursorKind kind, bool definition)
+{
+    return (kind | (definition ? DefinitionBit : 0));
+}
+inline uint16_t createTargetsValue(const CXCursor &cursor)
+{
+    return createTargetsValue(clang_getCursorKind(cursor), clang_isCursorDefinition(cursor));
+}
+inline int targetRank(CXCursorKind kind)
+{
+    switch (kind) {
+    case CXCursor_Constructor: // this one should be more than class/struct decl
+        return 1;
+    case CXCursor_ClassDecl:
+    case CXCursor_StructDecl:
+    case CXCursor_ClassTemplate:
+        return 0;
+    case CXCursor_FieldDecl:
+    case CXCursor_VarDecl:
+    case CXCursor_FunctionDecl:
+    case CXCursor_CXXMethod:
+        // functiondecl and cxx method must be more than cxx
+        // CXCursor_FunctionTemplate. Since constructors for templatatized
+        // objects seem to come out as function templates
+        return 3;
+    case CXCursor_MacroDefinition:
+        return 4;
+    default:
+        return 2;
+    }
+}
+inline Symbol bestTarget(const Set<Symbol> &targets)
+{
+    Symbol ret;
+    int bestRank = -1;
+    for (auto t : targets) {
+        const int rank = targetRank(t.kind);
+        if (rank > bestRank || (rank == bestRank && t.isDefinition())) {
+            ret = t;
+            bestRank = rank;
+        }
+    }
+    return ret;
+}
 }
 
 #endif

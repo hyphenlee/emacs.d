@@ -1,4 +1,4 @@
-/* This file is part of RTags.
+/* This file is part of RTags (http://rtags.net).
 
 RTags is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@ You should have received a copy of the GNU General Public License
 along with RTags.  If not, see <http://www.gnu.org/licenses/>. */
 
 #include "JSONJob.h"
-#include "CursorInfo.h"
+#include "SymbolInfo.h"
 #include "Project.h"
 #include "RTags.h"
 #include "Server.h"
@@ -39,13 +39,13 @@ void JSONJob::execute()
 {
     std::shared_ptr<Project> proj = project();
     const Path root = proj->path();
-    const DependencyMap deps = proj->dependencies();
+    const Dependencies deps = proj->dependencies();
     // error() << deps.keys();
     assert(proj);
     const SymbolMap &map = proj->symbols();
     write("{");
     bool firstObject = true;
-    for (DependencyMap::const_iterator it = deps.begin(); it != deps.end(); ++it) {
+    for (Dependencies::const_iterator it = deps.begin(); it != deps.end(); ++it) {
         const Path path = Location::path(it->first);
         if (path.startsWith(root) && (match.isEmpty() || match.match(path))) {
             const Location loc(it->first, 0);
@@ -60,7 +60,7 @@ void JSONJob::execute()
             SymbolMap::const_iterator sit = map.lower_bound(loc);
             while (sit != map.end() && sit->first.fileId() == it->first) {
                 Location targetLocation;
-                CursorInfo target = sit->second.bestTarget(map, 0, &targetLocation);
+                SymbolInfo target = sit->second.bestTarget(map, 0, &targetLocation);
                 const String type = sit->second.kindSpelling();
                 if (firstSymbol) {
                     firstSymbol = false;

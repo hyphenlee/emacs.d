@@ -1,4 +1,4 @@
-/* This file is part of RTags.
+/* This file is part of RTags (http://rtags.net).
 
 RTags is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -14,25 +14,28 @@ You should have received a copy of the GNU General Public License
 along with RTags.  If not, see <http://www.gnu.org/licenses/>. */
 
 #include "StatusJob.h"
-#include "CursorInfo.h"
 #include "RTags.h"
 #include "Server.h"
 #include <clang-c/Index.h>
 #include "Project.h"
 #include "CompilerManager.h"
+#include "JobScheduler.h"
 
 const char *StatusJob::delimiter = "*********************************";
 StatusJob::StatusJob(const std::shared_ptr<QueryMessage> &q, const std::shared_ptr<Project> &project)
-    : QueryJob(q, WriteUnfiltered|QuietJob, project), query(q->query())
+    : QueryJob(q, project, WriteUnfiltered|QuietJob), query(q->query())
 {
 }
 
 int StatusJob::execute()
 {
+    auto match = [this](const char *name) {
+        return !strncasecmp(query.constData(), name, query.size());
+    };
     bool matched = false;
-    const char *alternatives = "fileids|watchedpaths|dependencies|symbols|symbolnames|sources|jobs|info|compilers";
+    const char *alternatives = "fileids|watchedpaths|dependencies|cursors|symbols|targets|symbolnames|sources|jobs|info|compilers|declarations|headererrors";
 
-    if (!strcasecmp(query.constData(), "fileids")) {
+    if (match("fileids")) {
         matched = true;
         if (!write(delimiter) || !write("fileids") || !write(delimiter))
             return 1;
@@ -45,6 +48,47 @@ int StatusJob::execute()
             return 1;
     }
 
+    if (match("headererrors")) {
+        matched = true;
+        if (!write(delimiter) || !write("headererrors") || !write(delimiter))
+            return 1;
+        for (auto err : Server::instance()->jobScheduler()->headerErrors()) {
+            if (!write(Location::path(err)))
+                return 1;
+        }
+        if (isAborted())
+            return 1;
+    }
+
+    if (query.isEmpty() || match("info")) {
+        matched = true;
+        if (!write(delimiter) || !write("info") || !write(delimiter))
+            return 1;
+        String out;
+        Log log(&out);
+#ifdef NDEBUG
+        out << "Running a release build\n";
+#else
+        out << "Running a debug build\n";
+#endif
+        const Server::Options &opt = Server::instance()->options();
+        out << "socketFile" << opt.socketFile << '\n'
+            << "dataDir" << opt.dataDir << '\n'
+            << "options" << opt.options
+            << "jobCount" << opt.jobCount << '\n'
+            << "rpVisitFileTimeout" << opt.rpVisitFileTimeout << '\n'
+            << "rpIndexDataMessageTimeout" << opt.rpIndexDataMessageTimeout << '\n'
+            << "rpConnectTimeout" << opt.rpConnectTimeout << '\n'
+            << "rpConnectTimeout" << opt.rpConnectTimeout << '\n'
+            << "threadStackSize" << opt.threadStackSize << '\n'
+            << "defaultArguments" << opt.defaultArguments << '\n'
+            << "includePaths" << opt.includePaths << '\n'
+            << "defines" << opt.defines << '\n'
+            << "ignoredCompilers" << opt.ignoredCompilers;
+        write(out);
+    }
+
+
     std::shared_ptr<Project> proj = project();
     if (!proj) {
         if (!matched)
@@ -52,7 +96,7 @@ int StatusJob::execute()
         return matched ? 0 : 1;
     }
 
-    if (query.isEmpty() || !strcasecmp(query.constData(), "watchedpaths")) {
+    if (query.isEmpty() || match("watchedpaths")) {
         matched = true;
         if (!write(delimiter) || !write("watchedpaths") || !write(delimiter))
             return 1;
@@ -76,91 +120,110 @@ int StatusJob::execute()
             return 1;
     }
 
-    if (query.isEmpty() || !strcasecmp(query.constData(), "dependencies")) {
+    const Dependencies &deps = proj->dependencies();
+    if (query.isEmpty() || match("dependencies")) {
         matched = true;
-        const DependencyMap map = proj->dependencies();
         if (!write(delimiter) || !write("dependencies") || !write(delimiter))
             return 1;
-        DependencyMap depsReversed;
 
-        for (DependencyMap::const_iterator it = map.begin(); it != map.end(); ++it) {
-            if (!write<256>("  %s (%d) is depended on by", Location::path(it->first).constData(), it->first))
-                return 1;
-            const Set<uint32_t> &deps = it->second;
-            for (Set<uint32_t>::const_iterator dit = deps.begin(); dit != deps.end(); ++dit) {
-                if (!write<256>("    %s (%d)", Location::path(*dit).constData(), *dit))
-                    return 1;
-                depsReversed[*dit].insert(it->first);
-            }
-            if (isAborted())
-                return 1;
+        for (auto it : deps) {
+            write(proj->dumpDependencies(it.first));
         }
-        for (DependencyMap::const_iterator it = depsReversed.begin(); it != depsReversed.end(); ++it) {
-            write<256>("  %s (%d) depends on", Location::path(it->first).constData(), it->first);
-            const Set<uint32_t> &deps = it->second;
-            for (Set<uint32_t>::const_iterator dit = deps.begin(); dit != deps.end(); ++dit) {
-                if (!write<256>("    %s (%d)", Location::path(*dit).constData(), *dit))
-                    return 1;
-            }
-            if (isAborted())
-                return 1;
-        }
+        if (isAborted())
+            return 1;
     }
 
-    if (query.isEmpty() || !strcasecmp(query.constData(), "symbols")) {
+    if (query.isEmpty() || match("symbols") || match("cursors")) {
         matched = true;
-        const SymbolMap &map = proj->symbols();
         write(delimiter);
         write("symbols");
         write(delimiter);
-        for (SymbolMap::const_iterator it = map.begin(); it != map.end(); ++it) {
-            const Location loc = it->first;
-            const std::shared_ptr<CursorInfo> ci = it->second;
-            write(loc);
-            write(ci);
-            write("------------------------");
-            if (isAborted())
-                return 1;
+
+        for (const auto &dep : deps) {
+            auto symbols = proj->openSymbols(dep.first);
+            if (!symbols)
+                continue;
+            const int count = symbols->count();
+            for (int i=0; i<count; ++i) {
+                const Location loc = symbols->keyAt(i);
+                const Symbol c = symbols->valueAt(i);
+                write(loc);
+                write(c);
+                write("------------------------");
+                if (isAborted())
+                    return 1;
+            }
         }
     }
 
-    if (query.isEmpty() || !strcasecmp(query.constData(), "symbolnames")) {
+    if (query.isEmpty() || match("targets")) {
         matched = true;
-        const SymbolNameMap &map = proj->symbolNames();
+        write(delimiter);
+        write("targets");
+        write(delimiter);
+        for (const auto &dep : deps) {
+            auto targets = proj->openTargets(dep.first);
+            if (!targets)
+                continue;
+            const int count = targets->count();
+            for (int i=0; i<count; ++i) {
+                const String usr = targets->keyAt(i);
+                write<128>("  %s", usr.constData());
+                for (const auto &t : proj->findByUsr(usr, dep.first, Project::ArgDependsOn)) {
+                    write<1024>("      %s\t%s", t.location.key(keyFlags()).constData(),
+                                t.kindSpelling().constData());
+                }
+                for (const auto &location : targets->valueAt(i)) {
+                    write<1024>("    %s", location.key(keyFlags()).constData());
+                }
+                write("------------------------");
+                if (isAborted())
+                    return 1;
+            }
+        }
+    }
+
+    if (query.isEmpty() || match("symbolnames")) {
+        matched = true;
         write(delimiter);
         write("symbolnames");
         write(delimiter);
-        for (SymbolNameMap::const_iterator it = map.begin(); it != map.end(); ++it) {
-            write<128>("  %s", it->first.constData());
-            const Set<Location> &locations = it->second;
-            for (Set<Location>::const_iterator lit = locations.begin(); lit != locations.end(); ++lit) {
-                const Location &loc = *lit;
-                write<1024>("    %s", loc.key().constData());
+        for (const auto &dep : deps) {
+            auto symNames = proj->openSymbolNames(dep.first);
+            if (!symNames)
+                continue;
+            const int count = symNames->count();
+            for (int i=0; i<count; ++i) {
+                write<128>("  %s", symNames->keyAt(i).constData());
+                for (const Location &loc : symNames->valueAt(i)) {
+                    write<1024>("    %s", loc.key().constData());
+                }
+                write("------------------------");
+                if (isAborted())
+                    return 1;
             }
-            if (isAborted())
-                return 1;
         }
     }
 
-    if (query.isEmpty() || !strcasecmp(query.constData(), "sources")) {
+    if (query.isEmpty() || match("sources")) {
         matched = true;
-        const SourceMap &map = proj->sources();
+        const Sources &map = proj->sources();
         if (!write(delimiter) || !write("sources") || !write(delimiter))
             return 1;
-        for (SourceMap::const_iterator it = map.begin(); it != map.end(); ++it) {
+        for (Sources::const_iterator it = map.begin(); it != map.end(); ++it) {
             if (!write<512>("  %s: %s", it->second.sourceFile().constData(), it->second.toString().constData()))
                 return 1;
         }
     }
 
-    if (query.isEmpty() || !strcasecmp(query.constData(), "jobs")) {
+    if (query.isEmpty() || match("jobs")) {
         matched = true;
         if (!write(delimiter) || !write("jobs") || !write(delimiter))
             return 1;
         Server::instance()->dumpJobs(connection());
     }
 
-    if (query.isEmpty() || !strcasecmp(query.constData(), "compilers")) {
+    if (query.isEmpty() || match("compilers")) {
         matched = true;
         if (!write(delimiter) || !write("compilers") || !write(delimiter))
             return 1;
@@ -181,34 +244,14 @@ int StatusJob::execute()
         }
     }
 
-    if (query.isEmpty() || !strcasecmp(query.constData(), "info")) {
+    if (query.isEmpty() || match("declarations")) {
+        for (const auto &it : proj->declarations()) {
+            write(it.first);
+            for (uint32_t file : it.second) {
+                write<128>("  %s", Location::path(file).constData());
+            }
+        }
         matched = true;
-        if (!write(delimiter) || !write("info") || !write(delimiter))
-            return 1;
-        String out;
-        Log log(&out);
-#ifdef NDEBUG
-        out << "Running a release build\n";
-#else
-        out << "Running a debug build\n";
-#endif
-        const Server::Options &opt = Server::instance()->options();
-        out << "socketFile" << opt.socketFile << '\n'
-            << "dataDir" << opt.dataDir << '\n'
-            << "options" << String::format("0x%x\n", opt.options)
-            << "jobCount" << opt.jobCount << '\n'
-            << "unloadTimer" << opt.unloadTimer << '\n'
-            << "rpVisitFileTimeout" << opt.rpVisitFileTimeout << '\n'
-            << "rpIndexerMessageTimeout" << opt.rpIndexerMessageTimeout << '\n'
-            << "rpConnectTimeout" << opt.rpConnectTimeout << '\n'
-            << "rpConnectTimeout" << opt.rpConnectTimeout << '\n'
-            << "syncThreshold" << opt.syncThreshold << '\n'
-            << "threadStackSize" << opt.threadStackSize << '\n'
-            << "defaultArguments" << opt.defaultArguments << '\n'
-            << "includePaths" << opt.includePaths << '\n'
-            << "defines" << opt.defines << '\n'
-            << "ignoredCompilers" << opt.ignoredCompilers;
-        write(out);
     }
 
     if (!matched) {

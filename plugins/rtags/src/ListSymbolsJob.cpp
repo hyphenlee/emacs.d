@@ -1,17 +1,17 @@
-/* This file is part of RTags.
+/* This file is part of RTags (http://rtags.net).
 
-RTags is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+   RTags is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
 
-RTags is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+   RTags is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License
-along with RTags.  If not, see <http://www.gnu.org/licenses/>. */
+   You should have received a copy of the GNU General Public License
+   along with RTags.  If not, see <http://www.gnu.org/licenses/>. */
 
 #include "ListSymbolsJob.h"
 #include "Server.h"
@@ -19,14 +19,11 @@ along with RTags.  If not, see <http://www.gnu.org/licenses/>. */
 #include <rct/Log.h>
 #include "RTags.h"
 
-enum {
-    DefaultFlags = QueryJob::WriteUnfiltered|QueryJob::QuietJob,
-    ElispFlags = DefaultFlags|QueryJob::QuoteOutput
-};
-
+const Flags<QueryJob::JobFlag> defaultFlags = (QueryJob::WriteUnfiltered | QueryJob::QuietJob);
+const Flags<QueryJob::JobFlag> elispFlags = (defaultFlags | QueryJob::QuoteOutput);
 
 ListSymbolsJob::ListSymbolsJob(const std::shared_ptr<QueryMessage> &query, const std::shared_ptr<Project> &proj)
-    : QueryJob(query, query->flags() & QueryMessage::ElispList ? ElispFlags : DefaultFlags, proj),
+    : QueryJob(query, proj, query->flags() & QueryMessage::ElispList ? elispFlags : defaultFlags),
       string(query->query())
 {
 }
@@ -38,7 +35,8 @@ int ListSymbolsJob::execute()
     if (proj) {
         if (queryFlags() & QueryMessage::IMenu) {
             out = imenu(proj);
-        } else {
+        }
+        else {
             out = listSymbols(proj);
         }
     }
@@ -46,20 +44,22 @@ int ListSymbolsJob::execute()
     const bool elispList = queryFlags() & QueryMessage::ElispList;
 
     if (elispList) {
-        write("(list", IgnoreMax|DontQuote);
+        write("(list", IgnoreMax | DontQuote);
         for (Set<String>::const_iterator it = out.begin(); it != out.end(); ++it) {
             write(*it);
         }
-        write(")", IgnoreMax|DontQuote);
-    } else {
+        write(")", IgnoreMax | DontQuote);
+    }
+    else {
         List<String> sorted = out.toList();
         if (queryFlags() & QueryMessage::ReverseSort) {
             std::sort(sorted.begin(), sorted.end(), std::greater<String>());
-        } else {
+        }
+        else {
             std::sort(sorted.begin(), sorted.end());
         }
         const int count = sorted.size();
-        for (int i=0; i<count; ++i) {
+        for (int i = 0; i < count; ++i) {
             write(sorted.at(i));
         }
     }
@@ -69,8 +69,6 @@ int ListSymbolsJob::execute()
 Set<String> ListSymbolsJob::imenu(const std::shared_ptr<Project> &project)
 {
     Set<String> out;
-
-    const SymbolMap &map = project->symbols();
     const List<String> paths = pathFilters();
     if (paths.isEmpty()) {
         error() << "--imenu must take path filters";
@@ -86,12 +84,15 @@ Set<String> ListSymbolsJob::imenu(const std::shared_ptr<Project> &project)
         const uint32_t fileId = Location::fileId(file);
         if (!fileId)
             continue;
-        for (SymbolMap::const_iterator it = map.lower_bound(Location(fileId, 1, 0));
-             it != map.end() && it->first.fileId() == fileId; ++it) {
-            const std::shared_ptr<CursorInfo> &cursorInfo = it->second;
-            if (RTags::isReference(cursorInfo->kind))
+        auto symbols = project->openSymbols(fileId);
+        if (!symbols)
+            continue;
+        const int count = symbols->count();
+        for (int j=0; j<count; ++j) {
+            const Symbol &symbol = symbols->valueAt(j);
+            if (RTags::isReference(symbol.kind))
                 continue;
-            switch (cursorInfo->kind) {
+            switch (symbol.kind) {
             case CXCursor_VarDecl:
             case CXCursor_ParmDecl:
             case CXCursor_InclusionDirective:
@@ -100,11 +101,11 @@ Set<String> ListSymbolsJob::imenu(const std::shared_ptr<Project> &project)
             case CXCursor_ClassDecl:
             case CXCursor_StructDecl:
             case CXCursor_ClassTemplate:
-                if (!cursorInfo->isDefinition())
+                if (!symbol.isDefinition())
                     break;
                 // fall through
             default: {
-                const String &symbolName = it->second->symbolName;
+                const String &symbolName = symbol.symbolName;
                 if (!string.isEmpty() && !symbolName.contains(string))
                     continue;
                 out.insert(symbolName);
@@ -117,71 +118,38 @@ Set<String> ListSymbolsJob::imenu(const std::shared_ptr<Project> &project)
 
 Set<String> ListSymbolsJob::listSymbols(const std::shared_ptr<Project> &project)
 {
-    Set<String> out;
     const bool hasFilter = QueryJob::hasFilter();
     const bool stripParentheses = queryFlags() & QueryMessage::StripParentheses;
-    const bool wildcard = queryFlags() & QueryMessage::WildcardSymbolNames && (string.contains('*') || string.contains('?'));
-    const bool caseInsensitive = queryFlags() & QueryMessage::MatchCaseInsensitive;
-    const String::CaseSensitivity cs = caseInsensitive ? String::CaseInsensitive : String::CaseSensitive;
-    String lowerBound;
-    // error() << "SHOBA" << wildcard << string;
-    if (wildcard) {
-        if (!string.endsWith('*'))
-            string.append('*');
-        if (!caseInsensitive) {
-            for (int i=0; i<string.size(); ++i) {
-                if (string.at(i) == '?' || string.at(i) == '*') {
-                    lowerBound = string.left(i);
-                    break;
-                }
-            }
-        }
-    } else if (!caseInsensitive) {
-        lowerBound = string;
-    }
-
-    const SymbolNameMap &map = project->symbolNames();
-    SymbolNameMap::const_iterator it = string.isEmpty() || caseInsensitive ? map.begin() : map.lower_bound(lowerBound);
-    int count = 0;
-    while (it != map.end()) {
-        const String &entry = it->first;
-        ++it;
-        if (!string.isEmpty()) {
-            if (wildcard) {
-                if (!Rct::wildCmp(string.constData(), entry.constData(), cs)) {
-                    continue;
-                }
-            } else if (!entry.startsWith(string, cs)) {
-                if (!caseInsensitive) {
-                    break;
-                } else {
-                    continue;
-                }
-            }
-        }
-        bool ok = true;
+    Set<String> out;
+    auto inserter = [this, hasFilter, stripParentheses, &out](Project::SymbolMatchType,
+                                                              const String &string,
+                                                              const Set<Location> &locations) {
         if (hasFilter) {
-            ok = false;
-            const Set<Location> &locations = it->second;
-            for (Set<Location>::const_iterator i = locations.begin(); i != locations.end(); ++i) {
-                if (filter(i->path())) {
+            bool ok = false;
+            for (const auto &l : locations) {
+                if (filter(l.path())) {
                     ok = true;
                     break;
                 }
             }
+            if (!ok)
+                return;
         }
-        if (ok) {
-            const int paren = entry.indexOf('(');
-            if (paren == -1) {
-                out.insert(entry);
-            } else {
-                out.insert(entry.left(paren));
-                if (!stripParentheses)
-                    out.insert(entry);
-            }
+        const int paren = string.indexOf('(');
+        if (paren == -1) {
+            out.insert(string);
+        } else {
+            if (!RTags::isFunctionVariable(string))
+                out.insert(string.left(paren));
+            if (!stripParentheses)
+                out.insert(string);
         }
-        if (!(++count % 100) && isAborted())
-            break;
-    }
+    };
+    if (queryFlags() & QueryMessage::WildcardSymbolNames
+        && (string.contains('*') || string.contains('?'))
+        && !string.endsWith('*'))
+        string += '*';
+
+    project->findSymbols(string, inserter, queryFlags());
     return out;
 }

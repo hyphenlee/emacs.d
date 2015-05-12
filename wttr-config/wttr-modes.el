@@ -49,6 +49,7 @@
            "helm.el"
            "cc.el"
            "rtags.el"
-           "org.el")))
-
+           "org.el"
+           ;; "ibus.el"
+           )))
 (provide 'wttr-modes)

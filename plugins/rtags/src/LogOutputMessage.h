@@ -1,4 +1,4 @@
-/* This file is part of RTags.
+/* This file is part of RTags (http://rtags.net).
 
 RTags is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -24,14 +24,26 @@ class LogOutputMessage : public RTagsMessage
 public:
     enum { MessageId = LogOutputId };
 
-    LogOutputMessage(int level = 0);
+    LogOutputMessage(int level = 0, unsigned int flags = 0)
+        : RTagsMessage(MessageId), mLevel(level), mFlags(flags)
+    {
+    }
 
-    int level() const;
+    int level() const { return mLevel; }
+    unsigned int flags() const { return mFlags; }
 
-    virtual void encode(Serializer &serializer) const;
-    virtual void decode(Deserializer &deserializer);
+    void encode(Serializer &serializer) const
+    {
+        serializer << mRaw << mLevel << mFlags;
+    }
+
+    void decode(Deserializer &deserializer)
+    {
+        deserializer >> mRaw >> mLevel >> mFlags;
+    }
 private:
     int mLevel;
+    unsigned int mFlags;
 };
 
 #endif

@@ -1,4 +1,4 @@
-/* This file is part of RTags.
+/* This file is part of RTags (http://rtags.net).
 
 RTags is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -35,6 +35,9 @@ void FileManager::init(const std::shared_ptr<Project> &proj, Mode mode)
 
 void FileManager::reload(Mode mode)
 {
+    if (!Server::instance()->options().tests.isEmpty())
+        mode = Synchronous;
+
     mLastReloadTime = Rct::monoMs();
     std::shared_ptr<Project> project = mProject.lock();
     assert(project);
@@ -51,8 +54,9 @@ void FileManager::onRecurseJobFinished(const Set<Path> &paths)
     std::lock_guard<std::mutex> lock(mMutex); // ### is this needed now?
 
     std::shared_ptr<Project> project = mProject.lock();
-    assert(project);
-    FilesMap &map = project->files();
+    if (!project)
+        return;
+    Files &map = project->files();
     map.clear();
     mWatcher.clear();
     for (Set<Path>::const_iterator it = paths.begin(); it != paths.end(); ++it) {
@@ -90,7 +94,7 @@ void FileManager::onFileAdded(const Path &path)
 
     std::shared_ptr<Project> project = mProject.lock();
     assert(project);
-    FilesMap &map = project->files();
+    Files &map = project->files();
     const Path parent = path.parentDir();
     if (!parent.isEmpty()) {
         Set<String> &dir = map[parent];
@@ -108,7 +112,7 @@ void FileManager::onFileRemoved(const Path &path)
     // error() << "File removed" << path;
     std::lock_guard<std::mutex> lock(mMutex);
     std::shared_ptr<Project> project = mProject.lock();
-    FilesMap &map = project->files();
+    Files &map = project->files();
     if (map.contains(path)) {
         reload(Asynchronous);
         return;
@@ -116,7 +120,7 @@ void FileManager::onFileRemoved(const Path &path)
     const Path parent = path.parentDir();
     if (map.contains(parent)) {
         Set<String> &dir = map[parent];
-        dir.remove(path.fileName());
+        dir.remove(String(path.fileName()));
         if (dir.isEmpty()) {
             mWatcher.unwatch(parent);
             map.remove(parent);

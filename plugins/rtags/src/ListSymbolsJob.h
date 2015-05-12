@@ -1,4 +1,4 @@
-/* This file is part of RTags.
+/* This file is part of RTags (http://rtags.net).
 
 RTags is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@ class ListSymbolsJob : public QueryJob
 public:
     ListSymbolsJob(const std::shared_ptr<QueryMessage> &query, const std::shared_ptr<Project> &proj);
 protected:
-    virtual int execute();
+    virtual int execute() override;
     Set<String> imenu(const std::shared_ptr<Project> &project);
     Set<String> listSymbols(const std::shared_ptr<Project> &project);
 private:

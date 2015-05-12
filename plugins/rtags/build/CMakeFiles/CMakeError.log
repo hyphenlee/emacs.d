@@ -1,0 +1,131 @@
+Determining if the mach_absolute_time exist failed with the following output:
+Change Dir: /home/hyphen/.emacs.d/plugins/rtags/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec3694243259/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec3694243259.dir/build.make CMakeFiles/cmTryCompileExec3694243259.dir/build
+make[1]: Entering directory `/home/hyphen/.emacs.d/plugins/rtags/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/hyphen/.emacs.d/plugins/rtags/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec3694243259.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++    -I/usr/lib/llvm-3.5/include  -DNDEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -g -O2 -fomit-frame-pointer -std=c++11 -fvisibility-inlines-hidden -fno-exceptions -fPIC -Woverloaded-virtual -ffunction-sections -fdata-sections -Wcast-qual -std=c++0x -fpic    -o CMakeFiles/cmTryCompileExec3694243259.dir/CheckSymbolExists.cxx.o -c /home/hyphen/.emacs.d/plugins/rtags/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/home/hyphen/.emacs.d/plugins/rtags/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:2:23: fatal error: mach/mach.h: No such file or directory
+ #include <mach/mach.h>
+                       ^
+compilation terminated.
+make[1]: *** [CMakeFiles/cmTryCompileExec3694243259.dir/CheckSymbolExists.cxx.o] Error 1
+make[1]: Leaving directory `/home/hyphen/.emacs.d/plugins/rtags/build/CMakeFiles/CMakeTmp'
+make: *** [cmTryCompileExec3694243259/fast] Error 2
+
+File /home/hyphen/.emacs.d/plugins/rtags/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <mach/mach.h>
+#include <mach/mach_time.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef mach_absolute_time
+  return ((int*)(&mach_absolute_time))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the kqueue exist failed with the following output:
+Change Dir: /home/hyphen/.emacs.d/plugins/rtags/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec4286256852/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec4286256852.dir/build.make CMakeFiles/cmTryCompileExec4286256852.dir/build
+make[1]: Entering directory `/home/hyphen/.emacs.d/plugins/rtags/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/hyphen/.emacs.d/plugins/rtags/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec4286256852.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++    -I/usr/lib/llvm-3.5/include  -DNDEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -g -O2 -fomit-frame-pointer -std=c++11 -fvisibility-inlines-hidden -fno-exceptions -fPIC -Woverloaded-virtual -ffunction-sections -fdata-sections -Wcast-qual -std=c++0x -fpic    -o CMakeFiles/cmTryCompileExec4286256852.dir/CheckSymbolExists.cxx.o -c /home/hyphen/.emacs.d/plugins/rtags/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/home/hyphen/.emacs.d/plugins/rtags/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:3:23: fatal error: sys/event.h: No such file or directory
+ #include <sys/event.h>
+                       ^
+compilation terminated.
+make[1]: Leaving directory `/home/hyphen/.emacs.d/plugins/rtags/build/CMakeFiles/CMakeTmp'
+make[1]: *** [CMakeFiles/cmTryCompileExec4286256852.dir/CheckSymbolExists.cxx.o] Error 1
+make: *** [cmTryCompileExec4286256852/fast] Error 2
+
+File /home/hyphen/.emacs.d/plugins/rtags/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <sys/types.h>
+#include <sys/event.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef kqueue
+  return ((int*)(&kqueue))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the SO_NOSIGPIPE exist failed with the following output:
+Change Dir: /home/hyphen/.emacs.d/plugins/rtags/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec2617068009/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2617068009.dir/build.make CMakeFiles/cmTryCompileExec2617068009.dir/build
+make[1]: Entering directory `/home/hyphen/.emacs.d/plugins/rtags/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/hyphen/.emacs.d/plugins/rtags/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec2617068009.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++    -I/usr/lib/llvm-3.5/include  -DNDEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -g -O2 -fomit-frame-pointer -std=c++11 -fvisibility-inlines-hidden -fno-exceptions -fPIC -Woverloaded-virtual -ffunction-sections -fdata-sections -Wcast-qual -std=c++0x -fpic    -o CMakeFiles/cmTryCompileExec2617068009.dir/CheckSymbolExists.cxx.o -c /home/hyphen/.emacs.d/plugins/rtags/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/home/hyphen/.emacs.d/plugins/rtags/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main(int, char**)’:
+/home/hyphen/.emacs.d/plugins/rtags/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:9:19: error: ‘SO_NOSIGPIPE’ was not declared in this scope
+   return ((int*)(&SO_NOSIGPIPE))[argc];
+                   ^
+make[1]: Leaving directory `/home/hyphen/.emacs.d/plugins/rtags/build/CMakeFiles/CMakeTmp'
+make[1]: *** [CMakeFiles/cmTryCompileExec2617068009.dir/CheckSymbolExists.cxx.o] Error 1
+make: *** [cmTryCompileExec2617068009/fast] Error 2
+
+File /home/hyphen/.emacs.d/plugins/rtags/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <sys/types.h>
+#include <sys/socket.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef SO_NOSIGPIPE
+  return ((int*)(&SO_NOSIGPIPE))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the GetLogicalProcessorInformation exist failed with the following output:
+Change Dir: /home/hyphen/.emacs.d/plugins/rtags/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec3953274012/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec3953274012.dir/build.make CMakeFiles/cmTryCompileExec3953274012.dir/build
+make[1]: Entering directory `/home/hyphen/.emacs.d/plugins/rtags/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/hyphen/.emacs.d/plugins/rtags/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec3953274012.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++    -I/usr/lib/llvm-3.5/include  -DNDEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -g -O2 -fomit-frame-pointer -std=c++11 -fvisibility-inlines-hidden -fno-exceptions -fPIC -Woverloaded-virtual -ffunction-sections -fdata-sections -Wcast-qual -std=c++0x -fpic    -o CMakeFiles/cmTryCompileExec3953274012.dir/CheckSymbolExists.cxx.o -c /home/hyphen/.emacs.d/plugins/rtags/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/home/hyphen/.emacs.d/plugins/rtags/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:2:21: fatal error: windows.h: No such file or directory
+ #include <windows.h>
+                     ^
+compilation terminated.
+make[1]: *** [CMakeFiles/cmTryCompileExec3953274012.dir/CheckSymbolExists.cxx.o] Error 1
+make[1]: Leaving directory `/home/hyphen/.emacs.d/plugins/rtags/build/CMakeFiles/CMakeTmp'
+make: *** [cmTryCompileExec3953274012/fast] Error 2
+
+File /home/hyphen/.emacs.d/plugins/rtags/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <windows.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef GetLogicalProcessorInformation
+  return ((int*)(&GetLogicalProcessorInformation))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+

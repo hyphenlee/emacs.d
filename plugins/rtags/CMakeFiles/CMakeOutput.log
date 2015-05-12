@@ -1,0 +1,637 @@
+The system is: Linux - 3.13.0-24-generic - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/bin/cc 
+Build flags: 
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/2.8.12.2/CompilerIdC/a.out"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is GNU, found in "/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/2.8.12.2/CompilerIdCXX/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec5522598/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec5522598.dir/build.make CMakeFiles/cmTryCompileExec5522598.dir/build
+make[1]: Entering directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec5522598.dir/testCCompiler.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec5522598.dir/testCCompiler.c.o   -c /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTryCompileExec5522598
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec5522598.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTryCompileExec5522598.dir/testCCompiler.c.o  -o cmTryCompileExec5522598 -rdynamic 
+make[1]: Leaving directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec3901038837/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec3901038837.dir/build.make CMakeFiles/cmTryCompileExec3901038837.dir/build
+make[1]: Entering directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3901038837.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec3901038837.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-2.8/Modules/CMakeCCompilerABI.c
+Linking C executable cmTryCompileExec3901038837
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3901038837.dir/link.txt --verbose=1
+/usr/bin/cc     -v CMakeFiles/cmTryCompileExec3901038837.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec3901038837 -rdynamic  
+Using built-in specs.
+COLLECT_GCC=/usr/bin/cc
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/4.8/lto-wrapper
+Target: x86_64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu 4.8.2-19ubuntu1' --with-bugurl=file:///usr/share/doc/gcc-4.8/README.Bugs --enable-languages=c,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-4.8 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.8 --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --enable-gnu-unique-object --disable-libmudflap --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-4.8-amd64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-4.8-amd64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-4.8-amd64 --with-arch-directory=amd64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
+Thread model: posix
+gcc version 4.8.2 (Ubuntu 4.8.2-19ubuntu1) 
+COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec3901038837' '-rdynamic' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec3901038837 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec3901038837.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o
+make[1]: Leaving directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:/usr/bin/make "cmTryCompileExec3901038837/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTryCompileExec3901038837.dir/build.make CMakeFiles/cmTryCompileExec3901038837.dir/build]
+  ignore line: [make[1]: Entering directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/cmake -E cmake_progress_report /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [Building C object CMakeFiles/cmTryCompileExec3901038837.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTryCompileExec3901038837.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-2.8/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTryCompileExec3901038837]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3901038837.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc     -v CMakeFiles/cmTryCompileExec3901038837.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec3901038837 -rdynamic  ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/bin/cc]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/4.8/lto-wrapper]
+  ignore line: [Target: x86_64-linux-gnu]
+  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 4.8.2-19ubuntu1' --with-bugurl=file:///usr/share/doc/gcc-4.8/README.Bugs --enable-languages=c,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-4.8 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.8 --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --enable-gnu-unique-object --disable-libmudflap --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-4.8-amd64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-4.8-amd64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-4.8-amd64 --with-arch-directory=amd64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 4.8.2 (Ubuntu 4.8.2-19ubuntu1) ]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec3901038837' '-rdynamic' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec3901038837 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec3901038837.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o]
+    arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/collect2] ==> ignore
+    arg [--sysroot=/] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-export-dynamic] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTryCompileExec3901038837] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o] ==> ignore
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/4.8] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/4.8]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib]
+    arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+    arg [-L/lib/../lib] ==> dir [/lib/../lib]
+    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+    arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../..]
+    arg [CMakeFiles/cmTryCompileExec3901038837.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o] ==> ignore
+  remove lib [gcc]
+  remove lib [gcc_s]
+  remove lib [gcc]
+  remove lib [gcc_s]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/4.8] ==> [/usr/lib/gcc/x86_64-linux-gnu/4.8]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib] ==> [/usr/lib]
+  collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+  collapse library dir [/lib/../lib] ==> [/lib]
+  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../..] ==> [/usr/lib]
+  implicit libs: [c]
+  implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/4.8;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib]
+  implicit fwks: []
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec2873462465/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2873462465.dir/build.make CMakeFiles/cmTryCompileExec2873462465.dir/build
+make[1]: Entering directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec2873462465.dir/testCXXCompiler.cxx.o
+/usr/bin/c++     -o CMakeFiles/cmTryCompileExec2873462465.dir/testCXXCompiler.cxx.o -c /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTryCompileExec2873462465
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2873462465.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTryCompileExec2873462465.dir/testCXXCompiler.cxx.o  -o cmTryCompileExec2873462465 -rdynamic 
+make[1]: Leaving directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec1720753533/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1720753533.dir/build.make CMakeFiles/cmTryCompileExec1720753533.dir/build
+make[1]: Entering directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec1720753533.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++     -o CMakeFiles/cmTryCompileExec1720753533.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-2.8/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTryCompileExec1720753533
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1720753533.dir/link.txt --verbose=1
+/usr/bin/c++      -v CMakeFiles/cmTryCompileExec1720753533.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec1720753533 -rdynamic  
+Using built-in specs.
+COLLECT_GCC=/usr/bin/c++
+COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/4.8/lto-wrapper
+Target: x86_64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu 4.8.2-19ubuntu1' --with-bugurl=file:///usr/share/doc/gcc-4.8/README.Bugs --enable-languages=c,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-4.8 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.8 --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --enable-gnu-unique-object --disable-libmudflap --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-4.8-amd64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-4.8-amd64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-4.8-amd64 --with-arch-directory=amd64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
+Thread model: posix
+gcc version 4.8.2 (Ubuntu 4.8.2-19ubuntu1) 
+COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec1720753533' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec1720753533 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec1720753533.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o
+make[1]: Leaving directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:/usr/bin/make "cmTryCompileExec1720753533/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTryCompileExec1720753533.dir/build.make CMakeFiles/cmTryCompileExec1720753533.dir/build]
+  ignore line: [make[1]: Entering directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/cmake -E cmake_progress_report /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [Building CXX object CMakeFiles/cmTryCompileExec1720753533.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/c++     -o CMakeFiles/cmTryCompileExec1720753533.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-2.8/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTryCompileExec1720753533]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1720753533.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/c++      -v CMakeFiles/cmTryCompileExec1720753533.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec1720753533 -rdynamic  ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/usr/bin/c++]
+  ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/4.8/lto-wrapper]
+  ignore line: [Target: x86_64-linux-gnu]
+  ignore line: [Configured with: ../src/configure -v --with-pkgversion='Ubuntu 4.8.2-19ubuntu1' --with-bugurl=file:///usr/share/doc/gcc-4.8/README.Bugs --enable-languages=c,c++,java,go,d,fortran,objc,obj-c++ --prefix=/usr --program-suffix=-4.8 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.8 --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --enable-gnu-unique-object --disable-libmudflap --enable-plugin --with-system-zlib --disable-browser-plugin --enable-java-awt=gtk --enable-gtk-cairo --with-java-home=/usr/lib/jvm/java-1.5.0-gcj-4.8-amd64/jre --enable-java-home --with-jvm-root-dir=/usr/lib/jvm/java-1.5.0-gcj-4.8-amd64 --with-jvm-jar-dir=/usr/lib/jvm-exports/java-1.5.0-gcj-4.8-amd64 --with-arch-directory=amd64 --with-ecj-jar=/usr/share/java/eclipse-ecj.jar --enable-objc-gc --enable-multiarch --disable-werror --with-arch-32=i686 --with-abi=m64 --with-multilib-list=m32,m64,mx32 --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 4.8.2 (Ubuntu 4.8.2-19ubuntu1) ]
+  ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec1720753533' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec1720753533 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec1720753533.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o]
+    arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/collect2] ==> ignore
+    arg [--sysroot=/] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [--as-needed] ==> ignore
+    arg [-export-dynamic] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTryCompileExec1720753533] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o] ==> ignore
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/4.8] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/4.8]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib]
+    arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+    arg [-L/lib/../lib] ==> dir [/lib/../lib]
+    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+    arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
+    arg [-L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../..]
+    arg [CMakeFiles/cmTryCompileExec1720753533.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o] ==> ignore
+    arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o] ==> ignore
+  remove lib [gcc_s]
+  remove lib [gcc]
+  remove lib [gcc_s]
+  remove lib [gcc]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/4.8] ==> [/usr/lib/gcc/x86_64-linux-gnu/4.8]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib] ==> [/usr/lib]
+  collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+  collapse library dir [/lib/../lib] ==> [/lib]
+  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/../lib] ==> [/usr/lib]
+  collapse library dir [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../..] ==> [/usr/lib]
+  implicit libs: [stdc++;m;c]
+  implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/4.8;/usr/lib/x86_64-linux-gnu;/usr/lib;/lib/x86_64-linux-gnu;/lib]
+  implicit fwks: []
+
+
+Determining if the backtrace exist passed with the following output:
+Change Dir: /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec3835834594/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec3835834594.dir/build.make CMakeFiles/cmTryCompileExec3835834594.dir/build
+make[1]: Entering directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec3835834594.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++    -I/usr/lib/llvm-3.5/include  -DNDEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -g -O2 -fomit-frame-pointer -std=c++11 -fvisibility-inlines-hidden -fno-exceptions -fPIC -Woverloaded-virtual -ffunction-sections -fdata-sections -Wcast-qual -std=c++0x -fpic    -o CMakeFiles/cmTryCompileExec3835834594.dir/CheckSymbolExists.cxx.o -c /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+Linking CXX executable cmTryCompileExec3835834594
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3835834594.dir/link.txt --verbose=1
+/usr/bin/c++   -I/usr/lib/llvm-3.5/include  -DNDEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -g -O2 -fomit-frame-pointer -std=c++11 -fvisibility-inlines-hidden -fno-exceptions -fPIC -Woverloaded-virtual -ffunction-sections -fdata-sections -Wcast-qual -std=c++0x -fpic     CMakeFiles/cmTryCompileExec3835834594.dir/CheckSymbolExists.cxx.o  -o cmTryCompileExec3835834594 -rdynamic 
+make[1]: Leaving directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+
+File /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <execinfo.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef backtrace
+  return ((int*)(&backtrace))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the CLOCK_MONOTONIC_RAW exist passed with the following output:
+Change Dir: /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec1467221269/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1467221269.dir/build.make CMakeFiles/cmTryCompileExec1467221269.dir/build
+make[1]: Entering directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec1467221269.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++    -I/usr/lib/llvm-3.5/include  -DNDEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -g -O2 -fomit-frame-pointer -std=c++11 -fvisibility-inlines-hidden -fno-exceptions -fPIC -Woverloaded-virtual -ffunction-sections -fdata-sections -Wcast-qual -std=c++0x -fpic    -o CMakeFiles/cmTryCompileExec1467221269.dir/CheckSymbolExists.cxx.o -c /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+Linking CXX executable cmTryCompileExec1467221269
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1467221269.dir/link.txt --verbose=1
+/usr/bin/c++   -I/usr/lib/llvm-3.5/include  -DNDEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -g -O2 -fomit-frame-pointer -std=c++11 -fvisibility-inlines-hidden -fno-exceptions -fPIC -Woverloaded-virtual -ffunction-sections -fdata-sections -Wcast-qual -std=c++0x -fpic     CMakeFiles/cmTryCompileExec1467221269.dir/CheckSymbolExists.cxx.o  -o cmTryCompileExec1467221269 -rdynamic 
+make[1]: Leaving directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+
+File /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <time.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef CLOCK_MONOTONIC_RAW
+  return ((int*)(&CLOCK_MONOTONIC_RAW))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the CLOCK_MONOTONIC exist passed with the following output:
+Change Dir: /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec1397920632/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1397920632.dir/build.make CMakeFiles/cmTryCompileExec1397920632.dir/build
+make[1]: Entering directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec1397920632.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++    -I/usr/lib/llvm-3.5/include  -DNDEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -g -O2 -fomit-frame-pointer -std=c++11 -fvisibility-inlines-hidden -fno-exceptions -fPIC -Woverloaded-virtual -ffunction-sections -fdata-sections -Wcast-qual -std=c++0x -fpic    -o CMakeFiles/cmTryCompileExec1397920632.dir/CheckSymbolExists.cxx.o -c /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+Linking CXX executable cmTryCompileExec1397920632
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1397920632.dir/link.txt --verbose=1
+/usr/bin/c++   -I/usr/lib/llvm-3.5/include  -DNDEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -g -O2 -fomit-frame-pointer -std=c++11 -fvisibility-inlines-hidden -fno-exceptions -fPIC -Woverloaded-virtual -ffunction-sections -fdata-sections -Wcast-qual -std=c++0x -fpic     CMakeFiles/cmTryCompileExec1397920632.dir/CheckSymbolExists.cxx.o  -o cmTryCompileExec1397920632 -rdynamic 
+make[1]: Leaving directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+
+File /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <time.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef CLOCK_MONOTONIC
+  return ((int*)(&CLOCK_MONOTONIC))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the inotify_init exist passed with the following output:
+Change Dir: /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec1765161999/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1765161999.dir/build.make CMakeFiles/cmTryCompileExec1765161999.dir/build
+make[1]: Entering directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec1765161999.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++    -I/usr/lib/llvm-3.5/include  -DNDEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -g -O2 -fomit-frame-pointer -std=c++11 -fvisibility-inlines-hidden -fno-exceptions -fPIC -Woverloaded-virtual -ffunction-sections -fdata-sections -Wcast-qual -std=c++0x -fpic    -o CMakeFiles/cmTryCompileExec1765161999.dir/CheckSymbolExists.cxx.o -c /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+Linking CXX executable cmTryCompileExec1765161999
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1765161999.dir/link.txt --verbose=1
+/usr/bin/c++   -I/usr/lib/llvm-3.5/include  -DNDEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -g -O2 -fomit-frame-pointer -std=c++11 -fvisibility-inlines-hidden -fno-exceptions -fPIC -Woverloaded-virtual -ffunction-sections -fdata-sections -Wcast-qual -std=c++0x -fpic     CMakeFiles/cmTryCompileExec1765161999.dir/CheckSymbolExists.cxx.o  -o cmTryCompileExec1765161999 -rdynamic 
+make[1]: Leaving directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+
+File /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <sys/inotify.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef inotify_init
+  return ((int*)(&inotify_init))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the epoll_wait exist passed with the following output:
+Change Dir: /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec2064525704/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2064525704.dir/build.make CMakeFiles/cmTryCompileExec2064525704.dir/build
+make[1]: Entering directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec2064525704.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++    -I/usr/lib/llvm-3.5/include  -DNDEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -g -O2 -fomit-frame-pointer -std=c++11 -fvisibility-inlines-hidden -fno-exceptions -fPIC -Woverloaded-virtual -ffunction-sections -fdata-sections -Wcast-qual -std=c++0x -fpic    -o CMakeFiles/cmTryCompileExec2064525704.dir/CheckSymbolExists.cxx.o -c /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+Linking CXX executable cmTryCompileExec2064525704
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2064525704.dir/link.txt --verbose=1
+/usr/bin/c++   -I/usr/lib/llvm-3.5/include  -DNDEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -g -O2 -fomit-frame-pointer -std=c++11 -fvisibility-inlines-hidden -fno-exceptions -fPIC -Woverloaded-virtual -ffunction-sections -fdata-sections -Wcast-qual -std=c++0x -fpic     CMakeFiles/cmTryCompileExec2064525704.dir/CheckSymbolExists.cxx.o  -o cmTryCompileExec2064525704 -rdynamic 
+make[1]: Leaving directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+
+File /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <sys/epoll.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef epoll_wait
+  return ((int*)(&epoll_wait))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the select exist passed with the following output:
+Change Dir: /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec229811087/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec229811087.dir/build.make CMakeFiles/cmTryCompileExec229811087.dir/build
+make[1]: Entering directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec229811087.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++    -I/usr/lib/llvm-3.5/include  -DNDEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -g -O2 -fomit-frame-pointer -std=c++11 -fvisibility-inlines-hidden -fno-exceptions -fPIC -Woverloaded-virtual -ffunction-sections -fdata-sections -Wcast-qual -std=c++0x -fpic    -o CMakeFiles/cmTryCompileExec229811087.dir/CheckSymbolExists.cxx.o -c /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+Linking CXX executable cmTryCompileExec229811087
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec229811087.dir/link.txt --verbose=1
+/usr/bin/c++   -I/usr/lib/llvm-3.5/include  -DNDEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -g -O2 -fomit-frame-pointer -std=c++11 -fvisibility-inlines-hidden -fno-exceptions -fPIC -Woverloaded-virtual -ffunction-sections -fdata-sections -Wcast-qual -std=c++0x -fpic     CMakeFiles/cmTryCompileExec229811087.dir/CheckSymbolExists.cxx.o  -o cmTryCompileExec229811087 -rdynamic 
+make[1]: Leaving directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+
+File /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <sys/select.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef select
+  return ((int*)(&select))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the FD_CLOEXEC exist passed with the following output:
+Change Dir: /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec559260373/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec559260373.dir/build.make CMakeFiles/cmTryCompileExec559260373.dir/build
+make[1]: Entering directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec559260373.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++    -I/usr/lib/llvm-3.5/include  -DNDEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -g -O2 -fomit-frame-pointer -std=c++11 -fvisibility-inlines-hidden -fno-exceptions -fPIC -Woverloaded-virtual -ffunction-sections -fdata-sections -Wcast-qual -std=c++0x -fpic    -o CMakeFiles/cmTryCompileExec559260373.dir/CheckSymbolExists.cxx.o -c /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+Linking CXX executable cmTryCompileExec559260373
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec559260373.dir/link.txt --verbose=1
+/usr/bin/c++   -I/usr/lib/llvm-3.5/include  -DNDEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -g -O2 -fomit-frame-pointer -std=c++11 -fvisibility-inlines-hidden -fno-exceptions -fPIC -Woverloaded-virtual -ffunction-sections -fdata-sections -Wcast-qual -std=c++0x -fpic     CMakeFiles/cmTryCompileExec559260373.dir/CheckSymbolExists.cxx.o  -o cmTryCompileExec559260373 -rdynamic 
+make[1]: Leaving directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+
+File /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <fcntl.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef FD_CLOEXEC
+  return ((int*)(&FD_CLOEXEC))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the MSG_NOSIGNAL exist passed with the following output:
+Change Dir: /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec2365950153/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2365950153.dir/build.make CMakeFiles/cmTryCompileExec2365950153.dir/build
+make[1]: Entering directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec2365950153.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++    -I/usr/lib/llvm-3.5/include  -DNDEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -g -O2 -fomit-frame-pointer -std=c++11 -fvisibility-inlines-hidden -fno-exceptions -fPIC -Woverloaded-virtual -ffunction-sections -fdata-sections -Wcast-qual -std=c++0x -fpic    -o CMakeFiles/cmTryCompileExec2365950153.dir/CheckSymbolExists.cxx.o -c /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+Linking CXX executable cmTryCompileExec2365950153
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2365950153.dir/link.txt --verbose=1
+/usr/bin/c++   -I/usr/lib/llvm-3.5/include  -DNDEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -g -O2 -fomit-frame-pointer -std=c++11 -fvisibility-inlines-hidden -fno-exceptions -fPIC -Woverloaded-virtual -ffunction-sections -fdata-sections -Wcast-qual -std=c++0x -fpic     CMakeFiles/cmTryCompileExec2365950153.dir/CheckSymbolExists.cxx.o  -o cmTryCompileExec2365950153 -rdynamic 
+make[1]: Leaving directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+
+File /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <sys/types.h>
+#include <sys/socket.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef MSG_NOSIGNAL
+  return ((int*)(&MSG_NOSIGNAL))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the SCHED_IDLE exist passed with the following output:
+Change Dir: /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec3334297399/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec3334297399.dir/build.make CMakeFiles/cmTryCompileExec3334297399.dir/build
+make[1]: Entering directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec3334297399.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++    -I/usr/lib/llvm-3.5/include  -DNDEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -g -O2 -fomit-frame-pointer -std=c++11 -fvisibility-inlines-hidden -fno-exceptions -fPIC -Woverloaded-virtual -ffunction-sections -fdata-sections -Wcast-qual -std=c++0x -fpic    -o CMakeFiles/cmTryCompileExec3334297399.dir/CheckSymbolExists.cxx.o -c /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+Linking CXX executable cmTryCompileExec3334297399
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3334297399.dir/link.txt --verbose=1
+/usr/bin/c++   -I/usr/lib/llvm-3.5/include  -DNDEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -g -O2 -fomit-frame-pointer -std=c++11 -fvisibility-inlines-hidden -fno-exceptions -fPIC -Woverloaded-virtual -ffunction-sections -fdata-sections -Wcast-qual -std=c++0x -fpic     CMakeFiles/cmTryCompileExec3334297399.dir/CheckSymbolExists.cxx.o  -o cmTryCompileExec3334297399 -rdynamic 
+make[1]: Leaving directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+
+File /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef SCHED_IDLE
+  return ((int*)(&SCHED_IDLE))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the SHM_DEST exist passed with the following output:
+Change Dir: /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec2186744173/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2186744173.dir/build.make CMakeFiles/cmTryCompileExec2186744173.dir/build
+make[1]: Entering directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec2186744173.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++    -I/usr/lib/llvm-3.5/include  -DNDEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -g -O2 -fomit-frame-pointer -std=c++11 -fvisibility-inlines-hidden -fno-exceptions -fPIC -Woverloaded-virtual -ffunction-sections -fdata-sections -Wcast-qual -std=c++0x -fpic    -o CMakeFiles/cmTryCompileExec2186744173.dir/CheckSymbolExists.cxx.o -c /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+Linking CXX executable cmTryCompileExec2186744173
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2186744173.dir/link.txt --verbose=1
+/usr/bin/c++   -I/usr/lib/llvm-3.5/include  -DNDEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -g -O2 -fomit-frame-pointer -std=c++11 -fvisibility-inlines-hidden -fno-exceptions -fPIC -Woverloaded-virtual -ffunction-sections -fdata-sections -Wcast-qual -std=c++0x -fpic     CMakeFiles/cmTryCompileExec2186744173.dir/CheckSymbolExists.cxx.o  -o cmTryCompileExec2186744173 -rdynamic 
+make[1]: Leaving directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+
+File /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <sys/types.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef SHM_DEST
+  return ((int*)(&SHM_DEST))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Performing C++ SOURCE FILE Test HAVE_STATMTIM succeded with the following output:
+Change Dir: /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec1607290824/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1607290824.dir/build.make CMakeFiles/cmTryCompileExec1607290824.dir/build
+make[1]: Entering directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec1607290824.dir/src.cxx.o
+/usr/bin/c++    -I/usr/lib/llvm-3.5/include  -DNDEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -g -O2 -fomit-frame-pointer -std=c++11 -fvisibility-inlines-hidden -fno-exceptions -fPIC -Woverloaded-virtual -ffunction-sections -fdata-sections -Wcast-qual -std=c++0x -fpic -DHAVE_STATMTIM   -o CMakeFiles/cmTryCompileExec1607290824.dir/src.cxx.o -c /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec1607290824
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1607290824.dir/link.txt --verbose=1
+/usr/bin/c++   -I/usr/lib/llvm-3.5/include  -DNDEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -g -O2 -fomit-frame-pointer -std=c++11 -fvisibility-inlines-hidden -fno-exceptions -fPIC -Woverloaded-virtual -ffunction-sections -fdata-sections -Wcast-qual -std=c++0x -fpic -DHAVE_STATMTIM    CMakeFiles/cmTryCompileExec1607290824.dir/src.cxx.o  -o cmTryCompileExec1607290824 -rdynamic 
+make[1]: Leaving directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+  #include <sys/types.h>
+  #include <sys/stat.h>
+  int main(int, char**) {
+      struct stat st;
+      return st.st_mtim.tv_sec;
+  }
+Performing C++ SOURCE FILE Test HAVE_CXX11 succeded with the following output:
+Change Dir: /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec2160467097/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2160467097.dir/build.make CMakeFiles/cmTryCompileExec2160467097.dir/build
+make[1]: Entering directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec2160467097.dir/src.cxx.o
+/usr/bin/c++    -I/usr/lib/llvm-3.5/include  -DNDEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -g -O2 -fomit-frame-pointer -std=c++11 -fvisibility-inlines-hidden -fno-exceptions -fPIC -Woverloaded-virtual -ffunction-sections -fdata-sections -Wcast-qual -std=c++0x -fpic -DHAVE_CXX11 -std=c++11   -o CMakeFiles/cmTryCompileExec2160467097.dir/src.cxx.o -c /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec2160467097
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2160467097.dir/link.txt --verbose=1
+/usr/bin/c++   -I/usr/lib/llvm-3.5/include  -DNDEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -g -O2 -fomit-frame-pointer -std=c++11 -fvisibility-inlines-hidden -fno-exceptions -fPIC -Woverloaded-virtual -ffunction-sections -fdata-sections -Wcast-qual -std=c++0x -fpic -DHAVE_CXX11 -std=c++11    CMakeFiles/cmTryCompileExec2160467097.dir/src.cxx.o  -o cmTryCompileExec2160467097 -rdynamic 
+make[1]: Leaving directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+
+Source file was:
+
+  #include <memory>
+  #include <mutex>
+  #include <tuple>
+  #include <string>
+  #include </home/hyphen/.emacs.d/plugins/rtags/src/rct/rct/Apply.h>
+
+  void callTest(int, std::string) { }
+
+  int main(int, char**) {
+      std::shared_ptr<int> ptr;
+      std::mutex mtx;
+      std::unique_lock<std::mutex> lock(mtx);
+      std::tuple<int, std::string> tpl(5, std::string("foo"));
+      applyMove(std::bind(callTest, std::placeholders::_1, std::placeholders::_2), tpl);
+      return 0;
+  }
+Performing C++ SOURCE FILE Test HAVE_UNORDERDED_MAP_WORKING_MOVE_CONSTRUCTOR succeded with the following output:
+Change Dir: /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec3931987072/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec3931987072.dir/build.make CMakeFiles/cmTryCompileExec3931987072.dir/build
+make[1]: Entering directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec3931987072.dir/src.cxx.o
+/usr/bin/c++    -I/usr/lib/llvm-3.5/include  -DNDEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -g -O2 -fomit-frame-pointer -std=c++11 -fvisibility-inlines-hidden -fno-exceptions -fPIC -Woverloaded-virtual -ffunction-sections -fdata-sections -Wcast-qual -std=c++0x -fpic -DHAVE_UNORDERDED_MAP_WORKING_MOVE_CONSTRUCTOR -std=c++11   -o CMakeFiles/cmTryCompileExec3931987072.dir/src.cxx.o -c /home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTryCompileExec3931987072
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3931987072.dir/link.txt --verbose=1
+/usr/bin/c++   -I/usr/lib/llvm-3.5/include  -DNDEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -g -O2 -fomit-frame-pointer -std=c++11 -fvisibility-inlines-hidden -fno-exceptions -fPIC -Woverloaded-virtual -ffunction-sections -fdata-sections -Wcast-qual -std=c++0x -fpic -DHAVE_UNORDERDED_MAP_WORKING_MOVE_CONSTRUCTOR -std=c++11    CMakeFiles/cmTryCompileExec3931987072.dir/src.cxx.o  -o cmTryCompileExec3931987072 -rdynamic 
+make[1]: Leaving directory `/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/CMakeTmp'
+
+Return value: 1
+Source file was:
+
+  #include <unordered_map>
+
+  int main(int, char **)
+  {
+      std::unordered_map<int, int> a;
+      a.emplace(1, 1);
+      std::unordered_map<int, int> b = std::move(a);
+      a.emplace(1, 1);
+      return 0;
+  }

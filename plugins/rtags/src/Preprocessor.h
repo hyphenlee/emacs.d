@@ -1,4 +1,4 @@
-/* This file is part of RTags.
+/* This file is part of RTags (http://rtags.net).
 
 RTags is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -27,13 +27,13 @@ class Process;
 class Preprocessor
 {
 public:
-    Preprocessor(const Source &source, Connection *connection);
+    Preprocessor(const Source &source, const std::shared_ptr<Connection> &connection);
 
     void preprocess();
 private:
     void onProcessFinished();
     const Source mSource;
-    Connection *mConnection;
+    std::shared_ptr<Connection> mConnection;
     std::unique_ptr<Process> mProcess;
 };
 

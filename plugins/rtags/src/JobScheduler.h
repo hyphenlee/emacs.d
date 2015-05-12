@@ -1,4 +1,4 @@
-/* This file is part of RTags.
+/* This file is part of RTags (http://rtags.net).
 
    RTags is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,38 +17,59 @@
 #define JobScheduler_h
 
 #include "IndexerJob.h"
-#include "IndexerMessage.h"
+#include "IndexDataMessage.h"
 #include <memory>
 #include <rct/EmbeddedLinkedList.h>
 #include <rct/Connection.h>
 
-class JobScheduler
+class JobScheduler : public std::enable_shared_from_this<JobScheduler>
 {
 public:
-    JobScheduler(int maxJobs);
+    JobScheduler();
     ~JobScheduler();
-    int maxJobs() const { return mMaxJobs; }
-    void setMaxJobs(int maxJobs) { mMaxJobs = maxJobs; }
+
+    struct JobScope {
+        JobScope(const std::shared_ptr<JobScheduler> &scheduler)
+            : mScheduler(scheduler)
+        {
+            assert(mScheduler);
+            ++mScheduler->mProcrastination;
+        }
+
+        ~JobScope()
+        {
+            if (!--mScheduler->mProcrastination)
+                mScheduler->startJobs();
+        }
+
+    private:
+        const std::shared_ptr<JobScheduler> mScheduler;
+    };
 
     void add(const std::shared_ptr<IndexerJob> &job);
-    void handleIndexerMessage(const std::shared_ptr<IndexerMessage> &message);
-    void dump(Connection *conn);
+    void handleIndexDataMessage(const std::shared_ptr<IndexDataMessage> &message);
+    void dump(const std::shared_ptr<Connection> &conn);
     void abort(const std::shared_ptr<IndexerJob> &job);
+    void clearHeaderError(uint32_t file);
+    Set<uint32_t> headerErrors() const { return mHeaderErrors; }
 private:
-    void jobFinished(const std::shared_ptr<IndexerJob> &job, const std::shared_ptr<IndexData> &data);
-
-    static std::shared_ptr<IndexData> createData(const std::shared_ptr<IndexerJob> &job);
+    enum { HighPriority = 5 };
+    void jobFinished(const std::shared_ptr<IndexerJob> &job, const std::shared_ptr<IndexDataMessage> &message);
     void startJobs();
     struct Node {
         std::shared_ptr<IndexerJob> job;
         Process *process;
         std::shared_ptr<Node> next, prev;
     };
+    uint32_t hasHeaderError(DependencyNode *node, Set<uint32_t> &seen) const;
+    uint32_t hasHeaderError(uint32_t file, const std::shared_ptr<Project> &project) const;
 
-    int mMaxJobs;
+    int mProcrastination;
+    Set<uint32_t> mHeaderErrors;
+    Set<uint64_t> mHeaderErrorJobIds;
     EmbeddedLinkedList<std::shared_ptr<Node> > mPendingJobs;
     Hash<Process *, std::shared_ptr<Node> > mActiveByProcess;
-    Hash<uint64_t, std::shared_ptr<Node> > mActiveById;
+    Hash<uint64_t, std::shared_ptr<Node> > mActiveById, mInactiveById;
 };
 
 #endif

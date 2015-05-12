@@ -1,4 +1,4 @@
-/* This file is part of RTags.
+/* This file is part of RTags (http://rtags.net).
 
 RTags is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,6 +18,7 @@ along with RTags.  If not, see <http://www.gnu.org/licenses/>. */
 
 #include <stdint.h>
 #include <rct/String.h>
+#include <rct/Serializer.h>
 
 struct FixIt
 {

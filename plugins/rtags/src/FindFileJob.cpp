@@ -1,4 +1,4 @@
-/* This file is part of RTags.
+/* This file is part of RTags (http://rtags.net).
 
 RTags is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -16,17 +16,24 @@ along with RTags.  If not, see <http://www.gnu.org/licenses/>. */
 #include "FindFileJob.h"
 #include "RTags.h"
 #include "Server.h"
-#include "CursorInfo.h"
 #include "FileManager.h"
 #include "Project.h"
 
+static Flags<QueryJob::JobFlag> flags(Flags<QueryMessage::Flag> queryFlags)
+{
+    Flags<QueryJob::JobFlag> flags = QueryJob::QuietJob;
+    if (queryFlags & QueryMessage::ElispList)
+        flags |= QueryJob::QuoteOutput;
+    return flags;
+}
+
 FindFileJob::FindFileJob(const std::shared_ptr<QueryMessage> &query, const std::shared_ptr<Project> &project)
-    : QueryJob(query, QuietJob, project)
+    : QueryJob(query, project, ::flags(query->flags()))
 {
     const String q = query->query();
     if (!q.isEmpty()) {
-        if (query->flags() & QueryMessage::MatchRegexp) {
-            mRegExp = q;
+        if (query->flags() & QueryMessage::MatchRegex) {
+            mRegex = q.ref();
         } else {
             mPattern = q;
         }
@@ -40,34 +47,48 @@ int FindFileJob::execute()
         return 1;
     }
     const Path srcRoot = proj->path();
+    assert(srcRoot.endsWith('/'));
 
     enum Mode {
         All,
-        RegExp,
-        Pattern
+        FilePath,
+        Regex,
+        Pattern,
     } mode = All;
+
     String::CaseSensitivity cs = String::CaseSensitive;
-    if (mRegExp.isValid()) {
-        mode = RegExp;
+    if (queryFlags() & QueryMessage::MatchRegex) {
+        mode = Regex;
     } else if (!mPattern.isEmpty()) {
-        mode = Pattern;
+        mode = mPattern[0] == '/' ? FilePath : Pattern;
     }
     if (queryFlags() & QueryMessage::MatchCaseInsensitive)
         cs = String::CaseInsensitive;
 
     String out;
     out.reserve(PATH_MAX);
-    if (queryFlags() & QueryMessage::AbsolutePath) {
+    const bool absolutePath = queryFlags() & QueryMessage::AbsolutePath;
+    if (absolutePath)
         out.append(srcRoot);
-        assert(srcRoot.endsWith('/'));
-    }
-    const FilesMap& dirs = proj->files();
-    FilesMap::const_iterator dirit = dirs.begin();
+    const Files& dirs = proj->files();
+    if (dirs.isEmpty() && proj && proj->fileManager)
+        proj->fileManager->reload(FileManager::Synchronous);
+    Files::const_iterator dirit = dirs.begin();
     bool foundExact = false;
     const int patternSize = mPattern.size();
     List<String> matches;
     const bool preferExact = queryFlags() & QueryMessage::FindFilePreferExact;
     int ret = 1;
+    bool firstElisp = queryFlags() & QueryMessage::ElispList;
+
+    auto writeFile = [this, &firstElisp](const Path &path) {
+        if (firstElisp) {
+            firstElisp = false;
+            if (!write("(list", DontQuote))
+                return false;
+        }
+        return write(path);
+    };
     while (dirit != dirs.end()) {
         const Path &dir = dirit->first;
         if (dir.size() < srcRoot.size()) {
@@ -85,9 +106,10 @@ int FindFileJob::execute()
             case All:
                 ok = true;
                 break;
-            case RegExp:
-                ok = mRegExp.indexIn(out) != -1;
+            case Regex:
+                ok = Rct::contains(out, mRegex);
                 break;
+            case FilePath:
             case Pattern:
                 if (!preferExact) {
                     ok = out.contains(mPattern, cs);
@@ -104,15 +126,27 @@ int FindFileJob::execute()
                         ok = !foundExact && out.contains(mPattern, cs);
                     }
                 }
+                if (!ok && mode == FilePath) {
+                    Path p(out);
+                    if (!absolutePath)
+                        p.prepend(srcRoot);
+                    p.resolve();
+                    if (p == mPattern)
+                        ok = true;
+                }
                 break;
             }
             if (ok) {
                 ret = 0;
+
+                Path matched = out;
+                if (absolutePath)
+                    matched.resolve();
                 if (preferExact && !foundExact) {
-                    matches.append(out);
+                    matches.append(matched);
                 } else {
-                    if (!write(out))
-                        return 1; // ???
+                    if (!writeFile(matched))
+                        return 1;
                 }
             }
             out.chop(key.size());
@@ -121,10 +155,11 @@ int FindFileJob::execute()
         ++dirit;
     }
     for (List<String>::const_iterator it = matches.begin(); it != matches.end(); ++it) {
-        if (!write(*it)) {
-            ret = 2;
-            break;
+        if (!writeFile(*it)) {
+            return 1;
         }
     }
+    if (queryFlags() & QueryMessage::ElispList && !firstElisp && !write(")", DontQuote))
+        return 1;
     return ret;
 }

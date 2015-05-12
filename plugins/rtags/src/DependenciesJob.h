@@ -1,4 +1,4 @@
-/* This file is part of RTags.
+/* This file is part of RTags (http://rtags.net).
 
 RTags is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@ class DependenciesJob : public QueryJob
 public:
     DependenciesJob(const std::shared_ptr<QueryMessage> &query, const std::shared_ptr<Project> &project);
 protected:
-    virtual int execute();
+    virtual int execute() override;
 private:
     uint32_t mFileId;
 };

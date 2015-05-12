@@ -1,4 +1,4 @@
-/* This file is part of RTags.
+/* This file is part of RTags (http://rtags.net).
 
 RTags is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -23,18 +23,22 @@ along with RTags.  If not, see <http://www.gnu.org/licenses/>. */
 #include <rct/Hash.h>
 #include "Match.h"
 #include "Location.h"
+#include <rct/Flags.h>
 
 class QueryMessage : public RTagsMessage
 {
 public:
     enum { MessageId = QueryId };
     enum Type {
+        Invalid,
+        GenerateTest,
         CheckReindex,
+        ClassHierarchy,
         ClearProjects,
         CodeCompleteAt,
-        CursorInfo,
         DeleteProject,
         Dependencies,
+        DumpCompilationDatabase,
         DumpCompletions,
         DumpFile,
         FindFile,
@@ -42,7 +46,7 @@ public:
         FixIts,
         FollowLocation,
         HasFileManager,
-        Invalid,
+        IncludeFile,
         IsIndexed,
         IsIndexing,
         JobCount,
@@ -57,15 +61,15 @@ public:
         ReloadProjects,
         RemoveFile,
         SendDiagnostics,
-        Shutdown,
+        SetBuffers,
         Sources,
         Status,
         Suspend,
-        SyncProject,
-        UnloadProject
+        SymbolInfo
     };
 
     enum Flag {
+        NoFlag = 0x00000000,
         NoContext = 0x00000001,
         FilterSystemIncludes = 0x00000004,
         StripParentheses = 0x00000008,
@@ -73,18 +77,18 @@ public:
         ReverseSort = 0x00000020,
         ElispList = 0x00000040,
         IMenu = 0x00000080,
-        MatchRegexp = 0x00000100,
+        MatchRegex = 0x00000100,
         MatchCaseInsensitive = 0x00000200,
         FindVirtuals = 0x00000400,
         Silent = 0x00000800,
         AbsolutePath = 0x00001000,
         FindFilePreferExact = 0x00002000,
-        CursorInfoIncludeParents = 0x00004000,
-        CursorInfoIncludeTargets = 0x00008000,
-        CursorInfoIncludeReferences = 0x00010000,
+        SymbolInfoIncludeParents = 0x00004000,
+        SymbolInfoExcludeTargets = 0x00008000,
+        SymbolInfoExcludeReferences = 0x00010000,
         DeclarationOnly = 0x00020000,
         ContainingFunction = 0x00040000,
-        WaitForLoadProject = 0x00080000,
+        AllTargets = 0x00080000,
         CursorKind = 0x00100000,
         DisplayName = 0x00200000,
         CompilationFlagsOnly = 0x00400000,
@@ -94,7 +98,9 @@ public:
         SynchronousCompletions = 0x04000000,
         NoSortReferencesByInput = 0x08000000,
         HasLocation = 0x10000000,
-        WildcardSymbolNames = 0x20000000
+        WildcardSymbolNames = 0x20000000,
+        NoColor = 0x40000000,
+        Rename = 0x80000000
     };
 
     QueryMessage(Type type = Invalid);
@@ -131,8 +137,8 @@ public:
     int max() const { return mMax; }
     void setMax(int max) { mMax = max; }
 
-    unsigned flags() const { return mFlags; }
-    void setFlags(unsigned flags)
+    Flags<Flag> flags() const { return mFlags; }
+    void setFlags(Flags<Flag> flags)
     {
         mFlags = flags;
         switch (mType) {
@@ -141,33 +147,35 @@ public:
         case DeleteProject:
         case Reindex:
         case RemoveFile:
-        case UnloadProject:
         case Sources:
-            mFlags |= MatchRegexp;
+            mFlags |= MatchRegex;
             break;
         default:
             break;
         }
     }
 
-    static unsigned keyFlags(unsigned queryFlags);
-    inline unsigned keyFlags() const { return keyFlags(mFlags); }
+    void setFlag(Flag flag, bool on = true) { mFlags.set(flag, on); }
+    static Flag flagFromString(const String &string);
+    static Flags<Location::KeyFlag> keyFlags(Flags<Flag> queryFlags);
+    inline Flags<Location::KeyFlag> keyFlags() const { return keyFlags(mFlags); }
 
-    virtual void encode(Serializer &serializer) const;
-    virtual void decode(Deserializer &deserializer);
+    virtual void encode(Serializer &serializer) const override;
+    virtual void decode(Deserializer &deserializer) override;
 
-    void addProject(const Path &project) { mCurrentFile.append(project); }
     void setCurrentFile(const Path &currentFile) { mCurrentFile = currentFile; }
     Path currentFile() const { return mCurrentFile; }
 private:
     String mQuery;
     Type mType;
-    unsigned mFlags;
+    Flags<QueryMessage::Flag> mFlags;
     int mMax, mMinLine, mMaxLine, mBuildIndex;
     List<String> mPathFilters;
     Path mCurrentFile;
     UnsavedFiles mUnsavedFiles;
 };
+
+RCT_FLAGS(QueryMessage::Flag);
 
 DECLARE_NATIVE_TYPE(QueryMessage::Type);
 

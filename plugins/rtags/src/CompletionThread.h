@@ -1,7 +1,7 @@
 #ifndef CompletionThread_h
 #define CompletionThread_h
 
-/* This file is part of RTags.
+/* This file is part of RTags (http://rtags.net).
 
    RTags is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -26,6 +26,8 @@
 #include <rct/LinkedList.h>
 #include <clang-c/Index.h>
 #include <rct/Connection.h>
+#include <rct/Flags.h>
+#include <rct/EmbeddedLinkedList.h>
 
 class CompletionThread : public Thread
 {
@@ -33,13 +35,14 @@ public:
     CompletionThread(int cacheSize);
     ~CompletionThread();
 
-    virtual void run();
+    virtual void run() override;
     enum Flag {
         None = 0x0,
         Refresh = 0x1,
         Elisp = 0x2
     };
-    void completeAt(const Source &source, const Location &location, unsigned int flags, const String &unsaved, Connection *conn);
+    void completeAt(const Source &source, const Location &location, Flags<Flag> flags,
+                    const String &unsaved, const std::shared_ptr<Connection> &conn);
     void stop();
     String dump();
 private:
@@ -57,9 +60,9 @@ private:
         }
         Source source;
         Location location;
-        unsigned int flags;
+        Flags<Flag> flags;
         String unsaved;
-        Connection *conn;
+        std::shared_ptr<Connection> conn;
     };
     LinkedList<Request*> mPending;
     struct Dump {
@@ -87,24 +90,25 @@ private:
 
     struct SourceFile {
         SourceFile()
-            : translationUnit(0), unsavedHash(0), lastModified(0),
-              firstCompletion(0), lastCompletion(0), next(0), prev(0)
+            : translationUnit(0), unsavedHash(0), lastModified(0), next(0), prev(0)
         {}
         CXTranslationUnit translationUnit;
         size_t unsavedHash;
         uint64_t lastModified; // ms
         Source source;
         Map<Location, Completions*> completionsMap;
-        Completions *firstCompletion, *lastCompletion;
+        EmbeddedLinkedList<Completions*> completionsList;
         SourceFile *next, *prev;
     };
     // this datastructure is only touched from inside the thread so it doesn't
     // need to be protected by mMutex
     Hash<uint32_t, SourceFile*> mCacheMap;
-    SourceFile *mFirstCache, *mLastCache;
+    EmbeddedLinkedList<SourceFile*> mCacheList;
 
     mutable std::mutex mMutex;
     std::condition_variable mCondition;
 };
+
+RCT_FLAGS(CompletionThread::Flag);
 
 #endif

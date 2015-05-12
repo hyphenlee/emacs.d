@@ -1,4 +1,4 @@
-/* This file is part of RTags.
+/* This file is part of RTags (http://rtags.net).
 
 RTags is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -23,6 +23,7 @@ along with RTags.  If not, see <http://www.gnu.org/licenses/>. */
 #include <rct/Hash.h>
 #include <rct/Process.h>
 #include "Source.h"
+#include <rct/Flags.h>
 
 class IndexerJob
 {
@@ -31,32 +32,36 @@ public:
         None = 0x000,
         Dirty = 0x001,
         Compile = 0x002,
-        Type_Mask = Dirty|Compile,
         Running = 0x010,
         Crashed = 0x020,
         Aborted = 0x040,
-        Complete = 0x080
+        Complete = 0x080,
+        Type_Mask = Dirty|Compile
     };
 
-    static String dumpFlags(unsigned int);
+    static String dumpFlags(Flags<Flag> flags);
 
     IndexerJob(const Source &source,
-               uint32_t flags,
-               const Path &project,
-               const UnsavedFiles &unsavedFiles = UnsavedFiles(),
-               const Set<uint32_t> &dirty = Set<uint32_t>());
+               Flags<Flag> flags,
+               const std::shared_ptr<Project> &project,
+               const UnsavedFiles &unsavedFiles = UnsavedFiles());
+    void acquireId();
     String encode() const;
 
     uint64_t id;
     Source source;
     Path sourceFile;
-    uint32_t flags;
+    Flags<Flag> flags;
     Path project;
+    int priority;
+    enum { HeaderError = -1 };
     UnsavedFiles unsavedFiles;
-    Set<uint32_t> dirty, visited;
+    Set<uint32_t> visited;
     int crashCount;
 private:
     static uint64_t sNextId;
 };
+
+RCT_FLAGS(IndexerJob::Flag);
 
 #endif

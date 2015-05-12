@@ -1,4 +1,4 @@
-/* This file is part of RTags.
+/* This file is part of RTags (http://rtags.net).
 
 RTags is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -27,7 +27,7 @@ class JSONJob : public QueryJob
 public:
     JSONJob(const std::shared_ptr<QueryMessage> &query, const std::shared_ptr<Project> &project);
 protected:
-    virtual void execute();
+    virtual void execute() override;
 private:
     const Match match;
 };

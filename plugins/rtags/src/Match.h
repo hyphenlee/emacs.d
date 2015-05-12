@@ -1,4 +1,4 @@
-/* This file is part of RTags.
+/* This file is part of RTags (http://rtags.net).
 
 RTags is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -17,8 +17,9 @@ along with RTags.  If not, see <http://www.gnu.org/licenses/>. */
 #define Match_h
 
 #include <rct/String.h>
-#include <rct/RegExp.h>
 #include <rct/Log.h>
+#include <regex>
+#include <rct/Flags.h>
 
 class Match
 {
@@ -26,27 +27,22 @@ public:
     enum Flag {
         Flag_None = 0x0,
         Flag_StringMatch = 0x1,
-        Flag_RegExp = 0x2,
+        Flag_Regex = 0x2,
         Flag_CaseInsensitive = 0x4
     };
 
     inline Match()
-        : mFlags(0)
     {}
 
-    inline Match(const String &pattern, unsigned flags = Flag_StringMatch)
+    inline Match(const String &pattern, Flags<Flag> flags = Flag_StringMatch)
         : mFlags(flags)
     {
-        if (flags & Flag_RegExp)
-            mRegExp = pattern;
+        if (flags & Flag_Regex)
+            mRegex = pattern.ref();
         mPattern = pattern;
     }
 
-    unsigned flags() const { return mFlags; }
-
-    inline Match(const RegExp &regExp)
-        : mRegExp(regExp), mPattern(regExp.pattern()), mFlags(Flag_RegExp)
-    {}
+    Flags<Flag> flags() const { return mFlags; }
 
     inline bool match(const String &text) const
     {
@@ -62,8 +58,9 @@ public:
         int index = -1;
         if (mFlags & Flag_StringMatch)
             index = text.indexOf(mPattern, 0, mFlags & Flag_CaseInsensitive ? String::CaseInsensitive : String::CaseSensitive);
-        if (index == -1 && mFlags & Flag_RegExp)
-            index = mRegExp.indexIn(text);
+        if (index == -1 && mFlags & Flag_Regex) {
+            index = Rct::indexIn(text, mRegex);
+        }
         return index;
     }
     inline bool isEmpty() const
@@ -71,9 +68,9 @@ public:
         return !mFlags || mPattern.isEmpty();
     }
 
-    inline RegExp regExp() const
+    inline std::regex regex() const
     {
-        return mRegExp;
+        return mRegex;
     }
 
     inline String pattern() const
@@ -81,17 +78,18 @@ public:
         return mPattern;
     }
 private:
-    RegExp mRegExp;
+    std::regex mRegex;
     String mPattern;
-    unsigned mFlags;
+    Flags<Flag> mFlags;
 };
+RCT_FLAGS(Match::Flag);
 
 inline Log operator<<(Log log, const Match &match)
 {
     String ret = "Match(flags: ";
     ret += String::number(match.flags(), 16);
-    if (match.regExp().isValid())
-        ret += " rx: " + match.regExp().pattern();
+    if (match.flags() & Match::Flag_Regex)
+        ret += " rx";
     if (!match.pattern().isEmpty())
         ret += " pattern: " + match.pattern();
     ret += ")";

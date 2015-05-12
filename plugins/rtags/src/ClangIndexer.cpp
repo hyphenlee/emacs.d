@@ -1,28 +1,41 @@
+/* This file is part of RTags (http://rtags.net).
+
+   RTags is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+
+   RTags is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with RTags.  If not, see <http://www.gnu.org/licenses/>. */
+
 #define RTAGS_SINGLE_THREAD
 #include <rct/SHA256.h>
 #include "ClangIndexer.h"
+#include "Diagnostic.h"
 #include "QueryMessage.h"
 #include "VisitFileMessage.h"
 #include "VisitFileResponseMessage.h"
+#include "FileMap.h"
 #include <rct/Connection.h>
 #include <rct/EventLoop.h>
 #include "RTags.h"
-#include "IndexerMessage.h"
-#include "IndexData.h"
+#include "Diagnostic.h"
+#include "RClient.h"
 #include <unistd.h>
+#include "Server.h"
 
 static const CXSourceLocation nullLocation = clang_getNullLocation();
 static const CXCursor nullCursor = clang_getNullCursor();
 
-struct DumpUserData {
-    int indentLevel;
-    ClangIndexer *indexer;
-};
-
-struct FindImplicitEqualsConstructorUserData {
-    CXCursor &ref;
-    bool &success;
-};
+static inline String usr(const CXCursor &cursor)
+{
+    return RTags::eatString(clang_getCursorUSR(clang_getCanonicalCursor(cursor)));
+}
 
 struct VerboseVisitorUserData {
     int indent;
@@ -30,14 +43,16 @@ struct VerboseVisitorUserData {
     ClangIndexer *indexer;
 };
 
+uint32_t ClangIndexer::sServerOpts = 0;
 ClangIndexer::ClangIndexer()
-    : mClangUnit(0), mLoadedFromCache(false), mIndex(0), mLastCursor(nullCursor), mVisitFileResponseMessageFileId(0),
+    : mClangUnit(0), mIndex(0), mLastCursor(nullCursor), mVisitFileResponseMessageFileId(0),
       mVisitFileResponseMessageVisit(0), mParseDuration(0), mVisitDuration(0),
       mBlocked(0), mAllowed(0), mIndexed(1), mVisitFileTimeout(0),
-      mIndexerMessageTimeout(0), mFileIdsQueried(0), mLogFile(0)
+      mIndexDataMessageTimeout(0), mFileIdsQueried(0), mLogFile(0),
+      mConnection(Connection::create(RClient::NumOptions))
 {
-    mConnection.newMessage().connect(std::bind(&ClangIndexer::onMessage, this,
-                                               std::placeholders::_1, std::placeholders::_2));
+    mConnection->newMessage().connect(std::bind(&ClangIndexer::onMessage, this,
+                                                std::placeholders::_1, std::placeholders::_2));
 }
 
 ClangIndexer::~ClangIndexer()
@@ -60,26 +75,28 @@ bool ClangIndexer::exec(const String &data)
         return false;
     }
     uint64_t id;
-    String serverFile;
-    uint32_t flags;
-    uint32_t connectTimeout;
+    String socketFile;
+    Flags<IndexerJob::Flag> indexerJobFlags;
+    uint32_t connectTimeout, connectAttempts;
     int32_t niceValue;
-    extern bool suspendOnSigSegv;
     Hash<uint32_t, Path> blockedFiles;
+    String dataDir;
 
     deserializer >> id;
-    deserializer >> serverFile;
-    deserializer >> mASTCacheDir;
+    deserializer >> socketFile;
     deserializer >> mProject;
     deserializer >> mSource;
     deserializer >> mSourceFile;
-    deserializer >> flags;
+    deserializer >> indexerJobFlags;
     deserializer >> mVisitFileTimeout;
-    deserializer >> mIndexerMessageTimeout;
+    deserializer >> mIndexDataMessageTimeout;
     deserializer >> connectTimeout;
+    deserializer >> connectAttempts;
     deserializer >> niceValue;
-    deserializer >> suspendOnSigSegv;
+    deserializer >> sServerOpts;
     deserializer >> mUnsavedFiles;
+    deserializer >> dataDir;
+    deserializer >> blockedFiles;
 
 #if 0
     while (true) {
@@ -95,24 +112,12 @@ bool ClangIndexer::exec(const String &data)
     }
 #endif
 
-    uint32_t dirtySize;
-    deserializer >> dirtySize;
     const uint64_t parseTime = Rct::currentTimeMs();
-
-    while (dirtySize-- > 0) {
-        Path dirty;
-        deserializer >> dirty;
-        if (!mUnsavedFiles.contains(dirty)) {
-            mUnsavedFiles[dirty] = dirty.readAll();
-        }
-    }
-
-    deserializer >> blockedFiles;
 
     if (niceValue != INT_MIN) {
         errno = 0;
         if (nice(niceValue) == -1) {
-            error() << "Failed to nice rp" << strerror(errno);
+            error() << "Failed to nice rp" << Rct::strerror();
         }
     }
 
@@ -132,98 +137,73 @@ bool ClangIndexer::exec(const String &data)
 
     Location::init(blockedFiles);
     Location::set(mSourceFile, mSource.fileId);
-    if (!mConnection.connectUnix(serverFile, connectTimeout)) {
-        error("Failed to connect to rdm on %s (%dms timeout)", serverFile.constData(), connectTimeout);
-        return false;
+    while (true) {
+        if (mConnection->connectUnix(socketFile, connectTimeout))
+            break;
+        if (!--connectAttempts) {
+            error("Failed to connect to rdm on %s (%dms timeout)", socketFile.constData(), connectTimeout);
+            return false;
+        }
+        usleep(500 * 1000);
     }
     // mLogFile = fopen(String::format("/tmp/%s", mSourceFile.fileName()).constData(), "w");
-    mData.reset(new IndexData(flags));
-    mData->parseTime = parseTime;
-    mData->key = mSource.key();
-    mData->id = id;
+    mIndexDataMessage.setProject(mProject);
+    mIndexDataMessage.setIndexerJobFlags(indexerJobFlags);
+    mIndexDataMessage.setParseTime(parseTime);
+    mIndexDataMessage.setKey(mSource.key());
+    mIndexDataMessage.setId(id);
 
-    assert(mConnection.isConnected());
-    mData->visited[mSource.fileId] = true;
+    assert(mConnection->isConnected());
+    mIndexDataMessage.files()[mSource.fileId] |= IndexDataMessage::Visited;
     parse() && visit() && diagnose();
-    mData->message = mSourceFile.toTilde();
-    if (!mClangUnit)
-        mData->message += " error";
-    mData->message += String::format<16>(" in %dms%s. ", mTimer.elapsed(), mLoadedFromCache ? " (cached)" : "");
-    if (mClangUnit) {
-        const char *format = "(%d syms, %d symNames, %d deps, %d of %d files, cursors: %d of %d, %d queried) (%d/%dms)";
-        mData->message += String::format<128>(format, mData->symbols.size(), mData->symbolNames.size(),
-                                              mData->dependencies.size(), mIndexed, mData->visited.size(), mAllowed,
-                                              mAllowed + mBlocked, mFileIdsQueried,
-                                              mParseDuration, mVisitDuration);
-    } else if (mData->dependencies.size()) {
-        mData->message += String::format<16>("(%d deps)", mData->dependencies.size());
+    String message = mSourceFile.toTilde();
+    String err;
+    StopWatch sw;
+    int writeDuration = -1;
+    if (!mClangUnit || !writeFiles(RTags::encodeSourceFilePath(dataDir, mProject, 0), err)) {
+        message += " error";
+        if (!err.isEmpty())
+            message += (' ' + err);
+    } else {
+        writeDuration = sw.elapsed();
     }
-    if (mData->flags & IndexerJob::Dirty)
-        mData->message += " (dirty)";
-    const IndexerMessage msg(mProject, mData);
+    message += String::format<16>(" in %lldms. ", mTimer.elapsed());
+    int cursorCount = 0;
+    int symbolNameCount = 0;
+    for (const auto &unit : mUnits) {
+        cursorCount += unit.second->symbols.size();
+        symbolNameCount += unit.second->symbolNames.size();
+    }
+    if (mClangUnit) {
+        const char *format = "(%d syms, %d symNames, %d includes, %d of %d files, symbols: %d of %d, %d queried) (%d/%d/%dms)";
+        message += String::format<128>(format, cursorCount, symbolNameCount,
+                                       mIndexDataMessage.includes().size(), mIndexed,
+                                       mIndexDataMessage.files().size(), mAllowed,
+                                       mAllowed + mBlocked, mFileIdsQueried,
+                                       mParseDuration, mVisitDuration, writeDuration);
+    }
+    if (mIndexDataMessage.indexerJobFlags() & IndexerJob::Dirty)
+        message += " (dirty)";
     ++mFileIdsQueried;
 
-    StopWatch sw;
-    if (!mConnection.send(msg)) {
-        error() << "Couldn't send IndexerMessage" << mSourceFile;
+    mIndexDataMessage.setMessage(message);
+    sw.restart();
+    if (!mConnection->send(mIndexDataMessage)) {
+        error() << "Couldn't send IndexDataMessage" << mSourceFile;
         return false;
     }
-    mConnection.finished().connect(std::bind(&EventLoop::quit, EventLoop::eventLoop()));
-    if (EventLoop::eventLoop()->exec(mIndexerMessageTimeout) == EventLoop::Timeout) {
-        error() << "Timed out sending IndexerMessage" << mSourceFile;
+    mConnection->finished().connect(std::bind(&EventLoop::quit, EventLoop::eventLoop()));
+    if (EventLoop::eventLoop()->exec(mIndexDataMessageTimeout) == EventLoop::Timeout) {
+        error() << "Timed out sending IndexDataMessage" << mSourceFile;
         return false;
     }
     if (getenv("RDM_DEBUG_INDEXERMESSAGE"))
         error() << "Send took" << sw.elapsed() << "for" << mSourceFile;
 
-    if (!mLoadedFromCache && mClangUnit && !mASTCacheDir.isEmpty() && mUnsavedFiles.isEmpty()
-        && Path::mkdir(mASTCacheDir, Path::Recursive)) {
-        Path outFile = mSourceFile;
-        RTags::encodePath(outFile);
-        outFile.prepend(mASTCacheDir);
-        warning() << "About to save" << outFile << mSourceFile;
-        if (clang_saveTranslationUnit(mClangUnit, outFile.constData(), clang_defaultSaveOptions(mClangUnit)) != CXSaveError_None) {
-            error() << "Failed to save translation unit to" << outFile;
-            return true;
-        }
-        FILE *manifest = fopen((outFile + ".manifest").constData(), "w");
-        if (!manifest) {
-            error() << "Failed to write manifest" << errno << strerror(errno);
-            Path::rm(outFile);
-            return true;
-        }
-
-        Serializer serializer(manifest);
-        const Set<uint32_t> &deps = mData->dependencies[mSource.fileId];
-        assert(deps.contains(mSource.fileId));
-        serializer << static_cast<uint8_t>(RTags::ASTManifestVersion) << mSource << deps.size();
-        auto serialize = [this, &serializer](uint32_t file) {
-            const Path path = Location::path(file);
-            const String sha = shaFile(path);
-            if (sha.isEmpty())
-                return false;
-            serializer << path << path.lastModified() << sha;
-            return true;
-        };
-
-        bool ok = serialize(mSource.fileId);
-        if (ok) {
-            for (uint32_t dep : deps) {
-                if (!serialize(dep)) {
-                    ok = false;
-                    break;
-                }
-            }
-        }
-        if (!ok) {
-            fclose(manifest);
-        }
-    }
-
     return true;
 }
 
-void ClangIndexer::onMessage(const std::shared_ptr<Message> &msg, Connection *conn)
+void ClangIndexer::onMessage(const std::shared_ptr<Message> &msg, const std::shared_ptr<Connection> &/*conn*/)
 {
     assert(msg->messageId() == VisitFileResponseMessage::MessageId);
     const std::shared_ptr<VisitFileResponseMessage> vm = std::static_pointer_cast<VisitFileResponseMessage>(msg);
@@ -233,23 +213,34 @@ void ClangIndexer::onMessage(const std::shared_ptr<Message> &msg, Connection *co
     EventLoop::eventLoop()->quit();
 }
 
-Location ClangIndexer::createLocation(const Path &sourceFile, unsigned line, unsigned col, bool *blockedPtr)
+Location ClangIndexer::createLocation(const Path &sourceFile, unsigned int line, unsigned int col, bool *blockedPtr)
 {
     uint32_t id = Location::fileId(sourceFile);
     Path resolved;
     if (!id) {
-        resolved = sourceFile.resolved();
+        bool ok;
+        for (int i=0; i<4; ++i) {
+            resolved = sourceFile.resolved(Path::RealPath, Path(), &ok);
+            // if ok is false it means the file is gone, in case this happens
+            // during a git pull or something we'll give it a couple of chances.
+            if (ok)
+                break;
+            usleep(50000);
+        }
+        if (!ok)
+            return Location();
         id = Location::fileId(resolved);
         if (id)
             Location::set(sourceFile, id);
     }
+    assert(!resolved.contains("/../"));
 
     if (id) {
         if (blockedPtr) {
-            Hash<uint32_t, bool>::iterator it = mData->visited.find(id);
-            if (it == mData->visited.end()) {
+            Hash<uint32_t, Flags<IndexDataMessage::FileFlag> >::iterator it = mIndexDataMessage.files().find(id);
+            if (it == mIndexDataMessage.files().end()) {
                 // the only reason we already have an id for a file that isn't
-                // in the mData->visited is that it's blocked from the outset.
+                // in the mIndexDataMessage.mFiles is that it's blocked from the outset.
                 // The assumption is that we never will go and fetch a file id
                 // for a location without passing blockedPtr since any reference
                 // to a symbol in another file should have been preceded by that
@@ -260,7 +251,7 @@ Location ClangIndexer::createLocation(const Path &sourceFile, unsigned line, uns
                 if (resolved.isEmpty())
                     resolved = sourceFile.resolved();
 #endif
-                mData->visited[id] = false;
+                mIndexDataMessage.files()[id] = IndexDataMessage::NoFileFlag;
                 *blockedPtr = true;
                 return Location();
             } else if (!it->second) {
@@ -272,11 +263,11 @@ Location ClangIndexer::createLocation(const Path &sourceFile, unsigned line, uns
     }
 
     ++mFileIdsQueried;
-    VisitFileMessage msg(resolved, mProject, mData->key);
+    VisitFileMessage msg(resolved, mProject, mIndexDataMessage.key());
 
     mVisitFileResponseMessageFileId = UINT_MAX;
     mVisitFileResponseMessageVisit = false;
-    mConnection.send(msg);
+    mConnection->send(msg);
     StopWatch sw;
     EventLoop::eventLoop()->exec(mVisitFileTimeout);
     switch (mVisitFileResponseMessageFileId) {
@@ -293,9 +284,11 @@ Location ClangIndexer::createLocation(const Path &sourceFile, unsigned line, uns
         id = mVisitFileResponseMessageFileId;
         break;
     }
-    mData->visited[id] = mVisitFileResponseMessageVisit;
-    if (mVisitFileResponseMessageVisit)
+    Flags<IndexDataMessage::FileFlag> &flags = mIndexDataMessage.files()[id];
+    if (mVisitFileResponseMessageVisit) {
+        flags |= IndexDataMessage::Visited;
         ++mIndexed;
+    }
     // fprintf(mLogFile, "%s %s\n", file.second ? "WON" : "LOST", resolved.constData());
 
     Location::set(resolved, id);
@@ -363,7 +356,8 @@ static inline void tokenize(const char *buf, int start,
     }
 }
 
-String ClangIndexer::addNamePermutations(const CXCursor &cursor, const Location &location)
+String ClangIndexer::addNamePermutations(const CXCursor &cursor, const Location &location,
+                                         String type, RTags::CursorType cursorType)
 {
     CXCursorKind kind = clang_getCursorKind(cursor);
     const CXCursorKind originalKind = kind;
@@ -411,20 +405,40 @@ String ClangIndexer::addNamePermutations(const CXCursor &cursor, const Location 
         }
     } while (RTags::needsQualifiers(kind));
 
-    String type;
-    switch (originalKind) {
-    case CXCursor_ClassDecl:
-    case CXCursor_StructDecl:
-    case CXCursor_ClassTemplate:
-        break;
-    default:
-        type = RTags::typeName(cursor);
-        break;
+    if (type.isEmpty()) {
+        switch (originalKind) {
+        case CXCursor_StructDecl:
+            type = "struct ";
+            break;
+        case CXCursor_ClassDecl:
+        case CXCursor_ClassTemplate:
+            type = "class ";
+            break;
+        case CXCursor_Namespace:
+            type = "namespace ";
+            break;
+        default:
+            type = RTags::typeName(cursor);
+            break;
+        }
+    } else if (!type.isEmpty() && !type.endsWith('*') && !type.endsWith('&')) {
+        type.append(' ');
     }
+
     if (cutoff == -1)
         cutoff = pos;
 
     String ret;
+    if (cursorType == RTags::Type_Reference) {
+        if (!type.isEmpty()) {
+            ret = type;
+            ret.append(buf + cutoff, sizeof(buf) - cutoff - 1);
+        } else {
+            ret.assign(buf + cutoff, sizeof(buf) - cutoff - 1);
+        }
+        return ret;
+    }
+
     int templateStart, templateEnd, colonColonCount;
     int colonColons[512];
     ::tokenize(buf, pos,
@@ -437,7 +451,7 @@ String ClangIndexer::addNamePermutations(const CXCursor &cursor, const Location 
         for (int j=0; j<colonColonCount; ++j) {
             const char *ch = buf + colonColons[j];
             const String name(ch, sizeof(buf) - (ch - buf) - 1);
-            mData->symbolNames[name].insert(location);
+            unit(location.fileId())->symbolNames[name].insert(location);
             if (!type.isEmpty() && (originalKind != CXCursor_ParmDecl || !strchr(ch, '('))) {
                 // We only want to add the type to the final declaration for ParmDecls
                 // e.g.
@@ -450,12 +464,12 @@ String ClangIndexer::addNamePermutations(const CXCursor &cursor, const Location 
                 // or
                 // void foo(int)::int bar
 
-                mData->symbolNames[type + name].insert(location);
+                unit(location.fileId())->symbolNames[type + name].insert(location);
             }
         }
 
         if (i == 0) {
-            // create actual symbol name that will go into CursorInfo. This doesn't include namespaces etc
+            // create actual symbol name that will go into SymbolInfo. This doesn't include namespaces etc
             if (!type.isEmpty()) {
                 ret = type;
                 ret.append(buf + cutoff, sizeof(buf) - cutoff - 1);
@@ -479,12 +493,6 @@ String ClangIndexer::addNamePermutations(const CXCursor &cursor, const Location 
                 const int len = (last - secondLast);
                 memmove(buf + pos + len, buf + pos, secondLast - (buf + pos));
                 pos += len;
-                // ### We could/should just move the colon colon values but this
-                // should be pretty quick and I don't want to write the code to
-                // do it.
-                ::tokenize(buf, pos,
-                           &templateStart, &templateEnd,
-                           &colonColonCount, colonColons);
             }
         } else { // remove templates
             assert(templateStart != -1);
@@ -493,6 +501,12 @@ String ClangIndexer::addNamePermutations(const CXCursor &cursor, const Location 
             memmove(buf + pos + templateSize, buf + pos, (buf + templateStart) - (buf + pos));
             pos += templateSize;
         }
+        // ### We could/should just move the colon colon values but this
+        // should be pretty quick and I don't want to write the code to
+        // do it.
+        ::tokenize(buf, pos,
+                   &templateStart, &templateEnd,
+                   &colonColonCount, colonColons);
     }
 
     return ret;
@@ -514,11 +528,13 @@ static inline CXCursor findDestructorForDelete(const CXCursor &deleteStatement)
     const CXCursor var = clang_getCursorReferenced(child);
     kind = clang_getCursorKind(var);
     switch (kind) {
+    case CXCursor_ObjCIvarDecl:
     case CXCursor_VarDecl:
     case CXCursor_FieldDecl:
     case CXCursor_ParmDecl:
     case CXCursor_CXXMethod:
     case CXCursor_FunctionDecl:
+    case CXCursor_ConversionFunction:
         break;
     default:
         if (!clang_isInvalid(kind)) {
@@ -554,13 +570,14 @@ static inline CXCursor findDestructorForDelete(const CXCursor &deleteStatement)
     return destructor;
 }
 
-struct LastCursorUpdater
+template <typename T>
+struct Updater
 {
-    LastCursorUpdater(CXCursor &var, const CXCursor &cursor) : mVar(var), mCursor(cursor) {}
-    ~LastCursorUpdater() { mVar = mCursor; }
+    Updater(T &var, const T &newValue) : mVar(var), mNewValue(newValue) {}
+    ~Updater() { mVar = mNewValue; }
 
-    CXCursor &mVar;
-    CXCursor mCursor;
+    T &mVar;
+    const T mNewValue;
 };
 
 CXChildVisitResult ClangIndexer::indexVisitor(CXCursor cursor, CXCursor parent, CXClientData data)
@@ -573,16 +590,19 @@ CXChildVisitResult ClangIndexer::indexVisitor(CXCursor cursor, CXCursor parent, 
     // fwrite(str.constData(), 1, str.size(), f);
     // fwrite("\n", 1, 1, f);
     // fclose(f);
-    const LastCursorUpdater updater(indexer->mLastCursor, cursor);
+    const Updater<CXCursor> lastCursorUpdater(indexer->mLastCursor, cursor);
 
     const CXCursorKind kind = clang_getCursorKind(cursor);
     const RTags::CursorType type = RTags::cursorType(kind);
-    if (type == RTags::Other)
+    if (type == RTags::Type_Other) {
+        indexer->mLastLocation.clear();
         return CXChildVisit_Recurse;
+    }
 
     bool blocked = false;
 
     Location loc = indexer->createLocation(cursor, &blocked);
+    const Updater<Location> lastLocationUpdater(indexer->mLastLocation, loc);
     if (blocked) {
         // error() << "blocked" << cursor;
         ++indexer->mBlocked;
@@ -607,14 +627,24 @@ CXChildVisitResult ClangIndexer::indexVisitor(CXCursor cursor, CXCursor parent, 
             log << "refs" << ref;
         }
     }
+    if (Symbol::isClass(kind)) {
+        indexer->mLastClass = loc;
+    } else {
+        if (kind == CXCursor_CXXBaseSpecifier) {
+            indexer->handleBaseClassSpecifier(cursor);
+            indexer->mLastLocation.clear();
+            return CXChildVisit_Recurse;
+        }
+    }
+
     switch (type) {
-    case RTags::Cursor:
+    case RTags::Type_Cursor:
         indexer->handleCursor(cursor, kind, loc);
         break;
-    case RTags::Include:
+    case RTags::Type_Include:
         indexer->handleInclude(cursor, kind, loc);
         break;
-    case RTags::Reference:
+    case RTags::Type_Reference:
         switch (kind) {
         case CXCursor_OverloadedDeclRef: {
             const int count = clang_getNumOverloadedDecls(cursor);
@@ -630,7 +660,8 @@ CXChildVisitResult ClangIndexer::indexVisitor(CXCursor cursor, CXCursor parent, 
             // uglehack, see rtags/tests/nestedClassConstructorCallUgleHack/
             const CXCursor ref = clang_getCursorReferenced(cursor);
             if (clang_getCursorKind(ref) == CXCursor_Constructor
-                && clang_getCursorKind(indexer->mLastCursor) == CXCursor_TypeRef
+                && (clang_getCursorKind(indexer->mLastCursor) == CXCursor_TypeRef
+                    || clang_getCursorKind(indexer->mLastCursor) == CXCursor_TemplateRef)
                 && clang_getCursorKind(parent) != CXCursor_VarDecl) {
                 loc = indexer->createLocation(indexer->mLastCursor);
                 indexer->handleReference(indexer->mLastCursor, kind, loc, ref, parent);
@@ -643,7 +674,7 @@ CXChildVisitResult ClangIndexer::indexVisitor(CXCursor cursor, CXCursor parent, 
             break;
         }
         break;
-    case RTags::Other:
+    case RTags::Type_Other:
         assert(0);
         break;
     }
@@ -656,74 +687,82 @@ static inline bool isImplicit(const CXCursor &cursor)
                                 clang_getCursorLocation(clang_getCursorSemanticParent(cursor)));
 }
 
-void ClangIndexer::superclassTemplateMemberFunctionUgleHack(const CXCursor &cursor, CXCursorKind kind,
-                                                            const Location &location, const CXCursor &ref,
-                                                            const CXCursor &parent)
+bool ClangIndexer::superclassTemplateMemberFunctionUgleHack(const CXCursor &cursor, CXCursorKind kind,
+                                                            const Location &location, const CXCursor &/*ref*/,
+                                                            const CXCursor &parent, Symbol **cursorPtr)
 {
     // This is for references to superclass template functions. Awful awful
     // shit. See https://github.com/Andersbakken/rtags/issues/62 and commit
     // for details. I really should report this as a bug.
-    if (kind == CXCursor_MemberRefExpr && clang_getCursorKind(parent) == CXCursor_CallExpr) {
-        const CXCursor templateRef = RTags::findChild(cursor, CXCursor_TemplateRef);
-        if (templateRef == CXCursor_TemplateRef) {
-            const CXCursor classTemplate = clang_getCursorReferenced(templateRef);
-            if (classTemplate == CXCursor_ClassTemplate) {
-                FILE *f = fopen(location.path().constData(), "r");
-                if (f) {
-                    const CXSourceRange range = clang_getCursorExtent(cursor);
-                    const CXSourceLocation end = clang_getRangeEnd(range);
-                    unsigned offset;
-                    clang_getSpellingLocation(end, 0, 0, 0, &offset);
+    if (cursorPtr)
+        *cursorPtr = 0;
+    if (kind != CXCursor_MemberRefExpr && clang_getCursorKind(parent) != CXCursor_CallExpr)
+        return false;
 
-                    String name;
-                    while (offset > 0) {
-                        fseek(f, --offset, SEEK_SET);
-                        char ch = static_cast<char>(fgetc(f));
-                        if (isalnum(ch) || ch == '_' || ch == '~') {
-                            name.prepend(ch);
-                        } else {
-                            break;
-                        }
-                    }
-                    fclose(f);
-                    if (!name.isEmpty()) {
-                        RTags::Filter out;
-                        out.kinds.insert(CXCursor_MemberRefExpr);
-                        const int argCount = RTags::children(parent, RTags::Filter(), out).size();
-                        RTags::Filter in(RTags::Filter::And);
-                        in.names.insert(name);
-                        in.argumentCount = argCount;
-                        const List<CXCursor> alternatives = RTags::children(classTemplate, in);
-                        switch (alternatives.size()) {
-                        case 1:
-                            // ### not sure this is correct with line/col
-                            handleReference(cursor, kind, Location(location.fileId(), location.line(), location.column() + 1), alternatives.first(), parent);
-                            break;
-                        case 0:
-                            break;
-                        default:
-                            warning() << "Can't decide which of these cursors are right for me"
-                                      << cursor << alternatives
-                                      << "Need to parse types";
-                            break;
-                        }
-                    }
-                }
-            }
+    const CXCursor templateRef = RTags::findChild(cursor, CXCursor_TemplateRef);
+    if (templateRef != CXCursor_TemplateRef)
+        return false;
+
+    const CXCursor classTemplate = clang_getCursorReferenced(templateRef);
+    if (classTemplate != CXCursor_ClassTemplate)
+        return false;
+    FILE *f = fopen(location.path().constData(), "r");
+    if (!f)
+        return false;
+
+    const CXSourceRange range = clang_getCursorExtent(cursor);
+    const CXSourceLocation end = clang_getRangeEnd(range);
+    unsigned int offset;
+    clang_getSpellingLocation(end, 0, 0, 0, &offset);
+
+    String name;
+    while (offset > 0) {
+        fseek(f, --offset, SEEK_SET);
+        char ch = static_cast<char>(fgetc(f));
+        if (isalnum(ch) || ch == '_' || ch == '~') {
+            name.prepend(ch);
+        } else {
+            break;
         }
     }
+    fclose(f);
+    if (!name.isEmpty()) {
+        RTags::Filter out;
+        out.kinds.insert(CXCursor_MemberRefExpr);
+        const int argCount = RTags::children(parent, RTags::Filter(), out).size();
+        RTags::Filter in(RTags::Filter::And);
+        in.names.insert(name);
+        in.argumentCount = argCount;
+        const List<CXCursor> alternatives = RTags::children(classTemplate, in);
+        switch (alternatives.size()) {
+        case 1:
+            // ### not sure this is correct with line/col
+            return handleReference(cursor, kind,
+                                   Location(location.fileId(), location.line(), location.column() + 1),
+                                   alternatives.first(), parent, cursorPtr);
+            break;
+        case 0:
+            break;
+        default:
+            warning() << "Can't decide which of these symbols are right for me"
+                      << cursor << alternatives
+                      << "Need to parse types";
+            break;
+        }
+    }
+    return false;
 }
 
-
-std::shared_ptr<CursorInfo> ClangIndexer::handleReference(const CXCursor &cursor, CXCursorKind kind,
-                                                          const Location &location, const CXCursor &ref,
-                                                          const CXCursor &parent)
+bool ClangIndexer::handleReference(const CXCursor &cursor, CXCursorKind kind,
+                                   const Location &location, CXCursor ref,
+                                   const CXCursor &parent, Symbol **cursorPtr)
 {
+    if (cursorPtr)
+        *cursorPtr = 0;
     // error() << "handleReference" << cursor << kind << location << ref;
     const CXCursorKind refKind = clang_getCursorKind(ref);
     if (clang_isInvalid(refKind)) {
-        superclassTemplateMemberFunctionUgleHack(cursor, kind, location, ref, parent);
-        return std::shared_ptr<CursorInfo>();
+        return superclassTemplateMemberFunctionUgleHack(cursor, kind, location, ref, parent, cursorPtr);
     }
 
     bool isOperator = false;
@@ -731,7 +770,7 @@ std::shared_ptr<CursorInfo> ClangIndexer::handleReference(const CXCursor &cursor
                                       || refKind == CXCursor_ConversionFunction
                                       || refKind == CXCursor_FunctionDecl
                                       || refKind == CXCursor_FunctionTemplate)) {
-        // these are bullshit, for this construct:
+        // These are bullshit. for this construct:
         // foo.bar();
         // the position of the cursor is at the foo, not the bar.
         // They are not interesting for followLocation, renameSymbol or find
@@ -741,25 +780,49 @@ std::shared_ptr<CursorInfo> ClangIndexer::handleReference(const CXCursor &cursor
         // For constructors they happen to be the only thing we have that
         // actually refs the constructor and not the class so we have to keep
         // them for that.
-        return std::shared_ptr<CursorInfo>();;
+        return false;
+    }
+
+    Location refLoc = createLocation(ref);
+    if (!refLoc.isValid()) {
+        // ### THIS IS NOT SOLVED
+        // if (kind == CXCursor_ObjCMessageExpr) {
+        //    mIndexDataMessage.mPendingReferenceMap[RTags::eatString(clang_getCursorUSR(clang_getCanonicalCursor(ref)))].insert(location);
+        //     // insert it, we'll hook up the target and references later
+        //     return handleCursor(cursor, kind, location, cursorPtr);
+        // }
+        return false;
     }
 
     switch (refKind) {
     case CXCursor_Constructor:
-        if (isImplicit(ref))
-            return std::shared_ptr<CursorInfo>();;
-        break;
     case CXCursor_CXXMethod:
     case CXCursor_FunctionDecl:
+    case CXCursor_Destructor:
     case CXCursor_FunctionTemplate: {
-        CXStringScope scope = clang_getCursorDisplayName(ref);
-        const char *data = scope.data();
-        if (data) {
-            const int len = strlen(data);
-            if (len > 8 && !strncmp(data, "operator", 8) && !isalnum(data[8]) && data[8] != '_') {
-                if (isImplicit(ref))
-                    return std::shared_ptr<CursorInfo>();; // eat implicit operator calls
-                isOperator = true;
+        while (true) {
+            const CXCursor general = clang_getSpecializedCursorTemplate(ref);
+            if (!clang_Cursor_isNull(general) && createLocation(general) == refLoc) {
+                ref = general;
+            } else {
+                break;
+            }
+        }
+        if (refKind == CXCursor_FunctionDecl)
+            break;
+        if (refKind == CXCursor_Constructor || refKind == CXCursor_Destructor) {
+            if (isImplicit(ref))
+                return false;
+        } else {
+            CXStringScope scope = clang_getCursorDisplayName(ref);
+            const char *data = scope.data();
+            if (data) {
+                const int len = strlen(data);
+                if (len > 8 && !strncmp(data, "operator", 8) && !isalnum(data[8]) && data[8] != '_') {
+                    if (isImplicit(ref))
+                        return false; // eat implicit operator calls
+                    isOperator = true;
+                }
             }
         }
         break; }
@@ -767,26 +830,26 @@ std::shared_ptr<CursorInfo> ClangIndexer::handleReference(const CXCursor &cursor
         break;
     }
 
-    const Location reffedLoc = createLocation(ref);
-    if (!reffedLoc.isValid()) {
-        if (kind == CXCursor_ObjCMessageExpr) {
-            mData->pendingReferenceMap[RTags::eatString(clang_getCursorUSR(clang_getCanonicalCursor(ref)))].insert(location);
-            // insert it, we'll hook up the target and references later
-            handleCursor(cursor, kind, location);
-        }
-        return std::shared_ptr<CursorInfo>();;
+    const String refUsr = usr(ref);
+    if (refUsr.isEmpty()) {
+        return false;
     }
 
-    std::shared_ptr<CursorInfo> &refInfo = mData->symbols[reffedLoc];
-    if ((!refInfo || !refInfo->symbolLength) && !handleCursor(ref, refKind, reffedLoc))
-        return std::shared_ptr<CursorInfo>();;
+    bool reffedCursorFound;
+    auto reffedCursor = findSymbol(refLoc, &reffedCursorFound);
+    Map<String, uint16_t> &targets = unit(location.fileId())->targets[location];
+    uint16_t refTargetValue;
+    if (reffedCursorFound) {
+        refTargetValue = reffedCursor.targetsValue();
+    } else {
+        refTargetValue = RTags::createTargetsValue(refKind, clang_isCursorDefinition(ref));
+    }
 
-    refInfo->references.insert(location);
-
-    std::shared_ptr<CursorInfo> &info = mData->symbols[location];
-    if (!info)
-        info = std::make_shared<CursorInfo>();
-    info->targets.insert(reffedLoc);
+    assert(!refUsr.isEmpty());
+    targets[refUsr] = refTargetValue;
+    Symbol &c = unit(location)->symbols[location];
+    if (cursorPtr)
+        *cursorPtr = &c;
 
     // We need the new cursor to replace the symbolLength. This is important
     // in the following case:
@@ -803,59 +866,76 @@ std::shared_ptr<CursorInfo> ClangIndexer::handleReference(const CXCursor &cursor
     // The !isCursor is var decls and field decls where we set up a target even
     // if they're not considered references
 
-    if (!RTags::isCursor(info->kind) && (!info->symbolLength || info->bestTarget(mData->symbols)->kind == refKind)) {
-        CXSourceRange range = clang_getCursorExtent(cursor);
-        CXSourceLocation rangeStart = clang_getRangeStart(range);
-        CXSourceLocation rangeEnd = clang_getRangeEnd(range);
-        unsigned startLine, startColumn, endLine, endColumn;
-        clang_getPresumedLocation(rangeStart, 0, &startLine, &startColumn);
-        clang_getPresumedLocation(rangeEnd, 0, &endLine, &endColumn);
-        info->startLine = startLine;
-        info->startColumn = startColumn;
-        info->endLine = endLine;
-        info->endColumn = endColumn;
-        info->definition = false;
-        info->kind = kind;
-        if (isOperator) {
-            unsigned start, end;
-            clang_getSpellingLocation(rangeStart, 0, 0, 0, &start);
-            clang_getSpellingLocation(rangeEnd, 0, 0, 0, &end);
-            info->symbolLength = end - start;
-        } else {
-            info->symbolLength = refInfo->symbolLength;
+    if (!c.isNull()) {
+        if (RTags::isCursor(c.kind))
+            return true;
+        auto best = targets.end();
+        int bestRank = -1;
+        for (auto it = targets.begin(); it != targets.end(); ++it) {
+            const int r = RTags::targetRank(RTags::targetsValueKind(it->second));
+            if (r > bestRank || (r == bestRank && RTags::targetsValueIsDefinition(it->second))) {
+                bestRank = r;
+                best = it;
+            }
         }
-        info->symbolName = refInfo->symbolName;
-        info->type = clang_getCursorType(cursor).kind;
+        if (best != targets.end() && best->first != refUsr) { // another target is better
+            return true;
+        }
     }
-    return info;
+
+    CXSourceRange range = clang_getCursorExtent(cursor);
+    CXSourceLocation rangeStart = clang_getRangeStart(range);
+    CXSourceLocation rangeEnd = clang_getRangeEnd(range);
+    unsigned int startLine, startColumn, endLine, endColumn;
+    clang_getSpellingLocation(rangeStart, 0, &startLine, &startColumn, 0);
+    clang_getSpellingLocation(rangeEnd, 0, &endLine, &endColumn, 0);
+    c.startLine = startLine;
+    c.endLine = endLine;
+    c.startColumn = startColumn;
+    c.endColumn = endColumn;
+    c.definition = false;
+    c.kind = kind;
+    c.location = location;
+    c.symbolName = reffedCursorFound ? reffedCursor.symbolName : addNamePermutations(ref, refLoc, String(), RTags::Type_Reference);
+
+    if (isOperator) {
+        unsigned int start, end;
+        clang_getSpellingLocation(rangeStart, 0, 0, 0, &start);
+        clang_getSpellingLocation(rangeEnd, 0, 0, 0, &end);
+        c.symbolLength = end - start;
+    } else {
+        c.symbolLength = reffedCursorFound ? reffedCursor.symbolLength : symbolLength(refKind, ref);
+    }
+    if (!c.symbolLength) {
+        unit(location)->symbols.remove(location);
+        if (cursorPtr)
+            *cursorPtr = 0;
+        return false;
+    }
+    c.type = clang_getCursorType(cursor).kind;
+
+    return true;
 }
 
-void ClangIndexer::addOverriddenCursors(const CXCursor& cursor, const Location& location, List<CursorInfo*>& infos)
+
+void ClangIndexer::addOverriddenCursors(const CXCursor &cursor, const Location &location)
 {
+    // error() << "addOverriddenCursors" << cursor << location;
     CXCursor *overridden;
-    unsigned count;
+    unsigned int count;
     clang_getOverriddenCursors(cursor, &overridden, &count);
     if (!overridden)
         return;
-    for (unsigned i=0; i<count; ++i) {
-        Location loc = createLocation(overridden[i]);
-        std::shared_ptr<CursorInfo> &o = mData->symbols[loc];
-        if (!o)
-            o = std::make_shared<CursorInfo>();
+    for (unsigned int i=0; i<count; ++i) {
+        // error() << location << "got" << i << count << loc;
 
-        //error() << "adding overridden (1) " << location << " to " << o;
-        o->references.insert(location);
-        List<CursorInfo*>::const_iterator inf = infos.begin();
-        const List<CursorInfo*>::const_iterator infend = infos.end();
-        while (inf != infend) {
-            //error() << "adding overridden (2) " << loc << " to " << *(*inf);
-            (*inf)->references.insert(loc);
-            ++inf;
-        }
+        const String usr = ::usr(overridden[i]);
+        assert(!usr.isEmpty());
+        // assert(!locCursor.usr.isEmpty());
 
-        infos.append(o.get());
-        addOverriddenCursors(overridden[i], loc, infos);
-        infos.removeLast();
+        // error() << location << "targets" << overridden[i];
+        unit(location)->targets[location][usr] = 0;
+        addOverriddenCursors(overridden[i], location);
     }
     clang_disposeOverriddenCursors(overridden);
 }
@@ -868,249 +948,205 @@ void ClangIndexer::handleInclude(const CXCursor &cursor, CXCursorKind kind, cons
     if (includedFile) {
         const Location refLoc = createLocation(includedFile, 1, 1);
         if (!refLoc.isNull()) {
-            {
-                String include = "#include ";
-                const Path path = refLoc.path();
-                assert(mSource.fileId);
-                mData->dependencies[refLoc.fileId()].insert(mSource.fileId);
-                mData->symbolNames[(include + path)].insert(location);
-                mData->symbolNames[(include + path.fileName())].insert(location);
-            }
-            std::shared_ptr<CursorInfo> &info = mData->symbols[location];
-            if (!info)
-                info = std::make_shared<CursorInfo>();
-            info->targets.insert(refLoc);
-            info->kind = cursor.kind;
-            info->definition = false;
-            info->symbolName = "#include " + RTags::eatString(clang_getCursorDisplayName(cursor));
-            info->symbolLength = info->symbolName.size() + 2;
+            Symbol &c = unit(location)->symbols[location];
+            if (!c.isNull())
+                return;
+
+            String include = "#include ";
+            const Path path = refLoc.path();
+            assert(mSource.fileId);
+            unit(location.fileId())->symbolNames[(include + path)].insert(location);
+            unit(location.fileId())->symbolNames[(include + path.fileName())].insert(location);
+            mIndexDataMessage.includes().push_back(std::make_pair(location.fileId(), refLoc.fileId()));
+            c.symbolName = "#include " + RTags::eatString(clang_getCursorDisplayName(cursor));
+            c.kind = cursor.kind;
+            c.symbolLength = c.symbolName.size() + 2;
+            c.location = location;
+            unit(location)->targets[location][refLoc.path()] = 0; // ### what targets value to create for this?
             // this fails for things like:
             // # include    <foobar.h>
+            return;
         }
     }
+    error() << "couldn't create included file" << cursor;
 }
 
-bool ClangIndexer::handleCursor(const CXCursor &cursor, CXCursorKind kind, const Location &location)
+
+void ClangIndexer::handleBaseClassSpecifier(const CXCursor &cursor)
 {
+    auto &lastClass = unit(mLastClass)->symbols[mLastClass];
+    if (!lastClass.isClass()) {
+        // this happens with some weird macros in /usr/include/dispatch/io.h:161:1 and others on Mac
+        // error() << "Couldn't find class for" << cursor << mLastClass;
+        return;
+    }
+    const CXCursor ref = clang_getCursorReferenced(cursor);
+    if (clang_isInvalid(clang_getCursorKind(ref))) // this happens when the base class is a template parameter
+        return;
+
+    assert(lastClass.isClass());
+    const String usr = ::usr(ref);
+    if (usr.isEmpty()) {
+        error() << "Couldn't find usr for" << clang_getCursorReferenced(cursor) << cursor << mLastClass;
+        return;
+    }
+    assert(!usr.isEmpty());
+    lastClass.baseClasses << usr;
+}
+
+bool ClangIndexer::handleCursor(const CXCursor &cursor, CXCursorKind kind, const Location &location, Symbol **cursorPtr)
+{
+    const String usr = ::usr(cursor);
     // error() << "Got a cursor" << cursor;
-    std::shared_ptr<CursorInfo> &info = mData->symbols[location];
-    if (!info)
-        info = std::make_shared<CursorInfo>();
+    Symbol &c = unit(location)->symbols[location];
+    if (cursorPtr)
+        *cursorPtr = &c;
+    if (!c.isNull())
+        return true;
 
-    if (!info->symbolLength) {
-        // if (mLogFile) {
-        //     String out;
-        //     Log(&out) << cursor << a;
-        //     fwrite(out.constData(), 1, out.size(), mLogFile);
-        //     fwrite("\n", 1, 1, mLogFile);
-        // }
-        CXStringScope name = clang_getCursorSpelling(cursor);
-        const char *cstr = name.data();
-        info->symbolLength = cstr ? strlen(cstr) : 0;
-        info->type = clang_getCursorType(cursor).kind;
-        if (!info->symbolLength) {
-            // this is for these constructs:
-            // typedef struct {
-            //    int a;
-            // } foobar;
-            //
-            // We end up not getting a spelling for the cursor
+    // if (mLogFile) {
+    //     String out;
+    //     Log(&out) << cursor << a;
+    //     fwrite(out.constData(), 1, out.size(), mLogFile);
+    //     fwrite("\n", 1, 1, mLogFile);
+    // }
+    CXStringScope name = clang_getCursorSpelling(cursor);
+    const char *cstr = name.data();
+    c.symbolLength = cstr ? strlen(cstr) : 0;
+    c.type = clang_getCursorType(cursor).kind;
+    c.location = location;
+    c.usr = usr;
+    if (!c.symbolLength) {
+        // this is for these constructs:
+        // typedef struct {
+        //    int a;
+        // } foobar;
+        //
+        // We end up not getting a spelling for the cursor
 
-            switch (kind) {
-            case CXCursor_ClassDecl:
-                info->symbolLength = 5;
-                info->symbolName = "class";
-                break;
-            case CXCursor_UnionDecl:
-                info->symbolLength = 5;
-                info->symbolName = "union";
-                break;
-            case CXCursor_StructDecl:
-                info->symbolLength = 6;
-                info->symbolName = "struct";
-                break;
-            default:
-                mData->symbols.remove(location);
-                return false;
-            }
-        } else {
-            info->symbolName = addNamePermutations(cursor, location);
+        switch (kind) {
+        case CXCursor_ClassDecl:
+            c.symbolLength = 5;
+            c.symbolName = "class";
+            break;
+        case CXCursor_UnionDecl:
+            c.symbolLength = 5;
+            c.symbolName = "union";
+            break;
+        case CXCursor_StructDecl:
+            c.symbolLength = 6;
+            c.symbolName = "struct";
+            break;
+        default:
+            unit(location)->symbols.remove(location);
+            if (cursorPtr)
+                *cursorPtr = 0;
+            return false;
         }
-
-        CXSourceRange range = clang_getCursorExtent(cursor);
-        CXSourceLocation rangeStart = clang_getRangeStart(range);
-        CXSourceLocation rangeEnd = clang_getRangeEnd(range);
-        unsigned startLine, startColumn, endLine, endColumn;
-        clang_getPresumedLocation(rangeStart, 0, &startLine, &startColumn);
-        clang_getPresumedLocation(rangeEnd, 0, &endLine, &endColumn);
-        info->startLine = startLine;
-        info->startColumn = startColumn;
-        info->endLine = endLine;
-        info->endColumn = endColumn;
-
-        if (kind == CXCursor_EnumConstantDecl) {
-#if CINDEX_VERSION_MINOR > 1
-            info->enumValue = clang_getEnumConstantDeclValue(cursor);
-#else
-            info->definition = 1;
-#endif
-        } else {
-            info->definition = clang_isCursorDefinition(cursor);
-        }
-        info->kind = kind;
-        // apparently some function decls will give a different usr for
-        // their definition and their declaration.  Using the canonical
-        // cursor's usr allows us to join them. Check JSClassRelease in
-        // JavaScriptCore for an example.
-        const String usr = RTags::eatString(clang_getCursorUSR(clang_getCanonicalCursor(cursor)));
-        if (!usr.isEmpty())
-            mData->usrMap[usr].insert(location);
-
-        switch (info->kind) {
-        case CXCursor_VarDecl: {
-            const CXCursor typeRef = resolveAutoTypeRef(cursor);
+    } else {
+        String typeOverride;
+        if (kind == CXCursor_VarDecl) {
+            bool isAuto;
+            const CXCursor typeRef = RTags::resolveAutoTypeRef(cursor, &isAuto);
+            if (isAuto)
+                c.flags |= Symbol::Auto;
             if (!clang_equalCursors(typeRef, nullCursor)) {
                 // const CXSourceRange range = clang_Cursor_getSpellingNameRange(mLastCursor, 0, 0);
                 // error() << "Found" << typeRef << "for" << cursor << mLastCursor
                 //         << createLocation(mLastCursor)
                 //         << clang_Range_isNull(range)
                 //         << createLocation(clang_getCursorLocation(mLastCursor));
-                auto info = handleReference(mLastCursor, clang_getCursorKind(mLastCursor),
-                                            createLocation(clang_getCursorLocation(mLastCursor)),
-                                            clang_getCursorReferenced(typeRef), nullCursor);
-                if (info) {
+                Symbol *cursorPtr = 0;
+                if (handleReference(mLastCursor, CXCursor_TypeRef,
+                                    createLocation(clang_getCursorLocation(mLastCursor)),
+                                    clang_getCursorReferenced(typeRef), nullCursor, &cursorPtr)) {
                     // the type is read from the cursor passed in and that won't
                     // be correct in this case
-                    info->type = clang_getCursorType(typeRef).kind;
-                    info->symbolLength = 4;
-                    info->symbolName += " (auto)";
-                    info->endLine = info->startLine;
-                    info->endColumn = info->startColumn + 4;
+                    cursorPtr->type = clang_getCursorType(typeRef).kind;
+                    cursorPtr->symbolLength = 4;
+                    typeOverride = cursorPtr->symbolName;
+                    cursorPtr->symbolName += " (auto)";
+                    cursorPtr->endLine = c.startLine;
+                    cursorPtr->endColumn = c.startColumn + 4;
+                    cursorPtr->flags |= Symbol::AutoRef;
                 }
             }
-            break; }
-        case CXCursor_Constructor:
-        case CXCursor_Destructor: {
-            Location parentLocation = createLocation(clang_getCursorSemanticParent(cursor));
-            // consider doing this for only declaration/inline definition since
-            // declaration and definition should know of one another
-            if (parentLocation.isValid()) {
-                std::shared_ptr<CursorInfo> &parent = mData->symbols[parentLocation];
-                if (!parent)
-                    parent = std::make_shared<CursorInfo>();
-                parent->references.insert(location);
-                info->references.insert(parentLocation);
-            }
-            break; }
-        case CXCursor_CXXMethod: {
-            List<CursorInfo*> infos;
-            infos.append(info.get());
-            addOverriddenCursors(cursor, location, infos);
-            break; }
-        default:
-            break;
         }
+
+        c.symbolName = addNamePermutations(cursor, location, typeOverride, RTags::Type_Cursor);
     }
 
-    return true;
-}
+    const CXSourceRange range = clang_getCursorExtent(cursor);
+    const CXSourceLocation rangeStart = clang_getRangeStart(range);
+    const CXSourceLocation rangeEnd = clang_getRangeEnd(range);
+    unsigned int startLine, startColumn, endLine, endColumn;
+    clang_getSpellingLocation(rangeStart, 0, &startLine, &startColumn, 0);
+    clang_getSpellingLocation(rangeEnd, 0, &endLine, &endColumn, 0);
+    c.startLine = startLine;
+    c.endLine = endLine;
+    c.startColumn = startColumn;
+    c.endColumn = endColumn;
 
-bool ClangIndexer::loadFromCache()
-{
-    StopWatch sw;
-    if (mASTCacheDir.isEmpty())
-        return false;
-
-    if (!mUnsavedFiles.isEmpty())
-        return false;
-
-    Path file = mSourceFile;
-    RTags::encodePath(file);
-    file.prepend(mASTCacheDir);
-    if (!file.isFile())
-        return false;
-    const Path manifestFile = file + ".manifest";
-    const String data = manifestFile.readAll();
-    if (data.isEmpty())
-        return false;
-
-    Deserializer deserializer(data);
-    uint8_t version;
-    deserializer >> version;
-    if (version != RTags::ASTManifestVersion) {
-        warning() << "Discarding cached AST unit" << file << manifestFile
-                  << "because of version mismatch" << version << RTags::ASTManifestVersion
-                  << sw.elapsed();
-        Path::rm(file);
-        Path::rm(manifestFile);
-        return false;
-    }
-
-    Source source;
-    deserializer >> source;
-    if (source != mSource) {
-        warning() << "Discarding cached AST unit" << file << manifestFile
-                  << "because of version mismatch" << version << RTags::ASTManifestVersion
-                  << sw.elapsed();
-        Path::rm(file);
-        Path::rm(manifestFile);
-        return false;
-    }
-
-    int depsCount;
-    deserializer >> depsCount;
-    Hash<Path, time_t> files;
-    while (depsCount--) {
-        Path p;
-        String sha;
-        time_t lastModified;
-        deserializer >> p >> lastModified >> sha;
-        if (shaFile(p) != sha) {
-            warning() << "Discarding cached AST unit" << file << manifestFile
-                      << "because of different sha for" << p
-                      << sw.elapsed();
-            goto end;
-        }
-        const time_t currentLastModified = p.lastModified();
-        if (currentLastModified != lastModified) {
-            files[p] = currentLastModified;
-            if (!p.setLastModified(lastModified)) {
-                goto end;
-            }
-        }
-    }
-
-    {
-#if CINDEX_VERSION_MINOR >= 23
-        auto response = clang_createTranslationUnit2(mIndex, file.constData(), &mClangUnit);
+    if (kind == CXCursor_EnumConstantDecl) {
+#if CINDEX_VERSION > CINDEX_VERSION_ENCODE(0, 1)
+        c.enumValue = clang_getEnumConstantDeclValue(cursor);
 #else
-        mClangUnit = clang_createTranslationUnit(mIndex, file.constData());
+        c.definition = 1;
 #endif
-        if (!mClangUnit) {
-            warning() << "Discarding cached AST unit" << file << manifestFile
-                      << "because the AST failed to load"
-#if CINDEX_VERSION_MINOR >= 23
-                      << response
-#endif
-                      << sw.elapsed();
-            Path::rm(file);
-            Path::rm(manifestFile);
-            return false;
+    } else {
+        c.definition = clang_isCursorDefinition(cursor);
+    }
+    c.kind = kind;
+    c.linkage = clang_getCursorLinkage(cursor);
+    // apparently some function decls will give a different usr for
+    // their definition and their declaration.  Using the canonical
+    // cursor's usr allows us to join them. Check JSClassRelease in
+    // JavaScriptCore for an example.
+    unit(location)->usrs[c.usr].insert(location);
+    if (c.linkage == CXLinkage_External && !c.isDefinition()) {
+        mIndexDataMessage.declarations()[c.usr].insert(location.fileId());
+    }
+
+    if (!(ClangIndexer::serverOpts() & Server::NoComments)) {
+        const CXComment comment = clang_Cursor_getParsedComment(cursor);
+        if (clang_Comment_getKind(comment) != CXComment_Null) {
+            c.briefComment = RTags::eatString(clang_Cursor_getBriefCommentText(cursor));
+            c.xmlComment = RTags::eatString(clang_FullComment_getAsXML(comment));
         }
-
-        warning() << "loaded it from AST" << file << sw.elapsed();
     }
 
-end:
-    for (auto f : files) {
-        f.first.setLastModified(f.second);
+    switch (c.kind) {
+    case CXCursor_CXXMethod:
+        if (clang_CXXMethod_isPureVirtual(cursor)) {
+            c.flags |= Symbol::PureVirtualMethod;
+        } else if (clang_CXXMethod_isVirtual(cursor)) {
+            c.flags |= Symbol::VirtualMethod;
+        }
+        if (clang_CXXMethod_isStatic(cursor))
+            c.flags |= Symbol::StaticMethod;
+#if CINDEX_VERSION >= CINDEX_VERSION_ENCODE(0, 24)
+        if (clang_CXXMethod_isConst(cursor))
+            c.flags |= Symbol::ConstMethod;
+#endif
+
+        addOverriddenCursors(cursor, location);
+        // fall through
+    case CXCursor_FunctionDecl:
+    case CXCursor_FunctionTemplate:
+#if CINDEX_VERSION >= CINDEX_VERSION_ENCODE(0, 19)
+        if (clang_Cursor_isVariadic(cursor))
+            c.flags |= Symbol::Variadic;
+#endif
+        break;
+    case CXCursor_Constructor:
+    case CXCursor_Destructor:
+        assert(!::usr(clang_getCursorSemanticParent(cursor)).isEmpty());
+        unit(location.fileId())->targets[location][::usr(clang_getCursorSemanticParent(cursor))] = 0;
+        break;
+    default:
+        break;
     }
-    if (!mClangUnit) {
-        Path::rm(file);
-        Path::rm(manifestFile);
-        return false;
-    }
-    mLoadedFromCache = true;
+
     return true;
 }
 
@@ -1121,91 +1157,115 @@ bool ClangIndexer::parse()
     assert(!mIndex);
     mIndex = clang_createIndex(0, 1);
     assert(mIndex);
-    if (!loadFromCache()) {
-        const unsigned int commandLineFlags = Source::FilterBlacklist|Source::IncludeDefines|Source::IncludeIncludepaths;
-        const unsigned int flags = CXTranslationUnit_DetailedPreprocessingRecord;
-        List<CXUnsavedFile> unsavedFiles(mUnsavedFiles.size() + 1);
-        int unsavedIndex = 0;
-        for (const auto &it : mUnsavedFiles) {
-            unsavedFiles[unsavedIndex++] = {
-                it.first.constData(),
-                it.second.constData(),
-                static_cast<unsigned long>(it.second.size())
-            };
-        }
+    const Flags<Source::CommandLineFlag> commandLineFlags = Source::Default;
+    const Flags<CXTranslationUnit_Flags> flags = CXTranslationUnit_DetailedPreprocessingRecord;
+    List<CXUnsavedFile> unsavedFiles(mUnsavedFiles.size() + 1);
+    int unsavedIndex = 0;
+    for (const auto &it : mUnsavedFiles) {
+        unsavedFiles[unsavedIndex++] = {
+            it.first.constData(),
+            it.second.constData(),
+            static_cast<unsigned long>(it.second.size())
+        };
+    }
 
+    if (testLog(Debug))
         debug() << "CI::parse: " << mSource.toCommandLine(commandLineFlags) << "\n";
 
-        // for (const auto it : mSource.toCommandLine(commandLineFlags)) {
-        //     error("[%s]", it.constData());
-        // }
-        RTags::parseTranslationUnit(mSourceFile, mSource.toCommandLine(commandLineFlags), mClangUnit,
-                                    mIndex, &unsavedFiles[0], unsavedIndex, flags, &mClangLine);
+    // for (const auto it : mSource.toCommandLine(commandLineFlags)) {
+    //     error("[%s]", it.constData());
+    // }
+    RTags::parseTranslationUnit(mSourceFile, mSource.toCommandLine(commandLineFlags), mClangUnit,
+                                mIndex, &unsavedFiles[0], unsavedIndex, flags, &mClangLine);
 
-        warning() << "CI::parse loading unit:" << mClangLine << " " << (mClangUnit != 0);
-    }
+    warning() << "CI::parse loading unit:" << mClangLine << " " << (mClangUnit != 0);
     if (mClangUnit) {
-        clang_getInclusions(mClangUnit, ClangIndexer::inclusionVisitor, this);
         mParseDuration = sw.elapsed();
         return true;
     }
     error() << "Failed to parse" << mClangLine;
-    for (Hash<uint32_t, bool>::const_iterator it = mData->visited.begin(); it != mData->visited.end(); ++it) {
-        mData->dependencies[it->first].insert(mSource.fileId);
-        addFileSymbol(it->first);
-    }
-
+    mIndexDataMessage.setFlag(IndexDataMessage::ParseFailure);
     return false;
 }
 
-struct XmlEntry
+static inline Map<String, Set<Location> > convertTargets(const Map<Location, Map<String, uint16_t> > &in)
 {
-    enum Type { None, Warning, Error, Fixit };
-
-    XmlEntry(Type t = None, const String &m = String(), int l = -1)
-        : type(t), message(m), length(l)
-    {
-    }
-
-    Type type;
-    String message;
-    int length;
-};
-
-static inline String xmlEscape(const String& xml)
-{
-    if (xml.isEmpty())
-        return xml;
-
-    std::ostringstream strm;
-    const char* ch = xml.constData();
-    bool done = false;
-    for (;;) {
-        switch (*ch) {
-        case '\0':
-            done = true;
-            break;
-        case '"':
-            strm << "\\\"";
-            break;
-        case '<':
-            strm << "&lt;";
-            break;
-        case '>':
-            strm << "&gt;";
-            break;
-        case '&':
-            strm << "&amp;";
-            break;
-        default:
-            strm << *ch;
-            break;
+    Map<String, Set<Location> > ret;
+    for (const auto &v : in) {
+        for (const auto &u : v.second) {
+            ret[u.first].insert(v.first);
         }
-        if (done)
-            break;
-        ++ch;
     }
-    return strm.str();
+    return ret;
+}
+
+bool ClangIndexer::writeFiles(const Path &root, String &error)
+{
+    for (const auto &unit : mUnits) {
+        if (!mIndexDataMessage.files().value(unit.first) & IndexDataMessage::Visited) {
+            ::error() << "Wanting to write something for" << Location::path(unit.first) << "but we didn't visit it" << mSource.sourceFile()
+                      << unit.second->targets.size()
+                      << unit.second->usrs.size()
+                      << unit.second->symbolNames.size()
+                      << unit.second->symbols.size();
+            continue;
+        }
+        assert(mIndexDataMessage.files().value(unit.first) & IndexDataMessage::Visited);
+        String unitRoot = root;
+        unitRoot << unit.first;
+        Path::mkdir(unitRoot, Path::Recursive);
+        // ::error() << "Writing file" << Location::path(unit.first) << unitRoot << unit.second->symbols.size()
+        //           << unit.second->targets.size()
+        //           << unit.second->usrs.size()
+        //           << unit.second->symbolNames.size();
+        if (!FileMap<Location, Symbol>::write(unitRoot + "/symbols", unit.second->symbols)) {
+            error = "Failed to write symbols";
+            return false;
+        }
+        if (!FileMap<String, Set<Location> >::write(unitRoot + "/targets", convertTargets(unit.second->targets))) {
+            error = "Failed to write targets";
+            return false;
+        }
+        if (!FileMap<String, Set<Location> >::write(unitRoot + "/usrs", unit.second->usrs)) {
+            error = "Failed to write usrs";
+            return false;
+        }
+        if (!FileMap<String, Set<Location> >::write(unitRoot + "/symnames", unit.second->symbolNames)) {
+            error = "Failed to write symbolNames";
+            return false;
+        }
+    }
+    String sourceRoot = root;
+    sourceRoot << mSource.fileId;
+    Path::mkdir(sourceRoot, Path::Recursive);
+    sourceRoot << "/info";
+    FILE *f = fopen(sourceRoot.constData(), "w");
+    if (!f) {
+        return false;
+    }
+
+    fprintf(f, "%s\n%s\n",
+            mSourceFile.constData(),
+            String::join(mSource.toCommandLine(Source::Default|Source::IncludeCompiler|Source::IncludeSourceFile), " ").constData());
+    fclose(f);
+
+    return true;
+}
+
+static inline bool compareFile(CXFile l, CXFile r)
+{
+    CXString fnl = clang_getFileName(l);
+    CXString fnr = clang_getFileName(r);
+    const char *cstrl = clang_getCString(fnl);
+    const char *cstrr = clang_getCString(fnr);
+    bool ret = false;
+    if (cstrl && cstrr && !strcmp(cstrl, cstrr)) {
+        ret = true;
+    }
+
+    clang_disposeString(fnl);
+    clang_disposeString(fnr);
+    return ret;
 }
 
 bool ClangIndexer::diagnose()
@@ -1215,39 +1275,54 @@ bool ClangIndexer::diagnose()
     }
 
     List<String> compilationErrors;
-    const unsigned diagnosticCount = clang_getNumDiagnostics(mClangUnit);
+    const unsigned int diagnosticCount = clang_getNumDiagnostics(mClangUnit);
 
-    Map<Location, XmlEntry> xmlEntries;
-
-    for (unsigned i=0; i<diagnosticCount; ++i) {
+    for (unsigned int i=0; i<diagnosticCount; ++i) {
         CXDiagnostic diagnostic = clang_getDiagnostic(mClangUnit, i);
         const CXSourceLocation diagLoc = clang_getDiagnosticLocation(diagnostic);
         const Location loc = createLocation(diagLoc, 0);
         const uint32_t fileId = loc.fileId();
-        if (mData->visited.value(fileId)) {
+        const CXDiagnosticSeverity sev = clang_getDiagnosticSeverity(diagnostic);
+        // error() << "Got a dude" << clang_getCursor(mClangUnit, diagLoc) << fileId << mSource.fileId
+        //         << sev << CXDiagnostic_Error;
+        const CXCursor cursor = clang_getCursor(mClangUnit, diagLoc);
+        const bool inclusionError = clang_getCursorKind(cursor) == CXCursor_InclusionDirective;
+        if (inclusionError)
+            mIndexDataMessage.setFlag(IndexDataMessage::InclusionError);
+        Flags<IndexDataMessage::FileFlag> &flags = mIndexDataMessage.files()[fileId];
+        if (fileId != mSource.fileId && !inclusionError && sev >= CXDiagnostic_Error && !(flags & IndexDataMessage::HeaderError)) {
+            // We don't treat inclusions or code inside a macro expansion as a
+            // header error
+            CXFile expFile, spellingFile;
+            unsigned expLine, expColumn, spellingLine, spellingColumn;
+            clang_getExpansionLocation(diagLoc, &expFile, &expLine, &expColumn, 0);
+            clang_getSpellingLocation(diagLoc, &spellingFile, &spellingLine, &spellingColumn, 0);
+            if (expLine == spellingLine && expColumn == spellingColumn && compareFile(expFile, spellingFile))
+                flags |= IndexDataMessage::HeaderError;
+        }
+        if (flags & IndexDataMessage::Visited) {
             const String msg = RTags::eatString(clang_getDiagnosticSpelling(diagnostic));
-            const CXDiagnosticSeverity sev = clang_getDiagnosticSeverity(diagnostic);
-            XmlEntry::Type type = XmlEntry::None;
+            Diagnostic::Type type = Diagnostic::None;
             switch (sev) {
             case CXDiagnostic_Warning:
-                type = XmlEntry::Warning;
+                type = Diagnostic::Warning;
                 break;
             case CXDiagnostic_Error:
             case CXDiagnostic_Fatal:
-                type = XmlEntry::Error;
+                type = Diagnostic::Error;
                 break;
             default:
                 break;
             }
-            if (type != XmlEntry::None) {
-                const unsigned rangeCount = clang_getDiagnosticNumRanges(diagnostic);
+            if (type != Diagnostic::None) {
+                const unsigned int rangeCount = clang_getDiagnosticNumRanges(diagnostic);
                 bool ok = false;
-                for (unsigned rangePos = 0; rangePos < rangeCount; ++rangePos) {
+                for (unsigned int rangePos = 0; rangePos < rangeCount; ++rangePos) {
                     const CXSourceRange range = clang_getDiagnosticRange(diagnostic, rangePos);
                     const CXSourceLocation start = clang_getRangeStart(range);
                     const CXSourceLocation end = clang_getRangeEnd(range);
 
-                    unsigned startOffset, endOffset;
+                    unsigned int startOffset, endOffset;
                     clang_getSpellingLocation(start, 0, 0, 0, &startOffset);
                     clang_getSpellingLocation(end, 0, 0, 0, &endOffset);
                     if (!rangePos && !startOffset && !endOffset) {
@@ -1255,50 +1330,63 @@ bool ClangIndexer::diagnose()
                         break;
                     } else {
                         unsigned int line, column;
-                        clang_getPresumedLocation(start, 0, &line, &column);
+                        clang_getSpellingLocation(start, 0, &line, &column, 0);
                         const Location key(loc.fileId(), line, column);
-                        xmlEntries[key] = XmlEntry(type, msg, endOffset - startOffset);
+                        mIndexDataMessage.diagnostics()[key] = Diagnostic(type, msg, endOffset - startOffset);
                         ok = true;
                         break;
                     }
                 }
                 if (!ok) {
-                    unsigned line, column;
-                    clang_getPresumedLocation(diagLoc, 0, &line, &column);
+                    unsigned int line, column;
+                    clang_getSpellingLocation(diagLoc, 0, &line, &column, 0);
                     const Location key(loc.fileId(), line, column);
-                    xmlEntries[key] = XmlEntry(type, msg);
+                    mIndexDataMessage.diagnostics()[key] = Diagnostic(type, msg);
                     // no length
                 }
             }
             // logDirect(RTags::CompilationError, msg.constData());
 
-            const unsigned fixItCount = clang_getDiagnosticNumFixIts(diagnostic);
-            for (unsigned f=0; f<fixItCount; ++f) {
+            const unsigned int fixItCount = clang_getDiagnosticNumFixIts(diagnostic);
+            for (unsigned int f=0; f<fixItCount; ++f) {
                 CXSourceRange range;
                 const CXStringScope stringScope = clang_getDiagnosticFixIt(diagnostic, f, &range);
                 CXSourceLocation start = clang_getRangeStart(range);
 
-                unsigned line, column;
-                CXString file;
-                clang_getPresumedLocation(start, &file, &line, &column);
-                CXStringScope fileScope(file);
+                unsigned int line, column;
+                CXFile file;
+                clang_getSpellingLocation(start, &file, &line, &column, 0);
+                if (!file)
+                    continue;
+                CXStringScope fileName(clang_getFileName(file));
 
-                const Location loc = createLocation(clang_getCString(file), line, column);
-                if (mData->visited.value(loc.fileId())) {
+                const Location loc = createLocation(clang_getCString(fileName), line, column);
+                if (mIndexDataMessage.files().value(loc.fileId()) & IndexDataMessage::Visited) {
                     unsigned int startOffset, endOffset;
                     CXSourceLocation end = clang_getRangeEnd(range);
                     clang_getSpellingLocation(start, 0, 0, 0, &startOffset);
                     clang_getSpellingLocation(end, 0, 0, 0, &endOffset);
                     const char *string = clang_getCString(stringScope);
-                    error("Fixit for %s:%d:%d: Replace %d characters with [%s]", loc.path().constData(),
-                          line, column, endOffset - startOffset, string);
-                    XmlEntry &entry = xmlEntries[Location(loc.fileId(), line, column)];
-                    entry.type = XmlEntry::Fixit;
+                    assert(string);
+                    if (!*string) {
+                        error("Fixit for %s Remove %d character%s",
+                              loc.key().constData(), endOffset - startOffset,
+                              endOffset - startOffset > 1 ? "s" : "");
+                    } else if (endOffset == startOffset) {
+                        error("Fixit for %s Insert \"%s\"",
+                              loc.key().constData(), string);
+                    } else {
+                        error("Fixit for %s Replace %d character%s with \"%s\"",
+                              loc.key().constData(), endOffset - startOffset,
+                              endOffset - startOffset > 1 ? "s" : "", string);
+                    }
+                    Diagnostic &entry = mIndexDataMessage.diagnostics()[Location(loc.fileId(), line, column)];
+                    entry.type = Diagnostic::Fixit;
                     if (entry.message.isEmpty()) {
                         entry.message = String::format<64>("did you mean '%s'?", string);
                     }
                     entry.length = endOffset - startOffset;
-                    mData->fixIts[loc.fileId()].insert(FixIt(line, column, endOffset - startOffset, string));
+                    mIndexDataMessage.fixIts()[loc.fileId()].insert(FixIt(line, column, endOffset - startOffset, string));
                 }
             }
         }
@@ -1306,45 +1394,42 @@ bool ClangIndexer::diagnose()
         clang_disposeDiagnostic(diagnostic);
     }
 
-    mData->xmlDiagnostics = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n  <checkstyle>";
-    if (!xmlEntries.isEmpty()) {
-        Map<Location, XmlEntry>::const_iterator entry = xmlEntries.begin();
-        const Map<Location, XmlEntry>::const_iterator end = xmlEntries.end();
+    for (const auto &it : mIndexDataMessage.files()) {
+        if (it.second & IndexDataMessage::Visited) {
+            const Location loc(it.first, 0, 0);
+#if CINDEX_VERSION_MINOR >= 21
+            CXFile file = clang_getFile(mClangUnit, loc.path().constData());
+            if (file) {
+                if (CXSourceRangeList *skipped = clang_getSkippedRanges(mClangUnit, file)) {
+                    const unsigned int count = skipped->count;
+                    for (unsigned int i=0; i<count; ++i) {
+                        CXSourceLocation start = clang_getRangeStart(skipped->ranges[i]);
 
-        const char *severities[] = { "none", "warning", "error", "fixit" };
+                        unsigned int line, column, startOffset, endOffset;
+                        clang_getSpellingLocation(start, 0, &line, &column, &startOffset);
+                        Diagnostic &entry = mIndexDataMessage.diagnostics()[Location(loc.fileId(), line, column)];
+                        if (entry.type == Diagnostic::None) {
+                            CXSourceLocation end = clang_getRangeEnd(skipped->ranges[i]);
+                            clang_getSpellingLocation(end, 0, 0, 0, &endOffset);
+                            entry.type = Diagnostic::Skipped;
+                            entry.length = endOffset - startOffset;
+                            // error() << line << column << startOffset << endOffset;
+                        }
+                    }
 
-        uint32_t lastFileId = 0;
-        while (entry != end) {
-            const Location &loc = entry->first;
-            const XmlEntry &xmlEntry = entry->second;
-            if (loc.fileId() != lastFileId) {
-                if (lastFileId)
-                    mData->xmlDiagnostics += "\n    </file>";
-                lastFileId = loc.fileId();
-                mData->xmlDiagnostics += String::format<128>("\n    <file name=\"%s\">", loc.path().constData());
+                    clang_disposeSourceRangeList(skipped);
+                    if (count)
+                        continue;
+                }
             }
-            mData->xmlDiagnostics += String::format("\n      <error line=\"%d\" column=\"%d\" %sseverity=\"%s\" message=\"%s\"/>",
-                                                    loc.line(), loc.column(),
-                                                    (xmlEntry.length <= 0 ? ""
-                                                     : String::format<32>("length=\"%d\" ", xmlEntry.length).constData()),
-                                                    severities[xmlEntry.type], xmlEscape(xmlEntry.message).constData());
-            ++entry;
-        }
-        if (lastFileId)
-            mData->xmlDiagnostics += "\n    </file>";
-    }
-
-    for (Hash<uint32_t, bool>::const_iterator it = mData->visited.begin(); it != mData->visited.end(); ++it) {
-        if (it->second) {
-            const Map<Location, XmlEntry>::const_iterator x = xmlEntries.lower_bound(Location(it->first, 0, 0));
-            if (x == xmlEntries.end() || x->first.fileId() != it->first) {
-                const String fn = Location::path(it->first);
-                mData->xmlDiagnostics += String::format("\n    <file name=\"%s\"/>", fn.constData());
+#endif
+            const Map<Location, Diagnostic>::const_iterator x = mIndexDataMessage.diagnostics().lower_bound(loc);
+            if (x == mIndexDataMessage.diagnostics().end() || x->first.fileId() != it.first) {
+                mIndexDataMessage.diagnostics()[loc] = Diagnostic();
             }
         }
     }
 
-    mData->xmlDiagnostics += "\n  </checkstyle>";
     return true;
 }
 
@@ -1359,9 +1444,9 @@ bool ClangIndexer::visit()
     clang_visitChildren(clang_getTranslationUnitCursor(mClangUnit),
                         ClangIndexer::indexVisitor, this);
 
-    for (Hash<uint32_t, bool>::const_iterator it = mData->visited.begin(); it != mData->visited.end(); ++it) {
-        mData->dependencies[it->first].insert(mSource.fileId);
-        addFileSymbol(it->first);
+    for (const auto &it : mIndexDataMessage.files()) {
+        if (it.second & IndexDataMessage::Visited)
+            addFileSymbol(it.first);
     }
 
     mVisitDuration = watch.elapsed();
@@ -1402,8 +1487,8 @@ CXChildVisitResult ClangIndexer::verboseVisitor(CXCursor cursor, CXCursor, CXCli
             u->out += " refs " + RTags::cursorToString(ref);
         }
 
-        if (loc.fileId() && u->indexer->mData->visited.value(loc.fileId())) {
-            if (u->indexer->mData->symbols.contains(loc)) {
+        if (loc.fileId() && u->indexer->mIndexDataMessage.files().value(loc.fileId()) & IndexDataMessage::Visited) {
+            if (u->indexer->unit(loc)->symbols.contains(loc)) {
                 u->out += " used as cursor\n";
             } else {
                 u->out += " not used\n";
@@ -1426,125 +1511,57 @@ void ClangIndexer::addFileSymbol(uint32_t file)
 {
     const Location loc(file, 1, 1);
     const Path path = Location::path(file);
-    mData->symbolNames[path].insert(loc);
+    auto ref = unit(loc.fileId());
+    ref->symbolNames[path].insert(loc);
     const char *fn = path.fileName();
-    mData->symbolNames[String(fn, strlen(fn))].insert(loc);
+    ref->symbolNames[fn].insert(loc);
+    Symbol &sym = ref->symbols[loc];
+    sym.location = loc;
 }
 
-
-void ClangIndexer::inclusionVisitor(CXFile includedFile,
-                                    CXSourceLocation *includeStack,
-                                    unsigned includeLen,
-                                    CXClientData userData)
+int ClangIndexer::symbolLength(CXCursorKind kind, const CXCursor &cursor)
 {
-    ClangIndexer *indexer = static_cast<ClangIndexer*>(userData);
-    const Location l = indexer->createLocation(includedFile, 1, 1);
-
-    const uint32_t fileId = l.fileId();
-    if (!includeLen) {
-        indexer->mData->dependencies[fileId].insert(fileId);
-    } else {
-        for (unsigned i=0; i<includeLen; ++i) {
-            CXFile originatingFile;
-            clang_getSpellingLocation(includeStack[i], &originatingFile, 0, 0, 0);
-            const Location loc = indexer->createLocation(originatingFile, 1, 1);
-            const uint32_t f = loc.fileId();
-            if (f)
-                indexer->mData->dependencies[fileId].insert(f);
-        }
+    if (kind == CXCursor_VarDecl) {
+        bool isAuto;
+        RTags::resolveAutoTypeRef(cursor, &isAuto);
+        if (isAuto)
+            return 4;
     }
-}
 
-struct ResolveAutoTypeRefUserData
-{
-    CXCursor ref;
-    // List<CXCursorKind> chain;
-    int index;
-};
+    CXStringScope name = clang_getCursorSpelling(cursor);
+    const char *cstr = name.data();
+    if (cstr)
+        return strlen(cstr);
 
-static CXChildVisitResult resolveAutoTypeRefVisitor(CXCursor cursor, CXCursor, CXClientData data)
-{
-    ResolveAutoTypeRefUserData *userData = reinterpret_cast<ResolveAutoTypeRefUserData*>(data);
-    const CXCursorKind kind = clang_getCursorKind(cursor);
-    // userData->chain.append(kind);
-    // error() << "Got here" << cursor << userData->chain;
-    ++userData->index;
+    // this is for these constructs:
+    //         ||
+    //         \/
+    // typedef struct {
+    //    int a;
+    // } foobar;
+    //
+    // We end up not getting a spelling for the cursor
+
     switch (kind) {
-    case CXCursor_TypeRef:
-    case CXCursor_TemplateRef:
-        // error() << "Found typeRef" << cursor;
-        userData->ref = cursor;
-        return CXChildVisit_Break;
-    case CXCursor_UnexposedExpr: {
-        CXCursor ref = clang_getCursorReferenced(cursor);
-        // error() << "got unexposed expr ref" << ref;
-        switch (clang_getCursorKind(ref)) {
-        case CXCursor_VarDecl:
-        case CXCursor_FunctionDecl:
-        case CXCursor_CXXMethod: {
-            ResolveAutoTypeRefUserData u = { nullCursor, 0 };
-            clang_visitChildren(ref, resolveAutoTypeRefVisitor, &u);
-            // error() << "Visited for typeRef" << u.ref
-            //         << clang_isInvalid(clang_getCursorKind(u.ref))
-            //         << u.chain;
-            if (!clang_equalCursors(u.ref, nullCursor)) {
-                userData->ref = u.ref;
-                return CXChildVisit_Break;
-            }
-            break; }
-        default:
-            break;
-        }
-        break; }
-    case CXCursor_ParmDecl:
-        // nothing to find here
-        return CXChildVisit_Break;
+    case CXCursor_ClassDecl:
+    case CXCursor_UnionDecl:
+        return 5;
+    case CXCursor_StructDecl:
+        return 6;
     default:
         break;
     }
-    return CXChildVisit_Recurse;
+    return 0;
 }
 
-CXCursor ClangIndexer::resolveAutoTypeRef(const CXCursor &cursor) const
+Symbol ClangIndexer::findSymbol(const Location &location, bool *ok) const
 {
-    assert(clang_getCursorKind(cursor) == CXCursor_VarDecl);
-    ResolveAutoTypeRefUserData userData = { nullCursor, 0 };
-    clang_visitChildren(cursor, resolveAutoTypeRefVisitor, &userData);
-    if (userData.index > 1) {
-        if (!clang_equalCursors(userData.ref, nullCursor)) {
-            // error() << "Fixed cursor for" << cursor << userData.ref;
-            // << userData.chain;
-            return userData.ref;
-            // } else {
-            //     error() << "Couldn't fix cursor for" << cursor << userData.ref;
-            //             // << userData.chain;
-        }
+    Symbol ret;
+    auto it = mUnits.find(location.fileId());
+    if (it != mUnits.end()) {
+        ret = it->second->symbols.value(location, Symbol(), ok);
+    } else if (ok) {
+        *ok = false;
     }
-    // error() << "Need to find type for" << cursor << child;
-    return nullCursor;
-}
-String ClangIndexer::shaFile(const Path &path) const
-{
-    FILE *f = fopen(path.constData(), "r");
-    if (!f) {
-        error() << "Failed to serialize" << path;
-        return String();
-    }
-    SHA256 sha256;
-    char buf[16384];
-    while (true) {
-        const int r = fread(buf, sizeof(char), sizeof(buf), f);
-        if (r == -1) {
-            error() << "Failed to serialize" << path;
-            fclose(f);
-            return String();
-        } else if (r > 0) {
-            sha256.update(buf, r);
-        }
-        if (r < static_cast<int>(sizeof(buf)))
-            break;
-    }
-
-    fclose(f);
-    return sha256.hash();
+    return ret;
 }

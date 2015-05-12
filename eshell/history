@@ -1,9 +1,3 @@
-e
-f
-exit
-mysql -u root -p
-cl /EHsc test.cpp 
-ls
 cd learning/
 ls
 cl /EHsc test.cpp 
@@ -126,3 +120,9 @@ git branch
 git checkout source
 ls
 vim
+git status
+git log
+(+ 3 34)
+(message "freak")
+man
+man git 

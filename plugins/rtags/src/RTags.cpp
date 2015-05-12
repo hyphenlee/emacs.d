@@ -1,4 +1,4 @@
-/* This file is part of RTags.
+/* This file is part of RTags (http://rtags.net).
 
 RTags is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -14,12 +14,11 @@ You should have received a copy of the GNU General Public License
 along with RTags.  If not, see <http://www.gnu.org/licenses/>. */
 
 #include "RTags.h"
-#include "CursorInfo.h"
 #include "Server.h"
 #include "VisitFileMessage.h"
 #include "VisitFileResponseMessage.h"
-#include "IndexerMessage.h"
-#include "CompileMessage.h"
+#include "IndexDataMessage.h"
+#include "IndexMessage.h"
 #include "LogOutputMessage.h"
 #include "QueryMessage.h"
 #include <dirent.h>
@@ -37,61 +36,19 @@ along with RTags.  If not, see <http://www.gnu.org/licenses/>. */
 
 namespace RTags {
 
-void dirtySymbolNames(SymbolNameMap &map, const Set<uint32_t> &dirty)
+Path encodeSourceFilePath(const Path &dataDir, const Path &project, uint32_t fileId)
 {
-    SymbolNameMap::iterator it = map.begin();
-    while (it != map.end()) {
-        Set<Location> &locations = it->second;
-        Set<Location>::iterator i = locations.begin();
-        while (i != locations.end()) {
-            if (dirty.contains(i->fileId())) {
-                locations.erase(i++);
-            } else {
-                ++i;
-            }
-        }
-        if (locations.isEmpty()) {
-            map.erase(it++);
-        } else {
-            ++it;
-        }
-    }
+    String str = dataDir;
+    Path p = project;
+    encodePath(p);
+    str << p << '/';
+    if (fileId)
+        str << fileId << '/';
+    return str;
 }
 
-void dirtySymbols(SymbolMap &map, const Set<uint32_t> &dirty)
-{
-    SymbolMap::iterator it = map.begin();
-    while (it != map.end()) {
-        if (dirty.contains(it->first.fileId())) {
-            map.erase(it++);
-        } else {
-            it->second->dirty(dirty);
-            ++it;
-        }
-    }
-}
-void dirtyUsr(UsrMap &map, const Set<uint32_t> &dirty)
-{
-    UsrMap::iterator it = map.begin();
-    while (it != map.end()) {
-        Set<Location> &locations = it->second;
-        Set<Location>::iterator i = locations.begin();
-        while (i != locations.end()) {
-            if (dirty.contains(i->fileId())) {
-                locations.erase(i++);
-            } else {
-                ++i;
-            }
-        }
-        if (locations.isEmpty()) {
-            map.erase(it++);
-        } else {
-            ++it;
-        }
-    }
-}
 
-Path findAncestor(Path path, const char *fn, unsigned flags)
+Path findAncestor(Path path, const char *fn, Flags<FindAncestorFlag> flags = Flags<FindAncestorFlag>())
 {
     Path ret;
     int slash = path.size();
@@ -198,11 +155,12 @@ Map<String, String> rtagsConfig(const Path &path)
 
 struct Entry {
     const char *name;
-    const unsigned flags;
+    const Flags<FindAncestorFlag> flags;
 };
 
 static inline Path checkEntries(const Entry *entries, const Path &path, const Path &home)
 {
+    Path best;
     for (int i=0; entries[i].name; ++i) {
         Path p = findAncestor(path, entries[i].name, entries[i].flags);
         if ((p.isEmpty() || p == home) && (entries[i].flags & Wildcard)) {
@@ -212,11 +170,11 @@ static inline Path checkEntries(const Entry *entries, const Path &path, const Pa
                 p = findAncestor(path, name.constData(), entries[i].flags & ~Wildcard);
             }
         }
-        if (!p.isEmpty() && p != home) {
-            return p;
+        if (!p.isEmpty() && p != home && (best.isEmpty() || p.size() < best.size())) {
+            best = p;
         }
     }
-    return Path();
+    return best;
 }
 
 
@@ -232,33 +190,38 @@ Path findProjectRoot(const Path &path, ProjectRootMode mode)
             return project.ensureTrailingSlash();
     }
 
+    Path ret;
     static const Path home = Path::home();
     if (mode == SourceRoot) {
         const Entry before[] = {
-            { "GTAGS", 0 },
-            { "CMakeLists.txt", 0 },
-            { "configure", 0 },
-            { ".git", 0 },
-            { ".svn", 0 },
+            { ".git", Flags<FindAncestorFlag>() },
+            { ".svn", Flags<FindAncestorFlag>() },
+            { ".bzr", Flags<FindAncestorFlag>() },
+            { ".tup", Flags<FindAncestorFlag>() },
+            { "GTAGS", Flags<FindAncestorFlag>() },
+            { "configure", Flags<FindAncestorFlag>() },
+            { "CMakeLists.txt", Flags<FindAncestorFlag>() },
             { "*.pro", Wildcard },
-            { "scons.1", 0 },
+            { "scons.1", Flags<FindAncestorFlag>() },
             { "*.scons", Wildcard },
-            { "SConstruct", 0 },
+            { "SConstruct", Flags<FindAncestorFlag>() },
             { "autogen.*", Wildcard },
             { "GNUMakefile*", Wildcard },
             { "INSTALL*", Wildcard },
             { "README*", Wildcard },
-            { "compile_commands.json", 0 },
-            { 0, 0 }
+            { "compile_commands.json", Flags<FindAncestorFlag>() },
+            { 0, Flags<FindAncestorFlag>() }
         };
         {
-            const Path ret = checkEntries(before, path, home);
-            if (!ret.isEmpty())
-                return ret;
+            const Path e = checkEntries(before, path, home);
+            if (!e.isEmpty() && (e.size() < ret.size() || ret.isEmpty()))
+                ret = e;
         }
     }
+    if (!ret.isEmpty())
+        return ret;
     {
-        const Path configStatus = findAncestor(path, "config.status", 0);
+        const Path configStatus = findAncestor(path, "config.status");
         if (!configStatus.isEmpty()) {
             if (mode == BuildRoot)
                 return configStatus;
@@ -296,7 +259,7 @@ Path findProjectRoot(const Path &path, ProjectRootMode mode)
         }
     }
     {
-        const Path cmakeCache = findAncestor(path, "CMakeCache.txt", 0);
+        const Path cmakeCache = findAncestor(path, "CMakeCache.txt");
         if (!cmakeCache.isEmpty()) {
             if (mode == BuildRoot)
                 return cmakeCache;
@@ -350,16 +313,19 @@ Path findProjectRoot(const Path &path, ProjectRootMode mode)
         }
     }
     const Entry after[] = {
-        { "build.ninja", 0 },
+        { "build.ninja", Flags<FindAncestorFlag>() },
         { "Makefile*", Wildcard },
-        { 0, 0 }
+        { 0, Flags<FindAncestorFlag>() }
     };
 
     {
-        const Path ret = checkEntries(after, path, home);
-        if (!ret.isEmpty())
-            return ret;
+        const Path e = checkEntries(after, path, home);
+        if (!e.isEmpty() && (e.size() < ret.size() || ret.isEmpty()))
+            ret = e;
     }
+
+    if (!ret.isEmpty())
+        return ret;
 
     if (mode == BuildRoot)
         return findProjectRoot(path, SourceRoot);
@@ -369,8 +335,8 @@ Path findProjectRoot(const Path &path, ProjectRootMode mode)
 
 void initMessages()
 {
-    Message::registerMessage<CompileMessage>();
-    Message::registerMessage<IndexerMessage>();
+    Message::registerMessage<IndexMessage>();
+    Message::registerMessage<IndexDataMessage>();
     Message::registerMessage<LogOutputMessage>();
     Message::registerMessage<QueryMessage>();
     Message::registerMessage<VisitFileMessage>();

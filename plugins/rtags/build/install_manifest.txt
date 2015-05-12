@@ -1,0 +1,5 @@
+/usr/local/bin/rdm
+/usr/local/bin/rc
+/usr/local/bin/rp
+/usr/local/share/man/man7/rc.7
+/usr/local/share/man/man7/rdm.7

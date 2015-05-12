@@ -1,25 +1,27 @@
 ;; rtags.el --- A front-end for rtags
 
-;; Copyright (C) 2011-2014  Jan Erik Hanssen and Anders Bakken
+;; Copyright (C) 2011-2015  Jan Erik Hanssen and Anders Bakken
 
 ;; Author: Jan Erik Hanssen <jhanssen@gmail.com>
 ;;         Anders Bakken <agbakken@gmail.com>
-;; URL: https://github.com/Andersbakken/rtags
+;; URL: http://rtags.net
 
 ;; This file is not part of GNU Emacs.
 
-;; This program is free software; you can redistribute it and/or modify
+;; This file is part of RTags (http://rtags.net).
+;;
+;; RTags is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
 ;; the Free Software Foundation, either version 3 of the License, or
 ;; (at your option) any later version.
-
-;; This program is distributed in the hope that it will be useful,
+;;
+;; RTags is distributed in the hope that it will be useful,
 ;; but WITHOUT ANY WARRANTY; without even the implied warranty of
 ;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 ;; GNU General Public License for more details.
-
+;;
 ;; You should have received a copy of the GNU General Public License
-;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+;; along with RTags.  If not, see <http://www.gnu.org/licenses/>.
 
 ;;; Commentary:
 
@@ -34,6 +36,7 @@
 (require 'cc-mode)
 
 (if (or (> emacs-major-version 24)
+        (< emacs-major-version 23)
         (and (= emacs-major-version 24)
              (>= emacs-minor-version 3)))
     (progn
@@ -42,13 +45,10 @@
   (eval-when-compile
     (require 'cl)))
 (require 'compile)
-(require 'dabbrev)
-(require 'ido)
 (require 'thingatpt)
-(unless (fboundp 'libxml-parse-xml-region)
-  (require 'xml))
+(require 'repeat)
 
-(setq rtags-popup-available (require 'popup nil t))
+(defconst rtags-popup-available (require 'popup nil t))
 
 (defvar rtags-last-completions nil)
 (defvar rtags-last-completion-position nil) ;; cons (buffer . offset)
@@ -63,659 +63,41 @@
 (defvar rtags-path-face 'rtags-path "Path part")
 (defvar rtags-context-face 'rtags-context "Context part")
 (defconst rtags-buffer-name "*RTags*")
+(defconst rtags-diagnostics-buffer-name "*RTags Diagnostics*")
+(defconst rtags-diagnostics-raw-buffer-name "*RTags Raw*")
 (defvar rtags-last-request-not-indexed nil)
 (defvar rtags-buffer-bookmarks 0)
+(defvar rtags-diagnostics-process nil)
 
-(defface rtags-warnline
-  '((((class color) (background dark)) (:background "blue"))
-    (((class color) (background light)) (:background "blue"))
-    (t (:bold t)))
-  "Face used for marking error lines."
-  :group 'rtags)
-
-(defface rtags-errline
-  '((((class color) (background dark)) (:background "red"))
-    (((class color) (background light)) (:background "red"))
-    (t (:bold t)))
-  "Face used for marking warning lines."
-  :group 'rtags)
-
-(defface rtags-fixitline
-  '((((class color) (background dark)) (:background "goldenrod4"))
-    (((class color) (background light)) (:background "goldenrod4"))
-    (t (:bold t)))
-  "Face used for marking fixit lines."
-  :group 'rtags)
-
-(defvar rtags-font-lock-keywords
-  `((,"^\\(.*?:[0-9]+:[0-9]+:\\)\\(.*\\)$"
-     (1 font-lock-string-face)
-     (2 font-lock-function-name-face))))
-
-(defun rtags-get-buffer (&optional name)
-  (unless name (setq name rtags-buffer-name))
-  (if (get-buffer name)
-      (kill-buffer name))
-  (generate-new-buffer name))
-
-(defun rtags-has-diagnostics ()
-  (and (get-buffer "*RTags Diagnostics*")
-       rtags-diagnostics-process
-       (not (eq (process-status rtags-diagnostics-process) 'exit))
-       (not (eq (process-status rtags-diagnostics-process) 'signal))))
-
-
-;;;###autoload
-(defun rtags-bury-or-delete ()
-  (interactive)
-  (if (> (length (window-list)) 1)
-      (delete-window)
-    (bury-buffer)))
-
-(defvar rtags-mode-map nil)
-;; assign command to keys
-(setq rtags-mode-map (make-sparse-keymap))
-(define-key rtags-mode-map (kbd "RET") 'rtags-select-other-window)
-(define-key rtags-mode-map (kbd "M-RET") 'rtags-select)
-(define-key rtags-mode-map [mouse-1] 'rtags-select-other-window)
-(define-key rtags-mode-map [mouse-2] 'rtags-select-other-window)
-(define-key rtags-mode-map (kbd "M-o") 'rtags-show-in-other-window)
-(define-key rtags-mode-map (kbd "s") 'rtags-show-in-other-window)
-(define-key rtags-mode-map (kbd "SPC") 'rtags-select-and-remove-rtags-buffer)
-(define-key rtags-mode-map (kbd "q") 'rtags-bury-or-delete)
-(define-key rtags-mode-map (kbd "j") 'next-line)
-(define-key rtags-mode-map (kbd "k") 'previous-line)
-
-(define-derived-mode rtags-mode fundamental-mode
-  (set (make-local-variable 'font-lock-defaults) '(rtags-font-lock-keywords))
-  (setq mode-name "rtags")
-  (use-local-map rtags-mode-map)
-  (run-hooks 'rtags-mode-hook)
-  (goto-char (point-min))
-  (setq buffer-read-only t))
-
-(defun rtags-init-bookmarks()
-  (let ((buf (current-buffer)))
-    (goto-char (point-min))
-    (while (not (eobp))
-      (if (looking-at "^\\(.*?\\):\\([0-9]+\\):\\([0-9]+\\)")
-          (let ((file (match-string-no-properties 1))
-                (line (string-to-number (match-string-no-properties 2)))
-                (column (string-to-number (match-string-no-properties 3))))
-            (let (deactivate-mark)
-              (with-current-buffer (find-file-noselect file)
-                (save-restriction
-                  (widen)
-                  (rtags-goto-line-col line column)
-                  (incf rtags-buffer-bookmarks)
-                  (bookmark-set (format "R_%d" rtags-buffer-bookmarks))
-                  (set-buffer buf))))))
-      (forward-line))))
-
-(defun rtags-reset-bookmarks ()
-  (while (> rtags-buffer-bookmarks 0)
-    (bookmark-delete (format "R_%d" rtags-buffer-bookmarks))
-    (decf rtags-buffer-bookmarks)))
-
-;;;###autoload
-(defun rtags-next-match () (interactive) (rtags-next-prev-match t))
-;;;###autoload
-(defun rtags-previous-match () (interactive) (rtags-next-prev-match nil))
-
-(defun rtags-next-prev-suitable-match (next)
-  (save-excursion
-    (if next
-        (goto-char (point-at-bol 2))
-      (goto-char (point-at-bol 0)))
-    (beginning-of-line)
-    (when (looking-at "$")
-      (when next
-        (goto-char (point-min))
-        (beginning-of-line)))
-    (point)))
-
-(defun rtags-next-prev-match (next)
-  (if (get-buffer rtags-buffer-name)
-      (let (target
-            (win (get-buffer-window rtags-buffer-name)))
-        (if win
-            (select-window win))
-        (set-buffer rtags-buffer-name)
-        (when (> (count-lines (point-max) (point-min)) 1)
-          (cond ((and (= (point-at-bol) (point-min)) (not next))
-                 (goto-char (point-max))
-                 (beginning-of-line)
-                 (while (looking-at "$")
-                   (goto-char (1- (point))))
-                 (message "%s Wrapped" rtags-buffer-name))
-                ((and (= (point-at-eol) (point-max)) next)
-                 (goto-char (point-min))
-                 (setq target (point-min))
-                 (message "%s Wrapped" rtags-buffer-name))
-                (t
-                 (goto-char (rtags-next-prev-suitable-match next))))
-          (beginning-of-line)
-          (if win (rtags-select-other-window)
-            (rtags-select))))))
-
-;;;###autoload
-(defun rtags-next-diag () (interactive) (rtags-next-prev-diag t))
-;;;###autoload
-(defun rtags-previous-diag () (interactive) (rtags-next-prev-diag nil))
-
-(defun rtags-next-prev-diag (next)
-  (if (get-buffer "*RTags Diagnostics*")
-      (let (target
-            (win (get-buffer-window "*RTags Diagnostics*")))
-        (if win (select-window win))
-        (set-buffer "*RTags Diagnostics*")
-        (when (not (= (point-max) (point-min)))
-          (cond ((and (= (point-at-bol) (point-min)) (not next))
-                 (setq target (- (point-max) 1))
-                 (message "*RTags Diagnostics* Wrapped"))
-                ((and (>= (+ (point-at-eol) 1) (point-max)) next)
-                 (setq target (point-min))
-                 (message "*RTags Diagnostics* Wrapped"))
-                (next
-                 (setq target (point-at-bol 2)))
-                (t
-                 (setq target (point-at-bol 0))))
-          (goto-char target)
-          (beginning-of-line)
-          (if win (rtags-select-other-window) (rtags-select))))))
-
-(defun rtags-executable-find (exe)
-  (let ((result (if rtags-path (concat rtags-path "/bin/" exe))))
-    (if (and result (file-exists-p result))
-        result
-      (executable-find exe))))
-
-(defun rtags-remove-keyword-params (seq)
-  (if seq
-      (let ((head (car seq))
-            (tail (cdr seq)))
-        (if (keywordp head) (rtags-remove-keyword-params (cdr tail))
-          (cons head (rtags-remove-keyword-params tail))))))
-
-(defun* rtags-call-rc (&rest arguments
-                             &key (path (buffer-file-name))
-                             unsaved
-                             async ;; nil or a cons (process-filter . sentinel)
-                             path-filter
-                             path-filter-regex
-                             range-filter
-                             (output (list t nil)) ; not supported for async
-                             (range-min (1- (point-min)))
-                             (range-max (1- (point-max)))
-                             noerror
-                             silent-query
-                             &allow-other-keys)
-  (save-excursion
-    (let ((rc (rtags-executable-find "rc")) proc)
-      (if (not rc)
-          (progn
-            (unless noerror (error "Can't find rc"))
-            nil)
-        (progn
-          (and async (not (consp async)) (error "Invalid argument. async must be a cons or nil"))
-          (setq arguments (rtags-remove-keyword-params arguments))
-          (setq arguments (cl-remove-if '(lambda (arg) (not arg)) arguments))
-          (when path-filter
-            (push (concat "--path-filter=" path-filter) arguments)
-            (if path-filter-regex
-                (push "-Z" arguments)))
-          (if unsaved
-              (push (format "--unsaved-file=%s:%d"
-                            (buffer-file-name unsaved)
-                            (with-current-buffer unsaved (- (point-max) (point-min))))
-                    arguments))
-          (if silent-query
-              (push "--silent-query" arguments))
-          (if range-filter
-              (push (format "--range-filter=%d-%d" range-min range-max) arguments))
-          (if rtags-timeout
-              (push (format "--timeout=%d" rtags-timeout) arguments))
-          (unless rtags-sort-references-by-input
-            (push "--no-sort-references-by-input" arguments))
-          ;; (if rtags-wildcard-symbol-names
-          ;;     (push "--wildcard-symbol-names" arguments))
-          (if (and rtags-show-containing-function (not (member "-N" arguments)))
-              (push "-o" arguments))
-
-          (cond ((stringp path) (push (concat "--current-file=" path) arguments))
-                (path nil)
-                (default-directory (push (concat "--current-file=" default-directory) arguments))
-                (t nil))
-
-          (rtags-log (concat rc " " (combine-and-quote-strings arguments)))
-          (let ((proc (cond ((and unsaved async)
-                             (let ((proc (apply #'start-process "rc" (current-buffer) rc arguments)))
-                               (with-current-buffer unsaved
-                                 (process-send-region proc (point-min) (point-max)))
-                               proc))
-                            (async (apply #'start-process "rc" (current-buffer) rc arguments))
-                            ((and unsaved (buffer-modified-p unsaved))
-                             (let ((output-buffer (current-buffer)))
-                               (with-current-buffer unsaved
-                                 (apply #'call-process-region (point-min) (point-max) rc
-                                        nil output-buffer nil arguments) nil)))
-                            (unsaved (apply #'call-process rc (buffer-file-name unsaved) output nil arguments) nil)
-                            (t (apply #'call-process rc nil output nil arguments) nil))))
-            (if proc
-                (progn
-                  (set-process-query-on-exit-flag proc nil)
-                  (set-process-filter proc (car async))
-                  (set-process-sentinel proc (cdr async)))
-              (goto-char (point-min))
-              (and (cond ((looking-at "Can't seem to connect to server")
-                          (erase-buffer)
-                          (unless noerror
-                            (error "Can't seem to connect to server. Is rdm running?"))
-                          nil)
-                         ((looking-at "Project loading")
-                          (erase-buffer)
-                          (message "Project loading...")
-                          t)
-                         (t))
-                   rtags-autostart-diagnostics (rtags-diagnostics))))
-          (or async (> (point-max) (point-min))))))))
-
-;;;###autoload
-(defun rtags-index-js-file ()
-  (interactive)
-  (if (buffer-file-name)
-      (let ((bufname (buffer-file-name)))
-        (with-temp-buffer
-          (rtags-call-rc (buffer-file-name) "--compile" bufname :noerror t))))
-  t)
-
-(defvar rtags-preprocess-keymap (make-sparse-keymap))
-(define-key rtags-preprocess-keymap (kbd "q") 'rtags-bury-or-delete)
-(set-keymap-parent rtags-preprocess-keymap c++-mode-map)
-(define-derived-mode rtags-preprocess-mode c++-mode
-  (setq mode-name "rtags-preprocess")
-  (use-local-map rtags-diagnostics-mode-map)
-  (if (buffer-file-name)
-      (error "Set buffer with file %s read only " (buffer-file-name)))
-  (setq buffer-read-only t))
-
-(defun rtags-builds (&optional file)
-  (with-temp-buffer
-    (rtags-call-rc :path file "--builds" file)
-    (buffer-string)))
-
-;;;###autoload
-(defun rtags-preprocess-file (&optional buffer)
-  (interactive)
-  (unless buffer (setq buffer (current-buffer)))
-  (let (narrow-start narrow-end)
-    (if (and mark-active
-             (not (equal (region-beginning) (region-end))))
-        (setq narrow-start (+ 1 (count-lines (point-min) (region-beginning)))
-              narrow-end (+ 1 (count-lines (point-min) (region-end)))))
-    (let ((preprocess-buffer (rtags-get-buffer (format "*RTags preprocessed %s*" (buffer-file-name buffer)))))
-      (rtags-location-stack-push)
-      (with-current-buffer preprocess-buffer
-        (rtags-call-rc :path (buffer-file-name buffer) "--preprocess" (buffer-file-name buffer))
-        (if (and narrow-start narrow-end)
-            (let ((match-regexp (concat "^# \\([0-9]*\\) \"" (file-truename (buffer-file-name buffer)) "\""))
-                  last-match last-line start end)
-              (while (re-search-forward match-regexp nil t)
-                (let ((current-line (string-to-number (match-string-no-properties 1))))
-                  (if (and (not start) (> current-line narrow-start))
-                      (setq start (+ (count-lines (point-min) last-match) (- narrow-start last-line))))
-                  (if (and (not end) (> current-line narrow-end))
-                      (setq end (+ (count-lines (point-min) last-match) (- narrow-end last-line))))
-                  (setq last-line current-line)
-                  (setq last-match (point))))
-              (if last-match
-                  (progn
-                    (if (not start)
-                        (setq start (+ (count-lines (point-min) last-match) (- narrow-start last-line))))
-                    (if (not end)
-                        (setq end (+ (count-lines (point-min) last-match) (- narrow-end last-line))))))
-              (if (and start end)
-                  (progn
-                    (goto-char (point-min))
-                    (narrow-to-region (point-at-bol (+ start 1)) (point-at-bol (+ end 1)))))))
-        (rtags-preprocess-mode))
-      (display-buffer preprocess-buffer))))
-
-;;;###autoload
-(defun rtags-reparse-file (&optional buffer wait-reparsing)
-  "WAIT-REPARSING : t to wait for reparsing to finish, nil for async (no waiting).
-:fixme: add a timeout"
-  (interactive)
-  (when (null buffer)
-    (setq buffer (current-buffer)))
-  (let ((file (buffer-file-name buffer)))
-    ;;(when (null (rtags-buffer-status buffer))
-    ;;(message ":debug: file not indexed"))
-    (when (and file (rtags-buffer-status buffer))
-      (with-temp-buffer
-        (if (buffer-modified-p buffer)
-            (progn
-              (rtags-call-rc :path file :unsaved buffer "-V" file)
-              (when wait-reparsing
-                (message "Reparsing buffer")
-                ;;(message ":debug: reparsing file %s" file)
-                ;; Wait for the server to start working.
-                (while (not (rtags-is-working buffer))
-                  (sleep-for 0.4))
-                ;; Wait for the file to become indexed.
-                (while (rtags-is-working buffer)
-                  (sleep-for 0.4))))
-          (progn
-            (rtags-call-rc :path file "-V" file)
-            (message (format "Dirtied %s" file))))))))
-
-
-;; assoc list containing unsaved buffers and their modification ticks
-;; (to avoid reparsing unsaved files if there were no changes since last parsing)
-;; :fixme: - remove buffers from list on save
-(defvar rtags-unsaved-buffers-ticks nil)
-
-(defun rtags-reparse-file-if-needed (&optional buffer)
-  "Reparse file if it's not saved.
-
-BUFFER : the buffer to be checked and reparsed, if it's nil, use current buffer"
-  (when rtags-enable-unsaved-reparsing
-    (let ((unsaved (and (buffer-modified-p buffer) (or buffer (current-buffer)))))
-      (when unsaved
-        ;; check ticks since the last save to avoid parsing the file multiple times
-        ;; if it has not been modified
-        (let ((current-ticks (buffer-modified-tick unsaved))
-              (old-ticks (cdr (assoc unsaved rtags-unsaved-buffers-ticks))))
-          ;; reparsing this dirty file for the first time
-          ;; or if it was modified since last reparsing
-          ;;(message ":debug: buffer=%s, old-ticks=%s, current-ticks=%s"
-          ;;unsaved old-ticks current-ticks)
-          (if (or (null old-ticks) (/= current-ticks old-ticks))
-              (progn
-                (rtags-reparse-file unsaved t)
-                (add-to-list 'rtags-unsaved-buffers-ticks (cons unsaved current-ticks)))
-            (progn ;; else update ticks
-              (let ((item (assoc unsaved rtags-unsaved-buffers-ticks)))
-                (setf (cdr item) current-ticks)))))))))
-
-
-;;;###autoload
-(defun rtags-maybe-reparse-file (&optional buffer)
-  (interactive)
-  (let ((file (buffer-file-name buffer)))
-    (when file
-      (with-temp-buffer
-        (rtags-call-rc :path file "-x" file)))))
-
-;;;###autoload
-(defun rtags-set-current-project ()
-  (interactive)
-  (let ((projects nil)
-        (project nil)
-        (current ""))
-    (with-temp-buffer
-      (rtags-call-rc :path t "-w")
-      (goto-char (point-min))
-      (while (not (eobp))
-        (let ((line (buffer-substring-no-properties (point-at-bol) (point-at-eol))))
-          (if (string-match "^\\([^ ]+\\)[^<]*<=$" line)
-              (let ((name (match-string-no-properties 1 line)))
-                (setq projects (add-to-list 'projects name t))
-                (setq current name))
-            (if (string-match "^\\([^ ]+\\)[^<]*$" line)
-                (setq projects (add-to-list 'projects (match-string-no-properties 1 line))))))
-        (forward-line)))
-    (setq project (ido-completing-read
-                   (format "RTags select project (current is %s): " current)
-                   projects))
-    (if project
-        (with-temp-buffer (rtags-call-rc :output nil :path t "-w" project)))))
-
-(defun rtags-current-symbol (&optional no-symbol-name)
-  (or (and mark-active (buffer-substring-no-properties (point) (mark)))
-      (and (not no-symbol-name) (rtags-current-symbol-name))
-      (thing-at-point 'symbol)))
-
-(defun rtags-cursorinfo (&optional location verbose save-to-kill-ring no-reparse)
-  (let ((loc (or location (rtags-current-location)))
-        (path (buffer-file-name)))
-    (when (not no-reparse)
-      (rtags-reparse-file-if-needed))
-    (with-temp-buffer
-      (rtags-call-rc :path path
-                     "-U" loc
-                     (if verbose "--cursorinfo-include-targets")
-                     (if verbose "--cursorinfo-include-references"))
-      (if save-to-kill-ring
-          (copy-region-as-kill (point-min) (point-max)))
-      (buffer-string))))
-
-;;;###autoload
-(defun rtags-print-cursorinfo (&optional prefix)
-  (interactive "P")
-  (message "%s" (rtags-cursorinfo nil (not prefix) (not prefix))))
-
-;;;###autoload
-(defun rtags-print-dependencies (&optional buffer)
-  (interactive)
-  (let ((dep-buffer (rtags-get-buffer))
-        (fn (buffer-file-name (or buffer (current-buffer)))))
-    (when fn
-      (rtags-location-stack-push)
-      (switch-to-buffer dep-buffer)
-      (rtags-call-rc :path fn "--dependencies" fn)
-      (rtags-mode))))
-
-;;;###autoload
-(defun rtags-print-enum-value-at-point (&optional location)
-  (interactive)
-  (let ((info (rtags-cursorinfo location)))
-    (cond ((string-match "^Enum Value: \\([0-9]+\\) *$" info)
-           (let ((enumval (match-string-no-properties 1 info)))
-             (message "%s - %s - 0x%X" (rtags-current-symbol-name info) enumval (string-to-number enumval))))
-          ((string-match "^Type: Enum *$" info)
-           (let ((target (rtags-target)))
-             (when target
-               (setq info (rtags-cursorinfo target))
-               (if (string-match "^Enum Value: \\([0-9]+\\) *$" info)
-                   (let ((enumval (match-string-no-properties 1 info)))
-                     (message "%s - %s - 0x%X" (rtags-current-symbol-name info) enumval (string-to-number enumval)))))))
-          (t (message "RTags: No enum here") nil))))
-
-(defun rtags-buffer-is-multibyte ()
-  (string-match "\\butf\\b" (symbol-name buffer-file-coding-system)))
-
-(defun rtags-buffer-is-dos()
-  (string-match "\\bdos\\b" (symbol-name buffer-file-coding-system)))
-
-(defun rtags-carriage-returns ()
-  (if (rtags-buffer-is-dos)
-      (1- (line-number-at-pos))
-    0))
-
-(defun rtags-offset (&optional p)
-  (save-excursion
-    (if p
-        (goto-char p)
-      (if (rtags-buffer-is-multibyte)
-          (let ((prev (buffer-local-value enable-multibyte-characters (current-buffer)))
-                (loc (local-variable-p enable-multibyte-characters))
-                (pos))
-            (set-buffer-multibyte nil)
-            (setq pos (1- (point)))
-            (set-buffer-multibyte prev)
-            (unless loc
-              (kill-local-variable enable-multibyte-characters))
-            pos)
-        (1- (point))))))
-
-;;;###autoload
-(defun rtags-goto-offset (pos)
-  (interactive "NOffset: ")
-  (if (rtags-buffer-is-multibyte)
-      (let ((prev (buffer-local-value enable-multibyte-characters (current-buffer)))
-            (loc (local-variable-p enable-multibyte-characters)))
-        (set-buffer-multibyte nil)
-        (goto-char (1+ pos))
-        (set-buffer-multibyte prev)
-        (unless loc
-          (kill-local-variable enable-multibyte-characters)))
-    (goto-char (1+ pos))))
-
-(defun rtags-current-location (&optional offset)
-  (format "%s:%d:%d" (or (buffer-file-name) (buffer-name))
-          (line-number-at-pos offset) (1+ (- (or offset (point)) (point-at-bol)))))
-
-(defun rtags-log (log)
-  (if rtags-rc-log-enabled
-      (with-current-buffer (get-buffer-create "*RTags Log*")
-        (goto-char (point-max))
-        (setq buffer-read-only nil)
-        (insert "**********************************\n" log "\n")
-        (setq buffer-read-only t))))
-
-(defvar rtags-symbol-history nil)
-
-(defun rtags-find-file-or-buffer (file-or-buffer &optional other-window)
-  (if (file-exists-p file-or-buffer)
-      (if other-window
-          (find-file-other-window file-or-buffer)
-        (find-file file-or-buffer))
-    (let ((buf (get-buffer file-or-buffer)))
-      (cond ((not buf) (message "No buffer named %s" file-or-buffer))
-            (other-window (switch-to-buffer-other-window file-or-buffer))
-            (t (switch-to-buffer file-or-buffer))))))
-
-(defun rtags-goto-line-col (line column)
-  (goto-char (point-min))
-  (forward-line (1- line))
-  (beginning-of-line)
-  (forward-char (1- column)))
-
-(defun rtags-goto-location (location &optional nobookmark other-window)
-  "Go to a location passed in. It can be either: file,12 or file:13:14 or plain file"
-  ;; (message (format "rtags-goto-location \"%s\"" location))
-  (when (> (length location) 0)
-    (cond ((string-match "\\(.*\\):\\([0-9]+\\):\\([0-9]+\\)" location)
-           (let ((line (string-to-number (match-string-no-properties 2 location)))
-                 (column (string-to-number (match-string-no-properties 3 location))))
-             (rtags-find-file-or-buffer (match-string-no-properties 1 location) other-window)
-             (run-hooks rtags-after-find-file-hook)
-             (rtags-goto-line-col line column)
-             t))
-          ((string-match "\\(.*\\):\\([0-9]+\\)" location)
-           (let ((line (string-to-number (match-string-no-properties 2 location))))
-             (rtags-find-file-or-buffer (match-string-no-properties 1 location) other-window)
-             (run-hooks rtags-after-find-file-hook)
-             (goto-char (point-min))
-             (forward-line (1- line))
-             t))
-          ((string-match "\\(.*\\),\\([0-9]+\\)" location)
-           (let ((offset (string-to-number (match-string-no-properties 2 location))))
-             (rtags-find-file-or-buffer (match-string-no-properties 1 location) other-window)
-             (run-hooks rtags-after-find-file-hook)
-             (rtags-goto-offset offset)
-             t))
-          (t
-           (if (string-match "^ +\\(.*\\)$" location)
-               (setq location (match-string-no-properties 1 location)))
-           (rtags-find-file-or-buffer location other-window)))
-    (unless nobookmark (rtags-location-stack-push))))
-
-(defun rtags-find-symbols-by-name-internal (prompt switch &optional filter regexp-filter)
-  (rtags-location-stack-push)
-  (let ((tagname (if mark-active
-                     (buffer-substring-no-properties (region-beginning) (region-end))
-                   (rtags-current-symbol)))
-        (path (buffer-file-name))
-        input)
-    (if (> (length tagname) 0)
-        (setq prompt (concat prompt ": (default " tagname ") "))
-      (setq prompt (concat prompt ": ")))
-    (setq input (completing-read prompt (function rtags-symbolname-complete) nil nil nil 'rtags-symbol-history))
-    (setq rtags-symbol-history (cl-remove-duplicates rtags-symbol-history :from-end t :test 'equal))
-    (if (not (equal "" input))
-        (setq tagname input))
-    (with-current-buffer (rtags-get-buffer)
-      (rtags-call-rc :path path switch tagname :path-filter filter :path-filter-regex regexp-filter (if rtags-symbolnames-case-insensitive "-I"))
-      (rtags-reset-bookmarks)
-      (rtags-handle-results-buffer))))
-
-(defun rtags-symbolname-completion-get (string)
-  (with-temp-buffer
-    (rtags-call-rc "-Y" "-S" string (if rtags-symbolnames-case-insensitive "-I"))
-    (rtags-log (buffer-string))
-    (eval (read (buffer-string)))))
-
-(defun rtags-symbolname-completion-exactmatch (string)
-  (with-temp-buffer
-    (rtags-call-rc "-N" "-F" string)
-    (> (point-max) (point-min))))
-
-(defun rtags-symbolname-complete (string predicate code)
-  ;; (message "CALLED %s %s %s"
-  ;;          string predicate
-  ;;          (cond ((eq code nil) "nil")
-  ;;                ((eq code t) "t")
-  ;;                ((eq code 'lambda) "lambda")))
-
-  (cond ((null code)
-         (let* ((alternatives (rtags-symbolname-completion-get string))
-                (attempt (try-completion string alternatives predicate)))
-           ;; (message "%s %d %d %s %s" string (length alternatives)
-           ;;          (if rtags-wildcard-symbol-names 1 0)
-           ;;          attempt
-           ;;          (and (string-match '\\*' string) "yes"))
-
-           ;; (if (and rtags-wildcard-symbol-names
-           ;;          (not attempt)
-           ;;          (> (length alternatives) 0)
-           ;;          (string-match "\\*" string))
-           ;;     (progn
-           ;;       (message "RETURNING STRING")
-           ;;       string)
-           ;;   attempt)))
-           attempt))
-        ((eq code t)
-         (rtags-symbolname-completion-get string))
-        ((eq code 'lambda)
-         (rtags-symbolname-completion-exactmatch string))
-        (t nil)))
-
-(defvar rtags-location-stack-index 0)
-(defvar rtags-location-stack nil)
-
-(defun rtags-location-stack-push ()
-  (let ((bm (rtags-current-location)))
-    (while (> rtags-location-stack-index 0)
-      (decf rtags-location-stack-index)
-      (pop rtags-location-stack))
-    (unless (string= bm (nth 0 rtags-location-stack))
-      (push bm rtags-location-stack)
-      (if (> (length rtags-location-stack) rtags-max-bookmark-count)
-          (nbutlast rtags-location-stack (- (length rtags-location-stack) rtags-max-bookmark-count))))))
-
-;;;###autoload
-(defun rtags-location-stack-jump (by)
-  (interactive)
-  (let ((instack (nth rtags-location-stack-index rtags-location-stack))
-        (cur (rtags-current-location)))
-    (if (not (string= instack cur))
-        (rtags-goto-location instack t)
-      (let ((target (+ rtags-location-stack-index by)))
-        (when (and (>= target 0) (< target (length rtags-location-stack)))
-          (setq rtags-location-stack-index target)
-          (rtags-goto-location (nth rtags-location-stack-index rtags-location-stack) t))))))
-
-;; **************************** API *********************************
+(defun rtags-is-indexable-default (buffer)
+  (let ((filename (buffer-file-name buffer)))
+    (if filename
+        (let ((suffix (and (string-match "\.\\([^.]+\\)$" filename) (match-string 1 filename))))
+          (or (not suffix)
+              (and (member (downcase suffix) (list "cpp" "h" "cc" "c" "cp" "cxx" "m" "mm" "tcc" "txx" "moc" "hxx" "hh")) t))))))
 
 (defcustom rtags-enabled t
   "Whether rtags is enabled. We try to do nothing when it's not"
   :group 'rtags
   :type 'boolean)
 
+(defcustom rtags-use-filename-completion t
+  "Whether Rtags' special filename completion is enabled. Set to nil to enable ido-ubiquitous etc."
+  :group 'rtags
+  :type 'boolean)
+
+(defcustom rtags-diagnostics-use-pipe t
+  "If diagnostics can use a pipe. If you're running emacs in cygwin you might have to set this to nil"
+  :group 'rtags
+  :type 'boolean)
+
 (defcustom rtags-autostart-diagnostics nil
   "Whether rtags automatically will restart diagnostics"
+  :group 'rtags
+  :type 'boolean)
+
+(defcustom rtags-spellcheck-enabled t
+  "Whether rtags does syntax checking with overlays etc to mark errors, warnings and fixups"
   :group 'rtags
   :type 'boolean)
 
@@ -729,8 +111,8 @@ BUFFER : the buffer to be checked and reparsed, if it's nil, use current buffer"
   :group 'rtags
   :type 'boolean)
 
-(defcustom rtags-completions-timer-interval .5
-  "Interval for completions timer"
+(defcustom rtags-completions-timer-interval nil
+  "Interval for completions timer. nil means don't preemptively prepare completions"
   :group 'rtags
   :type 'number)
 
@@ -741,6 +123,11 @@ BUFFER : the buffer to be checked and reparsed, if it's nil, use current buffer"
 
 (defcustom rtags-tracking nil
   "When on automatically jump to symbol under cursor in *RTags* buffer"
+  :group 'rtags
+  :type 'boolean)
+
+(defcustom rtags-track-container nil
+  "When on continually update current container (function/class/namespace) on intervals"
   :group 'rtags
   :type 'boolean)
 
@@ -764,6 +151,11 @@ BUFFER : the buffer to be checked and reparsed, if it's nil, use current buffer"
   :type 'boolean
   :group 'rtags)
 
+(defcustom rtags-tooltips-enabled rtags-popup-available
+  "Display help / summary text when hovering over symbols."
+  :type 'boolean
+  :group 'rtags)
+
 (defcustom rtags-error-timer-interval .5
   "Interval for minibuffer error timer"
   :group 'rtags
@@ -774,7 +166,17 @@ BUFFER : the buffer to be checked and reparsed, if it's nil, use current buffer"
   :group 'rtags
   :type 'number)
 
-(defcustom rtags-expand-function '(lambda () (dabbrev-expand nil))
+(defcustom rtags-container-timer-interval .5
+  "Interval for container timer"
+  :group 'rtags
+  :type 'number)
+
+(defcustom rtags-current-container-hook nil
+  "Run after rtags has set the current container"
+  :group 'rtags
+  :type 'hook)
+
+(defcustom rtags-is-indexable 'rtags-is-indexable-default
   "What function to call for expansions"
   :group 'rtags
   :type 'function)
@@ -835,10 +237,622 @@ return t if rtags is allowed to modify this file"
   :group 'rtags
   :type 'boolean)
 
-(defcustom rtags-index-js-files nil
-  "If t, automatically index all js files that are opened"
+(defface rtags-warnline
+  '((((class color) (background dark)) (:background "blue"))
+    (((class color) (background light)) (:background "blue"))
+    (t (:bold t)))
+  "Face used for marking error lines."
+  :group 'rtags)
+
+(defface rtags-errline
+  '((((class color) (background dark)) (:background "red"))
+    (((class color) (background light)) (:background "red"))
+    (t (:bold t)))
+  "Face used for marking warning lines."
+  :group 'rtags)
+
+(defface rtags-fixitline
+  '((((class color) (background dark)) (:background "goldenrod4"))
+    (((class color) (background light)) (:background "goldenrod4"))
+    (t (:bold t)))
+  "Face used for marking fixit lines."
+  :group 'rtags)
+
+(defface rtags-skippedline
+  '((((class color) (background dark)) (:background "gray12"))
+    (((class color) (background light)) (:background "gray12")))
+  "Face used for marking skipped lines."
+  :group 'rtags)
+
+(defvar rtags-font-lock-keywords
+  `((,"^\\(.*?:[0-9]+:[0-9]+:\\)\\(.*\\)$"
+     (1 font-lock-string-face)
+     (2 font-lock-function-name-face))))
+
+(defcustom rtags-timeout nil
+  "Max amount of ms to wait for operation to finish"
+  :group 'rtags
+  :type 'integer)
+
+(defcustom rtags-enable-unsaved-reparsing t
+  "Whether rtags will reparse unsaved buffers as needed"
   :group 'rtags
   :type 'boolean)
+
+(defcustom rtags-find-file-case-insensitive nil
+  "Treat files case-insensitively"
+  :group 'rtags
+  :type 'boolean)
+
+(defcustom rtags-symbolnames-case-insensitive nil
+  "Treat symbol names case-insensitively"
+  :group 'rtags
+  :type 'boolean)
+
+(defcustom rtags-find-file-prefer-exact-match t
+  "Jump directly to files that exactly match the filename for rtags-find-file"
+  :group 'rtags
+  :type 'boolean)
+
+(defcustom rtags-other-window-window-size-percentage 30
+  "Percentage size of other buffer"
+  :group 'rtags
+  :type 'integer)
+
+(defcustom rtags-split-window-function 'split-window
+  "Function to split window. default is 'split-window"
+  :group 'rtags
+  :type 'function)
+
+(defun rtags-get-buffer (&optional name)
+  (unless name (setq name rtags-buffer-name))
+  (if (get-buffer name)
+      (kill-buffer name))
+  (generate-new-buffer name))
+
+(defun rtags-has-diagnostics ()
+  (and (get-buffer rtags-diagnostics-buffer-name)
+       rtags-diagnostics-process
+       (not (eq (process-status rtags-diagnostics-process) 'exit))
+       (not (eq (process-status rtags-diagnostics-process) 'signal))))
+
+
+;;;###autoload
+(defun rtags-bury-or-delete ()
+  (interactive)
+  (if (> (length (window-list)) 1)
+      (delete-window)
+    (bury-buffer)))
+
+(defvar rtags-mode-map nil)
+;; assign command to keys
+(setq rtags-mode-map (make-sparse-keymap))
+(define-key rtags-mode-map (kbd "RET") 'rtags-select-other-window)
+(define-key rtags-mode-map (kbd "M-RET") 'rtags-select)
+(define-key rtags-mode-map [mouse-1] 'rtags-select-other-window)
+(define-key rtags-mode-map [mouse-2] 'rtags-select-other-window)
+(define-key rtags-mode-map (kbd "M-o") 'rtags-show-in-other-window)
+(define-key rtags-mode-map (kbd "s") 'rtags-show-in-other-window)
+(define-key rtags-mode-map (kbd "SPC") 'rtags-select-and-remove-rtags-buffer)
+(define-key rtags-mode-map (kbd "q") 'rtags-bury-or-delete)
+(define-key rtags-mode-map (kbd "j") 'next-line)
+(define-key rtags-mode-map (kbd "k") 'previous-line)
+
+(define-derived-mode rtags-mode fundamental-mode
+  (set (make-local-variable 'font-lock-defaults) '(rtags-font-lock-keywords))
+  (setq mode-name "rtags")
+  (use-local-map rtags-mode-map)
+  (run-hooks 'rtags-mode-hook)
+  (goto-char (point-min))
+  (setq buffer-read-only t))
+
+(defun rtags-init-bookmarks()
+  (save-excursion
+    (goto-char (point-min))
+    (while (not (eobp))
+      (when (looking-at "^\\(.*?\\):\\([0-9]+\\):\\([0-9]+\\)")
+        (incf rtags-buffer-bookmarks)
+        (let* ((buffer (get-file-buffer (match-string-no-properties 1)))
+               (line (and buffer (string-to-number (match-string-no-properties 2))))
+               (column (and buffer (string-to-number (match-string-no-properties 3)))))
+          (when buffer
+            (let (deactivate-mark)
+              (with-current-buffer buffer
+                (save-restriction
+                  (widen)
+                  (rtags-goto-line-col line column)
+                  (bookmark-set (format "RTags_%d" rtags-buffer-bookmarks))))))))
+      (forward-line))))
+
+(defun rtags-reset-bookmarks ()
+  (setq rtags-buffer-bookmarks 0)
+  (mapcar (lambda (bookmark) (when (string-match "^RTags_" bookmark) (bookmark-delete bookmark))) (bookmark-all-names)))
+
+;;;###autoload
+(defun rtags-next-match () (interactive) (rtags-next-prev-match t))
+;;;###autoload
+(defun rtags-previous-match () (interactive) (rtags-next-prev-match nil))
+
+(defun rtags-next-prev-suitable-match (next)
+  (save-excursion
+    (if next
+        (goto-char (point-at-bol 2))
+      (goto-char (point-at-bol 0)))
+    (beginning-of-line)
+    (when (looking-at "$")
+      (when next
+        (goto-char (point-min))
+        (beginning-of-line)))
+    (point)))
+
+(defun rtags-next-prev-match (next)
+  (if (get-buffer rtags-buffer-name)
+      (let ((target)
+            (win (get-buffer-window rtags-buffer-name)))
+        (if win
+            (select-window win))
+        (set-buffer rtags-buffer-name)
+        (when (> (count-lines (point-max) (point-min)) 1)
+          (cond ((and (= (point-at-bol) (point-min)) (not next))
+                 (goto-char (point-max))
+                 (beginning-of-line)
+                 (while (looking-at "$")
+                   (goto-char (1- (point))))
+                 (message "%s Wrapped" rtags-buffer-name))
+                ((and (= (point-at-eol) (point-max)) next)
+                 (goto-char (point-min))
+                 (setq target (point-min))
+                 (message "%s Wrapped" rtags-buffer-name))
+                (t
+                 (goto-char (rtags-next-prev-suitable-match next))))
+          (beginning-of-line)
+          (if win (rtags-select-other-window)
+            (rtags-select))))))
+
+;;;###autoload
+(defun rtags-next-diag () (interactive) (rtags-next-prev-diag t))
+;;;###autoload
+(defun rtags-previous-diag () (interactive) (rtags-next-prev-diag nil))
+
+(defun rtags-next-prev-diag (next)
+  (if (get-buffer rtags-diagnostics-buffer-name)
+      (let (target
+            (win (get-buffer-window rtags-diagnostics-buffer-name)))
+        (if win (select-window win))
+        (set-buffer rtags-diagnostics-buffer-name)
+        (when (not (= (point-max) (point-min)))
+          (cond ((and (= (point-at-bol) (point-min)) (not next))
+                 (setq target (- (point-max) 1))
+                 (message "*RTags Diagnostics* Wrapped"))
+                ((and (>= (+ (point-at-eol) 1) (point-max)) next)
+                 (setq target (point-min))
+                 (message "*RTags Diagnostics* Wrapped"))
+                (next
+                 (setq target (point-at-bol 2)))
+                (t
+                 (setq target (point-at-bol 0))))
+          (goto-char target)
+          (beginning-of-line)
+          (if win (rtags-select-other-window) (rtags-select))))))
+
+(defun rtags-executable-find (exe)
+  (let ((result (if rtags-path (concat rtags-path "/bin/" exe))))
+    (if (and result (file-exists-p result))
+        result
+      (executable-find exe))))
+
+(defun rtags-remove-keyword-params (seq)
+  (if seq
+      (let ((head (car seq))
+            (tail (cdr seq)))
+        (if (keywordp head) (rtags-remove-keyword-params (cdr tail))
+          (cons head (rtags-remove-keyword-params tail))))))
+
+
+(defun rtags-combine-strings (list)
+  (let (ret)
+    (while list
+      (setq ret (or (and ret (concat ret " " (car list))) (car list)))
+      (setq list (cdr list)))
+    ret))
+
+(defun* rtags-call-rc (&rest arguments
+                             &key (path (buffer-file-name))
+                             unsaved
+                             async ;; nil or a cons (process-filter . sentinel)
+                             path-filter
+                             path-filter-regex
+                             range-filter
+                             (output (list t nil)) ; not supported for async
+                             (range-min (1- (point-min)))
+                             (range-max (1- (point-max)))
+                             noerror
+                             silent-query
+                             &allow-other-keys)
+  (save-excursion
+    (let ((rc (rtags-executable-find "rc")) proc)
+      (if (not rc)
+          (progn
+            (unless noerror (error "Can't find rc"))
+            nil)
+        (progn
+          (and async (not (consp async)) (error "Invalid argument. async must be a cons or nil"))
+          (setq arguments (rtags-remove-keyword-params arguments))
+          (setq arguments (cl-remove-if '(lambda (arg) (not arg)) arguments))
+          (when path-filter
+            (push (concat "--path-filter=" path-filter) arguments)
+            (if path-filter-regex
+                (push "-Z" arguments)))
+          (if (buffer-file-name unsaved)
+              (push (format "--unsaved-file=%s:%d"
+                            (buffer-file-name unsaved)
+                            (with-current-buffer unsaved (- (point-max) (point-min))))
+                    arguments))
+          (if silent-query
+              (push "--silent-query" arguments))
+          (if range-filter
+              (push (format "--range-filter=%d-%d" range-min range-max) arguments))
+          (if rtags-timeout
+              (push (format "--timeout=%d" rtags-timeout) arguments))
+          (if (and rtags-show-containing-function (not (member "-N" arguments)))
+              (push "-o" arguments))
+
+          (cond ((stringp path) (push (concat "--current-file=" path) arguments))
+                (path nil)
+                (default-directory (push (concat "--current-file=" default-directory) arguments))
+                (t nil))
+
+          (when rtags-rc-log-enabled
+            (rtags-log (concat rc " " (rtags-combine-strings arguments))))
+          (let ((proc (cond ((and unsaved async)
+                             (let ((proc (apply #'start-process "rc" (current-buffer) rc arguments)))
+                               (with-current-buffer unsaved
+;;                                 (rtags-log (buffer-substring-no-properties (point-min) (point-max)))
+                                 (process-send-region proc (point-min) (point-max)))
+                               proc))
+                            (async (apply #'start-process "rc" (current-buffer) rc arguments))
+                            ((and unsaved (or (buffer-modified-p unsaved)
+                                              (not (buffer-file-name unsaved))))
+                             (let ((output-buffer (current-buffer)))
+                               (with-current-buffer unsaved
+                                 (apply #'call-process-region (point-min) (point-max) rc
+                                        nil output-buffer nil arguments) nil)))
+                            (unsaved (apply #'call-process rc (buffer-file-name unsaved) output nil arguments) nil)
+                            (t (apply #'call-process rc nil output nil arguments) nil))))
+            (if proc
+                (progn
+                  (set-process-query-on-exit-flag proc nil)
+                  (set-process-filter proc (car async))
+                  (set-process-sentinel proc (cdr async)))
+              (goto-char (point-min))
+              (and (cond ((looking-at "Can't seem to connect to server")
+                          (erase-buffer)
+                          (unless noerror
+                            (message "Can't seem to connect to server. Is rdm running?"))
+                          nil)
+                         ((looking-at "Project loading")
+                          (erase-buffer)
+                          (message "Project loading...")
+                          t)
+                         (t))
+                   rtags-autostart-diagnostics (rtags-diagnostics))))
+          (or async (> (point-max) (point-min))))))))
+
+(defvar rtags-preprocess-keymap (make-sparse-keymap))
+(define-key rtags-preprocess-keymap (kbd "q") 'rtags-bury-or-delete)
+(set-keymap-parent rtags-preprocess-keymap c++-mode-map)
+(define-derived-mode rtags-preprocess-mode c++-mode
+  (setq mode-name "rtags-preprocess")
+  (use-local-map rtags-preprocess-mode-map)
+  (if (buffer-file-name)
+      (error "Set buffer with file %s read only " (buffer-file-name)))
+  (setq buffer-read-only t))
+
+(defun rtags-builds (&optional file)
+  (with-temp-buffer
+    (rtags-call-rc :path file "--builds" file)
+    (buffer-string)))
+
+;;;###autoload
+(defun rtags-preprocess-file (&optional buffer)
+  (interactive)
+  (unless buffer (setq buffer (current-buffer)))
+  (let (narrow-start narrow-end)
+    (if (and mark-active
+             (not (equal (region-beginning) (region-end))))
+        (setq narrow-start (+ 1 (count-lines (point-min) (region-beginning)))
+              narrow-end (+ 1 (count-lines (point-min) (region-end)))))
+    (let ((preprocess-buffer (rtags-get-buffer (format "*RTags preprocessed %s*" (buffer-file-name buffer)))))
+      (rtags-location-stack-push)
+      (with-current-buffer preprocess-buffer
+        (rtags-call-rc :path (buffer-file-name buffer) "--preprocess" (buffer-file-name buffer))
+        (if (and narrow-start narrow-end)
+            (let ((match-regexp (concat "^# \\([0-9]*\\) \"" (file-truename (buffer-file-name buffer)) "\""))
+                  last-match last-line start end)
+              (while (re-search-forward match-regexp nil t)
+                (let ((current-line (string-to-number (match-string-no-properties 1))))
+                  (if (and (not start) (> current-line narrow-start))
+                      (setq start (+ (count-lines (point-min) last-match) (- narrow-start last-line))))
+                  (if (and (not end) (> current-line narrow-end))
+                      (setq end (+ (count-lines (point-min) last-match) (- narrow-end last-line))))
+                  (setq last-line current-line)
+                  (setq last-match (point))))
+              (if last-match
+                  (progn
+                    (if (not start)
+                        (setq start (+ (count-lines (point-min) last-match) (- narrow-start last-line))))
+                    (if (not end)
+                        (setq end (+ (count-lines (point-min) last-match) (- narrow-end last-line))))))
+              (if (and start end)
+                  (progn
+                    (goto-char (point-min))
+                    (narrow-to-region (point-at-bol (+ start 1)) (point-at-bol (+ end 1)))))))
+        (rtags-preprocess-mode))
+      (display-buffer preprocess-buffer))))
+
+;;;###autoload
+(defun rtags-set-current-project ()
+  (interactive)
+  (let ((projects nil)
+        (project nil)
+        (current ""))
+    (with-temp-buffer
+      (rtags-call-rc :path t "-w")
+      (goto-char (point-min))
+      (while (not (eobp))
+        (let ((line (buffer-substring-no-properties (point-at-bol) (point-at-eol))))
+          (if (string-match "^\\([^ ]+\\)[^<]*<=$" line)
+              (let ((name (match-string-no-properties 1 line)))
+                (setq projects (add-to-list 'projects name t))
+                (setq current name))
+            (if (string-match "^\\([^ ]+\\)[^<]*$" line)
+                (setq projects (add-to-list 'projects (match-string-no-properties 1 line))))))
+        (forward-line)))
+    (setq project (completing-read
+                   (format "RTags select project (current is %s): " current)
+                   projects))
+    (if project
+        (with-temp-buffer (rtags-call-rc :output nil :path t "-w" project)))))
+
+(defun rtags-current-symbol (&optional no-symbol-name)
+  (or (and mark-active (buffer-substring-no-properties (point) (mark)))
+      (and (not no-symbol-name) (rtags-current-symbol-name))
+      (thing-at-point 'symbol)))
+
+
+(defun* rtags-symbol-info (&rest args
+                                 &key
+                                 (location nil)
+                                 (include-targets nil)
+                                 (include-references nil)
+                                 (include-parents nil)
+                                 (save-to-kill-ring nil)
+                                 (silent-query nil)
+                                 (noerror nil)
+                                 (no-reparse nil))
+  (interactive)
+  (let ((loc (or location (rtags-current-location)))
+        (path (buffer-file-name)))
+    (when (not no-reparse)
+      (rtags-reparse-file-if-needed))
+    (with-temp-buffer
+      (rtags-call-rc :path path
+                     :noerror noerror
+                     :silent-query silent-query
+                     "-U" loc
+                     (unless include-targets "--symbol-info-exclude-targets")
+                     (unless include-targets "--symbol-info-exclude-references")
+                     (if include-parents "--symbol-info-include-parents"))
+      (if save-to-kill-ring
+          (copy-region-as-kill (point-min) (point-max)))
+      (if (called-interactively-p 'any)
+          (message (buffer-string)))
+      (buffer-string))))
+
+;;;###autoload
+(defun rtags-print-symbol-info (&optional verbose)
+  (interactive "P")
+  (message "%s" (rtags-symbol-info :include-parents verbose
+                                   :include-targets verbose
+                                   :include-references verbose)))
+
+;;;###autoload
+(defun rtags-print-dependencies (&optional buffer)
+  (interactive)
+  (let ((dep-buffer (rtags-get-buffer))
+        (fn (buffer-file-name buffer)))
+    (when fn
+      (rtags-location-stack-push)
+      (switch-to-buffer dep-buffer)
+      (rtags-call-rc :path fn "--dependencies" fn)
+      (rtags-mode))))
+
+;;;###autoload
+(defun rtags-print-source-arguments (&optional buffer)
+  (interactive)
+  (let ((args-buffer (rtags-get-buffer))
+        (source (buffer-file-name buffer)))
+    (when source
+      (rtags-location-stack-push)
+      (switch-to-buffer args-buffer)
+      (rtags-call-rc :path source "--sources" source)
+      (goto-char (point-min))
+      (when (= (point-min) (point-max))
+        (message "No builds for: %s" source)
+        (rtags-location-stack-back)
+        (kill-buffer args-buffer)))))
+
+;;;###autoload
+(defun rtags-print-class-hierarchy()
+  (interactive)
+  (let ((class-hierarchy-buffer (rtags-get-buffer))
+        (path (buffer-file-name))
+        (location (rtags-current-location)))
+    (when (and path location)
+      (rtags-location-stack-push)
+      (switch-to-buffer class-hierarchy-buffer)
+      (rtags-call-rc :path path "--class-hierarchy" location)
+      (if (> (point-max) (point-min))
+          (rtags-mode)
+        (message "No subclasses for: %s" location)
+        (rtags-location-stack-back)))))
+
+;;;###autoload
+(defun rtags-print-enum-value-at-point (&optional location)
+  (interactive)
+  (let ((info (rtags-symbol-info :location location)))
+    (cond ((string-match "^Enum Value: \\([0-9]+\\) *$" info)
+           (let ((enumval (match-string-no-properties 1 info)))
+             (message "%s - %s - 0x%X" (rtags-current-symbol-name info) enumval (string-to-number enumval))))
+          ((string-match "^Type: Enum *$" info)
+           (let ((target (rtags-target)))
+             (when target
+               (setq info (rtags-symbol-info :location target))
+               (if (string-match "^Enum Value: \\([0-9]+\\) *$" info)
+                   (let ((enumval (match-string-no-properties 1 info)))
+                     (message "%s - %s - 0x%X" (rtags-current-symbol-name info) enumval (string-to-number enumval)))))))
+          (t (message "RTags: No enum here") nil))))
+
+(defun rtags-buffer-is-multibyte ()
+  (string-match "\\butf\\b" (symbol-name buffer-file-coding-system)))
+
+(defun rtags-buffer-is-dos()
+  (string-match "\\bdos\\b" (symbol-name buffer-file-coding-system)))
+
+(defun rtags-carriage-returns ()
+  (if (rtags-buffer-is-dos)
+      (1- (line-number-at-pos))
+    0))
+
+(defun rtags-offset (&optional p)
+  (save-excursion
+    (if p
+        (goto-char p)
+      (if (rtags-buffer-is-multibyte)
+          (let ((prev (buffer-local-value enable-multibyte-characters (current-buffer)))
+                (loc (local-variable-p enable-multibyte-characters))
+                (pos))
+            (set-buffer-multibyte nil)
+            (setq pos (1- (point)))
+            (set-buffer-multibyte prev)
+            (unless loc
+              (kill-local-variable enable-multibyte-characters))
+            pos)
+        (1- (point))))))
+
+;;;###autoload
+(defun rtags-goto-offset (pos)
+  (interactive "NOffset: ")
+  (if (rtags-buffer-is-multibyte)
+      (let ((prev (buffer-local-value enable-multibyte-characters (current-buffer)))
+            (loc (local-variable-p enable-multibyte-characters)))
+        (set-buffer-multibyte nil)
+        (goto-char (1+ pos))
+        (set-buffer-multibyte prev)
+        (unless loc
+          (kill-local-variable enable-multibyte-characters)))
+    (goto-char (1+ pos))))
+
+(defun rtags-current-location (&optional offset)
+  (let ((fn (buffer-file-name)))
+    (and fn (format "%s:%d:%d:" fn (line-number-at-pos offset) (1+ (- (or offset (point)) (point-at-bol)))))))
+
+(defun rtags-log (log)
+  (with-current-buffer (rtags-get-buffer-create-no-undo "*RTags Log*")
+    (goto-char (point-max))
+    (setq buffer-read-only nil)
+    (insert "**********************************\n" log "\n")
+    (setq buffer-read-only t)))
+
+(defvar rtags-symbol-history nil)
+
+(defun rtags-find-file-or-buffer (file-or-buffer &optional other-window)
+  (if (file-exists-p file-or-buffer)
+      (if other-window
+          (find-file-other-window file-or-buffer)
+        (find-file file-or-buffer))
+    (let ((buf (get-buffer file-or-buffer)))
+      (cond ((not buf) (message "No buffer named %s" file-or-buffer))
+            (other-window (switch-to-buffer-other-window file-or-buffer))
+            (t (switch-to-buffer file-or-buffer))))))
+
+(defun rtags-goto-line-col (line column)
+  (goto-char (point-min))
+  (forward-line (1- line))
+  (forward-char (1- column)))
+
+(defun rtags-goto-location (location &optional nobookmark other-window)
+  "Go to a location passed in. It can be either: file,12 or file:13:14 or plain file"
+  ;; (message (format "rtags-goto-location \"%s\"" location))
+  (when (> (length location) 0)
+    (cond ((string-match "\\(.*\\):\\([0-9]+\\):\\([0-9]+\\):?" location)
+           (let ((line (string-to-number (match-string-no-properties 2 location)))
+                 (column (string-to-number (match-string-no-properties 3 location))))
+             (rtags-find-file-or-buffer (match-string-no-properties 1 location) other-window)
+             (run-hooks rtags-after-find-file-hook)
+             (rtags-goto-line-col line column)
+             t))
+          ((string-match "\\(.*\\):\\([0-9]+\\):?" location)
+           (let ((line (string-to-number (match-string-no-properties 2 location))))
+             (rtags-find-file-or-buffer (match-string-no-properties 1 location) other-window)
+             (run-hooks rtags-after-find-file-hook)
+             (goto-char (point-min))
+             (forward-line (1- line))
+             t))
+          ((string-match "\\(.*\\),\\([0-9]+\\)" location)
+           (let ((offset (string-to-number (match-string-no-properties 2 location))))
+             (rtags-find-file-or-buffer (match-string-no-properties 1 location) other-window)
+             (run-hooks rtags-after-find-file-hook)
+             (rtags-goto-offset offset)
+             t))
+          (t
+           (if (string-match "^ +\\(.*\\)$" location)
+               (setq location (match-string-no-properties 1 location)))
+           (rtags-find-file-or-buffer location other-window)))
+    (unless nobookmark (rtags-location-stack-push))))
+
+(defvar rtags-location-stack-index 0)
+(defvar rtags-location-stack nil)
+
+(defun rtags-location-stack-push ()
+  (let ((bm (rtags-current-location)))
+    (while (> rtags-location-stack-index 0)
+      (decf rtags-location-stack-index)
+      (pop rtags-location-stack))
+    (unless (string= bm (nth 0 rtags-location-stack))
+      (push bm rtags-location-stack)
+      (if (> (length rtags-location-stack) rtags-max-bookmark-count)
+          (nbutlast rtags-location-stack (- (length rtags-location-stack) rtags-max-bookmark-count))))))
+
+;;;###autoload
+(defun rtags-location-stack-jump (by)
+  (interactive)
+  (let (;; copy of repeat-on-final-keystroke functionality from repeat.el
+        (repeat-char
+         (if (eq repeat-on-final-keystroke t)
+             last-command-event
+           (car (memq last-command-event
+                      (listify-key-sequence
+                       repeat-on-final-keystroke)))))
+        (instack (nth rtags-location-stack-index rtags-location-stack))
+        (cur (rtags-current-location)))
+    (if (not (string= instack cur))
+        (rtags-goto-location instack t)
+      (let ((target (+ rtags-location-stack-index by)))
+        (when (and (>= target 0) (< target (length rtags-location-stack)))
+          (setq rtags-location-stack-index target)
+          (rtags-goto-location (nth rtags-location-stack-index rtags-location-stack) t))))
+    (when repeat-char
+       (let ((map (make-sparse-keymap)))
+         (define-key map (vector repeat-char)
+           `(lambda ()
+              (interactive)
+              (rtags-location-stack-jump ,by)))
+         (if (fboundp 'set-transient-map)
+             (set-transient-map map)
+           (set-temporary-overlay-map map))))))
+
+;; **************************** API *********************************
 
 ;;;###autoload
 (defun rtags-enable-standard-keybindings (&optional map prefix)
@@ -865,28 +879,23 @@ return t if rtags is allowed to modify this file"
     (define-key map (concat prefix "e") (function rtags-reparse-file))
     (define-key map (concat prefix "E") (function rtags-preprocess-file))
     (define-key map (concat prefix "R") (function rtags-rename-symbol))
-    (define-key map (concat prefix "U") (function rtags-print-cursorinfo))
+    (define-key map (concat prefix "M") (function rtags-symbol-info))
+    (define-key map (concat prefix "S") (function rtags-display-summary))
     (define-key map (concat prefix "O") (function rtags-goto-offset))
     (define-key map (concat prefix ";") (function rtags-find-file))
     (define-key map (concat prefix "F") (function rtags-fixit))
+    (define-key map (concat prefix "L") (function rtags-copy-and-print-current-location))
     (define-key map (concat prefix "X") (function rtags-fix-fixit-at-point))
     (define-key map (concat prefix "B") (function rtags-show-rtags-buffer))
     (define-key map (concat prefix "I") (function rtags-imenu))
-    (define-key map (concat prefix "T") (function rtags-taglist))))
-
-(if rtags-index-js-files
-    (add-hook 'find-file-hook 'rtags-index-js-file)
-  (remove-hook 'find-file-hook 'rtags-index-js-file))
+    (define-key map (concat prefix "T") (function rtags-taglist))
+    (define-key map (concat prefix "h") (function rtags-print-class-hierarchy))
+    (define-key map (concat prefix "a") (function rtags-print-source-arguments))))
 
 ;;;###autoload
 (defun rtags-print-current-location ()
   (interactive)
   (message (rtags-current-location)))
-
-;;;###autoload
-(defun rtags-quit-rdm () (interactive)
-       (call-process (rtags-executable-find "rc") nil nil nil "--quit-rdm")
-       (setq rtags-process nil))
 
 ;;;###autoload
 (defun rtags-location-stack-forward ()
@@ -962,7 +971,7 @@ References to references will be treated as references to the referenced symbol"
         (fn (buffer-file-name)))
     (rtags-reparse-file-if-needed)
     (with-current-buffer (rtags-get-buffer)
-      (rtags-call-rc :path fn :path-filter prefix "-r" arg)
+      (rtags-call-rc :path fn :path-filter prefix "-r" arg (unless rtags-sort-references-by-input "--no-sort-references-by-input"))
       (rtags-handle-results-buffer))))
 
 ;;;###autoload
@@ -974,7 +983,7 @@ References to references will be treated as references to the referenced symbol"
         (fn (buffer-file-name)))
     (rtags-reparse-file-if-needed)
     (with-current-buffer (rtags-get-buffer)
-      (rtags-call-rc :path fn :path-filter prefix "-r" arg "-k")
+      (rtags-call-rc :path fn :path-filter prefix "-r" arg "-k" (unless rtags-sort-references-by-input "--no-sort-references-by-input"))
       (rtags-handle-results-buffer))))
 
 ;;;###autoload
@@ -985,7 +994,8 @@ References to references will be treated as references to the referenced symbol"
         (fn (buffer-file-name)))
     (rtags-reparse-file-if-needed)
     (with-current-buffer (rtags-get-buffer)
-      (rtags-call-rc :path fn :path-filter prefix "-r" arg "-e")
+      (rtags-call-rc :path fn :path-filter prefix "-r" arg "-e"
+                     (unless rtags-sort-references-by-input "--no-sort-references-by-input"))
       (rtags-handle-results-buffer))))
 
 ;;;###autoload
@@ -1017,65 +1027,53 @@ References to references will be treated as references to the referenced symbol"
 (defun rtags-rename-symbol ()
   (interactive)
   (save-some-buffers) ;; it all kinda falls apart when buffers are unsaved
-  (let (location len file pos destructor replacewith prev (modifications 0) (filesopened 0) replacements buffers)
+  (let* ((prev (let ((token (rtags-current-token)))
+                 (cond ((string-match "^~" token) (substring token 1))
+                       (token)
+                       (t (error "Not sure what to rename")))))
+         (len (and prev (length prev)))
+         (file (buffer-file-name))
+         (replacewith (read-from-minibuffer (if len (format "Replace '%s' with: " prev) "Replace with: ")))
+         (modifications 0)
+         (filesopened 0)
+         (location (rtags-current-location))
+         replacements)
     (save-excursion
-      (if (looking-at "[0-9A-Za-z_~#]")
-          (progn
-            (while (and (> (point) (point-min)) (looking-at "[0-9A-Za-z_~#]"))
-              (backward-char))
-            (if (not (looking-at "[0-9A-Za-z_~#]"))
-                (forward-char))
-            (setq file (buffer-file-name (current-buffer)))
-            (setq pos (point))
-            (if (looking-at "~")
-                (progn
-                  (setq pos (+ pos 1))
-                  (setq destructor t)))
-            (while (looking-at "[0-9A-Za-z_~#]")
-              (forward-char))
-            (setq prev (buffer-substring-no-properties pos (point)))
-            (setq len (- (point) pos))
-            (setq replacewith (read-from-minibuffer (format "Replace '%s' with: " prev)))
-            (unless (equal replacewith "")
-              (if destructor
-                  (decf pos))
-              (goto-char pos)
-              (setq location (rtags-current-location))
-              (setq pos (rtags-offset pos))
-              (with-temp-buffer
-                (rtags-call-rc :path file "-e" "-O" "-N" "-r" location)
-                ;; (message "Got renames %s" (buffer-string))
-                (dolist (line (split-string (buffer-string) "\n" t))
-                  (if (string-match "^\\(.*\\):\\([0-9]+\\):\\([0-9]+\\):$" line)
-                      (add-to-list 'replacements (cons (match-string-no-properties 1 line)
-                                                       (cons (string-to-number (match-string-no-properties 2 line))
-                                                             (string-to-number (match-string-no-properties 3 line)))) t))))
-              ;; (message "Got %d replacements" (length replacements))
-
-              (dolist (value replacements)
-                (let ((buf (find-buffer-visiting (car value))))
-                  (unless buf
-                    (progn
-                      (incf filesopened)
-                      (setq buf (find-file-noselect (car value)))))
-                  (when buf
-                    (set-buffer buf)
-                    (add-to-list 'buffers buf)
-                    (when (run-hook-with-args-until-failure 'rtags-edit-hook)
-                      (incf modifications)
-                      (rtags-goto-line-col (cadr value) (cddr value))
-                      (when (cond ((looking-at "~") (forward-char) t)
-                                  ((looking-at "auto ") nil)
-                                  (t))
-
-                        ;; (message "About to replace %s with %s at %d in %s"
-                        ;;          (buffer-substring-no-properties (point) (+ (point) len)) replacewith (point) (car value))
-                        (delete-char len)
-                        (insert replacewith))))))))))
-    (dolist (value buffers)
-      (with-current-buffer value
-        (basic-save-buffer)))
-    (message (format "Opened %d new files and made %d modifications" filesopened modifications))))
+      (if (equal replacewith "")
+          (error "You have to replace with something"))
+      (with-temp-buffer
+        (rtags-call-rc :path file "-e" "--rename" "-N" "-r" location)
+        ;; (message "Got renames %s" (buffer-string))
+        (dolist (string (split-string (buffer-string) "\n" t))
+          (if (string-match "^\\(.*\\):\\([0-9]+\\):\\([0-9]+\\):$" string)
+              (let* ((filename (match-string-no-properties 1 string))
+                     (line (string-to-number (match-string-no-properties 2 string)))
+                     (col (string-to-number (match-string-no-properties 3 string)))
+                     (buf (or (find-buffer-visiting filename)
+                              (and (find-file-noselect filename) (incf filesopened)))))
+                (unless buf
+                  (error "Can't open file %s" filename))
+                (with-current-buffer buf
+                  (save-excursion
+                    (rtags-goto-line-col line col)
+                    (when (cond ((looking-at (concat "~" prev)) (forward-char) t)
+                                ((looking-at "auto ") nil)
+                                ((looking-at prev))
+                                (t (error "Rename gone awry. Refusing to rename %s (%s) to %s"
+                                          (rtags-current-token)
+                                          (rtags-current-location)
+                                          replacewith)))
+                      (add-to-list 'replacements (cons (current-buffer) (point))))))))))
+      (dolist (value replacements)
+        (with-current-buffer (car value)
+          (when (run-hook-with-args-until-failure 'rtags-edit-hook)
+            (incf modifications)
+            (goto-char (cdr value))
+            ;; (message "about to insert at %s" (rtags-current-location))
+            (delete-char (or len (length (rtags-current-token))))
+            (insert replacewith)
+            (basic-save-buffer))))
+      (message (format "Opened %d new files and made %d modifications" filesopened modifications)))))
 
 ;;;###autoload
 (defun rtags-find-symbol (&optional prefix)
@@ -1098,12 +1096,7 @@ References to references will be treated as references to the referenced symbol"
   (rtags-find-references t))
 
 (defun rtags-dir-filter ()
-  (concat (substring buffer-file-name
-                     0
-                     (string-match
-                      "[^/]*/?$"
-                      buffer-file-name))
-          "[^/]* "))
+  (concat (substring buffer-file-name 0 (string-match "[^/]*/?$" buffer-file-name)) "[^/]* "))
 
 ;;;###autoload
 (defun rtags-find-symbol-current-dir ()
@@ -1115,7 +1108,6 @@ References to references will be treated as references to the referenced symbol"
   (interactive)
   (rtags-find-symbols-by-name-internal "Find rreferences" (rtags-dir-filter) t))
 
-(defvar rtags-diagnostics-process nil)
 ;;;###autoload
 (defun rtags-apply-fixit-at-point ()
   (interactive)
@@ -1147,13 +1139,35 @@ References to references will be treated as references to the referenced symbol"
     (while (and errorlist (listp errorlist))
       (delete-overlay (car errorlist))
       (setq errorlist (cdr errorlist)))
-    (puthash filename nil rtags-overlays)))
+    (puthash filename nil rtags-overlays))
+  (let ((diagnostics-buffer (get-buffer rtags-diagnostics-buffer-name))
+        (rx (concat "^" filename ":")))
+    (when diagnostics-buffer
+      (with-current-buffer diagnostics-buffer
+        (setq buffer-read-only nil)
+        (save-excursion
+          (goto-char (point-min))
+          (while (not (eobp))
+            (if (looking-at rx)
+                (delete-char (- (1+ (point-at-eol)) (point)))
+              (forward-line))))
+        (setq buffer-read-only t)))))
+
 
 ;;;###autoload
-(defun rtags-clear-diagnostics-overlays()
+(defun rtags-clear-diagnostics-overlays(&optional buf)
   (interactive)
-  (if (buffer-file-name)
-      (rtags-overlays-remove (buffer-file-name))))
+  (let ((fn (buffer-file-name buf)))
+    (when fn
+      (rtags-overlays-remove fn))))
+
+(defun rtags-clear-all-diagnostics-overlays()
+  (interactive)
+  (maphash (lambda (filename errorlist)
+             (while (and errorlist (listp errorlist))
+               (delete-overlay (car errorlist))
+               (setq errorlist (cdr errorlist)))) rtags-overlays)
+  (setq rtags-overlays (make-hash-table :test 'equal)))
 
 (defun rtags-really-find-buffer (fn)
   (setq fn (file-truename fn))
@@ -1163,93 +1177,8 @@ References to references will be treated as references to the referenced symbol"
                           (string= fn (file-truename (buffer-file-name arg)))))
                  (buffer-list))))
 
-(defun rtags-string-to-number (string)
-  (when (stringp string)
-    (string-to-number string)))
-
-(defun rtags-parse-xml ()
-  (if (fboundp 'libxml-parse-xml-region)
-      (libxml-parse-xml-region (point-min) (point-max))
-    (car (xml-parse-region (point-min) (point-max)))))
-
-(defun rtags-parse-overlay-error-node (node filename)
-  ;; (message "parsing nodes %s" filename)
-  (when (listp node)
-    (let* ((name (car node))
-           (attrs (cadr node))
-           (line (rtags-string-to-number (cdr (assq 'line attrs))))
-           (column (rtags-string-to-number (cdr (assq 'column attrs))))
-           (startoffset (rtags-string-to-number (cdr (assq 'startOffset attrs))))
-           (endoffset (rtags-string-to-number (cdr (assq 'endOffset attrs))))
-           (severity (cdr (assq 'severity attrs)))
-           (ret)
-           (message (cdr (assq 'message attrs))))
-      (when (eq name 'error)
-        (let ((errorlist (gethash filename rtags-overlays nil))
-              (filebuffer (rtags-really-find-buffer filename)))
-          (when filebuffer
-            (when (or (not endoffset) (= endoffset -1))
-              (with-current-buffer filebuffer
-                (save-excursion
-                  (if startoffset
-                      (rtags-goto-offset startoffset)
-                    (progn
-                      (rtags-goto-line-col line column)
-                      (setq startoffset (rtags-offset))))
-                  (let ((rsym (rtags-current-symbol t)))
-                    (when rsym
-                      (setq endoffset (+ startoffset (length rsym))))))))
-
-            (if (and startoffset endoffset filebuffer)
-                (let ((overlay (make-overlay (1+ startoffset)
-                                             (cond ((= startoffset endoffset) (+ startoffset 2))
-                                                   (t (1+ endoffset)))
-                                             filebuffer)))
-                  (overlay-put overlay 'rtags-error-message message)
-                  (overlay-put overlay 'rtags-error-severity severity)
-                  (overlay-put overlay 'rtags-error-start startoffset)
-                  (overlay-put overlay 'rtags-error-end endoffset)
-                  (overlay-put overlay 'face (cond ((string= severity "error") (setq ret 'error) 'rtags-errline)
-                                                   ((string= severity "warning") (setq ret 'warning) 'rtags-warnline)
-                                                   ((string= severity "fixit") 'rtags-fixitline)
-                                                   (t 'rtags-errline)))
-                  (if (string= severity "fixit")
-                      (progn
-                        (overlay-put overlay 'priority 1)
-                        (insert (format "%s:%d:%d: fixit: %d-%d: %s\n" filename line column startoffset endoffset message)))
-                    (insert (format "%s:%d:%d: %s: %s\n" filename line column severity message)))
-
-                  (setq errorlist (append errorlist (list overlay)))
-                  (puthash filename errorlist rtags-overlays))))
-          (cons ret filebuffer))))))
-
+(defvar rtags-error-warning-count nil)
 (make-variable-buffer-local 'rtags-error-warning-count)
-(defun rtags-parse-overlay-node (node)
-  (when (listp node)
-    (let* ((name (car node))
-           (attrs (cadr node))
-           (body (cddr node))
-           (errors 0)
-           (warnings 0)
-           (buf)
-           (filename (cdr (assq 'name attrs))))
-      (when (eq name 'file)
-        (rtags-overlays-remove filename)
-        ;; (message "removing overlays %s" filename)
-        (save-excursion
-          (goto-char (point-min))
-          (flush-lines (concat filename ":")))
-        (dolist (it body)
-          (let ((result (rtags-parse-overlay-error-node it filename)))
-            (cond ((eq 'error (car result)) (incf errors))
-                  ((eq 'warning (car result)) (incf warnings))
-                  (t))
-            (setq buf (cdr result))))
-        (let ((buf (rtags-really-find-buffer filename)))
-          (if buf
-              (with-current-buffer buf
-                (setq rtags-error-warning-count (cons errors warnings)))))))))
-
 
 (defvar rtags-last-index nil)
 (defvar rtags-last-total nil)
@@ -1279,41 +1208,126 @@ References to references will be treated as references to the referenced symbol"
           (errors-warnings (format "RTags: %s " errors-warnings))
           (t ""))))
 
-(defun rtags-parse-diagnostics ()
-  (let ((doc (rtags-parse-xml)) body)
-    (when doc
-      ;;(message "GOT XML %s" output)
-      (cond ((eq (car doc) 'checkstyle)
-             (setq body (cddr doc))
-             (while body
-               (with-current-buffer "*RTags Diagnostics*"
-                 (setq buffer-read-only nil)
-                 (rtags-parse-overlay-node (car body))
-                 (setq buffer-read-only t)
-                 (setq body (cdr body)))))
-            ((eq (car doc) 'completions)
-             (when rtags-completions-enabled
-               ;; (message "Got completions [%s]" body)
-               (setq body (car (cddr doc)))
-               (setq rtags-last-completions
-                     (cons (cdar (cadr doc)) ;; location attribute
-                           (list (eval (read body)))))
-               ;; run hook where last completion request took place
-               (with-current-buffer (car rtags-last-completion-position)
-                 (run-hooks 'rtags-completions-hook))))
-            ((eq (car doc) 'progress)
-             (setq body (cadr doc))
-             (while body
-               (cond ((eq (caar body) 'index)
-                      ;; (message "Got index [%s]" (cdar body))
-                      (setq rtags-last-index (string-to-number (cdar body))))
-                     ((eq (caar body) 'total)
-                      (setq rtags-last-total (string-to-number (cdar body))))
-                     (t (message "Unexpected element %s" (caar body))))
-               (setq body (cdr body))))
-            ;;             (message "RTags: %s/%s (%s%%)" index total)))
-            (t (message "Unexpected root element %s" (car doc))))
-      (run-hooks 'rtags-diagnostics-hook))))
+(defvar rtags-error-warning-count nil)
+(make-variable-buffer-local 'rtags-error-warning-count)
+;; (defun rtags-parse-overlay-node (node)
+;;   (when (listp node)
+;;     (let* ((name (car node))
+;;            (attrs (cadr node))
+;;            (body (cddr node))
+;;            (errors 0)
+;;            (warnings 0)
+;;            (buf)
+;;            (filename (cdr (assq 'name attrs))))
+;;       (when (eq name 'file)
+;;         (rtags-overlays-remove filename)
+;;         ;; (message "removing overlays %s" filename)
+;;         (save-excursion
+;;           (goto-char (point-min))
+;;           (flush-lines (concat filename ":")))
+;;         (dolist (it body)
+;;           (let ((result (rtags-parse-overlay-error-node it filename)))
+;;             (cond ((eq 'error (car result)) (incf errors))
+;;                   ((eq 'warning (car result)) (incf warnings))
+;;                   (t))
+;;             (setq buf (cdr result)))) ;; no need to set this every time
+;;         (let ((buf (rtags-really-find-buffer filename)))
+;;           (if buf
+;;               (with-current-buffer buf
+;;                 (setq rtags-error-warning-count (cons errors warnings)))))))))
+
+(defun rtags-handle-check-style-error (buffer filename data)
+  ;; (message "parsing nodes %s" (buffer-file-name buffer))
+  (let* ((line (nth 0 data))
+         (column (nth 1 data))
+         (length (nth 2 data))
+         (severity (nth 3 data))
+         (message (nth 4 data))
+         (ret)
+         (startoffset nil)
+         (endoffset nil)
+         (errorlist (gethash filename rtags-overlays nil)))
+    (with-current-buffer buffer
+      (save-excursion
+        (rtags-goto-line-col line column)
+        (setq startoffset (rtags-offset))
+        (setq endoffset (or (and length (+ startoffset length))
+                            (let ((rsym (rtags-current-symbol t)))
+                              (and rsym (+ startoffset (length rsym))))
+                            (1+ startoffset)))
+
+        (let ((overlay (make-overlay (1+ startoffset)
+                                     (cond ((= startoffset endoffset) (+ startoffset 2))
+                                           (t (1+ endoffset)))
+                                     buffer)))
+          (overlay-put overlay 'rtags-error-message message)
+          (overlay-put overlay 'rtags-error-severity severity)
+          (overlay-put overlay 'rtags-error-start startoffset)
+          (overlay-put overlay 'rtags-error-end endoffset)
+          ;; (message "Got overlay %d %d %d %s" startoffset endoffset length severity)
+          (overlay-put overlay 'face (cond ((string= severity 'error) (setq ret 'error) 'rtags-errline)
+                                           ((string= severity 'warning) (setq ret 'warning) 'rtags-warnline)
+                                           ((string= severity 'fixit) (overlay-put overlay 'priority 1) 'rtags-fixitline)
+                                           ((string= severity 'skipped) 'rtags-skippedline)
+                                           (t 'rtags-errline)))
+          (setq errorlist (append errorlist (list overlay)))
+          (puthash filename errorlist rtags-overlays))))
+    (let ((diagnostics-buffer (get-buffer rtags-diagnostics-buffer-name)))
+      (when diagnostics-buffer
+        (with-current-buffer diagnostics-buffer
+          (setq buffer-read-only nil)
+          (if (eq severity 'fixit)
+              (insert (format "%s:%d:%d: fixit: %d-%d: %s\n" filename line column startoffset endoffset message)))
+          (if (> (length message) 0)
+              (insert (format "%s:%d:%d: %s: %s\n" filename line column severity message)))
+          (setq buffer-read-only t))))
+    ret))
+
+(defun rtags-parse-check-style (checkstyle)
+  (while checkstyle
+    (let* ((cur (car checkstyle))
+           (file (car cur))
+           (errors (cdr cur))
+           (buf (rtags-really-find-buffer file)))
+      (setq checkstyle (cdr checkstyle))
+      (when buf
+        (rtags-overlays-remove file)
+        (while errors
+          (rtags-handle-check-style-error buf file (car errors))
+          (setq errors (cdr errors)))))))
+
+(defun rtags-get-buffer-create-no-undo (name)
+  (or (get-buffer name)
+      (let ((buf (get-buffer-create name)))
+        (buffer-disable-undo buf)
+        buf)))
+
+(defun rtags-parse-diagnostics (&optional buffer)
+  (save-excursion
+    (with-current-buffer (or buffer (rtags-get-buffer-create-no-undo rtags-diagnostics-raw-buffer-name))
+      (goto-char (point-min))
+      (while (search-forward "\n" (point-max) t)
+        (let ((data (and (> (1- (point)) (point-min))
+                         (save-restriction
+                           (narrow-to-region (point-min) (1- (point)))
+                           (save-excursion
+                             (goto-char (point-min))
+                             (if (looking-at "Can't seem to connect to server")
+                                 (and (message "RTags: rdm doesn't seem to be running") nil)
+                               ;; (message "%d-%d (%s)" (point-min) (point-max) (buffer-substring-no-properties (point-min) (point-max)))
+                               (eval (read (current-buffer)))))))))
+          (cond ((eq (car data) 'checkstyle)
+                 (rtags-parse-check-style (cdr data)))
+                ((eq (car data) 'progress)
+                 (setq rtags-last-index (nth 2 data)
+                       rtags-last-total (nth 3 data)))
+                ((eq (car data) 'completions)
+                 (setq rtags-last-completions (cadr data)))
+                (t))
+          (run-hooks 'rtags-diagnostics-hook)
+          (forward-char 1)
+          (delete-region (point-min) (point))
+          (goto-char (point-min)))))))
 
 (defun rtags-check-overlay (overlay)
   (if (and (not (active-minibuffer-window)) (not cursor-in-echo-area))
@@ -1327,7 +1341,7 @@ References to references will be treated as references to the referenced symbol"
 
 (defun rtags-display-overlay (overlay point)
   (let ((msg (overlay-get overlay 'rtags-error-message)))
-    (when (stringp msg)
+    (when (> (length msg) 0)
       (if rtags-display-current-error-as-tooltip
           (popup-tip msg :point point)) ;; :face 'rtags-warnline)) ;;(overlay-get overlay 'face)))
       (if rtags-display-current-error-as-message
@@ -1347,7 +1361,7 @@ References to references will be treated as references to the referenced symbol"
   (setq rtags-update-current-error-timer
         (and (or rtags-display-current-error-as-message
                  rtags-display-current-error-as-tooltip)
-             (get-buffer "*RTags Diagnostics*")
+             (get-buffer rtags-diagnostics-buffer-name)
              (run-with-idle-timer
               rtags-error-timer-interval
               nil
@@ -1395,23 +1409,31 @@ References to references will be treated as references to the referenced symbol"
     (while (and current-overlays (not (rtags-fix-fixit-overlay (car current-overlays))))
       (setq current-overlays (cdr current-overlays)))))
 
-(defvar rtags-last-update-current-project-buffer nil)
-;;;###autoload
-(defun rtags-update-current-project ()
+
+(defvar rtags-container-timer nil)
+(defvar rtags-container-last-location nil)
+(defvar rtags-cached-current-container nil)
+(defun rtags-update-current-container-cache ()
+  (when (not (window-minibuffer-p (get-buffer-window)))
+    (if (or (eq major-mode 'c++-mode) (eq major-mode 'c-mode) (eq major-mode 'objc-mode))
+        (let ((loc (rtags-current-location)))
+          (when (and loc (not (string= loc rtags-container-last-location)))
+            (setq rtags-container-last-location loc)
+            (let ((cur (rtags-current-container-name)))
+              (when (not (string= cur rtags-cached-current-container))
+                (setq rtags-cached-current-container cur)
+                (run-hook-with-args 'rtags-current-container-hook rtags-cached-current-container)))))
+      (when rtags-cached-current-container
+        (setq rtags-cached-current-container nil)
+        (run-hook-with-args 'rtags-current-container-hook rtags-cached-current-container)))))
+
+(defun rtags-restart-find-container-timer ()
   (interactive)
-  (condition-case nil
-      (when (and (buffer-file-name)
-                 (not (eq (current-buffer) rtags-last-update-current-project-buffer)))
-        (setq rtags-last-update-current-project-buffer (current-buffer))
-        (let* ((rc (rtags-executable-find "rc"))
-               (path (buffer-file-name))
-               (arguments (list "-T" path "--silent-query")))
-          (when rc
-            (push (concat "--current-file=" path) arguments)
-            (let ((mapped (if rtags-match-source-file-to-project (apply rtags-match-source-file-to-project (list path)))))
-              (if (and mapped (length mapped)) (push (concat "--current-file=" mapped) arguments)))
-            (apply #'start-process "rtags-update-current-project" nil rc arguments))))
-    (error (message "Got error in rtags-update-current-project"))))
+  (if rtags-container-timer
+      (cancel-timer rtags-container-timer))
+  (setq rtags-container-timer
+        (and rtags-track-container
+             (run-with-idle-timer rtags-container-timer-interval nil (function rtags-update-current-container-cache)))))
 
 (defvar rtags-tracking-timer nil)
 ;;;###autoload
@@ -1421,15 +1443,13 @@ References to references will be treated as references to the referenced symbol"
       (cancel-timer rtags-tracking-timer))
   (setq rtags-tracking-timer
         (and rtags-tracking (string= (buffer-name) rtags-buffer-name)
-             (run-with-idle-timer
-              rtags-tracking-timer-interval
-              nil
-              (lambda ()
-                (if (> (length (window-list)) 1)
-                    (rtags-show-in-other-window))
-                (if rtags-tracking-timer
-                    (cancel-timer rtags-tracking-timer))
-                (setq rtags-tracking-timer nil))))))
+             (run-with-idle-timer rtags-tracking-timer-interval nil
+                                  (lambda ()
+                                    (if (> (length (window-list)) 1)
+                                        (rtags-show-in-other-window))
+                                    (if rtags-tracking-timer
+                                        (cancel-timer rtags-tracking-timer))
+                                    (setq rtags-tracking-timer nil))))))
 
 ;;;###autoload
 (defun rtags-post-command-hook ()
@@ -1438,9 +1458,9 @@ References to references will be treated as references to the referenced symbol"
     (rtags-update-current-project)
     (rtags-update-current-error)
     (rtags-close-taglist)
-    (rtags-restart-tracking-timer)
-    ;;(rtags-update-completions-timer)
-    ))
+    (rtags-update-completions-timer)
+    (rtags-restart-find-container-timer)
+    (rtags-restart-tracking-timer)))
 
 (add-hook 'post-command-hook (function rtags-post-command-hook))
 ;; (remove-hook 'post-command-hook (function rtags-post-command-hook))
@@ -1450,54 +1470,31 @@ References to references will be treated as references to the referenced symbol"
   (interactive)
   (if (and rtags-diagnostics-process (not (eq (process-status rtags-diagnostics-process) 'exit)))
       (kill-process rtags-diagnostics-process))
-  (if (get-buffer "*RTags Diagnostics*")
-      (kill-buffer "*RTags Diagnostics*")))
+  (if (get-buffer rtags-diagnostics-buffer-name)
+      (kill-buffer rtags-diagnostics-buffer-name)))
 
 ;;;###autoload
 (defun rtags-clear-diagnostics ()
   (interactive)
-  (when (get-buffer "*RTags Diagnostics*")
+  (when (get-buffer rtags-diagnostics-buffer-name)
     (let (deactivate-mark)
-      (with-current-buffer "*RTags Diagnostics*"
+      (with-current-buffer rtags-diagnostics-buffer-name
         (setq buffer-read-only nil)
         (goto-char (point-min))
         (delete-char (- (point-max) (point-min)))
         (setq buffer-read-only t))))
-  (rtags-clear-diagnostics-overlays))
-
-(defun rtags-trim-whitespace ()
-  "Trim initial whitespace from the *RTags Raw* buffer (so libxml parsing doesn't fail)"
-  (goto-char (point-min))
-  (if (search-forward-regexp "\\`\n+\\|^\\s-+\\|\\s-+$\\|\n+\\'" (point-max) t)
-      (replace-match "" t t)))
-
-(defconst rtags-diagnostics-process-regx
-  (regexp-opt '("</checkstyle>"
-                "</progress>"
-                "</completions>")))
+  (rtags-clear-all-diagnostics-overlays))
 
 (defun rtags-diagnostics-process-filter (process output)
-  ;; Collect the xml diagnostics into "*RTags Raw*" until a closing tag is found
-  (with-current-buffer (get-buffer-create "*RTags Raw*")
+  ;; Collect the diagnostics into rtags-diagnostics-raw-buffer-name until a newline is found
+  ;; (with-current-buffer (rtags-get-buffer-create-no-undo "*RTags Debug*")
+  ;;   (goto-char (point-max))
+  ;;   (insert output))
+  (with-current-buffer (rtags-get-buffer-create-no-undo rtags-diagnostics-raw-buffer-name)
     (goto-char (point-max))
-    (let ((matchrx rtags-diagnostics-process-regx)
-          endpos)
-      (insert output)
-      ;; only try to process xml diagnostics if we detect an end condition
-      (when (string-match (rx (or "</" "[es]>")) output)
-        (goto-char (point-min))
-        (while (search-forward-regexp matchrx (point-max) t)
-          (setq endpos (match-end 0))
-          ;; narrow to one xml result (incase multiple results come in together)
-          (narrow-to-region (point-min) endpos)
-          ;; trim any whitespace from the beginning of the region
-          ;; otherwise `libxml-parse-xml-region' might fail
-          (rtags-trim-whitespace)
-          ;; now try to parse the xml
-          (rtags-parse-diagnostics)
-          ;; this region is done - remove it and continue processing
-          (delete-region (point-min) (point-max))
-          (widen))))))
+    (insert output))
+  ;; only try to process diagnostics if we detect an end condition
+  (rtags-parse-diagnostics))
 
 (defvar rtags-diagnostics-mode-map (make-sparse-keymap))
 (define-key rtags-diagnostics-mode-map (kbd "q") 'rtags-bury-or-delete)
@@ -1511,25 +1508,37 @@ References to references will be treated as references to the referenced symbol"
       (error "Set buffer with file %s read only " (buffer-file-name)))
   (setq buffer-read-only t))
 
+(defun rtags-diagnostics-sentinel (process event)
+  (let ((status (process-status process)))
+    (when (memq status '(exit signal closed failed))
+      (rtags-clear-diagnostics))))
+
 ;;;###autoload
 (defun rtags-diagnostics (&optional restart nodirty)
   (interactive "P")
   (if restart
       (rtags-stop-diagnostics))
-  (let ((buf (get-buffer-create "*RTags Diagnostics*")))
-    (unless nodirty (rtags-reparse-file))
-    (with-current-buffer buf
-      (rtags-diagnostics-mode))
-    (if (cond ((not rtags-diagnostics-process) t)
-              ((eq (process-status rtags-diagnostics-process) 'exit) t)
-              ((eq (process-status rtags-diagnostics-process) 'signal) t)
-              (t nil))
-        (let ((process-connection-type nil)) ;; use a pipe
-          (setq rtags-diagnostics-process (start-process "RTags Diagnostics" buf (rtags-executable-find "rc") "-m"))
-          (set-process-filter rtags-diagnostics-process (function rtags-diagnostics-process-filter))
-          (rtags-clear-diagnostics))))
-  (when (called-interactively-p 'any)
-    (switch-to-buffer-other-window "*RTags Diagnostics*")
+  (let ((buf (rtags-get-buffer-create-no-undo rtags-diagnostics-buffer-name)))
+    (when (cond ((not rtags-diagnostics-process) t)
+                ((eq (process-status rtags-diagnostics-process) 'exit) t)
+                ((eq (process-status rtags-diagnostics-process) 'signal) t)
+                (t nil))
+      (with-current-buffer buf
+        (rtags-diagnostics-mode))
+      (unless nodirty
+        (rtags-reparse-file))
+      (let ((process-connection-type (not rtags-diagnostics-use-pipe))) ;; use a pipe if rtags-diagnostics-use-pipe is t
+        (let ((rawbuf (get-buffer rtags-diagnostics-raw-buffer-name)))
+          (when rawbuf
+            (kill-buffer rawbuf)))
+        (setq rtags-diagnostics-process (start-process "RTags Diagnostics" buf (rtags-executable-find "rc") "-m" "--elisp-list"))
+        (set-process-filter rtags-diagnostics-process (function rtags-diagnostics-process-filter))
+        (set-process-sentinel rtags-diagnostics-process 'rtags-diagnostics-sentinel)
+        (setq rtags-last-completions nil)
+        (setq rtags-last-completion-position nil)
+        (rtags-clear-diagnostics))))
+  (when (and (called-interactively-p 'any) (rtags-is-running))
+    (switch-to-buffer-other-window rtags-diagnostics-buffer-name)
     (other-window 1)))
 
 (defvar rtags-indexed nil)
@@ -1544,6 +1553,7 @@ References to references will be treated as references to the referenced symbol"
             ((looking-at "managed") 'rtags-file-managed)
             (t nil)))))
 
+;;;###autoload
 (defun rtags-compilation-flags ()
   (interactive)
   (let ((path (buffer-file-name)))
@@ -1566,7 +1576,10 @@ References to references will be treated as references to the referenced symbol"
 
 
 (defun rtags-is-indexed (&optional buffer)
-  (equal (rtags-buffer-status buffer) 'rtags-indexed))
+  (let ((path (buffer-file-name buffer)))
+    (cond ((not path) nil)
+          ((and (fboundp 'tramp-tramp-file-p) (tramp-tramp-file-p path)) nil)
+          ((equal (rtags-buffer-status buffer) 'rtags-indexed)))))
 
 (defun rtags-has-filemanager (&optional buffer)
   (rtags-buffer-status buffer))
@@ -1627,6 +1640,7 @@ References to references will be treated as references to the referenced symbol"
   (use-local-map rtags-mode-map)
   (run-hooks 'rtags-taglist-mode-hook))
 
+;;;###autoload
 (defun rtags-close-taglist ()
   (interactive)
   (unless rtags-taglist-protected
@@ -1661,6 +1675,7 @@ References to references will be treated as references to the referenced symbol"
         (setq category (cdr category))))
     max))
 
+;;;###autoload
 (defun rtags-taglist (&optional dest-window)
   (interactive)
   (rtags-location-stack-push)
@@ -1708,50 +1723,72 @@ References to references will be treated as references to the referenced symbol"
         (rtags-taglist-mode)
         (deactivate-mark)))))
 
+(defun rtags-is-class-hierarchy-buffer ()
+  (when (eq major-mode 'rtags-mode)
+    (save-excursion
+      (goto-char (point-min))
+      (looking-at "\\(Subclasses:\\|Superclasses:\\)$"))))
+
+;;;###autoload
 (defun rtags-select (&optional other-window remove show)
   (interactive "P")
   (let* ((line (line-number-at-pos))
-         (bookmark (format "R_%d" line))
+         (bookmark (format "RTags_%d" line))
          (window (selected-window)))
     (cond ((eq major-mode 'rtags-taglist-mode)
            (rtags-goto-location (cdr (assoc line rtags-taglist-locations)) nil other-window))
+          ((rtags-is-class-hierarchy-buffer)
+           (save-excursion
+             (goto-char (point-at-bol))
+             (let ((loc (and (looking-at "[^/]*\\([^ \t]+\\)") (match-string 1))))
+               (when loc
+                 (rtags-goto-location loc nil other-window)))))
           ((and (>= rtags-buffer-bookmarks line)
                 (member bookmark (bookmark-all-names)))
            (when other-window
              (if (= (length (window-list)) 1)
-                 (split-window))
+                 (funcall rtags-split-window-function))
              (other-window 1))
            (bookmark-jump bookmark)
            (rtags-location-stack-push))
-          (t (rtags-goto-location (buffer-substring-no-properties (point-at-bol) (point-at-eol)) nil other-window)))
+          (t
+           (rtags-goto-location (buffer-substring-no-properties (point-at-bol) (point-at-eol)) nil other-window)
+           (bookmark-set bookmark)))
     (if remove
         (delete-window window)
       (if show
           (select-window window)))))
 
+;;;###autoload
 (defun rtags-select-other-window (&optional not-other-window)
   (interactive "P")
   (rtags-select (not not-other-window)))
 
+;;;###autoload
 (defun rtags-show-in-other-window ()
   (interactive)
   ;; (message "About to show")
   (rtags-select t nil t))
 
+;;;###autoload
 (defun rtags-select-and-remove-rtags-buffer ()
   (interactive)
   (rtags-select t t))
 
+;;;###autoload
 (defun rtags-imenu ()
   (interactive)
   (rtags-location-stack-push)
   (let* ((fn (buffer-file-name))
          (alternatives (with-temp-buffer
-                         (rtags-call-rc :path fn :path-filter fn "--imenu" "--list-symbols" "-Y")
+                         (rtags-call-rc :path fn :path-filter fn "--imenu"
+                                        "--list-symbols"
+                                        "-Y"
+                                        (if rtags-wildcard-symbol-names "--wildcard-symbol-names"))
                          (eval (read (buffer-string)))))
          (match (car alternatives)))
     (if (> (length alternatives) 1)
-        (setq match (ido-completing-read "Symbol: " alternatives)))
+        (setq match (completing-read "Symbol: " alternatives nil t)))
     (if match
         (rtags-goto-location (with-temp-buffer (rtags-call-rc :path fn "-F" match :path-filter fn) (buffer-string)))
       (message "RTags: No symbols"))))
@@ -1763,7 +1800,23 @@ References to references will be treated as references to the referenced symbol"
     (insert txt)
     (forward-line)))
 
+;;;###autoload
+(defun rtags-copy-and-print-current-location()
+  (interactive)
+  (let ((loc (rtags-current-location)))
+    (if (not loc)
+        (message "No current location!")
+      (kill-new loc)
+      (message loc))))
+
+(defun rtags-all-files (prefer-exact)
+  (with-temp-buffer
+    (rtags-call-rc "-P" "--elisp-list" (if rtags-find-file-case-insensitive "-I") (if prefer-exact "-A"))
+    (and (> (point-max) (point-min))
+         (eval (read (current-buffer))))))
+
 (defvar rtags-find-file-history nil)
+;;;###autoload
 (defun rtags-find-file (&optional prefix tagname)
   (interactive "P")
   (rtags-location-stack-push)
@@ -1775,7 +1828,10 @@ References to references will be treated as references to the referenced symbol"
         (setq prompt (concat (format "Find rfiles (default %s): " tagname)))
       (setq prompt "Find rfiles: "))
     (rtags-is-indexed)
-    (setq input (completing-read prompt (function rtags-filename-complete) nil nil nil 'rtags-find-file-history))
+    (setq input
+          (if rtags-use-filename-completion
+              (completing-read-default prompt (function rtags-filename-complete) nil nil nil 'rtags-find-file-history)
+            (completing-read prompt (rtags-all-files prefer-exact) nil nil nil 'rtags-find-file-history)))
     (setq rtags-find-file-history (cl-remove-duplicates rtags-find-file-history :from-end t :test 'equal))
     (cond ((string-match "\\(.*\\),\\([0-9]+\\)" input)
            (progn
@@ -1818,14 +1874,15 @@ References to references will be treated as references to the referenced symbol"
             ((= (count-lines (point-min) (point-max)) 1) (rtags-goto-location (buffer-substring-no-properties (point-at-bol) (point-at-eol))))
             (t (switch-to-buffer-other-window rtags-buffer-name)
                (shrink-window-if-larger-than-buffer)
-               (rtags-init-bookmarks)
                (rtags-mode))))))
 
+;;;###autoload
 (defun rtags-show-rtags-buffer ()
   (interactive)
   (if (get-buffer rtags-buffer-name)
       (display-buffer rtags-buffer-name)))
 
+;;;###autoload
 (defun rtags-fixit (&optional ediff buffer)
   (interactive "P")
   (save-some-buffers)
@@ -1865,42 +1922,42 @@ References to references will be treated as references to the referenced symbol"
             (kill-buffer tempbuf)
             (ediff path tempbufname))))))
 
-(defun rtags-current-symbol-name (&optional cursorinfo)
-  (unless cursorinfo
-    (setq cursorinfo (rtags-cursorinfo)))
-  (let ((container (string-match "^Container:" cursorinfo))
-        (symbolname (string-match "^SymbolName: \\(.*\\)$" cursorinfo)))
+(defun rtags-current-symbol-name (&optional symbol-info)
+  (unless symbol-info
+    (setq symbol-info (rtags-symbol-info)))
+  (let ((container (string-match "^Container:" symbol-info))
+        (symbolname (string-match "^SymbolName: \\(.*\\)$" symbol-info)))
     (if (and symbolname (or (not container) (< symbolname container)))
-        (match-string-no-properties 1 cursorinfo))))
+        (match-string-no-properties 1 symbol-info))))
 
-(defun rtags-current-container-name (&optional cursorinfo)
-  (unless cursorinfo
-    (setq cursorinfo (rtags-cursorinfo)))
-  (let* ((container (string-match "^Container:" cursorinfo))
-         (symbolname (string-match "^SymbolName: \\(.*\\)$" cursorinfo (if container container 0))))
-    (if container
-        (match-string-no-properties 1 cursorinfo)
-      nil)))
+(defun rtags-current-container-name (&optional symbol-info)
+  (unless symbol-info
+    (setq symbol-info (rtags-symbol-info :include-parents t :noerror t :silent-query t)))
+  (let ((delimiter (string-match "^====================" symbol-info)))
+    (and (and delimiter
+              (string-match "^SymbolName: \\(.*\\)$" symbol-info delimiter)
+              (match-string 1 symbol-info)))))
 
 (defun rtags-cursor-extent (&optional location)
-  (let ((cursorinfo (rtags-cursorinfo location)))
-    (if (string-match "^Range: \\([0-9]+\\)-\\([0-9]+\\)$" cursorinfo)
-        (let ((start (+ (string-to-number (match-string-no-properties 2 cursorinfo)) 1))
-              (end (+ (string-to-number (match-string-no-properties 3 cursorinfo)) 1)))
+  (let ((symbol-info (rtags-symbol-info :location location)))
+    (if (string-match "^Range: \\([0-9]+\\)-\\([0-9]+\\)$" symbol-info)
+        (let ((start (+ (string-to-number (match-string-no-properties 2 symbol-info)) 1))
+              (end (+ (string-to-number (match-string-no-properties 3 symbol-info)) 1)))
           (cons start end)))))
 
-(defun rtags-decode-range (cursorinfo)
-  "Decode range from the CURSORINFO (e.g. 5:1-10:3) and return a list with 2 coordinates:
+(defun rtags-decode-range (symbol-info)
+  "Decode range from the SYMBOL-INFO (e.g. 5:1-10:3) and return a list with 2 coordinates:
 \(line1 col1 line2 col2)"
   (if (string-match "^Range: \\([0-9]+\\):\\([0-9]+\\)-\\([0-9]+\\):\\([0-9]+\\)$"
-                    cursorinfo)
-      (let ((line1 (string-to-number (match-string-no-properties 1 cursorinfo)))
-            (col1 (string-to-number (match-string-no-properties 2 cursorinfo)))
-            (line2 (string-to-number (match-string-no-properties 3 cursorinfo)))
-            (col2 (string-to-number (match-string-no-properties 4 cursorinfo))))
+                    symbol-info)
+      (let ((line1 (string-to-number (match-string-no-properties 1 symbol-info)))
+            (col1 (string-to-number (match-string-no-properties 2 symbol-info)))
+            (line2 (string-to-number (match-string-no-properties 3 symbol-info)))
+            (col2 (string-to-number (match-string-no-properties 4 symbol-info))))
         (list line1 col1 line2 col2))))
 
 (defvar rtags-other-window-window nil)
+;;;###autoload
 (defun rtags-remove-other-window ()
   (interactive)
   (let ((ret ""))
@@ -1914,42 +1971,21 @@ References to references will be treated as references to the referenced symbol"
           (setq rtags-other-window-window nil)))
     ret))
 
-(defcustom rtags-timeout nil
-  "Max amount of ms to wait for operation to finish"
-  :group 'rtags
-  :type 'integer)
+(defvar rtags-last-update-current-project-buffer nil)
+;;;###autoload
+(defun rtags-update-current-project ()
+  (interactive)
+  (when (and (not (eq (current-buffer) rtags-last-update-current-project-buffer))
+             (file-directory-p default-directory))
+    (setq rtags-last-update-current-project-buffer (current-buffer))
+    (let* ((rc (rtags-executable-find "rc"))
+           (path (or (buffer-file-name) default-directory))
+           (arguments (list "-T" path "--silent-query")))
+      (when rc
+        (apply #'start-process "rtags-update-current-project" nil rc arguments))))
+  t)
 
-(defcustom rtags-enable-unsaved-reparsing t
-  "Whether rtags will reparse unsaved buffers as needed"
-  :group 'rtags
-  :type 'boolean)
-
-(defcustom rtags-find-file-case-insensitive nil
-  "Treat files case-insensitively"
-  :group 'rtags
-  :type 'boolean)
-
-(defcustom rtags-symbolnames-case-insensitive nil
-  "Treat symbol names case-insensitively"
-  :group 'rtags
-  :type 'boolean)
-
-(defcustom rtags-symbolnames-case-insensitive nil
-  "Treat symbol names case insensitively"
-  :group 'rtags
-  :type 'boolean)
-
-(defcustom rtags-find-file-prefer-exact-match t
-  "Jump directly to files that exactly match the filename for rtags-find-file"
-  :group 'rtags
-  :type 'boolean)
-
-(defcustom rtags-match-source-file-to-project nil
-  "Function to match source file to a build directory"
-  :group 'rtags
-  :type 'function)
-
-(defcustom rtags-other-window-window-size-percentage 30 "Percentage size of other buffer" :group 'rtags :type 'integer)
+;;;###autoload
 (defun rtags-show-target-in-other-window (&optional dest-window center-window
                                                     try-declaration-first)
   "DEST-WINDOW : destination window. Can be nil; in this case the current window is split
@@ -1974,13 +2010,79 @@ definition."
               (let ((other-window-content (rtags-remove-other-window))
                     (height (* (window-height) (- 100 rtags-other-window-window-size-percentage))))
                 (unless (string= target other-window-content)
-                  (progn
-                    (setq height (/ height 100))
-                    (setq rtags-other-window-window (split-window nil height)))))))
+                  (setq height (/ height 100))
+                  (setq rtags-other-window-window (funcall rtags-split-window-function nil height))))))
           (select-window rtags-other-window-window)
           (rtags-goto-location target)
           (recenter-top-bottom (when (not center-window) 0))
           (select-window win)))))
+
+(defun rtags-find-symbols-by-name-internal (prompt switch &optional filter regexp-filter)
+  (rtags-location-stack-push)
+  (let ((tagname (if mark-active
+                     (buffer-substring-no-properties (region-beginning) (region-end))
+                   (rtags-current-symbol)))
+        (path (buffer-file-name))
+        input)
+    (if (> (length tagname) 0)
+        (setq prompt (concat prompt ": (default " tagname ") "))
+      (setq prompt (concat prompt ": ")))
+    (setq input (completing-read-default prompt (function rtags-symbolname-complete) nil nil nil 'rtags-symbol-history))
+    (setq rtags-symbol-history (cl-remove-duplicates rtags-symbol-history :from-end t :test 'equal))
+    (if (not (equal "" input))
+        (setq tagname input))
+    (with-current-buffer (rtags-get-buffer)
+      (rtags-call-rc :path path switch tagname :path-filter filter
+                     :path-filter-regex regexp-filter
+                     (if rtags-wildcard-symbol-names "--wildcard-symbol-names")
+                     (if rtags-symbolnames-case-insensitive "-I"))
+      (rtags-handle-results-buffer))))
+
+(defun rtags-symbolname-completion-get (string)
+  (with-temp-buffer
+    (rtags-call-rc "-Y" "-S" string
+                   (if rtags-symbolnames-case-insensitive "-I")
+                   (if rtags-wildcard-symbol-names "--wildcard-symbol-names"))
+    ;; (when rtags-rc-log-enabled
+    ;;   (rtags-log (buffer-string)))
+    (eval (read (buffer-string)))))
+
+(defun rtags-symbolname-completion-exactmatch (string)
+  (with-temp-buffer
+    (rtags-call-rc "-N" "-F" string
+                   (if rtags-symbolnames-case-insensitive "-I")
+                   (if rtags-wildcard-symbol-names "--wildcard-symbol-names"))
+    (> (point-max) (point-min))))
+
+(defun rtags-symbolname-complete (string predicate code)
+  ;; (message "CALLED %s %s %s"
+  ;;          string predicate
+  ;;          (cond ((eq code nil) "nil")
+  ;;                ((eq code t) "t")
+  ;;                ((eq code 'lambda) "lambda")))
+
+  (cond ((null code)
+         (let* ((alternatives (rtags-symbolname-completion-get string))
+                (attempt (try-completion string alternatives predicate)))
+           ;; (message "%s %d %d %s %s" string (length alternatives)
+           ;;          (if rtags-wildcard-symbol-names 1 0)
+           ;;          attempt
+           ;;          (and (string-match '\\*' string) "yes"))
+
+           ;; (if (and rtags-wildcard-symbol-names
+           ;;          (not attempt)
+           ;;          (> (length alternatives) 0)
+           ;;          (string-match "\\*" string))
+           ;;     (progn
+           ;;       (message "RETURNING STRING")
+           ;;       string)
+           ;;   attempt)))
+           attempt))
+        ((eq code t)
+         (rtags-symbolname-completion-get string))
+        ((eq code 'lambda)
+         (rtags-symbolname-completion-exactmatch string))
+        (t nil)))
 
 (defun rtags-offset-for-line-column (line col)
   (let (deactivate-mark)
@@ -1993,6 +2095,7 @@ definition."
        (<= start (window-end))
        (<= end (window-end))))
 
+;;;###autoload
 (defun rtags-toggle-file-suspended()
   (interactive)
   (let ((buffer (buffer-file-name)))
@@ -2003,6 +2106,7 @@ definition."
               (message (buffer-substring-no-properties (point-min) (1- (point-max))))
             (message (buffer-string)))))))
 
+;;;###autoload
 (defun rtags-clear-suspended-files()
   (interactive)
   (let ((buffer (buffer-file-name)))
@@ -2013,6 +2117,7 @@ definition."
               (message (buffer-substring-no-properties (point-min) (1- (point-max))))
             (message (buffer-string)))))))
 
+;;;###autoload
 (defun rtags-list-suspended-files()
   (interactive)
   (let ((buffer (buffer-file-name)))
@@ -2031,6 +2136,12 @@ definition."
 (defvar rtags-includes-func 'rtags-dummy-includes-func)
 (defvar rtags-process-flags "")
 (defvar rtags-process nil)
+
+;;;###autoload
+(defun rtags-quit-rdm ()
+  (interactive)
+  (call-process (rtags-executable-find "rc") nil nil nil "--quit-rdm")
+  (setq rtags-process nil))
 
 (defun rdm-includes ()
   (mapconcat 'identity
@@ -2053,12 +2164,14 @@ definition."
     (setq rtags-process nil)
     (kill-buffer "*rdm*")))
 
+;;;###autoload
 (defun rtags-restart-process ()
   (interactive)
   "Restart the rtags process (rdm)."
   (rtags-cancel-process)
   (rtags-start-process-maybe))
 
+;;;###autoload
 (defun rtags-start-process-maybe ()
   "Launch the rtags process (rdm) if it's not already started."
   (interactive)
@@ -2103,14 +2216,82 @@ definition."
 ;;         (and (= (char-before) 58) (= (char-before (1- (point))) 58))) ;; "::"
 ;;     (point)))))
 
+
+;;;###autoload
+(defun rtags-reparse-file (&optional buffer wait-reparsing)
+  "WAIT-REPARSING : t to wait for reparsing to finish, nil for async (no waiting).
+:fixme: add a timeout"
+  (interactive)
+  (when (null buffer)
+    (setq buffer (current-buffer)))
+  (let ((file (buffer-file-name buffer)))
+    ;;(when (null (rtags-buffer-status buffer))
+    ;;(message ":debug: file not indexed"))
+    (when (and file (rtags-buffer-status buffer))
+      (with-temp-buffer
+        (when (and rtags-enable-unsaved-reparsing (buffer-modified-p buffer))
+          (rtags-call-rc :path file :unsaved buffer "-V" file)
+          (when wait-reparsing
+            (message "Reparsing buffer")
+            ;;(message ":debug: reparsing file %s" file)
+            ;; Wait for the server to start working.
+            (while (not (rtags-is-working buffer))
+              (sleep-for 0.4))
+            ;; Wait for the file to become indexed.
+            (while (rtags-is-working buffer)
+              (sleep-for 0.4))))
+        (rtags-call-rc :path file "-V" file)
+        (message (format "Dirtied %s" file))))))
+
+
+;; assoc list containing unsaved buffers and their modification ticks
+;; (to avoid reparsing unsaved files if there were no changes since last parsing)
+;; :fixme: - remove buffers from list on save
+(defvar rtags-unsaved-buffers-ticks nil)
+
+(defun rtags-reparse-file-if-needed (&optional buffer)
+  "Reparse file if it's not saved.
+
+BUFFER : the buffer to be checked and reparsed, if it's nil, use current buffer"
+  (when rtags-enable-unsaved-reparsing
+    (let ((unsaved (and (buffer-modified-p buffer) (or buffer (current-buffer)))))
+      (when unsaved
+        ;; check ticks since the last save to avoid parsing the file multiple times
+        ;; if it has not been modified
+        (let ((current-ticks (buffer-modified-tick unsaved))
+              (old-ticks (cdr (assoc unsaved rtags-unsaved-buffers-ticks))))
+          ;; reparsing this dirty file for the first time
+          ;; or if it was modified since last reparsing
+          ;;(message ":debug: buffer=%s, old-ticks=%s, current-ticks=%s"
+          ;;unsaved old-ticks current-ticks)
+          (if (or (null old-ticks) (/= current-ticks old-ticks))
+              (progn
+                (rtags-reparse-file unsaved t)
+                (add-to-list 'rtags-unsaved-buffers-ticks (cons unsaved current-ticks)))
+            (progn ;; else update ticks
+              (let ((item (assoc unsaved rtags-unsaved-buffers-ticks)))
+                (setf (cdr item) current-ticks)))))))))
+
+;;;###autoload
+(defun rtags-maybe-reparse-file (&optional buffer)
+  (interactive)
+  (let ((file (buffer-file-name buffer)))
+    (when file
+      (with-temp-buffer
+        (rtags-call-rc :path file "-x" file)))))
+
 (defvar rtags-completions-timer nil)
+;;;###autoload
 (defun rtags-update-completions-timer ()
   (interactive)
-  (if rtags-completions-timer
-      (cancel-timer rtags-completions-timer))
-  (cond ((not (and rtags-completions-enabled
-                   (rtags-has-diagnostics)
-                   (or (eq major-mode 'c++-mode) (eq major-mode 'c-mode)))))
+  (when rtags-completions-timer
+    (cancel-timer rtags-completions-timer)
+    (setq rtags-completions-timer nil))
+  (cond ((not rtags-completions-enabled))
+        ((not (integerp rtags-completions-timer-interval)))
+        ((< rtags-completions-timer-interval 0))
+        ((not (rtags-has-diagnostics)))
+        ((not (or (eq major-mode 'c++-mode) (eq major-mode 'c-mode) (eq major-mode 'objc-mode))))
         ((= rtags-completions-timer-interval 0) (rtags-update-completions))
         (t (setq rtags-completions-timer (run-with-idle-timer rtags-completions-timer-interval
                                                               nil (function rtags-update-completions))))))
@@ -2118,29 +2299,30 @@ definition."
 ;; returns t if completions are good, 1 if completions are being
 ;; updated and nil if completion-point is invalid or something like
 ;; that
+;;;###autoload
 (defun rtags-update-completions (&optional force)
   (interactive)
-  (if (or (eq major-mode 'c++-mode)
-          (eq major-mode 'c-mode))
-      (let ((pos (rtags-calculate-completion-point)))
-        ;; (message "CHECKING UPDATE COMPLETIONS %d %d"
-        ;;          (or pos -1)
-        ;;          (or (cdr rtags-last-completion-position) -1))
-        (when (or force pos)
-          (if (or force
-                  (not (cdr rtags-last-completion-position))
-                  (not (= pos (cdr rtags-last-completion-position)))
-                  (not (eq (current-buffer) (car rtags-last-completion-position))))
-              (progn
-                (setq rtags-last-completion-position (cons (current-buffer) pos))
-                (setq rtags-last-completions nil)
-                (let ((path (buffer-file-name))
-                      (unsaved (and (buffer-modified-p) (current-buffer)))
-                      (location (rtags-current-location pos)))
-                  (with-temp-buffer
-                    (rtags-call-rc :path path :output 0 :unsaved unsaved "-Y" "-l" location :noerror t))
-                  1))
-            t)))))
+  (when (and (or (eq major-mode 'c++-mode) (eq major-mode 'c-mode) (eq major-mode 'objc-mode))
+             (rtags-has-diagnostics))
+    (let ((pos (rtags-calculate-completion-point)))
+      ;; (message "CHECKING UPDATE COMPLETIONS %d %d"
+      ;;          (or pos -1)
+      ;;          (or (cdr rtags-last-completion-position) -1))
+      (when pos
+        (if (or force
+                (not (cdr rtags-last-completion-position))
+                (not (= pos (cdr rtags-last-completion-position)))
+                (not (eq (current-buffer) (car rtags-last-completion-position))))
+            (progn
+              (setq rtags-last-completion-position (cons (current-buffer) pos))
+              (setq rtags-last-completions nil)
+              (let ((path (buffer-file-name))
+                    (unsaved (and (buffer-modified-p) (current-buffer)))
+                    (location (rtags-current-location pos)))
+                (with-temp-buffer
+                  (rtags-call-rc :path path :output 0 :unsaved unsaved "-Y" "-l" location :noerror t))
+                1))
+          t)))))
 
 
 (defun rtags-get-summary-text (&optional max-no-lines)
@@ -2152,46 +2334,121 @@ Return nil if it can't get any info about the item."
   ;; try first with --declaration-only
   (let ((target (rtags-target-declaration-first)))
     (when target
-      (let* ((range (rtags-decode-range (rtags-cursorinfo target nil nil t)))
-             (line1 (first range))
-             (line2 (third range))
-             symbol-text pos1 pos2)
-        (when (null max-no-lines)
-          (setq max-no-lines 5))
-        (when (> (- line2 line1) max-no-lines)
-          (setq range (list line1 (second range) (+ line1 max-no-lines) 1)))
-        (when (string-match "\\(.*\\):\\([0-9]+\\):\\([0-9]+\\)" target)
-          (let* ((file-or-buffer (match-string-no-properties 1 target))
-                 (buf (get-file-buffer file-or-buffer))
-                 old-buf)
-            (when (null buf)
-              (setq old-buf (current-buffer))
-              (find-file file-or-buffer)
-              (setq buf (current-buffer))
-              (switch-to-buffer old-buf))
-            (with-current-buffer buf
-              (save-excursion
-                (rtags-goto-line-col (first range) (second range))
-                (setq pos1 (point))
-                (rtags-goto-line-col (third range) (fourth range))
-                (setq pos2 (point))
-                (setq symbol-text (buffer-substring-no-properties pos1 pos2))))))
-        symbol-text))))
+      (let ((range (rtags-decode-range (rtags-symbol-info :location target :no-reparse t))))
+        (when range
+          (let* ((line1 (first range))
+                 (line2 (third range))
+                 symbol-text pos1 pos2)
+            (when (null max-no-lines)
+              (setq max-no-lines 5))
+            (when (> (- line2 line1) max-no-lines)
+              (setq range (list line1 (second range) (+ line1 max-no-lines) 1)))
+            (when (string-match "\\(.*\\):\\([0-9]+\\):\\([0-9]+\\)" target)
+              (let* ((file-or-buffer (match-string-no-properties 1 target))
+                     (buf (get-file-buffer file-or-buffer))
+                     old-buf)
+                (when (null buf)
+                  (setq old-buf (current-buffer))
+                  (find-file file-or-buffer)
+                  (setq buf (current-buffer))
+                  (switch-to-buffer old-buf))
+                (with-current-buffer buf
+                  (save-excursion
+                    (rtags-goto-line-col (first range) (second range))
+                    (setq pos1 (point))
+                    (rtags-goto-line-col (third range) (fourth range))
+                    (setq pos2 (point))
+                    (setq symbol-text (buffer-substring-no-properties pos1 pos2))))))
+            symbol-text)
+          )))))
 
 
-(defun rtags-display-summary ()
+;;;###autoload
+(defun rtags-display-summary (&optional hide-empty)
   "Display a short text describing the item at point (see rtags-get-summary-text for
 details).
 
 If rtags-display-summary-as-tooltip is t, a tooltip is displayed."
   (interactive)
   (let ((summary (rtags-get-summary-text)))
-    (when (null summary)
-      (setq summary "No information for symbol"))
-    (if rtags-display-summary-as-tooltip
-        (popup-tip summary)
-      (message "%s" summary))))
+    (when (or summary (not hide-empty))
+      (when (null summary)
+        (setq summary "No information for symbol"))
+      (if rtags-display-summary-as-tooltip
+          (popup-tip summary)
+        (message "%s" summary)))))
 
+(defun rtags-display-tooltip-function (event)
+  (interactive)
+  (when (and (funcall rtags-is-indexable (current-buffer))
+             (eventp event))
+    (let ((pos (posn-point (event-end event))))
+      (when pos
+        (save-excursion
+          (goto-char pos)
+          (rtags-display-summary t)
+          t)))))
+
+(if rtags-tooltips-enabled (add-hook 'tooltip-functions 'rtags-display-tooltip-function))
+
+(defun rtags-set-buffers (buffers)
+  ;; (message "calling-set-buffers %d" (length buffers))
+  (with-temp-buffer
+    (mapc (function (lambda (x)
+                      (if (funcall rtags-is-indexable x)
+                          (insert (buffer-file-name x) "\n")))) buffers)
+    ;; (message "files: %s" (combine-and-quote-strings (split-string (buffer-substring-no-properties (point-min) (point-max)) "\n" t)) "|")
+    (rtags-call-rc :noerror t :silent-query t :path t :unsaved (current-buffer) "--set-buffers" "-")))
+
+(defun rtags-kill-buffer-hook ()
+  (when (buffer-file-name)
+    (unless (file-directory-p default-directory)
+      (cd "/"))
+    (rtags-set-buffers (remove (current-buffer) (buffer-list))))
+  t)
+(add-hook 'kill-buffer-hook 'rtags-kill-buffer-hook)
+
+(defun rtags-find-file-hook ()
+  (interactive)
+  (when (buffer-file-name)
+    (rtags-set-buffers (buffer-list)))
+  t)
+(add-hook 'find-file-hook 'rtags-find-file-hook)
+
+(defun rtags-get-include-file-for-symbol ()
+  "Insert #include declaration to buffer corresponding to the input symbol"
+  (interactive)
+  (let ((input (completing-read-default "Symbol: " (function rtags-symbolname-complete) nil nil nil 'rtags-symbol-history))
+        (current-file (buffer-file-name)))
+    (setq rtags-symbol-history (cl-remove-duplicates rtags-symbol-history :from-end t :test 'equal))
+    (if (string= "" input)
+        (message "You entered an empty symbol. Try again.")
+      (let ((include (with-temp-buffer
+                       (rtags-call-rc :path current-file
+                                      "--include-file" input
+                                      (if rtags-symbolnames-case-insensitive "-I"))
+                       (cond ((= (point-min) (point-max))
+                              (message "RTags: No results") nil)
+                             ((= (count-lines (point-min) (point-max)) 1)
+                              (buffer-substring-no-properties (point-min) (1- (point-max))))
+                             (t
+                              ;; (message "Results:\n%s" (buffer-substring-no-properties (point-min) (point-max)))
+                              (completing-read "Choose: " (split-string (buffer-substring-no-properties (point-min) (point-max)) "\n" t) nil t))))))
+        (when include
+          (save-excursion
+            (goto-char (point-min))
+            (if (re-search-forward include nil t)
+                (message "\"%s\" is already included" include)
+              (goto-char (point-max))
+              (let ((head "\n")
+                    (tail ""))
+                (if (re-search-backward "^# *include\\>" nil t)
+                    (end-of-line)
+                  (setq head "")
+                  (setq tail "\n")
+                  (goto-char (point-min)))
+                (insert head include tail))
+              (message "Added %s" include))))))))
 
 (provide 'rtags)
 

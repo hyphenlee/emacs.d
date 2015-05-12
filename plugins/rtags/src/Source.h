@@ -1,4 +1,4 @@
-/* This file is part of RTags.
+/* This file is part of RTags (http://rtags.net).
 
    RTags is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -20,6 +20,7 @@
 #include <rct/Path.h>
 #include <rct/Serializer.h>
 #include <rct/List.h>
+#include <rct/Flags.h>
 
 struct Source
 {
@@ -47,9 +48,25 @@ struct Source
         NoFlag = 0x0,
         NoRtti = 0x1,
         M32 = 0x2,
-        M64 = 0x4
+        M64 = 0x4,
+        Active = 0x8
     };
-    uint32_t flags;
+    Flags<Flag> flags;
+
+    enum CommandLineFlag {
+        IncludeCompiler = 0x001,
+        IncludeSourceFile = 0x002,
+        IncludeDefines = 0x004,
+        IncludeIncludepaths = 0x008,
+        QuoteDefines = 0x010,
+        FilterBlacklist = 0x020,
+        ExcludeDefaultArguments = 0x040,
+        ExcludeDefaultIncludePaths = 0x080,
+        ExcludeDefaultDefines = 0x100,
+        IncludeRTagsConfig = 0x200,
+        Default = IncludeDefines|IncludeIncludepaths|FilterBlacklist|IncludeRTagsConfig
+    };
+
 
     struct Define {
         Define(const String &def = String(), const String &val = String())
@@ -58,7 +75,7 @@ struct Source
         String define;
         String value;
 
-        inline String toString(unsigned int flags = 0) const;
+        inline String toString(Flags<CommandLineFlag> flags = Flags<CommandLineFlag>()) const;
         inline bool operator==(const Define &other) const { return !compare(other); }
         inline bool operator!=(const Define &other) const { return compare(other) != 0; }
         inline bool operator<(const Define &other) const { return compare(other) < 0; }
@@ -116,6 +133,7 @@ struct Source
     List<Include> includePaths;
     List<String> arguments;
     int32_t sysRootIndex;
+    Path directory;
 
     bool isValid() const { return fileId; }
     bool isNull() const  { return !fileId; }
@@ -142,22 +160,7 @@ struct Source
     bool operator<(const Source &other) const;
     bool operator>(const Source &other) const;
 
-    enum { None = 0x00 }; // shared enum
-
-    enum CommandLineMode {
-        IncludeCompiler = 0x001,
-        IncludeSourceFile = 0x002,
-        IncludeDefines = 0x004,
-        IncludeIncludepaths = 0x008,
-        QuoteDefines = 0x010,
-        FilterBlacklist = 0x020,
-        ExcludeDefaultArguments = 0x040,
-        ExcludeDefaultIncludePaths = 0x080,
-        ExcludeDefaultDefines = 0x100,
-        Default = IncludeDefines|IncludeIncludepaths|FilterBlacklist
-    };
-
-    List<String> toCommandLine(unsigned int flags) const;
+    List<String> toCommandLine(Flags<CommandLineFlag> flags = Flags<CommandLineFlag>()) const;
     inline bool isIndexable() const;
     static inline bool isIndexable(Language lang);
 
@@ -169,12 +172,18 @@ struct Source
     Path sysRoot() const { return arguments.value(sysRootIndex, "/"); }
 
     enum ParseFlag {
+        None = 0x0,
         Escape = 0x1
     };
-    static List<Source> parse(const String &cmdLine, const Path &pwd,
-                              unsigned int flags,
+    static List<Source> parse(const String &cmdLine,
+                              const Path &pwd,
+                              Flags<ParseFlag> parseFlags,
                               List<Path> *unresolvedInputLocation = 0);
 };
+
+RCT_FLAGS(Source::Flag);
+RCT_FLAGS(Source::ParseFlag);
+RCT_FLAGS(Source::CommandLineFlag);
 
 inline Source::Source()
     : fileId(0), compilerId(0), buildRootId(0), includePathHash(0),
@@ -309,7 +318,7 @@ template <> inline Serializer &operator<<(Serializer &s, const Source &b)
 {
     s << b.fileId << b.compilerId << b.buildRootId << static_cast<uint8_t>(b.language)
       << b.parsed << b.flags << b.defines << b.includePaths << b.arguments << b.sysRootIndex
-      << b.includePathHash;
+      << b.directory << b.includePathHash;
     return s;
 }
 
@@ -318,7 +327,8 @@ template <> inline Deserializer &operator>>(Deserializer &s, Source &b)
     b.clear();
     uint8_t language;
     s >> b.fileId >> b.compilerId >> b.buildRootId >> language >> b.parsed >> b.flags
-      >> b.defines >> b.includePaths >> b.arguments >> b.sysRootIndex >> b.includePathHash;
+      >> b.defines >> b.includePaths >> b.arguments >> b.sysRootIndex >> b.directory
+      >> b.includePathHash;
     b.language = static_cast<Source::Language>(language);
     return s;
 }
@@ -341,7 +351,7 @@ static inline Log operator<<(Log dbg, const Source::Include &inc)
     return dbg;
 }
 
-inline String Source::Define::toString(unsigned int flags) const
+inline String Source::Define::toString(Flags<CommandLineFlag> flags) const
 {
     String ret;
     ret.reserve(2 + define.size() + value.size() + 5);

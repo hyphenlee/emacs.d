@@ -1,4 +1,4 @@
-/* This file is part of RTags.
+/* This file is part of RTags (http://rtags.net).
 
 RTags is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -16,9 +16,12 @@ along with RTags.  If not, see <http://www.gnu.org/licenses/>. */
 #ifndef __RTAGSCLANG_H__
 #define __RTAGSCLANG_H__
 
+#include "FileMap.h"
 #include "Source.h"
 #include "RTags.h"
-#include "CursorInfo.h"
+#include "Symbol.h"
+#include <clang/Basic/Version.h>
+#include <rct/Flags.h>
 
 struct Unit;
 inline bool operator==(const CXCursor &l, CXCursorKind r)
@@ -42,6 +45,14 @@ inline bool operator!=(CXCursorKind l, const CXCursor &r)
 inline Log operator<<(Log dbg, CXCursor cursor);
 inline Log operator<<(Log dbg, CXCursorKind kind);
 
+static inline bool operator==(const CXCursor &l, const CXCursor &r) { return clang_equalCursors(l, r); };
+namespace std {
+template <> struct hash<CXCursor> : public unary_function<CXCursor, size_t>
+{
+    size_t operator()(const CXCursor &value) const { return clang_hashCursor(value); }
+};
+}
+
 namespace RTags {
 
 String eatString(CXString str);
@@ -50,17 +61,21 @@ enum CursorToStringFlags {
     IncludeUSR = 0x1,
     IncludeRange = 0x2,
     DefaultCursorToStringFlags = IncludeRange,
-    AllCursorToStringFlags = IncludeUSR|IncludeRange
+    IncludeSpecializedUsr = 0x4,
+    AllCursorToStringFlags = IncludeUSR|IncludeRange|IncludeSpecializedUsr
 };
-String cursorToString(CXCursor cursor, unsigned = DefaultCursorToStringFlags);
-SymbolMap::const_iterator findCursorInfo(const SymbolMap &map, const Location &location);
+RCT_FLAGS(CursorToStringFlags);
+String cursorToString(CXCursor cursor, Flags<CursorToStringFlags> = DefaultCursorToStringFlags);
+
+RCT_FLAGS(CXTranslationUnit_Flags);
 
 void parseTranslationUnit(const Path &sourceFile, const List<String> &args,
                           CXTranslationUnit &unit, CXIndex index,
                           CXUnsavedFile *unsaved, int unsavedCount,
-                          unsigned int translationUnitFlags = 0,
+                          Flags<CXTranslationUnit_Flags> translationUnitFlags = CXTranslationUnit_None,
                           String *clangLine = 0);
 void reparseTranslationUnit(CXTranslationUnit &unit, CXUnsavedFile *unsaved, int unsavedCount);
+CXCursor resolveAutoTypeRef(const CXCursor &cursor, bool *isAuto = 0);
 
 struct Filter
 {
@@ -145,7 +160,7 @@ inline bool startsWith(const List<T> &list, const T &str)
     return false;
 }
 
-inline bool isReference(unsigned int kind)
+inline bool isReference(CXCursorKind kind)
 {
     if (clang_isReference(static_cast<CXCursorKind>(kind)))
         return true;
@@ -164,7 +179,7 @@ inline bool isReference(unsigned int kind)
     return false;
 }
 
-inline bool isFunction(unsigned int kind)
+inline bool isFunction(CXCursorKind kind)
 {
     switch (kind) {
     case CXCursor_FunctionTemplate:
@@ -181,7 +196,7 @@ inline bool isFunction(unsigned int kind)
     return false;
 }
 
-inline bool isCursor(uint16_t kind)
+inline bool isCursor(CXCursorKind kind)
 {
     switch (kind) {
     case CXCursor_LabelStmt:
@@ -196,28 +211,27 @@ inline bool isCursor(uint16_t kind)
     return clang_isDeclaration(static_cast<CXCursorKind>(kind));
 }
 
-static inline CursorType cursorType(uint16_t kind)
+static inline CursorType cursorType(CXCursorKind kind)
 {
-    switch (kind) {
-    case CXCursor_InclusionDirective:
-        return Include;
-    }
+    if (kind == CXCursor_InclusionDirective)
+        return Type_Include;
     if (clang_isStatement(static_cast<CXCursorKind>(kind))) {
-        return Other;
+        return Type_Other;
     } else if (RTags::isCursor(kind)) {
-        return Cursor;
+        return Type_Cursor;
     } else if (RTags::isReference(kind)) {
-        return Reference;
+        return Type_Reference;
     }
-    return Other;
+    return Type_Other;
 }
 
-static inline bool isContainer(uint16_t kind)
+static inline bool isContainer(CXCursorKind kind)
 {
     switch (kind) {
     case CXCursor_CXXMethod:
     case CXCursor_Constructor:
     case CXCursor_FunctionDecl:
+    case CXCursor_FunctionTemplate:
     case CXCursor_Destructor:
     case CXCursor_ClassTemplate:
     case CXCursor_Namespace:
@@ -293,17 +307,17 @@ static inline const char *builtinTypeName(CXTypeKind kind)
 
 String typeString(const CXType &type);
 
-struct SortedCursor
+struct SortedSymbol
 {
-    SortedCursor(const Location &loc = Location(),
+    SortedSymbol(const Location &loc = Location(),
                  bool definition = false,
-                 uint16_t k = CXCursor_FirstInvalid)
+                 CXCursorKind k = CXCursor_FirstInvalid)
         : location(loc), isDefinition(definition), kind(k)
     {}
 
     Location location;
     bool isDefinition;
-    uint16_t kind;
+    CXCursorKind kind;
 
     int rank() const
     {
@@ -333,7 +347,7 @@ struct SortedCursor
         return val;
     }
 
-    bool operator<(const SortedCursor &other) const
+    bool operator<(const SortedSymbol &other) const
     {
         const int me = rank();
         const int him = other.rank();
@@ -345,7 +359,7 @@ struct SortedCursor
             return me > him;
         return location < other.location;
     }
-    bool operator>(const SortedCursor &other) const
+    bool operator>(const SortedSymbol &other) const
     {
         const int me = rank();
         const int him = other.rank();
@@ -382,7 +396,7 @@ private:
 
 inline Log operator<<(Log dbg, CXCursor cursor)
 {
-    dbg << RTags::cursorToString(cursor);
+    dbg << RTags::cursorToString(cursor, RTags::AllCursorToStringFlags);
     return dbg;
 }
 

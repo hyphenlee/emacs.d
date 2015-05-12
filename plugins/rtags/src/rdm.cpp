@@ -1,4 +1,4 @@
-/* This file is part of RTags.
+/* This file is part of RTags (http://rtags.net).
 
    RTags is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -24,9 +24,8 @@
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
-#ifdef HAVE_BACKTRACE
-#include <execinfo.h>
-#include <cxxabi.h>
+#ifdef OS_Darwin
+#include <sys/resource.h>
 #endif
 
 static void sigSegvHandler(int signal)
@@ -42,8 +41,10 @@ static void sigSegvHandler(int signal)
 
 #define EXCLUDEFILTER_DEFAULT "*/CMakeFiles/*;*/cmake*/Modules/*;*/conftest.c*;/tmp/*"
 #define DEFAULT_RP_VISITFILE_TIMEOUT 60000
+#define DEFAULT_RDM_MAX_FILE_MAP_CACHE_SIZE 500
 #define DEFAULT_RP_INDEXER_MESSAGE_TIMEOUT 60000
 #define DEFAULT_RP_CONNECT_TIMEOUT 0 // won't time out
+#define DEFAULT_RP_CONNECT_ATTEMPTS 3
 #define DEFAULT_COMPLETION_CACHE_SIZE 10
 #define DEFAULT_MAX_CRASH_COUNT 5
 #define XSTR(s) #s
@@ -60,9 +61,12 @@ static void usage(FILE *f)
     fprintf(f,
             "\nUsage: rdm [...options...]\n\n"
             "  --help|-h                                  Display this page.\n"
+            "  --version                                  Display version.\n"
 
             "\nServer options:\n"
             "  --clear-project-caches|-C                  Clear out project caches.\n"
+            "  --test|-t [arg]                            Run this test.\n"
+            "  --test-timeout|-z [arg]                    Timeout for test to complete.\n"
             "  --completion-cache-size|-i [arg]           Number of translation units to cache (default " STR(DEFAULT_COMPLETION_CACHE_SIZE) ").\n"
             "  --config|-c [arg]                          Use this file instead of ~/.rdmrc.\n"
             "  --data-dir|-d [arg]                        Use this directory to store persistent data (default ~/.rtags).\n"
@@ -70,7 +74,6 @@ static void usage(FILE *f)
             "  --disallow-multiple-sources|-m             With this setting different sources will be merged for each source file.\n"
             "  --enable-NDEBUG|-g                         Don't remove -DNDEBUG from compile lines.\n"
             "  --enable-compiler-manager|-R               Query compilers for their actual include paths instead of letting clang use its own.\n"
-            "  --enable-job-server|-z                     Enable job server.\n"
             "  --exclude-filter|-X [arg]                  Files to exclude from rdm, default \"" EXCLUDEFILTER_DEFAULT "\".\n"
             "  --extra-compilers|-U [arg]                 Override additional \"known\" compilers. E.g. -U foobar;c++, foobar;c or foobar:objective-c or just foobar.\n"
 
@@ -79,6 +82,7 @@ static void usage(FILE *f)
 #endif
 
             "  --job-count|-j [arg]                       Spawn this many concurrent processes for indexing (default %d).\n"
+            "  --header-error-job-count|-H [arg]          Allow this many concurrent header error jobs (default std::max(1, --job-count / 2)).\n"
             "  --log-file|-L [arg]                        Log to this file.\n"
 
 #ifndef OS_Darwin
@@ -88,39 +92,51 @@ static void usage(FILE *f)
             "  --no-rc|-N                                 Don't load any rc files.\n"
             "  --no-startup-project|-o                    Don't restore the last current project on startup.\n"
             "  --rp-connect-timeout|-O [arg]              Timeout for connection from rp to rdm in ms (0 means no timeout) (default " STR(DEFAULT_RP_CONNECT_TIMEOUT) ").\n"
+            "  --rp-connect-attempts [arg]                Number of times rp attempts to connect to rdm before giving up. (default " STR(DEFAULT_RP_CONNECT_ATTEMPTS) ").\n"
             "  --rp-indexer-message-timeout|-T [arg]      Timeout for rp indexer-message in ms (0 means no timeout) (default " STR(DEFAULT_RP_INDEXER_MESSAGE_TIMEOUT) ").\n"
             "  --rp-nice-value|-a [arg]                   Nice value to use for rp (nice(2)) (default -1, e.g. not nicing).\n"
-            "  --rp-visit-file-timeout|-t [arg]           Timeout for rp visitfile commands in ms (0 means no timeout) (default " STR(DEFAULT_RP_VISITFILE_TIMEOUT) ").\n"
+            "  --rp-visit-file-timeout|-Z [arg]           Timeout for rp visitfile commands in ms (0 means no timeout) (default " STR(DEFAULT_RP_VISITFILE_TIMEOUT) ").\n"
             "  --separate-debug-and-release|-E            Normally rdm doesn't consider release and debug as different builds. Pass this if you want it to.\n"
             "  --setenv|-e [arg]                          Set this environment variable (--setenv \"foobar=1\").\n"
             "  --silent|-S                                No logging to stdout.\n"
             "  --socket-file|-n [arg]                     Use this file for the server socket (default ~/.rdm).\n"
             "  --start-suspended|-Q                       Start out suspended (no reindexing enabled).\n"
             "  --suspend-rp-on-crash|-q [arg]             Suspend rp in SIGSEGV handler (default " DEFAULT_SUSPEND_RP ").\n"
-            "  --sync-threshold|-y [arg]                  Automatically sync after [arg] files indexed.\n"
             "  --thread-stack-size|-k [arg]               Set stack size for threadpool to this (default %zu).\n"
-            "  --unload-timer|-u [arg]                    Number of minutes to wait before unloading non-current projects (disabled by default).\n"
             "  --verbose|-v                               Change verbosity, multiple -v's are allowed.\n"
             "  --watch-system-paths|-w                    Watch system paths for changes.\n"
             "  --block-argument|-G [arg]                  Block this argument from being passed to clang. E.g. rdm --block-argument -fno-inline\n"
-            "  --no-progress|-p                           Don't report compilation progress in xml output.\n"
-            "  --cache-AST|-A [maxsize]                   Cache this many AST units in $DATA_DIR/astcache.\n"
+            "  --progress|-p                              Report compilation progress in diagnostics output.\n"
             "\nCompiling/Indexing options:\n"
             "  --allow-Wpedantic|-P                       Don't strip out -Wpedantic. This can cause problems in certain projects.\n"
             "  --define|-D [arg]                          Add additional define directive to clang.\n"
             "  --ignore-printf-fixits|-F                  Disregard any clang fixit that looks like it's trying to fix format for printf and friends.\n"
             "  --include-path|-I [arg]                    Add additional include path to clang.\n"
             "  --isystem|-s [arg]                         Add additional system include path to clang.\n"
+            "  --Weverything|-u                           Use -Weverything.\n"
             "  --no-Wall|-W                               Don't use -Wall.\n"
             "  --no-no-unknown-warnings-option|-Y         Don't pass -Wno-unknown-warning-option\n"
             "  --no-spell-checking|-l                     Don't pass -fspell-checking.\n"
             "  --no-unlimited-error|-f                    Don't pass -ferror-limit=0 to clang.\n"
             "  --Wlarge-by-value-copy|-r [arg]            Use -Wlarge-by-value-copy=[arg] when invoking clang.\n"
+            "  --max-file-map-cache-size|-y [arg]         Max files to cache per query (Should not exceed maximum number of open file descriptors allowed per process) (default " STR(DEFAULT_RDM_MAX_FILE_MAP_CACHE_SIZE) ").\n"
+            "  --no-comments                              Don't parse/store doxygen comments.\n"
+            "  --arg-transform|-V [arg]                   Use arg to transform arguments. [arg] should be a executable with (execv(3)).\n"
             , std::max(2, ThreadPool::idealThreadCount()), defaultStackSize);
 }
 
 int main(int argc, char** argv)
 {
+#ifdef OS_Darwin
+    struct rlimit rlp;
+    if (getrlimit(RLIMIT_NOFILE, &rlp) == 0) {
+        if (rlp.rlim_cur < 1000) {
+            rlp.rlim_cur = 1000;
+            setrlimit(RLIMIT_NOFILE, &rlp);
+        }
+    }
+#endif
+
     {
         pthread_attr_t attr;
         pthread_attr_init(&attr);
@@ -135,17 +151,20 @@ int main(int argc, char** argv)
 
     struct option opts[] = {
         { "help", no_argument, 0, 'h' },
-        { "enable-job-server", no_argument, 0, 'z' }, // FIXME: not bound
-        { "compression", required_argument, 0, 'Z' }, // FIXME: not bound
+        { "version", no_argument, 0, '\2' },
         { "include-path", required_argument, 0, 'I' },
         { "isystem", required_argument, 0, 's' },
         { "define", required_argument, 0, 'D' },
         { "log-file", required_argument, 0, 'L' },
         { "setenv", required_argument, 0, 'e' },
         { "no-Wall", no_argument, 0, 'W' },
+        { "Weverything", no_argument, 0, 'u' },
         { "cache-AST", required_argument, 0, 'A' },
         { "verbose", no_argument, 0, 'v' },
         { "job-count", required_argument, 0, 'j' },
+        { "header-error-job-count", required_argument, 0, 'H' },
+        { "test", required_argument, 0, 't' },
+        { "test-timeout", required_argument, 0, 'z' },
         { "clean-slate", no_argument, 0, 'C' },
         { "disable-sighandler", no_argument, 0, 'x' },
         { "silent", no_argument, 0, 'S' },
@@ -158,17 +177,16 @@ int main(int argc, char** argv)
         { "no-unlimited-errors", no_argument, 0, 'f' },
         { "block-argument", required_argument, 0, 'G' },
         { "no-spell-checking", no_argument, 0, 'l' },
-        { "sync-threshold", required_argument, 0, 'y' },
         { "large-by-value-copy", required_argument, 0, 'r' },
         { "disallow-multiple-sources", no_argument, 0, 'm' },
-        { "unload-timer", required_argument, 0, 'u' },
         { "no-startup-project", no_argument, 0, 'o' },
         { "no-no-unknown-warnings-option", no_argument, 0, 'Y' },
         { "ignore-compiler", required_argument, 0, 'b' },
         { "watch-system-paths", no_argument, 0, 'w' },
-        { "rp-visit-file-timeout", required_argument, 0, 't' },
+        { "rp-visit-file-timeout", required_argument, 0, 'Z' },
         { "rp-indexer-message-timeout", required_argument, 0, 'T' },
         { "rp-connect-timeout", required_argument, 0, 'O' },
+        { "rp-connect-attempts", required_argument, 0, '\3' },
         { "rp-nice-value", required_argument, 0, 'a' },
         { "thread-stack-size", required_argument, 0, 'k' },
         { "suspend-rp-on-crash", required_argument, 0, 'q' },
@@ -180,13 +198,16 @@ int main(int argc, char** argv)
         { "allow-Wpedantic", no_argument, 0, 'P' },
         { "enable-compiler-manager", no_argument, 0, 'R' },
         { "enable-NDEBUG", no_argument, 0, 'g' },
-        { "no-progress", no_argument, 0, 'p' },
+        { "progress", no_argument, 0, 'p' },
+        { "max-file-map-cache-size", required_argument, 0, 'y' },
 #ifdef OS_Darwin
         { "filemanager-watch", no_argument, 0, 'M' },
 #else
         { "no-filemanager-watch", no_argument, 0, 'M' },
 #endif
         { "no-filesystem-watcher", no_argument, 0, 'B' },
+        { "arg-transform", required_argument, 0, 'V' },
+        { "no-comments", no_argument, 0, '\1' },
         { 0, 0, 0, 0 }
     };
     const String shortOptions = Rct::shortOptions(opts);
@@ -290,9 +311,12 @@ int main(int argc, char** argv)
     serverOpts.threadStackSize = defaultStackSize;
     serverOpts.socketFile = String::format<128>("%s.rdm", Path::home().constData());
     serverOpts.jobCount = std::max(2, ThreadPool::idealThreadCount());
+    serverOpts.headerErrorJobCount = -1;
     serverOpts.rpVisitFileTimeout = DEFAULT_RP_VISITFILE_TIMEOUT;
-    serverOpts.rpIndexerMessageTimeout = DEFAULT_RP_INDEXER_MESSAGE_TIMEOUT;
+    serverOpts.rpIndexDataMessageTimeout = DEFAULT_RP_INDEXER_MESSAGE_TIMEOUT;
     serverOpts.rpConnectTimeout = DEFAULT_RP_CONNECT_TIMEOUT;
+    serverOpts.rpConnectAttempts = DEFAULT_RP_CONNECT_ATTEMPTS;
+    serverOpts.maxFileMapScopeCacheSize = DEFAULT_RDM_MAX_FILE_MAP_CACHE_SIZE;
     serverOpts.rpNiceValue = INT_MIN;
     serverOpts.options = Server::Wall|Server::SpellChecking;
     serverOpts.maxCrashCount = DEFAULT_MAX_CRASH_COUNT;
@@ -305,15 +329,15 @@ int main(int argc, char** argv)
 // #endif
     serverOpts.excludeFilters = String(EXCLUDEFILTER_DEFAULT).split(';');
     serverOpts.dataDir = String::format<128>("%s.rtags", Path::home().constData());
-    serverOpts.unloadTimer = 0;
 
     const char *logFile = 0;
-    unsigned logFlags = 0;
+    unsigned int logFlags = 0;
     int logLevel = 0;
     bool sigHandler = false;
     assert(Path::home().endsWith('/'));
     int argCount = argList.size();
     char **args = argList.data();
+    bool defaultDataDir = true;
 
     while (true) {
         const int c = getopt_long(argCount, args, shortOptions.constData(), opts, 0);
@@ -333,9 +357,15 @@ int main(int argc, char** argv)
         case 'G':
             serverOpts.blockedArguments << optarg;
             break;
+        case '\1':
+            serverOpts.options |= Server::NoComments;
+            break;
+        case '\2':
+            fprintf(stdout, "%s\n", RTags::versionString().constData());
+            return 0;
         case 'U': {
             Source::Language lang = Source::NoLanguage;
-            RegExp rx;
+            std::regex rx;
             if (char *semiColon = strchr(optarg, ';')) {
                 for (int i=Source::NoLanguage + 1; i<=Source::ObjectiveCPlusPlus; ++i) {
                     const char *name = Source::languageName(static_cast<Source::Language>(i));
@@ -351,7 +381,7 @@ int main(int argc, char** argv)
                     }
                     return 1;
                 }
-                rx = String(optarg, semiColon - optarg - 1);
+                rx = std::string(optarg, semiColon - optarg - 1);
             } else {
                 rx = optarg;
                 lang = Source::C;
@@ -367,19 +397,33 @@ int main(int argc, char** argv)
         case 'Q':
             serverOpts.options |= Server::StartSuspended;
             break;
-        case 't':
+        case 'Z':
             serverOpts.rpVisitFileTimeout = atoi(optarg);
             if (serverOpts.rpVisitFileTimeout < 0) {
-                fprintf(stderr, "Invalid argument to -t %s\n", optarg);
+                fprintf(stderr, "Invalid argument to -Z %s\n", optarg);
                 return 1;
             }
             if (!serverOpts.rpVisitFileTimeout)
                 serverOpts.rpVisitFileTimeout = -1;
             break;
+        case 'y':
+            serverOpts.maxFileMapScopeCacheSize = atoi(optarg);
+            if (serverOpts.maxFileMapScopeCacheSize <= 0) {
+                fprintf(stderr, "Invalid argument to -y %s\n", optarg);
+                return 1;
+            }
+            break;
         case 'O':
             serverOpts.rpConnectTimeout = atoi(optarg);
             if (serverOpts.rpConnectTimeout < 0) {
                 fprintf(stderr, "Invalid argument to -O %s\n", optarg);
+                return 1;
+            }
+            break;
+        case '\3':
+            serverOpts.rpConnectAttempts = atoi(optarg);
+            if (serverOpts.rpConnectAttempts <= 0) {
+                fprintf(stderr, "Invalid argument to --rp-connect-attempts %s\n", optarg);
                 return 1;
             }
             break;
@@ -393,10 +437,26 @@ int main(int argc, char** argv)
         case 'b':
             serverOpts.ignoredCompilers.insert(Path::resolved(optarg));
             break;
+        case 't': {
+            Path test(optarg);
+            if (!test.resolve() || !test.isFile()) {
+                fprintf(stderr, "%s doesn't seem to be a file\n", optarg);
+                return 1;
+            }
+            serverOpts.tests += test;
+            break; }
+        case 'z':
+            serverOpts.testTimeout = atoi(optarg);
+            if (serverOpts.testTimeout <= 0) {
+                fprintf(stderr, "Invalid argument to -z %s\n", optarg);
+                return 1;
+            }
+            break;
         case 'n':
             serverOpts.socketFile = optarg;
             break;
         case 'd':
+            defaultDataDir = false;
             serverOpts.dataDir = String::format<128>("%s", Path::resolved(optarg).constData());
             break;
         case 'h':
@@ -406,7 +466,7 @@ int main(int argc, char** argv)
             serverOpts.options |= Server::NoNoUnknownWarningsOption;
             break;
         case 'p':
-            serverOpts.options |= Server::NoProgress;
+            serverOpts.options |= Server::Progress;
             break;
         case 'R':
             serverOpts.options |= Server::EnableCompilerManager;
@@ -440,7 +500,15 @@ int main(int argc, char** argv)
         case 'B':
             serverOpts.options |= Server::NoFileSystemWatch;
             break;
-        case 'F':
+        case 'V':
+            serverOpts.argTransform = Process::findCommand(optarg);
+            if (strlen(optarg) && serverOpts.argTransform.isEmpty()) {
+                fprintf(stderr, "Invalid argument to -V. Can't resolve %s", optarg);
+                return 1;
+            }
+
+            break;
+      case 'F':
             serverOpts.options |= Server::IgnorePrintfFixits;
             break;
         case 'f':
@@ -451,6 +519,9 @@ int main(int argc, char** argv)
             break;
         case 'W':
             serverOpts.options &= ~Server::Wall;
+            break;
+        case 'u':
+            serverOpts.options |= Server::Weverything;
             break;
         case 'P':
             serverOpts.options |= Server::AllowPedantic;
@@ -464,14 +535,6 @@ int main(int argc, char** argv)
         case 'x':
             sigHandler = false;
             break;
-        case 'u': {
-            bool ok;
-            serverOpts.unloadTimer = static_cast<int>(String(optarg).toULongLong(&ok));
-            if (!ok) {
-                fprintf(stderr, "Invalid argument to --unload-timer %s\n", optarg);
-                return 1;
-            }
-            break; }
         case 'K':
             serverOpts.maxCrashCount = atoi(optarg);
             if (serverOpts.maxCrashCount <= 0) {
@@ -486,16 +549,9 @@ int main(int argc, char** argv)
                 return 1;
             }
             break;
-        case 'y':
-            serverOpts.syncThreshold = atoi(optarg);
-            if (serverOpts.syncThreshold <= 0) {
-                fprintf(stderr, "Invalid argument to -y %s\n", optarg);
-                return 1;
-            }
-            break;
         case 'T':
-            serverOpts.rpIndexerMessageTimeout = atoi(optarg);
-            if (serverOpts.rpIndexerMessageTimeout <= 0) {
+            serverOpts.rpIndexDataMessageTimeout = atoi(optarg);
+            if (serverOpts.rpIndexDataMessageTimeout <= 0) {
                 fprintf(stderr, "Can't parse argument to -T %s.\n", optarg);
                 return 1;
             }
@@ -512,6 +568,13 @@ int main(int argc, char** argv)
             serverOpts.jobCount = atoi(optarg);
             if (serverOpts.jobCount < 0) {
                 fprintf(stderr, "Can't parse argument to -j %s. -j must be a positive integer.\n", optarg);
+                return 1;
+            }
+            break;
+        case 'H':
+            serverOpts.headerErrorJobCount = atoi(optarg);
+            if (serverOpts.headerErrorJobCount < 0) {
+                fprintf(stderr, "Can't parse argument to -H %s. -J must be a positive integer.\n", optarg);
                 return 1;
             }
             break;
@@ -540,14 +603,6 @@ int main(int argc, char** argv)
         case 's':
             serverOpts.includePaths.append(Source::Include(Source::Include::Type_System, Path::resolved(optarg)));
             break;
-        case 'A': {
-            bool ok;
-            serverOpts.astCache = String(optarg).toLongLong(&ok);
-            if (!ok || serverOpts.astCache < 0) {
-                fprintf(stderr, "Invalid arg to --cache-AST %s\n", optarg);
-                return 1;
-            }
-            break; }
         case 'L':
             logFile = optarg;
             break;
@@ -556,7 +611,7 @@ int main(int argc, char** argv)
                 ++logLevel;
             break;
         case '?': {
-            fprintf(stderr, "Run rc --help for help\n");
+            fprintf(stderr, "Run rdm --help for help\n");
             return 1; }
         }
     }
@@ -565,8 +620,17 @@ int main(int argc, char** argv)
         return 1;
     }
 
-    if (sigHandler)
+    if (serverOpts.headerErrorJobCount == -1) {
+        serverOpts.headerErrorJobCount = std::max(1, serverOpts.jobCount / 2);
+    } else {
+        serverOpts.headerErrorJobCount = std::min(serverOpts.headerErrorJobCount, serverOpts.jobCount);
+    }
+
+    if (sigHandler) {
         signal(SIGSEGV, sigSegvHandler);
+        signal(SIGILL, sigSegvHandler);
+        signal(SIGABRT, sigSegvHandler);
+    }
 
     // Shell-expand logFile
     Path logPath(logFile); logPath.resolve();
@@ -581,13 +645,49 @@ int main(int argc, char** argv)
     loop->init(EventLoop::MainEventLoop|EventLoop::EnableSigIntHandler);
 
     std::shared_ptr<Server> server(new Server);
+    if (!serverOpts.tests.isEmpty()) {
+        char buf[1024];
+        Path path;
+        while (true) {
+            strcpy(buf, "/tmp/rtags-test-XXXXXX");
+            if (!mkdtemp(buf)) {
+                fprintf(stderr, "Failed to mkdtemp (%d)\n", errno);
+                return 1;
+            }
+            path = buf;
+            path.resolve();
+            break;
+        }
+        serverOpts.dataDir = path;
+        strcpy(buf, "/tmp/rtags-sock-XXXXXX");
+        if (!mkstemp(buf)) {
+            fprintf(stderr, "Failed to mkstemp (%d)\n", errno);
+            return 1;
+        }
+        serverOpts.socketFile = buf;
+        serverOpts.socketFile.resolve();
+    }
+    if (defaultDataDir) {
+        Path migration = String::format<128>("%s.rtags-file", Path::home().constData());
+        if (migration.isDir()) {
+            Rct::removeDirectory(serverOpts.dataDir);
+            rename(migration.constData(), serverOpts.dataDir.constData());
+            error() << "Migrated datadir from ~/.rtags-file ~/.rtags";
+        }
+    }
     serverOpts.dataDir = serverOpts.dataDir.ensureTrailingSlash();
     if (!server->init(serverOpts)) {
         cleanupLogging();
         return 1;
     }
 
+    if (!serverOpts.tests.isEmpty()) {
+        return server->runTests() ? 0 : 1;
+    }
+
     loop->exec();
+    const int ret = server->exitCode();
+    server.reset();
     cleanupLogging();
-    return 0;
+    return ret;
 }

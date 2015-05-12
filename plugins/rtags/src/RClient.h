@@ -1,4 +1,4 @@
-/* This file is part of RTags.
+/* This file is part of RTags (http://rtags.net).
 
 RTags is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -28,10 +28,113 @@ class Connection;
 class RClient
 {
 public:
+    enum OptionType {
+        None = 0,
+        AbsolutePath,
+        AllReferences,
+        AllTargets,
+        BuildIndex,
+        CheckReindex,
+        ClassHierarchy,
+        Clear,
+        CodeCompleteAt,
+        CompilationFlagsOnly,
+        CompilationFlagsSplitLine,
+        Compile,
+        ConnectTimeout,
+        ContainingFunction,
+        CurrentFile,
+        CursorKind,
+        DeclarationOnly,
+        DeleteProject,
+        Dependencies,
+        Diagnostics,
+        DisplayName,
+        DumpCompilationDatabase,
+        DumpCompletions,
+        DumpFile,
+        DumpIncludeHeaders,
+        ElispList,
+        FilterSystemHeaders,
+        FindFile,
+        FindFilePreferExact,
+        FindProjectBuildRoot,
+        FindProjectRoot,
+        FindSymbols,
+        FindVirtuals,
+        FixIts,
+        FollowLocation,
+        GenerateTest,
+        GuessFlags,
+        HasFileManager,
+        Help,
+        IncludeFile,
+        IMenu,
+        IsIndexed,
+        IsIndexing,
+        JobCount,
+        ListBuffers,
+        ListSymbols,
+        LoadCompilationDatabase,
+        LogFile,
+        Man,
+        MatchCaseInsensitive,
+        MatchRegex,
+        Max,
+        NoColor,
+        NoContext,
+        NoSortReferencesByInput,
+        NoUnescapeCompileCommands,
+        PathFilter,
+        PrepareCodeCompleteAt,
+        PreprocessFile,
+        Project,
+        ProjectRoot,
+        QuitRdm,
+        RTagsConfig,
+        RangeFilter,
+        RdmLog,
+        ReferenceLocation,
+        ReferenceName,
+        Reindex,
+        ReloadFileManager,
+        ReloadProjects,
+        RemoveFile,
+        Rename,
+        ReverseSort,
+        SendDiagnostics,
+        SetBuffers,
+        Silent,
+        SilentQuery,
+        SocketFile,
+        Sources,
+        Status,
+        StripParen,
+        Suspend,
+        SymbolInfo,
+        SymbolInfoIncludeParents,
+        SymbolInfoExcludeReferences,
+        SymbolInfoExcludeTargets,
+        SynchronousCompletions,
+        Timeout,
+        UnescapeCompileCommands,
+        UnsavedFile,
+        Verbose,
+        Version,
+        WildcardSymbolNames,
+        XmlDiagnostics,
+        NumOptions
+    };
+
     RClient();
     ~RClient();
     int exec();
-    bool parse(int &argc, char **argv);
+    enum ParseStatus {
+        Parse_Exec,
+        Parse_Ok,
+        Parse_Error
+    };
+    ParseStatus parse(int &argc, char **argv);
 
     int max() const { return mMax; }
     int logLevel() const { return mLogLevel; }
@@ -49,13 +152,15 @@ public:
 
     String socketFile() const { return mSocketFile; }
     Path projectRoot() const { return mProjectRoot; }
-    unsigned queryFlags() const { return mQueryFlags; }
+    Flags<QueryMessage::Flag> queryFlags() const { return mQueryFlags; }
 
     int argc() const { return mArgc; }
     char **argv() const { return mArgv; }
-    void onNewMessage(const std::shared_ptr<Message> &message, Connection *);
+    void onNewMessage(const std::shared_ptr<Message> &message, const std::shared_ptr<Connection> &);
 private:
-    void addQuery(QueryMessage::Type t, const String &query = String(), unsigned int extraQueryFlags = 0);
+    void addQuery(QueryMessage::Type t, const String &query = String(),
+                  Flags<QueryMessage::Flag> extraQueryFlags = Flags<QueryMessage::Flag>());
+    void addQuitCommand(int exitCode);
 
     void addLog(int level);
     enum EscapeMode {
@@ -67,7 +172,7 @@ private:
     void addCompile(const Path &cwd, const String &args, EscapeMode escapeMode);
     void addCompile(const Path &dir, EscapeMode escapeMode);
 
-    unsigned mQueryFlags;
+    Flags<QueryMessage::Flag> mQueryFlags;
     int mMax, mLogLevel, mTimeout, mMinOffset, mMaxOffset, mConnectTimeout, mBuildIndex;
     Set<String> mPathFilters;
     UnsavedFiles mUnsavedFiles;
@@ -76,6 +181,7 @@ private:
     String mSocketFile;
     Path mCurrentFile;
     EscapeMode mEscapeMode;
+    bool mGuessFlags;
     Path mProjectRoot;
 
     int mArgc;

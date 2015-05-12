@@ -1,4 +1,4 @@
-/* This file is part of RTags.
+/* This file is part of RTags (http://rtags.net).
 
    RTags is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,21 +17,17 @@
 #include "ClangIndexer.h"
 #include "RTagsClang.h"
 #include "Source.h"
+#include "Project.h"
 #include <rct/Log.h>
 #include <rct/StopWatch.h>
 #include <rct/String.h>
 #include <signal.h>
 #include <syslog.h>
-
-// #ifdef NDEBUG
-bool suspendOnSigSegv = false;
-// #else
-// bool suspendOnSigSegv = true;
-// #endif
+#include "Server.h"
 
 static void sigHandler(int signal)
 {
-    if (suspendOnSigSegv) {
+    if (ClangIndexer::serverOpts() & Server::SuspendRPOnCrash) {
         while (true) {
             fprintf(stderr, "rp crashed..., waiting for debugger\n%d\n", getpid());
             sleep(1);
@@ -45,6 +41,18 @@ static void sigHandler(int signal)
     ::closelog();
     _exit(1);
 }
+
+const Server::Options *serverOptions()
+{
+    return 0;
+}
+
+void saveFileIds()
+{}
+
+Set<Symbol> findTargets(const std::shared_ptr<Project> &, const Symbol &) { return Set<Symbol>(); }
+Set<Symbol> findCallers(const std::shared_ptr<Project> &, const Symbol &) { return Set<Symbol>(); }
+String findSymbolNameByUsr(const std::shared_ptr<Project> &, uint32_t, const String &) { return String(); }
 
 struct SyslogCloser
 {

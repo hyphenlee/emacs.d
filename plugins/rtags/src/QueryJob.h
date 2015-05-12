@@ -1,4 +1,4 @@
-/* This file is part of RTags.
+/* This file is part of RTags (http://rtags.net).
 
 RTags is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -13,40 +13,44 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with RTags.  If not, see <http://www.gnu.org/licenses/>. */
 
-#ifndef Job_h
-#define Job_h
+#ifndef QueryJob_h
+#define QueryJob_h
 
 #include <rct/ThreadPool.h>
 #include <rct/List.h>
 #include <rct/String.h>
 #include <rct/EventLoop.h>
 #include <rct/SignalSlot.h>
-#include <rct/RegExp.h>
+#include <regex>
 #include "RTagsClang.h"
 #include "QueryMessage.h"
 #include <mutex>
+#include <rct/Flags.h>
 
-class CursorInfo;
 class Location;
 class QueryMessage;
 class Project;
 class Connection;
+struct Symbol;
 class QueryJob
 {
 public:
-    enum Flag {
+    enum JobFlag {
         None = 0x0,
         WriteUnfiltered = 0x1,
         QuoteOutput = 0x2,
         QuietJob = 0x4
     };
     enum { Priority = 10 };
-    QueryJob(const std::shared_ptr<QueryMessage> &msg, unsigned jobFlags, const std::shared_ptr<Project> &proj);
-    QueryJob(unsigned jobFlags, const std::shared_ptr<Project> &project);
+    QueryJob(const std::shared_ptr<QueryMessage> &msg,
+             const std::shared_ptr<Project> &proj,
+             Flags<JobFlag> jobFlags = Flags<JobFlag>());
+    QueryJob(const std::shared_ptr<Project> &project,
+             Flags<JobFlag> jobFlags = Flags<JobFlag>());
     ~QueryJob();
 
-    bool hasFilter() const { return mPathFilters || mPathFiltersRegExp; }
-    List<String> pathFilters() const { return mPathFilters ? *mPathFilters : List<String>(); }
+    bool hasFilter() const { return !mPathFilters.isEmpty() || !mPathFiltersRegex.isEmpty(); }
+    List<String> pathFilters() const { return mPathFilters; }
     uint32_t fileFilter() const;
     enum WriteFlag {
         NoWriteFlags = 0x0,
@@ -54,44 +58,49 @@ public:
         DontQuote = 0x2,
         Unfiltered = 0x4
     };
-    bool write(const String &out, unsigned flags = NoWriteFlags);
-    bool write(const std::shared_ptr<CursorInfo> &info, unsigned flags = NoWriteFlags);
-    bool write(const Location &location, unsigned flags = NoWriteFlags);
+    bool write(const String &out, Flags<WriteFlag> flags = Flags<WriteFlag>());
+    bool write(const Symbol &symbol,
+               Flags<Symbol::ToStringFlag> sourceFlags = Flags<Symbol::ToStringFlag>(),
+               Flags<WriteFlag> writeFlags = Flags<WriteFlag>());
+    bool write(const Location &location, Flags<WriteFlag> writeFlags = Flags<WriteFlag>());
 
-    template <int StaticBufSize> bool write(unsigned flags, const char *format, ...);
+    template <int StaticBufSize> bool write(Flags<WriteFlag> writeFlags, const char *format, ...);
     template <int StaticBufSize> bool write(const char *format, ...);
-    unsigned jobFlags() const { return mJobFlags; }
-    void setJobFlags(unsigned flags) { mJobFlags = flags; }
-    void setJobFlag(Flag flag, bool on = true) { if (on) { mJobFlags |= flag; } else { mJobFlags &= ~flag; } }
-    unsigned queryFlags() const { return mQueryMessage ? mQueryMessage->flags() : 0; }
-    unsigned keyFlags() const { return QueryMessage::keyFlags(queryFlags()); }
+    Flags<JobFlag> jobFlags() const { return mJobFlags; }
+    void setJobFlags(Flags<JobFlag> flags) { mJobFlags = flags; }
+    void setJobFlag(JobFlag flag, bool on = true) { mJobFlags.set(flag, on); }
+    Flags<QueryMessage::Flag> queryFlags() const { return mQueryMessage ? mQueryMessage->flags() : Flags<QueryMessage::Flag>(); }
+    std::shared_ptr<QueryMessage> queryMessage() const { return mQueryMessage; }
+    Flags<Location::KeyFlag> keyFlags() const { return QueryMessage::keyFlags(queryFlags()); }
     bool filter(const String &val) const;
     Signal<std::function<void(const String &)> > &output() { return mOutput; }
-    std::shared_ptr<Project> project() const { return mProject.lock(); }
+    std::shared_ptr<Project> project() const { return mProject; }
     virtual int execute() = 0;
-    int run(Connection *connection = 0);
+    int run(const std::shared_ptr<Connection> &connection = 0);
     bool isAborted() const { std::lock_guard<std::mutex> lock(mMutex); return mAborted; }
     void abort() { std::lock_guard<std::mutex> lock(mMutex); mAborted = true; }
     std::mutex &mutex() const { return mMutex; }
-    bool &aborted() { return mAborted; }
-    Connection *connection() const { return mConnection; }
+    const std::shared_ptr<Connection> &connection() const { return mConnection; }
 private:
     mutable std::mutex mMutex;
     bool mAborted;
     int mLinesWritten;
-    bool writeRaw(const String &out, unsigned flags);
+    bool writeRaw(const String &out, Flags<WriteFlag> flags);
     std::shared_ptr<QueryMessage> mQueryMessage;
-    unsigned mJobFlags;
+    Flags<JobFlag> mJobFlags;
     Signal<std::function<void(const String &)> > mOutput;
-    std::weak_ptr<Project> mProject;
-    List<String> *mPathFilters;
-    List<RegExp> *mPathFiltersRegExp;
+    std::shared_ptr<Project> mProject;
+    List<String> mPathFilters;
+    List<std::regex> mPathFiltersRegex;
     String mBuffer;
-    Connection *mConnection;
+    std::shared_ptr<Connection> mConnection;
 };
 
+RCT_FLAGS(QueryJob::JobFlag);
+RCT_FLAGS(QueryJob::WriteFlag);
+
 template <int StaticBufSize>
-inline bool QueryJob::write(unsigned flags, const char *format, ...)
+inline bool QueryJob::write(Flags<WriteFlag> flags, const char *format, ...)
 {
     va_list args;
     va_start(args, format);

@@ -1,4 +1,4 @@
-/* This file is part of RTags.
+/* This file is part of RTags (http://rtags.net).
 
 RTags is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -30,11 +30,11 @@ static inline uint64_t createMask(int startBit, int bitCount)
     return mask;
 }
 
-const uint64_t Location::FILEID_MASK = createMask(64 - FileBits, FileBits);
-const uint64_t Location::LINE_MASK = createMask(64 - FileBits - LineBits, LineBits);
-const uint64_t Location::COLUMN_MASK = createMask(64 - FileBits - LineBits - ColumnBits, ColumnBits);
+const uint64_t Location::FILEID_MASK = createMask(0, FileBits);
+const uint64_t Location::LINE_MASK = createMask(FileBits, LineBits);
+const uint64_t Location::COLUMN_MASK = createMask(FileBits + LineBits, ColumnBits);
 
-String Location::key(unsigned flags) const
+String Location::key(Flags<KeyFlag> flags) const
 {
     if (isNull())
         return String();
@@ -44,33 +44,58 @@ String Location::key(unsigned flags) const
     String ctx;
     if (flags & Location::ShowContext) {
         ctx += '\t';
-        ctx += context();
+        ctx += context(flags);
         extra += ctx.size();
     }
 
     const Path p = path();
 
-    String ret(p.size() + extra, '0');
+    String ret(p.size() + extra, ' ');
 
-    snprintf(ret.data(), ret.size() + extra + 1, "%s:%d:%d:%s", p.constData(),
-             l, c, ctx.constData());
+    const int w = snprintf(ret.data(), ret.size() + extra + 1, "%s:%d:%d:", p.constData(), l, c);
+    if (!ctx.isEmpty()) {
+        memcpy(ret.data() + w, ctx.constData(), ctx.size());
+    }
     return ret;
 }
 
-String Location::context() const
+String Location::context(Flags<KeyFlag> flags) const
 {
-    Path p = path();
-    FILE *f = fopen(p.constData(), "r");
-    if (f) {
-        const unsigned int l = line();
-        for (unsigned i=1; i<l; ++i) {
-             Rct::readLine(f);
-         }
+    const String code = path().readAll();
+    String ret;
+    if (!code.isEmpty()) {
+        unsigned int l = line();
+        if (!l)
+            return String();
+        const char *ch = code.constData();
+        while (--l) {
+            ch = strchr(ch, '\n');
+            if (!ch)
+                return String();
+            ++ch;
+        }
+        const char *end = strchr(ch, '\n');
+        if (!end)
+            return String();
 
-         char buf[1024] = { '\0' };
-         const int len = Rct::readLine(f, buf, 1023);
-         fclose(f);
-         return String(buf, len);
-     }
-     return String();
- }
+        ret.assign(ch, end - ch);
+        // error() << "foobar" << ret << bool(flags & NoColor);
+        if (!(flags & NoColor)) {
+            const int col = column() - 1;
+            if (col + 1 < ret.size()) {
+                int last = col;
+                if (ret.at(last) == '~')
+                    ++last;
+                while (ret.size() > last && (isalnum(ret.at(last)) || ret.at(last) == '_'))
+                    ++last;
+                static const char *color = "\x1b[32;1m"; // dark yellow
+                static const char *resetColor = "\x1b[0;0m";
+                // error() << "foobar"<< end << col << ret.size();
+                ret.insert(last, resetColor);
+                ret.insert(col, color);
+            }
+            // printf("[%s]\n", ret.constData());
+        }
+    }
+    return ret;
+}

@@ -88,7 +88,7 @@
 ;(set-default-font "fontset-Consolas")
 
 (custom-set-faces
- '(default ((t ( :weight normal :height 110 :width normal)))))
+ '(default ((t ( :weight normal :height 100 :width normal)))))
 
 (provide 'wttr-font)
 

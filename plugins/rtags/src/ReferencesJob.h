@@ -1,4 +1,4 @@
-/* This file is part of RTags.
+/* This file is part of RTags (http://rtags.net).
 
 RTags is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -22,14 +22,14 @@ along with RTags.  If not, see <http://www.gnu.org/licenses/>. */
 #include "Location.h"
 #include "RTags.h"
 
-class CursorInfo;
+class SymbolInfo;
 class ReferencesJob : public QueryJob
 {
 public:
     ReferencesJob(const Location &location, const std::shared_ptr<QueryMessage> &query, const std::shared_ptr<Project> &project);
     ReferencesJob(const String &symbolName, const std::shared_ptr<QueryMessage> &query, const std::shared_ptr<Project> &project);
 protected:
-    virtual int execute();
+    virtual int execute() override;
 private:
     Set<Location> locations;
     const String symbolName;

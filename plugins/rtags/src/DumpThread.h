@@ -1,5 +1,5 @@
 
-/* This file is part of RTags.
+/* This file is part of RTags (http://rtags.net).
 
    RTags is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -26,14 +26,14 @@ class Connection;
 class DumpThread : public Thread
 {
 public:
-    DumpThread(const std::shared_ptr<QueryMessage> &queryMessage, const Source &source, Connection *conn);
-    virtual void run();
+    DumpThread(const std::shared_ptr<QueryMessage> &queryMessage, const Source &source, const std::shared_ptr<Connection> &conn);
+    virtual void run() override;
 private:
     static CXChildVisitResult visitor(CXCursor cursor, CXCursor, CXClientData userData);
     void writeToConnetion(const String &message);
-    const unsigned int mQueryFlags;
+    const Flags<QueryMessage::Flag> mQueryFlags;
     const Source mSource;
-    Connection *mConnection;
+    std::shared_ptr<Connection> mConnection;
     Hash<Path, uint32_t> mFiles;
     int mIndentLevel;
 };

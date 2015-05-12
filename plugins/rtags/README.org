@@ -1,83 +1,213 @@
 [[https://travis-ci.org/Andersbakken/rtags][https://travis-ci.org/Andersbakken/rtags.svg?branch=master]]
 
 * Introduction
-
 RTags is a client/server application that indexes C/C++ code and keeps
-a persistent in-memory database of references, declarations,
+a persistent file-based database of references, declarations,
 definitions, symbolnames etc. There's also limited support for
-ObjC/ObjC++. It allows you to find symbols by name (including class
-and namespace scope). Most importantly we give you proper
+ObjC/ObjC++. It allows you to find symbols by name (including nested
+class and namespace scope). Most importantly we give you proper
 follow-symbol and find-references support. We also have neat little
 things like rename-symbol, integration with clang's "fixits"
 (http://clang.llvm.org/diagnostics.html). We also integrate with
-flymake using clang's vastly superior errors and warnings. Since rtags
-constantly will reindex "dirty" files you get live updating of
+flymake using clang's vastly superior errors and warnings. Since
+RTags constantly will reindex "dirty" files you get live updates of
 compiler errors and warnings. Since we already know how to compile
 your sources we have a way to quickly bring up the preprocessed output
 of the current source file in a buffer.
 
 While existing taggers like gnu global, cscope, etags, ctags etc do a
-good job for C they often fall a little bit short for C++. With its
+decent job for C they often fall a little bit short for C++. With its
 incredible lexical complexity, parsing C++ is an incredibly hard task
 and we make no bones about the fact that the only reason we are able
 to improve on the current tools is because of clang
-(http://clang.llvm.org/). RTags is named rtags in recognition of
+(http://clang.llvm.org/). RTags is named RTags in recognition of
 Roberto Raggi on whose C++ parser we intended to base this project but
 he assured us clang was the way to go. The name stuck though.
 
-* Build requirements
+* TLDR Quickstart
+  Build RTags, start rdm, index some files, (rtags-follow-symbol-at-point)
+#+BEGIN_SRC
+$ cd rtags
+$ cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=1
+$ make
+$ rdm &
+$ rc -J .
+$ # wait for rdm to be silent
+$ emacs src/rdm.cpp
+(require 'rtags)
+# Go to /Users/abakken/dev/rtags-master/src/rdm.cpp:30:34     if (Server *server = Server::instance())
+#                                                                                         /|\
+#                                                                                          |
+(rtags-follow-symbol-at-point)
+# Your location is now on the definition of Server::instance()
+#+END_SRC
+
+* Installing RTags
+** Prerequisites
+There are a few prerequisites you need to have in order to build RTags
+
+1. libclang, preferrably 3.2 or higher, on Linux you may be able to
+   use your distro package manager to install this. On OS X you can
+   use homebrew or possibly other package managers, though see below
+   for details if you plan to tag projects that use C++11 features
+   (such as RTags itself). Alternatively you can grab the sources from
+   [[http://llvm.org/releases/download.html][llvm.org]] and build it yourself.
+2. A modern compiler. This means GCC >= 4.7 or Clang >= 3.2. RTags
+   makes extensive use of C++11 features such as variadic templates
+   and threading utility classes from the C++ standard library.
+3. CMake (>= 2.8), the build system used by RTags.
+4. RTags might very well work with much older emacsen but the oldest
+   version we test with is 24.3.1. There's no particular effort made
+   to support older versions but patches that make it work are
+   welcome.
+
+** C++11 on OS X
+
+If you plan to tag projects using C++11 features on OS X then you'll
+need a custom libclang, the default one built through homebrew does
+not support using LLVM's [[http://libcxx.llvm.org/][libc++]]. You'll need to install one from
+homebrew-versions instead and explicitly tell it to enable libc++. For
+LLVM 3.6 the following works:
+
+#+BEGIN_SRC
+$ brew tap homebrew/versions
+$ brew install llvm36 --with-libcxx --with-clang --without-assertions --rtti
+#+END_SRC
+
+or you can install clang and llvm from macports
+
+#+BEGIN_SRC
+sudo port install clang-3.5
+#+END_SRC
+
+** Building RTags
+To build RTags, you need to checkout the repository's submodules, and
+run CMake.
+
+#+BEGIN_SRC
+$ git submodule init
+$ git submodule update
+#+END_SRC
+
+We recommend building in a separate directory to keep the build files
+separate from the source, but you can run =cmake= in the source tree
+if you prefer.
+#+BEGIN_SRC
+$ mkdir build
+$ cd build
+$ cmake ..
+$ make
+$ make install
+#+END_SRC
+If you want to configure the build interactively, run =ccmake= (CMake
+with an ncurses UI) instead of =cmake=.
+
+* Finding clang
+  RTags needs three pieces of information about libclang. All of these
+  can be provided to cmake by way of an environment variable or a cmake
+  variable. If not provided we will try to find llvm-config and
+  interrogate it for the information. You can tell rtags which
+  llvm-config to use like this:
+#+BEGIN_SRC
+  LLVM_CONFIG=/path/to/llvm-config cmake .
+#+END_SRC
+  or
+#+BEGIN_SRC
+  cmake -DLLVM_CONFIG=/path/to/llvm-config .
+#+END_SRC
+  If you don't we will look for variations of the llvm-config
+  executable name in your $PATH.
+
+  The three things we need are:
+  1. CLANG_CXXFLAGS
+     Usually something like this:
+#+BEGIN_SRC
+     $ llvm-config --cxxflags
+     -I/usr/local/Cellar/llvm36/3.6.0/lib/llvm-3.6/include  -DNDEBUG -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS -O3  -std=c++11 -fvisibility-inlines-hidden -fno-exceptions -fno-common -Woverloaded-virtual -Wcast-qual
+#+END_SRC
+  2. CLANG_LIBDIR
+     Usually something like this:
+#+BEGIN_SRC
+     $ llvm-config --libdir
+     /usr/local/Cellar/llvm36/3.6.0/lib/llvm-3.6/lib
+#+END_SRC
+     We need this to locate clang's system headers and we will assume
+     that they are located in:
+     ${CLANG_LIBDIR}/clang/CLANG_VERSION_STRING/include (/usr/local/Cellar/llvm36/3.6.0/lib/llvm-3.6/lib/clang/3.6.0/include)
+     There should be headers like stdarg.h and limits.h in this
+     directory.
+
+  2. CLANG_LIBS
+     Usually something like this:
+#+BEGIN_SRC
+     -L/usr/local/Cellar/llvm36/3.6.0/lib/llvm-3.6/lib -lclang
+#+END_SRC
+     Unless specified we will take try to find these libraries using
+     cmake's find_library features and/or assuming that they there
+     will be a libclang.(so|dylib) in ${CLANG_LIBDIR}
+
+Like with LLVM_CONFIG these variables can be override as a cmake
+variable (cmake -DCLANG_LIBDIR=...) or an environment variable
+(CLANG_LIBDIR=... cmake)
+
 RTags uses C++11 features and requires a relatively new
 compiler. Gcc version >= 4.8 or clang >= 3.2 works.
 
-* Usage
-RTags is meant to be used like this:
+We also require the following libraries:
+- libclang (Not sure what the minimum version is but >= 3.5 is
+  recommended)
+- libcurses (for some reason clang requires this)
 
-rdm runs in the background and monitors all your indexed files for
-changes and reindexes when a source file or one of its dependencies is
-modified.
+* Setup
 
-To get information about a symbol or find references to it you would
-use the command line client rc.
-
-E.g.
-#+BEGIN_SRC
-$ rc --follow-location Job.cpp,400
-/home/abakken/dev/rtags/src/Job.h,2186      List<RegExp> *mPathFiltersRegExp;
-#+END_SRC
-
-We maintain a set of elisp bindings so you don't acually have to call
-this yourself but we feel that this architecture allows us to add
-bindings to other editors (like vim) at a later point.
-
-rc has a vast number of commands and options and we intend to write a
-man page at some point. Most users will have limited interest in ever
-calling it manually and would rather just use the interactive elisp
-functions.
-
-* Architecture
-
-Since clang requires us to really compile the file we need to know the
-actual c(xx)flags for the source files. In essence RTags indexes all
-the source files it has been told about and all the headers included
-by these source files. To tell rtags about a source (you only need to
-do this once, after that it will monitor the file for changes using
-inotify/kqueue) you need call this command:
+  rdm runs in the background and monitors all your indexed files for
+  changes and reindexes when a source file or one of its dependencies
+  is modified. Since clang is a fully compliant compiler it needs
+  specific information about how your sources are compiled to be able
+  to properly index them. This is done through telling rdm about the
+  compile line like this:
 
 #+BEGIN_SRC
-$ rc --compile "gcc -W... -I... -D... source.c"
+$ rc -c gcc -I... -fsomeflag -c foobar.c
+$ rc -J /path/to/a/directory/containing/compile_commands.json
 #+END_SRC
 
-One could do this manually or script some per/project parsing of
-Makefiles/CMakeLists.txt/etc but the way we normally recommend doing
-it is like this:
+- Normally one achieves this in one of these ways:
+
+- Make the build system output all compilation commands. E.g. if
+  you're using ninja (http://martine.github.io/ninja/) you can do
+  something like this:
+
+#+BEGIN_SRC
+$ ninja -t commands | rc -c -
+#+END_SRC
+
+After this command rdm will index all the sources in your project.
+
+If you're using cmake you can do this:
+
+#+BEGIN_SRC
+cmake . -DCMAKE_EXPORT_COMPILE_COMMANDS=1
+rc -J .
+#+END_SRC
+
+This will produce a compile_commands.json which, if used with rc -J,
+will index all your soures.
+
+There are very likely similar things you can do with other build
+systems that we're unfamiliar with.
+
+- The other approach to getting your files indexed is to
+  man-in-the-middle your compiler.
+
+This can be done like this:
 
 #+BEGIN_SRC
 
 $ ln -s /path/to/rtags/bin/gcc-rtags-wrapper.sh /somewhere/that/is/in/your/path/before/usr/bin/gcc
 $ ln -s /path/to/rtags/bin/gcc-rtags-wrapper.sh /somewhere/that/is/in/your/path/before/usr/bin/c++
 $ ln -s /path/to/rtags/bin/gcc-rtags-wrapper.sh /somewhere/that/is/in/your/path/before/usr/bin/cc
-$ ln -s /path/to/rtags/bin/gcc-rtags-wrapper.sh
-/somewhere/that/is/in/your/path/before/usr/bin/g++
+$ ln -s /path/to/rtags/bin/gcc-rtags-wrapper.sh /somewhere/that/is/in/your/path/before/usr/bin/g++
 
 #+END_SRC
 E.g.
@@ -89,11 +219,9 @@ $ which -a gcc | xargs file
 
 #+END_SRC
 
-This script will essentially stick itself in the middle of your
-compiles and notify rtags that you want this file indexed and then
-invoke the next entry in the $PATH that matches $0. This is a similar
-approach to the one taken by distributed build systems like icecream
-(https://github.com/icecc/icecream).
+Now every time you compile a file with `which gcc` rc will get its
+grubby hands all over your command line and make sure RTags knows
+about it.
 
 RTags will group source files into projects based on some heuristics.
 
@@ -115,102 +243,45 @@ about the current buffer when we call rc from elisp so that rdm can
 update its current project on demand.
 
 RTags keeps a cache of indexed data so you don't have to reindex
-everything if you restart it. Note that reloading this data sometimes
-takes quite a few seconds (could be 10+ for big projects) and emacs
-will be blocked until it is finished if an emacs command triggered
-this reload. There's not a lot of good options to avoid this. We
-definitely don't want to make Emacs' rc integration async since we'd
-then have to move your cursor behind your back when the command
-eventually finished and nobody wants that. We're looking into better
-options.
+everything if you restart it.
 
 The location of this data is by default ~/.rtags but can be overridden
-by passing --data-dir /other/dir to rdm or putting something like this
-in your ~/.rdmrc:
+by passing =--data-dir /other/dir= to rdm or putting something like
+this in your ~/.rdmrc:
 
 #+BEGIN_SRC
 $ cat ~/.rdmrc
 --data-dir=/other/dir
 #+END_SRC
 
-* Installing rtags
+* Usage
 
-*Prerequisites*
+  Now that your files are indexed you can start using rtags. Normally
+  you would do this from your editor but the way to extract this
+  information from rdm is to use the command line tool rc.
 
-There are a few prerequisites you need to have in order to build rtags
-
-1. libclang, preferrably 3.2 or higher, on Linux you may be able to use your distro package manager to install this. On OS X you can use homebrew or possibly other package managers, though see below for details if you plan to tag projects that use C++11 features (such as RTags itself). Alternatively you can grab the sources from [[http://llvm.org/releases/download.html][llvm.org]] and build it yourself.
-2. A modern compiler. This means GCC >= 4.7 or Clang >= 3.2. RTags makes extensive use of C++11 features such as variadic templates and threading utility classes from the C++ standard library.
-
-*C++11 on OS X*
-
-If you plan to tag projects using C++11 features on OS X then you'll need a custom libclang, the default one built through homebrew does not support using LLVM's [[http://libcxx.llvm.org/][libc++]]. You'll need to install one from homebrew-versions instead and explicitly tell it to enable libc++. For LLVM 3.4 the following works:
-
+  E.g.
 #+BEGIN_SRC
-$ brew tap homebrew/versions
-$ brew install llvm34 --with-libcxx --with-clang --disable-assertions --rtti
+$ rdm &
+$ ninja -t commands | rc -c
+$ rc --follow-location Job.cpp:20:10
+/home/abakken/dev/rtags/src/Job.h:10:18      List<RegExp> *mPathFiltersRegExp;
 #+END_SRC
 
-or you can install clang and llvm from macports
+  A location has the format of file:line:column.
 
-#+BEGIN_SRC
-sudo port install clang-3.5
-#+END_SRC
+  For Emacs we maintain a set of elisp bindings that allows you to
+  control rtags from your editor. There are projects that provide
+  integration for other editors out there.
 
-Feel free to inspect the formula before installing.
+  Vim: https://github.com/lyuts/vim-rtags and https://github.com/shaneharper/vim-rtags
 
-*RTags daemon setup*
+  Sublime Text: https://github.com/rampage644/sublime-rtags
 
-At this point you should be able to start the installation process. First of all you'll want to start the rdm daemon
-
-#+BEGIN_SRC
-rdm &
-#+END_SRC
-
-Now you'll need to be able to tell rtags what source files you want to index and what compilation flags they require. There are a few different ways of doing this.
-
-- Use LLVM's [[http://clang.llvm.org/docs/JSONCompilationDatabase.html][compilation database]], to do this you simply run
-
-#+BEGIN_SRC
-rc -J
-#+END_SRC
-
-you may also pass an optional directory to -J telling rtags to load the compilation database from a specific directory instead of the current one.
-
-- If you use [[http://martine.github.io/ninja/][ninja]] as your build tool then you can do the following
-
-#+BEGIN_SRC
-ninja -t commands | rc --compile
-#+END_SRC
-
-- If you use make or some other build system where it's not trivial to get a list of all compile commands then you'll likely want to make rtags intercept your compile commands. You can also do this if you just want to index all source files you compile and not have to remember to load the compilation database or run a separate command for each project. To do this you can do the following
-
-#+BEGIN_SRC
-cd /path/to/rtags
-cmake .
-make
-export PATH=/path/to/rtags/src:~/bin/:$PATH
-ln -s /path/to/rtags/gcc-rtags-wrapper.sh ~/bin/c++
-ln -s /path/to/rtags/gcc-rtags-wrapper.sh ~/bin/cc
-ln -s /path/to/rtags/gcc-rtags-wrapper.sh ~/bin/g++
-ln -s /path/to/rtags/gcc-rtags-wrapper.sh ~/bin/gcc
-#+END_SRC
-
-*Emacs setup*
-
-Add something like this to your .emacs:
-
-#+BEGIN_SRC
-(add-to-list 'load-path "/path/to/rtags"))
-(require 'rtags)
-#+END_SRC
-
-To enable the standard keybindings (using a prefix of C-x r) you could
-call something like this:
-
-#+BEGIN_SRC
-(rtags-enable-standard-keybindings c-mode-base-map)
-#+END_SRC
+  rc has a vast number of commands and options and we intend to write a
+  man page at some point. Most users will have limited interest in ever
+  calling them manually and would rather just use the interactive elisp
+  functions.
 
 * Elisp
 There are lots of interactive functions to call:
@@ -219,15 +290,15 @@ There are lots of interactive functions to call:
 (rtags-find-symbol-at-point)
 #+END_SRC
 
-Follow symbol under cursor. For references this goes to the
-definition (or declaration if no definition is known of the
-symbol. For declarations it goes to the definition and vice
-versa. For definitions of variables/parameters with constructors
-it goes to the constructor in question.
-If you pass a prefix argument, limit to current source file, if you
-pass a prefix argument and have narrowed the current file, limit to
-the narrowed region. This prefix argument is the same for:
-rtags-find-references-at-point, rtags-find-symbol, rtags-find-references
+Follow symbol under cursor. For references this goes to the definition
+(or declaration if no definition is known of the symbol. For
+declarations it goes to the definition and vice versa. For definitions
+of variables/parameters with constructors it goes to the constructor
+in question. If you pass a prefix argument, limit to current source
+file, if you pass a prefix argument and have narrowed the current
+file, limit to the narrowed region. This prefix argument is the same
+for: =rtags-find-references-at-point=, =rtags-find-symbol=,
+=rtags-find-references=
 
 #+BEGIN_SRC
 (rtags-find-references-at-point)
@@ -321,7 +392,7 @@ imenu infrastructure.
 (rtags-location-stack-forward)
 #+END_SRC
 
-Whenever rtags jumps somewhere it pushes a location onto its
+Whenever RTags jumps somewhere it pushes a location onto its
 stack. Jump back and forward in this stack
 
 #+BEGIN_SRC
@@ -340,7 +411,7 @@ result in a buffer. If region is active only display the
 preprocessed output for that region.
 
 #+BEGIN_SRC
-(rtags-print-cursorinfo)
+(rtags-print-symbol-info)
 #+END_SRC
 Print some info about symbol under cursor
 
@@ -375,7 +446,7 @@ debugging. Unless we have bugs it should not be necessary.
 #+BEGIN_SRC
 (rtags-show-rtags-buffer)
 #+END_SRC
-Switch to *RTags* buffer. This is the buffer where a number of
+Switch to =*RTags*= buffer. This is the buffer where a number of
 functions display their alternatives when they have more than one
 match.
 
@@ -384,12 +455,12 @@ Variables:
 #+BEGIN_SRC
 rtags-path
 #+END_SRC
-Path to rc/rdm if they're not in $PATH.
+Path to rc/rdm if they're not in =$PATH=.
 
 #+BEGIN_SRC
 rtags-jump-to-first-match
 #+END_SRC
-Similar to compilation-auto-jump-to-first-error. Whether to jump to
+Similar to =compilation-auto-jump-to-first-error=. Whether to jump to
 the first match automatically when there's more than one.
 
 #+BEGIN_SRC
@@ -402,15 +473,15 @@ rtags-find-file-prefer-exact-match
 #+END_SRC
 Whether to exclude partial matches for file names when an exact
 match is found. E.g.
-/foobar.cpp
-/bar.cpp
-If rtags-find-file-prefer-exact-match is t a query for bar.cpp
-would only return /bar.cpp, otherwise both foobar.cpp and bar.cpp
+=/foobar.cpp=
+=/bar.cpp=
+If =rtags-find-file-prefer-exact-match= is =t= a query for =bar.cpp=
+would only return =/bar.cpp=, otherwise both =foobar.cpp= and =bar.cpp=
 would be returned.
 
 - Fall back to other taggers:
   You can do something like the following to fall back to e.g. gtags
-  if rtags doesn't have a certain project indexed:
+  if RTags doesn't have a certain project indexed:
 
 #+BEGIN_SRC
 (defun use-rtags (&optional useFileManager)
@@ -461,10 +532,10 @@ would be returned.
 #+END_SRC
 
 * Videos
+Here are some videos demonstrating how to use RTags with Emacs though
+some of these may be outdated:
 
-Here are some videos demonstrating how to use rtags with emacs though some of these may be outdated:
-
-[[http://www.youtube.com/watch?v=Z4g05SjkQzM&list=PLAL6K6Ycnt4IwjIjWcYV9bFgcTG_4T1Y_&index=10][Set up rtags]]
+[[http://www.youtube.com/watch?v=Z4g05SjkQzM&list=PLAL6K6Ycnt4IwjIjWcYV9bFgcTG_4T1Y_&index=10][Set up RTags]]
 
 [[http://www.youtube.com/watch?v=J2B-z0LBL_s&list=PLAL6K6Ycnt4IwjIjWcYV9bFgcTG_4T1Y_&index=6][Set up symlinks and run the daemon]]
 
@@ -483,8 +554,5 @@ Here are some videos demonstrating how to use rtags with emacs though some of th
 [[http://www.youtube.com/watch?v=9CsoJTs58q8&list=PLAL6K6Ycnt4IwjIjWcYV9bFgcTG_4T1Y_&index=8][Enums and cursor info]]
 
 * Disclaimer
-
 RTags is still under development and is not the most stable piece of
-software you'll ever find. We crash sometimes (though admittedly
-mostly inside clang). We're constantly working to improve on it.
-
+software you'll ever find. We're constantly working to improve on it.

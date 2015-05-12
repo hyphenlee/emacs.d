@@ -36,7 +36,7 @@ CFLAGS += $(addprefix  -I, $(INCLUDE_PATH))
 
 # PROGRAM_NAME is provided in custom makefile
 $(PROGRAM_NAME): $(object-list)
-	$(LINK.c) $^ $(LDLIBS) -rpath /usr/local/Cellar/llvm35/3.5.0/lib/llvm-3.5/lib -o $@
+	$(LINK.c) $^ $(LDLIBS) -o $@
 
 
 $(OBJECT_PATH)/%.o: %.c

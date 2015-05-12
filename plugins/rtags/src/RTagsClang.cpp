@@ -1,4 +1,4 @@
-/* This file is part of RTags.
+/* This file is part of RTags (http://rtags.net).
 
    RTags is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -17,12 +17,10 @@
 #include "Server.h"
 #include <rct/StopWatch.h>
 #include "Project.h"
+#include <rct/Hash.h>
 #include <iostream>
 #include <zlib.h>
 #include "Token.h"
-
-#define __STDC_LIMIT_MACROS
-#define __STDC_CONSTANT_MACROS
 
 #ifdef HAVE_BACKTRACE
 #undef HAVE_BACKTRACE
@@ -36,7 +34,7 @@ String eatString(CXString str)
     return ret;
 }
 
-String cursorToString(CXCursor cursor, unsigned flags)
+String cursorToString(CXCursor cursor, Flags<CursorToStringFlags> flags)
 {
     const CXCursorKind kind = clang_getCursorKind(cursor);
     String ret;
@@ -46,16 +44,16 @@ String cursorToString(CXCursor cursor, unsigned flags)
         return ret;
 
     switch (RTags::cursorType(kind)) {
-    case Reference:
+    case Type_Reference:
         ret += " r";
         break;
-    case Cursor:
+    case Type_Cursor:
         ret += " c";
         break;
-    case Other:
+    case Type_Other:
         ret += " o";
         break;
-    case Include:
+    case Type_Include:
         ret += " i";
         break;
     }
@@ -70,12 +68,26 @@ String cursorToString(CXCursor cursor, unsigned flags)
     if (clang_isCursorDefinition(cursor))
         ret += " def";
 
-    if (flags & IncludeUSR)
-        ret += " " + eatString(clang_getCursorUSR(cursor));
+    if (flags & IncludeUSR) {
+        const String usr = eatString(clang_getCursorUSR(clang_getCanonicalCursor(cursor)));
+        if (!usr.isEmpty()) {
+            ret += " " + usr;
+        }
+    }
+
+    if (flags & IncludeSpecializedUsr) {
+        const CXCursor general = clang_getSpecializedCursorTemplate(cursor);
+        if (!clang_Cursor_isNull(general)) {
+            const String usr = eatString(clang_getCursorUSR(clang_getCanonicalCursor(general)));
+            if (!usr.isEmpty()) {
+                ret += " " + usr;
+            }
+        }
+    }
 
     CXString file;
-    unsigned line, col;
-    for (int pieceIndex = 0;; ++pieceIndex) {
+    unsigned int line, col;
+    for (int pieceIndex = 0; true; ++pieceIndex) {
         CXSourceRange range = clang_Cursor_getSpellingNameRange(cursor, pieceIndex, 0);
         if (clang_Range_isNull(range))
             break;
@@ -96,26 +108,10 @@ String cursorToString(CXCursor cursor, unsigned flags)
     return ret;
 }
 
-SymbolMap::const_iterator findCursorInfo(const SymbolMap &map, const Location &location)
-{
-    SymbolMap::const_iterator it = map.lower_bound(location);
-    if (it != map.end() && it->first == location) {
-        return it;
-    } else if (it != map.begin()) {
-        --it;
-        if (it->first.fileId() == location.fileId() && location.line() == it->first.line()) {
-            const int off = location.column() - it->first.column();
-            if (it->second->symbolLength > off)
-                return it;
-        }
-    }
-    return map.end();
-}
-
 void parseTranslationUnit(const Path &sourceFile, const List<String> &args,
                           CXTranslationUnit &unit, CXIndex index,
                           CXUnsavedFile *unsaved, int unsavedCount,
-                          unsigned int translationUnitFlags,
+                          Flags<CXTranslationUnit_Flags> translationUnitFlags,
                           String *clangLine)
 
 {
@@ -127,9 +123,9 @@ void parseTranslationUnit(const Path &sourceFile, const List<String> &args,
 
     const int count = args.size();
     for (int j=0; j<count; ++j) {
-        String arg = args.at(j);
         clangArgs[idx++] = args.at(j).constData();
         if (clangLine) {
+            String arg = args.at(j);
             arg.replace("\"", "\\\"");
             *clangLine += arg;
             *clangLine += ' ';
@@ -146,14 +142,15 @@ void parseTranslationUnit(const Path &sourceFile, const List<String> &args,
     for (int i=0; i<3; ++i) {
         auto error = clang_parseTranslationUnit2(index, sourceFile.constData(),
                                                  clangArgs.data(), idx, unsaved, unsavedCount,
-                                                 translationUnitFlags, &unit);
+                                                 translationUnitFlags.cast<unsigned int>(), &unit);
         if (error != CXError_Crashed)
             break;
+        usleep(100000);
     }
 #else
     unit = clang_parseTranslationUnit(index, sourceFile.constData(),
                                       clangArgs.data(), idx, unsaved, unsavedCount,
-                                      translationUnitFlags);
+                                      translationUnitFlags.cast<unsigned int>());
 #endif
     // error() << sourceFile << sw.elapsed();
 }
@@ -161,10 +158,114 @@ void parseTranslationUnit(const Path &sourceFile, const List<String> &args,
 void reparseTranslationUnit(CXTranslationUnit &unit, CXUnsavedFile *unsaved, int unsavedCount)
 {
     assert(unit);
-    if (clang_reparseTranslationUnit(unit, 0, unsaved, clang_defaultReparseOptions(unit)) != 0) {
+    if (clang_reparseTranslationUnit(unit, unsavedCount, unsaved, clang_defaultReparseOptions(unit)) != 0) {
         clang_disposeTranslationUnit(unit);
         unit = 0;
     }
+}
+
+struct ResolveAutoTypeRefUserData
+{
+    // CXCursor orig;
+    CXCursor ref;
+    int index;
+    bool ok;
+    Hash<CXCursor, bool> *seen;
+};
+
+static CXChildVisitResult resolveAutoTypeRefVisitor(CXCursor cursor, CXCursor, CXClientData data)
+{
+    ResolveAutoTypeRefUserData *userData = reinterpret_cast<ResolveAutoTypeRefUserData*>(data);
+    ++userData->index;
+    // error() << "Got cursor" << cursor << clang_getCursorReferenced(cursor);
+    const CXCursorKind kind = clang_getCursorKind(cursor);
+    if (!userData->seen->insert(cursor, true)) {
+        // error() << "I've seen" << cursor << "before";
+        return CXChildVisit_Break;
+    }
+    // userData->chain.append(kind);
+    // error() << "Got here" << cursor << userData->chain;
+    switch (kind) {
+    case CXCursor_CStyleCastExpr:
+    case CXCursor_CXXStaticCastExpr:
+    case CXCursor_CXXDynamicCastExpr:
+    case CXCursor_CXXReinterpretCastExpr:
+    case CXCursor_CXXNewExpr:
+        // error() << "Setting to ok";
+        userData->ok = true;
+        break;
+    case CXCursor_TypeRef:
+    case CXCursor_TemplateRef:
+        // error() << userData->orig << "Found typeRef" << cursor << userData->index;
+        userData->ref = cursor;
+        return CXChildVisit_Break;
+    case CXCursor_DeclRefExpr:
+    case CXCursor_CallExpr:
+    case CXCursor_UnexposedExpr: {
+        CXCursor ref = clang_getCursorReferenced(cursor);
+        // error() << userData->orig << "got ref" << ref << cursor;
+        switch (clang_getCursorKind(ref)) {
+        case CXCursor_FunctionTemplate:
+        case CXCursor_CXXMethod:
+            ref = clang_getSpecializedCursorTemplate(ref);
+            // fall through
+        case CXCursor_VarDecl:
+        case CXCursor_ParmDecl:
+        case CXCursor_FieldDecl:
+        case CXCursor_TemplateTypeParameter:
+        case CXCursor_TemplateTemplateParameter:
+        case CXCursor_FunctionDecl:
+        case CXCursor_Constructor: {
+            // error() << "Recursing for ref" << ref;
+            userData->ok = true;
+            ResolveAutoTypeRefUserData u = { /* userData->orig, */clang_getNullCursor(), 0, true, userData->seen };
+            clang_visitChildren(ref, resolveAutoTypeRefVisitor, &u);
+            // error() << "Visited for typeRef" << u.ref << clang_isInvalid(clang_getCursorKind(u.ref));
+            if (!clang_equalCursors(u.ref, clang_getNullCursor())) {
+                // error() << "Found a good cursor" << u.ref;
+                ++userData->index;
+                userData->ref = u.ref;
+                return CXChildVisit_Break;
+            }
+            if (userData->index + u.index > 10) {
+                // error() << "Gone too far";
+                return CXChildVisit_Break;
+            }
+            break; }
+        default:
+            // error() << "Nothing reffed";
+            break;
+        }
+        break; }
+    case CXCursor_ParmDecl:
+        // error() << "Breaking due to ParmDecl";
+        // nothing to find here
+        return CXChildVisit_Break;
+    default:
+        break;
+    }
+    return CXChildVisit_Recurse;
+}
+
+CXCursor resolveAutoTypeRef(const CXCursor &cursor, bool *isAuto)
+{
+    CXType type = clang_getCursorType(cursor);
+    while (type.kind == CXType_Pointer)
+        type = clang_getPointeeType(type);
+    if (type.kind == CXType_Unexposed) {
+        if (isAuto)
+            *isAuto = true;
+        // error() << "resolving" << cursor << clang_getCursorType(cursor).kind;
+        assert(clang_getCursorKind(cursor) == CXCursor_VarDecl);
+        Hash<CXCursor, bool> seen;
+        ResolveAutoTypeRefUserData userData = { /* cursor, */clang_getNullCursor(), 0, false, &seen }; //, List<CXCursorKind>() };
+        clang_visitChildren(cursor, resolveAutoTypeRefVisitor, &userData);
+        if (userData.ok)
+            return userData.ref;
+    } else if (isAuto) {
+        *isAuto = false;
+    }
+    return clang_getNullCursor();
 }
 
 static CXChildVisitResult findFirstChildVisitor(CXCursor cursor, CXCursor, CXClientData data)

@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/hyphen/.emacs.d/plugins/rtags/src/rct/cJSON/cJSON.c
+string.h
+-
+stdio.h
+-
+math.h
+-
+stdlib.h
+-
+float.h
+-
+limits.h
+-
+ctype.h
+-
+cJSON.h
+/home/hyphen/.emacs.d/plugins/rtags/src/rct/cJSON/cJSON.h
+
+/home/hyphen/.emacs.d/plugins/rtags/src/rct/cJSON/cJSON.h
+

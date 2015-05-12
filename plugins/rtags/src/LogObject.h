@@ -1,4 +1,4 @@
-/* This file is part of RTags.
+/* This file is part of RTags (http://rtags.net).
 
 RTags is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -23,31 +23,26 @@ along with RTags.  If not, see <http://www.gnu.org/licenses/>. */
 class LogObject : public LogOutput
 {
 public:
-    LogObject(Connection *conn, int level)
+    LogObject(const std::shared_ptr<Connection> &conn, int level)
         : LogOutput(level), mConnection(conn)
     {
-        conn->disconnected().connect(std::bind(&LogObject::shutdown, this));
+        conn->disconnected().connect(std::bind(&LogOutput::remove, this));
     }
 
-    void shutdown()
-    {
-        EventLoop::deleteLater(this);
-    }
-
-    virtual void log(const char *msg, int len)
+    virtual void log(const char *msg, int len) override
     {
         EventLoop::mainEventLoop()->callLaterMove(std::bind((bool(Connection::*)(Message&&))&Connection::send, mConnection, std::placeholders::_1),
                                                   ResponseMessage(String(msg, len)));
     }
 
-    virtual bool testLog(int level) const
+    virtual bool testLog(int level) const override
     {
         if (logLevel() < 0 || level < 0)
             return level == logLevel();
         return LogOutput::testLog(level);
     }
 private:
-    Connection *mConnection;
+    const std::shared_ptr<Connection> &mConnection;
 };
 
 #endif

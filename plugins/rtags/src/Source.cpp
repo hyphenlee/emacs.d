@@ -1,8 +1,25 @@
+/* This file is part of RTags (http://rtags.net).
+
+   RTags is free software: you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+
+   RTags is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with RTags.  If not, see <http://www.gnu.org/licenses/>. */
+
 #include "Source.h"
 #include "Location.h"
 #include "RTags.h"
 #include <rct/EventLoop.h>
 #include "Server.h"
+
+extern const Server::Options *serverOptions();
 
 void Source::clear()
 {
@@ -38,17 +55,20 @@ String Source::toString() const
         ret << " Build: " << buildRoot();
     if (parsed)
         ret << " Parsed: " << String::formatTime(parsed / 1000, String::DateTime);
+    if (flags & Active)
+        ret << " Active";
     return ret;
 }
 
-static inline Source::Language guessLanguageFromCompiler(const Path &fullPath) // ### not threadsafe
+static inline Source::Language guessLanguageFromCompiler(const Path &fullPath)
 {
     assert(EventLoop::isMainThread());
 
-    static const List<std::pair<RegExp, Source::Language> > &extraCompilers = Server::instance()->options().extraCompilers;
-    for (const auto &pair : extraCompilers) {
-        if (pair.first.indexIn(fullPath) != -1)
-            return pair.second;
+    if (const auto *opts = serverOptions()) {
+        for (const auto &pair : opts->extraCompilers) {
+            if (Rct::contains(fullPath, pair.first))
+                return pair.second;
+        }
     }
 
     String compiler = fullPath.fileName();
@@ -150,7 +170,7 @@ static inline void eatAutoTools(List<String> &args)
     List<String> copy = args;
     for (int i=0; i<args.size(); ++i) {
         const String &arg = args.at(i);
-        if (arg.endsWith("cc") || arg.endsWith("g++") || arg.endsWith("c++") || arg == "cd") {
+        if (!arg.startsWith("-") && (arg.endsWith("cc") || arg.endsWith("g++") || arg.endsWith("c++") || arg == "cd")) {
             if (i) {
                 args.erase(args.begin(), args.begin() + i);
                 if (testLog(Debug)) {
@@ -205,15 +225,28 @@ static inline void addIncludeArg(List<Source::Include> &includePaths,
 {
     const String &arg = args.at(idx);
     Path path;
+    auto fixPCHPath = [&path, cwd]() {
+        if (!path.exists()) {
+            for (const char *suffix : { ".gch", ".pch" }) {
+                const Path p = Path::resolved(path + suffix, Path::MakeAbsolute, cwd);
+                if (p.exists()) {
+                    path = p.mid(0, p.size() - 4);
+                    break;
+                }
+            }
+        }
+    };
     if (arg.size() == argLen) {
         path = Path::resolved(args.value(++idx), Path::MakeAbsolute, cwd);
         if (type == Source::Include::Type_None) {
+            fixPCHPath();
             arguments.append(arg);
             arguments.append(path);
         }
     } else {
         path = Path::resolved(arg.mid(argLen), Path::MakeAbsolute, cwd);
         if (type == Source::Include::Type_None) {
+            fixPCHPath();
             arguments.append(arg.left(argLen) + path);
         }
     }
@@ -248,6 +281,7 @@ static const char* valueArgs[] = {
     "-MF",
     "-MT",
     "-MQ",
+    "-gcc-toolchain",
     0
 };
 
@@ -261,6 +295,7 @@ static const char *blacklist[] = {
     "-MF",
     "-MT",
     "-MQ",
+    "-gcc-toolchain",
     0
 };
 
@@ -271,9 +306,8 @@ static inline bool hasValue(const String &arg)
             return true;
     }
 
-    if (Server *server = Server::instance()) {
-        const Set<String> &blockedArguments = server->options().blockedArguments;
-        for (const String &blockedArg : blockedArguments) {
+    if (const auto *opts = serverOptions()) {
+        for (const String &blockedArg : opts->blockedArguments) {
             if (blockedArg.endsWith('=') && blockedArg.startsWith(arg)) {
                 return true;
             }
@@ -302,8 +336,22 @@ static inline String unquote(const String& arg)
     return arg;
 }
 
-List<Source> Source::parse(const String &cmdLine, const Path &base, unsigned int flags,
-                           List<Path> *unresolvedInputLocations)
+static inline bool isCompilerWrapper(const char *fileName)
+{
+    const char *wrappers[] = {
+        "gcc-rtags-wrapper.sh",
+        "icecc",
+        "plastc"
+    };
+    for (const char *wrapper : wrappers) {
+        if (!strcmp(wrapper, fileName))
+            return true;
+    }
+    return false;
+}
+
+List<Source> Source::parse(const String &cmdLine, const Path &base,
+                           Flags<ParseFlag> parseFlags, List<Path> *unresolvedInputLocations)
 {
     String args = cmdLine;
     char quote = '\0';
@@ -371,7 +419,7 @@ List<Source> Source::parse(const String &cmdLine, const Path &base, unsigned int
 
     Language language = guessLanguageFromCompiler(split.front());
     bool hasDashX = false;
-    uint32_t sourceFlags = 0;
+    Flags<Flag> sourceFlags;
     List<String> arguments;
     Set<Define> defines;
     List<Include> includePaths;
@@ -432,7 +480,7 @@ List<Source> Source::parse(const String &cmdLine, const Path &base, unsigned int
                         define.define = def;
                     } else {
                         define.define = def.left(eq);
-                        define.value = (flags & Escape ? unquote(def.mid(eq + 1)) : def.mid(eq + 1));
+                        define.value = (parseFlags & Escape ? unquote(def.mid(eq + 1)) : def.mid(eq + 1));
                     }
                     debug("Parsing define: [%s] => [%s]%s[%s]", def.constData(),
                           define.define.constData(),
@@ -528,7 +576,7 @@ List<Source> Source::parse(const String &cmdLine, const Path &base, unsigned int
                 arguments.append(arg);
                 if (hasValue(arg)) {
                     String val = split.value(++i);
-                    if (flags & Escape)
+                    if (parseFlags & Escape)
                         val = unquote(val);
                     arguments.append(Path::resolved(val, Path::MakeAbsolute, path));
                 }
@@ -571,7 +619,7 @@ List<Source> Source::parse(const String &cmdLine, const Path &base, unsigned int
             Path resolved = front.resolved();
             // error() << "got resolved to" << resolved;
             const char *fn = resolved.fileName();
-            if (!strcmp(fn, "gcc-rtags-wrapper.sh") || !strcmp(fn, "icecc")) {
+            if (isCompilerWrapper(fn)) {
                 front = front.fileName();
                 // error() << "We're set at" << front;
             } else {
@@ -587,8 +635,7 @@ List<Source> Source::parse(const String &cmdLine, const Path &base, unsigned int
                     const Path p = Path::resolved(front, Path::RealPath, *it, &ok);
                     if (ok) {
                         const char *fn = p.fileName();
-                        if (strcmp(fn, "gcc-rtags-wrapper.sh") && strcmp(fn, "icecc")
-                            && !access(p.nullTerminated(), R_OK | X_OK)) {
+                        if (!isCompilerWrapper(fn) && !access(p.nullTerminated(), R_OK | X_OK)) {
                             // error() << "Found it at" << compiler;
                             compiler = p;
                             break;
@@ -618,6 +665,7 @@ List<Source> Source::parse(const String &cmdLine, const Path &base, unsigned int
         int idx = 0;
         for (const auto input : inputs) {
             Source &source = ret[idx++];
+            source.directory = path;
             source.fileId = input.first;
             source.compilerId = compilerId;
             source.buildRootId = buildRootId;
@@ -630,17 +678,39 @@ List<Source> Source::parse(const String &cmdLine, const Path &base, unsigned int
             source.language = hasDashX ? language : guessLanguageFromSourceFile(input.second, language);
         }
     }
+    if (testLog(Warning))
+        warning() << "Parsed Source(s) successfully:" << ret;
     return ret;
+}
+// returns false if at end
+static inline bool advance(Set<Source::Define>::const_iterator &it, const Set<Source::Define>::const_iterator end)
+{
+    while (it != end) {
+        if (it->define != "NDEBUG")
+            return true;
+        ++it;
+    }
+    return false;
 }
 
 static inline bool compareDefinesNoNDEBUG(const Set<Source::Define> &l, const Set<Source::Define> &r)
 {
-    for (const auto &ld : l) {
-        if (ld.define != "NDEBUG") {
-            continue;
-        } else if (!r.contains(ld)) {
+    auto lit = l.begin();
+    auto rit = r.begin();
+    while (true) {
+        if (!advance(lit, l.end())) {
+            if (advance(rit, r.end()))
+                return false;
+            break;
+        } else if (!advance(rit, r.end())) {
             return false;
         }
+
+        if (*lit != *rit) {
+            return false;
+        }
+        ++lit;
+        ++rit;
     }
     return true;
 }
@@ -672,10 +742,12 @@ bool Source::compareArguments(const Source &other) const
         return false;
     }
 
-    const bool separateDebugAndRelease = Server::instance()->options().options & Server::SeparateDebugAndRelease;
+    const Server::Options *opts = serverOptions();
+    const bool separateDebugAndRelease = opts && opts->options & Server::SeparateDebugAndRelease;
     if (separateDebugAndRelease) {
-        if (defines != other.defines)
+        if (defines != other.defines) {
             return false;
+        }
     } else if (!compareDefinesNoNDEBUG(defines, other.defines)) {
         return false;
     }
@@ -690,17 +762,50 @@ bool Source::compareArguments(const Source &other) const
             break;
         if (!nextArg(him, hisEnd, separateDebugAndRelease))
             return false;
-        if (*me != *him)
+        if (*me != *him) {
             return false;
+        }
         ++me;
         ++him;
     }
-    return him == hisEnd || !nextArg(him, hisEnd, separateDebugAndRelease);
+    if (him == hisEnd) {
+        return true;
+    } else if (!nextArg(him, hisEnd, separateDebugAndRelease)) {
+        return true;
+    }
+    return false;
 }
 
-List<String> Source::toCommandLine(unsigned int flags) const
+static inline bool isPch(const Path &path)
 {
-    const auto *options = Server::instance() ? &Server::instance()->options() : 0;
+    if (path.isFile()) {
+        static const unsigned char pch[][8] = {
+            { 0x43, 0x50, 0x43, 0x48, 0x01, 0x0c, 0x00, 0x00 }, // clang pch
+            { 0x67, 0x70, 0x63, 0x68, 0x43, 0x30, 0x31, 0x34 }, // gcc c-header pch
+            { 0x67, 0x70, 0x63, 0x68, 0x2b, 0x30, 0x31, 0x34 } // gcc c++-header pch
+        };
+        const String contents = path.readAll(8);
+        if (contents.size() == 8) {
+            for (const unsigned char *p : pch) {
+                if (!memcmp(contents.constData(), p, 8)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    for (const char *suffix : { ".gch", ".pch" }) {
+        const Path p = path + suffix;
+        if (p.exists())
+            return true;
+    }
+    return false;
+}
+
+List<String> Source::toCommandLine(Flags<CommandLineFlag> flags) const
+{
+    const Server::Options *options = serverOptions();
     if (!options)
         flags |= (ExcludeDefaultArguments|ExcludeDefaultDefines|ExcludeDefaultIncludePaths);
 
@@ -708,10 +813,32 @@ List<String> Source::toCommandLine(unsigned int flags) const
     ret.reserve(64);
     if (flags & IncludeCompiler)
         ret.append(compiler());
+
+    Map<String, String> config;
+    Set<String> remove;
+    if (flags & IncludeRTagsConfig) {
+        config = RTags::rtagsConfig(sourceFile());
+        remove = config.value("remove-arguments").split(";").toSet();
+    }
+
     for (int i=0; i<arguments.size(); ++i) {
-        if (!(flags & FilterBlacklist) || !isBlacklisted(arguments.at(i))) {
-            ret.append(arguments.at(i));
-        } else if (hasValue(arguments.at(i))) {
+        const String &arg = arguments.at(i);
+        const bool hasValue = ::hasValue(arg);
+        bool skip = false;
+        if (flags & FilterBlacklist) {
+            if (isBlacklisted(arg)) {
+                skip = true;
+            } else if (arg == "-include") {
+                skip = isPch(arguments.value(i + 1));
+            }
+        }
+        if (!skip && remove.contains(arg))
+            skip = true;
+        if (!skip) {
+            ret.append(arg);
+            if (hasValue)
+                ret.append(arguments.value(++i));
+        } else if (hasValue) {
             ++i;
         }
     }
@@ -770,6 +897,10 @@ List<String> Source::toCommandLine(unsigned int flags) const
             }
         }
     }
+    if (flags & IncludeRTagsConfig) {
+        ret << config.value("add-arguments").split(' ');
+    }
+
     if (flags & IncludeSourceFile)
         ret.append(sourceFile());
 

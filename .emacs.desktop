@@ -2,7 +2,7 @@
 ;; --------------------------------------------------------------------------
 ;; Desktop File for Emacs
 ;; --------------------------------------------------------------------------
-;; Created Mon May 11 18:19:37 2015
+;; Created Wed May 20 08:33:58 2015
 ;; Desktop file format version 206
 ;; Emacs version 24.3.1
 
@@ -10,41 +10,272 @@
 (setq desktop-missing-file-warning nil)
 (setq tags-file-name nil)
 (setq tags-table-list nil)
-(setq search-ring '("count" "vector" "version" "versi" "tile" "error" "datasource" "error" "cache" "only" "j\n\n" "Instance" "print" "call" "no" "sapa "))
-(setq regexp-search-ring '("\\_<autoSync\\_>" "\\_<m_mapInfoSyncObj\\_>" "\\_<autoSync\\_>" "\\_<BL_AutoSync\\_>" "\\_<m_TrfInfoCacheSyncObj\\_>" "\\_<BL_AutoSync\\_>" "\\_<m_TrfInfoCacheSyncObj\\_>" "\\_<GetJamDataState\\_>" "getjamda" "\\_<autoSync\\_>" "\\_<BL_AutoSync\\_>" "\\_<GetJamDataState\\_>" "query" "sync" "syncobj" "elisp"))
-(setq register-alist '((117) (58) (122 . "eTrafficDataMode ") (110) (99 . "        image_position=[device_size[0]/2-image_data.image_actual_size[0]/2,0];\n") (98 . "	canvas = $(\"#canvas_coronal\")[0];\n    var coronal_device_size=[canvas.parentNode.clientWidth,canvas.parentNode.clientHeight];\n	canvas.width = coronal_device_size[0];\n	canvas.height = coronal_device_size[1];\n") (32) (134217776) (105) (97 . "    BL_AutoSync autoSync(m_TrfInfoCacheSyncObj);\n") (107) (106) (26) (24) (27 . [escape]) (113)))
-(setq file-name-history '("~/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/TRF_TRF_TrafficDataManager.h" "~/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/MTC-JP/ServerIF/TrafficJamDataDownloadReq.h" "~/.emacs.d/wttr-config/modes/cc.el" "~/.emacs.d/wttr-config/modes/helm.el" "~/.emacs.d/wttr-config/modes/rtags.el" "TrafficDataManagerIF.hpp" "~/ddn_info/libraries/navi/src/traffic/traffic/Traffic/include/Traffic/TrafficDataManagerIF.h" "~/ddn_info/libraries/navi/src/traffic/traffic/Traffic/TRF_TrafficDataManager.cpp" "~/ddn_info/libraries/navi/src/traffic/traffic/Traffic/TRF_TrafficDataManagerIF.cpp" "~/log/syslog/LOG00001.TXT" "~/log/syslog/LOG00000.TXT" "~/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/MTC-JP/TrafficDataManager/TrafficDataManager.h" "~/ddn_info/libraries/navi/src/traffic/traffic/Traffic/include/" "~/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/MTC-JP/TrafficDataManager/TrafficDataManagerIF.cpp" "~/ddn_info/libraries/navi/src/base/commonlib/commonlib/include/CL_Time.h" "~/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/Traffic.h" "~/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/Traffic.cpp" "~/" "~/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/MTC-JP/TrafficDataManager/Cache/TrafficJamDataCacheV4.cpp" "sqlite3.h" "~/ddn_info/libraries/navi/src/externals/spatialite/headers/spatialite/sqlite3.h" "~/.emacs.d/wttr-config/wttr-key.el" "~/test/test.cpp" "~/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/" "~/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Common/TrafficUtils.cpp" "~/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/MTC-JP/ServerIF/TrafficDownloadThread.cpp" "~/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/MTC-JP/Jam/TrafficJamDataReqThread.cpp" "~/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/MTC-JP/Jam/TrafficJamDataReq.cpp" "~/ddn_info/libraries/navi/src/traffic/traffic/Traffic/include/Traffic/TrafficTypesDef.h" "~/ddn_info/libraries/navi/src/base/commonlib/aplcommonlib/include/BL_String.h"))
+(setq search-ring '("highlight-inden" "tile cou" "[e]" "pnet" ":16" "v4" "data mode" "[e]" "gettrafficdataurl" "[2015/05/18 16:21:40.000] 00300 : vics  : [trf#m][i][trafficdownloadthread.cpp:445:gettrafficdataurl] version number:1102" "gettrafficdata" "[e]" "[e" "trafficdatar" "[E]" "datamo"))
+(setq regexp-search-ring '("\\_<push_back\\_>" "\\_<SQL_DELETE_DATA\\_>" "\\_<szTimestampExpire\\_>" "\\_<expire_time\\_>" "\\_<SQL_GET_DATA_STATE\\_>" "\\_<time_buf\\_>" "\\_<cTimestamp\\_>" "\\_<SQL_HAS_DATA\\_>" "\\_<count\\_>" "clear" "\\_<count\\_>" "\\_<time_buf\\_>" "\\_<SQL_GET_VICS_TIME\\_>" "\\_<expire_time\\_>" "\\_<CL_TimeSpan\\_>" "utc"))
+(setq register-alist '((134217837) (115 . "\"SELECT max(time_vics) FROM jamtiles;\"") (117) (58) (122 . "eTrafficDataMode ") (110) (99 . "        image_position=[device_size[0]/2-image_data.image_actual_size[0]/2,0];\n") (98 . "	canvas = $(\"#canvas_coronal\")[0];\n    var coronal_device_size=[canvas.parentNode.clientWidth,canvas.parentNode.clientHeight];\n	canvas.width = coronal_device_size[0];\n	canvas.height = coronal_device_size[1];\n") (32) (134217776) (105) (97 . "TRAFFIC_DATA_MODE_MIXED") (107) (106) (26) (24) (27 . [escape]) (113)))
+(setq file-name-history '("~/.emacs.d/wttr-config/modes/cc.el" "~/.local/share/Trash/files/Traffic/Traffic/TRF_TRF_Traffic.cpp" "~/log/LOG00001.TXT" "~/log/LOG00002.TXT" "~/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/MTC-JP/Jam/TrafficJamDataReq.cpp" "~/log/LOG00000.TXT" "~/log/LOG00005.TXT" "~/log/LOG00006.TXT" "~/log/LOG00004.TXT" "~/ddn_info/libraries/navi/src/traffic/traffic/Traffic/include/Traffic/TrafficDataManagerIF.h" "~/note/note.org" "~/.emacs.d/elpa/helm-ag-20150507.324/helm-ag.el" "~/.emacs.d/wttr-config/wttr-key.el" "~/.emacs.d/wttr-config/modes/helm.el" "~/test/" "~/git-test/test" "~/note/rtags-install.org" "~/ddn_info/libraries/navi/src/base/commonlib/aplcommonlib/include/BL_AutoSync.h" "~/ddn_info/libraries/navi/src/base/commonlib/aplcommonlib/publiclib/BL_AutoSync.cpp" "~/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/MTC-JP/TrafficDataManager/Cache/TrafficJamDataCacheV4.cpp" "~/log/LOG00516.TXT" "~/log/LOG00515.TXT" "~/log/LOG00514.TXT" "~/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/TRF_TRF_TrafficDataManager.h" "~/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/MTC-JP/ServerIF/TrafficJamDataDownloadReq.h" "~/.emacs.d/wttr-config/modes/rtags.el" "TrafficDataManagerIF.hpp" "~/ddn_info/libraries/navi/src/traffic/traffic/Traffic/TRF_TrafficDataManager.cpp" "~/ddn_info/libraries/navi/src/traffic/traffic/Traffic/TRF_TrafficDataManagerIF.cpp" "~/log/syslog/LOG00001.TXT"))
 
 ;; Buffer section -- buffers listed in same order as in buffer list:
 (desktop-create-buffer 206
-  "/home/hyphen/note.org"
-  "note.org"
-  'org-mode
-  '(yas-minor-mode org-indent-mode)
-  4374
-  '(4373 nil)
-  nil
-  nil
-  '((indent-tabs-mode) (buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
-
-(desktop-create-buffer 206
-  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/TRF_TRF_TrafficDataManager.cpp"
-  "TRF_TRF_TrafficDataManager.cpp"
+  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/MTC-JP/ServerIF/TrafficDownloadThread.cpp"
+  "TrafficDownloadThread.cpp"
   'c++-mode
-  '(abbrev-mode auto-complete-mode yas-minor-mode)
-  4450
-  '(4299 nil)
+  '(abbrev-mode auto-complete-mode yas-minor-mode highlight-indentation-mode highlight-indentation-current-column-mode)
+  5854
+  '(9151 nil)
   nil
   nil
   '((buffer-file-coding-system . undecided-unix)))
 
 (desktop-create-buffer 206
-  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/TRF_TRF_TrafficDataManager.h"
-  "TRF_TRF_TrafficDataManager.h"
+  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/MTC-JP/TrafficDataManager/Cache/TrafficJamDataCacheV4.cpp"
+  "TrafficJamDataCacheV4.cpp"
   'c++-mode
-  '(abbrev-mode auto-complete-mode yas-minor-mode)
-  2944
-  '(2944 nil)
+  '(abbrev-mode auto-complete-mode yas-minor-mode highlight-indentation-mode highlight-indentation-current-column-mode)
+  1739
+  '(1739 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/home/hyphen/note/note.org"
+  "note.org"
+  'org-mode
+  '(yas-minor-mode org-indent-mode)
+  742
+  '(742 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
+  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/Traffic.cpp"
+  "Traffic.cpp"
+  'c++-mode
+  '(abbrev-mode auto-complete-mode yas-minor-mode highlight-indentation-mode highlight-indentation-current-column-mode)
+  6325
+  '(3071 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/TrafficIF.cpp"
+  "TrafficIF.cpp"
+  'c++-mode
+  '(abbrev-mode auto-complete-mode yas-minor-mode highlight-indentation-mode highlight-indentation-current-column-mode)
+  3414
+  '(3414 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/include/Traffic/TrafficTypesDef.h"
+  "TrafficTypesDef.h"
+  'c++-mode
+  '(abbrev-mode auto-complete-mode yas-minor-mode highlight-indentation-mode highlight-indentation-current-column-mode)
+  1329
+  '(10542 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/MTC-JP/TrafficDataManager/Cache/TrafficJamDataCacheV4.h"
+  "TrafficJamDataCacheV4.h"
+  'c++-mode
+  '(abbrev-mode auto-complete-mode yas-minor-mode highlight-indentation-mode highlight-indentation-current-column-mode)
+  2723
+  '(2724 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/home/hyphen/.emacs.d/wttr-config/modes/cc.el"
+  "cc.el"
+  'emacs-lisp-mode
+  '(auto-complete-mode yas-minor-mode)
+  428
+  '(428 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix)))
+
+(desktop-create-buffer 206
+  "/home/hyphen/.emacs.d/wttr-config/wttr-key.el"
+  "wttr-key.el"
+  'emacs-lisp-mode
+  '(auto-complete-mode yas-minor-mode)
+  2400
+  '(2843 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix)))
+
+(desktop-create-buffer 206
+  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Common/TrafficUtils.cpp"
+  "TrafficUtils.cpp"
+  'c++-mode
+  '(abbrev-mode auto-complete-mode yas-minor-mode highlight-indentation-mode highlight-indentation-current-column-mode)
+  920
+  '(1 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix)))
+
+(desktop-create-buffer 206
+  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Common/TrafficUtils.h"
+  "TrafficUtils.h"
+  'c++-mode
+  '(abbrev-mode auto-complete-mode yas-minor-mode highlight-indentation-mode highlight-indentation-current-column-mode)
+  4208
+  '(1 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/TRF_TrafficIF.cpp"
+  "TRF_TrafficIF.cpp"
+  'c++-mode
+  '(abbrev-mode auto-complete-mode yas-minor-mode highlight-indentation-mode highlight-indentation-current-column-mode)
+  2223
+  '(4337 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/include/Traffic/TrafficDataManagerIF.h"
+  "TrafficDataManagerIF.h"
+  'c++-mode
+  '(abbrev-mode auto-complete-mode yas-minor-mode highlight-indentation-mode highlight-indentation-current-column-mode)
+  6925
+  '(6926 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix)))
+
+(desktop-create-buffer 206
+  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/MTC-JP/TrafficDataManager/TrafficDataManager.cpp"
+  "TrafficDataManager.cpp"
+  'c++-mode
+  '(abbrev-mode auto-complete-mode yas-minor-mode highlight-indentation-mode highlight-indentation-current-column-mode)
+  1642
+  '(4586 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/TRF_Traffic.cpp"
+  "TRF_Traffic.cpp"
+  'c++-mode
+  '(abbrev-mode auto-complete-mode yas-minor-mode highlight-indentation-mode highlight-indentation-current-column-mode)
+  1346
+  '(1 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix)))
+
+(desktop-create-buffer 206
+  nil
+  "log"
+  'dired-mode
+  '(yas-minor-mode)
+  168
+  '(nil nil)
+  t
+  '("/home/hyphen/log/")
+  nil)
+
+(desktop-create-buffer 206
+  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/MTC-JP/Jam/TrafficJamDataReq.cpp"
+  "TrafficJamDataReq.cpp"
+  'c++-mode
+  '(abbrev-mode auto-complete-mode yas-minor-mode highlight-indentation-mode highlight-indentation-current-column-mode)
+  1034
+  '(1034 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/MTC-JP/Jam/TrafficJamDataReqThread.cpp"
+  "TrafficJamDataReqThread.cpp"
+  'c++-mode
+  '(abbrev-mode auto-complete-mode yas-minor-mode highlight-indentation-mode highlight-indentation-current-column-mode)
+  56253
+  '(37626 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix)))
+
+(desktop-create-buffer 206
+  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/RoadListen/TRF_RL_TrafficJamRequestThread.cpp"
+  "TRF_RL_TrafficJamRequestThread.cpp"
+  'c++-mode
+  '(abbrev-mode auto-complete-mode yas-minor-mode highlight-indentation-mode highlight-indentation-current-column-mode)
+  15176
+  '(15531 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/MTC-JP/Jam/TrafficJamDataReqThread.h"
+  "TrafficJamDataReqThread.h"
+  'c++-mode
+  '(abbrev-mode auto-complete-mode yas-minor-mode highlight-indentation-mode highlight-indentation-current-column-mode)
+  1294
+  '(1 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/MTC-JP/TrafficDataManager/TrafficDataManagerIF.cpp"
+  "TrafficDataManagerIF.cpp"
+  'c++-mode
+  '(abbrev-mode auto-complete-mode yas-minor-mode highlight-indentation-mode highlight-indentation-current-column-mode)
+  5960
+  '(5965 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/MTC-JP/TrafficDataManager/TrafficDataManager.h"
+  "TrafficDataManager.h"
+  'c++-mode
+  '(abbrev-mode auto-complete-mode yas-minor-mode highlight-indentation-mode highlight-indentation-current-column-mode)
+  7146
+  '(7483 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix)))
+
+(desktop-create-buffer 206
+  "/home/hyphen/note/rtags-install.org"
+  "rtags-install.org"
+  'org-mode
+  '(yas-minor-mode org-indent-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . undecided-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
+  "/home/hyphen/.emacs.d/wttr-config/modes/helm.el"
+  "helm.el"
+  'emacs-lisp-mode
+  '(auto-complete-mode yas-minor-mode)
+  60
+  '(nil nil)
   nil
   nil
   '((buffer-file-coding-system . undecided-unix)))
@@ -54,218 +285,64 @@
   "*info*"
   'Info-mode
   '(yas-minor-mode)
-  316111
-  '(1 nil)
+  655948
+  '(655948 nil)
   t
-  '("/usr/share/info/emacs-24/elisp" "Vector Functions" ((history ("/usr/share/info/emacs-24/elisp" "Vectors" 313624) ("/usr/share/info/emacs-24/elisp" "Array Functions" 312717) ("/usr/share/info/emacs-24/elisp" "Arrays" 309766) ("/usr/share/info/emacs-24/elisp" "Sequences Arrays Vectors" 304371) ("/usr/share/info/emacs-24/elisp" "Vectors" 313624) ("/usr/share/info/emacs-24/elisp" "Sequences Arrays Vectors" 304499) ("/usr/share/info/emacs-24/elisp" "Vectors" 313624) ("/usr/share/info/emacs-24/elisp" "Sequences Arrays Vectors" 304499) ("/usr/share/info/emacs-24/elisp" "Top" 2443) ("/usr/share/info/emacs-24/elisp" "Lists" 244561) ("/usr/share/info/emacs-24/elisp" "Top" 2371) ("dir" "Top" 5323) ("/usr/share/info/emacs-24/elisp" "Top" 2858) ("/usr/share/info/emacs-24/elisp" "Control Structures" 391725) ("/usr/share/info/emacs-24/elisp" "Sequencing" 392066) ("/usr/share/info/emacs-24/elisp" "Control Structures" 391725) ("/usr/share/info/emacs-24/elisp" "Sequencing" 392066) ("/usr/share/info/emacs-24/elisp" "Control Structures" 391466) ("/usr/share/info/emacs-24/elisp" "Top" 2856) ("dir" "Top" 5323) ("/usr/share/info/emacs-24/elisp" "Top" 2443) ("/usr/share/info/emacs-24/elisp" "Sequences Arrays Vectors" 304572) ("/usr/share/info/emacs-24/elisp" "Vector Functions" 316575) ("/usr/share/info/emacs-24/elisp" "Vectors" 313624) ("/usr/share/info/emacs-24/elisp" "Vector Type" 136094) ("/usr/share/info/emacs-24/elisp" "Char-Table Type" 136256) ("/usr/share/info/emacs-24/elisp" "Vector Type" 135472) ("/usr/share/info/emacs-24/elisp" "Arrays" 309252) ("/usr/share/info/emacs-24/elisp" "Sequence Functions" 308550) ("/usr/share/info/emacs-24/elisp" "Sequences Arrays Vectors" 302376) ("/usr/share/info/emacs-24/elisp" "Top" 2443) ("/usr/share/info/emacs-24/elisp" "Evaluation" 363282) ("/usr/share/info/emacs-24/elisp" "Forms" 367460) ("/usr/share/info/emacs-24/elisp" "Classifying Lists" 370767) ("/usr/share/info/emacs-24/elisp" "Symbol Forms" 369677) ("/usr/share/info/emacs-24/elisp" "Self-Evaluating Forms" 368130) ("/usr/share/info/emacs-24/elisp" "Forms" 366911) ("/usr/share/info/emacs-24/elisp" "Intro Eval" 366151) ("/usr/share/info/emacs-24/elisp" "Evaluation" 362763) ("/usr/share/info/emacs-24/elisp" "Standard Properties" 360701) ("/usr/share/info/emacs-24/elisp" "Symbol Plists" 358403) ("/usr/share/info/emacs-24/elisp" "Symbol Properties" 355750) ("/usr/share/info/emacs-24/elisp" "Creating Symbols" 354938) ("/usr/share/info/emacs-24/elisp" "Definitions" 345692) ("/usr/share/info/emacs-24/elisp" "Symbol Components" 344686) ("/usr/share/info/emacs-24/elisp" "Symbols" 341495) ("/usr/share/info/emacs-24/elisp" "Other Hash" 340309) ("/usr/share/info/emacs-24/elisp" "Defining Hash" 339546) ("/usr/share/info/emacs-24/elisp" "Hash Access" 335566) ("/usr/share/info/emacs-24/elisp" "Creating Hash" 333950) ("/usr/share/info/emacs-24/elisp" "Hash Tables" 327727) ("/usr/share/info/emacs-24/elisp" "Rings" 326606) ("/usr/share/info/emacs-24/elisp" "Bool-Vectors" 323377) ("/usr/share/info/emacs-24/elisp" "Char-Tables" 321485) ("/usr/share/info/emacs-24/elisp" "Vector Functions" 316575) ("/usr/share/info/emacs-24/elisp" "Vectors" 313624) ("/usr/share/info/emacs-24/elisp" "Array Functions" 312717) ("/usr/share/info/emacs-24/elisp" "Arrays" 310958) ("/usr/share/info/emacs-24/elisp" "Array Functions" 312717) ("/usr/share/info/emacs-24/elisp" "Arrays" 310958) ("/usr/share/info/emacs-24/elisp" "Sequence Functions" 308550) ("/usr/share/info/emacs-24/elisp" "Sequences Arrays Vectors" 302376) ("/usr/share/info/emacs-24/elisp" "Top" 2466) ("/usr/share/info/emacs-24/elisp" "Lists" 244898) ("/usr/share/info/emacs-24/elisp" "Modifying Lists" 268508) ("/usr/share/info/emacs-24/elisp" "Setcdr" 271357) ("/usr/share/info/emacs-24/elisp" "Setcar" 270367) ("/usr/share/info/emacs-24/elisp" "Modifying Lists" 267903) ("/usr/share/info/emacs-24/elisp" "List Variables" 267412) ("/usr/share/info/emacs-24/elisp" "Building Lists" 262886) ("/usr/share/info/emacs-24/elisp" "List Elements" 254902) ("/usr/share/info/emacs-24/elisp" "List-related Predicates" 247778) ("/usr/share/info/emacs-24/elisp" "Cons Cells" 245243) ("/usr/share/info/emacs-24/elisp" "Lists" 244268) ("/usr/share/info/emacs-24/elisp" "Top" 2373) ("/usr/share/info/emacs-24/elisp" "Lisp Data Types" 93644) ("/usr/share/info/emacs-24/elisp" "Editing Types" 144433) ("/usr/share/info/emacs-24/elisp" "Autoload Type" 143397) ("/usr/share/info/emacs-24/elisp" "Byte-Code Type" 142809) ("/usr/share/info/emacs-24/elisp" "Primitive Function Type" 141231) ("/usr/share/info/emacs-24/elisp" "Macro Type" 140325) ("/usr/share/info/emacs-24/elisp" "Function Type" 139175) ("/usr/share/info/emacs-24/elisp" "Hash Table Type" 138579) ("/usr/share/info/emacs-24/elisp" "Bool-Vector Type" 137377) ("/usr/share/info/emacs-24/elisp" "Char-Table Type" 136256) ("/usr/share/info/emacs-24/elisp" "Vector Type" 135472) ("/usr/share/info/emacs-24/elisp" "Text Props and Strings" 134122) ("/usr/share/info/emacs-24/elisp" "Nonprinting Characters" 132703) ("/usr/share/info/emacs-24/elisp" "Non-ASCII in Strings" 129977) ("/usr/share/info/emacs-24/elisp" "Syntax for Strings" 128780) ("/usr/share/info/emacs-24/elisp" "String Type" 127996) ("/usr/share/info/emacs-24/elisp" "Array Type" 126269) ("/usr/share/info/emacs-24/elisp" "Association List Type" 125256) ("/usr/share/info/emacs-24/elisp" "Dotted Pair Notation" 124669) ("/usr/share/info/emacs-24/elisp" "Box Diagrams" 121289) ("/usr/share/info/emacs-24/elisp" "Cons Cell Type" 118814) ("/usr/share/info/emacs-24/elisp" "Sequence Type" 114500) ("/usr/share/info/emacs-24/elisp" "Symbol Type" 113784) ("/usr/share/info/emacs-24/elisp" "Other Char Bits" 109989) ("/usr/share/info/emacs-24/elisp" "Meta-Char Syntax" 108936) ("/usr/share/info/emacs-24/elisp" "Ctl-Char Syntax" 107161) ("/usr/share/info/emacs-24/elisp" "General Escape Syntax" 105276) ("/usr/share/info/emacs-24/elisp" "Basic Char Syntax" 104543) ("/usr/share/info/emacs-24/elisp" "Character Type" 100838) ("/usr/share/info/emacs-24/elisp" "Floating Point Type" 99935) ("/usr/share/info/emacs-24/elisp" "Integer Type" 98703) ("/usr/share/info/emacs-24/elisp" "Programming Types" 96920) ("/usr/share/info/emacs-24/elisp" "Comments" 96028) ("/usr/share/info/emacs-24/elisp" "Printed Representation" 93988) ("/usr/share/info/emacs-24/elisp" "Lisp Data Types" 91469) ("/usr/share/info/emacs-24/elisp" "Top" 2174) ("dir" "Top" 5323))))
+  '("/usr/share/info/emacs-24/elisp" "How Programs Do Loading" ((history ("/usr/share/info/emacs-24/elisp" "Loading" 653695) ("/usr/share/info/emacs-24/elisp" "Top" 3271) ("/usr/share/info/emacs-24/elisp" "Sequences Arrays Vectors" 304572) ("/usr/share/info/emacs-24/elisp" "Vector Functions" 316111) ("/usr/share/info/emacs-24/elisp" "Vectors" 313624) ("/usr/share/info/emacs-24/elisp" "Array Functions" 312717) ("/usr/share/info/emacs-24/elisp" "Arrays" 309766) ("/usr/share/info/emacs-24/elisp" "Sequences Arrays Vectors" 304371) ("/usr/share/info/emacs-24/elisp" "Vectors" 313624) ("/usr/share/info/emacs-24/elisp" "Sequences Arrays Vectors" 304499) ("/usr/share/info/emacs-24/elisp" "Vectors" 313624) ("/usr/share/info/emacs-24/elisp" "Sequences Arrays Vectors" 304499) ("/usr/share/info/emacs-24/elisp" "Top" 2443) ("/usr/share/info/emacs-24/elisp" "Lists" 244561) ("/usr/share/info/emacs-24/elisp" "Top" 2371) ("dir" "Top" 5323) ("/usr/share/info/emacs-24/elisp" "Top" 2858) ("/usr/share/info/emacs-24/elisp" "Control Structures" 391725) ("/usr/share/info/emacs-24/elisp" "Sequencing" 392066) ("/usr/share/info/emacs-24/elisp" "Control Structures" 391725) ("/usr/share/info/emacs-24/elisp" "Sequencing" 392066) ("/usr/share/info/emacs-24/elisp" "Control Structures" 391466) ("/usr/share/info/emacs-24/elisp" "Top" 2856) ("dir" "Top" 5323) ("/usr/share/info/emacs-24/elisp" "Top" 2443) ("/usr/share/info/emacs-24/elisp" "Sequences Arrays Vectors" 304572) ("/usr/share/info/emacs-24/elisp" "Vector Functions" 316575) ("/usr/share/info/emacs-24/elisp" "Vectors" 313624) ("/usr/share/info/emacs-24/elisp" "Vector Type" 136094) ("/usr/share/info/emacs-24/elisp" "Char-Table Type" 136256) ("/usr/share/info/emacs-24/elisp" "Vector Type" 135472) ("/usr/share/info/emacs-24/elisp" "Arrays" 309252) ("/usr/share/info/emacs-24/elisp" "Sequence Functions" 308550) ("/usr/share/info/emacs-24/elisp" "Sequences Arrays Vectors" 302376) ("/usr/share/info/emacs-24/elisp" "Top" 2443) ("/usr/share/info/emacs-24/elisp" "Evaluation" 363282) ("/usr/share/info/emacs-24/elisp" "Forms" 367460) ("/usr/share/info/emacs-24/elisp" "Classifying Lists" 370767) ("/usr/share/info/emacs-24/elisp" "Symbol Forms" 369677) ("/usr/share/info/emacs-24/elisp" "Self-Evaluating Forms" 368130) ("/usr/share/info/emacs-24/elisp" "Forms" 366911) ("/usr/share/info/emacs-24/elisp" "Intro Eval" 366151) ("/usr/share/info/emacs-24/elisp" "Evaluation" 362763) ("/usr/share/info/emacs-24/elisp" "Standard Properties" 360701) ("/usr/share/info/emacs-24/elisp" "Symbol Plists" 358403) ("/usr/share/info/emacs-24/elisp" "Symbol Properties" 355750) ("/usr/share/info/emacs-24/elisp" "Creating Symbols" 354938) ("/usr/share/info/emacs-24/elisp" "Definitions" 345692) ("/usr/share/info/emacs-24/elisp" "Symbol Components" 344686) ("/usr/share/info/emacs-24/elisp" "Symbols" 341495) ("/usr/share/info/emacs-24/elisp" "Other Hash" 340309) ("/usr/share/info/emacs-24/elisp" "Defining Hash" 339546) ("/usr/share/info/emacs-24/elisp" "Hash Access" 335566) ("/usr/share/info/emacs-24/elisp" "Creating Hash" 333950) ("/usr/share/info/emacs-24/elisp" "Hash Tables" 327727) ("/usr/share/info/emacs-24/elisp" "Rings" 326606) ("/usr/share/info/emacs-24/elisp" "Bool-Vectors" 323377) ("/usr/share/info/emacs-24/elisp" "Char-Tables" 321485) ("/usr/share/info/emacs-24/elisp" "Vector Functions" 316575) ("/usr/share/info/emacs-24/elisp" "Vectors" 313624) ("/usr/share/info/emacs-24/elisp" "Array Functions" 312717) ("/usr/share/info/emacs-24/elisp" "Arrays" 310958) ("/usr/share/info/emacs-24/elisp" "Array Functions" 312717) ("/usr/share/info/emacs-24/elisp" "Arrays" 310958) ("/usr/share/info/emacs-24/elisp" "Sequence Functions" 308550) ("/usr/share/info/emacs-24/elisp" "Sequences Arrays Vectors" 302376) ("/usr/share/info/emacs-24/elisp" "Top" 2466) ("/usr/share/info/emacs-24/elisp" "Lists" 244898) ("/usr/share/info/emacs-24/elisp" "Modifying Lists" 268508) ("/usr/share/info/emacs-24/elisp" "Setcdr" 271357) ("/usr/share/info/emacs-24/elisp" "Setcar" 270367) ("/usr/share/info/emacs-24/elisp" "Modifying Lists" 267903) ("/usr/share/info/emacs-24/elisp" "List Variables" 267412) ("/usr/share/info/emacs-24/elisp" "Building Lists" 262886) ("/usr/share/info/emacs-24/elisp" "List Elements" 254902) ("/usr/share/info/emacs-24/elisp" "List-related Predicates" 247778) ("/usr/share/info/emacs-24/elisp" "Cons Cells" 245243) ("/usr/share/info/emacs-24/elisp" "Lists" 244268) ("/usr/share/info/emacs-24/elisp" "Top" 2373) ("/usr/share/info/emacs-24/elisp" "Lisp Data Types" 93644) ("/usr/share/info/emacs-24/elisp" "Editing Types" 144433) ("/usr/share/info/emacs-24/elisp" "Autoload Type" 143397) ("/usr/share/info/emacs-24/elisp" "Byte-Code Type" 142809) ("/usr/share/info/emacs-24/elisp" "Primitive Function Type" 141231) ("/usr/share/info/emacs-24/elisp" "Macro Type" 140325) ("/usr/share/info/emacs-24/elisp" "Function Type" 139175) ("/usr/share/info/emacs-24/elisp" "Hash Table Type" 138579) ("/usr/share/info/emacs-24/elisp" "Bool-Vector Type" 137377) ("/usr/share/info/emacs-24/elisp" "Char-Table Type" 136256) ("/usr/share/info/emacs-24/elisp" "Vector Type" 135472) ("/usr/share/info/emacs-24/elisp" "Text Props and Strings" 134122) ("/usr/share/info/emacs-24/elisp" "Nonprinting Characters" 132703) ("/usr/share/info/emacs-24/elisp" "Non-ASCII in Strings" 129977) ("/usr/share/info/emacs-24/elisp" "Syntax for Strings" 128780) ("/usr/share/info/emacs-24/elisp" "String Type" 127996) ("/usr/share/info/emacs-24/elisp" "Array Type" 126269) ("/usr/share/info/emacs-24/elisp" "Association List Type" 125256) ("/usr/share/info/emacs-24/elisp" "Dotted Pair Notation" 124669) ("/usr/share/info/emacs-24/elisp" "Box Diagrams" 121289) ("/usr/share/info/emacs-24/elisp" "Cons Cell Type" 118814) ("/usr/share/info/emacs-24/elisp" "Sequence Type" 114500) ("/usr/share/info/emacs-24/elisp" "Symbol Type" 113784) ("/usr/share/info/emacs-24/elisp" "Other Char Bits" 109989) ("/usr/share/info/emacs-24/elisp" "Meta-Char Syntax" 108936) ("/usr/share/info/emacs-24/elisp" "Ctl-Char Syntax" 107161) ("/usr/share/info/emacs-24/elisp" "General Escape Syntax" 105276) ("/usr/share/info/emacs-24/elisp" "Basic Char Syntax" 104543) ("/usr/share/info/emacs-24/elisp" "Character Type" 100838) ("/usr/share/info/emacs-24/elisp" "Floating Point Type" 99935) ("/usr/share/info/emacs-24/elisp" "Integer Type" 98703) ("/usr/share/info/emacs-24/elisp" "Programming Types" 96920) ("/usr/share/info/emacs-24/elisp" "Comments" 96028) ("/usr/share/info/emacs-24/elisp" "Printed Representation" 93988) ("/usr/share/info/emacs-24/elisp" "Lisp Data Types" 91469) ("/usr/share/info/emacs-24/elisp" "Top" 2174) ("dir" "Top" 5323))))
   '((tab-width . 8) (buffer-file-coding-system . iso-latin-1-unix) (case-fold-search . t)))
 
 (desktop-create-buffer 206
-  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/MTC-JP/TrafficDataManager/Cache/TrafficJamDataCacheV4.cpp"
-  "TrafficJamDataCacheV4.cpp"
-  'c++-mode
-  '(abbrev-mode auto-complete-mode yas-minor-mode)
-  2160
-  '(18166 nil)
   nil
-  nil
-  '((buffer-file-coding-system . undecided-unix)))
-
-(desktop-create-buffer 206
-  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/MTC-JP/TrafficDataManager/Cache/TrafficJamDataCacheV4.h"
-  "TrafficJamDataCacheV4.h"
-  'c++-mode
-  '(abbrev-mode auto-complete-mode yas-minor-mode)
-  5315
-  '(5315 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-unix)))
-
-(desktop-create-buffer 206
-  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/RoadListen/TRF_RL_TrafficJamRequestThread.cpp"
-  "TRF_RL_TrafficJamRequestThread.cpp"
-  'c++-mode
-  '(abbrev-mode auto-complete-mode yas-minor-mode)
-  16751
-  '(16752 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-unix)))
-
-(desktop-create-buffer 206
-  "/home/hyphen/test/test.cpp"
-  "test.cpp"
-  'c++-mode
-  '(abbrev-mode auto-complete-mode yas-minor-mode)
-  721
-  '(737 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-unix)))
-
-(desktop-create-buffer 206
-  nil
-  "test"
+  "home"
   'dired-mode
   '(yas-minor-mode)
-  445
+  206
   '(nil nil)
   t
-  '("/home/hyphen/test/")
+  '("/home/")
   nil)
 
 (desktop-create-buffer 206
-  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/include/Traffic/TrafficIF.h"
-  "TrafficIF.h"
+  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/TrafficReceiver.cpp"
+  "TrafficReceiver.cpp"
   'c++-mode
-  '(abbrev-mode auto-complete-mode yas-minor-mode)
-  6633
-  '(6633 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-unix)))
-
-(desktop-create-buffer 206
-  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/Traffic.cpp"
-  "Traffic.cpp"
-  'c++-mode
-  '(abbrev-mode auto-complete-mode yas-minor-mode)
-  3828
-  '(3828 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-unix)))
-
-(desktop-create-buffer 206
-  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/MTC-JP/Jam/TrafficJamDataReqThread.cpp"
-  "TrafficJamDataReqThread.cpp"
-  'c++-mode
-  '(abbrev-mode auto-complete-mode yas-minor-mode)
-  47369
-  '(47369 nil)
+  '(abbrev-mode auto-complete-mode yas-minor-mode highlight-indentation-mode highlight-indentation-current-column-mode)
+  63024
+  '(63024 nil)
   nil
   nil
   '((buffer-file-coding-system . utf-8-unix)))
 
 (desktop-create-buffer 206
-  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/include/Traffic/TrafficDataManagerIF.h"
-  "TrafficDataManagerIF.h"
+  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/TRF_Traffic.h"
+  "TRF_Traffic.h"
   'c++-mode
-  '(abbrev-mode auto-complete-mode yas-minor-mode)
-  4623
-  '(1972 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . utf-8-unix)))
-
-(desktop-create-buffer 206
-  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/MTC-JP/Jam/TrafficJamDataReqThread.h"
-  "TrafficJamDataReqThread.h"
-  'c++-mode
-  '(abbrev-mode auto-complete-mode yas-minor-mode)
-  3523
-  '(2961 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-unix)))
-
-(desktop-create-buffer 206
-  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/MTC-JP/TrafficDataManager/TrafficDataManagerIF.cpp"
-  "TrafficDataManagerIF.cpp"
-  'c++-mode
-  '(abbrev-mode auto-complete-mode yas-minor-mode)
-  4749
-  '(3058 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-unix)))
-
-(desktop-create-buffer 206
-  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Common/TrafficUtils.h"
-  "TrafficUtils.h"
-  'c++-mode
-  '(abbrev-mode auto-complete-mode yas-minor-mode)
-  2475
-  '(2867 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-unix)))
-
-(desktop-create-buffer 206
-  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/MTC-JP/ServerIF/TrafficDownloadThread.h"
-  "TrafficDownloadThread.h"
-  'c++-mode
-  '(abbrev-mode auto-complete-mode yas-minor-mode)
-  1280
+  '(abbrev-mode auto-complete-mode yas-minor-mode highlight-indentation-mode highlight-indentation-current-column-mode)
+  2088
   '(nil nil)
   nil
   nil
   '((buffer-file-coding-system . undecided-unix)))
 
 (desktop-create-buffer 206
-  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/MTC-JP/TrafficDataManager/TrafficDataManager.h"
-  "TrafficDataManager.h"
-  'c++-mode
-  '(abbrev-mode auto-complete-mode yas-minor-mode)
-  725
-  '(691 nil)
+  "/home/hyphen/git-test/file2"
+  "file2"
+  'fundamental-mode
   nil
+  21
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . undecided-unix)))
+
+(desktop-create-buffer 206
+  "/usr/share/emacs/24.3/lisp/loaddefs.el"
+  "loaddefs.el"
+  'emacs-lisp-mode
+  '(auto-complete-mode yas-minor-mode)
+  490535
+  '(nil nil)
+  t
   nil
   '((buffer-file-coding-system . utf-8-unix)))
-
-(desktop-create-buffer 206
-  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/MTC-JP/TrafficDataManager/TrafficDataManager.cpp"
-  "TrafficDataManager.cpp"
-  'c++-mode
-  '(abbrev-mode auto-complete-mode yas-minor-mode)
-  276
-  '(4938 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-unix)))
-
-(desktop-create-buffer 206
-  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/MTC-JP/ServerIF/TrafficDownloadThread.cpp"
-  "TrafficDownloadThread.cpp"
-  'c++-mode
-  '(abbrev-mode auto-complete-mode yas-minor-mode)
-  7541
-  '(7542 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-unix)))
-
-(desktop-create-buffer 206
-  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Common/TrafficUtils.cpp"
-  "TrafficUtils.cpp"
-  'c++-mode
-  '(abbrev-mode auto-complete-mode yas-minor-mode)
-  18187
-  '(18187 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . utf-8-unix)))
-
-(desktop-create-buffer 206
-  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/Traffic/MTC-JP/ServerIF/TrafficJamDataDownloadReq.h"
-  "TrafficJamDataDownloadReq.h"
-  'c++-mode
-  '(abbrev-mode auto-complete-mode yas-minor-mode)
-  4914
-  '(4064 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-unix)))
-
-(desktop-create-buffer 206
-  "/home/hyphen/ddn_info/libraries/navi/src/traffic/traffic/Traffic/include/Traffic/TrafficTypesDef.h"
-  "TrafficTypesDef.h"
-  'c++-mode
-  '(abbrev-mode auto-complete-mode yas-minor-mode)
-  23767
-  '(1 nil)
-  nil
-  nil
-  '((buffer-file-coding-system . undecided-unix)))
 

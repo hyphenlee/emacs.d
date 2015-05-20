@@ -447,7 +447,7 @@
 	    ((:url . "http://elpa.gnu.org/packages/omn-mode.html")
 	     (:keywords))])
  (org .
-      [(20150511)
+      [(20150518)
        nil "Outline-based notes management and organizer" tar nil])
  (osc .
       [(0 1)
@@ -495,7 +495,7 @@
 		  ((:url . "http://elpa.gnu.org/packages/scroll-restore.html")
 		   (:keywords "scrolling"))])
  (seq .
-      [(1 5)
+      [(1 7)
        nil "Sequence manipulation functions" single
        ((:url . "http://elpa.gnu.org/packages/seq.html")
 	(:keywords "sequences"))])

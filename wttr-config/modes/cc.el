@@ -2,6 +2,8 @@
 (setq-default c-basic-offset 4)
 (defun wttr/cc-mode:basic-setup ()
   "Set setting for cc mode"
+  (highlight-indentation-current-column-mode)
+  (highlight-indentation-mode)
   (c-set-style "stroustrup"))
   ;; (c-toggle-auto-hungry-state))
 ;;(modify-syntax-entry ?_ "w" c++-mode-syntax-table)

@@ -41,6 +41,7 @@
     (kill-new (or (buffer-file-name)
                   (buffer-name))))))
 
+(global-set-key "\M-2" 'toggle-input-method)
 (global-set-key (kbd "<M-f5>") 'wttr/w32:copy-current-file-name)
 (global-set-key "\C-c\C-y" 'copy-line)
 (global-set-key "\C-c\C-v" 'view-mode)

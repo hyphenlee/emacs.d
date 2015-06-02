@@ -80,9 +80,10 @@
 (setq org-default-notes-file "~/org/notes.org")
 (define-key global-map "\C-cc" 'org-capture)
 (setq org-capture-templates
-      '(("t" "Todo" entry (file+headline "~/org/gtd.org" "Tasks")
+      '(("t" "Todo" entry (file+headline "~/note/gtd.org" "Tasks")
          "* TODO %?\n  %i\n  %a")
-        ("n" "Note" entry (file+headline "~/org/note.org" "Notes")
+        ("n" "Note" entry (file+headline "~/note/note.org" "Notes")
          "* %?\n  %i\n  %a")
-        ("j" "Journal" entry (file+datetree "~/org/journal.org")
+        ("j" "Journal" entry (file+datetree "~/note/journal.org")
          "* %?\nEntered on %U\n  %i\n  %a")))
+(setq org-journal-dir "~/note/diary/")

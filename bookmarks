@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("wttr-config"
+(("org-capture-last-stored"
+ (filename . "~/note/gtd.org")
+ (front-context-string . "** TODO fuck\n  \n")
+ (rear-context-string)
+ (position . 9))
+("wttr-config"
  (filename . "~/.emacs.d/wttr-config/")
  (front-context-string . "backup\n  -rw-r--")
  (rear-context-string . "96 Mar 31 19:58 ")

@@ -1,6 +1,40 @@
-;; -*- emacs-lisp -*- <15/02/13 17:27:29 c:/Users/haifeng/.emacs.d/tramp>
+;; -*- emacs-lisp -*- <15/05/29 09:28:22 /home/hyphen/.emacs.d/tramp>
 ;; Tramp connection history.  Don't change this file.
 ;; You can delete it, forcing Tramp to reapply the checks.
 
-((["scp" nil "http" nil nil]
-  nil))
+((["smb" "lihaifeng%WORKGROUP" "lihaifeng" nil nil]
+  ("smbclient-version" "Version 4.1.6-Ubuntu")
+  ("smbserver-version" "Domain=[LIHAIFENG] OS=[Windows 7 Professional 7601 Service Pack 1] Server=[Windows 7 Professional 6.1]")
+  ("share-cache"
+   (("Users" "dr-xr-xr-x" 0
+     (0 0))
+    ("Share" "dr-xr-xr-x" 0
+     (0 0))
+    ("C$" "dr-xr-xr-x" 0
+     (0 0))
+    ("ADMIN$" "dr-xr-xr-x" 0
+     (0 0)))))
+ (["smb" "lihaifeng@workgroup" "lihaifeng" nil nil]
+  ("smbclient-version" "Version 4.1.6-Ubuntu")
+  ("smbserver-version" "Domain=[LIHAIFENG] OS=[Windows 7 Professional 7601 Service Pack 1] Server=[Windows 7 Professional 6.1]")
+  ("share-cache"
+   (("Users" "dr-xr-xr-x" 0
+     (0 0))
+    ("Share" "dr-xr-xr-x" 0
+     (0 0))
+    ("C$" "dr-xr-xr-x" 0
+     (0 0))
+    ("ADMIN$" "dr-xr-xr-x" 0
+     (0 0)))))
+ (["smb" "lihaifeng" "lihaifeng" nil nil]
+  ("smbclient-version" "Version 4.1.6-Ubuntu")
+  ("smbserver-version" "Domain=[LIHAIFENG] OS=[Windows 7 Professional 7601 Service Pack 1] Server=[Windows 7 Professional 6.1]")
+  ("share-cache"
+   (("Users" "dr-xr-xr-x" 0
+     (0 0))
+    ("Share" "dr-xr-xr-x" 0
+     (0 0))
+    ("C$" "dr-xr-xr-x" 0
+     (0 0))
+    ("ADMIN$" "dr-xr-xr-x" 0
+     (0 0))))))

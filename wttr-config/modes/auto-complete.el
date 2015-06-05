@@ -97,8 +97,7 @@
         ;;  (setq ac-sources '(ac-source-clang-async ac-source-yasnippet ac-source-words-in-all-buffer ac-source-functions ac-source-words-in-all-buffer))
         (ac-clang-launch-completion-process))
         (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
-        (add-hook 'auto-complete-mode-hook 'ac-common-setup)
-        (global-auto-complete-mode t)))
+        (add-hook 'auto-complete-mode-hook 'ac-common-setup)))
 
 (if wttr/os:linuxp
     (progn 
@@ -116,5 +115,4 @@
         ;;  (setq ac-sources '(ac-source-clang-async ac-source-yasnippet ac-source-words-in-all-buffer ac-source-functions ac-source-words-in-all-buffer))
         (ac-clang-launch-completion-process))
         (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
-        (add-hook 'auto-complete-mode-hook 'ac-common-setup)
-        (global-auto-complete-mode t)))
+        (add-hook 'auto-complete-mode-hook 'ac-common-setup)))

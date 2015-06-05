@@ -58,6 +58,7 @@
 ;; (add-hook 'js-mode-hook '(lambda ()(local-set-key (kbd "C-c n") 'flycheck-next-error)))
 ;(add-hook 'js2-mode-hook '(lambda ()(local-set-key (kbd "<f5>") '(lambda ()(interactive) (shell-command "cd c:/work/rtviewer & sencha app build production")))))
 
+(global-set-key (kbd "<f11>") 'calendar)
 ;;helm
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "M-m") 'helm-imenu)
@@ -71,4 +72,5 @@
 (global-set-key (kbd "C-c b") 'helm-ag-pop-stack)
 
 (global-set-key (kbd "C-c <DEL>") 'c-hungry-delete-backwards)
+
 (provide 'wttr-key)

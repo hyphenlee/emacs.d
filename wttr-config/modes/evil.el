@@ -18,7 +18,7 @@
 (wttr/plugin:prepend-to-load-path "evil")
 (require 'evil)
                                         ;(global-set-key "\C-z" 'evil-mode)
-(evil-mode 1)
+;;(evil-mode 1)
 ;;(global-set-key "\C-z" 'evil-mode)
 ;;;; cursor appearance
                                         ;evil-default-cursor [Variable]
@@ -116,65 +116,4 @@
                 fundamental-mode
                 text-mode))
   (add-to-list 'evil-emacs-state-modes mode))
-
-
-                                        ;evil-insert-state-map [Variable]
-                                        ;The global keymap for Insert state.
-                                        ;evil-visual-state-map [Variable]
-                                        ;The global keymap for Visual state.
-                                        ;evil-replace-state-map [Variable]
-                                        ;The global keymap for Replace state.
-                                        ;evil-operator-state-map [Variable]
-                                        ;The global keymap for Operator-Pending state.
-                                        ;evil-motion-state-map [Variable]
-                                        ;The global keymap for Motion state.
-
-                                        ;evil-normal-state-local-map [Variable]
-                                        ;Buffer-local keymap for Normal state.
-                                        ;evil-insert-state-local-map [Variable]
-                                        ;Buffer-local keymap for Insert state.
-                                        ;evil-visual-state-local-map [Variable]
-                                        ;Buffer-local keymap for Visual state.
-                                        ;evil-replace-state-local-map [Variable]
-                                        ;Buffer-local keymap for Replace state.
-                                        ;evil-operator-state-local-map [Variable]
-                                        ;Buffer-local keymap for Operator-Pending state.
-                                        ;evil-motion-state-local-map [Variable]
-                                        ;Buffer-local keymap for Motion state.
-
-
-
-;;;; hooks
-                                        ;evil-normal-state-entry-hook [Variable]
-                                        ;Run when entering Normal state.
-                                        ;evil-normal-state-exit-hook [Variable]
-                                        ;Run when exiting Normal state.
-                                        ;evil-insert-state-entry-hook [Variable]
-                                        ;Run when entering Insert state.
-                                        ;evil-insert-state-exit-hook [Variable]
-                                        ;Run when exiting Insert state.
-                                        ;evil-visual-state-entry-hook [Variable]
-                                        ;Run when entering Visual state.
-                                        ;evil-visual-state-exit-hook [Variable]
-                                        ;Run when exiting Visual state.
-                                        ;evil-replace-state-entry-hook [Variable]
-                                        ;Run when entering Replace state.
-                                        ;evil-replace-state-exit-hook [Variable]
-                                        ;Run when exiting Replace state.
-                                        ;evil-operator-state-entry-hook [Variable]
-                                        ;Run when entering Operator-Pending state.
-                                        ;evil-operator-state-exit-hook [Variable]
-                                        ;Run when exiting Operator-Pending state.
-                                        ;evil-motion-state-entry-hook [Variable]
-                                        ;Run when entering Motion state.
-                                        ;evil-motion-state-exit-hook [Variable]
-                                        ;Run when exiting Motion state.
-
-;; evil-next-state [Variable]
-;; The state being switched to.
-;; evil-previous-state [Variable]
-;; The state being switched from.
-
-
-
-
+(setq evil-default-state 'emacs)

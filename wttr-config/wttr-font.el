@@ -86,10 +86,11 @@
 ;  "chinese-gbk:-outline-YaHei Consolas Hybrid-normal-normal-normal-sans-*-*-*-*-p-*-gb2312*-0,"
 ;  "sjis:-outline-MS Gothic-normal-normal-normal-mono-13-*-*-*-c-*-jisx0208-sjis" ) )
 ;(set-default-font "fontset-Consolas")
-
+(cond (wttr/os:osxp
 (custom-set-faces
- '(default ((t ( :weight normal :height 130 :width normal)))))
+ '(default ((t ( :weight normal :height 130 :width normal))))))
+(wttr/os:linuxp
+(custom-set-faces
+ '(default ((t ( :weight normal :height 110 :width normal)))))))
 
 (provide 'wttr-font)
-
-

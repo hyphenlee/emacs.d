@@ -75,7 +75,7 @@
 ;;;; prevent the _ to become a sub title
 (setq org-export-with-sub-superscripts nil)
 (setq org-todo-keywords
-      '((sequence "TODO(t!)" "GOAL(g)" "|" "DONE(d@/!)" "ABORT(a@/!)")
+      '((sequence "TODO(t!)" "WORKING(w!)" "|" "DONE(d@/!)" "ABORT(a@/!)")
         )) 
 (setq org-default-notes-file "~/org/notes.org")
 (define-key global-map "\C-cc" 'org-capture)

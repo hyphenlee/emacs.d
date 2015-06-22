@@ -1,7 +1,7 @@
 ;;; the following is only needed if you install org-page manually
 (require 'org-page)
 (setq op/repository-directory "https://github.com/hyphenlee/hyphenlee.github.io.git")
-(setq op/repository-directory "C:/blog")
+(setq op/repository-directory "~/blog")
 (setq op/site-domain "https://hyphenlee.github.io")
 ;;; for commenting, you can choose either disqus or duoshuo
 (setq op/personal-disqus-shortname "hyphensblog")

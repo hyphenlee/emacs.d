@@ -32,11 +32,12 @@
            "evil.el"
            "ace-jump.el"
            "dired.el"
-           "rtags.el"
-           "auto-complete.el"
-           "yasnippet.el"
+;;           "rtags.el"
+;;           "auto-complete.el"
+;;           "yasnippet.el"
            "helm.el"
-           "cc.el"
+           ;;           "cc.el"
+           "org-page.el"
            "org.el")))
 (if wttr/os:linuxp
     (mapc (lambda (filename) (load (concat "~/.emacs.d/wttr-config/modes/" filename)))

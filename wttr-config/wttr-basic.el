@@ -6,7 +6,7 @@
 (setq user-mail-address "lhfcjhyy@gmail.com")
 (menu-bar-mode 'nil)
 
-(desktop-save-mode 1)
+;;(desktop-save-mode 1)
 (setq default-directory "~/")
                                         ;====================================
                                         ;  UI
@@ -86,7 +86,10 @@
               (set-language-environment 'Chinese-GBK)))
       (wttr/os:osxp
        (progn (setq file-name-coding-system 'utf-8)
-              (set-language-environment 'utf-8))))
+              (set-language-environment 'utf-8)
+              (setq mac-option-modifier 'super)
+              (setq mac-command-modifier 'meta)
+              )))
 
 ;; setup up a big kill-ring, so i will never miss anything:-)
 (setq kill-ring-max 100)
@@ -178,8 +181,8 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize) ;; You might already have this line
 
- (add-to-list 'auto-mode-alist '("\\.txt$" . view-mode))
- (modify-coding-system-alist 'file "\\.txt\\'" 'gb18030)
+(add-to-list 'auto-mode-alist '("\\.txt$" . view-mode))
+(modify-coding-system-alist 'file "\\.txt\\'" 'gb18030)
 
 (defun xah-syntax-color-hex ()
   "Syntax color hex color spec such as 「#ff1100」 in current buffer."

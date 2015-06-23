@@ -82,4 +82,6 @@
 (global-set-key (kbd "C-z") 'evil-toggle-state-lhf)
 (global-set-key (kbd "C-q") 'evil-force-normal-state)
 
+(global-set-key (kbd "C-x g") 'golden-ratio)
+
 (provide 'wttr-key)

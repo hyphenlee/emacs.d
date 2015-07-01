@@ -10,3 +10,4 @@ places
 projectile.cache
 recentf
 .emacs.desktop.lock
+eshell/*

@@ -1,10 +1,10 @@
 ;;; starter-kit-autoloads.el --- automatically extracted autoloads
 ;;
 ;;; Code:
-
+(add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
-;;;### (autoloads nil "starter-kit" "starter-kit.el" (21854 37589
-;;;;;;  510315 532000))
+;;;### (autoloads nil "starter-kit" "starter-kit.el" (21907 38394
+;;;;;;  38653 388000))
 ;;; Generated autoloads from starter-kit.el
 
 (dolist (mode '(menu-bar-mode tool-bar-mode scroll-bar-mode)) (when (fboundp mode) (funcall mode -1)))
@@ -29,15 +29,13 @@ Add `(lambda () FORM)' to `after-init-hook'.
 ;;;***
 
 ;;;### (autoloads nil nil ("starter-kit-defuns.el" "starter-kit-misc.el"
-;;;;;;  "starter-kit-pkg.el") (21854 37589 520854 51000))
+;;;;;;  "starter-kit-pkg.el") (21907 38395 647290 81000))
 
 ;;;***
 
-(provide 'starter-kit-autoloads)
 ;; Local Variables:
 ;; version-control: never
 ;; no-byte-compile: t
 ;; no-update-autoloads: t
-;; coding: utf-8
 ;; End:
 ;;; starter-kit-autoloads.el ends here

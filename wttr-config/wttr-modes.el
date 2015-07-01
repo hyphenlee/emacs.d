@@ -51,6 +51,5 @@
            "cc.el"
            "rtags.el"
            "org.el"
-           ;; "ibus.el"
            )))
 (provide 'wttr-modes)

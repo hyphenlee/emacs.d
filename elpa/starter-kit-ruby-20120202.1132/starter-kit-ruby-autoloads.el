@@ -1,10 +1,10 @@
 ;;; starter-kit-ruby-autoloads.el --- automatically extracted autoloads
 ;;
 ;;; Code:
-
+(add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
-;;;### (autoloads nil "starter-kit-ruby" "starter-kit-ruby.el" (21854
-;;;;;;  37590 406315 537000))
+;;;### (autoloads nil "starter-kit-ruby" "starter-kit-ruby.el" (21907
+;;;;;;  38397 22653 283000))
 ;;; Generated autoloads from starter-kit-ruby.el
 
 (eval-after-load 'ruby-mode '(progn (ignore-errors (require 'ruby-compilation)) (setq ruby-use-encoding-map nil) (add-hook 'ruby-mode-hook 'inf-ruby-keys) (define-key ruby-mode-map (kbd "RET") 'reindent-then-newline-and-indent) (define-key ruby-mode-map (kbd "C-M-h") 'backward-kill-word)))
@@ -50,16 +50,9 @@ exec-to-string command, but it works and seems fast" (delq nil (mapcar (quote (l
 
 ;;;***
 
-;;;### (autoloads nil nil ("starter-kit-ruby-pkg.el") (21854 37590
-;;;;;;  414828 295000))
-
-;;;***
-
-(provide 'starter-kit-ruby-autoloads)
 ;; Local Variables:
 ;; version-control: never
 ;; no-byte-compile: t
 ;; no-update-autoloads: t
-;; coding: utf-8
 ;; End:
 ;;; starter-kit-ruby-autoloads.el ends here

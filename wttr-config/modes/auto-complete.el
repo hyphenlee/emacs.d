@@ -96,8 +96,8 @@
         ;;  (setq ac-sources (append '(ac-source-clang-async ac-source-yasnippet) ac-sources))
         ;;  (setq ac-sources '(ac-source-clang-async ac-source-yasnippet ac-source-words-in-all-buffer ac-source-functions ac-source-words-in-all-buffer))
         (ac-clang-launch-completion-process))
-        (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
-        (add-hook 'auto-complete-mode-hook 'ac-common-setup)))
+      (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
+      (add-hook 'auto-complete-mode-hook 'ac-common-setup)))
 
 (if wttr/os:linuxp
     (progn 
@@ -109,10 +109,10 @@
       (require 'auto-complete-clang-async)
       (defun ac-cc-mode-setup ()
         (interactive)
-        (setq ac-clang-complete-executable "~/.emacs.d/plugins/clang-async/clang-complete")
-        (setq ac-sources '(ac-source-clang-async ac-source-yasnippet ac-source-variables))
-        ;;  (setq ac-sources (append '(ac-source-clang-async ac-source-yasnippet) ac-sources))
+        ;; (setq ac-clang-complete-executable "~/.emacs.d/plugins/clang-async/clang-complete")
+        ;; (setq ac-sources '(ac-source-clang-async ac-source-yasnippet ac-source-variables))
+        (setq ac-sources (append '(ac-source-yasnippet ) ac-sources))
         ;;  (setq ac-sources '(ac-source-clang-async ac-source-yasnippet ac-source-words-in-all-buffer ac-source-functions ac-source-words-in-all-buffer))
         (ac-clang-launch-completion-process))
-        (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
-        (add-hook 'auto-complete-mode-hook 'ac-common-setup)))
+      (add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
+      (add-hook 'auto-complete-mode-hook 'ac-common-setup)))

@@ -11,3 +11,7 @@ projectile.cache
 recentf
 .emacs.desktop.lock
 eshell/*
+url/*
+tramp
+backups/*
+.smex-items

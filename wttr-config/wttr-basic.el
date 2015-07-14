@@ -1,30 +1,25 @@
 ;; -*- coding: utf-8 -*-
 (require 'wttr-utils)
-
 ;; set user information
 (setq user-full-name "hyphen")
 (setq user-mail-address "lhfcjhyy@gmail.com")
 (menu-bar-mode 'nil)
-
 ;;(desktop-save-mode 1)
 (setq default-directory "~/")
-                                        ;====================================
-                                        ;  UI
-                                        ;====================================
+(package-initialize)
+(setq create-lockfiles nil)
+;;====================================
+;;  UI
+;;====================================
 ;; close startup message
 (setq inhibit-startup-message t)
-
-;; transprent window
-                                        ; (set-frame-parameter (selected-frame) 'alpha (list 70 70))
-                                        ; (add-to-list 'default-frame-alist (cons 'alpha (list 90 85)))
-
 
 ;; turn on syntax hilight
 (global-font-lock-mode t)
 
 ;; remove toolbar/menu bar/scroll bar
 (tool-bar-mode 0)
-                                        ;(menu-bar-mode 0)
+;;(menu-bar-mode 0)
 (set-scroll-bar-mode nil)
 
 ;; show clock at statusline
@@ -70,7 +65,14 @@
 (mouse-avoidance-mode 'none)
 
 ;; no backup file, and auto save
-(setq-default make-backup-files nil)
+(setq
+   backup-by-copying t      ; don't clobber symlinks
+   backup-directory-alist
+    '(("." . "~/.saves"))    ; don't litter my fs tree
+   delete-old-versions t
+   kept-new-versions 6
+   kept-old-versions 2
+   version-control t)       ; use versioned backups
 (setq auto-save-default nil)
 
 ;; use y --> yes

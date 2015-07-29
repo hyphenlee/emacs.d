@@ -8,6 +8,14 @@
 (setq default-directory "~/")
 (package-initialize)
 (setq create-lockfiles nil)
+(modify-syntax-entry ?_ "w")
+
+;; visual regexp
+(require 'visual-regexp-steroids)
+(define-key global-map (i want "C-r") 'vr/isearch-backward)
+(define-key global-map (kbd "C-s") 'vr/isearch-forward)
+(define-key global-map (i want "M-%") 'vr/replace)
+(define-key global-map (kbd "C-M-%") 'vr/query-replace)
 ;;====================================
 ;;  UI
 ;;====================================

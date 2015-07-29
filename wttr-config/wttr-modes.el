@@ -49,7 +49,7 @@
            "yasnippet.el"
            "helm.el"
            "cc.el"
-           "rtags.el"
+           ;; "rtags.el"
            "org.el"
            )))
 (provide 'wttr-modes)

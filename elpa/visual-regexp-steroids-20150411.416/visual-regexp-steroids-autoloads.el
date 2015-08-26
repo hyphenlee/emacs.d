@@ -1,11 +1,10 @@
 ;;; visual-regexp-steroids-autoloads.el --- automatically extracted autoloads
 ;;
 ;;; Code:
-
+(add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
-;;;### (autoloads (vr/isearch-backward vr/isearch-forward vr/select-mc-mark
-;;;;;;  vr/select-query-replace vr/select-replace) "visual-regexp-steroids"
-;;;;;;  "visual-regexp-steroids.el" (21868 2493 214577 270000))
+;;;### (autoloads nil "visual-regexp-steroids" "visual-regexp-steroids.el"
+;;;;;;  (21981 48924 0 0))
 ;;; Generated autoloads from visual-regexp-steroids.el
 
 (autoload 'vr/select-replace "visual-regexp-steroids" "\
@@ -35,16 +34,14 @@ Like isearch-backward, but using Python (or custom) regular expressions.
 
 ;;;***
 
-;;;### (autoloads nil nil ("visual-regexp-steroids-pkg.el") (21868
-;;;;;;  2493 234629 136000))
+;;;### (autoloads nil nil ("visual-regexp-steroids-pkg.el") (21981
+;;;;;;  48924 0 0))
 
 ;;;***
 
-(provide 'visual-regexp-steroids-autoloads)
 ;; Local Variables:
 ;; version-control: never
 ;; no-byte-compile: t
 ;; no-update-autoloads: t
-;; coding: utf-8
 ;; End:
 ;;; visual-regexp-steroids-autoloads.el ends here

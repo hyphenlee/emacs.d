@@ -17,7 +17,7 @@
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
 (setq org-agenda-files
-      (list "~/todo_list.org"))
+      (list "~/note/gtd.org" "~/note/note.org" "~/note/work.org"))
 (setq org-insert-mode-line-in-empty-file t)
 (setq org-hierarchical-todo-statistics t)
 
@@ -71,6 +71,7 @@
 (setq org-hide-leading-stars t)
 
 
+
 ;; export settings
 ;;;; prevent the _ to become a sub title
 (setq org-export-with-sub-superscripts nil)
@@ -81,9 +82,10 @@
 (define-key global-map "\C-cc" 'org-capture)
 (setq org-capture-templates
       '(("t" "Todo" entry (file+headline "~/note/gtd.org" "Tasks")
-         "* TODO %?\n  %i\n  %a")
+         "* TODO %?\n  %i\n  %a" :clock-in t :clock-resume t)
         ("n" "Note" entry (file+headline "~/note/note.org" "Notes")
          "* %?\n  %i\n  %a")
-        ("j" "Journal" entry (file+datetree "~/note/journal.org")
-         "* %?\nEntered on %U\n  %i\n  %a")))
+        ;; ("j" "Journal" entry (file+datetree "~/note/journal.org")
+        ;;  "* %?\nEntered on %U\n  %i\n  %a")
+        ))
 (setq org-journal-dir "~/note/diary/")

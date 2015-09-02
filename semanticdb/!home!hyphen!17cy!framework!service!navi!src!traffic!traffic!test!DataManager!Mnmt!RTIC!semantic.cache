@@ -1,0 +1,267 @@
+;; Object semanticdb-project-database-file
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table"
+      :major-mode c++-mode
+      :tags 
+        '( ("gtest/gtest.h" include nil nil [483 507])
+            ("protected" variable (:constant-flag t) nil [517 526])
+            ("private" variable (:constant-flag t) nil [542 549])
+            ("TRF_DM_RTICAdapter.h" include nil nil [558 589])
+            ("TRF_DM_RTICDSPDataCache.h" include nil nil [590 626])
+            ("TRF_DM_Manager.h" include nil nil [627 654])
+            ("TRF_DM_Mnmt_DEF.h" include nil nil [689 717])
+            ("TRF_DM_RTICAdapter_test" type
+               (:superclasses 
+                  ( ("testing::Test" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("public" label nil (reparse-symbol classsubparts) [956 963])
+                    ("SetUpTestCase" function
+                       (:typemodifiers ("static")
+                        :type "void")
+                        (reparse-symbol classsubparts) [968 1057])
+                    ("TearDownTestCase" function
+                       (:typemodifiers ("static")
+                        :type "void")
+                        (reparse-symbol classsubparts) [1063 1140])
+                    ("SetUp" function
+                       (:typemodifiers ("virtual")
+                        :type "void")
+                        (reparse-symbol classsubparts) [1146 1178])
+                    ("TearDown" function
+                       (:typemodifiers ("virtual")
+                        :type "void")
+                        (reparse-symbol classsubparts) [1184 1219])
+                    ("ClearDataManager" function
+                       (:prototype-flag t
+                        :type "void")
+                        (reparse-symbol classsubparts) [1225 1249])
+                    ("protected" label nil (reparse-symbol classsubparts) [1251 1261])
+                    ("m_pcManager" variable
+                       (:pointer 1
+                        :typemodifiers ("static")
+                        :type ("TRF_DM_Manager" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1267 1302])
+                    ("m_cRTICAdapter" variable (:type ("TRF_DM_RTICAdapter" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1308 1345]))                  
+                :type "class")
+                nil [901 1349])
+            ("TRF_DM_RTICAdapter_test::m_pcManager" variable
+               (:pointer 1
+                :default-value "NULL"
+                :type ("TRF_DM_Manager" type (:type "class") nil nil))
+                nil [1351 1411])
+            ("ClearDataManager" function
+               (:parent "TRF_DM_RTICAdapter_test"
+                :type "void")
+                nil [1413 1602])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("TRF_DM_RTICAdapter_test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1795 1819])
+                    ("" variable (:type ("AddJamRecData" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1820 1834]))                  
+                :type "int")
+                nil [1788 1928])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("TRF_DM_RTICAdapter_test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1937 1961])
+                    ("" variable (:type ("AddRegRecData" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1962 1976]))                  
+                :type "int")
+                nil [1930 2070])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("TRF_DM_RTICAdapter_test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2079 2103])
+                    ("" variable (:type ("AddRegLinkRecData" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2104 2122]))                  
+                :type "int")
+                nil [2072 2232])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("TRF_DM_RTICAdapter_test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2241 2265])
+                    ("" variable (:type ("MakeTileData" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2266 2279]))                  
+                :type "int")
+                nil [2234 2335])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("TRF_DM_RTICAdapter_test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2344 2368])
+                    ("" variable (:type ("MakeJamData" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2369 2381]))                  
+                :type "int")
+                nil [2337 2709])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("TRF_DM_RTICAdapter_test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2718 2742])
+                    ("" variable (:type ("MakeRegData" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2743 2755]))                  
+                :type "int")
+                nil [2711 2810])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("TRF_DM_RTICAdapter_test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2819 2843])
+                    ("" variable (:type ("SetTrfTimeStamp" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2844 2860]))                  
+                :type "int")
+                nil [2812 2923])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("TRF_DM_RTICAdapter_test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2932 2956])
+                    ("" variable (:type ("SetTrfDataRefresh" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2957 2975]))                  
+                :type "int")
+                nil [2925 3040])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("TRF_DM_RTICAdapter_test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3049 3073])
+                    ("" variable (:type ("GetRegWorkData" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3074 3089]))                  
+                :type "int")
+                nil [3042 3217])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("TRF_DM_RTICAdapter_test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3515 3539])
+                    ("" variable (:type ("GetJamUpdateCounter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3540 3560]))                  
+                :type "int")
+                nil [3508 3663])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("TRF_DM_RTICAdapter_test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3672 3696])
+                    ("" variable (:type ("GetRegUpdateCounter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3697 3717]))                  
+                :type "int")
+                nil [3665 3820])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("TRF_DM_RTICAdapter_test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3829 3853])
+                    ("" variable (:type ("IsJamDataExist" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3854 3869]))                  
+                :type "int")
+                nil [3822 3924])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("TRF_DM_RTICAdapter_test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3933 3957])
+                    ("" variable (:type ("IsRegDataExist" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3958 3973]))                  
+                :type "int")
+                nil [3926 4028])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("TRF_DM_RTICAdapter_test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5406 5430])
+                    ("" variable (:type ("IsUpdateLevel3Data" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5431 5450]))                  
+                :type "int")
+                nil [5399 5639])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("TRF_DM_RTICAdapter_test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5648 5672])
+                    ("" variable (:type ("IsUpdateJamData" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5673 5689]))                  
+                :type "int")
+                nil [5641 5783])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("TRF_DM_RTICAdapter_test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5792 5816])
+                    ("" variable (:type ("IsUpdateRegData" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5817 5833]))                  
+                :type "int")
+                nil [5785 5927])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("TRF_DM_RTICAdapter_test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5936 5960])
+                    ("" variable (:type ("GetCurrentRecvIndex" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5961 5981]))                  
+                :type "int")
+                nil [5929 6107])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("TRF_DM_RTICAdapter_test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [6116 6140])
+                    ("" variable (:type ("GetJamMeshCodeList" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [6141 6160]))                  
+                :type "int")
+                nil [6109 6226])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("TRF_DM_RTICAdapter_test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [6235 6259])
+                    ("" variable (:type ("GetRegMeshCodeList" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [6260 6279]))                  
+                :type "int")
+                nil [6228 6345])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("TRF_DM_RTICAdapter_test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [6354 6378])
+                    ("" variable (:type ("GetJamMeshInfo" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [6379 6394]))                  
+                :type "int")
+                nil [6347 6494])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("TRF_DM_RTICAdapter_test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [6503 6527])
+                    ("" variable (:type ("GetJamMeshInfoForKiwi" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [6528 6550]))                  
+                :type "int")
+                nil [6496 6650])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("TRF_DM_RTICAdapter_test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [6659 6683])
+                    ("" variable (:type ("GetRegMeshInfo" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [6684 6699]))                  
+                :type "int")
+                nil [6652 6799])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("TRF_DM_RTICAdapter_test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [6808 6832])
+                    ("" variable (:type ("GetRegMeshInfoForKiwi" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [6833 6855]))                  
+                :type "int")
+                nil [6801 6962])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("TRF_DM_RTICAdapter_test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [6971 6995])
+                    ("" variable (:type ("InitStatus" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [6996 7007]))                  
+                :type "int")
+                nil [6964 7061])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("TRF_DM_RTICAdapter_test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [7070 7094])
+                    ("" variable (:type ("GetJamRecorder" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [7095 7110]))                  
+                :type "int")
+                nil [7063 7238])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("TRF_DM_RTICAdapter_test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [7247 7271])
+                    ("" variable (:type ("GetRegRecorder" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [7272 7287]))                  
+                :type "int")
+                nil [7240 7415])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("TRF_DM_RTICAdapter_test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [7424 7448])
+                    ("" variable (:type ("GetJamRecData" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [7449 7463]))                  
+                :type "int")
+                nil [7417 7590])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("TRF_DM_RTICAdapter_test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [7599 7623])
+                    ("" variable (:type ("GetRegRecData" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [7624 7638]))                  
+                :type "int")
+                nil [7592 7765])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("TRF_DM_RTICAdapter_test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [7774 7798])
+                    ("" variable (:type ("GetRegLinkRecData" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [7799 7817]))                  
+                :type "int")
+                nil [7767 7948])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("TRF_DM_RTICAdapter_test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [7957 7981])
+                    ("" variable (:type ("SetTimeStamp" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [7982 7995]))                  
+                :type "int")
+                nil [7950 8191])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("TRF_DM_RTICAdapter_test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [8200 8224])
+                    ("" variable (:type ("AddRefreshInfo" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [8225 8240]))                  
+                :type "int")
+                nil [8193 8408])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("TRF_DM_RTICAdapter_test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [8417 8441])
+                    ("" variable (:type ("UpdateRefreshIdx" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [8442 8459]))                  
+                :type "int")
+                nil [8410 8519])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("TRF_DM_RTICAdapter_test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [8528 8552])
+                    ("" variable (:type ("ClearCacheData" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [8553 8568]))                  
+                :type "int")
+                nil [8521 8626]))          
+      :file "TRF_DM_RTICAdapter_test.cpp"
+      :pointmax 8647
+      :fsize 8646
+      :lastmodtime '(21952 35042 916045 866000)
+      :unmatched-syntax nil))
+  :file "!home!hyphen!17cy!framework!service!navi!src!traffic!traffic!test!DataManager!Mnmt!RTIC!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

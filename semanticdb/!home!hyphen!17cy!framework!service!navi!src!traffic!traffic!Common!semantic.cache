@@ -1,0 +1,148 @@
+;; Object semanticdb-project-database-file
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table"
+      :major-mode c++-mode
+      :tags 
+        '( ("stdafx.h" include nil nil [481 500])
+            ("TRF_COMM_DiffTrafficUtils.h" include nil nil [529 570])
+            ("TRF_COMM_CommonUtils.h" include nil nil [604 640])
+            ("TRF_COMM_TrafficLog.h" include nil nil [648 680])
+            ("BL_AutoSync.h" include nil nil [707 734])
+            ("MapLonlatConvertTool.h" include nil nil [780 816])
+            ("IDSPMapListener.h" include nil nil [852 883])
+            ("DSPDataIF.h" include nil nil [913 938])
+            ("TRF_COMM_TrafficEndianUtils.h" include nil nil [979 1022])
+            ("TRF_DS_TrafficConfig.h" include nil nil [1030 1063])
+            ("MEM_set.h" include nil nil [1065 1085])
+            ("traffic" using (:type ("traffic" type
+                 (:prototype t
+                  :type "namespace")
+                  nil nil)) nil [1087 1111])
+            ("max_pcnt" variable
+               (:constant-flag t
+                :default-value "65535"
+                :type "float")
+                nil [1155 1184])
+            ("CutPointListShort" function
+               (:parent "TrafficUtils"
+                :arguments 
+                  ( ("" variable
+                       (:constant-flag t
+                        :type ("TrafficVector" type
+                             (:template-specifier 
+                                ( ("TRF_TrafficPointN" type nil nil nil))                                
+                              :type "class")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [1226 1265])
+                    ("sOriginalPoints" variable
+                       (:reference 1
+                        :type ("type" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1266 1288])
+                    ("wStartPercent" variable (:type ("WORD" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1329 1348])
+                    ("wEndPercent" variable (:type ("WORD" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1389 1406])
+                    ("" variable (:type ("TrafficVector" type
+                         (:template-specifier 
+                            ( ("TRF_TrafficPointN" type nil nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol arg-sub-list) [1447 1480])
+                    ("cResultPoints" variable
+                       (:reference 1
+                        :type ("type" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1481 1501]))                  
+                :type ("CL_BOOL" type (:type "class") nil nil))
+                nil [1186 2236])
+            ("CutPointListShort" function
+               (:parent "TrafficUtils"
+                :arguments 
+                  ( ("" variable
+                       (:constant-flag t
+                        :type ("TrafficVector" type
+                             (:template-specifier 
+                                ( ("sTrafficPoint" type (:template-specifier 
+                                    ( ("SHORT" type nil nil nil))                                    ) nil nil))                                
+                              :type "class")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [2278 2322])
+                    ("sOriginalPoints" variable
+                       (:reference 1
+                        :type ("type" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2323 2345])
+                    ("wStartPercent" variable (:type ("WORD" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2354 2373])
+                    ("wEndPercent" variable (:type ("WORD" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2382 2399])
+                    ("" variable (:type ("TrafficVector" type
+                         (:template-specifier 
+                            ( ("sTrafficPoint" type (:template-specifier 
+                                ( ("SHORT" type nil nil nil))                                ) nil nil))                            
+                          :type "class")
+                          nil nil)) (reparse-symbol arg-sub-list) [2408 2446])
+                    ("cResultPoints" variable
+                       (:reference 1
+                        :type ("type" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2447 2467]))                  
+                :type ("CL_BOOL" type (:type "class") nil nil))
+                nil [2238 5727])
+            ("ChoosePointWithPercent" function
+               (:parent "TrafficUtils"
+                :arguments 
+                  ( ("" variable
+                       (:constant-flag t
+                        :type ("TrafficVector" type
+                             (:template-specifier 
+                                ( ("sTrafficPoint" type (:template-specifier 
+                                    ( ("SHORT" type nil nil nil))                                    ) nil nil))                                
+                              :type "class")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [5774 5818])
+                    ("sOriginalPoints" variable
+                       (:reference 1
+                        :type ("type" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5819 5841])
+                    ("wPercent" variable (:type ("WORD" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5850 5864])
+                    ("cResultPoint" variable
+                       (:reference 1
+                        :type ("sTrafficPoint" type
+                             (:template-specifier 
+                                ( ("SHORT" type nil nil nil))                                
+                              :type "class")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [5873 5908]))                  
+                :type ("CL_BOOL" type (:type "class") nil nil))
+                nil [5729 7893])
+            ("DistanceOfTwoPoints" function
+               (:parent "TrafficUtils"
+                :arguments 
+                  ( ("sPoint1" variable
+                       (:reference 1
+                        :constant-flag t
+                        :type ("sTrafficPoint" type
+                             (:template-specifier 
+                                ( ("SHORT" type nil nil nil))                                
+                              :type "class")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [7935 7971])
+                    ("sPoint2" variable
+                       (:reference 1
+                        :constant-flag t
+                        :type ("sTrafficPoint" type
+                             (:template-specifier 
+                                ( ("SHORT" type nil nil nil))                                
+                              :type "class")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [7972 8008]))                  
+                :type ("FLOAT" type (:type "class") nil nil))
+                nil [7895 8154]))          
+      :file "TRF_COMM_DiffTrafficUtils.cpp"
+      :pointmax 8166
+      :fsize 8187
+      :lastmodtime '(21983 52206 179149 606000)
+      :unmatched-syntax '((punctuation 5818 . 5819) (punctuation 5817 . 5818) (punctuation 2446 . 2447) (punctuation 2445 . 2446) (punctuation 2322 . 2323) (punctuation 2321 . 2322) (punctuation 1480 . 1481) (punctuation 1479 . 1480) (punctuation 1265 . 1266) (punctuation 1264 . 1265)))
+    (semanticdb-table "semanticdb-table"
+      :file "TRF_COMM_DiffTrafficUtils.h"
+      :fsize 3074
+      :lastmodtime '(21973 16328 154246 823000)))
+  :file "!home!hyphen!17cy!framework!service!navi!src!traffic!traffic!Common!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

@@ -15,7 +15,7 @@
   '("文泉驿等宽微米黑" "Microsoft YaHei" "MS Gothic"))
 
 
-(defconst wttr/font:default-font-size 12)
+(defconst wttr/font:default-font-size 13)
 
 
 (defun wttr/font:existp (font-name)
@@ -88,9 +88,9 @@
 ;(set-default-font "fontset-Consolas")
 (cond (wttr/os:osxp
 (custom-set-faces
- '(default ((t ( :weight normal :height 130 :width normal))))))
+ '(default ((t ( :weight normal :height 120 :width normal))))))
 (wttr/os:linuxp
 (custom-set-faces
- '(default ((t ( :weight normal :height 100 :width normal)))))))
+ '(default ((t ( :weight normal :height 110 :width normal)))))))
 
 (provide 'wttr-font)

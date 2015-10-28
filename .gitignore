@@ -15,3 +15,4 @@ url/*
 tramp
 backups/*
 .smex-items
+semanticdb/*

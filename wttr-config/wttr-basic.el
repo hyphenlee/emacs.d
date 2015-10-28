@@ -151,6 +151,11 @@
              (list
               "~/.emacs.d/plugins/rtags/bin"
               "~/.emacs.d/plugins/clang-async"
+              "/usr/local/bin"
+              "/usr/bin"
+              "/bin"
+              "/usr/sbin"
+              "/sbin"
               ))))
 ;; time stamp support
 

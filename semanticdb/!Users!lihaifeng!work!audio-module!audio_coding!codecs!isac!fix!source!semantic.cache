@@ -1,0 +1,50 @@
+;; Object semanticdb-project-database-file
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table"
+      :major-mode c++-mode
+      :tags 
+        '( ("testing/gtest/include/gtest/gtest.h" include nil nil [415 461])
+            ("common_audio/signal_processing/include/signal_processing_library.h" include nil nil [462 539])
+            ("audio_coding/codecs/isac/fix/source/filterbank_internal.h" include nil nil [540 608])
+            ("audio_coding/codecs/isac/fix/source/filterbank_tables.h" include nil nil [609 675])
+            ("audio_coding/codecs/isac/fix/source/settings.h" include nil nil [676 733])
+            ("system_wrappers/interface/cpu_features_wrapper.h" include nil nil [734 793])
+            ("typedefs.h" include nil nil [794 815])
+            ("FilterBanksTest" type
+               (:superclasses 
+                  ( ("testing::Test" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("protected" label nil (reparse-symbol classsubparts) [865 875])
+                    ("CalculateResidualEnergyTester" function
+                       (:arguments 
+                          ( ("AllpassFilter2FixDec16Function" variable (:type ("AllpassFilter2FixDec16" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [966 1057]))                          
+                        :type "void")
+                        (reparse-symbol classsubparts) [931 2714]))                  
+                :type "class")
+                nil [817 2717])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("FilterBanksTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2726 2742])
+                    ("" variable (:type ("AllpassFilter2FixDec16Test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2743 2770]))                  
+                :type "int")
+                nil [2719 3127])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("FilterBanksTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3136 3152])
+                    ("" variable (:type ("HighpassFilterFixDec32Test" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3153 3180]))                  
+                :type "int")
+                nil [3129 4217]))          
+      :file "filterbanks_unittest.cc"
+      :pointmax 4218
+      :fsize 4217
+      :lastmodtime '(22019 41895 0 0)
+      :unmatched-syntax nil))
+  :file "!Users!lihaifeng!work!audio-module!audio_coding!codecs!isac!fix!source!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

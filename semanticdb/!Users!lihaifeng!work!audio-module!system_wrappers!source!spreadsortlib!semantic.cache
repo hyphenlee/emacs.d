@@ -1,0 +1,1302 @@
+;; Object semanticdb-project-database-file
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table"
+      :major-mode c++-mode
+      :tags 
+        '( ("BOOST_SPREADSORT_CONSTANTS" variable (:constant-flag t) nil [1386 1412])
+            ("boost" type
+               (:members 
+                  ( ("detail" type
+                       (:members 
+                          ( ("LOG_MEAN_BIN_SIZE" variable
+                               (:typemodifiers ("static")
+                                :constant-flag t
+                                :default-value "2"
+                                :type "unsigned int")
+                                (reparse-symbol namespacesubparts) [1513 1557])
+                            ("MAX_SPLITS" variable
+                               (:typemodifiers ("static")
+                                :constant-flag t
+                                :default-value "10"
+                                :type "unsigned int")
+                                (reparse-symbol namespacesubparts) [1772 1810])
+                            ("LOG_MIN_SPLIT_COUNT" variable
+                               (:typemodifiers ("static")
+                                :constant-flag t
+                                :default-value "5"
+                                :type "unsigned int")
+                                (reparse-symbol namespacesubparts) [1903 1949])
+                            ("MIN_SORT_SIZE" variable
+                               (:typemodifiers ("static")
+                                :constant-flag t
+                                :default-value "1000"
+                                :type "long")
+                                (reparse-symbol namespacesubparts) [2021 2060])
+                            ("LOG_CONST" variable
+                               (:typemodifiers ("static")
+                                :constant-flag t
+                                :default-value "2"
+                                :type "unsigned int")
+                                (reparse-symbol namespacesubparts) [2184 2220]))                          
+                        :type "namespace")
+                        (reparse-symbol namespacesubparts) [1431 2222]))                  
+                :type "namespace")
+                nil [1413 2224]))          
+      :file "constants.hpp"
+      :pointmax 2232
+      :fsize 2273
+      :lastmodtime '(22011 44633 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("BOOST_SPREADSORT_CONSTANTS")
+          )
+)
+    (semanticdb-table "semanticdb-table"
+      :major-mode c++-mode
+      :tags 
+        '( ("BOOST_SPREAD_SORT_H" variable (:constant-flag t) nil [484 503])
+            ("algorithm" include (:system-flag t) nil [504 524])
+            ("cstring" include (:system-flag t) nil [525 543])
+            ("vector" include (:system-flag t) nil [544 561])
+            ("system_wrappers/source/spreadsortlib/constants.hpp" include nil nil [562 623])
+            ("boost" type
+               (:members 
+                  ( ("detail" type
+                       (:members 
+                          ( ("rough_log_2_size" function
+                               (:template 
+                                  ( ("T" type (:type "class") nil nil))                                  
+                                :type "unsigned int"
+                                :arguments 
+                                  ( ("input" variable
+                                       (:reference 1
+                                        :constant-flag t
+                                        :type ("T" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [774 789]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [712 1024])
+                            ("get_max_count" function
+                               (:typemodifiers ("inline")
+                                :arguments 
+                                  ( ("log_range" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [1337 1356])
+                                    ("count" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1357 1370]))                                  
+                                :type ("size_t" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [1306 1979])
+                            ("find_extremes" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("current" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2093 2118])
+                                    ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2119 2141])
+                                    ("max" variable
+                                       (:reference 1
+                                        :type ("RandomAccessIter" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [2142 2165])
+                                    ("min" variable
+                                       (:reference 1
+                                        :type ("RandomAccessIter" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [2166 2189]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [2026 2435])
+                            ("find_extremes" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("compare" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("current" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2595 2620])
+                                    ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2621 2643])
+                                    ("max" variable
+                                       (:reference 1
+                                        :type ("RandomAccessIter" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [2644 2667])
+                                    ("min" variable
+                                       (:reference 1
+                                        :type ("RandomAccessIter" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [2668 2691])
+                                    ("comp" variable (:type ("compare" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2692 2705]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [2513 2883])
+                            ("get_log_divisor" function
+                               (:typemodifiers ("inline")
+                                :arguments 
+                                  ( ("count" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [2995 3008])
+                                    ("log_range" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [3009 3028]))                                  
+                                :type "int")
+                                (reparse-symbol namespacesubparts) [2965 3647])
+                            ("size_bins" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil))                                  
+                                :type ("RandomAccessIter" type (:type "class") nil nil)
+                                :arguments 
+                                  ( ("bin_sizes" variable
+                                       (:reference 1
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("size_t" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [3729 3760])
+                                    ("bin_cache" variable
+                                       (:reference 1
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("RandomAccessIter" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [3761 3802])
+                                    ("cache_offset" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [3803 3825])
+                                    ("cache_end" variable
+                                       (:reference 1
+                                        :type "unsigned int")
+                                        (reparse-symbol arg-sub-list) [3826 3846])
+                                    ("bin_count" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [3847 3866]))                                  
+                                :typemodifiers ("inline")
+                                :pointer 1)
+                                (reparse-symbol namespacesubparts) [3652 4284])
+                            ("spread_sort_rec" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("div_type" type (:type "class") nil nil)
+                                    ("data_type" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4441 4464])
+                                    ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4465 4487])
+                                    ("bin_cache" variable
+                                       (:reference 1
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("RandomAccessIter" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [4488 4529])
+                                    ("cache_offset" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [4530 4561])
+                                    ("bin_sizes" variable
+                                       (:reference 1
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("size_t" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [4562 4593]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [4339 7776])
+                            ("inner_swap_loop" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("div_type" type (:type "class") nil nil)
+                                    ("data_type" type (:type "class") nil nil)
+                                    ("right_shift" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("bins" variable
+                                       (:pointer 1
+                                        :type ("RandomAccessIter" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [7946 7970])
+                                    ("nextbinstart" variable
+                                       (:reference 1
+                                        :constant-flag t
+                                        :type ("RandomAccessIter" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [7971 8009])
+                                    ("ii" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [8010 8022])
+                                    ("shift" variable
+                                       (:reference 1
+                                        :type ("right_shift" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [8023 8047])
+                                    ("log_divisor" variable
+                                       (:constant-flag t
+                                        :type "unsigned int")
+                                        (reparse-symbol arg-sub-list) [8048 8075])
+                                    ("div_min" variable
+                                       (:constant-flag t
+                                        :type ("div_type" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [8076 8099]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [7829 9026])
+                            ("swap_loop" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("div_type" type (:type "class") nil nil)
+                                    ("data_type" type (:type "class") nil nil)
+                                    ("right_shift" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("bins" variable
+                                       (:pointer 1
+                                        :type ("RandomAccessIter" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [9194 9218])
+                                    ("nextbinstart" variable
+                                       (:reference 1
+                                        :type ("RandomAccessIter" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [9219 9251])
+                                    ("ii" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [9252 9264])
+                                    ("shift" variable
+                                       (:reference 1
+                                        :type ("right_shift" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [9265 9289])
+                                    ("bin_sizes" variable
+                                       (:reference 1
+                                        :constant-flag t
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("size_t" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [9290 9327])
+                                    ("log_divisor" variable
+                                       (:constant-flag t
+                                        :type "unsigned int")
+                                        (reparse-symbol arg-sub-list) [9328 9355])
+                                    ("div_min" variable
+                                       (:constant-flag t
+                                        :type ("div_type" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [9356 9379]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [9083 9551])
+                            ("spread_sort_rec" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("div_type" type (:type "class") nil nil)
+                                    ("data_type" type (:type "class") nil nil)
+                                    ("right_shift" type (:type "class") nil nil)
+                                    ("compare" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [9742 9765])
+                                    ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [9766 9788])
+                                    ("bin_cache" variable
+                                       (:reference 1
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("RandomAccessIter" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [9789 9830])
+                                    ("cache_offset" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [9831 9861])
+                                    ("bin_sizes" variable
+                                       (:reference 1
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("size_t" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [9862 9893])
+                                    ("shift" variable (:type ("right_shift" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [9894 9912])
+                                    ("comp" variable (:type ("compare" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [9913 9926]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [9606 11641])
+                            ("spread_sort_rec" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("div_type" type (:type "class") nil nil)
+                                    ("data_type" type (:type "class") nil nil)
+                                    ("right_shift" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [11844 11867])
+                                    ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [11868 11890])
+                                    ("bin_cache" variable
+                                       (:reference 1
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("RandomAccessIter" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [11891 11932])
+                                    ("cache_offset" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [11933 11963])
+                                    ("bin_sizes" variable
+                                       (:reference 1
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("size_t" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [11964 11995])
+                                    ("shift" variable (:type ("right_shift" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [11996 12014]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [11723 13706])
+                            ("spread_sort" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("div_type" type (:type "class") nil nil)
+                                    ("data_type" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [13872 13895])
+                                    ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [13896 13918])
+                                    ("" variable (:type ("div_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [13919 13928])
+                                    ("" variable (:type ("data_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [13929 13939]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [13774 14127])
+                            ("spread_sort" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("div_type" type (:type "class") nil nil)
+                                    ("data_type" type (:type "class") nil nil)
+                                    ("right_shift" type (:type "class") nil nil)
+                                    ("compare" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [14264 14287])
+                                    ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [14288 14310])
+                                    ("" variable (:type ("div_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [14311 14320])
+                                    ("" variable (:type ("data_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [14321 14331])
+                                    ("shift" variable (:type ("right_shift" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [14332 14350])
+                                    ("comp" variable (:type ("compare" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [14351 14364]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [14132 14587])
+                            ("spread_sort" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("div_type" type (:type "class") nil nil)
+                                    ("data_type" type (:type "class") nil nil)
+                                    ("right_shift" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [14709 14732])
+                                    ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [14733 14755])
+                                    ("" variable (:type ("div_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [14756 14765])
+                                    ("" variable (:type ("data_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [14766 14776])
+                                    ("shift" variable (:type ("right_shift" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [14777 14795]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [14592 15003]))                          
+                        :type "namespace")
+                        (reparse-symbol namespacesubparts) [646 15007])
+                    ("integer_sort" function
+                       (:template 
+                          ( ("RandomAccessIter" type (:type "class") nil nil))                          
+                        :type "void"
+                        :arguments 
+                          ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [15112 15135])
+                            ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [15136 15158]))                          
+                        :typemodifiers ("inline"))
+                        (reparse-symbol namespacesubparts) [15051 15352])
+                    ("integer_sort" function
+                       (:template 
+                          ( ("RandomAccessIter" type (:type "class") nil nil)
+                            ("right_shift" type (:type "class") nil nil)
+                            ("compare" type (:type "class") nil nil))                          
+                        :type "void"
+                        :arguments 
+                          ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [15482 15505])
+                            ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [15506 15528])
+                            ("shift" variable (:type ("right_shift" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [15537 15555])
+                            ("comp" variable (:type ("compare" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [15556 15569]))                          
+                        :typemodifiers ("inline"))
+                        (reparse-symbol namespacesubparts) [15387 15738])
+                    ("integer_sort" function
+                       (:template 
+                          ( ("RandomAccessIter" type (:type "class") nil nil)
+                            ("right_shift" type (:type "class") nil nil))                          
+                        :type "void"
+                        :arguments 
+                          ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [15864 15887])
+                            ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [15888 15910])
+                            ("shift" variable (:type ("right_shift" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [15919 15937]))                          
+                        :typemodifiers ("inline"))
+                        (reparse-symbol namespacesubparts) [15784 16094])
+                    ("cast_float_iter" function
+                       (:template 
+                          ( ("cast_type" type (:type "class") nil nil)
+                            ("RandomAccessIter" type (:type "class") nil nil))                          
+                        :type ("cast_type" type (:type "class") nil nil)
+                        :arguments 
+                          ( ("floatiter" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("RandomAccessIter" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [16357 16392]))                          
+                        :typemodifiers ("inline"))
+                        (reparse-symbol namespacesubparts) [16270 16498])
+                    ("mem_cast" function
+                       (:template 
+                          ( ("data_type" type (:type "class") nil nil)
+                            ("cast_type" type (:type "class") nil nil))                          
+                        :type ("cast_type" type (:type "class") nil nil)
+                        :arguments 
+                          ( ("data" variable
+                               (:reference 1
+                                :constant-flag t
+                                :type ("data_type" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [16639 16662]))                          
+                        :typemodifiers ("inline"))
+                        (reparse-symbol namespacesubparts) [16566 16760])
+                    ("detail" type
+                       (:members 
+                          ( ("find_extremes" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("div_type" type (:type "class") nil nil)
+                                    ("right_shift" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("current" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [16888 16913])
+                                    ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [16914 16936])
+                                    ("max" variable
+                                       (:reference 1
+                                        :type ("div_type" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [16937 16952])
+                                    ("min" variable
+                                       (:reference 1
+                                        :type ("div_type" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [16953 16968])
+                                    ("shift" variable (:type ("right_shift" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [16969 16987]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [16786 17196])
+                            ("inner_float_swap_loop" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("div_type" type (:type "class") nil nil)
+                                    ("data_type" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("bins" variable
+                                       (:pointer 1
+                                        :type ("RandomAccessIter" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [17360 17384])
+                                    ("nextbinstart" variable
+                                       (:reference 1
+                                        :constant-flag t
+                                        :type ("RandomAccessIter" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [17385 17423])
+                                    ("ii" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [17424 17441])
+                                    ("log_divisor" variable
+                                       (:constant-flag t
+                                        :type "unsigned int")
+                                        (reparse-symbol arg-sub-list) [17442 17469])
+                                    ("div_min" variable
+                                       (:constant-flag t
+                                        :type ("div_type" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [17470 17493]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [17256 18429])
+                            ("float_swap_loop" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("div_type" type (:type "class") nil nil)
+                                    ("data_type" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("bins" variable
+                                       (:pointer 1
+                                        :type ("RandomAccessIter" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [18532 18556])
+                                    ("nextbinstart" variable
+                                       (:reference 1
+                                        :type ("RandomAccessIter" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [18557 18589])
+                                    ("ii" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [18590 18607])
+                                    ("bin_sizes" variable
+                                       (:reference 1
+                                        :constant-flag t
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("size_t" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [18608 18645])
+                                    ("log_divisor" variable
+                                       (:constant-flag t
+                                        :type "unsigned int")
+                                        (reparse-symbol arg-sub-list) [18646 18673])
+                                    ("div_min" variable
+                                       (:constant-flag t
+                                        :type ("div_type" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [18674 18697]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [18434 18855])
+                            ("find_extremes" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("cast_type" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("current" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [18944 18969])
+                                    ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [18970 18992])
+                                    ("max" variable
+                                       (:reference 1
+                                        :type ("cast_type" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [18993 19009])
+                                    ("min" variable
+                                       (:reference 1
+                                        :type ("cast_type" type (:type "class") nil nil))
+                                        (reparse-symbol arg-sub-list) [19010 19026]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [18860 19306])
+                            ("positive_float_sort_rec" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("div_type" type (:type "class") nil nil)
+                                    ("data_type" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [19504 19527])
+                                    ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [19528 19550])
+                                    ("bin_cache" variable
+                                       (:reference 1
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("RandomAccessIter" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [19551 19592])
+                                    ("cache_offset" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [19593 19623])
+                                    ("bin_sizes" variable
+                                       (:reference 1
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("size_t" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [19624 19655]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [19394 21280])
+                            ("negative_float_sort_rec" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("div_type" type (:type "class") nil nil)
+                                    ("data_type" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [21512 21535])
+                                    ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [21536 21558])
+                                    ("bin_cache" variable
+                                       (:reference 1
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("RandomAccessIter" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [21559 21600])
+                                    ("cache_offset" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [21601 21631])
+                                    ("bin_sizes" variable
+                                       (:reference 1
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("size_t" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [21632 21663]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [21402 23462])
+                            ("negative_float_sort_rec" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("div_type" type (:type "class") nil nil)
+                                    ("data_type" type (:type "class") nil nil)
+                                    ("right_shift" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [23713 23736])
+                                    ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [23737 23759])
+                                    ("bin_cache" variable
+                                       (:reference 1
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("RandomAccessIter" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [23760 23801])
+                                    ("cache_offset" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [23802 23832])
+                                    ("bin_sizes" variable
+                                       (:reference 1
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("size_t" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [23833 23864])
+                                    ("shift" variable (:type ("right_shift" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [23865 23883]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [23584 25684])
+                            ("negative_float_sort_rec" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("div_type" type (:type "class") nil nil)
+                                    ("data_type" type (:type "class") nil nil)
+                                    ("right_shift" type (:type "class") nil nil)
+                                    ("compare" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [25833 25856])
+                                    ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [25857 25879])
+                                    ("bin_cache" variable
+                                       (:reference 1
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("RandomAccessIter" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [25880 25921])
+                                    ("cache_offset" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [25922 25952])
+                                    ("bin_sizes" variable
+                                       (:reference 1
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("size_t" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [25953 25984])
+                                    ("shift" variable (:type ("right_shift" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [25985 26003])
+                                    ("comp" variable (:type ("compare" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [26004 26017]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [25689 27839])
+                            ("float_sort_rec" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("div_type" type (:type "class") nil nil)
+                                    ("data_type" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [27998 28021])
+                                    ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [28022 28044])
+                                    ("bin_cache" variable
+                                       (:reference 1
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("RandomAccessIter" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [28045 28086])
+                                    ("cache_offset" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [28087 28117])
+                                    ("bin_sizes" variable
+                                       (:reference 1
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("size_t" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [28118 28149]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [27897 31271])
+                            ("float_sort_rec" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("div_type" type (:type "class") nil nil)
+                                    ("data_type" type (:type "class") nil nil)
+                                    ("right_shift" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [31446 31469])
+                                    ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [31470 31492])
+                                    ("bin_cache" variable
+                                       (:reference 1
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("RandomAccessIter" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [31493 31534])
+                                    ("cache_offset" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [31535 31565])
+                                    ("bin_sizes" variable
+                                       (:reference 1
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("size_t" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [31566 31597])
+                                    ("shift" variable (:type ("right_shift" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [31598 31616]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [31326 34798])
+                            ("float_sort_rec" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("div_type" type (:type "class") nil nil)
+                                    ("data_type" type (:type "class") nil nil)
+                                    ("right_shift" type (:type "class") nil nil)
+                                    ("compare" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [34938 34961])
+                                    ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [34962 34984])
+                                    ("bin_cache" variable
+                                       (:reference 1
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("RandomAccessIter" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [34985 35026])
+                                    ("cache_offset" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [35027 35057])
+                                    ("bin_sizes" variable
+                                       (:reference 1
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("size_t" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [35058 35089])
+                                    ("shift" variable (:type ("right_shift" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [35090 35108])
+                                    ("comp" variable (:type ("compare" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [35109 35122]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [34803 38316])
+                            ("float_Sort" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("cast_type" type (:type "class") nil nil)
+                                    ("data_type" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [38419 38442])
+                                    ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [38443 38465])
+                                    ("" variable (:type ("cast_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [38466 38476])
+                                    ("" variable (:type ("data_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [38477 38487]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [38321 38675])
+                            ("float_Sort" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("div_type" type (:type "class") nil nil)
+                                    ("data_type" type (:type "class") nil nil)
+                                    ("right_shift" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [38796 38819])
+                                    ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [38820 38842])
+                                    ("" variable (:type ("div_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [38843 38852])
+                                    ("" variable (:type ("data_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [38853 38863])
+                                    ("shift" variable (:type ("right_shift" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [38864 38882]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [38680 39089])
+                            ("float_Sort" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("div_type" type (:type "class") nil nil)
+                                    ("data_type" type (:type "class") nil nil)
+                                    ("right_shift" type (:type "class") nil nil)
+                                    ("compare" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [39225 39248])
+                                    ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [39249 39271])
+                                    ("" variable (:type ("div_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [39272 39281])
+                                    ("" variable (:type ("data_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [39282 39292])
+                                    ("shift" variable (:type ("right_shift" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [39293 39311])
+                                    ("comp" variable (:type ("compare" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [39312 39325]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [39094 39538]))                          
+                        :type "namespace")
+                        (reparse-symbol namespacesubparts) [16764 39542])
+                    ("float_sort_cast" function
+                       (:template 
+                          ( ("RandomAccessIter" type (:type "class") nil nil)
+                            ("cast_type" type (:type "class") nil nil))                          
+                        :type "void"
+                        :arguments 
+                          ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [39742 39765])
+                            ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [39766 39788])
+                            ("cVal" variable (:type ("cast_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [39789 39804]))                          
+                        :typemodifiers ("inline"))
+                        (reparse-symbol namespacesubparts) [39661 39944])
+                    ("float_sort_cast_to_int" function
+                       (:template 
+                          ( ("RandomAccessIter" type (:type "class") nil nil))                          
+                        :type "void"
+                        :arguments 
+                          ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [40108 40131])
+                            ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [40132 40154]))                          
+                        :typemodifiers ("inline"))
+                        (reparse-symbol namespacesubparts) [40037 40219])
+                    ("float_sort" function
+                       (:template 
+                          ( ("RandomAccessIter" type (:type "class") nil nil)
+                            ("right_shift" type (:type "class") nil nil))                          
+                        :type "void"
+                        :arguments 
+                          ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [40330 40353])
+                            ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [40354 40376])
+                            ("shift" variable (:type ("right_shift" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [40377 40395]))                          
+                        :typemodifiers ("inline"))
+                        (reparse-symbol namespacesubparts) [40252 40554])
+                    ("float_sort" function
+                       (:template 
+                          ( ("RandomAccessIter" type (:type "class") nil nil)
+                            ("right_shift" type (:type "class") nil nil)
+                            ("compare" type (:type "class") nil nil))                          
+                        :type "void"
+                        :arguments 
+                          ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [40651 40674])
+                            ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [40675 40697])
+                            ("shift" variable (:type ("right_shift" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [40698 40716])
+                            ("comp" variable (:type ("compare" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [40717 40730]))                          
+                        :typemodifiers ("inline"))
+                        (reparse-symbol namespacesubparts) [40558 40901])
+                    ("detail" type
+                       (:members 
+                          ( ("update_offset" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [41231 41254])
+                                    ("finish" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [41255 41279])
+                                    ("char_offset" variable
+                                       (:reference 1
+                                        :type "unsigned int")
+                                        (reparse-symbol arg-sub-list) [41280 41302]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [41166 41843])
+                            ("update_offset" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("get_char" type (:type "class") nil nil)
+                                    ("get_length" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [42067 42090])
+                                    ("finish" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [42091 42115])
+                                    ("char_offset" variable
+                                       (:reference 1
+                                        :type "unsigned int")
+                                        (reparse-symbol arg-sub-list) [42116 42138])
+                                    ("getchar" variable (:type ("get_char" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [42139 42156])
+                                    ("length" variable (:type ("get_length" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [42157 42175]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [41968 42736])
+                            ("offset_lessthan" type
+                               (:template 
+                                  ( ("data_type" type (:type "class") nil nil)
+                                    ("unsignedchar_type" type (:type "class") nil nil))                                  
+                                :type "struct"
+                                :members 
+                                  ( ("offset_lessthan" function
+                                       (:constructor-flag t
+                                        :arguments 
+                                          ( ("char_offset" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [42928 42949]))                                          
+                                        :type ("offset_lessthan" type (:type "struct") nil nil))
+                                        (reparse-symbol classsubparts) [42912 42979])
+                                    ("()" function
+                                       (:methodconst-flag t
+                                        :operator-flag t
+                                        :typemodifiers ("inline")
+                                        :arguments 
+                                          ( ("x" variable
+                                               (:reference 1
+                                                :constant-flag t
+                                                :type ("data_type" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [43007 43026])
+                                            ("y" variable
+                                               (:reference 1
+                                                :constant-flag t
+                                                :type ("data_type" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [43027 43046]))                                          
+                                        :type "bool")
+                                        (reparse-symbol classsubparts) [42984 43433])
+                                    ("fchar_offset" variable (:type "unsigned int") (reparse-symbol classsubparts) [43438 43460]))                                  )
+                                (reparse-symbol namespacesubparts) [42829 43466])
+                            ("offset_greaterthan" type
+                               (:template 
+                                  ( ("data_type" type (:type "class") nil nil)
+                                    ("unsignedchar_type" type (:type "class") nil nil))                                  
+                                :type "struct"
+                                :members 
+                                  ( ("offset_greaterthan" function
+                                       (:constructor-flag t
+                                        :arguments 
+                                          ( ("char_offset" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [43664 43685]))                                          
+                                        :type ("offset_greaterthan" type (:type "struct") nil nil))
+                                        (reparse-symbol classsubparts) [43645 43715])
+                                    ("()" function
+                                       (:methodconst-flag t
+                                        :operator-flag t
+                                        :typemodifiers ("inline")
+                                        :arguments 
+                                          ( ("x" variable
+                                               (:reference 1
+                                                :constant-flag t
+                                                :type ("data_type" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [43743 43762])
+                                            ("y" variable
+                                               (:reference 1
+                                                :constant-flag t
+                                                :type ("data_type" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [43763 43782]))                                          
+                                        :type "bool")
+                                        (reparse-symbol classsubparts) [43720 44169])
+                                    ("fchar_offset" variable (:type "unsigned int") (reparse-symbol classsubparts) [44174 44196]))                                  )
+                                (reparse-symbol namespacesubparts) [43559 44202])
+                            ("offset_char_lessthan" type
+                               (:template 
+                                  ( ("data_type" type (:type "class") nil nil)
+                                    ("get_char" type (:type "class") nil nil)
+                                    ("get_length" type (:type "class") nil nil))                                  
+                                :type "struct"
+                                :members 
+                                  ( ("offset_char_lessthan" function
+                                       (:constructor-flag t
+                                        :arguments 
+                                          ( ("char_offset" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [44413 44434]))                                          
+                                        :type ("offset_char_lessthan" type (:type "struct") nil nil))
+                                        (reparse-symbol classsubparts) [44392 44464])
+                                    ("()" function
+                                       (:methodconst-flag t
+                                        :operator-flag t
+                                        :typemodifiers ("inline")
+                                        :arguments 
+                                          ( ("x" variable
+                                               (:reference 1
+                                                :constant-flag t
+                                                :type ("data_type" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [44492 44511])
+                                            ("y" variable
+                                               (:reference 1
+                                                :constant-flag t
+                                                :type ("data_type" type (:type "class") nil nil))
+                                                (reparse-symbol arg-sub-list) [44512 44531]))                                          
+                                        :type "bool")
+                                        (reparse-symbol classsubparts) [44469 44838])
+                                    ("fchar_offset" variable (:type "unsigned int") (reparse-symbol classsubparts) [44843 44865])
+                                    ("getchar" variable (:type ("get_char" type (:type "class") nil nil)) (reparse-symbol classsubparts) [44870 44887])
+                                    ("length" variable (:type ("get_length" type (:type "class") nil nil)) (reparse-symbol classsubparts) [44892 44910]))                                  )
+                                (reparse-symbol namespacesubparts) [44295 44916])
+                            ("string_sort_rec" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("data_type" type (:type "class") nil nil)
+                                    ("unsignedchar_type" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [45077 45100])
+                                    ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [45101 45123])
+                                    ("char_offset" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [45124 45145])
+                                    ("bin_cache" variable
+                                       (:reference 1
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("RandomAccessIter" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [45146 45192])
+                                    ("cache_offset" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [45193 45215])
+                                    ("bin_sizes" variable
+                                       (:reference 1
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("size_t" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [45216 45247]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [44966 49008])
+                            ("reverse_string_sort_rec" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("data_type" type (:type "class") nil nil)
+                                    ("unsignedchar_type" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [49193 49216])
+                                    ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [49217 49239])
+                                    ("char_offset" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [49240 49261])
+                                    ("bin_cache" variable
+                                       (:reference 1
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("RandomAccessIter" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [49262 49308])
+                                    ("cache_offset" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [49309 49331])
+                                    ("bin_sizes" variable
+                                       (:reference 1
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("size_t" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [49332 49363]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [49074 53262])
+                            ("string_sort_rec" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("data_type" type (:type "class") nil nil)
+                                    ("unsignedchar_type" type (:type "class") nil nil)
+                                    ("get_char" type (:type "class") nil nil)
+                                    ("get_length" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [53457 53480])
+                                    ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [53481 53503])
+                                    ("char_offset" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [53504 53525])
+                                    ("bin_cache" variable
+                                       (:reference 1
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("RandomAccessIter" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [53526 53572])
+                                    ("cache_offset" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [53573 53595])
+                                    ("bin_sizes" variable
+                                       (:reference 1
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("size_t" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [53596 53627])
+                                    ("getchar" variable (:type ("get_char" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [53628 53645])
+                                    ("length" variable (:type ("get_length" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [53646 53664]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [53312 57291])
+                            ("string_sort_rec" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("data_type" type (:type "class") nil nil)
+                                    ("unsignedchar_type" type (:type "class") nil nil)
+                                    ("get_char" type (:type "class") nil nil)
+                                    ("get_length" type (:type "class") nil nil)
+                                    ("compare" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [57501 57524])
+                                    ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [57525 57547])
+                                    ("char_offset" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [57548 57569])
+                                    ("bin_cache" variable
+                                       (:reference 1
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("RandomAccessIter" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [57570 57616])
+                                    ("cache_offset" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [57617 57639])
+                                    ("bin_sizes" variable
+                                       (:reference 1
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("size_t" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [57640 57671])
+                                    ("getchar" variable (:type ("get_char" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [57672 57689])
+                                    ("length" variable (:type ("get_length" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [57690 57708])
+                                    ("comp" variable (:type ("compare" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [57709 57722]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [57341 61301])
+                            ("reverse_string_sort_rec" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("data_type" type (:type "class") nil nil)
+                                    ("unsignedchar_type" type (:type "class") nil nil)
+                                    ("get_char" type (:type "class") nil nil)
+                                    ("get_length" type (:type "class") nil nil)
+                                    ("compare" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [61535 61558])
+                                    ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [61559 61581])
+                                    ("char_offset" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [61582 61603])
+                                    ("bin_cache" variable
+                                       (:reference 1
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("RandomAccessIter" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [61604 61650])
+                                    ("cache_offset" variable (:type "unsigned int") (reparse-symbol arg-sub-list) [61651 61673])
+                                    ("bin_sizes" variable
+                                       (:reference 1
+                                        :type ("std::vector" type
+                                             (:template-specifier 
+                                                ( ("size_t" type nil nil nil))                                                
+                                              :type "class")
+                                              nil nil))
+                                        (reparse-symbol arg-sub-list) [61674 61705])
+                                    ("getchar" variable (:type ("get_char" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [61706 61723])
+                                    ("length" variable (:type ("get_length" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [61724 61742])
+                                    ("comp" variable (:type ("compare" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [61743 61756]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [61367 65585])
+                            ("string_sort" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("data_type" type (:type "class") nil nil)
+                                    ("unsignedchar_type" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [65760 65783])
+                                    ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [65784 65806])
+                                    ("" variable (:type ("data_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [65807 65817])
+                                    ("" variable (:type ("unsignedchar_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [65818 65836]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [65653 66036])
+                            ("reverse_string_sort" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("data_type" type (:type "class") nil nil)
+                                    ("unsignedchar_type" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [66219 66242])
+                                    ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [66243 66265])
+                                    ("" variable (:type ("data_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [66266 66276])
+                                    ("" variable (:type ("unsignedchar_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [66277 66295]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [66104 66503])
+                            ("string_sort" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("get_char" type (:type "class") nil nil)
+                                    ("get_length" type (:type "class") nil nil)
+                                    ("data_type" type (:type "class") nil nil)
+                                    ("unsignedchar_type" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [66712 66735])
+                                    ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [66736 66758])
+                                    ("getchar" variable (:type ("get_char" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [66759 66776])
+                                    ("length" variable (:type ("get_length" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [66777 66795])
+                                    ("" variable (:type ("data_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [66796 66806])
+                                    ("" variable (:type ("unsignedchar_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [66807 66825]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [66571 67064])
+                            ("string_sort" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("get_char" type (:type "class") nil nil)
+                                    ("get_length" type (:type "class") nil nil)
+                                    ("compare" type (:type "class") nil nil)
+                                    ("data_type" type (:type "class") nil nil)
+                                    ("unsignedchar_type" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [67288 67311])
+                                    ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [67312 67334])
+                                    ("getchar" variable (:type ("get_char" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [67335 67352])
+                                    ("length" variable (:type ("get_length" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [67353 67371])
+                                    ("comp" variable (:type ("compare" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [67372 67385])
+                                    ("" variable (:type ("data_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [67386 67396])
+                                    ("" variable (:type ("unsignedchar_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [67397 67415]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [67132 67669])
+                            ("reverse_string_sort" function
+                               (:template 
+                                  ( ("RandomAccessIter" type (:type "class") nil nil)
+                                    ("get_char" type (:type "class") nil nil)
+                                    ("get_length" type (:type "class") nil nil)
+                                    ("compare" type (:type "class") nil nil)
+                                    ("data_type" type (:type "class") nil nil)
+                                    ("unsignedchar_type" type (:type "class") nil nil))                                  
+                                :type "void"
+                                :arguments 
+                                  ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [67901 67924])
+                                    ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [67925 67947])
+                                    ("getchar" variable (:type ("get_char" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [67948 67965])
+                                    ("length" variable (:type ("get_length" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [67966 67984])
+                                    ("comp" variable (:type ("compare" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [67985 67998])
+                                    ("" variable (:type ("data_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [67999 68009])
+                                    ("" variable (:type ("unsignedchar_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [68010 68028]))                                  
+                                :typemodifiers ("inline"))
+                                (reparse-symbol namespacesubparts) [67737 68290]))                          
+                        :type "namespace")
+                        (reparse-symbol namespacesubparts) [41024 68294])
+                    ("string_sort" function
+                       (:template 
+                          ( ("RandomAccessIter" type (:type "class") nil nil)
+                            ("unsignedchar_type" type (:type "class") nil nil))                          
+                        :type "void"
+                        :arguments 
+                          ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [68419 68442])
+                            ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [68443 68465])
+                            ("unused" variable (:type ("unsignedchar_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [68466 68491]))                          
+                        :typemodifiers ("inline"))
+                        (reparse-symbol namespacesubparts) [68334 68680])
+                    ("string_sort" function
+                       (:template 
+                          ( ("RandomAccessIter" type (:type "class") nil nil))                          
+                        :type "void"
+                        :arguments 
+                          ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [68809 68832])
+                            ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [68833 68855]))                          
+                        :typemodifiers ("inline"))
+                        (reparse-symbol namespacesubparts) [68749 68933])
+                    ("reverse_string_sort" function
+                       (:template 
+                          ( ("RandomAccessIter" type (:type "class") nil nil)
+                            ("compare" type (:type "class") nil nil)
+                            ("unsignedchar_type" type (:type "class") nil nil))                          
+                        :type "void"
+                        :arguments 
+                          ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [69081 69104])
+                            ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [69105 69127])
+                            ("comp" variable (:type ("compare" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [69128 69141])
+                            ("unused" variable (:type ("unsignedchar_type" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [69142 69167]))                          
+                        :typemodifiers ("inline"))
+                        (reparse-symbol namespacesubparts) [68973 69370])
+                    ("reverse_string_sort" function
+                       (:template 
+                          ( ("RandomAccessIter" type (:type "class") nil nil)
+                            ("compare" type (:type "class") nil nil))                          
+                        :type "void"
+                        :arguments 
+                          ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [69522 69545])
+                            ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [69546 69568])
+                            ("comp" variable (:type ("compare" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [69569 69582]))                          
+                        :typemodifiers ("inline"))
+                        (reparse-symbol namespacesubparts) [69439 69674])
+                    ("string_sort" function
+                       (:template 
+                          ( ("RandomAccessIter" type (:type "class") nil nil)
+                            ("get_char" type (:type "class") nil nil)
+                            ("get_length" type (:type "class") nil nil))                          
+                        :type "void"
+                        :arguments 
+                          ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [69772 69795])
+                            ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [69796 69818])
+                            ("getchar" variable (:type ("get_char" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [69819 69836])
+                            ("length" variable (:type ("get_length" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [69837 69855]))                          
+                        :typemodifiers ("inline"))
+                        (reparse-symbol namespacesubparts) [69678 70320])
+                    ("string_sort" function
+                       (:template 
+                          ( ("RandomAccessIter" type (:type "class") nil nil)
+                            ("get_char" type (:type "class") nil nil)
+                            ("get_length" type (:type "class") nil nil)
+                            ("compare" type (:type "class") nil nil))                          
+                        :type "void"
+                        :arguments 
+                          ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [70433 70456])
+                            ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [70457 70479])
+                            ("getchar" variable (:type ("get_char" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [70480 70497])
+                            ("length" variable (:type ("get_length" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [70498 70516])
+                            ("comp" variable (:type ("compare" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [70517 70530]))                          
+                        :typemodifiers ("inline"))
+                        (reparse-symbol namespacesubparts) [70324 71007])
+                    ("reverse_string_sort" function
+                       (:template 
+                          ( ("RandomAccessIter" type (:type "class") nil nil)
+                            ("get_char" type (:type "class") nil nil)
+                            ("get_length" type (:type "class") nil nil)
+                            ("compare" type (:type "class") nil nil))                          
+                        :type "void"
+                        :arguments 
+                          ( ("first" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [71128 71151])
+                            ("last" variable (:type ("RandomAccessIter" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [71152 71174])
+                            ("getchar" variable (:type ("get_char" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [71175 71192])
+                            ("length" variable (:type ("get_length" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [71193 71211])
+                            ("comp" variable (:type ("compare" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [71212 71225]))                          
+                        :typemodifiers ("inline"))
+                        (reparse-symbol namespacesubparts) [71011 71901]))                  
+                :type "namespace")
+                nil [626 71903]))          
+      :file "spreadsort.hpp"
+      :pointmax 71912
+      :fsize 73599
+      :lastmodtime '(22047 18067 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("BOOST_SPREAD_SORT_H")
+          )
+))
+  :file "!Users!lihaifeng!work!audio-module!system_wrappers!source!spreadsortlib!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

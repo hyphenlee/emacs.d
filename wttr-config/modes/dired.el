@@ -21,10 +21,14 @@
 (setq wdired-allow-to-change-permissions 'advanced)
 (define-key dired-mode-map (kbd "r") 'wdired-change-to-wdired-mode)
 (add-hook 'dired-mode-hook
- (lambda ()
-  (define-key dired-mode-map (kbd "u")
-    (lambda () (interactive) (find-alternate-file "..")))
- ))
+          (lambda ()
+            (define-key dired-mode-map (kbd "u")
+              (lambda () (interactive) (find-alternate-file "..")))
+            ))
+(setq dired-omit-mode t)
+(setq-default dired-omit-files-p t) ; Buffer-local variable
+(setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
+
 (defun open-in-external-app ()
   "Open the current file or dired marked files in external app."
   (interactive)

@@ -91,6 +91,10 @@
  '(default ((t ( :weight normal :height 120 :width normal))))))
 (wttr/os:linuxp
 (custom-set-faces
- '(default ((t ( :weight normal :height 110 :width normal)))))))
+ '(default ((t ( :weight normal :height 110 :width normal))))))
+(wttr/os:win64p
+  (custom-set-faces
+ '(default ((t ( :weight normal :height 110 :width normal))))))
+)
 
 (provide 'wttr-font)

@@ -1,0 +1,434 @@
+;; Object semanticdb-project-database-file
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table"
+      :major-mode c-mode
+      :tags 
+        '( ("common_audio/signal_processing/include/signal_processing_library.h" include nil nil [973 1050])
+            ("WEBRTC_SPL_SQRT_ITER" variable (:constant-flag t) nil [1569 1589])
+            ("try1" variable
+               (:default-value "root + (1 << (N))"
+                :type "int")
+                nil [1613 1638])
+            ("WebRtcSpl_SqrtFloor" function
+               (:arguments 
+                  ( ("value" variable (:type ("int32_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1894 1908]))                  
+                :type ("int32_t" type (:type "class") nil nil))
+                nil [1866 2424]))          
+      :file "spl_sqrt_floor.c"
+      :pointmax 2425
+      :fsize 2424
+      :lastmodtime '(22047 38609 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("WEBRTC_SPL_SQRT_ITER" (spp-arg-list ("N") 1589 . 1592) . 
+              ((symbol "try1" 1613 . 1617) (punctuation "=" 1618 . 1619) (symbol "root" 1620 . 1624) (punctuation "+" 1625 . 1626) (semantic-list "(1 << (N))" 1627 . 1637) (punctuation ";" 1637 . 1638) (IF "if" 1663 . 1665) (semantic-list "(value >= try1 << (N))" 1666 . 1688) (semantic-list "{                                             \\
+    value -= try1 << (N);                       \\
+    root |= 2 << (N);                           \\
+  }" 1713 . 1864)))
+          )
+)
+    (semanticdb-table "semanticdb-table"
+      :major-mode c-mode
+      :tags 
+        '( ("common_audio/signal_processing/include/signal_processing_library.h" include nil nil [415 492])
+            ("index_7" variable
+               (:dereference 1
+                :typemodifiers ("static")
+                :constant-flag t
+                :default-value "{
+  1, 64, 2, 32, 3, 96, 4, 16, 5, 80, 6, 48, 7, 112, 9, 72, 10, 40, 11, 104,
+  12, 24, 13, 88, 14, 56, 15, 120, 17, 68, 18, 36, 19, 100, 21, 84, 22, 52,
+  23, 116, 25, 76, 26, 44, 27, 108, 29, 92, 30, 60, 31, 124, 33, 66, 35, 98,
+  37, 82, 38, 50, 39, 114, 41, 74, 43, 106, 45, 90, 46, 58, 47, 122, 49, 70,
+  51, 102, 53, 86, 55, 118, 57, 78, 59, 110, 61, 94, 63, 126, 67, 97, 69,
+  81, 71, 113, 75, 105, 77, 89, 79, 121, 83, 101, 87, 117, 91, 109, 95, 125,
+  103, 115, 111, 123
+}"
+                :type ("int16_t" type (:type "class") nil nil))
+                nil [806 1324])
+            ("index_8" variable
+               (:dereference 1
+                :typemodifiers ("static")
+                :constant-flag t
+                :default-value "{
+  1, 128, 2, 64, 3, 192, 4, 32, 5, 160, 6, 96, 7, 224, 8, 16, 9, 144, 10, 80,
+  11, 208, 12, 48, 13, 176, 14, 112, 15, 240, 17, 136, 18, 72, 19, 200, 20,
+  40, 21, 168, 22, 104, 23, 232, 25, 152, 26, 88, 27, 216, 28, 56, 29, 184,
+  30, 120, 31, 248, 33, 132, 34, 68, 35, 196, 37, 164, 38, 100, 39, 228, 41,
+  148, 42, 84, 43, 212, 44, 52, 45, 180, 46, 116, 47, 244, 49, 140, 50, 76,
+  51, 204, 53, 172, 54, 108, 55, 236, 57, 156, 58, 92, 59, 220, 61, 188, 62,
+  124, 63, 252, 65, 130, 67, 194, 69, 162, 70, 98, 71, 226, 73, 146, 74, 82,
+  75, 210, 77, 178, 78, 114, 79, 242, 81, 138, 83, 202, 85, 170, 86, 106, 87,
+  234, 89, 154, 91, 218, 93, 186, 94, 122, 95, 250, 97, 134, 99, 198, 101,
+  166, 103, 230, 105, 150, 107, 214, 109, 182, 110, 118, 111, 246, 113, 142,
+  115, 206, 117, 174, 119, 238, 121, 158, 123, 222, 125, 190, 127, 254, 131,
+  193, 133, 161, 135, 225, 137, 145, 139, 209, 141, 177, 143, 241, 147, 201,
+  149, 169, 151, 233, 155, 217, 157, 185, 159, 249, 163, 197, 167, 229, 171,
+  213, 173, 181, 175, 245, 179, 205, 183, 237, 187, 221, 191, 253, 199, 227,
+  203, 211, 207, 243, 215, 235, 223, 251, 239, 247
+}"
+                :type ("int16_t" type (:type "class") nil nil))
+                nil [1369 2535])
+            ("WebRtcSpl_ComplexBitReverse" function
+               (:arguments 
+                  ( ("complex_data" variable
+                       (:pointer 1
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2570 2603])
+                    ("stages" variable (:type "int") (reparse-symbol arg-sub-list) [2604 2615]))                  
+                :type "void")
+                nil [2537 4382]))          
+      :file "complex_bit_reverse.c"
+      :pointmax 4383
+      :fsize 4382
+      :lastmodtime '(22019 25381 0 0)
+      :unmatched-syntax nil)
+    (semanticdb-table "semanticdb-table"
+      :major-mode c-mode
+      :tags 
+        '( ("common_audio/signal_processing/include/signal_processing_library.h" include nil nil [416 493])
+            ("coefTable_7" variable
+               (:dereference 1
+                :typemodifiers ("static")
+                :default-value "{
+    4, 256,   8, 128,  12, 384,  16,  64,
+   20, 320,  24, 192,  28, 448,  36, 288,
+   40, 160,  44, 416,  48,  96,  52, 352,
+   56, 224,  60, 480,  68, 272,  72, 144,
+   76, 400,  84, 336,  88, 208,  92, 464,
+  100, 304, 104, 176, 108, 432, 116, 368,
+  120, 240, 124, 496, 132, 264, 140, 392,
+  148, 328, 152, 200, 156, 456, 164, 296,
+  172, 424, 180, 360, 184, 232, 188, 488,
+  196, 280, 204, 408, 212, 344, 220, 472,
+  228, 312, 236, 440, 244, 376, 252, 504,
+  268, 388, 276, 324, 284, 452, 300, 420,
+  308, 356, 316, 484, 332, 404, 348, 468,
+  364, 436, 380, 500, 412, 460, 444, 492
+}"
+                :type ("int16_t" type (:type "class") nil nil))
+                nil [495 1117])
+            ("coefTable_8" variable
+               (:dereference 1
+                :typemodifiers ("static")
+                :default-value "{
+    4,  512,    8,  256,   12,  768,   16,  128,
+   20,  640,   24,  384,   28,  896,   32,   64,
+   36,  576,   40,  320,   44,  832,   48,  192,
+   52,  704,   56,  448,   60,  960,   68,  544,
+   72,  288,   76,  800,   80,  160,   84,  672,
+   88,  416,   92,  928,  100,  608,  104,  352,
+  108,  864,  112,  224,  116,  736,  120,  480,
+  124,  992,  132,  528,  136,  272,  140,  784,
+  148,  656,  152,  400,  156,  912,  164,  592,
+  168,  336,  172,  848,  176,  208,  180,  720,
+  184,  464,  188,  976,  196,  560,  200,  304,
+  204,  816,  212,  688,  216,  432,  220,  944,
+  228,  624,  232,  368,  236,  880,  244,  752,
+  248,  496,  252, 1008,  260,  520,  268,  776,
+  276,  648,  280,  392,  284,  904,  292,  584,
+  296,  328,  300,  840,  308,  712,  312,  456,
+  316,  968,  324,  552,  332,  808,  340,  680,
+  344,  424,  348,  936,  356,  616,  364,  872,
+  372,  744,  376,  488,  380, 1000,  388,  536,
+  396,  792,  404,  664,  412,  920,  420,  600,
+  428,  856,  436,  728,  440,  472,  444,  984,
+  452,  568,  460,  824,  468,  696,  476,  952,
+  484,  632,  492,  888,  500,  760,  508, 1016,
+  524,  772,  532,  644,  540,  900,  548,  580,
+  556,  836,  564,  708,  572,  964,  588,  804,
+  596,  676,  604,  932,  620,  868,  628,  740,
+  636,  996,  652,  788,  668,  916,  684,  852,
+  692,  724,  700,  980,  716,  820,  732,  948,
+  748,  884,  764, 1012,  796,  908,  812,  844,
+  828,  972,  860,  940,  892, 1004,  956,  988
+}"
+                :type ("int16_t" type (:type "class") nil nil))
+                nil [1119 2623])
+            ("WebRtcSpl_ComplexBitReverse" function
+               (:arguments 
+                  ( ("frfi" variable
+                       (:dereference 1
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2658 2673])
+                    ("stages" variable (:type "int") (reparse-symbol arg-sub-list) [2674 2685]))                  
+                :type "void")
+                nil [2625 9564]))          
+      :file "complex_bit_reverse_mips.c"
+      :pointmax 9565
+      :fsize 9564
+      :lastmodtime '(22019 25381 0 0)
+      :unmatched-syntax nil)
+    (semanticdb-table "semanticdb-table"
+      :major-mode c-mode
+      :tags 
+        '( ("common_audio/signal_processing/include/real_fft.h" include nil nil [415 475])
+            ("stdlib.h" include (:system-flag t) nil [477 496])
+            ("common_audio/signal_processing/include/signal_processing_library.h" include nil nil [498 575])
+            ("RealFFT" type
+               (:members 
+                  ( ("order" variable (:type "int") (reparse-symbol classsubparts) [596 606]))                  
+                :type "struct")
+                nil [577 609])
+            ("WebRtcSpl_CreateRealFFT" function
+               (:pointer 1
+                :arguments 
+                  ( ("order" variable (:type "int") (reparse-symbol arg-sub-list) [651 661]))                  
+                :type ("RealFFT" type
+                     (:prototype t
+                      :type "struct")
+                      nil nil))
+                nil [611 885])
+            ("WebRtcSpl_FreeRealFFT" function
+               (:arguments 
+                  ( ("self" variable
+                       (:pointer 1
+                        :type ("RealFFT" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [914 935]))                  
+                :type "void")
+                nil [887 981])
+            ("WebRtcSpl_RealForwardFFT" function
+               (:arguments 
+                  ( ("self" variable
+                       (:pointer 1
+                        :type ("RealFFT" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [1186 1207])
+                    ("real_data_in" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1237 1265])
+                    ("complex_data_out" variable
+                       (:pointer 1
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [1295 1321]))                  
+                :type "int")
+                nil [1157 2081])
+            ("WebRtcSpl_RealInverseFFT" function
+               (:arguments 
+                  ( ("self" variable
+                       (:pointer 1
+                        :type ("RealFFT" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol arg-sub-list) [2112 2133])
+                    ("complex_data_in" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2163 2194])
+                    ("real_data_out" variable
+                       (:pointer 1
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [2224 2247]))                  
+                :type "int")
+                nil [2083 3149]))          
+      :file "real_fft.c"
+      :pointmax 3150
+      :fsize 3149
+      :lastmodtime '(22019 25381 0 0)
+      :unmatched-syntax nil)
+    (semanticdb-table "semanticdb-table"
+      :major-mode c++-mode
+      :tags 
+        '( ("common_audio/signal_processing/include/real_fft.h" include nil nil [415 475])
+            ("common_audio/signal_processing/include/signal_processing_library.h" include nil nil [476 553])
+            ("test/testsupport/gtest_disable.h" include nil nil [554 597])
+            ("typedefs.h" include nil nil [598 619])
+            ("testing/gtest/include/gtest/gtest.h" include nil nil [621 667])
+            ("webrtc" type
+               (:members 
+                  ( ("unnamed" type
+                       (:members 
+                          ( ("kOrder" variable
+                               (:constant-flag t
+                                :default-value "5"
+                                :type "int")
+                                (reparse-symbol namespacesubparts) [715 736])
+                            ("kOrder" variable (:type "int") (reparse-symbol namespacesubparts) [906 913])
+                            ("kFreqDataLength" variable
+                               (:constant-flag t
+                                :default-value "(1 << kOrder) + 2"
+                                :type "int")
+                                (reparse-symbol namespacesubparts) [914 960])
+                            ("kOrder" variable (:type "int") (reparse-symbol namespacesubparts) [1092 1099])
+                            ("kRefData" variable
+                               (:dereference 1
+                                :constant-flag t
+                                :default-value "{
+  11739, 6848, -8688, 31980, -30295, 25242, 27085, 19410,
+  -26299, 15607, -10791, 11778, -23819, 14498, -25772, 10076,
+  1173, 6848, -8688, 31980, -30295, 2522, 27085, 19410,
+  -2629, 5607, -3, 1178, -23819, 1498, -25772, 10076
+}"
+                                :type ("int16_t" type (:type "class") nil nil))
+                                (reparse-symbol namespacesubparts) [1135 1410])
+                            ("public" label nil (reparse-symbol namespacesubparts) [1432 1440])
+                            ("testing::Test" variable (:type "int") (reparse-symbol namespacesubparts) [1441 1518])
+                            ("TEST_F" function
+                               (:arguments 
+                                  ( ("" variable (:type ("RealFFTTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1527 1539])
+                                    ("" variable (:type ("CreateFailsOnBadInput" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1540 1562]))                                  
+                                :type "int")
+                                (reparse-symbol namespacesubparts) [1520 1705])
+                            ("TEST_F" function
+                               (:arguments 
+                                  ( ("" variable (:type ("RealFFTTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1714 1726])
+                                    ("" variable (:type ("RealAndComplexMatch" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [1727 1747]))                                  
+                                :type "int")
+                                (reparse-symbol namespacesubparts) [1707 3859]))                          
+                        :type "namespace")
+                        (reparse-symbol namespacesubparts) [688 3862]))                  
+                :type "namespace")
+                nil [669 3878]))          
+      :file "real_fft_unittest.cc"
+      :pointmax 3900
+      :fsize 3899
+      :lastmodtime '(22019 25381 0 0)
+      :unmatched-syntax '((punctuation 1440 . 1441) (punctuation 1430 . 1431) (symbol 1418 . 1429) (CLASS 1412 . 1417) (punctuation 1090 . 1091) (punctuation 1089 . 1090) (number 1087 . 1088) (punctuation 1085 . 1086) (symbol 1063 . 1084) (INT 1059 . 1062) (CONST 1053 . 1058) (punctuation 904 . 905) (punctuation 903 . 904) (number 901 . 902) (punctuation 899 . 900) (symbol 883 . 898) (INT 879 . 882) (CONST 873 . 878)))
+    (semanticdb-table "semanticdb-table"
+      :major-mode c++-mode
+      :tags 
+        '( ("testing/gtest/include/gtest/gtest.h" include nil nil [415 461])
+            ("common_audio/signal_processing/include/signal_processing_library.h" include nil nil [462 539])
+            ("kVector16Size" variable
+               (:typemodifiers ("static")
+                :constant-flag t
+                :default-value "9"
+                :type ("size_t" type (:type "class") nil nil))
+                nil [541 579])
+            ("vector16" variable
+               (:dereference 1
+                :typemodifiers ("static")
+                :constant-flag t
+                :default-value "{1, -15511, 4323, 1963,
+  WEBRTC_SPL_WORD16_MAX, 0, WEBRTC_SPL_WORD16_MIN + 5, -3333, 345}"
+                :type ("int16_t" type (:type "class") nil nil))
+                nil [580 718])
+            ("SplTest" type
+               (:superclasses 
+                  ( ("testing::Test" type
+                       (:protection "public"
+                        :type "class")
+                        nil nil))                  
+                :members 
+                  ( ("protected" label nil (reparse-symbol classsubparts) [760 770])
+                    ("SplTest" function
+                       (:constructor-flag t
+                        :type ("SplTest" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [774 813])
+                    ("SplTest" function
+                       (:destructor-flag t
+                        :typemodifiers ("virtual")
+                        :type "void")
+                        (reparse-symbol classsubparts) [817 842]))                  
+                :type "class")
+                nil [720 845])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("SplTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [854 862])
+                    ("" variable (:type ("MacroTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [863 873]))                  
+                :type "int")
+                nil [847 3246])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("SplTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3255 3263])
+                    ("" variable (:type ("InlineTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [3264 3275]))                  
+                :type "int")
+                nil [3248 4950])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("SplTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4959 4967])
+                    ("" variable (:type ("MathOperationsTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4968 4987]))                  
+                :type "int")
+                nil [4952 5466])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("SplTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5475 5483])
+                    ("" variable (:type ("BasicArrayOperationsTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [5484 5509]))                  
+                :type "int")
+                nil [5468 7602])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("SplTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [7611 7619])
+                    ("" variable (:type ("MinMaxOperationsTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [7620 7641]))                  
+                :type "int")
+                nil [7604 10511])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("SplTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [10520 10528])
+                    ("" variable (:type ("VectorOperationsTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [10529 10550]))                  
+                :type "int")
+                nil [10513 12756])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("SplTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [12765 12773])
+                    ("" variable (:type ("EstimatorsTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [12774 12789]))                  
+                :type "int")
+                nil [12758 13382])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("SplTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [13391 13399])
+                    ("" variable (:type ("FilterTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [13400 13411]))                  
+                :type "int")
+                nil [13384 15158])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("SplTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [15167 15175])
+                    ("" variable (:type ("RandTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [15176 15185]))                  
+                :type "int")
+                nil [15160 15632])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("SplTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [15641 15649])
+                    ("" variable (:type ("DotProductWithScaleTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [15650 15674]))                  
+                :type "int")
+                nil [15634 15777])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("SplTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [15786 15794])
+                    ("" variable (:type ("CrossCorrelationTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [15795 15816]))                  
+                :type "int")
+                nil [15779 16926])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("SplTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [16935 16943])
+                    ("" variable (:type ("AutoCorrelationTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [16944 16964]))                  
+                :type "int")
+                nil [16928 17438])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("SplTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [17447 17455])
+                    ("" variable (:type ("SignalProcessingTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [17456 17477]))                  
+                :type "int")
+                nil [17440 18682])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("SplTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [18691 18699])
+                    ("" variable (:type ("FFTTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [18700 18708]))                  
+                :type "int")
+                nil [18684 19212])
+            ("TEST_F" function
+               (:arguments 
+                  ( ("" variable (:type ("SplTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [19221 19229])
+                    ("" variable (:type ("Resample48WithSaturationTest" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [19230 19259]))                  
+                :type "int")
+                nil [19214 20971]))          
+      :file "signal_processing_unittest.cc"
+      :pointmax 20972
+      :fsize 20971
+      :lastmodtime '(22019 25381 0 0)
+      :unmatched-syntax nil))
+  :file "!Users!lihaifeng!work!audio-module!common_audio!signal_processing!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

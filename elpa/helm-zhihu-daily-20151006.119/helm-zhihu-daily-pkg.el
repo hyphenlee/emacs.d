@@ -1,0 +1,1 @@
+(define-package "helm-zhihu-daily" "20151006.119" "Helm interface for \347\237\245\344\271\216\346\227\245\346\212\245 (http://daily.zhihu.com)" '((helm "1.0") (cl-lib "0.5") (emacs "24.4")) :url "https://github.com/xuchunyang/helm-zhihu-daily")

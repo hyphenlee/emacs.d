@@ -15,4 +15,5 @@ Org-page provides following features:
 9) commenting (implemented using disqus)
 10) site visiting tracking (implemented using google analytics)
 11) index/about page support (auto generated if no default provided)
-12) highly customizable
+12) site preview
+13) highly customizable

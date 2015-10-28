@@ -1,0 +1,26 @@
+;; Object semanticdb-project-database-file
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table"
+      :major-mode c++-mode
+      :tags 
+        '( ("iostream" include (:system-flag t) nil [1 19])
+            ("base/scoped_ref_ptr.h" include nil nil [81 113])
+            ("audio_processing/aecm/include/echo_control_mobile.h" include nil nil [114 176])
+            ("audio_processing/aec/include/echo_cancellation.h" include nil nil [177 236])
+            ("fstream" include (:system-flag t) nil [238 255])
+            ("std" using (:type ("std" type
+                 (:prototype t
+                  :type "namespace")
+                  nil nil)) nil [283 303])
+            ("main" function (:type "int") nil [5460 10479]))          
+      :file "main.cpp"
+      :pointmax 10480
+      :fsize 10479
+      :lastmodtime '(22048 23712 0 0)
+      :unmatched-syntax nil))
+  :file "!Users!lihaifeng!work!audio-module!test!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

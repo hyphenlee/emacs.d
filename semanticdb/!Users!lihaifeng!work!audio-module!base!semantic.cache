@@ -1,0 +1,48 @@
+;; Object semanticdb-project-database-file
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table"
+      :major-mode c-mode
+      :tags 
+        '( ("WEBRTC_BASE_CONSTRUCTORMAGIC_H_" variable (:constant-flag t) nil [459 490])
+            ("RTC_DISALLOW_ASSIGN" variable (:constant-flag t) nil [564 583])
+            ("RTC_DISALLOW_COPY_AND_ASSIGN" variable (:constant-flag t) nil [773 801])
+            ("RTC_DISALLOW_IMPLICIT_CONSTRUCTORS" variable (:constant-flag t) nil [1221 1255]))          
+      :file "constructormagic.h"
+      :pointmax 1408
+      :fsize 1407
+      :lastmodtime '(22011 44632 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("RTC_DISALLOW_IMPLICIT_CONSTRUCTORS" (spp-arg-list ("TypeName") 1255 . 1265) . 
+              ((symbol "TypeName" 1270 . 1278) (semantic-list "()" 1278 . 1280) (punctuation "=" 1281 . 1282) (DELETE "delete" 1283 . 1289) (punctuation ";" 1289 . 1290) (symbol "RTC_DISALLOW_COPY_AND_ASSIGN" 1325 . 1353) (semantic-list "(TypeName)" 1353 . 1363)))
+          ("WEBRTC_BASE_CONSTRUCTORMAGIC_H_")
+          ("RTC_DISALLOW_COPY_AND_ASSIGN" (spp-arg-list ("TypeName") 801 . 811) . 
+              ((symbol "TypeName" 816 . 824) (semantic-list "(const TypeName&)" 824 . 841) (punctuation "=" 842 . 843) (DELETE "delete" 844 . 850) (punctuation ";" 850 . 851) (symbol "RTC_DISALLOW_ASSIGN" 865 . 884) (semantic-list "(TypeName)" 884 . 894)))
+          ("RTC_DISALLOW_ASSIGN" (spp-arg-list ("TypeName") 583 . 593) . 
+              ((VOID "void" 598 . 602) (OPERATOR "operator" 603 . 611) (punctuation "=" 611 . 612) (semantic-list "(const TypeName&)" 612 . 629) (punctuation "=" 630 . 631) (DELETE "delete" 632 . 638)))
+          )
+)
+    (semanticdb-table "semanticdb-table"
+      :major-mode c-mode
+      :tags 
+        '( ("WEBRTC_BASE_ARRAYSIZE_H_" variable (:constant-flag t) nil [456 480])
+            ("stddef.h" include (:system-flag t) nil [482 501])
+            ("arraysize" variable (:constant-flag t) nil [1104 1113])
+            ("arraysize" variable (:constant-flag t) nil [1104 1113])
+            ("arraysize" variable (:constant-flag t) nil [1104 1113]))          
+      :file "arraysize.h"
+      :pointmax 1191
+      :fsize 1190
+      :lastmodtime '(22047 37883 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("WEBRTC_BASE_ARRAYSIZE_H_")
+          ("arraysize" (spp-arg-list ("array") 1113 . 1120) . ((semantic-list "(sizeof(ArraySizeHelper(array)))" 1121 . 1153)))
+          )
+))
+  :file "!Users!lihaifeng!work!audio-module!base!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

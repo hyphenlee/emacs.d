@@ -1,0 +1,420 @@
+;; Object semanticdb-project-database-file
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table"
+      :major-mode c++-mode
+      :tags 
+        '( ("assert.h" include (:system-flag t) nil [415 434])
+            ("ctype.h" include (:system-flag t) nil [435 453])
+            ("stdio.h" include (:system-flag t) nil [454 472])
+            ("string.h" include (:system-flag t) nil [473 492])
+            ("testing/gtest/include/gtest/gtest.h" include nil nil [629 675])
+            ("webrtc/modules/audio_device/test/func_test_manager.h" include nil nil [676 739])
+            ("webrtc/system_wrappers/interface/sleep.h" include nil nil [740 791])
+            ("webrtc/test/testsupport/fileutils.h" include nil nil [792 838])
+            ("webrtc/modules/audio_device/audio_device_config.h" include nil nil [840 900])
+            ("webrtc/modules/audio_device/audio_device_impl.h" include nil nil [901 959])
+            ("RecordedMicrophoneFile" variable
+               (:pointer 1
+                :constant-flag t
+                :default-value "\"recorded_microphone_mono_48.pcm\""
+                :type "char")
+                nil [1215 1286])
+            ("RecordedMicrophoneVolumeFile" variable
+               (:pointer 1
+                :constant-flag t
+                :default-value "\"recorded_microphone_volume_mono_48.pcm\""
+                :type "char")
+                nil [1287 1371])
+            ("RecordedMicrophoneMuteFile" variable
+               (:pointer 1
+                :constant-flag t
+                :default-value "\"recorded_microphone_mute_mono_48.pcm\""
+                :type "char")
+                nil [1372 1452])
+            ("RecordedMicrophoneBoostFile" variable
+               (:pointer 1
+                :constant-flag t
+                :default-value "\"recorded_microphone_boost_mono_48.pcm\""
+                :type "char")
+                nil [1453 1535])
+            ("RecordedMicrophoneAGCFile" variable
+               (:pointer 1
+                :constant-flag t
+                :default-value "\"recorded_microphone_AGC_mono_48.pcm\""
+                :type "char")
+                nil [1536 1614])
+            ("RecordedSpeakerFile" variable
+               (:pointer 1
+                :constant-flag t
+                :default-value "\"recorded_speaker_48.pcm\""
+                :type "char")
+                nil [1615 1675])
+            ("DEFAULT_PAUSE_TIME" variable (:constant-flag t) nil [1854 1872])
+            ("PAUSE" variable (:constant-flag t) nil [1954 1959])
+            ("GetFilename" function
+               (:pointer 1
+                :arguments 
+                  ( ("filename" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2048 2063]))                  
+                :type "char")
+                nil [2030 2088])
+            ("GetFilename" function
+               (:pointer 1
+                :constant-flag t
+                :arguments 
+                  ( ("filename" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2113 2134]))                  
+                :type "char")
+                nil [2089 2159])
+            ("GetResource" function
+               (:pointer 1
+                :arguments 
+                  ( ("resource" variable
+                       (:pointer 1
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2178 2193]))                  
+                :type "char")
+                nil [2160 2218])
+            ("GetResource" function
+               (:pointer 1
+                :constant-flag t
+                :arguments 
+                  ( ("resource" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type "char")
+                        (reparse-symbol arg-sub-list) [2243 2264]))                  
+                :type "char")
+                nil [2219 2289])
+            ("WaitForKey" function
+               (:typemodifiers ("static")
+                :type "void")
+                nil [2331 2938])
+            ("webrtc" type
+               (:members 
+                  ( ("AudioEventObserver" function
+                       (:constructor-flag t
+                        :parent "AudioEventObserver"
+                        :arguments 
+                          ( ("audioDevice" variable
+                               (:pointer 1
+                                :type ("AudioDeviceModule" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [3039 3070]))                          
+                        :type ("AudioEventObserver" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [3000 3074])
+                    ("AudioEventObserver" function
+                       (:destructor-flag t
+                        :parent "AudioEventObserver"
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [3076 3121])
+                    ("OnErrorIsReported" function
+                       (:parent "AudioEventObserver"
+                        :arguments 
+                          ( ("error" variable
+                               (:constant-flag t
+                                :type ("ErrorCode" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [3166 3188]))                          
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [3123 3284])
+                    ("OnWarningIsReported" function
+                       (:parent "AudioEventObserver"
+                        :arguments 
+                          ( ("warning" variable
+                               (:constant-flag t
+                                :type ("WarningCode" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [3332 3358]))                          
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [3287 3464])
+                    ("AudioTransportImpl" function
+                       (:constructor-flag t
+                        :parent "AudioTransportImpl"
+                        :arguments 
+                          ( ("audioDevice" variable
+                               (:pointer 1
+                                :type ("AudioDeviceModule" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [3505 3536]))                          
+                        :type ("AudioTransportImpl" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [3466 3937])
+                    ("AudioTransportImpl" function
+                       (:destructor-flag t
+                        :parent "AudioTransportImpl"
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [3939 4197])
+                    ("SetFilePlayout" function
+                       (:parent "AudioTransportImpl"
+                        :arguments 
+                          ( ("enable" variable (:type "bool") (reparse-symbol arg-sub-list) [4441 4453])
+                            ("fileName" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type "char")
+                                (reparse-symbol arg-sub-list) [4454 4475]))                          
+                        :type ("int32_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [4398 4685])
+                    ("SetFullDuplex" function
+                       (:parent "AudioTransportImpl"
+                        :arguments 
+                          ( ("enable" variable (:type "bool") (reparse-symbol arg-sub-list) [4728 4740]))                          
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [4689 4934])
+                    ("RecordedDataIsAvailable" function
+                       (:parent "AudioTransportImpl"
+                        :arguments 
+                          ( ("audioSamples" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type "void")
+                                (reparse-symbol arg-sub-list) [4993 5018])
+                            ("nSamples" variable
+                               (:constant-flag t
+                                :type ("size_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [5023 5045])
+                            ("nBytesPerSample" variable
+                               (:constant-flag t
+                                :type ("size_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [5050 5079])
+                            ("nChannels" variable
+                               (:constant-flag t
+                                :type ("uint8_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [5084 5108])
+                            ("samplesPerSec" variable
+                               (:constant-flag t
+                                :type ("uint32_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [5113 5142])
+                            ("totalDelayMS" variable
+                               (:constant-flag t
+                                :type ("uint32_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [5147 5175])
+                            ("clockDrift" variable
+                               (:constant-flag t
+                                :type ("int32_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [5180 5205])
+                            ("currentMicLevel" variable
+                               (:constant-flag t
+                                :type ("uint32_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [5210 5241])
+                            ("keyPressed" variable
+                               (:constant-flag t
+                                :type "bool")
+                                (reparse-symbol arg-sub-list) [5246 5268])
+                            ("newMicLevel" variable
+                               (:reference 1
+                                :type ("uint32_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [5273 5295]))                          
+                        :type ("int32_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [4936 9542])
+                    ("NeedMorePlayData" function
+                       (:parent "AudioTransportImpl"
+                        :arguments 
+                          ( ("nSamples" variable
+                               (:constant-flag t
+                                :type ("size_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [9595 9617])
+                            ("nBytesPerSample" variable
+                               (:constant-flag t
+                                :type ("size_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [9622 9651])
+                            ("nChannels" variable
+                               (:constant-flag t
+                                :type ("uint8_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [9656 9680])
+                            ("samplesPerSec" variable
+                               (:constant-flag t
+                                :type ("uint32_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [9685 9714])
+                            ("audioSamples" variable
+                               (:pointer 1
+                                :type "void")
+                                (reparse-symbol arg-sub-list) [9719 9738])
+                            ("nSamplesOut" variable
+                               (:reference 1
+                                :type ("size_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [9743 9763])
+                            ("elapsed_time_ms" variable
+                               (:pointer 1
+                                :type ("int64_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [9768 9793])
+                            ("ntp_time_ms" variable
+                               (:pointer 1
+                                :type ("int64_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [9798 9819]))                          
+                        :type ("int32_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [9545 17867])
+                    ("OnDataAvailable" function
+                       (:parent "AudioTransportImpl"
+                        :arguments 
+                          ( ("voe_channels" variable
+                               (:dereference 1
+                                :constant-flag t
+                                :type "int")
+                                (reparse-symbol arg-sub-list) [17909 17934])
+                            ("number_of_voe_channels" variable (:type "int") (reparse-symbol arg-sub-list) [17975 18002])
+                            ("audio_data" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type ("int16_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [18043 18069])
+                            ("sample_rate" variable (:type "int") (reparse-symbol arg-sub-list) [18110 18126])
+                            ("number_of_channels" variable (:type "int") (reparse-symbol arg-sub-list) [18167 18190])
+                            ("number_of_frames" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [18231 18255])
+                            ("audio_delay_milliseconds" variable (:type "int") (reparse-symbol arg-sub-list) [18296 18325])
+                            ("current_volume" variable (:type "int") (reparse-symbol arg-sub-list) [18366 18385])
+                            ("key_pressed" variable (:type "bool") (reparse-symbol arg-sub-list) [18426 18443])
+                            ("need_audio_processing" variable (:type "bool") (reparse-symbol arg-sub-list) [18484 18511]))                          
+                        :type "int")
+                        (reparse-symbol namespacesubparts) [17869 18527])
+                    ("PushCaptureData" function
+                       (:parent "AudioTransportImpl"
+                        :arguments 
+                          ( ("voe_channel" variable (:type "int") (reparse-symbol arg-sub-list) [18570 18586])
+                            ("audio_data" variable
+                               (:pointer 1
+                                :constant-flag t
+                                :type "void")
+                                (reparse-symbol arg-sub-list) [18628 18651])
+                            ("bits_per_sample" variable (:type "int") (reparse-symbol arg-sub-list) [18693 18713])
+                            ("sample_rate" variable (:type "int") (reparse-symbol arg-sub-list) [18714 18730])
+                            ("number_of_channels" variable (:type "int") (reparse-symbol arg-sub-list) [18772 18795])
+                            ("number_of_frames" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [18837 18861]))                          
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [18529 18864])
+                    ("PullRenderData" function
+                       (:parent "AudioTransportImpl"
+                        :arguments 
+                          ( ("bits_per_sample" variable (:type "int") (reparse-symbol arg-sub-list) [18906 18926])
+                            ("sample_rate" variable (:type "int") (reparse-symbol arg-sub-list) [18927 18943])
+                            ("number_of_channels" variable (:type "int") (reparse-symbol arg-sub-list) [18984 19007])
+                            ("number_of_frames" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [19048 19072])
+                            ("audio_data" variable
+                               (:pointer 1
+                                :type "void")
+                                (reparse-symbol arg-sub-list) [19113 19130])
+                            ("elapsed_time_ms" variable
+                               (:pointer 1
+                                :type ("int64_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [19171 19196])
+                            ("ntp_time_ms" variable
+                               (:pointer 1
+                                :type ("int64_t" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [19237 19258]))                          
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [18866 19261])
+                    ("FuncTestManager" function
+                       (:constructor-flag t
+                        :parent "FuncTestManager"
+                        :type ("FuncTestManager" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [19263 19905])
+                    ("FuncTestManager" function
+                       (:destructor-flag t
+                        :parent "FuncTestManager"
+                        :type "void")
+                        (reparse-symbol namespacesubparts) [19907 19946])
+                    ("Init" function
+                       (:parent "FuncTestManager"
+                        :type ("int32_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [19948 20860])
+                    ("Close" function
+                       (:parent "FuncTestManager"
+                        :type ("int32_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [20862 21814])
+                    ("DoTest" function
+                       (:parent "FuncTestManager"
+                        :arguments 
+                          ( ("testType" variable
+                               (:constant-flag t
+                                :type ("TestType" type (:type "class") nil nil))
+                                (reparse-symbol arg-sub-list) [21848 21872]))                          
+                        :type ("int32_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [21816 23409])
+                    ("TestAudioLayerSelection" function
+                       (:parent "FuncTestManager"
+                        :type ("int32_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [23411 28911])
+                    ("TestDeviceEnumeration" function
+                       (:parent "FuncTestManager"
+                        :type ("int32_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [28913 31164])
+                    ("TestDeviceSelection" function
+                       (:parent "FuncTestManager"
+                        :type ("int32_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [31166 38011])
+                    ("TestAudioTransport" function
+                       (:parent "FuncTestManager"
+                        :type ("int32_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [38013 46423])
+                    ("TestSpeakerVolume" function
+                       (:parent "FuncTestManager"
+                        :type ("int32_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [46425 49586])
+                    ("TestSpeakerMute" function
+                       (:parent "FuncTestManager"
+                        :type ("int32_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [49588 52386])
+                    ("TestMicrophoneVolume" function
+                       (:parent "FuncTestManager"
+                        :type ("int32_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [52388 56588])
+                    ("TestMicrophoneMute" function
+                       (:parent "FuncTestManager"
+                        :type ("int32_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [56590 60672])
+                    ("TestMicrophoneBoost" function
+                       (:parent "FuncTestManager"
+                        :type ("int32_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [60674 64790])
+                    ("TestMicrophoneAGC" function
+                       (:parent "FuncTestManager"
+                        :type ("int32_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [64792 69096])
+                    ("TestLoopback" function
+                       (:parent "FuncTestManager"
+                        :type ("int32_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [69098 73028])
+                    ("TestDeviceRemoval" function
+                       (:parent "FuncTestManager"
+                        :type ("int32_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [73030 79445])
+                    ("TestExtra" function
+                       (:parent "FuncTestManager"
+                        :type ("int32_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [79447 80006])
+                    ("SelectRecordingDevice" function
+                       (:parent "FuncTestManager"
+                        :type ("int32_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [80008 81601])
+                    ("SelectPlayoutDevice" function
+                       (:parent "FuncTestManager"
+                        :type ("int32_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [81603 83213])
+                    ("TestAdvancedMBAPI" function
+                       (:parent "FuncTestManager"
+                        :type ("int32_t" type (:type "class") nil nil))
+                        (reparse-symbol namespacesubparts) [83215 86441]))                  
+                :type "namespace")
+                nil [2980 86444]))          
+      :file "func_test_manager.cc"
+      :pointmax 86474
+      :fsize 86473
+      :lastmodtime '(22011 44633 0 0)
+      :unmatched-syntax '((punctuation 4686 . 4687))
+      :lexical-table 
+        '(("DEFAULT_PAUSE_TIME" . ((number "5000" 1873 . 1877)))
+          ("PAUSE" (spp-arg-list ("a") 1959 . 1962) . 
+              ((symbol "WaitForKey" 1963 . 1973) (semantic-list "()" 1973 . 1975) (punctuation ";" 1975 . 1976)))
+          )
+)
+    (semanticdb-table "semanticdb-table"
+      :file "func_test_manager.h"
+      :fsize 7185
+      :lastmodtime '(22011 44633 0 0)))
+  :file "!Users!lihaifeng!work!webrtc!webrtc!modules!audio_device!test!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

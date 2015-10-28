@@ -19,12 +19,12 @@
             "ibuffer.el"
             "org.el"
             "slime.el"
-            "undo-tree.el"
-            "yasnippet.el"
-            "js2.el"
-            "flycheck.el"
+            ;; "undo-tree.el"
+            ;; "yasnippet.el"
+            ;; "js2.el"
+            ;; "flycheck.el"
             "org-page.el"
-            "magit.el"
+            ;; "magit.el"
             )))
 (if wttr/os:osxp
     (mapc (lambda (filename) (load (concat "~/.emacs.d/wttr-config/modes/" filename)))
@@ -33,12 +33,14 @@
            "ace-jump.el"
            "dired.el"
 ;;           "rtags.el"
-;;           "auto-complete.el"
+          "auto-complete.el"
 ;;           "yasnippet.el"
            "helm.el"
            ;;           "cc.el"
            "org-page.el"
-           "org.el")))
+           "org.el"
+           "cmake.el"
+           )))
 (if wttr/os:linuxp
     (mapc (lambda (filename) (load (concat "~/.emacs.d/wttr-config/modes/" filename)))
           (list 

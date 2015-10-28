@@ -1,0 +1,918 @@
+;; Object semanticdb-project-database-file
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "semanticdb-project-database-file"
+  :tables
+  (list
+    (semanticdb-table "semanticdb-table"
+      :major-mode c-mode
+      :tags 
+        '( ("WEBRTC_MODULES_AUDIO_PROCESSING_NS_MAIN_SOURCE_NSX_CORE_H_" variable (:constant-flag t) nil [490 548])
+            ("WEBRTC_MODULES_AUDIO_PROCESSING_NS_MAIN_SOURCE_NSX_CORE_H_" variable (:constant-flag t) nil [490 548])
+            ("WEBRTC_MODULES_AUDIO_PROCESSING_NS_MAIN_SOURCE_NSX_CORE_H_" variable (:constant-flag t) nil [490 548])
+            ("common_audio/signal_processing/include/signal_processing_library.h" include nil nil [597 674])
+            ("audio_processing/ns/nsx_defines.h" include nil nil [675 719])
+            ("typedefs.h" include nil nil [720 741])
+            ("NoiseSuppressionFixedC_" type
+               (:members 
+                  ( ("fs" variable (:type ("uint32_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [786 813])
+                    ("window" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [817 848])
+                    ("analysisBuffer" variable
+                       (:dereference 1
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [851 907])
+                    ("synthesisBuffer" variable
+                       (:dereference 1
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [910 967])
+                    ("noiseSupFilter" variable
+                       (:dereference 1
+                        :type ("uint16_t" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [970 1027])
+                    ("overdrive" variable (:type ("uint16_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1030 1064])
+                    ("denoiseBound" variable (:type ("uint16_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1076 1113])
+                    ("factor2Table" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1126 1163])
+                    ("noiseEstLogQuantile" variable
+                       (:dereference 1
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1166 1236])
+                    ("noiseEstDensity" variable
+                       (:dereference 1
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1239 1305])
+                    ("noiseEstCounter" variable
+                       (:dereference 1
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1308 1356])
+                    ("noiseEstQuantile" variable
+                       (:dereference 1
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1359 1418])
+                    ("anaLen" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1422 1453])
+                    ("anaLen2" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1456 1488])
+                    ("magnLen" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1491 1523])
+                    ("aggrMode" variable (:type "int") (reparse-symbol classsubparts) [1526 1559])
+                    ("stages" variable (:type "int") (reparse-symbol classsubparts) [1562 1593])
+                    ("initFlag" variable (:type "int") (reparse-symbol classsubparts) [1596 1629])
+                    ("gainMap" variable (:type "int") (reparse-symbol classsubparts) [1632 1664])
+                    ("maxLrt" variable (:type ("int32_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1668 1699])
+                    ("minLrt" variable (:type ("int32_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1702 1733])
+                    ("logLrtTimeAvgW32" variable
+                       (:dereference 1
+                        :type ("int32_t" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [1783 1842])
+                    ("featureLogLrt" variable (:type ("int32_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1845 1883])
+                    ("thresholdLogLrt" variable (:type ("int32_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1886 1926])
+                    ("weightLogLrt" variable (:type ("int16_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1929 1966])
+                    ("featureSpecDiff" variable (:type ("uint32_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [1970 2010])
+                    ("thresholdSpecDiff" variable (:type ("uint32_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2013 2055])
+                    ("weightSpecDiff" variable (:type ("int16_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2058 2097])
+                    ("featureSpecFlat" variable (:type ("uint32_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2101 2141])
+                    ("thresholdSpecFlat" variable (:type ("uint32_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2144 2186])
+                    ("weightSpecFlat" variable (:type ("int16_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2189 2228])
+                    ("avgMagnPause" variable
+                       (:dereference 1
+                        :type ("int32_t" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [2278 2333])
+                    ("magnEnergy" variable (:type ("uint32_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2336 2371])
+                    ("sumMagn" variable (:type ("uint32_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2374 2406])
+                    ("curAvgMagnEnergy" variable (:type ("uint32_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2409 2450])
+                    ("timeAvgMagnEnergy" variable (:type ("uint32_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2453 2495])
+                    ("timeAvgMagnEnergyTmp" variable (:type ("uint32_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2498 2543])
+                    ("whiteNoiseLevel" variable (:type ("uint32_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2547 2587])
+                    ("initMagnEst" variable
+                       (:dereference 1
+                        :type ("uint32_t" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [2660 2714])
+                    ("pinkNoiseNumerator" variable (:type ("int32_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2745 2788])
+                    ("pinkNoiseExp" variable (:type ("int32_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [2806 2843])
+                    ("minNorm" variable (:type "int") (reparse-symbol classsubparts) [2865 2897])
+                    ("zeroInputSignal" variable (:type "int") (reparse-symbol classsubparts) [2935 2975])
+                    ("prevNoiseU32" variable
+                       (:dereference 1
+                        :type ("uint32_t" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [3048 3103])
+                    ("prevMagnU16" variable
+                       (:dereference 1
+                        :type ("uint16_t" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [3151 3205])
+                    ("priorNonSpeechProb" variable (:type ("int16_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3252 3295])
+                    ("blockIndex" variable (:type "int") (reparse-symbol classsubparts) [3299 3334])
+                    ("modelUpdate" variable (:type "int") (reparse-symbol classsubparts) [3440 3476])
+                    ("cntThresUpdate" variable (:type "int") (reparse-symbol classsubparts) [3479 3518])
+                    ("histLrt" variable
+                       (:dereference 1
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [3564 3610])
+                    ("histSpecFlat" variable
+                       (:dereference 1
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [3613 3664])
+                    ("histSpecDiff" variable
+                       (:dereference 1
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [3667 3718])
+                    ("dataBufHBFX" variable
+                       (:dereference 2
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [3762 3835])
+                    ("qNoise" variable (:type "int") (reparse-symbol classsubparts) [3839 3870])
+                    ("prevQNoise" variable (:type "int") (reparse-symbol classsubparts) [3873 3908])
+                    ("prevQMagn" variable (:type "int") (reparse-symbol classsubparts) [3911 3945])
+                    ("blockLen10ms" variable (:type ("size_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [3948 3985])
+                    ("real" variable
+                       (:dereference 1
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [3989 4035])
+                    ("imag" variable
+                       (:dereference 1
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol classsubparts) [4038 4084])
+                    ("energyIn" variable (:type ("int32_t" type (:type "class") nil nil)) (reparse-symbol classsubparts) [4087 4120])
+                    ("scaleEnergyIn" variable (:type "int") (reparse-symbol classsubparts) [4123 4161])
+                    ("normData" variable (:type "int") (reparse-symbol classsubparts) [4164 4197])
+                    ("real_fft" variable
+                       (:pointer 1
+                        :type ("RealFFT" type
+                             (:prototype t
+                              :type "struct")
+                              nil nil))
+                        (reparse-symbol classsubparts) [4201 4226]))                  
+                :type "struct")
+                nil [743 4252])
+            ("NoiseSuppressionFixedC" type
+               (:typedef ("NoiseSuppressionFixedC_" type (:type "struct") nil nil)
+                :type "typedef")
+                nil [743 4252])
+            ("WebRtcNsx_SpeechNoiseProb" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("inst" variable
+                       (:pointer 1
+                        :type ("NoiseSuppressionFixedC" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7912 7941])
+                    ("nonSpeechProbFinal" variable
+                       (:pointer 1
+                        :type ("uint16_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7973 8002])
+                    ("priorLocSnr" variable
+                       (:pointer 1
+                        :type ("uint32_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [8034 8056])
+                    ("postLocSnr" variable
+                       (:pointer 1
+                        :type ("uint32_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [8088 8109]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [7881 8110])
+            ("WebRtcNsx_NormalizeRealBuffer" variable
+               (:type ("NormalizeRealBuffer" type (:type "class") nil nil)
+                :typemodifiers ("extern" "\"C\"" "extern"))
+                (reparse-symbol extern-c-contents) [7758 7815])
+            ("NormalizeRealBuffer" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("inst" variable
+                       (:pointer 1
+                        :type ("NoiseSuppressionFixedC" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7622 7651])
+                    ("in" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7688 7706])
+                    ("out" variable
+                       (:pointer 1
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7743 7756]))                  
+                :function-pointer t
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [7594 7757])
+            ("WebRtcNsx_Denormalize" variable
+               (:type ("Denormalize" type (:type "class") nil nil)
+                :typemodifiers ("extern" "\"C\"" "extern"))
+                (reparse-symbol extern-c-contents) [7475 7516])
+            ("Denormalize" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("inst" variable
+                       (:pointer 1
+                        :type ("NoiseSuppressionFixedC" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7363 7392])
+                    ("in" variable
+                       (:pointer 1
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7421 7433])
+                    ("factor" variable (:type "int") (reparse-symbol arg-sub-list) [7462 7473]))                  
+                :function-pointer t
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [7343 7474])
+            ("WebRtcNsx_AnalysisUpdate" variable
+               (:type ("AnalysisUpdate" type (:type "class") nil nil)
+                :typemodifiers ("extern" "\"C\"" "extern"))
+                (reparse-symbol extern-c-contents) [7213 7260])
+            ("AnalysisUpdate" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("inst" variable
+                       (:pointer 1
+                        :type ("NoiseSuppressionFixedC" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7085 7114])
+                    ("out" variable
+                       (:pointer 1
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7146 7159])
+                    ("new_speech" variable
+                       (:pointer 1
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [7191 7211]))                  
+                :function-pointer t
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [7062 7212])
+            ("WebRtcNsx_SynthesisUpdate" variable
+               (:type ("SynthesisUpdate" type (:type "class") nil nil)
+                :typemodifiers ("extern" "\"C\"" "extern"))
+                (reparse-symbol extern-c-contents) [6933 6982])
+            ("SynthesisUpdate" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("inst" variable
+                       (:pointer 1
+                        :type ("NoiseSuppressionFixedC" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6797 6826])
+                    ("out_frame" variable
+                       (:pointer 1
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6859 6878])
+                    ("gain_factor" variable (:type ("int16_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [6911 6931]))                  
+                :function-pointer t
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [6773 6932])
+            ("WebRtcNsx_PrepareSpectrum" variable
+               (:type ("PrepareSpectrum" type (:type "class") nil nil)
+                :typemodifiers ("extern" "\"C\"" "extern"))
+                (reparse-symbol extern-c-contents) [6600 6649])
+            ("PrepareSpectrum" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("inst" variable
+                       (:pointer 1
+                        :type ("NoiseSuppressionFixedC" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6517 6546])
+                    ("freq_buff" variable
+                       (:pointer 1
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6579 6598]))                  
+                :function-pointer t
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [6493 6599])
+            ("WebRtcNsx_NoiseEstimation" variable
+               (:type ("NoiseEstimation" type (:type "class") nil nil)
+                :typemodifiers ("extern" "\"C\"" "extern"))
+                (reparse-symbol extern-c-contents) [6369 6418])
+            ("NoiseEstimation" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("inst" variable
+                       (:pointer 1
+                        :type ("NoiseSuppressionFixedC" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6191 6220])
+                    ("magn" variable
+                       (:pointer 1
+                        :type ("uint16_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6253 6268])
+                    ("noise" variable
+                       (:pointer 1
+                        :type ("uint32_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6301 6317])
+                    ("q_noise" variable
+                       (:pointer 1
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [6350 6367]))                  
+                :function-pointer t
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [6167 6368])
+            ("WebRtcNsx_ProcessCore" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "void"
+                :arguments 
+                  ( ("inst" variable
+                       (:pointer 1
+                        :type ("NoiseSuppressionFixedC" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5783 5812])
+                    ("inFrame" variable
+                       (:pointer 2
+                        :constant-flag t
+                        :type "short")
+                        (reparse-symbol arg-sub-list) [5840 5868])
+                    ("num_bands" variable (:type "int") (reparse-symbol arg-sub-list) [5896 5910])
+                    ("outFrame" variable
+                       (:pointer 2
+                        :type "short")
+                        (reparse-symbol arg-sub-list) [5938 5961]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [5756 5962])
+            ("WebRtcNsx_set_policy_core" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type "int"
+                :arguments 
+                  ( ("inst" variable
+                       (:pointer 1
+                        :type ("NoiseSuppressionFixedC" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [5286 5315])
+                    ("mode" variable (:type "int") (reparse-symbol arg-sub-list) [5316 5325]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [5256 5326])
+            ("WebRtcNsx_InitCore" function
+               (:typemodifiers ("extern" "\"C\"")
+                :type ("int32_t" type (:type "class") nil nil)
+                :arguments 
+                  ( ("inst" variable
+                       (:pointer 1
+                        :type ("NoiseSuppressionFixedC" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [4746 4775])
+                    ("fs" variable (:type ("uint32_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [4776 4788]))                  
+                :prototype-flag t)
+                (reparse-symbol extern-c-contents) [4719 4789]))          
+      :file "nsx_core.h"
+      :pointmax 10280
+      :fsize 10279
+      :lastmodtime '(22018 34536 0 0)
+      :unmatched-syntax nil
+      :lexical-table 
+        '(("WEBRTC_MODULES_AUDIO_PROCESSING_NS_MAIN_SOURCE_NSX_CORE_H_")
+          )
+)
+    (semanticdb-table "semanticdb-table"
+      :file "nsx_defines.h"
+      :fsize 3579
+      :lastmodtime '(22011 44633 0 0))
+    (semanticdb-table "semanticdb-table"
+      :major-mode c-mode
+      :tags 
+        '( ("audio_processing/ns/include/noise_suppression_x.h" include nil nil [415 475])
+            ("assert.h" include (:system-flag t) nil [477 496])
+            ("math.h" include (:system-flag t) nil [497 514])
+            ("stdlib.h" include (:system-flag t) nil [515 534])
+            ("string.h" include (:system-flag t) nil [535 554])
+            ("common_audio/signal_processing/include/real_fft.h" include nil nil [556 616])
+            ("audio_processing/ns/nsx_core.h" include nil nil [617 658])
+            ("system_wrappers/interface/cpu_features_wrapper.h" include nil nil [659 718])
+            ("WebRtcNsx_kLogTable" variable
+               (:dereference 1
+                :typemodifiers ("static")
+                :constant-flag t
+                :default-value "{
+  0, 177, 355, 532, 710, 887, 1065, 1242, 1420
+}"
+                :type ("int16_t" type (:type "class") nil nil))
+                nil [979 1076])
+            ("WebRtcNsx_kCounterDiv" variable
+               (:dereference 1
+                :typemodifiers ("static")
+                :constant-flag t
+                :default-value "{
+  32767, 16384, 10923, 8192, 6554, 5461, 4681, 4096, 3641, 3277, 2979, 2731,
+  2521, 2341, 2185, 2048, 1928, 1820, 1725, 1638, 1560, 1489, 1425, 1365, 1311,
+  1260, 1214, 1170, 1130, 1092, 1057, 1024, 993, 964, 936, 910, 886, 862, 840,
+  819, 799, 780, 762, 745, 728, 712, 697, 683, 669, 655, 643, 630, 618, 607,
+  596, 585, 575, 565, 555, 546, 537, 529, 520, 512, 504, 496, 489, 482, 475,
+  468, 462, 455, 449, 443, 437, 431, 426, 420, 415, 410, 405, 400, 395, 390,
+  386, 381, 377, 372, 368, 364, 360, 356, 352, 349, 345, 341, 338, 334, 331,
+  328, 324, 321, 318, 315, 312, 309, 306, 303, 301, 298, 295, 293, 290, 287,
+  285, 282, 280, 278, 275, 273, 271, 269, 266, 264, 262, 260, 258, 256, 254,
+  252, 250, 248, 246, 245, 243, 241, 239, 237, 236, 234, 232, 231, 229, 228,
+  226, 224, 223, 221, 220, 218, 217, 216, 214, 213, 211, 210, 209, 207, 206,
+  205, 204, 202, 201, 200, 199, 197, 196, 195, 194, 193, 192, 191, 189, 188,
+  187, 186, 185, 184, 183, 182, 181, 180, 179, 178, 177, 176, 175, 174, 173,
+  172, 172, 171, 170, 169, 168, 167, 166, 165, 165, 164, 163
+}"
+                :type ("int16_t" type (:type "class") nil nil))
+                nil [1078 2199])
+            ("WebRtcNsx_kLogTableFrac" variable
+               (:dereference 1
+                :typemodifiers ("static")
+                :constant-flag t
+                :default-value "{
+  0,   1,   3,   4,   6,   7,   9,  10,  11,  13,  14,  16,  17,  18,  20,  21,
+  22,  24,  25,  26,  28,  29,  30,  32,  33,  34,  36,  37,  38,  40,  41,  42,
+  44,  45,  46,  47,  49,  50,  51,  52,  54,  55,  56,  57,  59,  60,  61,  62,
+  63,  65,  66,  67,  68,  69,  71,  72,  73,  74,  75,  77,  78,  79,  80,  81,
+  82,  84,  85,  86,  87,  88,  89,  90,  92,  93,  94,  95,  96,  97,  98,  99,
+  100, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 116,
+  117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131,
+  132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146,
+  147, 148, 149, 150, 151, 152, 153, 154, 155, 155, 156, 157, 158, 159, 160,
+  161, 162, 163, 164, 165, 166, 167, 168, 169, 169, 170, 171, 172, 173, 174,
+  175, 176, 177, 178, 178, 179, 180, 181, 182, 183, 184, 185, 185, 186, 187,
+  188, 189, 190, 191, 192, 192, 193, 194, 195, 196, 197, 198, 198, 199, 200,
+  201, 202, 203, 203, 204, 205, 206, 207, 208, 208, 209, 210, 211, 212, 212,
+  213, 214, 215, 216, 216, 217, 218, 219, 220, 220, 221, 222, 223, 224, 224,
+  225, 226, 227, 228, 228, 229, 230, 231, 231, 232, 233, 234, 234, 235, 236,
+  237, 238, 238, 239, 240, 241, 241, 242, 243, 244, 244, 245, 246, 247, 247,
+  248, 249, 249, 250, 251, 252, 252, 253, 254, 255, 255
+}"
+                :type ("int16_t" type (:type "class") nil nil))
+                nil [2201 3564])
+            ("kStartBand" variable
+               (:typemodifiers ("static")
+                :constant-flag t
+                :default-value "5"
+                :type ("size_t" type (:type "class") nil nil))
+                nil [3681 3716])
+            ("kBlocks80w128x" variable
+               (:dereference 1
+                :typemodifiers ("static")
+                :constant-flag t
+                :default-value "{
+  0,    536,   1072,   1606,   2139,   2669,   3196,   3720,   4240,   4756,   5266,
+  5771,   6270,   6762,   7246,   7723,   8192,   8652,   9102,   9543,   9974,  10394,
+  10803,  11200,  11585,  11958,  12318,  12665,  12998,  13318,  13623,  13913,  14189,
+  14449,  14694,  14924,  15137,  15334,  15515,  15679,  15826,  15956,  16069,  16165,
+  16244,  16305,  16349,  16375,  16384,  16384,  16384,  16384,  16384,  16384,  16384,
+  16384,  16384,  16384,  16384,  16384,  16384,  16384,  16384,  16384,  16384,  16384,
+  16384,  16384,  16384,  16384,  16384,  16384,  16384,  16384,  16384,  16384,  16384,
+  16384,  16384,  16384,  16384,  16375,  16349,  16305,  16244,  16165,  16069,  15956,
+  15826,  15679,  15515,  15334,  15137,  14924,  14694,  14449,  14189,  13913,  13623,
+  13318,  12998,  12665,  12318,  11958,  11585,  11200,  10803,  10394,   9974,   9543,
+  9102,   8652,   8192,   7723,   7246,   6762,   6270,   5771,   5266,   4756,   4240,
+  3720,   3196,   2669,   2139,   1606,   1072,    536
+}"
+                :type ("int16_t" type (:type "class") nil nil))
+                nil [3750 4825])
+            ("kBlocks160w256x" variable
+               (:dereference 1
+                :typemodifiers ("static")
+                :constant-flag t
+                :default-value "{
+  0,   268,   536,   804,  1072,  1339,  1606,  1872,
+  2139,  2404,  2669,  2933,  3196,  3459,  3720,  3981,
+  4240,  4499,  4756,  5012,  5266,  5520,  5771,  6021,
+  6270,  6517,  6762,  7005,  7246,  7486,  7723,  7959,
+  8192,  8423,  8652,  8878,  9102,  9324,  9543,  9760,
+  9974, 10185, 10394, 10600, 10803, 11003, 11200, 11394,
+  11585, 11773, 11958, 12140, 12318, 12493, 12665, 12833,
+  12998, 13160, 13318, 13472, 13623, 13770, 13913, 14053,
+  14189, 14321, 14449, 14574, 14694, 14811, 14924, 15032,
+  15137, 15237, 15334, 15426, 15515, 15599, 15679, 15754,
+  15826, 15893, 15956, 16015, 16069, 16119, 16165, 16207,
+  16244, 16277, 16305, 16329, 16349, 16364, 16375, 16382,
+  16384, 16384, 16384, 16384, 16384, 16384, 16384, 16384,
+  16384, 16384, 16384, 16384, 16384, 16384, 16384, 16384,
+  16384, 16384, 16384, 16384, 16384, 16384, 16384, 16384,
+  16384, 16384, 16384, 16384, 16384, 16384, 16384, 16384,
+  16384, 16384, 16384, 16384, 16384, 16384, 16384, 16384,
+  16384, 16384, 16384, 16384, 16384, 16384, 16384, 16384,
+  16384, 16384, 16384, 16384, 16384, 16384, 16384, 16384,
+  16384, 16384, 16384, 16384, 16384, 16384, 16384, 16384,
+  16384, 16382, 16375, 16364, 16349, 16329, 16305, 16277,
+  16244, 16207, 16165, 16119, 16069, 16015, 15956, 15893,
+  15826, 15754, 15679, 15599, 15515, 15426, 15334, 15237,
+  15137, 15032, 14924, 14811, 14694, 14574, 14449, 14321,
+  14189, 14053, 13913, 13770, 13623, 13472, 13318, 13160,
+  12998, 12833, 12665, 12493, 12318, 12140, 11958, 11773,
+  11585, 11394, 11200, 11003, 10803, 10600, 10394, 10185,
+  9974,  9760,  9543,  9324,  9102,  8878,  8652,  8423,
+  8192,  7959,  7723,  7486,  7246,  7005,  6762,  6517,
+  6270,  6021,  5771,  5520,  5266,  5012,  4756,  4499,
+  4240,  3981,  3720,  3459,  3196,  2933,  2669,  2404,
+  2139,  1872,  1606,  1339,  1072,   804,   536,   268
+}"
+                :type ("int16_t" type (:type "class") nil nil))
+                nil [4859 6748])
+            ("kFactor1Table" variable
+               (:dereference 1
+                :typemodifiers ("static")
+                :constant-flag t
+                :default-value "{
+  8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8233, 8274, 8315, 8355, 8396, 8436, 8475, 8515, 8554, 8592, 8631, 8669,
+  8707, 8745, 8783, 8820, 8857, 8894, 8931, 8967, 9003, 9039, 9075, 9111, 9146, 9181,
+  9216, 9251, 9286, 9320, 9354, 9388, 9422, 9456, 9489, 9523, 9556, 9589, 9622, 9655,
+  9687, 9719, 9752, 9784, 9816, 9848, 9879, 9911, 9942, 9973, 10004, 10035, 10066,
+  10097, 10128, 10158, 10188, 10218, 10249, 10279, 10308, 10338, 10368, 10397, 10426,
+  10456, 10485, 10514, 10543, 10572, 10600, 10629, 10657, 10686, 10714, 10742, 10770,
+  10798, 10826, 10854, 10882, 10847, 10810, 10774, 10737, 10701, 10666, 10631, 10596,
+  10562, 10527, 10494, 10460, 10427, 10394, 10362, 10329, 10297, 10266, 10235, 10203,
+  10173, 10142, 10112, 10082, 10052, 10023, 9994, 9965, 9936, 9908, 9879, 9851, 9824,
+  9796, 9769, 9742, 9715, 9689, 9662, 9636, 9610, 9584, 9559, 9534, 9508, 9484, 9459,
+  9434, 9410, 9386, 9362, 9338, 9314, 9291, 9268, 9245, 9222, 9199, 9176, 9154, 9132,
+  9110, 9088, 9066, 9044, 9023, 9002, 8980, 8959, 8939, 8918, 8897, 8877, 8857, 8836,
+  8816, 8796, 8777, 8757, 8738, 8718, 8699, 8680, 8661, 8642, 8623, 8605, 8586, 8568,
+  8550, 8532, 8514, 8496, 8478, 8460, 8443, 8425, 8408, 8391, 8373, 8356, 8339, 8323,
+  8306, 8289, 8273, 8256, 8240, 8224, 8208, 8192
+}"
+                :type ("int16_t" type (:type "class") nil nil))
+                nil [7025 8709])
+            ("kFactor2Aggressiveness1" variable
+               (:dereference 1
+                :typemodifiers ("static")
+                :constant-flag t
+                :default-value "{
+  7577, 7577, 7577, 7577, 7577, 7577,
+  7577, 7577, 7577, 7577, 7577, 7577, 7577, 7577, 7577, 7577, 7577, 7596, 7614, 7632,
+  7650, 7667, 7683, 7699, 7715, 7731, 7746, 7761, 7775, 7790, 7804, 7818, 7832, 7845,
+  7858, 7871, 7884, 7897, 7910, 7922, 7934, 7946, 7958, 7970, 7982, 7993, 8004, 8016,
+  8027, 8038, 8049, 8060, 8070, 8081, 8091, 8102, 8112, 8122, 8132, 8143, 8152, 8162,
+  8172, 8182, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192
+}"
+                :type ("int16_t" type (:type "class") nil nil))
+                nil [9037 10672])
+            ("kFactor2Aggressiveness2" variable
+               (:dereference 1
+                :typemodifiers ("static")
+                :constant-flag t
+                :default-value "{
+  7270, 7270, 7270, 7270, 7270, 7306,
+  7339, 7369, 7397, 7424, 7448, 7472, 7495, 7517, 7537, 7558, 7577, 7596, 7614, 7632,
+  7650, 7667, 7683, 7699, 7715, 7731, 7746, 7761, 7775, 7790, 7804, 7818, 7832, 7845,
+  7858, 7871, 7884, 7897, 7910, 7922, 7934, 7946, 7958, 7970, 7982, 7993, 8004, 8016,
+  8027, 8038, 8049, 8060, 8070, 8081, 8091, 8102, 8112, 8122, 8132, 8143, 8152, 8162,
+  8172, 8182, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192
+}"
+                :type ("int16_t" type (:type "class") nil nil))
+                nil [10738 12373])
+            ("kFactor2Aggressiveness3" variable
+               (:dereference 1
+                :typemodifiers ("static")
+                :constant-flag t
+                :default-value "{
+  7184, 7184, 7184, 7229, 7270, 7306,
+  7339, 7369, 7397, 7424, 7448, 7472, 7495, 7517, 7537, 7558, 7577, 7596, 7614, 7632,
+  7650, 7667, 7683, 7699, 7715, 7731, 7746, 7761, 7775, 7790, 7804, 7818, 7832, 7845,
+  7858, 7871, 7884, 7897, 7910, 7922, 7934, 7946, 7958, 7970, 7982, 7993, 8004, 8016,
+  8027, 8038, 8049, 8060, 8070, 8081, 8091, 8102, 8112, 8122, 8132, 8143, 8152, 8162,
+  8172, 8182, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192,
+  8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192, 8192
+}"
+                :type ("int16_t" type (:type "class") nil nil))
+                nil [12439 14074])
+            ("kSumLogIndex" variable
+               (:dereference 1
+                :typemodifiers ("static")
+                :constant-flag t
+                :default-value "{
+  0,  22917,  22917,  22885,  22834,  22770,  22696,  22613,
+  22524,  22428,  22326,  22220,  22109,  21994,  21876,  21754,
+  21629,  21501,  21370,  21237,  21101,  20963,  20822,  20679,
+  20535,  20388,  20239,  20089,  19937,  19783,  19628,  19470,
+  19312,  19152,  18991,  18828,  18664,  18498,  18331,  18164,
+  17994,  17824,  17653,  17480,  17306,  17132,  16956,  16779,
+  16602,  16423,  16243,  16063,  15881,  15699,  15515,  15331,
+  15146,  14960,  14774,  14586,  14398,  14209,  14019,  13829,
+  13637,  13445
+}"
+                :type ("int16_t" type (:type "class") nil nil))
+                nil [14207 14783])
+            ("kSumSquareLogIndex" variable
+               (:dereference 1
+                :typemodifiers ("static")
+                :constant-flag t
+                :default-value "{
+  0,  16959,  16959,  16955,  16945,  16929,  16908,  16881,
+  16850,  16814,  16773,  16729,  16681,  16630,  16575,  16517,
+  16456,  16392,  16325,  16256,  16184,  16109,  16032,  15952,
+  15870,  15786,  15700,  15612,  15521,  15429,  15334,  15238,
+  15140,  15040,  14938,  14834,  14729,  14622,  14514,  14404,
+  14292,  14179,  14064,  13947,  13830,  13710,  13590,  13468,
+  13344,  13220,  13094,  12966,  12837,  12707,  12576,  12444,
+  12310,  12175,  12039,  11902,  11763,  11624,  11483,  11341,
+  11198,  11054
+}"
+                :type ("int16_t" type (:type "class") nil nil))
+                nil [14918 15500])
+            ("kLogIndex" variable
+               (:dereference 1
+                :typemodifiers ("static")
+                :constant-flag t
+                :default-value "{
+  0,      0,   4096,   6492,   8192,   9511,  10588,  11499,
+  12288,  12984,  13607,  14170,  14684,  15157,  15595,  16003,
+  16384,  16742,  17080,  17400,  17703,  17991,  18266,  18529,
+  18780,  19021,  19253,  19476,  19691,  19898,  20099,  20292,
+  20480,  20662,  20838,  21010,  21176,  21338,  21496,  21649,
+  21799,  21945,  22087,  22226,  22362,  22495,  22625,  22752,
+  22876,  22998,  23117,  23234,  23349,  23462,  23572,  23680,
+  23787,  23892,  23994,  24095,  24195,  24292,  24388,  24483,
+  24576,  24668,  24758,  24847,  24934,  25021,  25106,  25189,
+  25272,  25354,  25434,  25513,  25592,  25669,  25745,  25820,
+  25895,  25968,  26041,  26112,  26183,  26253,  26322,  26390,
+  26458,  26525,  26591,  26656,  26721,  26784,  26848,  26910,
+  26972,  27033,  27094,  27154,  27213,  27272,  27330,  27388,
+  27445,  27502,  27558,  27613,  27668,  27722,  27776,  27830,
+  27883,  27935,  27988,  28039,  28090,  28141,  28191,  28241,
+  28291,  28340,  28388,  28437,  28484,  28532,  28579,  28626,
+  28672
+}"
+                :type ("int16_t" type (:type "class") nil nil))
+                nil [15603 16689])
+            ("kDeterminantEstMatrix" variable
+               (:dereference 1
+                :typemodifiers ("static")
+                :constant-flag t
+                :default-value "{
+  0,  29814,  25574,  22640,  20351,  18469,  16873,  15491,
+  14277,  13199,  12233,  11362,  10571,   9851,   9192,   8587,
+  8030,   7515,   7038,   6596,   6186,   5804,   5448,   5115,
+  4805,   4514,   4242,   3988,   3749,   3524,   3314,   3116,
+  2930,   2755,   2590,   2435,   2289,   2152,   2022,   1900,
+  1785,   1677,   1575,   1478,   1388,   1302,   1221,   1145,
+  1073,   1005,    942,    881,    825,    771,    721,    674,
+  629,    587,    547,    510,    475,    442,    411,    382,
+  355,    330
+}"
+                :type ("int16_t" type (:type "class") nil nil))
+                nil [16845 17421])
+            ("UpdateNoiseEstimate" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("inst" variable
+                       (:pointer 1
+                        :type ("NoiseSuppressionFixedC" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [17499 17528])
+                    ("offset" variable (:type "int") (reparse-symbol arg-sub-list) [17529 17540]))                  
+                :type "void")
+                nil [17467 18540])
+            ("NoiseEstimationC" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("inst" variable
+                       (:pointer 1
+                        :type ("NoiseSuppressionFixedC" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [18591 18620])
+                    ("magn" variable
+                       (:pointer 1
+                        :type ("uint16_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [18650 18665])
+                    ("noise" variable
+                       (:pointer 1
+                        :type ("uint32_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [18695 18711])
+                    ("q_noise" variable
+                       (:pointer 1
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [18741 18758]))                  
+                :type "void")
+                nil [18562 22840])
+            ("PrepareSpectrumC" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("inst" variable
+                       (:pointer 1
+                        :type ("NoiseSuppressionFixedC" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [22936 22965])
+                    ("freq_buf" variable
+                       (:pointer 1
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [22966 22984]))                  
+                :type "void")
+                nil [22907 23610])
+            ("DenormalizeC" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("inst" variable
+                       (:pointer 1
+                        :type ("NoiseSuppressionFixedC" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [23710 23739])
+                    ("in" variable
+                       (:pointer 1
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [23765 23777])
+                    ("factor" variable (:type "int") (reparse-symbol arg-sub-list) [23803 23814]))                  
+                :type "void")
+                nil [23685 24065])
+            ("SynthesisUpdateC" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("inst" variable
+                       (:pointer 1
+                        :type ("NoiseSuppressionFixedC" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [24210 24239])
+                    ("out_frame" variable
+                       (:pointer 1
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [24269 24288])
+                    ("gain_factor" variable (:type ("int16_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [24318 24338]))                  
+                :type "void")
+                nil [24181 25356])
+            ("AnalysisUpdateC" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("inst" variable
+                       (:pointer 1
+                        :type ("NoiseSuppressionFixedC" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [25456 25485])
+                    ("out" variable
+                       (:pointer 1
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [25514 25527])
+                    ("new_speech" variable
+                       (:pointer 1
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [25556 25576]))                  
+                :type "void")
+                nil [25428 26130])
+            ("NormalizeRealBufferC" function
+               (:typemodifiers ("static")
+                :arguments 
+                  ( ("inst" variable
+                       (:pointer 1
+                        :type ("NoiseSuppressionFixedC" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [26233 26262])
+                    ("in" variable
+                       (:pointer 1
+                        :constant-flag t
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [26296 26314])
+                    ("out" variable
+                       (:pointer 1
+                        :type ("int16_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [26348 26361]))                  
+                :type "void")
+                nil [26200 26509])
+            ("WebRtcNsx_NoiseEstimation" variable (:type ("NoiseEstimation" type (:type "class") nil nil)) nil [26541 26583])
+            ("WebRtcNsx_PrepareSpectrum" variable (:type ("PrepareSpectrum" type (:type "class") nil nil)) nil [26584 26626])
+            ("WebRtcNsx_SynthesisUpdate" variable (:type ("SynthesisUpdate" type (:type "class") nil nil)) nil [26627 26669])
+            ("WebRtcNsx_AnalysisUpdate" variable (:type ("AnalysisUpdate" type (:type "class") nil nil)) nil [26670 26710])
+            ("WebRtcNsx_Denormalize" variable (:type ("Denormalize" type (:type "class") nil nil)) nil [26711 26745])
+            ("WebRtcNsx_NormalizeRealBuffer" variable (:type ("NormalizeRealBuffer" type (:type "class") nil nil)) nil [26746 26796])
+            ("WebRtcNsx_CalcParametricNoiseEstimate" function
+               (:arguments 
+                  ( ("inst" variable
+                       (:pointer 1
+                        :type ("NoiseSuppressionFixedC" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [27713 27742])
+                    ("pink_noise_exp_avg" variable (:type ("int16_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [27786 27813])
+                    ("pink_noise_num_avg" variable (:type ("int32_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [27857 27884])
+                    ("freq_index" variable (:type "int") (reparse-symbol arg-sub-list) [27928 27943])
+                    ("noise_estimate" variable
+                       (:pointer 1
+                        :type ("uint32_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [27987 28012])
+                    ("noise_estimate_avg" variable
+                       (:pointer 1
+                        :type ("uint32_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [28056 28085]))                  
+                :type "void")
+                nil [27670 29430])
+            ("WebRtcNsx_InitCore" function
+               (:arguments 
+                  ( ("inst" variable
+                       (:pointer 1
+                        :type ("NoiseSuppressionFixedC" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [29479 29508])
+                    ("fs" variable (:type ("uint32_t" type (:type "class") nil nil)) (reparse-symbol arg-sub-list) [29509 29521]))                  
+                :type ("int32_t" type (:type "class") nil nil))
+                nil [29452 34521])
+            ("WebRtcNsx_set_policy_core" function
+               (:arguments 
+                  ( ("inst" variable
+                       (:pointer 1
+                        :type ("NoiseSuppressionFixedC" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [34553 34582])
+                    ("mode" variable (:type "int") (reparse-symbol arg-sub-list) [34583 34592]))                  
+                :type "int")
+                nil [34523 35414])
+            ("WebRtcNsx_FeatureParameterExtraction" function
+               (:arguments 
+                  ( ("inst" variable
+                       (:pointer 1
+                        :type ("NoiseSuppressionFixedC" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [35774 35803])
+                    ("flag" variable (:type "int") (reparse-symbol arg-sub-list) [35846 35855]))                  
+                :type "void")
+                nil [35732 43210])
+            ("WebRtcNsx_ComputeSpectralFlatness" function
+               (:arguments 
+                  ( ("inst" variable
+                       (:pointer 1
+                        :type ("NoiseSuppressionFixedC" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [43391 43420])
+                    ("magn" variable
+                       (:pointer 1
+                        :type ("uint16_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [43460 43475]))                  
+                :type "void")
+                nil [43352 46085])
+            ("WebRtcNsx_ComputeSpectralDifference" function
+               (:arguments 
+                  ( ("inst" variable
+                       (:pointer 1
+                        :type ("NoiseSuppressionFixedC" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [46390 46419])
+                    ("magnIn" variable
+                       (:pointer 1
+                        :type ("uint16_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [46461 46478]))                  
+                :type "void")
+                nil [46349 49988])
+            ("WebRtcNsx_DataAnalysis" function
+               (:arguments 
+                  ( ("inst" variable
+                       (:pointer 1
+                        :type ("NoiseSuppressionFixedC" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [50091 50120])
+                    ("speechFrame" variable
+                       (:pointer 1
+                        :type "short")
+                        (reparse-symbol arg-sub-list) [50149 50168])
+                    ("magnU16" variable
+                       (:pointer 1
+                        :type ("uint16_t" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [50197 50215]))                  
+                :type "void")
+                nil [50063 59429])
+            ("WebRtcNsx_DataSynthesis" function
+               (:arguments 
+                  ( ("inst" variable
+                       (:pointer 1
+                        :type ("NoiseSuppressionFixedC" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [59460 59489])
+                    ("outFrame" variable
+                       (:pointer 1
+                        :type "short")
+                        (reparse-symbol arg-sub-list) [59490 59506]))                  
+                :type "void")
+                nil [59431 62646])
+            ("WebRtcNsx_ProcessCore" function
+               (:arguments 
+                  ( ("inst" variable
+                       (:pointer 1
+                        :type ("NoiseSuppressionFixedC" type (:type "class") nil nil))
+                        (reparse-symbol arg-sub-list) [62675 62704])
+                    ("speechFrame" variable
+                       (:pointer 2
+                        :constant-flag t
+                        :type "short")
+                        (reparse-symbol arg-sub-list) [62732 62764])
+                    ("num_bands" variable (:type "int") (reparse-symbol arg-sub-list) [62792 62806])
+                    ("outFrame" variable
+                       (:pointer 2
+                        :type "short")
+                        (reparse-symbol arg-sub-list) [62834 62857]))                  
+                :type "void")
+                nil [62648 87658]))          
+      :file "nsx_core.c"
+      :pointmax 87659
+      :fsize 87658
+      :lastmodtime '(22047 37981 0 0)
+      :unmatched-syntax nil))
+  :file "!Users!lihaifeng!work!audio-module!audio_processing!ns!semantic.cache"
+  :semantic-tag-version "2.0"
+  :semanticdb-version "2.2")

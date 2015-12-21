@@ -9,7 +9,8 @@
 (package-initialize)
 (setq create-lockfiles nil)
 (modify-syntax-entry ?_ "w")
-
+(auto-fill-mode -1)
+(highlight-tail-mode)
 ;; visual regexp
 ;; (require 'visual-regexp-steroids)
 ;; (define-key global-map (kbd "C-r") 'vr/isearch-backward)
@@ -74,13 +75,13 @@
 
 ;; no backup file, and auto save
 (setq
-   backup-by-copying t      ; don't clobber symlinks
-   backup-directory-alist
-    '(("." . "~/.saves"))    ; don't litter my fs tree
-   delete-old-versions t
-   kept-new-versions 6
-   kept-old-versions 2
-   version-control t)       ; use versioned backups
+ backup-by-copying t      ; don't clobber symlinks
+ backup-directory-alist
+ '(("." . "~/.saves"))    ; don't litter my fs tree
+ delete-old-versions t
+ kept-new-versions 6
+ kept-old-versions 2
+ version-control t)       ; use versioned backups
 (setq auto-save-default nil)
 
 ;; use y --> yes
@@ -99,6 +100,8 @@
               (set-language-environment 'utf-8)
               (setq mac-option-modifier 'super)
               (setq mac-command-modifier 'meta)
+              (defun system-move-file-to-trash (file)
+                (call-process "trash" nil nil nil file))
               )))
 
 ;; setup up a big kill-ring, so i will never miss anything:-)

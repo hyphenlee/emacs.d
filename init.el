@@ -13,3 +13,18 @@
 (require 'wttr-mode-line)
 (require 'wttr-modes)
 (require 'wttr-key)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (highlight-tail magit-popup magit yasnippet visual-regexp-steroids virtualenv swift-mode starter-kit-ruby slime-volleyball skewer-mode ruby-end ruby-dev ruby-additional popup org-page org-journal markdown-mode+ jumblr json-rpc image+ highlight-indentation helm-zhihu-daily helm-projectile helm-emmet helm-ag golden-ratio git-rebase-mode git-commit-mode flycheck ducpel color-theme cmake-mode autopair auto-package-update anaconda-mode ample-regexps ace-isearch 2048-game)))
+ '(scheme-program-name "petite"))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:weight normal :height 120 :width normal)))))

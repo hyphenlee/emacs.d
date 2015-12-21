@@ -70,7 +70,8 @@
 (global-set-key (kbd "C-x r l")   #'helm-bookmarks)
 (global-set-key (kbd "C-c s") 'helm-do-ag-project-root)
 (global-set-key (kbd "C-c b") 'helm-ag-pop-stack)
-
+(global-set-key (kbd "C-c f") 'helm-projectile-find-file-dwim)
+(global-set-key (kbd "C-c w") 'helm-swoop)
 (global-set-key (kbd "C-c <DEL>") 'c-hungry-delete-backwards)
 
 (defun evil-toggle-state-lhf()

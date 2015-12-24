@@ -74,6 +74,9 @@
 (global-set-key (kbd "C-c w") 'helm-swoop)
 (global-set-key (kbd "C-c <DEL>") 'c-hungry-delete-backwards)
 
+
+;;tts
+(global-set-key (kbd "C-c r") 'tts-current-buffer)
 (defun evil-toggle-state-lhf()
   (interactive)
   (if (or (equal evil-state 'insert) (equal evil-state 'normal))

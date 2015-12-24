@@ -40,6 +40,7 @@
            "org-page.el"
            "org.el"
            "cmake.el"
+                      "tts.el"
            )))
 (if wttr/os:linuxp
     (mapc (lambda (filename) (load (concat "~/.emacs.d/wttr-config/modes/" filename)))

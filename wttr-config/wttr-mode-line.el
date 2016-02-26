@@ -12,17 +12,17 @@ Otherwise, the return value may not be the corrent value for current fontset."
      (elt (window-inside-pixel-edges) 3)))
 
 (defun wttr/defun-bicolor-face (face fg-color bg-color)
-    (make-face face)
-    (set-face-attribute face nil
-                        :foreground fg-color
-                        :background bg-color))
+  (make-face face)
+  (set-face-attribute face nil
+                      :foreground fg-color
+                      :background bg-color))
 
 (defun wttr/defun-bicolor-transition-face (face bicolor-face-from bicolor-face-to)
   (wttr/defun-bicolor-face face
                            (face-attribute bicolor-face-from :background)
                            (face-attribute bicolor-face-to :background)))
-  
-    
+
+
 
 (defun wttr/bicolor-face-attribute (face)
   (list
@@ -152,12 +152,12 @@ and BG-COLOR to be the background color"
                                (propertize var 'face bicolor-face)
                              var))
                           ((listp var)
-                           ;(if (and (integerp (car var))
-                           ;         (listp (cdr var))
-                           ;         (stringp (cadr var)))
-                           ;    (cons (length (replace-regexp-in-string "%\\d*\\w+" " " (cadr var)))
-                           ;            (mapcar decorate-into (cdr var)))
-                           ; if it is a list not a cons
+                                        ;(if (and (integerp (car var))
+                                        ;         (listp (cdr var))
+                                        ;         (stringp (cadr var)))
+                                        ;    (cons (length (replace-regexp-in-string "%\\d*\\w+" " " (cadr var)))
+                                        ;            (mapcar decorate-into (cdr var)))
+                                        ; if it is a list not a cons
                            (if (listp (cdr var))
                                (mapcar decorate-into var)
                              (cons (funcall decorate-into (car var))
@@ -168,8 +168,8 @@ and BG-COLOR to be the background color"
 
 
 
-(wttr/defun-bicolor-face 'mode-line-face/encoding-writable-modified "#334433" "#999999")
-(wttr/defun-bicolor-face 'mode-line-face/buffer-name "#335533" "#999999")
+(wttr/defun-bicolor-face 'mode-line-face/encoding-writable-modified "#554433" "#999999")
+(wttr/defun-bicolor-face 'mode-line-face/buffer-name "#335577" "#999999")
 (wttr/defun-bicolor-transition-face 'mode-line-face/transition1
                                     'mode-line-face/encoding-writable-modified
                                     'mode-line-face/buffer-name)
@@ -193,52 +193,21 @@ and BG-COLOR to be the background color"
               (list
                '(:eval (propertize (concat "%e"
                                            "-"
-                                           ;mode-line-mule-info, use more readable format
+                                        ;mode-line-mule-info, use more readable format
                                            (format "%s" buffer-file-coding-system)
                                            ":")
                                    'face 'mode-line-face/encoding-writable-modified))
                (wttr/mode-line:decorate-string-face mode-line-modified
                                                     'mode-line-face/encoding-writable-modified)
-;;               (wttr/mode-line:create-eight-trigrams-seperator 'mode-line-face/transition1)
-               ;mode-line-remote, remove
-               ;mode-line-frame-identification, remove
                (wttr/mode-line:decorate-string-face mode-line-buffer-identification
                                                     'mode-line-face/buffer-name)
-  ;;             (wttr/mode-line:create-triangle-seperator 'mode-line-face/transition2)
                mode-line-position
                '(:eval (list (nyan-create)))
                '(vc-mode vc-mode)
                mode-line-modes
                '(which-func-mode which-func-format)
-               ;("" viper-mode-string)    ;global-mode-string contains it
                global-mode-string
-               ;("[" default-directory "]")
                "-%-" ))
-
-;; normal one without decoration
-;(setq-default mode-line-format
-;      '( "%e"
-;         "-"
-;         ("[" (:eval (format "%s" buffer-file-coding-system)) ":")   ;mode-line-mule-info, use more readable format
-;         ;mode-line-client, remove
-;         ("" mode-line-modified "]") ; change format to be together with encoding
-;         ;mode-line-remote, remove
-;         ;mode-line-frame-identification, remove
-;         "["
-;         mode-line-buffer-identification
-;         "]"
-;         mode-line-position
-;         (vc-mode vc-mode)
-;         mode-line-modes
-;         ;("" viper-mode-string)    ;global-mode-string contains it
-;         global-mode-string
-;         ;("[" default-directory "]")
-;         "-%-" ) )
-
-;(insert (wttr/mode-line:create-triangle-seperator 'mode-line-face/transition1))
-;(wttr/create-bicolor-xpm 20 10 "#0A0A0A" "#A0A0A0" #'wttr/mode-line:data-generator-left-triangle)
-;(wttr/create-bicolor-xpm-from-face 20 10 'mode-line-face/transition1
-;                                   'wttr/mode-line:data-generator-left-triangle)
 (nyan-start-animation)
 (provide 'wttr-mode-line)
 

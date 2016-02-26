@@ -17604,7 +17604,7 @@ days in order to avoid rounding problems."
      (if (not to-buffer)
 	 (message "%s" (org-make-tdiff-string y d h m))
        (if (org-at-table-p)
-	   (progn
+           (progn
 	     (goto-char match-end)
 	     (setq align t)
 	     (and (looking-at " *|") (goto-char (match-end 0))))

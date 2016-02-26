@@ -1,10 +1,8 @@
 ;; -*- coding: utf-8 -*-
 (require 'wttr-utils)
 ;; set user information
-(setq user-full-name "hyphen")
-(setq user-mail-address "lhfcjhyy@gmail.com")
 (menu-bar-mode 'nil)
-;;(desktop-save-mode 1)
+;; (desktop-save-mode 1)
 (setq default-directory "~/")
 (package-initialize)
 (setq create-lockfiles nil)
@@ -153,27 +151,16 @@
        (mapc #'wttr/prepend-to-exec-path
              (list
               "~/.emacs.d/plugins/rtags/bin"
+              "~/.emacs.d/extra-bin/"
               "~/.emacs.d/plugins/clang-async"
               "/usr/local/bin"
               "/usr/bin"
               "/bin"
               "/usr/sbin"
               "/sbin"
+              "~/.bin"
               ))))
-;; time stamp support
 
-                                        ;(setq time-stamp-warn-inactive t)
-                                        ;(add-hook 'write-file-hooks 'time-stamp)
-                                        ;(setq time-stamp-format "%:y-%02m-%02d %02H:%02M:%02S winterTTr")
-
-;; http://trey-jackson.blogspot.com/2010/04/emacs-tip-36-abort-minibuffer-when.html
-;; very useful when you use mouse meanwhile, close minibuffer when lose focus
-                                        ;(defun wttr/kill-minibuffer-when-lost-focus ()
-                                        ;  "kill the minibuffer"
-                                        ;  (when (and (>= (recursion-depth) 1) (active-minibuffer-window))
-                                        ;    (abort-recursive-edit)))
-                                        ;
-                                        ;(add-hook 'mouse-leave-buffer-hook 'wttr/kill-minibuffer-when-lost-focus)
 ;;copy line
 (defun copy-line ()
   (interactive)
@@ -182,11 +169,9 @@
                     (point))
                   (line-end-position))
   (message "line copied"))
-(custom-set-variables '(scheme-program-name "petite"))
-(wttr/plugin:prepend-to-load-path "switch-window")
-(require 'switch-window)
-(wttr/plugin:prepend-to-load-path "w3m")
-(require 'w3m-load)
+
+;; (wttr/plugin:prepend-to-load-path "w3m")
+;; (require 'w3m-load)
 (defun indent-buffer()
   (interactive)
   (indent-region (buffer-end 0) (buffer-end 1)))
@@ -214,5 +199,8 @@
           'face (list :background (match-string-no-properties 0)))))))
   (font-lock-fontify-buffer)
   )
+;;color theme
+(color-theme-solarized)
 
+(setq auto-revert-interval 1)
 (provide 'wttr-basic)

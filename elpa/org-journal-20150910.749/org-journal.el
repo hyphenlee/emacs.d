@@ -1,5 +1,4 @@
 ;;; org-journal.el --- a simple org-mode based journaling mode
-
 ;; Author: Bastian Bechtold
 ;; URL: http://github.com/bastibe/org-journal
 ;; Package-Version: 20150910.749
@@ -329,6 +328,7 @@ prefix is given, don't add a new heading."
     (if dates
         (let* ((time (org-journal-calendar-date->time (car dates)))
                (filename (org-journal-get-entry-path time)))
+          (kill-buffer (current-buffer))
           (find-file filename)
           (org-journal-decrypt)
           (view-mode (if view-mode-p 1 -1))

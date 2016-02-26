@@ -32,7 +32,7 @@
            "evil.el"
            "ace-jump.el"
            "dired.el"
-           ;;           "rtags.el"
+           "rtags.el"
            "auto-complete.el"
            ;;           "yasnippet.el"
            "helm.el"

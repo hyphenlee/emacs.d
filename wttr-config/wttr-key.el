@@ -47,6 +47,9 @@
 (global-set-key "\C-c\C-v" 'view-mode)
 (global-set-key (kbd "M-1") 'delete-other-windows)
 (global-set-key (kbd "M-0") 'delete-window)
+(global-set-key (kbd "M-2") 'helm-mini)
+(global-set-key (kbd "M-q") 'kill-current-buffer)
+(define-key c++-mode-map (kbd "M-q") 'kill-current-buffer)
 (global-set-key (kbd "<C-S-f6>") 'kid-switch-to-shell)
 (global-set-key (kbd "<C-f5>") 'w32-open-current-file-in-explorer)
 (global-set-key (kbd "<C-f6>") 'w32-open-shell-from-current-file-directory)
@@ -65,6 +68,7 @@
 (global-set-key (kbd "C-x b")   #'helm-mini)
 (global-set-key (kbd "C-x C-b") #'helm-buffers-list)
 (global-set-key (kbd "M-x") #'helm-M-x)
+(global-set-key (kbd "C-c M-x") #'execute-extended-command)
 (global-set-key (kbd "C-x C-f") #'helm-find-files)
 (global-set-key (kbd "C-x C-r") #'helm-recentf)
 (global-set-key (kbd "C-x r l")   #'helm-bookmarks)
@@ -77,6 +81,10 @@
 
 ;;tts
 (global-set-key (kbd "C-c r") 'tts-current-buffer)
+;;magit
+(global-set-key (kbd "C-x g") 'magit-status)
+
+
 (defun evil-toggle-state-lhf()
   (interactive)
   (if (or (equal evil-state 'insert) (equal evil-state 'normal))
@@ -85,7 +93,9 @@
 
 (global-set-key (kbd "C-z") 'evil-toggle-state-lhf)
 (global-set-key (kbd "C-q") 'evil-force-normal-state)
+(global-set-key (kbd "C-c q") 'quoted-insert)
 
-(global-set-key (kbd "C-x g") 'golden-ratio)
+
+;;(global-set-key (kbd "C-x g") 'golden-ratio)
 
 (provide 'wttr-key)

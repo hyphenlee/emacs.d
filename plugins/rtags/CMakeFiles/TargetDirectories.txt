@@ -1,7 +1,0 @@
-/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/debug.dir
-/home/hyphen/.emacs.d/plugins/rtags/src/CMakeFiles/rc.dir
-/home/hyphen/.emacs.d/plugins/rtags/src/rct/CMakeFiles/rct.dir
-/home/hyphen/.emacs.d/plugins/rtags/src/CMakeFiles/rdm.dir
-/home/hyphen/.emacs.d/plugins/rtags/CMakeFiles/release.dir
-/home/hyphen/.emacs.d/plugins/rtags/src/CMakeFiles/rp.dir
-/home/hyphen/.emacs.d/plugins/rtags/src/CMakeFiles/rtags.dir

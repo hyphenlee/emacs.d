@@ -1,17 +1,29 @@
 ;;(wttr/plugin:prepend-to-load-path "rtags/src/")
-(global-set-key (kbd "M-g M-g") 'rtags-find-symbol-at-point)
-(global-set-key (kbd "M-g f") 'rtags-location-stack-forward)
-(global-set-key (kbd "M-g b") 'rtags-location-stack-back)
-(global-set-key (kbd "M-g r") 'rtags-find-references-at-point)
+
 (defun my-compile-func()
   (interactive)
   (save-buffer)
   (recompile))
+
+;; (require 'package)
+;; (package-initialize)
+;; (require 'rtags)
+;; (require 'company)
+
+
+
 (defun cc-hook-func()
   (local-unset-key (kbd "C-M-o"))
   (local-set-key (kbd "C-M-o") 'ff-find-other-file)
   (rtags-start-process-maybe)
-  (local-set-key (kbd "<f5>") 'my-compile-func))
+  (local-set-key (kbd "<f5>") 'my-compile-func)
+  (company-mode)
+  (setq rtags-autostart-diagnostics t)
+  (rtags-diagnostics)
+  (setq rtags-completions-enabled t)
+  (push 'company-rtags company-backends)
+  (local-set-key (kbd "<C-tab>") (function company-complete))
+  )
 (add-hook 'c-mode-common-hook 'cc-hook-func)
 
 ;;(require 'rtags)

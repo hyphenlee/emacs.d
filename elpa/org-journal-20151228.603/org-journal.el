@@ -1,7 +1,8 @@
 ;;; org-journal.el --- a simple org-mode based journaling mode
+
 ;; Author: Bastian Bechtold
 ;; URL: http://github.com/bastibe/org-journal
-;; Package-Version: 20150910.749
+;; Package-Version: 20151228.603
 ;; Version: 1.10.2
 
 ;; Adapted from http://www.emacswiki.org/PersonalDiary
@@ -63,9 +64,8 @@ org-journal. Use org-journal-file-format instead.")
 (defun org-journal-update-auto-mode-alist ()
   "Update auto-mode-alist to open journal files in
   org-journal-mode"
-  (let ((name (expand-file-name
-               (substring org-journal-file-pattern 1)
-               org-journal-dir)))
+  (let ((name (concat (expand-file-name org-journal-dir)
+                      (substring org-journal-file-pattern 1))))
     (add-to-list 'auto-mode-alist
                  (cons name 'org-journal-mode))))
 
@@ -86,11 +86,22 @@ org-journal. Use org-journal-file-format instead.")
       "%Y" "\\\\(?1:[0-9]\\\\{4\\\\}\\\\)" format-string)))
    "\\'"))
 
-; Customizable variables
+                                        ; Customizable variables
 (defgroup org-journal nil
   "Settings for the personal journal"
   :version "1.10.2"
   :group 'applications)
+
+(defface org-journal-highlight
+  '((t (:foreground "#ff1493")))
+  "Face for highlighting org-journal buffers."
+  :group 'org-journal)
+
+(defun org-journal-highlight (str)
+  "Highlight STR in current-buffer"
+  (goto-char (point-min))
+  (while (search-forward str nil t)
+    (put-text-property (match-beginning 0) (match-end 0) 'font-lock-face 'org-journal-highlight)))
 
 ;;;###autoload
 (defcustom org-journal-dir "~/Documents/journal/"
@@ -328,7 +339,6 @@ prefix is given, don't add a new heading."
     (if dates
         (let* ((time (org-journal-calendar-date->time (car dates)))
                (filename (org-journal-get-entry-path time)))
-          (kill-buffer (current-buffer))
           (find-file filename)
           (org-journal-decrypt)
           (view-mode (if view-mode-p 1 -1))
@@ -338,6 +348,7 @@ prefix is given, don't add a new heading."
 (defun org-journal-open-previous-entry ()
   "Open the previous journal entry starting from a currently displayed one"
   (interactive)
+
   (let ((calendar-date (org-journal-file-name->calendar-date
                         (file-name-nondirectory (buffer-file-name))))
         (view-mode-p view-mode)
@@ -617,6 +628,7 @@ org-journal-time-prefix."
       (princ "\t")
       (princ fullstr)
       (princ "\n")))
+  (org-journal-highlight str)
   (local-set-key (kbd "q") 'kill-this-buffer)
   (local-set-key (kbd "<tab>") 'forward-button)
   (local-set-key (kbd "<backtab>") 'backward-button)

@@ -45,8 +45,13 @@
         ("n" "Note" entry (file+headline "~/note/note.org" "Notes")
          "* %?\n  %i\n  %a")
         ))
+
+;;org-journal
 (setq org-journal-dir "~/note/diary/")
-;; (setq org-bullets-bullet-list '("■" "◆" "▲" "▶"))
+(setq org-journal-enable-encryption 1)
+(setq org-tag-alist '(("crypt" . ?e) ("laptop" . ?l)))
+
+;;org-babel
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((emacs-lisp . t)

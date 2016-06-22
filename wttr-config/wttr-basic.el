@@ -15,6 +15,7 @@
 ;; (define-key global-map (kbd "C-s") 'vr/isearch-forward)
 ;; (define-key global-map (kbd "M-%") 'vr/replace)
 ;; (define-key global-map (kbd "C-M-%") 'vr/query-replace)
+
 ;;====================================
 ;;  UI
 ;;====================================
@@ -202,5 +203,19 @@
 ;;color theme
 (color-theme-solarized)
 
+
+(defun backward-symbol (&optional arg)
+ "Move backward until encountering the beginning of a symbol.
+With argument, do this that many times."
+ (interactive "p")
+ (forward-symbol (- (or arg 1))))
+
+(defun backward-same-syntax (&optional arg)
+ "Move backward until encountering the beginning of a same-syntax.
+With argument, do this that many times."
+ (interactive "p")
+ (forward-same-syntax (- (or arg 1))))
+
 (setq auto-revert-interval 1)
 (provide 'wttr-basic)
+

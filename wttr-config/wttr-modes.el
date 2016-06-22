@@ -33,7 +33,7 @@
            "ace-jump.el"
            "dired.el"
            "rtags.el"
-           "auto-complete.el"
+           ;; "auto-complete.el"
            ;;           "yasnippet.el"
            "helm.el"
            "cc.el"

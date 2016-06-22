@@ -3,7 +3,7 @@
 ;;; Code:
 (add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
 
-;;;### (autoloads nil "org-journal" "org-journal.el" (22064 13987
+;;;### (autoloads nil "org-journal" "org-journal.el" (22225 45488
 ;;;;;;  0 0))
 ;;; Generated autoloads from org-journal.el
 

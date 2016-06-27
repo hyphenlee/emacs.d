@@ -77,6 +77,7 @@
 (global-set-key (kbd "C-c f") 'helm-projectile-find-file-dwim)
 (global-set-key (kbd "C-c w") 'helm-swoop)
 (global-set-key (kbd "C-c <DEL>") 'c-hungry-delete-backwards)
+(global-set-key (kbd "M-[") 'ace-jump-mode)
 
 
 ;;tts

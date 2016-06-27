@@ -20,12 +20,12 @@
  '(auto-revert-interval 1 t)
  '(package-selected-packages
    (quote
-    (org-bullets rinari baidu-life color-theme-solarized w3m switch-window company rtags gnuplot org-alert magit-svn highlight-tail magit-popup magit yasnippet visual-regexp-steroids virtualenv swift-mode starter-kit-ruby slime-volleyball skewer-mode ruby-end ruby-dev ruby-additional popup org-page org-journal markdown-mode+ jumblr json-rpc image+ highlight-indentation helm-zhihu-daily helm-projectile helm-emmet helm-ag golden-ratio git-rebase-mode flycheck ducpel color-theme cmake-mode autopair auto-package-update anaconda-mode ample-regexps ace-isearch 2048-game)))
+    (php-mode php+-mode mongo org-bullets rinari baidu-life color-theme-solarized w3m switch-window company rtags gnuplot org-alert magit-svn highlight-tail magit-popup magit yasnippet visual-regexp-steroids virtualenv swift-mode starter-kit-ruby slime-volleyball skewer-mode ruby-end ruby-dev ruby-additional popup org-page org-journal markdown-mode+ jumblr json-rpc image+ highlight-indentation helm-zhihu-daily helm-projectile helm-emmet helm-ag golden-ratio git-rebase-mode flycheck ducpel color-theme cmake-mode autopair auto-package-update anaconda-mode ample-regexps ace-isearch 2048-game)))
  '(scheme-program-name "scheme"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:weight normal :height 120 :width normal)))))
+ '(default ((t (:weight normal :height 110 :width normal)))))
 (put 'downcase-region 'disabled nil)

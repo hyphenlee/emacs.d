@@ -178,7 +178,7 @@
 
 (require 'package) ;; You might already have this line
 (add-to-list 'package-archives
-             '("melpa" . "	http://elpa.zilongshanren.com/melpa/") t)
+             '("melpa" . "http://elpa.zilongshanren.com/melpa/") t)
 (when (< emacs-major-version 24)
   ;; For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
@@ -200,9 +200,9 @@
   (font-lock-fontify-buffer)
   )
 ;;color theme
-(require 'color-theme)
-(color-theme-solarized)
+;; (require 'color-theme)
+;; (color-theme-solarized)
 (server-start)
-(idle-highlight-mode)
+(idle-highlight-mode t)
 (setq auto-revert-interval 1)
 (provide 'wttr-basic)

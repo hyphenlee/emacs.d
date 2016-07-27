@@ -8,10 +8,11 @@
 ;             (lambda () (require 'pycomplete)))
 
 ;; python mode
-(wttr/plugin:prepend-to-load-path "python-enhance")
+;; (wttr/plugin:prepend-to-load-path "python-enhance")
 (setq-default py-indent-offset 4)
 (autoload 'python-mode "python-mode" "Python Mode." t)
 (add-to-list 'auto-mode-alist '("\\.py$\\'" . python-mode))
+(add-to-list 'auto-mode-alist '("\\.py$\\'" . elpy-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
 
 ;;

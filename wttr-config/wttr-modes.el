@@ -19,6 +19,7 @@
             "ibuffer.el"
             "org.el"
             "slime.el"
+            "python.el"
             ;; "undo-tree.el"
             ;; "yasnippet.el"
             ;; "js2.el"

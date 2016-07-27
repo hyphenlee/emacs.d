@@ -9,7 +9,7 @@
 (add-to-list 'load-path "~/.emacs.d/wttr-config")
 (require 'wttr-font)
 (require 'wttr-basic)
-(require 'wttr-mode-line)
+;; (require 'wttr-mode-line)
 (require 'wttr-modes)
 (require 'wttr-key)
 (custom-set-variables

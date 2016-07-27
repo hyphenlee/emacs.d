@@ -213,9 +213,14 @@ With argument, do this that many times."
 
 (defun backward-same-syntax (&optional arg)
  "Move backward until encountering the beginning of a same-syntax.
-With argument, do this that many times."
+With argument, do this thato many times."
  (interactive "p")
  (forward-same-syntax (- (or arg 1))))
 (setq auto-revert-interval 1)
+(require 'spaceline-config)
+(spaceline-spacemacs-theme)
+(spaceline-helm-mode)
+
+(require 'spacemacs-dark-theme)
 (provide 'wttr-basic)
 

@@ -26,3 +26,4 @@
   '(ace-jump-mode-enable-mark-sync))
 
 (define-key global-map (kbd "C-x SPC") 'ace-jump-mode-pop-mark)
+(define-key global-map (kbd "M-[") 'ace-jump-mode)

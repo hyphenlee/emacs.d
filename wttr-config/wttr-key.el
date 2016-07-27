@@ -96,7 +96,8 @@
 (global-set-key (kbd "C-q") 'evil-force-normal-state)
 (global-set-key (kbd "C-c q") 'quoted-insert)
 
-
+(global-set-key [remap forward-word] 'forward-symbol)
+(global-set-key [remap backward-word] 'backward-symbol)
 ;;(global-set-key (kbd "C-x g") 'golden-ratio)
 
 (provide 'wttr-key)

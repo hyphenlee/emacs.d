@@ -147,6 +147,7 @@
                     "C:/Program Files (x86)/cmake/bin"
                     "c:/Program Files (x86)/Microsoft Visual Studio 11.0/VC/bin"
                     "c:/Program Files (x86)/Microsoft Visual Studio 11.0/Common7/IDE"
+                    "C:/phantomjs/bin"
                     )))
       (wttr/os:osxp
        (mapc #'wttr/prepend-to-exec-path
@@ -201,8 +202,8 @@
   (font-lock-fontify-buffer)
   )
 ;;color theme
-;; (require 'color-theme)
-;; (color-theme-solarized)
+(require 'color-theme)
+(color-theme-solarized)
 (server-start)
 (idle-highlight-mode t)
 (defun backward-symbol (&optional arg)
@@ -221,6 +222,6 @@ With argument, do this thato many times."
 (spaceline-spacemacs-theme)
 (spaceline-helm-mode)
 
-(require 'spacemacs-dark-theme)
+;; (require 'spacemacs-light-theme)
 (provide 'wttr-basic)
 

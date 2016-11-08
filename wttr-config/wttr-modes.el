@@ -20,6 +20,7 @@
             "org.el"
             "slime.el"
             "python.el"
+            "cmake.el"
             ;; "undo-tree.el"
             ;; "yasnippet.el"
             ;; "js2.el"

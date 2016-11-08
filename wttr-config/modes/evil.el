@@ -105,7 +105,11 @@
 (define-key evil-visual-state-map "C-q" 'evil-change-to-previous-state)
 (define-key evil-insert-state-map "C-q" 'evil-normal-state)
 (define-key evil-replace-state-map "C-q" 'evil-normal-state)
-
+(require 'key-chord)
+(auto-complete-mode)
+(setq key-chord-two-keys-delay 0.5)
+(key-chord-mode 1)
+(key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
 ;; some mode that should use emacs state
 ;; (dolist (mode '(dired-mode
 ;;                 eassist-mode
@@ -118,4 +122,5 @@
 ;;                 fundamental-mode
 ;;                 text-mode))
 ;;   (add-to-list 'evil-emacs-state-modes mode))
+
 (setq evil-default-state 'emacs)

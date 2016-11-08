@@ -16,3 +16,4 @@ tramp
 backups/*
 .smex-items
 semanticdb/*
+elpa/*

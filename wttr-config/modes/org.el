@@ -48,7 +48,7 @@
 
 ;;org-journal
 (setq org-journal-dir "~/note/diary/")
-(setq org-journal-enable-encryption 1)
+;; (setq org-journal-enable-encryption 1)
 (setq org-tag-alist '(("crypt" . ?e) ("laptop" . ?l)))
 
 ;;org-babel
@@ -62,5 +62,6 @@
    (ruby . t)
    ))
 
-
+(advice-add 'org-agenda-quit :before 'org-mobile-push)
+(advice-add 'org-agenda-quit :before 'org-mobile-pull)
 

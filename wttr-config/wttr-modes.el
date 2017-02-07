@@ -5,6 +5,7 @@
 ;; (if (string-equal system-type "windows-nt")
 ;;    (loop for file in (directory-files "~/.emacs.d/wttr-config/modes" t "\\.el$")
 ;;          do (load file nil nil t)))
+
 (if wttr/os:win64p
     ( mapc (lambda (filename) (load (concat "~/.emacs.d/wttr-config/modes/" filename)))
            (list 
@@ -18,14 +19,17 @@
             "helm.el"
             "ibuffer.el"
             "org.el"
-            "slime.el"
             "python.el"
+            "company-mode.el"
+            "yasnippet.el"
             "cmake.el"
+            "elisp.el"
             ;; "undo-tree.el"
             ;; "yasnippet.el"
             ;; "js2.el"
             ;; "flycheck.el"
             "org-page.el"
+            "cc.el"
             ;; "magit.el"
             )))
 (if wttr/os:osxp
@@ -42,7 +46,7 @@
            "org-page.el"
            "org.el"
            "cmake.el"
-                      "tts.el"
+           "tts.el"
            )))
 (if wttr/os:linuxp
     (mapc (lambda (filename) (load (concat "~/.emacs.d/wttr-config/modes/" filename)))

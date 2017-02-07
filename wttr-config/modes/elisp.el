@@ -1,0 +1,5 @@
+(defun elisp-hook()
+  (company-mode)
+  (yas-minor-mode)
+  (add-to-list (make-local-variable 'company-backends) 'company-elisp))
+(add-hook 'emacs-lisp-mode-hook 'elisp-hook)

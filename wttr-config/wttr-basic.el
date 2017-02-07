@@ -89,22 +89,32 @@
 ;; setup for newline auto-appending support
 (setq next-line-add-newline t)
 
-;; encoding
-;;(set-language-environment 'UTF-8)
-(cond (wttr/os:windowsp
-       (progn (setq file-name-coding-system 'gb2312)
-              (set-language-environment 'Chinese-GBK)))
-      (wttr/os:osxp
+;;encoding
+(set-language-environment 'UTF-8)
+(cond
+ (wttr/os:windowsp
        (progn (setq file-name-coding-system 'utf-8)
-              (set-language-environment 'utf-8)
-              (setq mac-option-modifier 'super)
-              (setq mac-command-modifier 'meta)
-              (defun system-move-file-to-trash (file)
-                (call-process "trash" nil nil nil file))
-              )))
+(set-language-environment 'Chinese-GBK)))
+(wttr/os:osxp
+(progn (setq file-name-coding-system 'utf-8)
+(set-language-environment 'utf-8)
+(setq mac-option-modifier 'super)
+(setq mac-command-modifier 'meta)
+(defun system-move-file-to-trash (file)
+(call-process "trash" nil nil nil file))
+)))
 
 ;; setup up a big kill-ring, so i will never miss anything:-)
-(setq kill-ring-max 100)
+(setq kill-ring-max 1000)
+
+(setq extended-command-history-max 500)
+(setq query-replace-history-max 500)
+(setq replace-string-history-max 500)
+(setq file-name-history-max 500)
+(setq replace-regex-history-max 500)
+(setq minibuffer-history-max 1000)
+(setq shell-command-history-max 1000)
+(setq find-file-history-max 1000)
 ;; we need to paste something from another program, but sometimes we
 ;; do real paste after some kill action, that will erase the
 ;; clipboard,so we need to save it to kill ring, here is the setting
@@ -141,6 +151,7 @@
                     "C:/MinGW/bin"
                     "C:/Program Files (x86)/Git/bin"
                     "~/.emacs.d/extra-bin/gnuwin32"
+                    "~/.emacs.d/extra-bin/clang-server"
                     "~/.emacs.d/extra-bin/unix-utils-bin"
                     "C:/cygwin/bin"
                     "c:/Program Files/MySQL/MySQL Server 5.6/bin"
@@ -186,8 +197,8 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize) ;; You might already have this line
 
-(add-to-list 'auto-mode-alist '("\\.txt$" . view-mode))
-(modify-coding-system-alist 'file "\\.txt\\'" 'gb18030)
+;; (add-to-list 'auto-mode-alist '("\\.txt$" . view-mode))
+;; (modify-coding-system-alist 'file "\\.txt\\'" 'gb18030)
 
 (defun xah-syntax-color-hex ()
   "Syntax color hex color spec such as 「#ff1100」 in current buffer."
@@ -203,25 +214,25 @@
   )
 ;;color theme
 (require 'color-theme)
-(color-theme-solarized)
+;; (color-theme-solarized)
 (server-start)
 (idle-highlight-mode t)
 (defun backward-symbol (&optional arg)
- "Move backward until encountering the beginning of a symbol.
+  "Move backward until encountering the beginning of a symbol.
 With argument, do this that many times."
- (interactive "p")
- (forward-symbol (- (or arg 1))))
+  (interactive "p")
+  (forward-symbol (- (or arg 1))))
 
 (defun backward-same-syntax (&optional arg)
- "Move backward until encountering the beginning of a same-syntax.
+  "Move backward until encountering the beginning of a same-syntax.
 With argument, do this thato many times."
- (interactive "p")
- (forward-same-syntax (- (or arg 1))))
+  (interactive "p")
+  (forward-same-syntax (- (or arg 1))))
 (setq auto-revert-interval 1)
 (require 'spaceline-config)
 (spaceline-spacemacs-theme)
 (spaceline-helm-mode)
-
-;; (require 'spacemacs-light-theme)
+(global-nlinum-mode)
+(require 'spacemacs-dark-theme)
 (provide 'wttr-basic)
 

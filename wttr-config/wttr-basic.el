@@ -159,6 +159,7 @@
                     "c:/Program Files (x86)/Microsoft Visual Studio 11.0/VC/bin"
                     "c:/Program Files (x86)/Microsoft Visual Studio 11.0/Common7/IDE"
                     "C:/phantomjs/bin"
+                    "C:/Program Files/Python36"
                     )))
       (wttr/os:osxp
        (mapc #'wttr/prepend-to-exec-path

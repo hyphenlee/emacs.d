@@ -99,5 +99,4 @@
 (global-set-key [remap forward-word] 'forward-symbol)
 (global-set-key [remap backward-word] 'backward-symbol)
 ;;(global-set-key (kbd "C-x g") 'golden-ratio)
-
 (provide 'wttr-key)

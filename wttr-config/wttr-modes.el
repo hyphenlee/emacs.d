@@ -28,6 +28,7 @@
             ;; "yasnippet.el"
             ;; "js2.el"
             ;; "flycheck.el"
+            "auto-revert.el"
             "org-page.el"
             "cc.el"
             ;; "magit.el"

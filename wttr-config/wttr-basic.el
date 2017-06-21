@@ -191,8 +191,8 @@
   (indent-region (buffer-end 0) (buffer-end 1)))
 
 (require 'package) ;; You might already have this line
-(add-to-list 'package-archives
-             '("melpa" . "http://elpa.zilongshanren.com/melpa/") t)
+;; (add-to-list 'package-archives
+             ;; '("melpa" . "http://elpa.zilongshanren.com/melpa/") t)
 (when (< emacs-major-version 24)
   ;; For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))

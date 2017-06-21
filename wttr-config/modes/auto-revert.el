@@ -1,4 +1,3 @@
-;; -*- coding: utf-8 -*-
-
+1;; -*- coding: utf-8 -*-
 (global-auto-revert-mode 1)
 

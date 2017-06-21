@@ -4,6 +4,9 @@
 
 (require 'org-install)
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
+(wttr/plugin:prepend-to-load-path "org-sticky-header")
+(require 'org-table-sticky-header)
+
 (global-set-key "\C-ca" 'org-agenda)
 (setq org-agenda-files
       (list "~/note/gtd.org" "~/note/note.org" "~/note/work.org"))
@@ -16,6 +19,7 @@
                                              (interactive)
                                              (org-time-stamp 4)))
   (org-bullets-mode)
+  (org-table-sticky-header-mode)
   )
 (add-hook 'org-mode-hook #'wttr/org-mode-setup)
 (setq org-src-preserve-indentation t)
@@ -55,65 +59,13 @@
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((emacs-lisp . t)
-   (C . t)
+   (C . t) 
    (org . t)
    (python . t)
    (shell . t)
    (ruby . t)
    ))
-
 (advice-add 'org-agenda-quit :before 'org-mobile-push)
 (advice-add 'org-agenda-quit :before 'org-mobile-pull)
-
-(defun my-dnd-func (event)
-  (interactive "e")
-  (goto-char (nth 1 (event-start event)))
-  (x-focus-frame nil)
-  (let* ((payload (car (last event)))
-         (type (car payload))
-         (fname (car payload))
-         (img-regexp "\\(png\\|jp[e]?g\\)\\>")
-         (img-folder (format "%s/%s" org-img-base-folder (file-name-base buffer-file-name)))
-         (new-fname (format "%s/%s" img-folder (file-name-nondirectory fname)))
-         )
-    (cond
-     ;; insert image link with caption
-     ;; ((and  (eq 'drag-n-drop (car event))
-     ;;        (string-match img-regexp fname))
-     ;;  (insert "#+ATTR_HTML: :width 480 :align center")
-     ;;  (org-indent-line)
-     ;;  (insert (concat  "\n#+CAPTION: " (read-input "Caption: ")))
-     ;;  (org-indent-line)
-     ;;  (if (not (f-exists? img-folder)) (mkdir img-folder) ())
-     ;;  (copy-file fname new-fname t)
-     ;;  (insert (format "\n[[%s]]" new-fname))
-     ;;  (org-indent-line)
-     ;;  (message (format "insert %s" new-fname))
-     ;;  )
-     ;; (org-display-inline-images t t))
-     ;; insert image link
-     ((and  (eq 'S-drag-n-drop (car event))
-
-            (string-match img-regexp fname))
-      (insert (format "[[%s]]" fname))
-      (message (format "insert %s" fname))
-      )
-     ;; (org-display-inline-images t t))
-     ;; C-drag-n-drop to open a file
-     ((and  (eq 'C-drag-n-drop (car event))
-            (eq 'file type))
-      (find-file fname))
-     ((and (eq 'M-drag-n-drop (car event))
-           (eq 'file type))
-      (insert (format "[[attachfile:%s]]" fname)))
-     ;; regular drag and drop on file
-     ((eq 'file type)
-      (insert (format "[[%s]]\n" fname)))
-     (t
-      (error "I am not equipped for dnd on %s" payload)))))
-(define-key org-mode-map (kbd "<drag-n-drop>") 'my-dnd-func)
-(define-key org-mode-map (kbd "<S-drag-n-drop>") 'my-dnd-func)
-(define-key org-mode-map (kbd "<C-drag-n-drop>") 'my-dnd-func)
-(define-key org-mode-map (kbd "<M-drag-n-drop>") 'my-dnd-func)
-(setq org-img-base-folder "~/note/img")
 (org-display-inline-images t t)
+(setq org-confirm-babel-evaluate nil)

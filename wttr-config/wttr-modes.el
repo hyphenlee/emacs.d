@@ -36,7 +36,7 @@
 (if wttr/os:osxp
     (mapc (lambda (filename) (load (concat "~/.emacs.d/wttr-config/modes/" filename)))
           (list ;; "ido.el"
-           "evil.el"
+           ;; "evil.el"
            "ace-jump.el"
            "dired.el"
            "rtags.el"
@@ -44,10 +44,10 @@
            ;;           "yasnippet.el"
            "helm.el"
            "cc.el"
-           "org-page.el"
+           ;; "org-page.el"
            "org.el"
            "cmake.el"
-           "tts.el"
+           ;; "tts.el"
            )))
 (if wttr/os:linuxp
     (mapc (lambda (filename) (load (concat "~/.emacs.d/wttr-config/modes/" filename)))

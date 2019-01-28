@@ -4,11 +4,10 @@
 (menu-bar-mode 'nil)
 ;; (desktop-save-mode 1)
 (setq default-directory "~/")
-(package-initialize)
 (setq create-lockfiles nil)
 (modify-syntax-entry ?_ "w")
 (auto-fill-mode -1)
-(highlight-tail-mode)
+
 ;; visual regexp
 ;; (require 'visual-regexp-steroids)
 ;; (define-key global-map (kbd "C-r") 'vr/isearch-backward)
@@ -28,7 +27,7 @@
 ;; remove toolbar/menu bar/scroll bar
 (tool-bar-mode 0)
 ;;(menu-bar-mode 0)
-(set-scroll-bar-mode nil)
+;; (set-scroll-bar-mode nil)
 
 ;; show clock at statusline
 (display-time-mode t)
@@ -191,12 +190,11 @@
   (indent-region (buffer-end 0) (buffer-end 1)))
 
 (require 'package) ;; You might already have this line
-;; (add-to-list 'package-archives
-             ;; '("melpa" . "http://elpa.zilongshanren.com/melpa/") t)
+(add-to-list 'package-archives
+             '("melpa" . "http://elpa.zilongshanren.com/melpa/") t)
 (when (< emacs-major-version 24)
   ;; For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
-(package-initialize) ;; You might already have this line
 
 ;; (add-to-list 'auto-mode-alist '("\\.txt$" . view-mode))
 ;; (modify-coding-system-alist 'file "\\.txt\\'" 'gb18030)
@@ -215,7 +213,7 @@
   )
 ;;color theme
 (require 'color-theme)
-;; (color-theme-solarized)
+(color-theme-solarized)
 (server-start)
 (idle-highlight-mode t)
 (defun backward-symbol (&optional arg)
@@ -230,10 +228,11 @@ With argument, do this thato many times."
   (interactive "p")
   (forward-same-syntax (- (or arg 1))))
 (setq auto-revert-interval 1)
-(require 'spaceline-config)
-(spaceline-spacemacs-theme)
-(spaceline-helm-mode)
-(global-nlinum-mode)
-(require 'spacemacs-dark-theme)
+;; (require 'spaceline-config)
+;; (spaceline-spacemacs-theme)
+;; (spaceline-helm-mode)
+;; (global-nlinum-mode)
+;; (require 'spacemacs-dark-theme)
+(cond ((fboundp 'pixel-scroll-mode) (pixel-scroll-mode)))
 (provide 'wttr-basic)
 

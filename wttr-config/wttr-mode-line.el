@@ -187,8 +187,8 @@ and BG-COLOR to be the background color"
               'display
               (wttr/mode-line:create-eight-trigrams-xpm face)))
 
-(wttr/plugin:prepend-to-load-path "nyan-mode")
-(require 'nyan-mode)
+;; (wttr/plugin:prepend-to-load-path "nyan-mode")
+;; (require 'nyan-mode)
 (setq-default mode-line-format
               (list
                '(:eval (propertize (concat "%e"
@@ -202,12 +202,12 @@ and BG-COLOR to be the background color"
                (wttr/mode-line:decorate-string-face mode-line-buffer-identification
                                                     'mode-line-face/buffer-name)
                mode-line-position
-               '(:eval (list (nyan-create)))
+               ;; '(:eval (list (nyan-create)))
                '(vc-mode vc-mode)
                mode-line-modes
                '(which-func-mode which-func-format)
                global-mode-string
                "-%-" ))
-(nyan-start-animation)
+;; (nyan-start-animation)
 (provide 'wttr-mode-line)
 

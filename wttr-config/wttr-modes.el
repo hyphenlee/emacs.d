@@ -15,7 +15,6 @@
             "cmake.el"
             "elisp.el"
             "nsis.el"
-            "redmine.el"
             "org.el"
             )))
 (if wttr/os:osxp

@@ -4,17 +4,24 @@
 (menu-bar-mode 'nil)
 ;; (desktop-save-mode 1)
 (setq default-directory "~/")
+(package-initialize)
 (setq create-lockfiles nil)
 (modify-syntax-entry ?_ "w")
 (auto-fill-mode -1)
-
+(setq paradox-github-token "d891d68c8184c331bf8f3b5a7097355ea11225f2")
 ;; visual regexp
 ;; (require 'visual-regexp-steroids)
 ;; (define-key global-map (kbd "C-r") 'vr/isearch-backward)
 ;; (define-key global-map (kbd "C-s") 'vr/isearch-forward)
 ;; (define-key global-map (kbd "M-%") 'vr/replace)
 ;; (define-key global-map (kbd "C-M-%") 'vr/query-replace)
-
+(defun load-work-file()
+  (interactive )
+  (find-file "~/note/work.org"))
+(defun load-note-file()
+  (interactive )
+  (find-file "~/note/note.org"))
+(define-key global-map (kbd "M-4") 'load-note-file)
 ;;====================================
 ;;  UI
 ;;====================================
@@ -27,7 +34,7 @@
 ;; remove toolbar/menu bar/scroll bar
 (tool-bar-mode 0)
 ;;(menu-bar-mode 0)
-;; (set-scroll-bar-mode nil)
+(set-scroll-bar-mode nil)
 
 ;; show clock at statusline
 (display-time-mode t)
@@ -90,18 +97,18 @@
 
 ;;encoding
 (set-language-environment 'UTF-8)
-(cond
- (wttr/os:windowsp
-       (progn (setq file-name-coding-system 'utf-8)
-(set-language-environment 'Chinese-GBK)))
-(wttr/os:osxp
-(progn (setq file-name-coding-system 'utf-8)
-(set-language-environment 'utf-8)
-(setq mac-option-modifier 'super)
-(setq mac-command-modifier 'meta)
-(defun system-move-file-to-trash (file)
-(call-process "trash" nil nil nil file))
-)))
+;; (cond
+;;  (wttr/os:windowsp
+;;   (progn (setq file-name-coding-system 'utf-8)
+;;          (set-language-environment 'Chinese-GBK)))
+;;  (wttr/os:osxp
+;;   (progn (setq file-name-coding-system 'utf-8)
+;;          (set-language-environment 'utf-8)
+;;          (setq mac-option-modifier 'super)
+;;          (setq mac-command-modifier 'meta)
+;;          (defun system-move-file-to-trash (file)
+;;            (call-process "trash" nil nil nil file))
+;;          )))
 
 ;; setup up a big kill-ring, so i will never miss anything:-)
 (setq kill-ring-max 1000)
@@ -195,6 +202,7 @@
 (when (< emacs-major-version 24)
   ;; For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(package-initialize) ;; You might already have this line
 
 ;; (add-to-list 'auto-mode-alist '("\\.txt$" . view-mode))
 ;; (modify-coding-system-alist 'file "\\.txt\\'" 'gb18030)
@@ -211,11 +219,21 @@
           'face (list :background (match-string-no-properties 0)))))))
   (font-lock-fontify-buffer)
   )
+(defun lhf-log-color ()
+  "Syntax color hex color spec such as 「#ff1100」 in current buffer."
+  (interactive)
+  (font-lock-add-keywords nil '(
+                                ("\\<\\(ERROR\\)" 1 '(:foreground "red") t)
+                                ("\\<\\(NOTICE\\)" 1 '(:foreground "green") t)
+                                ("\\<\\(WARN\\)" 1 '(:foreground "yellow") t)
+                                ("\\<\\(DEBUG\\)" 1 '(:foreground "yellow") t)
+                                ))
+  )
+
 ;;color theme
 (require 'color-theme)
 (color-theme-solarized)
 (server-start)
-(idle-highlight-mode t)
 (defun backward-symbol (&optional arg)
   "Move backward until encountering the beginning of a symbol.
 With argument, do this that many times."
@@ -227,12 +245,40 @@ With argument, do this that many times."
 With argument, do this thato many times."
   (interactive "p")
   (forward-same-syntax (- (or arg 1))))
+(global-auto-revert-mode 1)
 (setq auto-revert-interval 1)
-;; (require 'spaceline-config)
-;; (spaceline-spacemacs-theme)
-;; (spaceline-helm-mode)
-;; (global-nlinum-mode)
-;; (require 'spacemacs-dark-theme)
-(cond ((fboundp 'pixel-scroll-mode) (pixel-scroll-mode)))
+
+(global-nlinum-mode)
+
+(require 'magit-gerrit)
+;; if remote url is not using the default gerrit port and
+;; ssh scheme, need to manually set this variable
+(setq-default magit-gerrit-ssh-creds "lihaifeng@datu")
+
+;; if necessary, use an alternative remote instead of 'origin'
+;; (setq-default magit-gerrit-remote "gerrit")
+
+
+(setq paradox-github-token t)
+
+    (defun my-flymd-browser-function (url)
+      (let ((process-environment (browse-url-process-environment)))
+        (apply 'start-process
+               (concat "chrome " url) nil
+               "chrome"
+               (list "--new-window" "--allow-file-access-from-files" url))))
+               (setq flymd-browser-open-function 'my-flymd-browser-function)
+;;gitlab
+(setq gitlab-host "http://datu-nas-server"
+          gitlab-token-id "sy78UGL3c9redHNJ4aJJ")
+(setq helm-ag-base-command "rg -i --line-number --no-heading")
+;;magit
+(with-eval-after-load 'magit
+  (define-key magit-status-mode-map (kbd "M-1") nil)
+  (define-key magit-status-mode-map (kbd "M-2") nil)
+  (define-key magit-status-mode-map (kbd "M-3") nil)
+  (define-key magit-status-mode-map (kbd "M-4") nil)
+  )
+
 (provide 'wttr-basic)
 

@@ -4,23 +4,18 @@
 
 (require 'org-install)
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
-(wttr/plugin:prepend-to-load-path "org-sticky-header")
-(require 'org-table-sticky-header)
 
-(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-ca" 'org-agendaork)
 (setq org-agenda-files
       (list "~/note/gtd.org" "~/note/note.org" "~/note/work.org"))
 (setq org-insert-mode-line-in-empty-file t)
 (setq org-hierarchical-todo-statistics t)
 
-
 (defun wttr/org-mode-setup ()
   (define-key org-mode-map (kbd "C-c i") #'(lambda ()
                                              (interactive)
                                              (org-time-stamp 4)))
-  (org-bullets-mode)
-  (org-table-sticky-header-mode)
-  )
+  (org-bullets-mode))
 (add-hook 'org-mode-hook #'wttr/org-mode-setup)
 (setq org-src-preserve-indentation t)
 (setq org-src-ask-before-returning-to-edit-buffer nil)
@@ -34,12 +29,11 @@
 (setq org-hide-leading-stars t)
 
 
-
 ;; export settings
 ;;;; prevent the _ to become a sub title
 ;; (setq org-export-with-sub-superscripts nil)
 (setq org-todo-keywords
-      '((sequence "TODO(t!)" "WORKING(w!)" "|" "DONE(d@/!)" "ABORT(a@/!)")
+      '((sequence "TODO(t!)" "WORKING(w!)" "|" "DONE(d!)" "ABORT(a!)")
         )) 
 (setq org-default-notes-file "~/org/notes.org")
 (define-key global-map "\C-cc" 'org-capture)
@@ -48,13 +42,13 @@
          "* TODO %?\n  %i\n  %a" :clock-in t :clock-resume t)
         ("n" "Note" entry (file+headline "~/note/note.org" "Notes")
          "* %?\n  %i\n  %a")
+        ("w" "Work" entry (file+headline "~/note/work.org" "Works")
+         "* %?\n  %i\n  %a")
         ))
 
 ;;org-journal
-(setq org-journal-dir "~/note/diary/")
 ;; (setq org-journal-enable-encryption 1)
 (setq org-tag-alist '(("crypt" . ?e) ("laptop" . ?l)))
-
 ;;org-babel
 (org-babel-do-load-languages
  'org-babel-load-languages
@@ -65,7 +59,5 @@
    (shell . t)
    (ruby . t)
    ))
-(advice-add 'org-agenda-quit :before 'org-mobile-push)
-(advice-add 'org-agenda-quit :before 'org-mobile-pull)
 (org-display-inline-images t t)
 (setq org-confirm-babel-evaluate nil)

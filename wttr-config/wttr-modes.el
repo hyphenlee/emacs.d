@@ -9,34 +9,19 @@
 (if wttr/os:win64p
     ( mapc (lambda (filename) (load (concat "~/.emacs.d/wttr-config/modes/" filename)))
            (list 
-            "ace-jump.el"
-            "auto-complete.el"
-            "dash.el"
-            "dired.el"
-            "dos.el"
-            "evil.el"
-            "grep.el"
             "helm.el"
-            "ibuffer.el"
-            "org.el"
-            "python.el"
             "company-mode.el"
-            "yasnippet.el"
+            "evil.el"
             "cmake.el"
             "elisp.el"
-            ;; "undo-tree.el"
-            ;; "yasnippet.el"
-            ;; "js2.el"
-            ;; "flycheck.el"
-            "auto-revert.el"
-            "org-page.el"
-            "cc.el"
-            ;; "magit.el"
+            "nsis.el"
+            "redmine.el"
+            "org.el"
             )))
 (if wttr/os:osxp
     (mapc (lambda (filename) (load (concat "~/.emacs.d/wttr-config/modes/" filename)))
           (list ;; "ido.el"
-           ;; "evil.el"
+           "evil.el"
            "ace-jump.el"
            "dired.el"
            "rtags.el"
@@ -44,10 +29,10 @@
            ;;           "yasnippet.el"
            "helm.el"
            "cc.el"
-           ;; "org-page.el"
+           "org-page.el"
            "org.el"
            "cmake.el"
-           ;; "tts.el"
+           "tts.el"
            )))
 (if wttr/os:linuxp
     (mapc (lambda (filename) (load (concat "~/.emacs.d/wttr-config/modes/" filename)))

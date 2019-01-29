@@ -13,9 +13,7 @@
 (setq evil-flash-delay 3)
 (setq evil-want-C-i-jump nil)
 (setq evil-want-C-u-scroll nil)
-
 ;; load
-(wttr/plugin:prepend-to-load-path "evil")
 (require 'evil)
                                         ;(global-set-key "\C-z" 'evil-mode)
 ;;(evil-mode 1)

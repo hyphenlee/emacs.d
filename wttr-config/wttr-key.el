@@ -41,15 +41,14 @@
     (kill-new (or (buffer-file-name)
                   (buffer-name))))))
 
-(global-set-key "\M-2" 'toggle-input-method)
 (global-set-key (kbd "<M-f5>") 'wttr/w32:copy-current-file-name)
 (global-set-key "\C-c\C-y" 'copy-line)
 (global-set-key "\C-c\C-v" 'view-mode)
-(global-set-key (kbd "M-1") 'delete-other-windows)
+(global-set-key (kbd "M-1") 'helm-bookmarks)
+(global-set-key (kbd "M-3") #'helm-find-files)
+(global-set-key (kbd "M-2") #'helm-mini)
 (global-set-key (kbd "M-0") 'delete-window)
-(global-set-key (kbd "M-2") 'helm-mini)
 (global-set-key (kbd "M-q") 'kill-current-buffer)
-(define-key c++-mode-map (kbd "M-q") 'kill-current-buffer)
 (global-set-key (kbd "<C-S-f6>") 'kid-switch-to-shell)
 (global-set-key (kbd "<C-f5>") 'w32-open-current-file-in-explorer)
 (global-set-key (kbd "<C-f6>") 'w32-open-shell-from-current-file-directory)
@@ -65,7 +64,7 @@
 ;;helm
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "M-m") 'helm-semantic-or-imenu)
-(global-set-key (kbd "C-x b")   #'helm-mini)
+;; (global-set-key (kbd "C-x b")   #'helm-mini)
 (global-set-key (kbd "C-x C-b") #'helm-buffers-list)
 (global-set-key (kbd "M-x") #'helm-M-x)
 (global-set-key (kbd "C-c M-x") #'execute-extended-command)
@@ -83,8 +82,9 @@
 ;;tts
 (global-set-key (kbd "C-c r") 'tts-current-buffer)
 ;;magit
-(global-set-key (kbd "C-x g") 'magit-status)
-
+(global-set-key (kbd "M-4") 'magit-status)
+;;monky
+;; (global-set-key (kbd "C-x g") 'monky-status)
 
 (defun evil-toggle-state-lhf()
   (interactive)

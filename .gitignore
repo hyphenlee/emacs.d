@@ -17,3 +17,10 @@ backups/*
 .smex-items
 semanticdb/*
 elpa/*
+server
+.DS_Store
+.last-package-update-day
+.mc-lists.el
+.org-id-locations
+eww-bookmarks
+smex-items

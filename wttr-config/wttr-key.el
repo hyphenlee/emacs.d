@@ -21,7 +21,7 @@
       (w32-shell-execute
        nil
        "explorer.exe"
-       (concat "/e,/select," (replace-in-string file "/" "\\\\") )))))
+       (concat "/e,/select," (replace-regexp-in-string "/" "\\\\" file) )))))
                                         ; open external shell from current file directory
 (defun w32-open-shell-from-current-file-directory ()
   "open cmd from current file directory"
@@ -55,11 +55,6 @@
                                         ;(global-set-key (kbd "C-c s") 'set-mark-command)
 (global-set-key (kbd "C-\\") 'indent-buffer)
 (global-set-key (kbd "C-x o") 'switch-window)
-;;(add-hook 'js-mode-hook '(lambda ()(local-set-key (kbd "C-c s") 'hs-toggle-hiding)))
-                                        ;(define-key js-mode-map (kbd "C-c s") 'hs-toggle-hiding)
-;; (add-hook 'js-mode-hook '(lambda ()(local-set-key (kbd "C-c n") 'flycheck-next-error)))
-                                        ;(add-hook 'js2-mode-hook '(lambda ()(local-set-key (kbd "<f5>") '(lambda ()(interactive) (shell-command "cd c:/work/rtviewer & sencha app build production")))))
-
 (global-set-key (kbd "<f11>") 'calendar)
 ;;helm
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
@@ -71,10 +66,8 @@
 (global-set-key (kbd "C-x C-f") #'helm-find-files)
 (global-set-key (kbd "C-x C-r") #'helm-recentf)
 (global-set-key (kbd "C-x r l")   #'helm-bookmarks)
-(global-set-key (kbd "C-c s") 'helm-do-ag-project-root)
-(global-set-key (kbd "C-c b") 'helm-ag-pop-stack)
-(global-set-key (kbd "C-c f") 'helm-projectile-find-file-dwim)
-(global-set-key (kbd "C-c w") 'helm-swoop)
+(global-set-key (kbd "C-c s") 'mu-helm-project-search)
+(global-set-key (kbd "C-c f") 'mu-helm-file-search)
 (global-set-key (kbd "C-c <DEL>") 'c-hungry-delete-backwards)
 (global-set-key (kbd "M-[") 'ace-jump-mode)
 
@@ -93,10 +86,22 @@
     (evil-normal-state)))
 
 (global-set-key (kbd "C-z") 'evil-toggle-state-lhf)
-;; (global-set-key (kbd "C-q") 'evil-force-normal-state)
-;; (global-set-key (kbd "C-c q") 'quoted-insert)
 
 (global-set-key [remap forward-word] 'forward-symbol)
 (global-set-key [remap backward-word] 'backward-symbol)
-;;(global-set-key (kbd "C-x g") 'golden-ratio)
+
+
+;;magit
+(with-eval-after-load 'magit
+  (define-key magit-status-mode-map (kbd "M-1") nil)
+  (define-key magit-log-mode-map (kbd "M-1") nil)
+  (define-key magit-status-mode-map (kbd "M-2") nil)
+  (define-key magit-log-mode-map (kbd "M-2") nil)
+  (define-key magit-status-mode-map (kbd "M-3") nil)
+  (define-key magit-log-mode-map (kbd "M-3") nil)
+  (define-key magit-status-mode-map (kbd "M-4") nil)
+  (define-key magit-log-mode-map (kbd "M-4") nil)
+  )
+(global-set-key (kbd "C-c u") 'lhf-update-repos)
+(global-set-key (kbd "C-c p") 'find-file-in-project)
 (provide 'wttr-key)

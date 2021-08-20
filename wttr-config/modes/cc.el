@@ -7,22 +7,7 @@
   (yas-minor-mode)
   (auto-complete-mode)
   (c-set-style "stroustrup")
-  (idle-highlight-mode)
-  (if wttr/os:win64p
-      (progn
-        (require 'ac-clang)
-        (setq ac-clang-server-type 'debug)
-        (setq w32-pipe-read-delay 0)
-        (ac-clang-initialize))
-    (progn
-      ;; (rtags-start-process-unless-running)
-      (local-set-key (kbd "M-g M-g") 'rtags-find-symbol-at-point)
-      (local-set-key (kbd "M-g o") 'rtags-show-target-in-other-window)
-      (local-set-key (kbd "M-g f") 'rtags-location-stack-forward)
-      (local-set-key (kbd "M-g b") 'rtags-location-stack-back)
-      (local-set-key (kbd "M-g r") 'rtags-find-references-at-point)
-      )
-    )
+      (define-key c++-mode-map (kbd "M-q") nil)
   )
 ;; (c-toggle-auto-hungry-state))
 ;;(modify-syntax-entry ?_ "w" c++-mode-syntax-table)

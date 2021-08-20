@@ -24,3 +24,7 @@
 (setq preview-image-type 'pnm)
 (setq preview-scale-function 1.5)
 (require 'preview)
+(require 'multi-magit)
+(setq magit-repository-directories "C:/work")
+(setq magit-repository-directories-depth 1)
+;; (setq multi-magit-selected-repositories '("C:\\Dipper\\code"))

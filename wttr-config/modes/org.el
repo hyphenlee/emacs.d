@@ -5,7 +5,7 @@
 (require 'org-install)
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 
-(global-set-key "\C-ca" 'org-agendaork)
+(global-set-key "\C-ca" 'org-agenda)
 (setq org-agenda-files
       (list "~/note/gtd.org" "~/note/note.org" "~/note/work.org"))
 (setq org-insert-mode-line-in-empty-file t)
@@ -35,20 +35,21 @@
 (setq org-todo-keywords
       '((sequence "TODO(t!)" "WORKING(w!)" "|" "DONE(d!)" "ABORT(a!)")
         )) 
-(setq org-default-notes-file "~/org/notes.org")
+(setq org-default-notes-file "~/org/note.org")
 (define-key global-map "\C-cc" 'org-capture)
 (setq org-capture-templates
-      '(("t" "Todo" entry (file+headline "~/note/gtd.org" "Tasks")
-         "* TODO %?\n  %i\n  %a" :clock-in t :clock-resume t)
-        ("n" "Note" entry (file+headline "~/note/note.org" "Notes")
-         "* %?\n  %i\n  %a")
-        ("w" "Work" entry (file+headline "~/note/work.org" "Works")
-         "* %?\n  %i\n  %a")
+      '(("t" "Todo" entry (file "~/note/gtd.org")
+         "* TODO %?\n  %i\n" :clock-in t :clock-resume t)
+        ("n" "Note" entry (file "~/note/note.org")
+         "* %?\n  %i\n")
+        ("w" "Work" entry (file "~/note/work.org")
+         "* %?\n  %i\n ")
         ))
 
 ;;org-journal
 ;; (setq org-journal-enable-encryption 1)
 (setq org-tag-alist '(("crypt" . ?e) ("laptop" . ?l)))
+(setq org-journal-dir "~/note/journal")
 ;;org-babel
 (org-babel-do-load-languages
  'org-babel-load-languages

@@ -1,19 +1,44 @@
-;(wttr/plugin:prepend-to-load-path "helm")
 (require 'helm)
 (require 'helm-config)
 (setq helm-grep-default-command "grep -a -d recurse %e -n%cH -e %p %f")
-;;(defvar lhf-project-directory )
-;; (defun lhf-set-project-directory()
-;; (interactive)
-;; (setq lhf-project-directory 
-;; (helm-read-file-name 
-;; "Default Search Directory:")))
 
-;; (defun helm-do-grep-lhf ()
-;;   (interactive)
-;;   (require 'helm-mode)
-;;   (let* ((preselection (or (dired-get-filename nil t)
-;;                            (buffer-file-name (current-buffer))))
-;;          (only lhf-project-directory)
-;;          (prefarg (or current-prefix-arg helm-current-prefix-arg)))
-;;     (helm-do-grep-1 only prefarg)))
+;; search in folder
+(setq helm-grep-ag-command (concat "rg"
+                                   " --color=never"
+                                   " --smart-case"
+                                   " --no-heading"
+                                   " --line-number %s %s %s")
+      helm-grep-file-path-style 'relative)
+
+(defun mu-helm-rg (directory &optional with-types)
+  "Search in DIRECTORY with RG.
+With WITH-TYPES, ask for file types to search in."
+  (interactive "P")
+  (require 'helm-adaptive)
+  (helm-grep-ag-1 (expand-file-name directory)
+                  (helm-aif (and with-types
+                                 (helm-grep-ag-get-types))
+                      (helm-comp-read
+                       "RG type: " it
+                       :must-match t
+                       :marked-candidates t
+                       :fc-transformer 'helm-adaptive-sort
+                       :buffer "*helm rg types*"))))
+
+(defun mu-helm-project-search (&optional with-types)
+  "Search in current project with RG.
+With WITH-TYPES, ask for file types to search in."
+  (interactive "P")
+  (mu-helm-rg (mu--project-root) with-types))
+
+(defun mu-helm-file-search (&optional with-types)
+  "Search in `default-directory' with RG.
+With WITH-TYPES, ask for file types to search in."
+  (interactive "P")
+  (mu-helm-rg default-directory with-types))
+(defun mu--project-root ()
+  "Return the project root directory or `helm-current-directory'."
+  (require 'helm-ls-git)
+  (if-let (dir (helm-ls-git-root-dir))
+      dir
+    (helm-current-directory)))

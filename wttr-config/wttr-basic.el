@@ -128,10 +128,11 @@
   (indent-region (buffer-end 0) (buffer-end 1)))
 
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "http://elpa.emacs-china.org/melpa/") t)
-(setq package-archives (append '(("stable" . "https://stable.melpa.org/packages/")) package-archives))
-(setq package-archives (append '(("melpa" . "https://melpa.org/packages/")) package-archives))
-(setq package-archives (append '(("gnu" . "https://elpa.gnu.org/packages/")) package-archives))
+;; (add-to-list 'package-archives '("melpa" . "http://elpa.emacs-china.org/melpa/") t)
+;; (setq package-archives (append '(("stable" . "https://stable.melpa.org/packages/")) package-archives))
+;; (setq package-archives (append '(("melpa" . "https://melpa.org/packages/")) package-archives))
+;; (setq package-archives (append '(("gnu" . "https://elpa.gnu.org/packages/")) package-archives))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
 (defun xah-syntax-color-hex ()
   "Syntax color hex color spec such as 「#ff1100」 in current buffer."
@@ -197,10 +198,10 @@ With argument, do this thato many times."
   (async-shell-command "powershell.exe C:/work/update_repo.ps1")
   )
 ;; (require 'color-theme-modern)
-(require 'color-theme-sanityinc-tomorrow)
+;; (require 'color-theme-sanityinc-tomorrow)
 ;;go lang
 (add-hook 'go-mode-hook 'lsp-deferred)
 
-(require 'find-file-in-project)
+;; (require 'find-file-in-project)
 (helm-mode t)
 (provide 'wttr-basic)

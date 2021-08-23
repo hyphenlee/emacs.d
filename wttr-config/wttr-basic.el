@@ -1,4 +1,9 @@
 ;; -*- coding: utf-8 -*-
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; (require 'benchmark-init)
+;; To disable collection of benchmark data after init is done.
+;; (add-hook 'after-init-hook 'benchmark-init/deactivate)
 (require 'wttr-utils)
 ;; set user information
 (menu-bar-mode 'nil)
@@ -127,12 +132,6 @@
   (interactive)
   (indent-region (buffer-end 0) (buffer-end 1)))
 
-(require 'package)
-;; (add-to-list 'package-archives '("melpa" . "http://elpa.emacs-china.org/melpa/") t)
-;; (setq package-archives (append '(("stable" . "https://stable.melpa.org/packages/")) package-archives))
-;; (setq package-archives (append '(("melpa" . "https://melpa.org/packages/")) package-archives))
-;; (setq package-archives (append '(("gnu" . "https://elpa.gnu.org/packages/")) package-archives))
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
 (defun xah-syntax-color-hex ()
   "Syntax color hex color spec such as 「#ff1100」 in current buffer."

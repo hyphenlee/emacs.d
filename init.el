@@ -8,7 +8,9 @@
 (package-initialize)
 
 (add-to-list 'load-path "~/.emacs.d/wttr-config")
-;(require 'wttr-font)
+(add-to-list 'load-path "~/.emacs.d/myelpa")
+                                        ;(require 'wttr-font)
+(require 'org-bullets)
 (require 'wttr-basic)
 ;; (require 'wttr-mode-line)
 (require 'wttr-modes)

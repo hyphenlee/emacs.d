@@ -196,11 +196,13 @@ With argument, do this thato many times."
   (interactive)
   (async-shell-command "powershell.exe C:/work/update_repo.ps1")
   )
-;; (require 'color-theme-modern)
-;; (require 'color-theme-sanityinc-tomorrow)
+;; (require 'color-theme-sanityinc-solarized)
+;; (setq sml/no-confirm-load-theme t)
+;; (color-theme-sanityinc-solarized-dark)
+
 ;;go lang
 (add-hook 'go-mode-hook 'lsp-deferred)
 
-;; (require 'find-file-in-project)
+(require 'find-file-in-project)
 (helm-mode t)
 (provide 'wttr-basic)

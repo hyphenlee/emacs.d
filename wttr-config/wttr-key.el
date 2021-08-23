@@ -66,7 +66,7 @@
 (global-set-key (kbd "C-x C-f") #'helm-find-files)
 (global-set-key (kbd "C-x C-r") #'helm-recentf)
 (global-set-key (kbd "C-x r l")   #'helm-bookmarks)
-(global-set-key (kbd "C-c s") 'mu-helm-project-search)
+(global-set-key (kbd "C-c s") 'helm-do-ag-project-root)
 (global-set-key (kbd "C-c f") 'mu-helm-file-search)
 (global-set-key (kbd "C-c <DEL>") 'c-hungry-delete-backwards)
 (global-set-key (kbd "M-[") 'ace-jump-mode)

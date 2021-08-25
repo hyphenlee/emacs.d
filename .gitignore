@@ -26,3 +26,6 @@ eww-bookmarks
 smex-items
 /eln-cache/
 /transient/
+/.dap-breakpoints
+/.extension/
+/.lsp-session-v1

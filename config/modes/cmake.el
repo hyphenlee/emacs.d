@@ -10,4 +10,4 @@
   (set (make-local-variable 'company-backends)
        '((company-dabbrev-code company-yasnippet  company-abbrev company-cmake)))
   )
-(add-hook 'cmake-mode-hook 'elisp-hook)
+(add-hook 'cmake-mode-hook 'cmake-hook)

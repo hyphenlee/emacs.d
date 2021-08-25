@@ -69,15 +69,9 @@
 (global-set-key (kbd "C-c s") 'helm-do-ag-project-root)
 (global-set-key (kbd "C-c f") 'mu-helm-file-search)
 (global-set-key (kbd "C-c <DEL>") 'c-hungry-delete-backwards)
-(global-set-key (kbd "M-[") 'ace-jump-mode)
-
-
-;;tts
-(global-set-key (kbd "C-c r") 'tts-current-buffer)
+(global-set-key (kbd "M-[") 'avy-goto-word-1)
 ;;magit
 (global-set-key (kbd "M-4") 'magit-status)
-;;monky
-;; (global-set-key (kbd "C-x g") 'monky-status)
 
 (defun evil-toggle-state-lhf()
   (interactive)
@@ -104,4 +98,6 @@
   )
 (global-set-key (kbd "C-c u") 'lhf-update-repos)
 (global-set-key (kbd "C-c p") 'find-file-in-project)
+(global-set-key (kbd "C-<tab>") 'switch-to-next-buffer)
+(global-set-key (kbd "C-S-<tab>") 'switch-to-prev-buffer)
 (provide 'key)

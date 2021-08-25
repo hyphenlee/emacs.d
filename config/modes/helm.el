@@ -24,21 +24,8 @@ With WITH-TYPES, ask for file types to search in."
                        :marked-candidates t
                        :fc-transformer 'helm-adaptive-sort
                        :buffer "*helm rg types*"))))
-
-(defun mu-helm-project-search (&optional with-types)
-  "Search in current project with RG.
-With WITH-TYPES, ask for file types to search in."
-  (interactive "P")
-  (mu-helm-rg (mu--project-root) with-types))
-
 (defun mu-helm-file-search (&optional with-types)
   "Search in `default-directory' with RG.
 With WITH-TYPES, ask for file types to search in."
   (interactive "P")
   (mu-helm-rg default-directory with-types))
-(defun mu--project-root ()
-  "Return the project root directory or `helm-current-directory'."
-  (require 'helm-ls-git)
-  (if-let (dir (helm-ls-git-root-dir))
-      dir
-    (helm-current-directory)))

@@ -1,5 +1,6 @@
 ;; -*- coding: utf-8 -*-
-(if wttr/os:win64p
+(if
+    os:windowsp
     ( mapc (lambda (filename) (load (concat "~/.emacs.d/config/modes/" filename)))
            (list 
             "helm.el"
@@ -10,7 +11,7 @@
             "magit.el"
             "elisp.el"
             )))
-(if wttr/os:osxp
+(if os:osxp
     (mapc (lambda (filename) (load (concat "~/.emacs.d/config/modes/" filename)))
           (list 
            "dired.el"
@@ -19,7 +20,7 @@
            "org.el"
            "cmake.el"
            )))
-(if wttr/os:linuxp
+(if os:linuxp
     (mapc (lambda (filename) (load (concat "~/.emacs.d/config/modes/" filename)))
           (list 
            "dired.el"

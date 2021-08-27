@@ -1,6 +1,6 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(require 'wttr-utils)
+(require 'utils)
 ;; set user information
 (menu-bar-mode 'nil)
 
@@ -69,7 +69,8 @@
 (setq next-line-add-newline t)
 
 ;;encoding
-(set-language-environment 'UTF-8)
+;; (set-language-environment 'UTF-8)
+(set-language-environment 'Chinese-GB)
 ;; setup up a big kill-ring, so i will never miss anything:-)
 (setq kill-ring-max 1000)
 
@@ -166,13 +167,13 @@ With argument, do this thato many times."
 (setq helm-ag-base-command "rg -i --line-number --no-heading")
 
 ;; set coding config, last is highest priority.
-(prefer-coding-system 'cp950)
-(prefer-coding-system 'gb2312)
-(prefer-coding-system 'cp936)
-(prefer-coding-system 'gb18030)
-(prefer-coding-system 'utf-16)
-(prefer-coding-system 'utf-8-dos)
-(prefer-coding-system 'utf-8-unix)
+;; (prefer-coding-system 'cp950)
+;; (prefer-coding-system 'gb2312)
+;; (prefer-coding-system 'cp936)
+;; (prefer-coding-system 'gb18030)
+;; (prefer-coding-system 'utf-16)
+;; (prefer-coding-system 'utf-8-dos)
+;; (prefer-coding-system 'utf-8-unix)
 
 (defun lhf-update-repos ()
   "update repo"
@@ -180,6 +181,7 @@ With argument, do this thato many times."
   (async-shell-command "powershell.exe C:/work/update_repo.ps1"))
 
 (load-theme 'dracula)
+
 
 ;;go lang
 (add-hook 'go-mode-hook 'lsp-deferred)
@@ -191,4 +193,6 @@ With argument, do this thato many times."
       mac-command-key-is-meta t
       mac-command-modifier 'meta
       mac-option-modifier 'super))
+(require 'cnfonts)
+(cnfonts-enable)
 (provide 'basic)

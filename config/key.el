@@ -1,5 +1,5 @@
 ;; -*- coding: utf-8 -*-
-(require 'wttr-utils)
+(require 'utils)
 (defun kid-switch-to-shell ()
   (interactive)
   (when (null (cdr (window-list)))

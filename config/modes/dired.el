@@ -1,5 +1,5 @@
 ;; -*- coding: utf-8 -*-
-(require 'wttr-utils)
+(require 'utils)
 
 ;; recrusive delete and copy directory
 (setq dired-recursive-deletes t)

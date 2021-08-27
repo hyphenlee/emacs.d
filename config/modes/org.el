@@ -1,5 +1,5 @@
 ;; -*- coding: utf-8 -*-
-(require 'wttr-utils)
+(require 'utils)
 ;; org-mode setting
 
 (require 'org-install)

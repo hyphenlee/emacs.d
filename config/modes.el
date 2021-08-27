@@ -18,6 +18,9 @@
            ;; "org-page.el"
            "org.el"
            "cmake.el"
+           "elisp.el"
+           "go.el"
+           "magit.el"
            )))
 (if wttr/os:linuxp
     (mapc (lambda (filename) (load (concat "~/.emacs.d/config/modes/" filename)))

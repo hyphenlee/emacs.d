@@ -69,8 +69,8 @@
 (setq next-line-add-newline t)
 
 ;;encoding
-;; (set-language-environment 'UTF-8)
-(set-language-environment 'Chinese-GB)
+(set-language-environment 'UTF-8)
+;; (set-language-environment 'Chinese-GB)
 ;; setup up a big kill-ring, so i will never miss anything:-)
 (setq kill-ring-max 1000)
 

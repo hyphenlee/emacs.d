@@ -166,20 +166,6 @@ With argument, do this thato many times."
 (setq flymd-browser-open-function 'my-flymd-browser-function)
 (setq helm-ag-base-command "rg -i --line-number --no-heading")
 
-;; set coding config, last is highest priority.
-;; (prefer-coding-system 'cp950)
-;; (prefer-coding-system 'gb2312)
-;; (prefer-coding-system 'cp936)
-;; (prefer-coding-system 'gb18030)
-;; (prefer-coding-system 'utf-16)
-;; (prefer-coding-system 'utf-8-dos)
-;; (prefer-coding-system 'utf-8-unix)
-
-(defun lhf-update-repos ()
-  "update repo"
-  (interactive)
-  (async-shell-command "powershell.exe C:/work/update_repo.ps1"))
-
 (load-theme 'dracula)
 
 

@@ -100,4 +100,5 @@
 (global-set-key (kbd "C-c p") 'find-file-in-project)
 (global-set-key (kbd "C-<tab>") 'switch-to-next-buffer)
 (global-set-key (kbd "C-S-<tab>") 'switch-to-prev-buffer)
+(global-set-key (kbd "C-;") 'ace-jump-mode)
 (provide 'key)

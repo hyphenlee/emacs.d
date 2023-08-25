@@ -2,7 +2,7 @@
 (require 'utils)
 ;; org-mode setting
 
-(require 'org-install)
+;; (require 'org-install)
 (add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
 
 (global-set-key "\C-ca" 'org-agenda)
@@ -15,8 +15,8 @@
   (define-key org-mode-map (kbd "C-c i") #'(lambda ()
                                              (interactive)
                                              (org-time-stamp 4)))
-  (require 'org-bullets)
-  (org-bullets-mode)
+  ;; (require 'org-bullets)
+  ;; (org-bullets-mode)
   )
 (add-hook 'org-mode-hook #'wttr/org-mode-setup)
 (setq org-src-preserve-indentation t)
@@ -37,7 +37,7 @@
 (setq org-todo-keywords
       '((sequence "TODO(t!)" "WORKING(w!)" "|" "DONE(d!)" "ABORT(a!)")
         )) 
-(setq org-default-notes-file "~/org/note.org")
+(setq org-default-notes-file "~/note/note.org")
 (define-key global-map "\C-cc" 'org-capture)
 (setq org-capture-templates
       '(("t" "Todo" entry (file "~/note/gtd.org")
@@ -56,7 +56,7 @@
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((emacs-lisp . t)
-   (C . t) 
+   (C . t)
    (org . t)
    (python . t)
    (shell . t)

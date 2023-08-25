@@ -1,5 +1,5 @@
 (require 'helm)
-(require 'helm-config)
+;; (require 'helm-config)
 (setq helm-grep-default-command "grep -a -d recurse %e -n%cH -e %p %f")
 
 ;; search in folder

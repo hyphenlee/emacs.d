@@ -42,3 +42,4 @@
 (eval-after-load "magit" '(transient-append-suffix 'magit-submodule "a"
                             '("R" "Reset all to latest" magit-submodule-reset-all)))
 (setq magit-no-confirm 't)
+

@@ -53,7 +53,7 @@
 (global-set-key (kbd "<C-f5>") 'w32-open-current-file-in-explorer)
 (global-set-key (kbd "<C-f6>") 'w32-open-shell-from-current-file-directory)
                                         ;(global-set-key (kbd "C-c s") 'set-mark-command)
-(global-set-key (kbd "C-\\") 'indent-buffer)
+;; (global-set-key (kbd "C-\\") 'indent-buffer)
 (global-set-key (kbd "C-x o") 'switch-window)
 (global-set-key (kbd "<f11>") 'calendar)
 ;;helm
@@ -97,8 +97,10 @@
   (define-key magit-log-mode-map (kbd "M-4") nil)
   )
 (global-set-key (kbd "C-c u") 'lhf-update-repos)
-(global-set-key (kbd "C-c p") 'find-file-in-project)
+(global-set-key (kbd "C-c p") 'project-find-file)
+(global-set-key (kbd "M-o") 'helm-projectile-find-other-file)
 (global-set-key (kbd "C-<tab>") 'switch-to-next-buffer)
 (global-set-key (kbd "C-S-<tab>") 'switch-to-prev-buffer)
 (global-set-key (kbd "C-;") 'ace-jump-mode)
+
 (provide 'key)

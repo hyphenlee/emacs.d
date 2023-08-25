@@ -29,5 +29,10 @@
            "dired.el"
            "helm.el"
            "org.el"
+           "cpp.el"
+           "elisp.el"
+           "cmake.el"
+           "python.el"
            )))
+
 (provide 'modes)

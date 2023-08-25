@@ -29,3 +29,9 @@ smex-items
 /.dap-breakpoints
 /.extension/
 /.lsp-session-v1
+/session.10e5edce8dc94a4922167868812014167700000023120099
+/.cache/
+/dap-ui-repl-lldb-vscode-history
+session*
+/projects
+/forge-database.sqlite

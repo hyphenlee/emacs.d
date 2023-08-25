@@ -1,5 +1,6 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(exec-path-from-shell-initialize)
 (require 'utils)
 ;; set user information
 (menu-bar-mode 'nil)
@@ -7,7 +8,7 @@
 (setq create-lockfiles nil)
 (modify-syntax-entry ?_ "w")
 (auto-fill-mode -1)
-(define-key global-map (kbd "M-4") 'load-note-file)
+
 ;;====================================
 ;;  UI
 ;;====================================
@@ -140,7 +141,7 @@
                                 ("\\<\\(DEBUG\\)" 1 '(:foreground "yellow") t)
                                 ))
   )
-(server-start)
+;; (server-start)
 (defun backward-symbol (&optional arg)
   "Move backward until encountering the beginning of a symbol.
 With argument, do this that many times."
@@ -168,17 +169,18 @@ With argument, do this thato many times."
 
 (load-theme 'dracula)
 
-
-;;go lang
-(add-hook 'go-mode-hook 'lsp-deferred)
-
-(require 'find-file-in-project)
-(helm-mode t)
 (when (eq system-type 'darwin)
   (setq mac-option-key-is-meta nil
-      mac-command-key-is-meta t
-      mac-command-modifier 'meta
-      mac-option-modifier 'super))
+        mac-command-key-is-meta t
+        mac-command-modifier 'meta
+        mac-option-modifier 'super))
 (require 'cnfonts)
 (cnfonts-enable)
+
+;; find file in project
+(require 'find-file-in-project)
+(helm-mode 1)
+(pixel-scroll-precision-mode 1)
+;; (setenv "PYDEVD_DISABLE_FILE_VALIDATION" "1")
+;; (setq markdown-hide-markup t)
 (provide 'basic)

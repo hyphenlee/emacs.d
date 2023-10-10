@@ -120,24 +120,10 @@
      "4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328"
      default))
  '(package-selected-packages
-   '(cov lsp-ui tray dap-mode websocket leaf forge magit-section 0xc f ht
-         lsp-docker simple-httpd treemacs yaml zmq realgud yaml-mode
-         ack magit jupyter transient qt-pro-mode qml-mode aas
-         yasnippet posframe exec-path-from-shell vterm markdown-mode
-         cmake-font-lock elf-mode helm helm-core 0blayout zpresent
-         spinner cnfonts use-package go-mode dracula-theme
-         color-theme-modern find-file-in-project avy protobuf-mode
-         helm-descbinds ace-jump-mode magit-gerrit dash powershell
-         projectile helm-xref company-lsp nsis-mode esup nlinum
-         vimish-fold json-mode ac-clang nginx-mode ob-browser icicles
-         nyan-mode elpy org-tree-slide org-bullets baidu-life
-         switch-window company gnuplot org-alert magit-svn
-         highlight-tail magit-popup starter-kit-ruby ruby-dev popup
-         markdown-mode+ json-rpc highlight-indentation helm-projectile
-         helm-ag git-rebase-mode flycheck cmake-mode autopair
-         auto-package-update anaconda-mode ample-regexps ace-isearch
-         helm-lsp hydra which-key))
- '(scheme-program-name "scheme"))
+   '(org-page cnfonts dap-mode company-go use-package go-mode dracula-theme helm-rg color-theme-modern find-file-in-project helm magit helm-gitlab gitlab protobuf-mode helm-descbinds ace-jump-mode magit-gerrit dash powershell projectile helm-xref company-lsp cquery lsp-mode lsp-ui flymd monky xwidgete itail org-redmine ng2-mode nsis-mode vmd-mode paradox esup vimish-fold yagist ac-clang nginx-mode ob-browser neotree icicles nyan-mode key-chord evil-escape elpy org-tree-slide epresent ox-html5slide mongo org-bullets rinari baidu-life company gnuplot org-alert magit-svn highlight-tail magit-popup starter-kit-ruby ruby-end ruby-dev popup markdown-mode+ jumblr json-rpc image+ highlight-indentation helm-zhihu-daily helm-projectile helm-emmet helm-ag golden-ratio git-rebase-mode flycheck ducpel cmake-mode autopair auto-package-update anaconda-mode ample-regexps ace-isearch))
+ '(paradox-automatically-star t)
+ '(scheme-program-name "scheme")
+ '(warning-suppress-log-types '((comp))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

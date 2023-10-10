@@ -16,7 +16,7 @@
           (list 
            "dired.el"
            "helm.el"
-           ;; "org-page.el"
+           "org-page.el"
            "org.el"
            "cmake.el"
            "elisp.el"

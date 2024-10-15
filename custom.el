@@ -113,17 +113,43 @@
      (tramp-connection-local-default-system-profile
       (path-separator . ":") (null-device . "/dev/null"))))
  '(custom-safe-themes
-   '("f681100b27d783fefc3b62f44f84eb7fa0ce73ec183ebea5903df506eb314077"
+   '("c650a74280e8ce4ae4b50835b7a3bc62aeffa202ffea82260e529f0a69027696"
+     "dcb1cc804b9adca583e4e65755895ba0a66ef82d29464cf89a78b88ddac6ca53"
+     "603a831e0f2e466480cdc633ba37a0b1ae3c3e9a4e90183833bc4def3421a961"
+     "f681100b27d783fefc3b62f44f84eb7fa0ce73ec183ebea5903df506eb314077"
      "b54bf2fa7c33a63a009f249958312c73ec5b368b1094e18e5953adb95ad2ec3a"
      "05626f77b0c8c197c7e4a31d9783c4ec6e351d9624aa28bc15e7f6d6a6ebd926"
      "c1284dd4c650d6d74cfaf0106b8ae42270cab6c58f78efc5b7c825b6a4580417"
      "4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328"
      default))
  '(package-selected-packages
-   '(org-page cnfonts dap-mode company-go use-package go-mode dracula-theme helm-rg color-theme-modern find-file-in-project helm magit helm-gitlab gitlab protobuf-mode helm-descbinds ace-jump-mode magit-gerrit dash powershell projectile helm-xref company-lsp cquery lsp-mode lsp-ui flymd monky xwidgete itail org-redmine ng2-mode nsis-mode vmd-mode paradox esup vimish-fold yagist ac-clang nginx-mode ob-browser neotree icicles nyan-mode key-chord evil-escape elpy org-tree-slide epresent ox-html5slide mongo org-bullets rinari baidu-life company gnuplot org-alert magit-svn highlight-tail magit-popup starter-kit-ruby ruby-end ruby-dev popup markdown-mode+ jumblr json-rpc image+ highlight-indentation helm-zhihu-daily helm-projectile helm-emmet helm-ag golden-ratio git-rebase-mode flycheck ducpel cmake-mode autopair auto-package-update anaconda-mode ample-regexps ace-isearch))
- '(paradox-automatically-star t)
- '(scheme-program-name "scheme")
- '(warning-suppress-log-types '((comp))))
+   '(0blayout aas ac-c-headers ac-clang ace-isearch ace-jump-mode ack
+              activities ada-ref-man all-the-icons all-the-icons-dired
+              ample-regexps anaconda-mode auto-package-update autopair
+              avy baidu-life call-graph cmake-font-lock cmake-mode
+              cnfonts color-rg color-theme-modern company company-lsp
+              cov dap-mode direx dracula-theme elf-mode elpy esup f
+              flycheck forge gdb-mi git-rebase-mode git-timemachine
+              gnuplot go-mode helm-ag helm-lsp helm-projectile helm-rg
+              helm-xref hierarchy highlight-indentation highlight-tail
+              ht hydra icicles json-rpc jupyter leaf lsp-bridge
+              lsp-docker lsp-ui magit magit-popup magit-section
+              markdown-mode+ nlinum nsis-mode nyan-mode ob-browser
+              org-bullets org-page org-tree-slide popup powershell
+              protobuf-mode qml-mode qt-pro-mode quelpa
+              quelpa-use-package realgud ruby-dev simple-httpd spinner
+              starter-kit-ruby switch-window tray treemacs use-package
+              vimish-fold vterm which-key yaml zmq zpresent zygospore))
+ '(package-vc-selected-packages
+   '((helm-rg :url "git@github.com:hyphenlee/helm-rg.git" :vc-backend Git)
+     (color-rg :url "https://github.com/manateelazycat/color-rg.git"
+               :vc-backend Git)
+     (lsp-bridge :url
+                 "https://github.com/manateelazycat/lsp-bridge.git"
+                 :vc-backend Git)))
+ '(realgud-safe-mode nil)
+ '(safe-local-variable-values '((highlight-80+-columns . 100)))
+ '(scheme-program-name "scheme"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

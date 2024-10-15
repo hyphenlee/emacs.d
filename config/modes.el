@@ -32,7 +32,7 @@
            "cpp.el"
            "elisp.el"
            "cmake.el"
-           "python.el"
+           "magit.el"
            )))
 
 (provide 'modes)

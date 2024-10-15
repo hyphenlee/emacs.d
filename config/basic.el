@@ -1,6 +1,9 @@
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(exec-path-from-shell-initialize)
+;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; (setq package-archives '(("gnu"   . "http://1.15.88.122/gnu/")
+;;                            ("melpa" . "http://1.15.88.122/melpa/")))
+(setq package-archives '(("melpa"  . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+;;(exec-path-from-shell-initialize)
 (require 'utils)
 ;; set user information
 (menu-bar-mode 'nil)
@@ -177,10 +180,18 @@ With argument, do this thato many times."
 (require 'cnfonts)
 (cnfonts-enable)
 
-;; find file in project
-(require 'find-file-in-project)
 (helm-mode 1)
 (pixel-scroll-precision-mode 1)
-;; (setenv "PYDEVD_DISABLE_FILE_VALIDATION" "1")
-;; (setq markdown-hide-markup t)
+(which-key-mode)
+
+;;all-the-icons
+
+(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+(defun my-dired-init ()
+  "to be run as hook for `dired-mode'."
+  (dired-hide-details-mode 1))
+
+(add-hook 'dired-mode-hook 'my-dired-init)
+(require 'helm-rg)
 (provide 'basic)
+

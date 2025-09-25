@@ -10,6 +10,7 @@
             "go.el"
             "magit.el"
             "elisp.el"
+            "dired.el"
             )))
 (if os:osxp
     (mapc (lambda (filename) (load (concat "~/.emacs.d/config/modes/" filename)))

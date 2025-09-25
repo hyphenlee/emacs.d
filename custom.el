@@ -113,7 +113,9 @@
      (tramp-connection-local-default-system-profile
       (path-separator . ":") (null-device . "/dev/null"))))
  '(custom-safe-themes
-   '("c650a74280e8ce4ae4b50835b7a3bc62aeffa202ffea82260e529f0a69027696"
+   '("2d74de1cc32d00b20b347f2d0037b945a4158004f99877630afc034a674e3ab7"
+     "a8e721dc14961b37d513b53f5f688c39f5d20b86a2e1f6142eb6c730f2ddd86f"
+     "c650a74280e8ce4ae4b50835b7a3bc62aeffa202ffea82260e529f0a69027696"
      "dcb1cc804b9adca583e4e65755895ba0a66ef82d29464cf89a78b88ddac6ca53"
      "603a831e0f2e466480cdc633ba37a0b1ae3c3e9a4e90183833bc4def3421a961"
      "f681100b27d783fefc3b62f44f84eb7fa0ce73ec183ebea5903df506eb314077"
@@ -123,29 +125,16 @@
      "4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328"
      default))
  '(package-selected-packages
-   '(0blayout aas ac-c-headers ac-clang ace-isearch ace-jump-mode ack
-              activities ada-ref-man all-the-icons all-the-icons-dired
-              ample-regexps anaconda-mode auto-package-update autopair
-              avy baidu-life call-graph cmake-font-lock cmake-mode
-              cnfonts color-rg color-theme-modern company company-lsp
-              cov dap-mode direx dracula-theme elf-mode elpy esup f
-              flycheck forge gdb-mi git-rebase-mode git-timemachine
-              gnuplot go-mode helm-ag helm-lsp helm-projectile helm-rg
-              helm-xref hierarchy highlight-indentation highlight-tail
-              ht hydra icicles json-rpc jupyter leaf lsp-bridge
-              lsp-docker lsp-ui magit magit-popup magit-section
-              markdown-mode+ nlinum nsis-mode nyan-mode ob-browser
-              org-bullets org-page org-tree-slide popup powershell
-              protobuf-mode qml-mode qt-pro-mode quelpa
-              quelpa-use-package realgud ruby-dev simple-httpd spinner
-              starter-kit-ruby switch-window tray treemacs use-package
-              vimish-fold vterm which-key yaml zmq zpresent zygospore))
+   '(0blayout aas ac-c-headers ac-clang ace-isearch ace-jump-mode
+              all-the-icons-dired ample-regexps anaconda-mode
+              auto-package-update avy call-graph cmake-font-lock
+              cnfonts color-theme-modern company cov direx
+              dracula-theme editorconfig faceup forge git-timemachine
+              helm-ag helm-projectile helm-xref highlight-indentation
+              magit-popup nsis-mode nyan-mode org-bullets powershell
+              protobuf-mode qml-mode switch-window which-key))
  '(package-vc-selected-packages
-   '((helm-rg :url "git@github.com:hyphenlee/helm-rg.git" :vc-backend Git)
-     (color-rg :url "https://github.com/manateelazycat/color-rg.git"
-               :vc-backend Git)
-     (lsp-bridge :url
-                 "https://github.com/manateelazycat/lsp-bridge.git"
+   '((lsp-bridge :url "https://github.com/manateelazycat/lsp-bridge.git"
                  :vc-backend Git)))
  '(realgud-safe-mode nil)
  '(safe-local-variable-values '((highlight-80+-columns . 100)))

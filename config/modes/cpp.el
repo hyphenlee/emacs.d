@@ -1,9 +1,5 @@
-
-;; (add-to-list 'load-path "~/.emacs.d/myelpa/lsp")
-(add-to-list 'load-path "~/.emacs.d/myelpa/")
 (require 'yasnippet)
 (require 'lsp-bridge)
-
 (defun my-c-mode-hook()
   (yas-global-mode 1)
   (lsp-bridge-mode)

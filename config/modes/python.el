@@ -1,4 +1,3 @@
-(add-to-list 'load-path "~/.emacs.d/myelpa/lsp")
 (require 'yasnippet)
 (require 'lsp-bridge)
 (require 'dap-python)

@@ -3,6 +3,7 @@
 ;; (setq package-archives '(("gnu"   . "http://1.15.88.122/gnu/")
 ;;                            ("melpa" . "http://1.15.88.122/melpa/")))
 (setq package-archives '(("melpa"  . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+(add-to-list 'load-path "~/.emacs.d/myelpa")
 ;;(exec-path-from-shell-initialize)
 (require 'utils)
 ;; set user information
@@ -168,7 +169,8 @@ With argument, do this thato many times."
            "chrome"
            (list "--new-window" "--allow-file-access-from-files" url))))
 (setq flymd-browser-open-function 'my-flymd-browser-function)
-(setq helm-ag-base-command "rg -i --line-number --no-heading")
+(setq helm-ag-base-command "rg -i --line-number --no-heading --color never")
+(setq helm-ag-success-exit-status '(0 2))
 
 (load-theme 'dracula)
 
@@ -186,12 +188,12 @@ With argument, do this thato many times."
 
 ;;all-the-icons
 
-(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+;; (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
 (defun my-dired-init ()
   "to be run as hook for `dired-mode'."
   (dired-hide-details-mode 1))
-
+(require 'dired-sort-menu)
 (add-hook 'dired-mode-hook 'my-dired-init)
-(require 'helm-rg)
+
 (provide 'basic)
 

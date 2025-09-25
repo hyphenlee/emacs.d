@@ -1,14 +1,14 @@
 (require 'helm)
-;; (require 'helm-config)
-(setq helm-grep-default-command "grep -a -d recurse %e -n%cH -e %p %f")
+;; ;; (require 'helm-config)
+;; (setq helm-grep-default-command "grep -a -d recurse %e -n%cH -e %p %f")
 
-;; search in folder
-(setq helm-grep-ag-command (concat "rg"
-                                   " --color=never"
-                                   " --smart-case"
-                                   " --no-heading"
-                                   " --line-number %s %s %s")
-      helm-grep-file-path-style 'relative)
+;; ;; search in folder
+;; (setq helm-grep-ag-command (concat "rg"
+;;                                    " --color=never"
+;;                                    " --smart-case"
+;;                                    " --no-heading"
+;;                                    " --line-number %s %s %s")
+;;       helm-grep-file-path-style 'relative)
 
 (defun mu-helm-rg (directory &optional with-types)
   "Search in DIRECTORY with RG.

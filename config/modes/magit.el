@@ -1,5 +1,6 @@
 ;; -*- coding: utf-8 -*-
 (autoload 'magit-status "magit" "magit" t)
+(setq magit-refresh-verbose t)
 (use-package magit
   :config
 

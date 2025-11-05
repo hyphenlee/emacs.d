@@ -131,7 +131,7 @@
               cnfonts color-theme-modern company cov direx
               dracula-theme editorconfig faceup forge git-timemachine
               helm-ag helm-projectile helm-xref highlight-indentation
-              magit-popup nsis-mode nyan-mode org-bullets powershell
+              magit nsis-mode nyan-mode org-bullets powershell
               protobuf-mode qml-mode switch-window which-key))
  '(package-vc-selected-packages
    '((lsp-bridge :url "https://github.com/manateelazycat/lsp-bridge.git"

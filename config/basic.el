@@ -1,8 +1,5 @@
 (require 'package)
-;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-;; (setq package-archives '(("gnu"   . "http://1.15.88.122/gnu/")
-;;                            ("melpa" . "http://1.15.88.122/melpa/")))
-(setq package-archives '(("melpa"  . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (add-to-list 'load-path "~/.emacs.d/myelpa")
 ;;(exec-path-from-shell-initialize)
 (require 'utils)
@@ -194,6 +191,6 @@ With argument, do this thato many times."
   (dired-hide-details-mode 1))
 (require 'dired-sort-menu)
 (add-hook 'dired-mode-hook 'my-dired-init)
-
+(require 'helm-ag)
 (provide 'basic)
 
